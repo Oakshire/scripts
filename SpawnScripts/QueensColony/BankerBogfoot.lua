@@ -23,6 +23,6 @@ function hailed(NPC, Spawn)
 end
 
 function EmoteLoop (NPC)
-	PlayAnimation(NPC, 13008)
+	PlayAnimation(NPC, 10844)
 	AddTimer(NPC, 15000, "EmoteLoop")
 end

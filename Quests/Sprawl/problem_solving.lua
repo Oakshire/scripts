@@ -2,7 +2,7 @@
 	Script Name	: Quests/TheSprawl/problem_solving.lua
 	Script Purpose	: Handles the quest, "Problem Solving"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.26
+	Script Date	: 2009.07.26
 	
 	Zone       : The Sprawl
 	Quest Giver: Crispin Luvinius
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill five Dervish hoodlums.", 5, 100, "I need to send a message to the Dervish hoodlums in the Sprawl. The message will involve a lot of them breathing dirt.", 611, 1260092, 1260067, 1260111, 1260073, 1260112, 1260119, 1260103, 1260090, 1260065, 1260066, 1260113, 1260110, 1260091)
+	AddQuestStepKill(Quest, 1, "I need to kill five Dervish hoodlums.", 5, 100, "I need to send a message to the Dervish hoodlums in the Sprawl. The message will involve a lot of them breathing dirt.", 611, 1260007)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledHoodlums")
 end
 
@@ -30,7 +30,7 @@ function Step1_Complete_KilledHoodlums(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've dealt with the hoodlums.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Those hoodlums got the message loud and clear.")
 	
-	AddQuestStepChat(Quest, 2, "I need to talk with Crispin.", 1, "I should let Crispin in know that his problem has been solved. I should get paid, too.", 0, 1260004)
+	AddQuestStepChat(Quest, 2, "I need to talk with Crispin.", 1, "I should let Crispin in know that his problem has been solved. I should get paid, too.", 0, 1260020)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

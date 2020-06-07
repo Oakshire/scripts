@@ -10,7 +10,7 @@ local roviotm = 532   -- Ruins of Varsoon: Investigation Of The Mausoleum
 local rovrte = 534  -- Ruins of Varsoon: Revealing the Entrance
 
 function spawn(NPC)
-
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange", Spawn)
 end
 
 function respawn(NPC)
@@ -109,4 +109,13 @@ function dlg02_03(NPC, Spawn)
  PlayFlavor(NPC, "voiceover/english/zaen_kalystir/qey_catacomb02/zaenkalystir008.mp3", "", "", 81391876, 574533119, Spawn)
  AddConversationOption(conversation, "I'll do what I can.")
  StartConversation(conversation, NPC, Spawn, "Splendid... you have done quite well.  You must interfere with Varsoon's plans. That key you now possess will allow you access to his lair.  Let him know... that Qeynos shall once again prevent his evil from spreading!")
+end
+
+function InRange(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayFlavor(NPC, "voiceover/english/zaen_kalystir/qey_catacomb02/zaen_kalystir_zaen_intro_fd754eff.mp3", "Blasted beetles, snakes, undead, and Bloodsabers!  Now you? Outta here!", "", 3736586527, 92716793, Spawn)
+end
+
+function LeaveRange(NPC, Spawn)
+
 end

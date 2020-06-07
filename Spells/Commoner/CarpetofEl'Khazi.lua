@@ -21,6 +21,7 @@ end
 
 function cast(Caster, Target, Amt)
 SetMount(Caster, 1369)
+SetMountColor(Caster, 0, 0, 0, 30, 144, 255) 
     AddSpellBonus(Caster, 611, Amt)
 AddControlEffect(Caster, 13)
 end

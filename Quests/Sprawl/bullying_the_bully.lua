@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I should confront Brutemaster Tarden and make him shape up.", 1, "I should find Brutemaster Tarden and show him who's boss.", 0, 1260044)
+	AddQuestStepChat(Quest, 1, "I should confront Brutemaster Tarden and make him shape up.", 1, "I should find Brutemaster Tarden and show him who's boss.", 0, 1260019)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_SpokeWithTarden")
 end
 
@@ -31,7 +31,7 @@ function Step1_Complete_SpokeWithTarden(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I intimidated Brutemaster Tarden into doing a better job.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I cornered Brutemaster Tardin and roughed him up a bit.")
 	
-	AddQuestStepChat(Quest, 2, "I should return to Enforcer Kurdek near the gate to Big Bend.", 1, "I should return to Enforcer Kurdek and tell him my task was a success.", 0, 1260006)
+	AddQuestStepChat(Quest, 2, "I should return to Enforcer Kurdek near the gate to Big Bend.", 1, "I should return to Enforcer Kurdek and tell him my task was a success.", 0, 1260017)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

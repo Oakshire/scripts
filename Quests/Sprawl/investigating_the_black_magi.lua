@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I should look for a ratonga named Tikkeri and trick her into revealing information about the Black Magi.", 1, "I should seek a ratonga named Tikkeri deep inside the Black Magi area.", 0, 1260094)
+	AddQuestStepChat(Quest, 1, "I should look for a ratonga named Tikkeri and trick her into revealing information about the Black Magi.", 1, "I should seek a ratonga named Tikkeri deep inside the Black Magi area.", 0, 1260028)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_SpokeWithTikkeri")
 end
 
@@ -32,7 +32,7 @@ function Step1_Complete_SpokeWithTikkeri(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found Arcanist Tikkeri and learned a clue about some organization called 'the Marked.'")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found Arcanist Tikkeri and found out about some organization called 'the Marked.'")
 	
-	AddQuestStepChat(Quest, 2, "I should return to Enforcer Kurdek near the gate to Big Bend.", 1, "I should return to Enforcer Kurdek and tell him what I learned.", 0, 1260006)
+	AddQuestStepChat(Quest, 2, "I should return to Enforcer Kurdek near the gate to Big Bend.", 1, "I should return to Enforcer Kurdek and tell him what I learned.", 0, 1260017)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

@@ -28,7 +28,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
+	Say(NPC, "Hey! you got this far")
 	if HasQuest(Spawn, QUEST_FROM_POKO) and GetQuestStep(Spawn, QUEST_FROM_POKO) == 3 then
 		AddConversationOption(conversation, "I have news for you.", "NewsForYou")
 	end
@@ -43,7 +43,21 @@ function hailed(NPC, Spawn)
 	end
 	
 	if HasCompletedQuest(Spawn, QUEST_1) then
+	    Say(NPC, "Hey! quest 1 complete")
 		if HasCompletedQuest(Spawn, QUEST_2) then
+		    Say(NPC, "Hey! quest 2 complete")
+		    if HasCompletedQuest(Spawn, QUEST_3) then
+			    Say(NPC, "Hey! quest 3 complete")
+		    elseif HasQuest(Spawn, QUEST_3) then
+			    Say(NPC, "Hey! you are still on quest 3")
+			    AddConversationOption(conversation, "I'll come back when I've performed the task.")
+		        StartConversation(conversation, NPC, Spawn, "Well?")
+		    else 
+		        
+		       	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain009.mp3", "", "", 4053457773, 134802130, Spawn)
+		        AddConversationOption(conversation, "What happened with the leaf?", "dlg_3_1")
+		        StartConversation(conversation, NPC, Spawn, "Welcome back. Are you ready for some more work?")
+		    end
 		elseif HasQuest(Spawn, QUEST_2) then
 			if GetQuestStep(Spawn, QUEST_2) == 8 then
 				PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain009.mp3", "", "", 4053457773, 134802130, Spawn)
@@ -53,20 +67,6 @@ function hailed(NPC, Spawn)
 		else
 			OnQuest1(NPC, Spawn, conversation)
 		end
-			if HasCompletedQuest(Spawn, QUEST_3) then
-			    
-			    
-			    
-			    -- add completion into
-			    
-			elseif HasQuest(Spawn, Quest_3) then
-			    -- add on quest info
-			else 
-			    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain009.mp3", "", "", 4053457773, 134802130, Spawn)
-		        AddConversationOption(conversation, "What happened with the leaf?", "dlg_3_1")
-		        StartConversation(conversation, NPC, Spawn, "Welcome back. Are you ready for some more work?")
-			    
-			end
 	elseif HasQuest(Spawn, QUEST_1) then
 		OnQuest1(NPC, Spawn, conversation)
 	else
@@ -76,6 +76,7 @@ function hailed(NPC, Spawn)
 			Say(NPC, "Come back to me once you've gotten a bit stronger.", Spawn)
 		end
 	end
+end
 	
 
 --[[
@@ -104,7 +105,7 @@ function hailed(NPC, Spawn)
 		StartConversation(conversation, NPC, Spawn, "Welcome, citizen. Please be careful around here.")
 	end
 --]]
-end
+
 
 ----------------------------------------------------------------------------------------------------------
 --					QUEST FROM POKO
@@ -167,14 +168,6 @@ function dlg_1_3(NPC, Spawn)
 end
 
 function OfferQuest1(NPC, Spawn)
-    bush1 = GetSpawnByLocationID(196, 475035)
-    bush2 = GetSpawnByLocationID(196, 1587510)
-    bush3 = GetSpawnByLocationID(196, 1587511)
-    bush4 = GetSpawnByLocationID(196, 1587512)
-    SpawnSet(Spawn, bush1, "command_primary", "Sprinkle Nullification Powder")
-    SpawnSet(Spawn, bush2, "command_primary", "Sprinkle Nullification Powder")
-    SpawnSet(Spawn, bush3, "command_primary", "Sprinkle Nullification Powder")
-    SpawnSet(Spawn, bush4, "command_primary", "Sprinkle Nullification Powder")
     
 	FaceTarget(NPC, Spawn)
 	OfferQuest(NPC, Spawn, QUEST_1)
@@ -213,14 +206,7 @@ end
 function dlg_3_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	OfferQuest(NPC, Spawn, QUEST_3)
-    bush1 = GetSpawnByLocationID(196, 475035)
-    bush2 = GetSpawnByLocationID(196, 1587510)
-    bush3 = GetSpawnByLocationID(196, 1587511)
-    bush4 = GetSpawnByLocationID(196, 1587512)
-    SpawnSet(Spawn, bush1, "command_primary", "Sprinkle Nullification Powder")
-    SpawnSet(Spawn, bush2, "command_primary", "Sprinkle Nullification Powder")
-    SpawnSet(Spawn, bush3, "command_primary", "Sprinkle Nullification Powder")
-    SpawnSet(Spawn, bush4, "command_primary", "Sprinkle Nullification Powder")
+    
 	
 --	Sprinkle Nullification Powder
 	conversation = CreateConversation()

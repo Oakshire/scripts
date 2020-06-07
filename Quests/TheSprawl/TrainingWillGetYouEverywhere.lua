@@ -8,7 +8,7 @@
 	Zone			:	The Sprawl
 	Quest Giver		:	Enforcer Kurdek
 	Preceded by		:	None
-	Followed by		:	None
+	Followed by		:	
 --]]
 
 local Enforcer_Kurdek = 1260017

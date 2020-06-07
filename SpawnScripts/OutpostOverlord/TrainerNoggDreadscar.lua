@@ -6,6 +6,7 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+
 function spawn(NPC)
 end
 
@@ -19,7 +20,7 @@ function hailed(NPC, Spawn)
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_nogg_dreadscar/tutorial_island02_evil_revamp/trainers/attributes/nogg_dreadscar001.mp3", "", "", 1345962966, 10192429, Spawn)
 
-	if HasQuest(Spawn, 54) and GetQuestStep(Spawn, 54) == 1 then
+	if HasQuest(Spawn, 492) and GetQuestStep(Spawn, 492) == 1 then
 		AddConversationOption(conversation, "What do you know about Charles Arker?", "dlg_36_1")
 	end
 
@@ -99,7 +100,7 @@ end
 
 
 function dlg_36_1(NPC, Spawn)
-	SetStepComplete(Spawn, 54, 1)
+	SetStepComplete(Spawn, 492, 1)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

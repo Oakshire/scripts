@@ -17,7 +17,7 @@ function EmoteLoop (NPC)
         local choice = math.random(1,2)
         local timer = math.random(2500,3500)
   
-        if choice1 == 1 then
+        if choice == 1 then
                 PlayAnimation(NPC, 11400)
                 AddTimer(NPC, timer, "EmoteLoop")
         else

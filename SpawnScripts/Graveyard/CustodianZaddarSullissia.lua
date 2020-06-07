@@ -7,9 +7,9 @@
 --]]
 
 local DARKELF_MENTOR_QUEST_5 = 195
-local QUEST_1 = 231
-local QUEST_2 = 232
-local QUEST_3 = 233
+local QUEST_1 = 546
+local QUEST_2 = 547
+local QUEST_3 = 548
 local QUEST_4 = 234
 local QUEST_5 = 235
 local QUEST_6 = 236

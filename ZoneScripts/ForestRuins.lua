@@ -11,10 +11,34 @@ end
 
 function player_entry(zone, player)
     
-	newSpawn = SpawnByLocationID(zone, 475035)
-	newSpawn = SpawnByLocationID(zone, 1587510)
-	newSpawn = SpawnByLocationID(zone, 1587511)
-	newSpawn = SpawnByLocationID(zone, 1587512)
+    
+    Say(player, "Wow! Forest Ruins is so pretty (v3)")
+	if  HasQuest(player , 522) then
+        Say(player, "You have quest 522")
+        newspawn1 = SpawnMob(zone, 1960182, true, 1161.29, -21.6585, -741.387, 0)
+        newspawn2 = SpawnMob(zone, 1960182, true, 1165.24, -21.7587, -738.934, 0)
+        newspawn3 = SpawnMob(zone, 1960182, true, 1163.75, -21.6419, -744.377, 0)
+        newspawn4 = SpawnMob(zone, 1960182, true, 1172.83, -22.529, -745.2644, 0)
+        treespawn = SpawnMob(zone, 1960155, true, 1169.29, -22.0886, -742.247, 0)
+    else
+        Say(player, "You do not have quest 522")
+        newspawn1 = SpawnMob(zone, 1960154, true, 1161.29, -21.6585, -741.387, 0)
+        newspawn2 = SpawnMob(zone, 1960154, true, 1165.24, -21.7587, -738.934, 0)
+        newspawn3 = SpawnMob(zone, 1960154, true, 1163.75, -21.6419, -744.377, 0)
+        newspawn4 = SpawnMob(zone, 1960154, true, 1172.83, -22.529, -745.2644, 0)
+        treespawn = SpawnMob(zone, 1960184, true, 1169.29, -22.0886, -742.247, 0)
+    end
+        AddSpawnAccess(newspawn1, player)
+        AddSpawnAccess(newspawn2, player)
+        AddSpawnAccess(newspawn3, player)
+        AddSpawnAccess(newspawn4, player)
+        AddSpawnAccess(treespawn, player)
+        
+        SetTempVariable(player, "spawn1", newspawn1)  
+        SetTempVariable(player, "spawn2", newspawn2)
+        SetTempVariable(player, "spawn3", newspawn3)
+        SetTempVariable(player, "spawn4", newspawn4)
+        SetTempVariable(player, "treespawn", treespawn)
 end
 
 function enter_location(zone, spawn, grid)

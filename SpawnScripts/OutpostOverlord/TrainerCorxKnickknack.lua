@@ -20,7 +20,7 @@ function hailed(NPC, Spawn)
 	choice = math.random(1,3)
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_" .. choice .. "_1006.mp3", "", "", 0, 0, Spawn)
 
-	if HasQuest(Spawn, 54) and GetQuestStep(Spawn, 54) == 7 then
+	if HasQuest(Spawn, 492) and GetQuestStep(Spawn, 492) == 7 then
 		AddConversationOption(conversation, "Do you know Charles Arker?", "dlg_42_1")
 	end
 
@@ -144,7 +144,7 @@ end
 
 -- Charles Arker
 function dlg_42_1(NPC, Spawn)
-	SetStepComplete(Spawn, 54, 7)
+	SetStepComplete(Spawn, 492, 7)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

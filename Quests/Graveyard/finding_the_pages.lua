@@ -3,7 +3,7 @@
 	Script Purpose	: Handles the quest, "Finding the Pages"
 	Script Author	: Scatman
 	Script Date	: 2009.07.11
-	
+	Scripts Notes   : 21.05.2020  by premierio015: MISSING ITEMS IN DB NEEDED FOR FURTHER QUEST STEP COMPLETION
 	Zone       : The Graveyard
 	Quest Giver: Custodian Zaddar Sullissia
 	Preceded by: Paying a Visit (paying_a_visit.lua)

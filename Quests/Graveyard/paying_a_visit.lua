@@ -14,7 +14,7 @@
 function Init(Quest)
 
 
-	AddQuestStepChat(Quest, 1, "I must speak with Varacus T`Kur. He can be found by following the road north, then to the west.", 1, "I must seek out the dark elf Varacus T`Kur within the graveyard of Freeport. According to Zaddar, Varacus can be found to the north near the ruins of the old tower of Marr.", 0, 1250070)
+	AddQuestStepChat(Quest, 1, "I must speak with Varacus T`Kur. He can be found by following the road north, then to the west.", 1, "I must seek out the dark elf Varacus T`Kur within the graveyard of Freeport. According to Zaddar, Varacus can be found to the north near the ruins of the old tower of Marr.", 0, 1250038)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 
 end

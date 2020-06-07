@@ -19,17 +19,19 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
+function CombatReset(NPC)
+local hp = GetMaxHP(NPC) * 0.10
+SetHP(NPC, hp)
+end
+
 function healthchanged(NPC, Spawn)
-	local hp_percent = GetPCTOfHP(NPC, pctHealMin)
-	if hp_percent <= 0.50
-	if spoke == true then
+	local lowhp = GetHP(NPC)
+	if lowhp <= 15 then
         Runback(NPC)
         SetInCombat(NPC, false)
         ClearHate(NPC)
         ClearEncounter(NPC)
-	SetHP(NPC, GetPCTofHP(NPC, pctHealMin))
 	end
-end
 end
 
  

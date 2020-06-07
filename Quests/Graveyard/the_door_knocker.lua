@@ -16,7 +16,7 @@ function Init(Quest)
 
 	AddQuestStep(Quest, 1, "Find the tomb of Sir Penan to the northwest and ensure it is sealed.", 1, 100, "I need to find the tombs of the fallen knights and ensure that they have remained sealed. I should check the larger tombs, the ones that have plaques noting who is buried there.", 2339)
 	AddQuestStep(Quest, 2, "Find the tomb of Sir Breel to the west and ensure it is sealed.", 1, 100, "I need to find the tombs of the fallen knights and ensure that they have remained sealed. I should check the larger tombs, the ones that have plaques noting who is buried there.", 2339)
-	AddQuestStepKill(Quest, 3, "Find the tomb of Sir Haligan to the north and ensure it is sealed.", 1, 100, "I need to find the tombs of the fallen knights and ensure that they have remained sealed. I should check the larger tombs, the ones that have plaques noting who is buried there.", 2339, 1250054)
+	AddQuestStepKill(Quest, 3, "Find the tomb of Sir Haligan to the north and ensure it is sealed.", 1, 100, "I need to find the tombs of the fallen knights and ensure that they have remained sealed. I should check the larger tombs, the ones that have plaques noting who is buried there.", 2339, 1250043)
 	AddQuestStep(Quest, 4, "Find the tomb of Sir Arlin to the southwest and ensure it is sealed.", 1, 100, "I need to find the tombs of the fallen knights and ensure that they have remained sealed. I should check the larger tombs, the ones that have plaques noting who is buried there.", 2339)
 	AddQuestStep(Quest, 5, "Find the tomb of Sir Xantille to the north and ensure it is sealed.", 1, 100, "I need to find the tombs of the fallen knights and ensure that they have remained sealed. I should check the larger tombs, the ones that have plaques noting who is buried there.", 2339)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_FoundTomb1")
@@ -82,7 +82,7 @@ end
 function FoundAllTombs(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the tombs that Zaddar asked of me and reported my findings.")
 	
-	AddQuestStepChat(Quest, 6, "Return to Zaddar in the Graveyard.", 1, "I must return to Zaddar and let him know of my findings.", 0, 1250014)
+	AddQuestStepChat(Quest, 6, "Return to Zaddar in the Graveyard.", 1, "I must return to Zaddar and let him know of my findings.", 0, 1250002)
 	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
 end
 

@@ -14,7 +14,7 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+        spawn(NPC)
 end
 
 function EmoteLoop (NPC)
@@ -36,7 +36,9 @@ end
 
 function DespawnDeadDeer(NPC)
         local zone = GetZone(NPC)
-        local deadDeer = GetSpawnByLocationID(zone, 1587605) 
-        Despawn(deadDeer)
+        local deadDeer = GetSpawnByLocationID(zone, 1587605)
+        if deadDeer ~= nil then
+            Despawn(deadDeer)
+        end
 end
 

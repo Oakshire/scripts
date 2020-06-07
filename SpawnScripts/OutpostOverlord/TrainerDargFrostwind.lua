@@ -13,7 +13,7 @@ function hailed(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
 
-   if HasQuest(Spawn, 54) and GetQuestStep(Spawn, 54) == 3 then
+   if HasQuest(Spawn, 492) and GetQuestStep(Spawn, 492) == 3 then
       AddConversationOption(conversation, "Do you know anyone named Charles Arker? He's a very famous hero.", "CharlesArker")
    end
 	  
@@ -25,7 +25,7 @@ function hailed(NPC, Spawn)
    elseif HasQuest(Spawn, TheArtOfCombat) and GetQuestStep(Spawn, TheArtOfCombat) < 4 then
         if GetQuestStep(Spawn, TheArtOfCombat) == 1 then
            -- on the first step
-           PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_darg_frostwind/tutorial_island02_evil_revamp/trainers/combat/darg_frostwind001.mp3", "", "", 4099559600, 3648787893, Spawn)
+           PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_darg_frostwind/tutorial_island02_evil_revamp/trainers/combat/darg_frostwind001.mp3", "", "salute_freeport", 4099559600, 3648787893, Spawn)
            AddConversationOption(conversation, "What can you teach me about combat?", "LearnAboutCombat")
            StartConversation(conversation, NPC, Spawn, "Greetings, " .. GetName(Spawn) .. ". I've been stationed here at the outpost to teach new recruits the finer points of combat. After all, it's our duty to honor the Overlord by achieving legendary victories in his glorious name.")
         else
@@ -66,7 +66,7 @@ function LearnAboutCombat(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_darg_frostwind/tutorial_island02_evil_revamp/trainers/combat/darg_frostwind_quest000.mp3", "", "", 2841640734, 3529617772, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_darg_frostwind/tutorial_island02_evil_revamp/trainers/combat/darg_frostwind_quest000.mp3", "", "nod", 2841640734, 3529617772, Spawn)
 	AddConversationOption(conversation, "Tell me how to begin a fight.", "ChallengeFoe")
         if HasQuest(Spawn, TheArtOfCombat) then
            if GetQuestStep(Spawn, TheArtOfCombat) == 1 then
@@ -317,7 +317,7 @@ end
 
 -- Charles Arker
 function CharlesArker(NPC, Spawn)
-	SetStepComplete(Spawn, 54, 3)
+	SetStepComplete(Spawn, 492, 3)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

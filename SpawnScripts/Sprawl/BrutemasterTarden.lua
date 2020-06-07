@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local QUEST_2_FROM_KURDEK = 254
+local QUEST_2_FROM_KURDEK = 540
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange")

@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must defeat eight Dervish crooks.", 8, 100, "I must battle the Dervish to keep them in line.", 611, 1260115, 1260114, 1260102, 1260101, 1260116, 1260098, 1260105, 1260100, 1260096, 1260117, 1260099, 1260089)
+	AddQuestStepKill(Quest, 1, "I must defeat eight Dervish crooks.", 8, 100, "I must battle the Dervish to keep them in line.", 611, 1260000)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledCrooks")
 end
 
@@ -30,7 +30,7 @@ function Step1_Complete_KilledCrooks(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've defeated the Dervish in battle.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've taught the Dervish a lesson.")
 	
-	AddQuestStepChat(Quest, 2, "I should report back to Liege Aquila.", 1, "I should report back to Liege Aquila near the gate to the Ruins.", 0, 1260109)
+	AddQuestStepChat(Quest, 2, "I should report back to Liege Aquila.", 1, "I should report back to Liege Aquila near the gate to the Ruins.", 0, 1260003)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

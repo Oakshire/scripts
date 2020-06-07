@@ -15,7 +15,7 @@ function precast(Caster)
     return true
 end
 
-function cast(Caster, Target, SkillAmt, Ground, Air)    
+function cast(Caster, Target, SkillAmt, Ground)    
 -- Summons a mount
 SetMount(Caster, 15487)
 -- Increase Focus, Disruption, Ministration, Subjugation and Ordination of caster by 5

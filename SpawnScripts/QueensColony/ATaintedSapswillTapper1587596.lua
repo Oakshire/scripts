@@ -15,7 +15,7 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+        spawn(NPC)
 end
 
 function EmoteLoop (NPC)
@@ -33,7 +33,10 @@ end
 
 function DeadDeerSpawn(NPC)
         local zone = GetZone(NPC)
-        local newSpawn = SpawnByLocationID(zone, 1587605)
+        local deadDeer = GetSpawnByLocationID(zone, 1587605)
+        if deadDeer == nil then
+            SpawnByLocationID(zone, 1587605)
+        end
 end
 
 function death(NPC, Spawn)
@@ -42,37 +45,8 @@ end
 
 function DespawnDeadDeer(NPC)
         local zone = GetZone(NPC)
-        local deadDeer = GetSpawnByLocationID(zone, 1587605) 
-        Despawn(deadDeer)
-end
-
-
-
---[[
-THESE ATTEMPTS DIDN'T WORK (IT SEEMS LIKE LOCATION ID IS ALWAYS A NUMBER REGARDLESS OF SPAWN IS IN GAME OR NOT.
-WE DECIDED TO PUT IN A TIMER BEFORE DESPAWN INSTEAD FOR NOW WHICH SEEMS TO WORK WELL...
-
-function death(NPC, Spawn)
---  This function despawn the dead deer when the last of the two sapswills is dead
-        local zone = GetZone(NPC)
-        local newSpawn2 = GetSpawnByLocationID(zone, 1587597)
-        local deadDeer = GetSpawnByLocationID(zone, 1587605) 
-
-        if newSpawn2 ~= nil then  
+        local deadDeer = GetSpawnByLocationID(zone, 1587605)
+        if deadDeer ~= nil then
             Despawn(deadDeer)
         end
 end
-
-
-function death(NPC, Spawn)
---  This function despawn the dead deer when the last of the two sapswills is dead
-        local zone = GetZone(NPC)
-        local newSpawn = GetSpawnByLocationID(zone, 1587596)
-        local newSpawn2 = GetSpawnByLocationID(zone, 1587597)
-        local deadDeer = GetSpawnByLocationID(zone, 1587605) 
-
-        if newSpawn ~= nil and newSpawn2 ~= nil then  
-            Despawn(deadDeer)
-        end
-end
---]]

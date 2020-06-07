@@ -17,7 +17,7 @@ end
 function cast(Caster, Target, HP, MP, Speed, Crit, Cast)
 -- Summons a mount to ride
 SetMount(Caster, 10985)
- AddControlEffect(Caster, 12)
+ AddControlEffect(Caster, 13)
 -- Increases Max Health of caster by 200.
     AddSpellBonus(Caster, 606, HP)
 -- Increases Max Power by 200.0
@@ -32,11 +32,11 @@ end
 
 
 function remove(Caster, Target)
-SetMount(Caster, 0)
-RemoveControlEffect(Caster, 13)
     RemoveSpellBonus(Caster)
+    RemoveSkillBonus(Caster)
+SetMount(Caster, 0)
+  RemoveControlEffect(Caster, 13)
 end
-
 
 
 

@@ -19,7 +19,7 @@ function hailed(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
 
-   if HasQuest(Spawn, 54) and GetQuestStep(Spawn, 54) == 5 then
+   if HasQuest(Spawn, 492) and GetQuestStep(Spawn, 492) == 5 then
       AddConversationOption(conversation, "What do you know about Charles Arker?", "CharlesArker")
    end
    
@@ -79,7 +79,7 @@ function WhatAreWeMaking(NPC, Spawn)
 end
 
 function CharlesArker(NPC, Spawn)
-	SetStepComplete(Spawn, 54, 5)
+	SetStepComplete(Spawn, 492, 5)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	

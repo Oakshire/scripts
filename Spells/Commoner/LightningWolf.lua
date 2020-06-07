@@ -17,7 +17,6 @@ end
 function cast(Caster, Target, SkillAmt, Speed)    
 -- Summons a mount
 SetMount(Caster, 15584)
-AddControlEffect(Caster, 12)
 -- Increase Focus, Disruption, Ministration, Subjugation, Ordination, Slashing, Piercing, Crushing,
 --Aggression and Ranged of caster by 5
 AddSkillBonus(Caster, GetSkillIDByName("Focus"), SkillAmt)
@@ -41,5 +40,4 @@ function remove(Caster, Target)
     RemoveSpellBonus(Caster)
     RemoveSkillBonus(Caster)
 SetMount(Caster, 0)
-  RemoveControlEffect(Caster, 12)
 end

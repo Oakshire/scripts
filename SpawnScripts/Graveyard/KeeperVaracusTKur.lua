@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local QUEST_1 = 232
+local QUEST_1 = 547
 local QUEST_2 = 233
 local QUEST_5 = 235
 

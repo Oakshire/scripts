@@ -17,7 +17,7 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	if HasQuest(Spawn, 54) and GetQuestStep(Spawn, 54) == 4 then
+	if HasQuest(Spawn, 492) and GetQuestStep(Spawn, 492) == 4 then
 		AddConversationOption(conversation, "Have you met Charles Arker? He's a well-known fellow.", "CharlesArker")
 	end
 
@@ -166,7 +166,7 @@ function TypesOfItems(NPC, Spawn)
 end
 
 function CharlesArker(NPC, Spawn)
-	SetStepComplete(Spawn, 54, 4)
+	SetStepComplete(Spawn, 492, 4)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	

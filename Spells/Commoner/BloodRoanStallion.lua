@@ -17,6 +17,7 @@ end
 function cast(Caster, Target, Speed, SkillAmt)
 --Summons a mount to ride    
 SetMount(Caster, 1326)
+AddControlEffect(Caster, 13)
 
 -- Reduces maximum falling speed of caster.
 -- Increases your ground speed by 135%    

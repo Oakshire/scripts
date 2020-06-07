@@ -19,3 +19,11 @@ function hailed(NPC, Spawn)
 
 end
 
+
+function spawn(NPC)
+         EmoteLoop (NPC)
+end
+
+function respawn(NPC)
+         spawn(NPC)
+end

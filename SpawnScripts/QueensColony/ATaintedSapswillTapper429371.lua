@@ -1,31 +1,28 @@
 --[[
-    Script Name    : SpawnScripts/QueensColony/ATaintedSapswillTapper429371.lua
-    Script Author  : Rylec
-    Script Date    : 2020.05.12 10:05:17
-    Script Purpose : 
-                   : 
+        Script Name    : SpawnScripts/QueensColony/ATaintedSapswillTapper429371.lua
+        Script Author  : Rylec
+        Script Date    : 2020.05.12 10:05:17
+        Script Purpose : Animations for Sapswills and spawn/despawn of Dead Deer
 --]]
 
 function spawn(NPC)
-        EmoteLoop(NPC) 
-        DeadDeerSpawn(NPC)   
+        EmoteLoop(NPC)
+        DeadDeerSpawn(NPC) 
 end
 
 function hailed(NPC, Spawn)
-        FaceTarget(NPC, Spawn)
-        PlayAnimation(NPC, 0)
-        AddTimer(NPC, 60, "EmoteLoop")
+--      FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+        spawn(NPC)
 end
 
 function EmoteLoop (NPC)
         local choice = math.random(1,2)
         local timer = math.random(2500,3500)
   
-        if choice1 == 1 then
+        if choice == 1 then
                 PlayAnimation(NPC, 11400)
                 AddTimer(NPC, timer, "EmoteLoop")
         else
@@ -35,10 +32,21 @@ function EmoteLoop (NPC)
 end
 
 function DeadDeerSpawn(NPC)
-        Say(NPC, "Called")
         local zone = GetZone(NPC)
-        local newSpawn = SpawnByLocationID(zone, 429338)
-        if newSpawn ~= nil then
-        Shout(newSpawn, "Test")
+        local deadDeer = GetSpawnByLocationID(zone, 1587642)
+        if deadDeer == nil then
+            SpawnByLocationID(zone, 1587642)
+        end
+end
+
+function death(NPC, Spawn)
+        AddTimer(NPC, 10000, "DespawnDeadDeer")        
+end
+
+function DespawnDeadDeer(NPC)
+        local zone = GetZone(NPC)
+        local deadDeer = GetSpawnByLocationID(zone, 1587642)
+        if deadDeer ~= nil then
+            Despawn(deadDeer)
         end
 end

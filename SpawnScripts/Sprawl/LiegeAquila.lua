@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local QUEST_1 = 261 -- repeatable
+local QUEST_1 = 544 -- repeatable
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)

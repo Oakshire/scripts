@@ -15,7 +15,7 @@ end
 
 function cast(Caster, Target, SkillAmt, Ground, Air)    
 -- Summons a mount
-SetMount(Caster, 15640)
+SetMount(Caster, 15381)
 AddControlEffect(Caster, 12)
 -- Increase Focus, Disruption, Ministration, Subjugation, Ordination, Slashing, Piercing, Crushing,
 --Aggression and Ranged of caster by 5

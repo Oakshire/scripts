@@ -25,6 +25,8 @@ function casted_on(NPC, Spawn, SpellName)
     if SpellName == "burn tent" then
         if CheckTent(Spawn, NPC) == true then
             if GetQuestStep(Spawn, TheFinalAssault) == 2 then
+                SpawnSetByDistance(NPC, 15, "visual_state", 491)
+                KillSpawnByDistance(NPC, 15, 0, 1)
                 AddStepProgress(Spawn, TheFinalAssault, 2, 1)
                     BurnTent(Spawn, NPC)
             elseif GetQuestStep(Spawn, TheFinalAssault) == 3 then

@@ -6,8 +6,8 @@
 	Script Notes	: 
 --]]
 
-local QUEST_1 = 258
-local QUEST_2 = 259
+local QUEST_1 = 538
+local QUEST_2 = 539
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)

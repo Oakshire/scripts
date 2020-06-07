@@ -2,8 +2,9 @@
     Script Name    : SpawnScripts/OutpostOverlord/evilgoblintent1.lua
     Script Author  : Vo1d
     Script Date    : 2019.10.23 05:10:42
-    Script Purpose : 
-                   : 
+    Modified Date  : 20.05.2020
+    Modified by   :  premierio015
+    Modified Notes : Now burn all the tunarians around the tent. TODO: Chat shows messages "evil_goblin_tent has killed <mobname>, should be removed somehow. Tent should have huge fire visual state, according to packet data effect should be applied on "dpo_invisible_cube" object and not on tent widget. 
 --]]
 
 local TheFinalAssault = 367
@@ -25,6 +26,8 @@ function casted_on(NPC, Spawn, SpellName)
     if SpellName == "burn tent" then
         if CheckTent(Spawn, NPC) == true then
             if GetQuestStep(Spawn, TheFinalAssault) == 2 then
+                SpawnSetByDistance(NPC, 15, "visual_state", 491)
+                KillSpawnByDistance(NPC, 15, 0, 1)
                 AddStepProgress(Spawn, TheFinalAssault, 2, 1)
                     BurnTent(Spawn, NPC)
             elseif GetQuestStep(Spawn, TheFinalAssault) == 3 then

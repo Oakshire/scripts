@@ -16,7 +16,7 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	if HasQuest(Spawn, 54) and GetQuestStep(Spawn, 54) == 8 then
+	if HasQuest(Spawn, 492) and GetQuestStep(Spawn, 492) == 8 then
 		AddConversationOption(conversation, "Can you tell me about Charles Arker?", "CharlesArker")
 	end
 	
@@ -27,7 +27,7 @@ function hailed(NPC, Spawn)
 		StartConversation(conversation, NPC, Spawn, "The Tunarians won't have many animals to train because of you. Nice works! Return to me if you ever needs more mole rats.")
 	elseif HasQuest(Spawn, Preventative_Maintenance) then
 		if GetQuestStep(Spawn, Preventative_Maintenance) == 1 then
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/assassin_vamir/tutorial_island02_evil_revamp/quests/citizenship/assassinvamir/assassinvamir001.mp3", "", "", 2097737223, 719705804, Spawn)
+			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/assassin_vamir/tutorial_island02_evil_revamp/quests/citizenship/assassinvamir/assassinvamir001.mp3", "", "nod", 2097737223, 719705804, Spawn)
 			AddConversationOption(conversation, "And you want me to...?", "WantMeTo")
 			AddConversationOption(conversation, "I'll come back later.")
 			StartConversation(conversation, NPC, Spawn, "Hellos " .. GetName(Spawn) .. ", Tayil sent word you were comings. I's been scouting out the nearby areas, trying to get a better feels of what we're up against. Beastmasters these Tunarians are, training the wild animals of the island to fight for them!")
@@ -108,7 +108,7 @@ function MoreRats(NPC, Spawn)
 end
 
 function CharlesArker(NPC, Spawn)
-	SetStepComplete(Spawn, 54, 8)
+	SetStepComplete(Spawn, 492, 8)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

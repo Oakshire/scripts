@@ -8,11 +8,11 @@
 
 local QUEST_FROM_BIGBEND_KROOTA = 169
 local QUEST_FROM_SCALEYARD_CLANCHEIFMALACHI = 203
-local QUEST_1 = 253
-local QUEST_2 = 254
-local QUEST_3 = 255
-local QUEST_4 = 256
-local QUEST_5 = 257
+local QUEST_1 = 455
+local QUEST_2 = 540
+local QUEST_3 = 541
+local QUEST_4 = 542
+local QUEST_5 = 543
 local spoke = false
 
 function spawn(NPC)

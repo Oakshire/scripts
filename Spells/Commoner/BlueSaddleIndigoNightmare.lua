@@ -28,7 +28,7 @@ AddSkillBonus(Caster, GetSkillIDByName("Slashing"), SkillAmt)
     AddSkillBonus(Caster, GetSkillIDByName("Disruption"), SkillAmt)
 --Summons a mount to ride
 SetMount(Caster, 6831)
-SetMountColor(Caster, 0, 0, 0, 63, 81, 181) 
+SetMountColor(Caster, 0, 0, 0, 75, 0, 130) 
 --Increases your ground speed by 130%
     AddSpellBonus(Target, 611, Speed)
 --Requires Evil Alignment.

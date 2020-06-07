@@ -1,9 +1,9 @@
 --[[
-	Script Name		:	<script-name>
-	Script Purpose	:	<purpose>
-	Script Author	:	<author-name>
+	Script Name		:	
+	Script Purpose	:	
+	Script Author	:	
 	Script Date		:	4/4/2020
-	Script Notes	:	<special-instructions>
+	Script Notes	:	
 --]]
 
 function obtained(Item, Player)
@@ -25,9 +25,11 @@ function cast(Item, Player)
 end
 
 function equipped(Item, Player)
+CastSpell(Player, 5430)
 end
 
 function unequipped(Item, Player)
+CastSpell(Player, 5430)
 end
 
 function proc(Item, Caster, Target, Type)

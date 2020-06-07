@@ -8,7 +8,7 @@
         Modified by     : premierio015
 --]]
 
-local InTheNameOfHonor = 490
+local TheTunarianPlot = 491
 
 function spawn(NPC)
    AddSpawnAccess(NPC, NPC)
@@ -16,7 +16,7 @@ function spawn(NPC)
 end
 
 function SpawnAccess(NPC, Spawn)
-  if GetQuestStep(Spawn, InTheNameOfHonor) == 5 then
+  if GetQuestStep(Spawn, TheTunarianPlot) == 6 then
    AddSpawnAccess(NPC, Spawn)
   else
   RemoveSpawnAccess(NPC, Spawn)

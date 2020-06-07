@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I must make my way to the Freeport Ruins and speak to Captain Arellius. I should return to the docks of my home district and use the bell to summon transport outside of Freeport proper.", 1, "I should make my way to the Ruins and speak to to Captain Arellius.", 0, 1270003)
+	AddQuestStepChat(Quest, 1, "I must make my way to the Freeport Ruins and speak to Captain Arellius. I should return to the docks of my home district and use the bell to summon transport outside of Freeport proper.", 1, "I should make my way to the Ruins and speak to to Captain Arellius.", 0, 1270000)
 	AddQuestStepCompleteAction(Quest, 1, "Quest_Complete")
 end
 

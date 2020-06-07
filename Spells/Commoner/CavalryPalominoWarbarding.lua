@@ -21,14 +21,9 @@ SetMount(Caster, 6838)
 AddSpellBonus(Caster, 611, Speed)
 -- Increases Piercing, Ranged, Slashing, Crushing and Focus of caster by 7.0
     AddSkillBonus(Caster, GetSkillIDByName("Focus"), SkillAmt)
-    AddSkillBonus(Caster, GetSkillIDByName("Disruption"), SkillAmt)
-    AddSkillBonus(Caster, GetSkillIDByName("Ministration"), SkillAmt)
-    AddSkillBonus(Caster, GetSkillIDByName("Subjugation"), SkillAmt)
- AddSkillBonus(Caster, GetSkillIDByName("Ordination"), SkillAmt)
  AddSkillBonus(Caster, GetSkillIDByName("Slashing"), SkillAmt)
  AddSkillBonus(Caster, GetSkillIDByName("Piercing"), SkillAmt)
  AddSkillBonus(Caster, GetSkillIDByName("Crushing"), SkillAmt)
- AddSkillBonus(Caster, GetSkillIDByName("Aggression"), SkillAmt)
  AddSkillBonus(Caster, GetSkillIDByName("Ranged"), SkillAmt)
 end
 

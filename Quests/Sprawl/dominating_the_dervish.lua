@@ -11,9 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to deliver a beating to four Dervish hooligans.", 4, 100, "I need to defeat some Dervish in battle.", 0, 1260014, 1260008, 1260015, 1260010, 1260011, 1260012, 1260118, 1260021)
-	AddQuestStepKill(Quest, 2, "I must defeat four Dervish hoodlums.", 4, 100, "I need to defeat some Dervish in battle.", 0, 1260110, 1260091, 1260067, 1260092, 1260111, 1260073, 1260073, 1260119, 1260103, 1260090, 1260065, 1260066, 1260113)
-	AddQuestStepKill(Quest, 3, "I must best two Dervish crooks in battle.", 2, 100, "I need to defeat some Dervish in battle.", 0, 1260098, 1260105, 1260100, 1260096, 1260117, 1260099, 1260089, 1260115, 1260114, 1260102, 1260101, 1260116)
+	AddQuestStepKill(Quest, 1, "I need to deliver a beating to four Dervish hooligans.", 4, 100, "I need to defeat some Dervish in battle.", 0, 1260011)
+	AddQuestStepKill(Quest, 2, "I must defeat four Dervish hoodlums.", 4, 100, "I need to defeat some Dervish in battle.", 0, 1260007)
+	AddQuestStepKill(Quest, 3, "I must best two Dervish crooks in battle.", 2, 100, "I need to defeat some Dervish in battle.", 0, 1260000)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledHooligans")
 	AddQuestStepCompleteAction(Quest, 2, "Step2_Complete_KilledHoodlums")
 	AddQuestStepCompleteAction(Quest, 3, "Step3_Complete_KilledCrooks")
@@ -58,7 +58,7 @@ end
 function Multiple_Steps_Complete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have taught the Dervish a lesson they won't soon forget")
 
-	AddQuestStepChat(Quest, 4, "I should proclaim my victory to Enforcer Kurdek.", 1, "I should return to Enforcer Kurdek and tell him that I punished the Dervish.", 0, 1260006)
+	AddQuestStepChat(Quest, 4, "I should proclaim my victory to Enforcer Kurdek.", 1, "I should return to Enforcer Kurdek and tell him that I punished the Dervish.", 0, 1260017)
 	AddQuestStepCompleteAction(Quest, 4, "Quest_Complete")
 end
 

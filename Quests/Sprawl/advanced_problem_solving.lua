@@ -2,7 +2,7 @@
 	Script Name	: Quests/TheSprawl/advanced_problem_solving.lua
 	Script Purpose	: Handles the quest, "Advanced Problem Solving"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.26
+	Script Date	: 2009.07.26
 	
 	Zone       : The Sprawl
 	Quest Giver: Crispin Luvinius
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to beat up five Giantslayer bashers.", 5, 100, "I've heard that Giantslayer bashers hang out in the Sprawl. I should pay them a little visit.", 611, 1260122, 1260032, 1260041, 1260043, 1260031, 1260121, 1260123)
+	AddQuestStepKill(Quest, 1, "I need to beat up five Giantslayer bashers.", 5, 100, "I've heard that Giantslayer bashers hang out in the Sprawl. I should pay them a little visit.", 611, 1260022)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledBashers")
 end
 
@@ -30,7 +30,7 @@ function Step1_Complete_KilledBashers(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've beat down five Giantslayer bashers.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've sent the Giantslayers a message that they shouldn't listen to vagrants who tell tall tales.")
 	
-	AddQuestStepChat(Quest, 2, "I need to talk with Crispin.", 1, "I should let Crispin know that he and his gang have nothing to worry about.", 0, 1260004)
+	AddQuestStepChat(Quest, 2, "I need to talk with Crispin.", 1, "I should let Crispin know that he and his gang have nothing to worry about.", 0, 1260020)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

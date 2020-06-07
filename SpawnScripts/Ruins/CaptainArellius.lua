@@ -6,7 +6,7 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local QuestFromSprawl
+local QuestFromSprawl = 543
 local QuestFromGraveyard
 local QuestFromSunkenCity
 

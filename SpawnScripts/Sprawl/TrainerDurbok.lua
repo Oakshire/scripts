@@ -6,9 +6,9 @@
 	Script Notes	: 
 --]]
 
-local QUEST_1_FROM_KURDEK = 253
-local QUEST_3_FROM_KURDEK = 255
-local QUEST_1 = 260 -- repeatable
+local QUEST_1_FROM_KURDEK = 455
+local QUEST_3_FROM_KURDEK = 541
+local QUEST_1 = 545 -- repeatable
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange")

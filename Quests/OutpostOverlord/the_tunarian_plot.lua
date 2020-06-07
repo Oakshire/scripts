@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	the_tunarian_plot.lua
+	Script Name		:	Quests/OutpostOverlord/the_tunarian_plot.lua
 	Script Purpose	        :	Handles the quest, "The Tunarian Plot"
 	Script Author	        :	premierio015
 	Script Date		:	19.05.2020
@@ -78,7 +78,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "I've destroyed the evidence of Charles Arker's indiscrection.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I've disposed of the last bits of that note.")
 
-	UpdateQuestDescription(Quest, "The "Tunarian Plot" turned out to be nothing more than Charles Arker ineptly arranging a meeting with that Tunarian wood elf, Laena.  He confessed to me that he'd only been trying to get back all the pieces of this note before word got back to his family.  I helped cover his tracks by destroying all the parchment pieces we gathered.")
+	UpdateQuestDescription(Quest, "The ''Tunarian Plot'' turned out to be nothing more than Charles Arker ineptly arranging a meeting with that Tunarian wood elf, Laena.  He confessed to me that he'd only been trying to get back all the pieces of this note before word got back to his family.  I helped cover his tracks by destroying all the parchment pieces we gathered.")
 	GiveQuestReward(Quest, Player)
 end
 
