@@ -1,0 +1,41 @@
+--[[
+   Script Name     : SpawnScriptsFrostfangSeaWidgetRedbladeSignalFireSwitch.lua
+   Script Purpose  : for the spawn "redblade_x4_signal_fire_switch"
+   Script Author   : theFoof
+   Script Date     : 2013.5.6
+   Script Notes    : 
+--]]
+
+local FlameOn = 5
+
+function spawn(NPC)
+	SetRequiredQuest(NPC, FlameOn, 1)
+	SetPlayerProximityFunction(NPC, 15, "InRange")
+end
+
+function respawn(NPC)
+    spawn(NPC)
+end
+
+function casted_on(Target, Caster, SpellName)
+    if GetQuestStep(Caster, FlameOn) == 1 and SpellName == "Light Signal Fire" then
+	    AddSpawnAccess(GetSpawn(Target, 4701733), Caster)
+		SetStepComplete(Caster, FlameOn, 1)
+        local zone = GetZone(Target)
+		SpawnByLocationID(zone, 32806)
+		SpawnByLocationID(zone, 32810)
+		Attack(GetSpawnByLocationID(zone, 32806), Caster)
+		Attack(GetSpawnByLocationID(zone, 32810), Caster)
+        SetRequiredQuest(Target, FlameOn, 5)
+	end
+end
+
+function InRange(NPC, Player)
+    if GetQuestStep(Player, FlameOn) == 2 then
+	    local zone = GetZone(Player)
+		SpawnByLocationID(zone, 32806)
+		SpawnByLocationID(zone, 32810)
+		Attack(GetSpawnByLocationID(zone, 32806), Caster)
+		Attack(GetSpawnByLocationID(zone, 32810), Caster)
+	end
+end

@@ -33,6 +33,10 @@ SetMount(Caster, 10985)
 
     AddSpellBonus(Caster, 611, Speed)
 
+-- Reduces maximum falling speed of caster.
+AddControlEffect(Caster, 13)
+
+
 
 end
 
@@ -41,4 +45,6 @@ function remove(Caster, Target)
     RemoveSpellBonus(Caster)
     RemoveSkillBonus(Caster)
 SetMount(Caster, 0)
+RemoveControlEffect(Caster, 13)
+
 end

@@ -27,6 +27,11 @@ AddSpellBonus(Caster, 611, Speed)
     AddSkillBonus(Caster, GetSkillIDByName("Ministration"), SkillAmt)
     AddSkillBonus(Caster, GetSkillIDByName("Subjugation"), SkillAmt)
  AddSkillBonus(Caster, GetSkillIDByName("Ordination"), SkillAmt)
+
+-- Reduces maximum falling speed of caster.
+AddControlEffect(Caster, 13)
+
+
 end
 
 
@@ -34,4 +39,6 @@ function remove(Caster, Target)
 SetMount(Caster, 0)
     RemoveSpellBonus(Caster)
     RemoveSkillBonus(Caster)
+RemoveControlEffect(Caster, 13)
+
 end

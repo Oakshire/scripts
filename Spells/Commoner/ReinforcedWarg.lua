@@ -17,7 +17,8 @@ end
 function cast(Caster, Target, Speed, SkillAmt)
 --Summons a mount to ride    
 SetMount(Caster, 8191)
-SetMountColor(Caster, 0, 0, 0, 255, 0, 0)
+SetMountColor(Caster, 0, 0, 0, 220, 20, 60)
+
 
 -- Increases your ground speed by 130%    
 AddSpellBonus(Caster, 611, Speed)
@@ -27,4 +28,13 @@ AddSpellBonus(Caster, 611, Speed)
  AddSkillBonus(Caster, GetSkillIDByName("Crushing"), SkillAmt)
  AddSkillBonus(Caster, GetSkillIDByName("Aggression"), SkillAmt)
  AddSkillBonus(Caster, GetSkillIDByName("Ranged"), SkillAmt)
+end
+
+
+
+
+function remove(Caster, Target)
+SetMount(Caster, 0)
+    RemoveSpellBonus(Caster)
+    RemoveSkillBonus(Caster)
 end

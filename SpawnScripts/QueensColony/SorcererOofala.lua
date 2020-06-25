@@ -13,13 +13,30 @@
 
 local TheSourceOfEvil = 164
 
-function spawn(NPC)
+function prespawn(NPC)
+    AddSpawnProximity(NPC,2530018,0,15,"InRange","OutRange")
+end
 
+
+function spawn(NPC)
+         prespawn(NPC)
 end
 
 function respawn(NPC)
          spawn(NPC)
 end
+
+
+function InRange(NPC,Spawn)
+    Shout(NPC,"In Range 1")
+    Shout(Spawn,"Also n Range 2")
+end
+
+function OutRange(NPC,Spawn)
+    Shout(NPC,"Out of Range 1")
+    Shout(Spawn,"Out of Range 2")
+end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

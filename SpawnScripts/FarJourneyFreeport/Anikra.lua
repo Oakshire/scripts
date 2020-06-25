@@ -15,6 +15,8 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 
+GiveLoot(NPC, Spawn, 0, 20902, 15354, 185427)
+
     Dialog.New(NPC, Spawn)
     Dialog.AddDialog("Do you want to call down the Drake?")
     Dialog.AddOption("Yes, I want to see him in action!", "callDrake")

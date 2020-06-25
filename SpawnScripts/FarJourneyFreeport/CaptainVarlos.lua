@@ -8,6 +8,8 @@
 
 require "SpawnScripts/Generic/DialogModule"
 
+local TaskAboardTheFarJourney = 524
+
 function spawn(NPC)
 
 end
@@ -15,12 +17,18 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	
-	Dialog.New(NPC, Spawn)
-    Dialog.AddDialog("Ahoy! 'Tis good to see you awake. Ya seem a little squiffy, least ya' cheated death!")
-	Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_001.mp3", 1930075150, 2666442405)
-	Dialog.AddEmote("salute")
-    Dialog.AddOption("Where am I?", "dlg_1")
-    Dialog.Start()
+	if not HasQuest(Spawn, TaskAboardTheFarJourney) and not HasCompletedQuest(Spawn, TaskAboardTheFarJourney) then
+		Dialog.New(NPC, Spawn)
+		Dialog.AddDialog("Ahoy! 'Tis good to see you awake. Ya seem a little squiffy, least ya' cheated death!")
+		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_001.mp3", 1930075150, 2666442405)
+		Dialog.AddEmote("salute")
+		Dialog.AddOption("Where am I?", "dlg_1")
+		Dialog.Start()
+	elseif not HasCompletedQuest(Spawn, TaskAboardTheFarJourney) then
+		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_010.mp3", "Back ye up a few paces. I be needin' this room.", "", 2009097517, 3594231199, Spawn)
+	else
+		Say(NPC, "The End of the if/else statement")
+	end
 end
 
 function dlg_1(NPC, Spawn)
@@ -57,9 +65,15 @@ end
 function dlg_4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	
+	local Ingrid = GetSpawn(NPC, 270001)
+	
+	if GetTempVariable(Ingrid, "MoveToCaptain") == nil then
+		SetTempVariable(Ingrid, "MoveToCaptain", "on")
+	end
+	
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_005.mp3", "We are heading to the Island of Refuge.", "", 1602680439, 2810422278, Spawn)
 	
-	AddTimer(NPC, 3000, "ShakeCamera_1", 1, Spawn)
+	AddTimer(NPC, 2800, "ShakeCamera_1", 1, Spawn)
 end
 
 function ShakeCamera_1(NPC, Spawn)
@@ -76,20 +90,28 @@ function ShakeCamera_3(NPC, Spawn)
 	
 	PerformCameraShake(Spawn, 52429, 15948)
 	
-	AddTimer(NPC, 800, "CallIngrid", 1, Spawn)
+	local Ingrid = GetSpawn(NPC, 270001)
 	
-
+	if GetTempVariable(Ingrid, "MoveToCaptain") ~= nil then
+		AddTimer(NPC, 800, "CallIngrid", 1, Spawn)
+		SetTempVariable(Ingrid, "MoveToCaptain", nil)
+	end
+	
+	
+	
 end
 
+-- calls Ingrid after camera shake
 function CallIngrid(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	
-	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_006.mp3", "Ingird! Quit gawking at the shorty and fix that yard-arm!", "", 2753489262, 3183736171, Spawn)
+	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_006.mp3", "Ingird! Quit gawking at the shorty and fix that yard-arm!", "sniff", 2753489262, 3183736171, Spawn)
 	
 	local Geredo = GetSpawn(NPC, 270004)
 	local Ingrid = GetSpawn(NPC, 270001)
 	
-	SetTempVariable(Ingrid, "TempAnimationVar", nil)
+	if GetTempVariable(Ingrid, "TempAnimationVar") ~= nil then
+		SetTempVariable(Ingrid, "TempAnimationVar", nil)
+	end
 	
 	FaceTarget(NPC, Ingrid)
 	
@@ -98,6 +120,8 @@ function CallIngrid(NPC, Spawn)
 	
 end
 
+--points at Ingrid
+--sends back to Ingrid
 function TalkToCaptainVarlos(NPC, Spawn)
 	
 	local Ingrid = GetSpawn(NPC, 270001)
@@ -116,14 +140,15 @@ function IngridLeaveCaptain(NPC, Spawn)
 	
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_008.mp3", "Ya think she'd never seen a gnome afore.", "", 2447879193, 4289147535, Spawn)
 
-	--AddTimer(NPC, 3000, "ShakeCamera_1", 1, Spawn)
+	AddTimer(NPC, 5100, "Delay_QuestOffer", 1, Spawn)
 	
-	--AddTimer(NPC, 4000, "TheQuestOffer")
+	AddTimer(NPC, 4000, "ShakeCamera_1", 1, Spawn)
+	
 	
 end
 
-function TheQuestOffer(NPC,Spawn)
-	
+function Delay_QuestOffer(NPC, Spawn)
+	OfferQuest(NPC, Spawn, TaskAboardTheFarJourney)
 end
 
 function callDrake(NPC, Spawn)

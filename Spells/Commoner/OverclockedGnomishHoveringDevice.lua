@@ -25,12 +25,18 @@ SetMount(Caster, 5997)
    --Increases your Ground Speed by 130%
     AddSpellBonus(Caster, 611, Speed)
 
+-- Reduces maximum falling speed of caster.
+AddControlEffect(Caster, 13)
+
+
 end
 
 
 function remove(Caster, Target)
     RemoveSpellBonus(Caster)
     RemoveSkillBonus(Caster)
+RemoveControlEffect(Caster, 13)
+
 SetMount(Caster, 0)
 
 end

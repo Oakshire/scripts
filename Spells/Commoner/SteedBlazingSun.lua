@@ -17,10 +17,10 @@ end
 
 function cast(Caster, Target, Potency, Speed)   
 -- Summons a mount
-SetMount(Caster, 8226)
+SetMount(Caster, 14054)
 
 --Increases Potency of caster by 2.0% 
-    AddSpellBonus(Caster, 659, Health)
+    AddSpellBonus(Caster, 659, Potency)
 
     --Increases your Ground Speed by 130%
     AddSpellBonus(Caster, 611, Speed)

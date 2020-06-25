@@ -13,7 +13,7 @@ local TaskAboardTheFarJourney  = 524
 local TempAnimationVar = nil
 
 function spawn(NPC)
-	
+	--need to move this or grab teh spawn somehow
 	if not HasCompletedQuest(Player, TaskAboardTheFarJourney) then
 		SetTempVariable(NPC, "TempAnimationVar", "FirstRun")
 		AddTimer(NPC, 1500, "WalkToGeredo")
@@ -198,11 +198,17 @@ function IngridTapFoot(NPC, Spawn)
 	
 end
 
+--Ingrid runs to Captain after camera shake
+--sends to FaceCaptainVarlos function after movement
 function CaptainCallingIngrid(NPC, Spawn)
+	
+	PlayAnimation(NPC, 12246)
 	
 	if GetTempVariable(NPC, "TempAnimationVar") == nil then
 		MoveToLocation(NPC, 2.47, -2.07, -3.26, 5)
 	end
+	
+	SetTempVariable(NPC, "IngridSpawnPointer", Spawn)
 	
 	MoveToLocation(NPC, -2.72, -2.00, -8.34, 5, nil, true)
 	MoveToLocation(NPC, -2.11, 1.21, -14.69, 5, nil, true)
@@ -212,7 +218,12 @@ function CaptainCallingIngrid(NPC, Spawn)
 
 end
 
-function FaceCaptainVarlos(NPC, Spawn)
+--Ingird reaches Captain
+--sends back to Captain upon arrival
+function FaceCaptainVarlos(NPC)
+	
+	local Spawn = GetTempVariable(NPC, "IngridSpawnPointer")
+	SetTempVariable(NPC, "IngridSpawnPointer", nil)
 	
 	local Varlos = GetSpawn(NPC, 270000)
 	
@@ -224,6 +235,9 @@ function FaceCaptainVarlos(NPC, Spawn)
 	
 end
 
+--Ingrid salutes Captain
+--sends to ReturnToSpawnPoint function
+--sends back to Captain
 function SaluteCaptainVarlos(NPC, Spawn)
 	
 	local Varlos = GetSpawn(NPC, 270000)

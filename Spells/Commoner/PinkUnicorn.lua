@@ -18,6 +18,8 @@ function cast(Caster, Target, Speed, SkillAmt)
 --Summons a mount to ride    
 SetMount(Caster, 9112)
 SetMountColor(Caster, 255, 105, 180, 0, 0, 0)
+    Say(Caster, "Model might be incorrect")
+
 
 -- Increases your ground speed by 130%    
 AddSpellBonus(Caster, 611, Speed)
