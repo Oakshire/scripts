@@ -6,7 +6,11 @@
                    : 
 --]]
 
-
 function cast(Caster, Target)
+SetSeeInvis(Target,1)
+end
 
+
+function remove(Caster, Target)
+SetSeeInvis(Target, 0)
 end

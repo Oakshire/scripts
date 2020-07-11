@@ -32,6 +32,7 @@ function hailed(NPC, Spawn)
 			if HasCompletedQuest(Spawn, QUEST_3) then
 				if HasCompletedQuest(Spawn, QUEST_5_FROM_THORSON) then
 					Say(NPC, "You again? You can't stop a son of Prexus. Maybe the next fool who comes after you will have better luck!", Spawn)
+                                        PlayAnimation(NPC, 20601)
 				elseif HasQuest(Spawn, QUEST_5_FROM_THORSON) then
 					OnQuest3(NPC, Spawn, conversation)
 				else

@@ -33,7 +33,7 @@ end
 function TalkedYasha(Quest, QuestGiver, Player)
     UpdateQuestTaskGroupDescription(Quest, 1, "Yasha was able to craft a makeshift barricade piece out of the planks of wood I gave her.")
 	SummonItem(Player, Barricade, 1)
-	AddQuestStep(Quest, 3, "Complete the Pilgrims' Landing barricade.", 1, 100, "I am to set the makeshift barricade piece on the ground where the break in the barricade line, south of Yasha, is lit by two torches", 0)
+	AddQuestStep(Quest, 3, "Complete the Pilgrims' Landing barricade.", 1, 100, "I am to set the makeshift barricade piece on the ground where the break in the barricade line, south of Yasha, is lit by two torches", 0 ,46842)
 	AddQuestStepCompleteAction(Quest, 3, "SetBarricade")
 end
 

@@ -57,7 +57,7 @@ function hailed(NPC, Spawn)
 					if HasCompletedQuest(Spawn, QUEST_3_FROM_CURFIELD) then
 						if HasCompletedQuest(Spawn, QUEST_5) then
 							if HasCompletedQuest(Spawn, QUEST_6) then
-								PlayFlavor(NPC, "", "Thank you for all your help, my friend. I will speak favorably of you to my superiors.", "bow", 0, 0, Spawn)
+								PlayFlavor(NPC, "", "Thank you for all your help, my friend. I will speak favorably of you to my superiors.", "thank", 0, 0, Spawn)
 							elseif HasQuest(Spawn, QUEST_6) then
 								MustRemainHere(NPC, Spawn, conversation)
 							else
