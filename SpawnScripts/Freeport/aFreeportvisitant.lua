@@ -13,7 +13,7 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     if GetRace(NPC) == 12 and GetGender(NPC) == 1 then
-    local choice = math.random(1, 6)
+    local choice = math.random(1, 7)
     if choice == 1 then
     PlayFlavor(NPC, "voiceover/english/ogre_eco_evil_1/ft/ogre/ogre_eco_evil_1_hail_gm_900b92c8.mp3", "Blood, lots of blood on the battlefield.", "confused", 3309525058, 2311238979, Spawn)
     elseif choice == 2 then

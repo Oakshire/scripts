@@ -6,8 +6,7 @@
                    : 
 --]]
 
-blackguard1 = 404841
-blackguard2 = 404844
+
 blackguard3 = 133769612
 blackguard4 = 133769613
 
@@ -32,8 +31,6 @@ end
 function Phase1(NPC, Spawn)
 PlayFlavor(NPC, "", "Ha ha ha!  Blackguards, take care of this rodent!", "cackle", 1689589577, 4560189, Spawn)
 zone = GetZone(Spawn)
-BlackguardSpawn1 = SpawnByLocationID(zone, blackguard1)
-BlackGuardSpawn2 = SpawnByLocationID(zone, blackguard2)
 BlackGuardSpawn3 = SpawnByLocationID(zone, blackguard3)
 BlackGuardSpawn4 = SpawnByLocationID(zone, blackguard4)
 end
