@@ -36,6 +36,7 @@ function GenericGuardHail(NPC, Spawn, Faction)
 	if NPC ~= nil then
 		local race = GetRace(NPC)
 		local gender = GetGender(NPC)
+                local faction = GetFactionID(NPC)
 		
 		if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then
 			local file_option = math.random(1, 3)
@@ -186,7 +187,7 @@ function GenericGuardHail(NPC, Spawn, Faction)
 				end
 			elseif race == HUMAN then
 				if gender == MALE then
-					if Faction == "Evil" then
+					if faction == 12 then
 						local choice = math.random(1, 4)
 						if choice == 1 then
 							PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/service/guard/human_guard_service_evil_1_hail_gm_582205e1.mp3", "Do you have business with the Freeport Militia?", "glare", 3265760930, 1055342916, Spawn)
@@ -210,7 +211,7 @@ function GenericGuardHail(NPC, Spawn, Faction)
 						end
 					end
 				elseif gender == FEMALE then
-					if Faction == "Evil" then
+					if faction == 12 then
 						local choice = math.random(1, 4)
 						if choice == 1 then
 							PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/service/guard/human_guard_service_evil_1_hail_gf_582205e1.mp3", "Do you have business with the Freeport Militia?", "glare", 2697294413, 370291658, Spawn)
