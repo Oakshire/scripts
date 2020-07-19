@@ -1,11 +1,10 @@
 --[[
-    Script Name    : SpawnScripts/Freeport/DucciusAgorix.lua
+    Script Name    : SpawnScripts/Freeport/ViridiaDomna.lua
     Script Author  : Premierio015
-    Script Date    : 2020.07.12 10:07:39
+    Script Date    : 2020.07.18 08:07:25
     Script Purpose : 
                    : 
 --]]
-
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)

@@ -187,7 +187,7 @@ function GenericGuardHail(NPC, Spawn, Faction)
 				end
 			elseif race == HUMAN then
 				if gender == MALE then
-					if faction == 12 then
+					if faction == 102 then   -- Freeport Militia
 						local choice = math.random(1, 4)
 						if choice == 1 then
 							PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/service/guard/human_guard_service_evil_1_hail_gm_582205e1.mp3", "Do you have business with the Freeport Militia?", "glare", 3265760930, 1055342916, Spawn)
@@ -211,7 +211,7 @@ function GenericGuardHail(NPC, Spawn, Faction)
 						end
 					end
 				elseif gender == FEMALE then
-					if faction == 12 then
+					if faction == 102 then   -- Freeport Militia
 						local choice = math.random(1, 4)
 						if choice == 1 then
 							PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/service/guard/human_guard_service_evil_1_hail_gf_582205e1.mp3", "Do you have business with the Freeport Militia?", "glare", 2697294413, 370291658, Spawn)

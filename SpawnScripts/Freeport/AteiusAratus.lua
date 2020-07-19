@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Freeport/DucciusAgorix.lua
+    Script Name    : SpawnScripts/Freeport/AteiusAratus.lua
     Script Author  : Premierio015
-    Script Date    : 2020.07.12 10:07:39
+    Script Date    : 2020.07.18 08:07:12
     Script Purpose : 
                    : 
 --]]
@@ -13,11 +13,12 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
     GenericGuardHail(NPC, Spawn, Faction)
+    FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)
 
 end
+
 

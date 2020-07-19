@@ -1,20 +1,18 @@
 --[[
-    Script Name    : SpawnScripts/Freeport/DucciusAgorix.lua
+    Script Name    : SpawnScripts/Freeport/LucanDLere.lua
     Script Author  : Premierio015
-    Script Date    : 2020.07.12 10:07:39
+    Script Date    : 2020.07.18 08:07:29
     Script Purpose : 
                    : 
 --]]
-
-dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
 
 end
 
 function hailed(NPC, Spawn)
+    PlayAnimation(NPC, 24494)
     FaceTarget(NPC, Spawn)
-    GenericGuardHail(NPC, Spawn, Faction)
 end
 
 function respawn(NPC)

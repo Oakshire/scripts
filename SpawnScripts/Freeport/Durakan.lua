@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Freeport/DucciusAgorix.lua
+    Script Name    : SpawnScripts/Freeport/Durakan.lua
     Script Author  : Premierio015
-    Script Date    : 2020.07.12 10:07:39
+    Script Date    : 2020.07.19 10:07:10
     Script Purpose : 
                    : 
 --]]
