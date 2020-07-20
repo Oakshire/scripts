@@ -21,7 +21,7 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "Are those the only choices?", "Option1")
 	AddConversationOption(conversation, "The Overlord.", "Option2")
 	AddConversationOption(conversation, "Queen Cristanos.", "Option2")
-	AddConversationOption(conversation, "Talvus Thex." "Talvus")
+	AddConversationOption(conversation, "Talvus Thex.", "Talvus")
 	StartConversation(conversation, NPC, Spawn, "I greet you, fellow child of Hate.  But this is where our conversation must end, without knowledge of your allegiance.  Do you bend your knee to Queen Cristanos, The Overlord, or Talvus Thex?")
 end
 

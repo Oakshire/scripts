@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Freeport/TitianaPollio.lua
+    Script Name    : SpawnScripts/Freeport/TharghHeadbuster.lua
     Script Author  : Premierio015
-    Script Date    : 2020.07.12 09:07:20
+    Script Date    : 2020.07.19 11:07:58
     Script Purpose : 
                    : 
 --]]

@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Freeport/TitianaPollio.lua
+    Script Name    : SpawnScripts/Freeport/SaloninaAventina.lua
     Script Author  : Premierio015
-    Script Date    : 2020.07.12 09:07:20
+    Script Date    : 2020.07.19 10:07:40
     Script Purpose : 
                    : 
 --]]
@@ -20,4 +20,3 @@ end
 function respawn(NPC)
 
 end
-

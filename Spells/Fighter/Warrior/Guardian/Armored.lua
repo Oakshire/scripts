@@ -18,7 +18,7 @@ function cast(Caster, Target, Physical, Avoidance, SkillAmt, Aggro, Defense, Mit
 AddSkillBonus(Target, GetSkillIDByName("Slashing"), SkillAmt)
 AddSkillBonus(Target, GetSkillIDByName("Crushing"), SkillAmt)
 AddSkillBonus(Target, GetSkillIDByName("Piercing"), SkillAmt)
-AddSkillBonus(Target, GetSkillIDByName("Agression"), Aggro)
+AddSkillBonus(Target, GetSkillIDByName("Aggression"), Aggro)
 AddSkillBonus(Target, GetSkillIDByName("Defense"), Defense)
 AddSkillBonus(Target, GetSkillIDByName("Parry"), Defense)
 
