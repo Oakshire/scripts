@@ -49,8 +49,8 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 3, "I have returned to Vibia Valens.")
-	UpdateQuestTaskGroupDescription(Quest, 2, "I have returned to Vibia Valens.")
+	-- UpdateQuestStepDescription(Quest, 3, "I have returned to Vibia Valens.")
+	-- UpdateQuestTaskGroupDescription(Quest, 2, "I have returned to Vibia Valens.")
 
 	UpdateQuestDescription(Quest, "I have successfully collected two primordial seep bile samples and the venom sac from Soulspike the spider queen of the Wailing Caves. Vibia rewarded me with a dagger and some coin for a job well done. ")
 	GiveQuestReward(Quest, Player)

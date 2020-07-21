@@ -103,6 +103,7 @@ function complete02(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 SetStepComplete(Spawn, QUEST, 3)
 PlayFlavor(NPC, "voiceover/english/optional1/merchant_vibia_valens/fprt_north/quests/vibiavalens/vibiavalens_x1_return2.mp3", "", "", 3395075188, 3798691058, Spawn)
+conversation = CreateConversation()
 AddConversationOption(conversation, "Good bye.")
 StartConversation(conversation, NPC, Spawn, "There you are, then!  Now, if you wouldn't mind leaving me be, I've work to finish.")
 end
