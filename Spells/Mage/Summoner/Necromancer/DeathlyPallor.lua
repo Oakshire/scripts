@@ -14,3 +14,7 @@ SetServerControlFlag(Target, 5, 1, 1);
 	ClearHate(Target)
 		SendMessage(Caster, "Your feign death succeeded", "yellow")
 end
+
+function remove(Caster, Target)
+	SetServerControlFlag(Caster, 5, 1, 0);
+end

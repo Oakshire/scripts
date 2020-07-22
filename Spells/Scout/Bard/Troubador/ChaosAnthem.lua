@@ -6,15 +6,15 @@
                    : 
 --]]
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, Stat)
+function cast(Caster, Target, DmgType, MinVal, Stat)
 -- Inflicts 120 mental damage on target encounter instantly and every 6 seconds 
-	SpellDamage(Target, DmgType, MinVal, MaxVal)  
+	SpellDamage(Target, DmgType, MinVal)  
 -- Decreases WIS of target encounter by 72.3
 	AddSpellBonus(Target, 3, Stat)
 end
 
-function tick(Caster, Target)
-  SpellDamage(Target, DmgType, MinVal, MaxVal)
+function tick(Caster, Target, Dmgtype, MinVal, Stat)
+  SpellDamage(Target, DmgType, MinVal)
 end
 
 function remove(Caster, Target)  

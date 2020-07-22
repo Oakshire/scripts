@@ -1,16 +1,17 @@
 --[[
-    Script Name    : Spells/Commoner/HolySteed.lua
-    Script Author  : Jabantiz
-    Script Date    : 2014.05.31 07:05:18
-    Script Purpose : updated 7/20/20 by Neatz09
+    Script Name    : Spells/Commoner/UnholySteed.lua
+    Script Author  : neatz09
+    Script Date    : 2020.07.22 12:07:50
+    Script Purpose : 
                    : 
 --]]
 
+-- Info from spell_display_effects (remove from script when done)
 -- Summons a mount to ride
 --     Increases your ground speed by 130%
-
 function cast(Caster, Target, Speed)
     SetMount(Caster, 6852)
+SetMountColor(Caster, 0, 0, 0, 80, 0, 0) 
        AddSpellBonus(Target, 609, Speed)
 
 end

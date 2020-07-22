@@ -8,13 +8,13 @@
 
 -- Increases Mitigation of raid and group members (AE) vs elemental damage by 554
 
-function cast(Caster, Target, BonusAmt)
+function cast(Caster, Target, MitAmt)
     AddSpellBonus(Target, 201, MitAmt)
 
 end
 
 
-function remove(Caster, Target, BonusAmt)
+function remove(Caster, Target)
         RemoveSpellBonus(Target)
 
 

@@ -8,7 +8,7 @@
 
 function cast(Caster, Target, MinVal, MaxVal, ResistAmt)
     if MaxVal ~= nil and MinVal < MaxVal then
-        AddHate(Caster, Target, math.random(MinVal, MaxVal), 1)
+        AddHate(Caster, Target, math.random(MaxVal, MinVal), 1)
     else
         AddHate(Caster, Target, MinVal, 1)
     end

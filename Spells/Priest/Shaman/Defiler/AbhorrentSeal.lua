@@ -9,10 +9,10 @@
 
 -- Decreases STR, AGI and WIS of target by 74.2
 
-function cast(Caster, Target, Str, Agi, Wis)
-    AddSpellBonus(Target, 0, Str)
-    AddSpellBonus(Target, 2, Agi)
-    AddSpellBonus(Target, 3, Wis)
+function cast(Caster, Target, Stat)
+    AddSpellBonus(Target, 0, Stat)
+    AddSpellBonus(Target, 2, Stat)
+    AddSpellBonus(Target, 3, Stat)
 end
 
 
