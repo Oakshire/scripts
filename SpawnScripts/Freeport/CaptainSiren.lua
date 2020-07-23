@@ -12,6 +12,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "", "Stay out of the Seafury Buccaneer's way, and you'll have nothing to worry about.", "", 1689589577, 4560189, Spawn)
 end
 
 function respawn(NPC)
