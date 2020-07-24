@@ -1,8 +1,8 @@
 --[[
-	Script Name		:	SpawnScripts/QueensColony/eviltotem.lua
+	Script Name	:	SpawnScripts/QueensColony/eviltotem.lua
 	Script Purpose	:	Handles enabling/disabling the totems on the correct step as well as updates
 	Script Author	:	Jabantiz
-	Script Date		:	9/9/2016
+	Script Date	:	9/9/2016
 	Script Notes	:	<special-instructions>
 --]]
 

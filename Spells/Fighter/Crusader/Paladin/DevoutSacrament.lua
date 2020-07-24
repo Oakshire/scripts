@@ -10,7 +10,7 @@
 --     This effect cannot be critically applied.
 -- Increases Max Health of caster by 690.3
 -- The healing of this spell cannot be modified except by direct means
-function cast(Caster, Target)
+function cast(Caster, Target, BonusAmt, pctHealMin, pctHealMax)
 AddSpellBonus(Target, 606, BonusAmt)
 SpellHeal(Heal, GetPCTOfHP(Target, pctHealMin), GetPCTOfHP(Target, pctHealMax), nil, 2, 1)
 end
