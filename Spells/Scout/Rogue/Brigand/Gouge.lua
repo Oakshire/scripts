@@ -5,13 +5,11 @@
     Script Purpose : Added ifLastHit 5/13/20
                    : 
 --]]
-
 function precast(Caster, Target)
-    -- Must be in front of or flanking
     if IsFlanking(Caster, Target) then
         return true
     else
-        SendMessage(Caster, "You must be flanking your target to use this ability!", "yellow")
+        SendMessage(Caster, "You must be flanking or behind your target to use this ability!", "yellow")
         return false
     end
 end

@@ -7,11 +7,11 @@
 --]]
 
 function precast(Caster, Target)
-    -- Must be flanking or behind
     if IsFlanking(Caster, Target) then
         return true
     else
         SendMessage(Caster, "You must be flanking or behind your target to use this ability!", "yellow")
+        return false
     end
 end
 

@@ -19,7 +19,7 @@ function cast(Caster, Target, Speed, SkillAmt)
 SetMount(Caster, 18186)
 
 -- Increases your ground speed by 130%    
-AddSpellBonus(Caster, 611, Speed)
+AddSpellBonus(Caster, 609, Speed, SkillAmt)
 -- Increases Focus, Disruption, Ministration, Subjugation, Ordination, Slashing, Piercing, Crushing, Aggression and Ranged of caster by 5.0
     AddSkillBonus(Caster, GetSkillIDByName("Focus"), SkillAmt)
     AddSkillBonus(Caster, GetSkillIDByName("Disruption"), SkillAmt)

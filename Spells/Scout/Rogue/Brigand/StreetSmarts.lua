@@ -12,7 +12,7 @@ function cast(Caster, Target, StatAmt, Avoidance, MitAmt1, MitAmt2)
 -- Increases Mitigation of caster vs physical damage by 152
 -- Increases Mitigation of caster vs elemental, noxious and arcane damage by 183
     AddSpellBonus(Target, StatAmt)
-    -- AddSkillBonus(Target, , Avoidance)
+    AddSkillBonus(Target, 696, Avoidance)
     AddSpellBonus(Target, 200, MitAmt1)
     AddSpellBonus(Target, 201, MitAmt2)
     AddSpellBonus(Target, 202, MitAmt2)

@@ -15,6 +15,7 @@ function precast(Caster, Target)
     end
 end
 
+
 function cast(Caster, Target, DmgType, MinDmg, MaxDmg)
 -- Interrupt the Target
     Interrupt(Caster, Target)
