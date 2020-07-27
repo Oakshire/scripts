@@ -10,11 +10,11 @@
 -- Increases Aggression of caster by 11.9
 -- Increases Defense and Parry of caster by 23.8
 --Increases the caster's effectiveness of worn armor vs physical damage by 18%
-function cast(Caster, Target, Offskill, Agro, DefAmt)
+function cast(Caster, Target, OffSkill, Aggro, DefAmt)
     AddSkillBonus(Target, GetSkillIDByName("Slashing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Piercing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Crushing"), OffSkill)
-    AddSkillBonus(Target, GetSkillIDByName("Aggression"), Agro)
+    AddSkillBonus(Target, GetSkillIDByName("Aggression"), Aggro)
     AddSkillBonus(Target, GetSkillIDByName("Defense"), DefAmt)
     AddSkillBonus(Target, GetSkillIDByName("Parry"), DefAmt)
     AddSpellBonus(Target, 678, 18)
@@ -24,7 +24,7 @@ end
 
 function remove(Caster, Target)
     RemoveSkillBonus(Target)
-    RemoveSpellBonus(Target)
+    --RemoveSpellBonus(Target)
 end
 
 

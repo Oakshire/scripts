@@ -8,7 +8,7 @@
 
 -- Decreases Threat to target
 
-function cast(Caster, Target, HateHigh, HateLow)
+function cast(Caster, Target, HateLow, HateHigh)
     AddHate(Caster, Target, math.random(HateLow, HateHigh), 1)
     Say(Caster, "Missing Reposte Immunity")
 end

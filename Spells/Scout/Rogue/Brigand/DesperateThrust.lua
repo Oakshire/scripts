@@ -8,7 +8,7 @@
 
 -- Info from spell_display_effects (remove from script when done)
 
-function cast(Caster, Target)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, TgtAmt, CastAmt)
 -- Inflicts 257 - 428 melee damage on target
 SpellDamage(Target, DmgType, MinVal, MaxVal)
 -- Decreases Defense of target by 15.7
