@@ -4,7 +4,7 @@
 	Script Author	:	Jabantiz
 	Script Date		:	9/11/2016
 	Script Notes	:	
---]]
+
 
 function spawn(NPC)
 	if GetSpawnLocationID(NPC) == 429588 then
@@ -33,3 +33,5 @@ end
 function respawn(NPC)
 	spawn(NPC)
 end
+
+--]]
