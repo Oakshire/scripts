@@ -4,7 +4,7 @@
 	Script Author	:	Jabantiz
 	Script Date		:	9/11/2016
 	Script Notes	:	<special-instructions>
---]]
+
 
 function spawn(NPC)
 	MovementLoopAddLocation(NPC, -125.5, 4.64, -50.29, 4)
@@ -62,3 +62,5 @@ elseif choice == 4 then
 	end
 end
 end
+
+--]]
