@@ -3,31 +3,39 @@
     Script Author  : premierio015
     Script Date    : 2015.07.30
     Script Purpose : Lieutenant Westfall dialog
-    Notes          :  Script should be updated and spawn Moraks on hail instead of timer, also function should have restriction otherwise players would spawn 500 moraks when hail.,
---]] 
+    Notes          :  
+--]]
+
+   
 
 function spawn(NPC)
-         SetPlayerProximityFunction(NPC, 40, "InRange", "LeaveRange", Spawn)
+   
 end
 
 function respawn(NPC)
          spawn(NPC)
 end
 
-function InRange(NPC, Spawn)
-FaceTarget(NPC, Spawn)
-local spawn2 =  GetSpawnByGroupID(Zone,1044835)
-if spawn2 ~= nil then
-PlayFlavor(NPC, "", "What's that there!  To arms, the Morak are coming!", "point", 1689589577, 4560189, Spawn)
-end
-end
 
-function LeaveRange(NPC, Spawn)
-
-end
 
 function hailed(NPC, Spawn)
+     
+if GetTempVariable(NPC, "HAILED1")  == true then
+PlayFlavor(NPC, "", "What's that there!  To arms, the Morak are coming!", "point", 1689589577, 4560189, Spawn)
+zone = GetZone(Spawn)
+Morak1 = SpawnByLocationID(zone, 428874)
+Morak2= SpawnByLocationID(zone, 428880)
+Morak3 = SpawnByLocationID(zone, 428890)
+SetTempVariable(NPC, "HAILED1", "false")
+AddTimer(NPC, 35000, "hailed2")
+elseif GetTempVariable(NPC, "HAILED1") == false then
+PlayFlavor(NPC, "", "Test", "", 1689589577, 4560189, Spawn)
+end
+   end
 
+
+function hailed2(NPC, Spawn)
+SetTempVariable(NPC, "HAILED1", "true")
 end
 
 function aggro(NPC)
