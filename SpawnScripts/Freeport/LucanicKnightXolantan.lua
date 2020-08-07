@@ -6,15 +6,14 @@
                    : 
 --]]
 
-dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+
 
 function spawn(NPC)
 
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-    GenericGuardHail(NPC, Spawn, Faction)
+  	SendMessage(Spawn, "The Wraithguard ignores you.")   
 end
 
 function respawn(NPC)
