@@ -1,21 +1,22 @@
 --[[
-	Script Name     :	SpawnScripts/Generic/skeletonscript.lua
-	Script Purpose	:	PlayFavors for SkeletonMobs
-	Script Author	:	premierio015
-	Script Date	:	2020.04.10
-	Script Notes	:       Makes skeletons use voices and text commands on aggro and death
+        Script Name     :       SpawnScripts/Generic/Level6Difficulty2skeleton.lua
+	Script Purpose	:	Level set to 6 and and difficulty to 2
+	Script Author	:	Rylec, PlayFlavor by premierio015
+	Script Date	:	04-19-2020 02:18:22 
+	Script Notes	:	Locations collected from Live 
 --]]
 
 function spawn(NPC)
-    
-end
-
-function respawn(NPC)
-        spawn(NPC)
+        SpawnSet(NPC, "level", "6") 
+        SpawnSet(NPC, "difficulty", "2")  
 end
 
 function hailed(NPC, Spawn)
         FaceTarget(NPC, Spawn)
+end
+
+function respawn(NPC)
+        spawn(NPC)
 end
 
 function aggro(NPC, Spawn)
