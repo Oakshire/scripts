@@ -7,9 +7,10 @@
 --]]
 
 function spawn(NPC)
-MovementLoopAddLocation(NPC, 217.01, -0.97, -101.64, 7, 0)
-MovementLoopAddLocation(NPC, 236.41, -1.04, -76.67, 7, 0)
-MovementLoopAddLocation(NPC, 237.64, -4.06, -30.52, 7,0)
+SetMount(NPC, 6848)
+MovementLoopAddLocation(NPC, 217.01, -0.97, -101.64, 9, 0)
+MovementLoopAddLocation(NPC, 236.41, -1.04, -76.67, 9, 0)
+MovementLoopAddLocation(NPC, 237.64, -4.06, -30.52, 9,0)
 end
 
 function hailed(NPC, Spawn)

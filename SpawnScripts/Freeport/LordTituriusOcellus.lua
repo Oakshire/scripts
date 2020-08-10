@@ -9,7 +9,7 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-
+SetMount(NPC, 16338)
 end
 
 function hailed(NPC, Spawn)
@@ -18,5 +18,5 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+         spawn(NPC)
 end

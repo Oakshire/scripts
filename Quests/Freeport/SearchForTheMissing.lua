@@ -18,7 +18,9 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
+         FaceTarget(QuestGiver, Player)
 	 conversation = CreateConversation()
+
          PlayFlavor(QuestGiver, "a_weary_kor_shaman/rivervale/a_froglok_kor_shaman006.mp3", "", "", 2271895946, 2901122965, Player)
          AddConversationOption(conversation, "I will find her.")
          StartConversation(conversation, QuestGiver, Player, "Then search the land for my mate Kraofla. She only barely managed to escape the guards when we washed up on the shores of the great barren land beyond these walls. Surely she would have sought the comfort of shade and water.")

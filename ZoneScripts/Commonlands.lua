@@ -6,6 +6,8 @@
 	Script Notes	:	
 --]]
 
+
+
 function init_zone_script(zone)
     SetLocationProximityFunction(zone, 757.39, -31.98, -585.17, 10, "GriffonTower", "Leave")   -- Nektulos (from Freeport)
     SetLocationProximityFunction(zone, -599.41, -33.73, -771.12, 10, "GriffonTower", "Leave") -- Freeport (from Nektulos)
@@ -15,6 +17,9 @@ function init_zone_script(zone)
     SetLocationProximityFunction(zone, -597.07, -33.75, -758.43, 10, "GriffonTower", "Leave") -- Freeport (from HiddenCanyon)
 end
 
+
+
+     
 function player_entry(zone, player)
 end
 
