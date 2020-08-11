@@ -20,6 +20,8 @@ SetSpellTriggerCount(Triggers, 1)
 end
 
 function proc(Caster, Target, Type, Power, Triggers)
+    Say(Caster, "this casts a test spell")
+
 CastSpell(Caster, 22, 1)
 RemoveTriggerFromSpell()
 end
