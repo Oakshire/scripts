@@ -3,7 +3,7 @@
 	Script Purpose	:	
 	Script Author	:	Neatz09
 	Script Date		:	1/19/2019
-	Script Notes	:	
+	Script Notes	:Saved as a test
 --]]
 
 function obtained(Item, Spawn)
