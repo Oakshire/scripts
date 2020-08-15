@@ -1,13 +1,14 @@
 --[[
-    Script Name    : Spells/Traditions/RockThrower.lua
+    Script Name    : Spells/Commoner/MindoverMatter.lua
     Script Author  : neatz09
-    Script Date    : 2020.08.14 10:08:58
+    Script Date    : 2020.08.14 11:08:06
     Script Purpose : 
                    : 
 --]]
 
 -- Info from spell_display_effects (remove from script when done)
--- Reduces the time it takes to mine by .5 seconds.
+-- Reduces maximum falling speed of caster
+-- You cannot use this spell while riding on a mount.
 
 function cast(Caster, Target)
     Say(Target, "Hah, nice try! That's not implemented yet!")

@@ -23,7 +23,7 @@ function hailed(NPC, Spawn)
     StartConversation(conversation, NPC, Spawn, "Oh, why, hello!  I'm sorry, you startled me a bit.")
     elseif HasQuest(Spawn, QUEST1) and not HasCompletedQuest(Spawn, QUEST1) then
     conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "hello", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
     AddConversationOption(conversation, "I'm still working on it - these gnomes can be maddening!  I'll come back when I have it done.")
     StartConversation(conversation, NPC, Spawn, "Welcome back, "..GetName(Spawn).." ! Were you able to decipher the gnomish equations?")
     elseif GetRace(Spawn) ~= 13 then

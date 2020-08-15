@@ -32,7 +32,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "")
 
-	AddQuestStepHarvest(Quest, 2, "Search for the gnomish equations on the walls of Temple Street, and copy them.", 3, 100, "I will need to enter Temple Street, and deipher the equations of the gnomes left on the walls there.", 374, 6460043)
+	AddQuestStepObtainItem(Quest, 2, "Search for the gnomish equations on the walls of Temple Street, and copy them.", 3, 100, "I will need to enter Temple Street, and deipher the equations of the gnomes left on the walls there.", 374, 12090)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 

@@ -6,5 +6,13 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Grants Fish Vision to caster
+
+function cast(Caster, Target)
+    SetVision(Target, 4)
+end
+
+
+function remove(Caster, Target)
+    SetVision(Target, 0)
+end

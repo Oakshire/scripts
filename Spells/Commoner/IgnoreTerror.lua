@@ -1,19 +1,18 @@
 --[[
-    Script Name    : Spells/Traditions/Gills.lua
+    Script Name    : Spells/Commoner/IgnoreTerror.lua
     Script Author  : neatz09
-    Script Date    : 2019.04.18 11:04:19
+    Script Date    : 2020.08.14 11:08:48
     Script Purpose : 
                    : 
 --]]
 
 -- Info from spell_display_effects (remove from script when done)
--- Allows caster to breathe under water
-
-
+-- Makes caster immune to Fear effects
 function cast(Caster, Target)
-BreatheUnderwater(Target, true)
+AddImmunitySpell(6, Target)
 end
 
+
 function remove(Caster, Target)
-BreatheUnderwater(Target, false)
+RemoveImmunitySpell(6, Target)
 end

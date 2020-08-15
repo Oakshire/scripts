@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Spells/Commoner/WindWalker.lua
+    Script Name    : Spells/Commoner/FeralRage.lua
     Script Author  : neatz09
-    Script Date    : 2020.03.07 11:03:08
+    Script Date    : 2020.08.14 04:08:06
     Script Purpose : 
                    : 
 --]]

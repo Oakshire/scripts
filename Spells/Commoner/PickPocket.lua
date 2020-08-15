@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Spells/Commoner/Rob.lua
+    Script Name    : Spells/Commoner/PickPocket.lua
     Script Author  : neatz09
-    Script Date    : 2020.04.02 09:04:43
+    Script Date    : 2020.08.14 03:08:08
     Script Purpose : 
                    : 
 --]]

@@ -14,19 +14,18 @@ function BeginAttack(NPC, Spawn)
 	local zone = GetZone(NPC)
 	local Priest1 = SpawnByLocationID(zone, Priest1ID)
 	local Priest2 = SpawnByLocationID(zone, Priest2ID)
-	
 	SpawnSet(NPC, "attackable", 1)
 	SpawnSet(NPC, "show_level", 1)
 	SpawnSet(NPC, "targetable", 1)
 	SpawnSet(NPC, "visual_state", 0)
 	SpawnSet(NPC, "faction", 1)
-	
 	PlayFlavor(NPC, "", "Now rot like your friends!", "", 1689589577, 4560189)
 	Attack(NPC, Spawn)
 	
 	local Pet = GetSpawn(NPC, PetID)
 	if Pet ~= nil then
 		SpawnSet(Pet, "faction", 1)
+                SpawnSet(Pet, "attackable", 1)
 		Attack(Pet, Spawn)
 	end
 	

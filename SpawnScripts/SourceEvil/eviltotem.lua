@@ -49,7 +49,7 @@ function casted_on(NPC, Spawn, Message)
 			
 			if GetTempVariable(Vith, "Totem1Destroyed") == "true" and GetTempVariable(Vith, "Totem2Destroyed") == "true" and GetTempVariable(Vith, "Totem3Destroyed") == "true" and GetTempVariable(Vith, "Totem4Destroyed") == "true" then
 				PlayFlavor(Vith, "", "Quite a nuisance you are.  My patience is gone, prepare for my wrath!", "", 1689589577, 4560189, Spawn)
-				AddTimer(NPC, 10000, "BeginAttack", 1, Spawn)
+				AddTimer(Vith, 10000, "BeginAttack", 1, Spawn)
 				local Poison = GetSpawn(NPC, PoisonID)
 				if Poison ~= nil then
 					SpawnSet(Poison, "visual_state", "0")
