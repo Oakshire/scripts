@@ -1,10 +1,9 @@
 --[[
 	Script Name		:	battle_of_wits.lua
-	Script Purpose	:	Handles the quest, "Battle of Wits"
-	Script Author	:	QuestParser (Replace this)
+	Script Purpose      	:	Handles the quest, "Battle of Wits"
+	Script Author	        :	premierio015
 	Script Date		:	12.08.2020
-	Script Notes	:	Auto generated with QuestParser.
-
+	Script Notes	        :	
 	Zone			:	The City of Freeport
 	Quest Giver		:	
 	Preceded by		:	None
@@ -39,7 +38,7 @@ end
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "")
 
-	AddQuestStepHarvest(Quest, 3, "Use the study materials in the library to decipher and solve the gnomish equations.", 1, 100, "I will need to enter Temple Street, and deipher the equations of the gnomes left on the walls there.", 3040, 6460043)
+	AddQuestStep(Quest, 3, "Use the study materials in the library to decipher and solve the gnomish equations.", 1, 100, "I will need to enter Temple Street, and deipher the equations of the gnomes left on the walls there.", 3040)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 

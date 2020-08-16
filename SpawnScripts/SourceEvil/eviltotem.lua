@@ -57,12 +57,29 @@ function casted_on(NPC, Spawn, Message)
 			end
 		
 		end
+
 	end
+end
+
+function death(NPC, Spawn)
+local Vithb = GetSpawn(NPC, VithID)
+PlayFlavor(Vithb, "", "Death called", "", 1689589577, 4560189)
+	if Vithb ~= nil then
+		PlayFlavor(Vithb, "", "Haha, you think you can figure this out", "", 1689589577, 4560189)
+	end
+
+
+    local Pet2 = GetSpawn(NPC, PetID)
+    if IsPlayer(Spawn) then
+        SetSuccessTimer(Spawn)
+    end
+        if Pet2 ~= nil then 
+        say(Vithb, "Vith is dead")
+        KillSpawn(Pet, Spawn)
+        end
 end
 
 function Vanish(NPC)
 	Despawn(NPC)
 end
 
-function death(NPC, Spawn)
-end

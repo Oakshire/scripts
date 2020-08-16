@@ -36,5 +36,6 @@ function BeginAttack(NPC, Spawn)
 	if Priest2 ~= nil then
 		Attack(Priest2, Spawn)
 	end
+
 	
 end
