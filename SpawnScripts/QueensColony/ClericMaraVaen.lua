@@ -12,7 +12,7 @@ local TheSourceOfEvil = 164
 function spawn(NPC)
 	SetLuaBrain(NPC)
 	SetBrainTick(NPC, 500)
-	
+	Think(NPC, Spawn)
 	ProvidesQuest(NPC, TheSourceOfEvil)
 end
 
@@ -21,7 +21,7 @@ function respawn(NPC)
 end
 
 -- Brain override
-function Think(NPC, Target)
+function Think(NPC, Spawn)
 	local mostHated = GetMostHated(NPC)
 	if mostHated ~= nil then
 --[[ Say(NPC, "Has most hated") --]]
