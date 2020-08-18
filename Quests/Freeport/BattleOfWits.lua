@@ -52,7 +52,7 @@ end
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "")
 
-	AddQuestStepKill(Quest, 5, "Use the activated clockwork to destroy the necromachines in Temple Street.", 6, 100, "I will need to enter Temple Street, and deipher the equations of the gnomes left on the walls there.", 3109, 445)
+	AddQuestStepKill(Quest, 5, "Use the activated clockwork to destroy the necromachines in Temple Street.", 6, 100, "I will need to enter Temple Street, and deipher the equations of the gnomes left on the walls there.", 3109, 6460005)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 

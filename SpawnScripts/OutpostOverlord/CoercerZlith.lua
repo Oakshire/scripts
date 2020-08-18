@@ -73,7 +73,7 @@ function hailed(NPC, Spawn)
 		end
 	end
 
-	if not CanReceiveQuest(Spawn, DisruptionForDistraction) then
+	if not CanReceiveQuest(Spawn, DisruptionForDistraction) and not HasQuest(Spawn, DisruptionForDistraction) then
 			NotReady(NPC, Spawn)
 	end
 end

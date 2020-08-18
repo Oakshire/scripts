@@ -33,5 +33,7 @@ end
 function SpawnAccess(NPC, Spawn)
 	if HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) == 2 then
 		AddSpawnAccess(NPC, Spawn)
+        else
+                RemoveSpawnAccess(NPC, Spawn)
 	end
 end

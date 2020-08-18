@@ -6,7 +6,7 @@
                    : 
 --]]
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DoTMinVal, DoTMaxVal)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DoTMinVal)
 
     -- Inflicts 6 - 10 melee damage on target
     if MaxVal ~= nil and MinVal < MaxVal then
@@ -17,12 +17,8 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DoTMinVal, DoTMa
 
 end
 
-function tick(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DoTMinVal, DoTMaxVal)
+function tick(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DoTMinVal)
 
-    -- Inflicts 1 slashing damage on target every 4 seconds
-    if DoTMaxVal ~= nil and DoTMinVal < DoTMaxVal then
-        SpellDamage(Target, DoTType, math.random(DoTMinVal, DoTMaxVal))
-    else
-        SpellDamage(Target, DoTType, DoTMinVal)
-    end
+SpellDamage(Target, DoTType, DoTMinVal)
+
 end

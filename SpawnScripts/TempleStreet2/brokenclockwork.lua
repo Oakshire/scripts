@@ -9,6 +9,7 @@
 QUEST = 574
 
 function spawn(NPC)
+        AddSpawnAccess(NPC, NPC)
 	SetPlayerProximityFunction(NPC, 20, "SpawnAccess", "SpawnAccess")
 end
 

@@ -2,44 +2,44 @@
     Script Name    : SpawnScripts/SourceEvil/adefiledpriest.lua
     Script Author  : Lemmeron
     Script Date    : 2020.08.16 
-    Script Purpose : To test scripts and get these priests to heal and assist Vith once summoned by him
+    Script Purpose : To test scripts and get these priests to heal and assist Vith L'Tar once summoned by him
                    : 
 --]]
 
 local VithID = 2540005
 local Priest1loc = 433225
 local Priest2loc = 433226
-
-function healVith(NPC)
-local Vith = GetSpawn(NPC, VithID)
-   local zone = GetZone(Spawn)
-   local priest1 = GetSpawnByLocationID(zone, Priest1loc)
-        CastSpell(Vith, 200074, 1, NPC)
-        Say(NPC, "1 healing you master")
- Say(priest1, "priestone healing")
-end
-
-function healVith2(NPC, Vith)
-local Vith = GetSpawn(NPC, VithID)
-        CastSpell(Vith, 130106, 1, NPC)
-        Say(NPC, "2 healing you master")
-end
-
+local zoneID = 254
 
 
 function spawn(NPC)
-        local zone = GetZone(Spawn)
-        local priest1 = GetSpawnByLocationID(zone, Priest1loc)
-        local priest2 = GetSpawnByLocationID(zone, Priest2loc)
-        Say(NPC, "Join us in death !")
-        P1(NPC)
-        local Vith = GetSpawn(NPC, VithID)
-        AddTimer(NPC, 10000, "healVith")
-        AddTimer(NPC, 20000, "healVith2", 1, Vith)
+	local sli = GetSpawnLocationID(NPC)
+	local Vith = GetSpawn(NPC, VithID)
+	if Vith ~= nil then
+		if sli == Priest1loc then
+			AddTimer(NPC, 10000, "healVith", 1, Vith)
+		elseif sli == Priest2loc then
+			AddTimer(NPC, 20000, "healVith2", 1, Vith)	
+		end
+	else
+		Say(NPC, "Vith not found!")
+	end
 end
 
-function P1(NPC)
-   local zone = GetZone(Spawn)
-   local priest1 = GetSpawnByLocationID(zone, Priest1loc)
-    Say(NPC, "i am priest1")
+function healVith(NPC, Vith)
+   if IsAlive(Vith) then
+        Say(NPC, "heal as priest 1")
+        CastSpell(Vith, 400145, 1, NPC) --test spell using quickstrike 400145 instead of a heal
+  else 
+        Say(NPC, "not my turn as p2")
+  end
+end
+
+function healVith2(NPC, Vith)
+   if IsAlive(Vith) then
+        Say(NPC, "heal as priest 2")
+        CastSpell(Vith, 90044, 1, NPC) --test spell using painbringer 90044 instead of a heal
+   else 
+        Say(NPC, "not my turn as p1")
+   end
 end
