@@ -30,8 +30,9 @@ if Breeze ~= nil then
 Say(Kayl, "Breeze Attack!")
 SpawnSet(Breeze, "attackable", 1)
 SpawnSet(Breeze, "show_level", 1)
-SendPopUpMessage(Spawn, "Old Bruiser screeches at " .. GetName(Spawn) .. " ", 255, 0, 0)
-SendMessage(Spawn, "Old Bruiser screeches at " .. GetName(Spawn) .. " ", "red")
+  SpawnSet(Breeze, "faction", 1)    -- Lemmeron added please check this is what you want
+SendPopUpMessage(Spawn, "Old Bruiser screeches at " .. GetName(Spawn) .. " ", 255, 0, 0) -- shouldnt this say Breeze ?
+SendMessage(Spawn, "Old Bruiser screeches at " .. GetName(Spawn) .. " ", "red") -- shouldnt this say Breeze ?
 Attack(Breeze, Spawn)
 end
    end

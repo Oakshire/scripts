@@ -13,33 +13,33 @@ local zoneID = 254
 
 
 function spawn(NPC)
-	local sli = GetSpawnLocationID(NPC)
+	local WhichOne = GetSpawnLocationID(NPC)
 	local Vith = GetSpawn(NPC, VithID)
 	if Vith ~= nil then
-		if sli == Priest1loc then
-			AddTimer(NPC, 10000, "healVith", 1, Vith)
-		elseif sli == Priest2loc then
-			AddTimer(NPC, 20000, "healVith2", 1, Vith)	
+		if WhichOne == Priest1loc then
+			AddTimer(NPC, 10000, "healVith", 1, Vith)  --will add more heals and behavior
+		elseif WhichOne == Priest2loc then
+			AddTimer(NPC, 20000, "healVith2", 1, Vith) --will add more heals and behavior	
 		end
 	else
-		Say(NPC, "Vith not found!")
+		Say(NPC, "Vith not found!") -- error test
 	end
 end
 
 function healVith(NPC, Vith)
    if IsAlive(Vith) then
-        Say(NPC, "heal as priest 1")
+        Say(NPC, "heal as priest 1") -- will change what it says when heals working
         CastSpell(Vith, 400145, 1, NPC) --test spell using quickstrike 400145 instead of a heal
   else 
-        Say(NPC, "not my turn as p2")
+        Say(NPC, "not my turn as p2") -- error test
   end
 end
 
 function healVith2(NPC, Vith)
    if IsAlive(Vith) then
-        Say(NPC, "heal as priest 2")
+        Say(NPC, "heal as priest 2") -- will change what it says when heals working
         CastSpell(Vith, 90044, 1, NPC) --test spell using painbringer 90044 instead of a heal
    else 
-        Say(NPC, "not my turn as p1")
+        Say(NPC, "not my turn as p1") -- error test
    end
 end

@@ -11,6 +11,7 @@ QUEST2 = 575
 
 function spawn(NPC)
  ProvidesQuest(NPC, QUEST1)
+ ProvidesQuest(NPC, QUEST2)
 end
  
 
@@ -25,8 +26,8 @@ function hailed(NPC, Spawn)
     StartConversation(conversation, NPC, Spawn, "Oh, why, hello!  I'm sorry, you startled me a bit.")
     elseif HasQuest(Spawn, QUEST1)  then
     quest1progress(NPC, Spawn)
-    elseif HasCompletedQuest(Spawn, QUEST1) and not HasQuest(QUEST2)
-    dlg_2_1(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST1) and not HasQuest(Spawn, QUEST2) then
+    dlg2_1(NPC, Spawn)
     elseif HasQuest(Spawn, QUEST2) then
     quest2progress(NPC, Spawn)
     end
@@ -34,7 +35,18 @@ function hailed(NPC, Spawn)
     PlayFlavor(NPC, "", "The Grand Inquisitor speaks for Sir Lucan in all matters regarding the Dismal Rage.", "bow", 1689589577, 4560189, Spawn) 
 end
    end
-  
+
+function quest2progress(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
+if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 1 then
+AddConversationOption(conversation, "No, I'm still searching for them.  I'll return soon.")
+elseif HasQuest(Spawn, QUEST2) and  GetQuestStep(Spawn, QUEST2) == 2 then
+AddConversationOption(conversation, "I was.  Here they are.")
+end
+StartConversation(conversation, NPC, Spawn, "You've come back!  Excellent, were you able to get the slates?")
+end
 
 function quest1progress(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -43,10 +55,10 @@ PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3",
 if HasQuest(Spawn, QUEST1) and GetQuestStep(Spawn, QUEST1) < 6 then
  AddConversationOption(conversation, "I'm still working on it - these gnomes can be maddening!  I'll come back when I have it done.")
 elseif HasQuest(Spawn, QUEST1) and GetQuestStep(Spawn, QUEST1) == 6 then
- AddConversationOption(conversation, "I sure did.  It was even easier than I thought it would be!", "dlg7")   
+ AddConversationOption(conversation, "I sure did.  It was even easier than I thought it would be!", "dlg7") 
+end  
   StartConversation(conversation, NPC, Spawn, "Welcome back, "..GetName(Spawn).." ! Were you able to decipher the gnomish equations?")      
 end
-   end
 
 function dlg1(NPC, Spawn)
  FaceTarget(NPC, Spawn)
@@ -140,52 +152,43 @@ end
 function dlg2_4(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 conversation = CreateConversation()
-AddConversationOption(conversation, "Ah, you mean the roekillik?, "dlg2_5")
+AddConversationOption(conversation, "Ah, you mean the roekillik?", "dlg2_5")
 StartConversation(conversation, NPC, Spawn, "It does.  But I didn't mean Freeport itself, I meant the surface of Norrath entirely.")
 end
 
 function dlg2_5(NPC, Spawn)
 FaceTarget(NPC, Spawn)
-conversation = CreateConversation()
+local conversation = CreateConversation()
 AddConversationOption(conversation, "How does that affect us, though?  Aren't they still trapped?", "dlg2_6")
 StartConversation(conversation, NPC, Spawn, "Shh!!  Don't say that name too loudly!  But yes, you're right... the roekillik, and their Dark Agenda.")
 end
 
 function dlg2_6(NPC, Spawn)
 FaceTarget(NPC, Spawn)
-conversation = CreateConversation()
-AddConversationOption("I know what I've heard.  What more should I know?", "dlg2_7")
-StartConversation(conversation, NPC, Spawn, "What do you know about the roekillik, (..GetName(Spawn)..) ?")
+local conversation = CreateConversation()
+AddConversationOption(conversation, "I know what I've heard.  What more should I know?", "dlg2_7")
+StartConversation(conversation, NPC, Spawn, "What do you know about the roekillik?")
 end
 
 function dlg2_7(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 conversation = CreateConversation()
-AddConversationOption("So what can we do?", "offer2")
+AddConversationOption(conversation, "So what can we do?", "dlg2_8")
 StartConversation(conversation, NPC, Spawn, "The roekillik are no longer trapped within the Underfoot!  We've had reports of them showing up in the land of Odus, and we fear they might have found a way from there to Norrath.  If that's the case... then all of us are in danger.")
+end
+
+function dlg2_8(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST2)
+conversation = CreateConversation()
+AddConversationOption(conversation, "All right, I'll see what I can find.  Should I just meet you back here?", "offer2")
+StartConversation(conversation, NPC, Spawn, "It's up to us to see what we can find out, and verify if the roekillik really have come here.   I'll see what I can find out, but I'll need you to go back into Temple Street, and pick up some writing of ours that was left behind there... some of those slates are hundreds of years old, and might have information we need.")
 end
 
 function offer2(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 OfferQuest(NPC, Spawn, QUEST2)
-conversation = CreateConversation()
-AddConversationOption("All right, I'll see what I can find.  Should I just meet you back here?")
-StartConversation(conversation, NPC, Spawn, "It's up to us to see what we can find out, and verify if the roekillik really have come here.   I'll see what I can find out, but I'll need you to go back into Temple Street, and pick up some writing of ours that was left behind there... some of those slates are hundreds of years old, and might have information we need.")
 end
-
-function quest2progress(NPC, Spawn)
-FaceTarget(NPC, Spawn)
-conversation = CreateConversation()
-PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
-if GetQuestStep(Spawn, QUEST2) == 1 then
-AddConversationOption("No, I'm still searching for them.  I'll return soon.")
-elseif GetQuestStep(Spawn, QUEST2) == 2 then
-AddConversationOption("I was.  Here they are.", "dlg2_8")
-StartConversation(conversation, NPC, Spawn, "You've come back!  Excellent, were you able to get the slates?")
-end
-
-
-
 
 function offer1(NPC, Spawn)
 FaceTarget(NPC, Spawn)

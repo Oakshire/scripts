@@ -33,6 +33,7 @@ function Mob2Attack(NPC, Spawn)
   SendMessage(Spawn, "Rush snarls at " .. GetName(Spawn) .. " ", "red")
   SpawnSet(Rush, "attackable", 1)
   SpawnSet(Rush, "show_level", 1)
+  SpawnSet(Rush, "faction", 1)    -- Lemmeron added please check this is what you want
   Attack(Rush, Spawn)
 end
    end

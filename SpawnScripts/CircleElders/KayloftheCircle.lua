@@ -35,6 +35,11 @@ local OldBruiser = GetSpawnByLocationID(zone, OldBruiserID)
                 Say(NPC, "Old Bruiser Attack!")
                 SendPopUpMessage(Spawn, "Old Bruiser growls at " .. GetName(Spawn) .. " ", 255, 0, 0)
                 SendMessage(Spawn, "Old Bruiser growls at " .. GetName(Spawn) .. " ", "red")
+  SpawnSet(OldBruiser, "show_level", 1) -- Lemmeron added please check this is what you want
+  SpawnSet(OldBruiser, "faction", 1)    -- Lemmeron added please check this is what you want
+  SpawnSet(OldBruiser, "attackable", 1) -- Lemmeron added please check this is what you want
+
+  
 		Attack(OldBruiser, Spawn)
 end
    end

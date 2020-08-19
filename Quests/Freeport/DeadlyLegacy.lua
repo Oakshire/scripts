@@ -20,7 +20,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
         conversation = CreateConversation()
-        AddConversationOption("I know.  I'll return once I have the slates.  Farewell until then.")
+        AddConversationOption(conversation, "I know.  I'll return once I have the slates.  Farewell until then.")
         StartConversation(conversation, QuestGiver, Player, "Yes.  Remember, we have tried to warn the other races of the threat from the roekillik in the past.  There's nothing stopping them from wiping us all out if we do nothing.  As ignorant as the other races are, we cannot survive if they do not, and the only thing between the roekillik and all of Norrath is us.")
 end
 
@@ -35,7 +35,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "")
 
-	AddQuestStepChat(Quest, 2, "Return the slates to Sneel in Freeport", 1, "I should look for the writing slates the ratonga have handed down through our history.  There should be some in Temple Street, if I look there.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 2, "Return the slates to Sneel in Freeport", 1, "I should look for the writing slates the ratonga have handed down through our history.  There should be some in Temple Street, if I look there.", 11, 5590218)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
@@ -43,21 +43,21 @@ function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I was able to find the slates, and it seems that they've been damaged intentionally.  It looks like the Roekillik might be closer than we thought.")
 
-	AddQuestStepChat(Quest, 3, "Speak with Salla", 1, "I should speak with the frightened ratonga in Freeport.  I should be able to find them in the shadowy places of the city.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 3, "Speak with Salla", 1, "I should speak with the frightened ratonga in Freeport.  I should be able to find them in the shadowy places of the city.", 11, 5590445)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "")
 
-	AddQuestStepChat(Quest, 4, "Speak with Cles", 1, "I should speak with the frightened ratonga in Freeport.  I should be able to find them in the shadowy places of the city.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 4, "Speak with Cles", 1, "I should speak with the frightened ratonga in Freeport.  I should be able to find them in the shadowy places of the city.", 11, 5590268)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "")
 
-	AddQuestStepChat(Quest, 5, "Speak with Feepsin", 1, "I should speak with the frightened ratonga in Freeport.  I should be able to find them in the shadowy places of the city.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 5, "Speak with Feepsin", 1, "I should speak with the frightened ratonga in Freeport.  I should be able to find them in the shadowy places of the city.", 11, 5590095)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
@@ -65,7 +65,7 @@ function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I was able to speak to the fightened ratonga, and have found out some disturbing information.")
 
-	AddQuestStepChat(Quest, 6, "I should return to Sneel, and tell him what his associates had to say.", 1, "It seems that Sneel's friends believe the roekillik are here in Freeport.  I should report what they said to me to Sneel, over near the Academy of Arcane Science library.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 6, "I should return to Sneel, and tell him what his associates had to say.", 1, "It seems that Sneel's friends believe the roekillik are here in Freeport.  I should report what they said to me to Sneel, over near the Academy of Arcane Science library.", 11, 5590218)
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")
 end
 
@@ -79,7 +79,7 @@ end
 function Step7Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "")
 
-	AddQuestStepChat(Quest, 8, "Return to Sneel in Freeport, and report the roekillik followers", 1, "It seems that Sneel's friends believe the roekillik are here in Freeport.  I should report what they said to me to Sneel, over near the Academy of Arcane Science library.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 8, "Return to Sneel in Freeport, and report the roekillik followers", 1, "It seems that Sneel's friends believe the roekillik are here in Freeport.  I should report what they said to me to Sneel, over near the Academy of Arcane Science library.", 11, 5590218)
 	AddQuestStepCompleteAction(Quest, 8, "QuestComplete")
 end
 

@@ -1,9 +1,9 @@
 --[[
 	Script Name	: SpawnScripts/OutpostoftheOverlord/AniusOakwind.lua
 	Script Purpose	: Anius Oakwind 
-	Script Author	: Cynnar
-	Script Date	: 2018.10.14
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Author	: Lemmeron (Parser script inserted by Cynnar 2018.10.14)
+	Script Date	: 19.08.2020
+	Script Notes	: NPC Spawn called by Evil Grave after player kicks it (2780153) 
 --]]
 
 function spawn(NPC)
