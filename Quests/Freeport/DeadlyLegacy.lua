@@ -48,8 +48,8 @@ function Step2Complete(Quest, QuestGiver, Player)
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 3, "")
-
+	UpdateQuestStepDescription(Quest, 3, "I was able to speak to the fightened ratonga, and have found out some disturbing information.")
+ 
 	AddQuestStepChat(Quest, 4, "Speak with Cles", 1, "I should speak with the frightened ratonga in Freeport.  I should be able to find them in the shadowy places of the city.", 11, 5590268)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end

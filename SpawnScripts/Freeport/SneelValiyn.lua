@@ -28,13 +28,26 @@ function hailed(NPC, Spawn)
     quest1progress(NPC, Spawn)
     elseif HasCompletedQuest(Spawn, QUEST1) and not HasQuest(Spawn, QUEST2) then
     dlg2_1(NPC, Spawn)
-    elseif HasQuest(Spawn, QUEST2) then
+    elseif HasQuest(Spawn, QUEST2) and not GetQuestStep(Spawn, QUEST2) == 3 then
     quest2progress(NPC, Spawn)
+    elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 3 then
+    quest2progress1(NPC, Spawn)
     end
     elseif GetRace(Spawn) ~= 13 then
     PlayFlavor(NPC, "", "The Grand Inquisitor speaks for Sir Lucan in all matters regarding the Dismal Rage.", "bow", 1689589577, 4560189, Spawn) 
 end
    end
+
+function quest2progress1(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
+if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 3 then
+AddConversationOption(conversation, "I haven't finished speaking with them yet.  Give me a little while longer.")
+end
+StartConversation(conversation, NPC, Spawn, "Well?  I've been waiting for you.  What did they have to say?")
+   end
+
 
 function quest2progress(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -43,7 +56,7 @@ PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3",
 if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 1 then
 AddConversationOption(conversation, "No, I'm still searching for them.  I'll return soon.")
 elseif HasQuest(Spawn, QUEST2) and  GetQuestStep(Spawn, QUEST2) == 2 then
-AddConversationOption(conversation, "I was.  Here they are.")
+AddConversationOption(conversation, "I was.  Here they are.", "dlg2_9")
 end
 StartConversation(conversation, NPC, Spawn, "You've come back!  Excellent, were you able to get the slates?")
 end
@@ -184,6 +197,55 @@ conversation = CreateConversation()
 AddConversationOption(conversation, "All right, I'll see what I can find.  Should I just meet you back here?", "offer2")
 StartConversation(conversation, NPC, Spawn, "It's up to us to see what we can find out, and verify if the roekillik really have come here.   I'll see what I can find out, but I'll need you to go back into Temple Street, and pick up some writing of ours that was left behind there... some of those slates are hundreds of years old, and might have information we need.")
 end
+
+function dlg2_9(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "What is written on those?", "dlg3_0")
+StartConversation(conversation, NPC, Spawn, "Ah yes... give me a moment to look through these.")
+end
+
+function dlg3_0(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "What split are you talking about?", "dlg3_1")
+StartConversation(conversation, NPC, Spawn, "I'll need some time to really go through these, but I know they talk a bit about the split in the ratonga.")
+end
+
+
+function dlg3_1(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Ah yes... you mean the ratonga who call themselves, ''roekillik''? ", "dlg3_2")
+StartConversation(conversation, NPC, Spawn, "The split between those of us who fled the roekillik and came to the surface, and those who chose to stay and serve them.  It's those ratonga who chose to continue their enslavement who have been the main threat up until now.")
+end
+
+function dlg3_2(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "They aren't here in Freeport though, right?  We're safe within its walls, as we always have been.", "dlg3_3")
+StartConversation(conversation, NPC, Spawn, "That's right.  They called themselves ''roekillik'' as an homage to their masters, and have been doing their bidding here on the surface.  They act as spies and informants for the roekillik, and can easily infiltrate the surface cities, since they blend in with other ratonga.")
+end
+
+function dlg3_3(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I'll search around the city and see what I can find, then.  Maybe I should speak with some of the other ratonga and see if they have heard anything?", "dlg3_4")
+StartConversation(conversation, NPC, Spawn, "Are we?  I know they were doing some digging out in the Commonlands, but since they can blend in so easily, can we really know... hmm... I think we should find out.")
+end
+
+function dlg3_4(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, QUEST2, 2)
+PlayAnimation(NPC, 12028)
+AddConversationOption(conversation, "I will.  Farewell.")
+StartConversation(conversation, NPC, Spawn, "I have a few friends here that might be able to help.  Salla was once a scout for the Militia, and has good eyes and ears.  Feepsin works with the Coalition of Tradesfolke, using the sudden boom of crafting work to earn a pretty gold coin.  Cles works with the Academy, and fills his days with research.  Speak with them, and see what they might know.")
+end
+
+
+
+
+
 
 function offer2(NPC, Spawn)
 FaceTarget(NPC, Spawn)
