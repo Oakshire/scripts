@@ -52,6 +52,8 @@ end
 function death(NPC, Spawn)
         local Vithb = GetSpawn(NPC, VithID)
 	local Petb = GetSpawn(Spawn, PetID)
-        KillSpawn(Petb, Spawn)                         
+        if Petb ~= nil then
+            KillSpawn(Petb, Spawn)  
+        end                       
 end
 

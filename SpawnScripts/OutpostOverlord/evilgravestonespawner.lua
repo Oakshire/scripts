@@ -3,14 +3,14 @@
     Script Author  : Lemmeron
     Script Date    : 2020.08.19 05:08:41
     Script Purpose : To allow  Anius Oakwind (2780031) to spawn when Grave is kicked. 
-                   : To control respawn of grave for 5 minutes after Anius is killed.
+                   : To control NPC summon of grave to reset 5 minutes after Anius is killed.
 --]]
 
-local zoneID = 278 --outpost of the overlord
+local ZoneID = 278 --outpost of the overlord
 local GraveID = 2780153
 local GravelocID = 485806
 local AniusID = 2780031
-local AniuslocID =398907
+local AniuslocID = 398907
 
 function spawn(NPC)
 end
@@ -18,38 +18,38 @@ end
 function respawn(NPC)
 	spawn(NPC)
 end
-
 			
 function casted_on(NPC, Spawn, Message)
-	if Message == "destroy totem" then --kick gravestone
+	local zone = GetZone(NPC)
+	if Message == "kick gravestone" then
 		SpawnSet(NPC, "show_command_icon", "0")
-		SpawnSet(NPC, "display_hand_icon", "0")
-		-- AddTimer(NPC, 1000, "Vanish")		
-		local Anius = GetSpawn(NPC, AniusID)
+                AddTimer(NPC, 2000, "Vanish", 1, Spawn)
+		local Anius = SpawnByLocationID(zone, AniuslocID)
 		if Anius ~= nil then
 			if IsAlive(Anius) then
-				AddTimer(Anius, 2000, "AskWhy", 1, Spawn)
-Say(NPC, "Alive", Spawn)
+				AddTimer(Anius, 5000, "AskWhy", 1, Spawn)
 			else 
-				SpawnByLocationID(AniuslocID)
-				AddTimer(Anius, 2000, "AskWhy", 1, Spawn)
-Say(NPC, "wasnt alive", Spawn)
+				SpawnByLocationID(ZoneID, AniuslocID)
+				AddTimer(Anius, 5000, "AskWhy", 1, Spawn)
 			end
 		else 
 			Say(NPC, "Anius not found")
 		end 
-	else Say(NPC, "kick message not working")
+	else Say(NPC, "kick gravestone message not working")
 	end
 end
 			
 			
 	
-function Vanish(NPC)
-	Despawn(NPC)
+function Vanish(NPC, Spawn)
+        SpawnSet(NPC, "visual_state", "0")
+        SpawnSet(NPC, "targetable", "0")
+        SpawnSet(NPC, "show_name", "0")
 end
 
-function Spawntimer(NPC, Spawn)
-	respawn(NPC)
-	local AniusName = GetName(Spawn)
-	Say(NPC, "Finally"..AniusName.."is at rest again")
+function Respawntimer(NPC)
+        SpawnSet(NPC, "show_command_icon", "1")
+        SpawnSet(NPC, "visual_state", "1")
+        SpawnSet(NPC, "targetable", "0")
+        SpawnSet(NPC, "show_name", "0")
 end

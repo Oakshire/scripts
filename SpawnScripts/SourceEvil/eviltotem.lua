@@ -8,7 +8,6 @@
 
 local VithID = 2540005
 local PoisonID = 2540026
-
 local Totem1 = 475343
 local Totem2 = 475345
 local Totem3 = 1584964
