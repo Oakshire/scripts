@@ -1,8 +1,8 @@
 --[[
 	Script Name	: SpawnScripts/OutpostOverlord/JonasRollings.lua
 	Script Purpose	: Jonas Rollings <Guard>
-	Script Author	: John Adams
-	Script Date	: 2008.09.23
+	Script Author	: John Adams - broken Emote loop fixed Lemmeron
+	Script Date	: 2008.09.23 - 22.8.2020
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
@@ -21,9 +21,15 @@ end
 
 
 function spawn(NPC)
-         EmoteLoop (NPC)
+         EmoteLoop(NPC)
 end
 
 function respawn(NPC)
          spawn(NPC)
+end
+
+function EmoteLoop(NPC)
+        Say(NPC, "Your Sacrifice will be remembered! ADD PROXIMITY FUNCTION TO STOP SPAM")
+	PlayAnimation(NPC, 10844)
+	AddTimer(NPC, 20000, "EmoteLoop")
 end

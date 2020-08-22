@@ -7,22 +7,26 @@
 --]]
 
 
+
 blackguard3 = 133769612
 blackguard4 = 133769613
 
 function spawn(NPC)
-
+SetTempVariable(NPC, "HAILED1", "true")  
 end
 
 function hailed(NPC, Spawn)
+    if GetTempVariable(NPC, "HAILED1")  == "true" then
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
-
     PlayFlavor(NPC, "lord_ree/wailingcaves/lord_ree/lord_ree000.mp3", "", "", 376398214, 2276802800, Spawn)
     AddConversationOption(conversation, "Your threats don't scare me!", "Phase1")
     AddConversationOption(conversation, "Yeah, good idea.")
     StartConversation(conversation, NPC, Spawn, "You are puny and weak!  Leave now or feel my wrath!")
+    SetTempVariable(NPC, "HAILED1", "false")
 end
+   end
+
 
 function respawn(NPC)
          spawn(NPC)

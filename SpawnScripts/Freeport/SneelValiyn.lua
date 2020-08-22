@@ -26,17 +26,31 @@ function hailed(NPC, Spawn)
     StartConversation(conversation, NPC, Spawn, "Oh, why, hello!  I'm sorry, you startled me a bit.")
     elseif HasQuest(Spawn, QUEST1)  then
     quest1progress(NPC, Spawn)
-    elseif HasCompletedQuest(Spawn, QUEST1) and not HasQuest(Spawn, QUEST2) then
+    elseif HasCompletedQuest(Spawn, QUEST1) and not HasCompletedQuest(Spawn, QUEST2) then
     dlg2_1(NPC, Spawn)
     elseif HasQuest(Spawn, QUEST2) and not GetQuestStep(Spawn, QUEST2) == 3 then
     quest2progress(NPC, Spawn)
-    elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 3 then
+    elseif GetQuestStep(Spawn, QUEST2) == 3 or GetQuestStep(Spawn, QUEST2) == 6 then
     quest2progress1(NPC, Spawn)
+    elseif GetQuestStep(Spawn, QUEST2) == 7 or GetQuestStep(Spawn, QUEST2) == 8 then
+    quest2progress2(NPC, Spawn)
     end
     elseif GetRace(Spawn) ~= 13 then
     PlayFlavor(NPC, "", "The Grand Inquisitor speaks for Sir Lucan in all matters regarding the Dismal Rage.", "bow", 1689589577, 4560189, Spawn) 
 end
    end
+
+function quest2progress2(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
+if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 7 then
+AddConversationOption(conversation, "I haven't found any yet, but I haven't searched the whole city.  Give me some more time.")
+elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 8 then
+AddConversationOption(conversation, "No, you were right.  The false roekillik are indeed within Freeport.  But what does that mean?", "dlg4_0")
+end
+StartConversation(conversation, NPC, Spawn, "I'm been waiting for you to come back.  Please tell me that the impostor roekillik aren't within Freeport's walls.")
+end
 
 function quest2progress1(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -44,9 +58,12 @@ local conversation = CreateConversation()
 PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
 if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 3 then
 AddConversationOption(conversation, "I haven't finished speaking with them yet.  Give me a little while longer.")
+elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 6 then
+AddConversationOption(conversation, "A few things, none of which was very comforting.", "dlg3_5")
 end
 StartConversation(conversation, NPC, Spawn, "Well?  I've been waiting for you.  What did they have to say?")
-   end
+end
+
 
 
 function quest2progress(NPC, Spawn)
@@ -238,14 +255,97 @@ function dlg3_4(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 SetStepComplete(Spawn, QUEST2, 2)
 PlayAnimation(NPC, 12028)
+conversation = CreateConversation()
 AddConversationOption(conversation, "I will.  Farewell.")
 StartConversation(conversation, NPC, Spawn, "I have a few friends here that might be able to help.  Salla was once a scout for the Militia, and has good eyes and ears.  Feepsin works with the Coalition of Tradesfolke, using the sudden boom of crafting work to earn a pretty gold coin.  Cles works with the Academy, and fills his days with research.  Speak with them, and see what they might know.")
 end
 
+function dlg3_5(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Cles and Salla were completely convinced that the followers of the roekillik are here in Freeport.  They seemed... I don't know... jumpy and frightened.", "dlg3_6")
+StartConversation(conversation, NPC, Spawn, "I was afraid of that.  What did they tell you?")
+end
+
+function dlg3_6(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "It appeared that he believed the roekillik were recruiting somehow.  He mentioned that associates of his have disappeared, only to reappear later, seemingly out of their minds.", "dlg3_7")
+StartConversation(conversation, NPC, Spawn, "What about Feepsin?  What did he have to say?")
+end
+
+function dlg3_7(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Why don't I look for the roekillik?  All of the evidence points to them in the shadows of Freeport.  I can begin searching the city and seeing what I can find.", "dlg3_8")
+StartConversation(conversation, NPC, Spawn, "This is troubling - if the roekillik are here, and ''recruiting'', as it were, the implications could be dire.  We need to know for sure if this is possible, and if they are here.")
+end
+
+function dlg3_8(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, QUEST2, 6)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I'll watch out.  Farewell for now.", "dlg3_9")
+StartConversation(conversation, NPC, Spawn, "All right, but be careful.  If the followers of the roekillik realize they've been spotted, they aren't going to hesitate to attack.  They will not answer to the laws of Freeport, only to their roekillik masters.")
+end
+
+function dlg3_9(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayAnimation(NPC, 10745)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I haven't found any yet, but I haven't searched the whole city.  Give me some more time.")
+StartConversation(conversation, NPC, Spawn, "I'm been waiting for you to come back.  Please tell me that the impostor roekillik aren't within Freeport's walls.")
+end
 
 
+function dlg4_0(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I had that sense as well.  These false roekillik weren't just scouting.", "dlg4_1")
+StartConversation(conversation, NPC, Spawn, "I don't think it means anything good.  I fear... I fear there is much more to this.")
+end
 
 
+function dlg4_1(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayAnimation(NPC, 12030)
+conversation = CreateConversation()
+AddConversationOption(conversation, "What?  What are you thinking?" , "dlg4_2")
+StartConversation(conversation, NPC, Spawn, "Actually... I think... oh no...")
+end
+
+function dlg4_2(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayAnimation(NPC, 12028)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Certainly.  What is it that you need?", "dlg4_3")
+StartConversation(conversation, NPC, Spawn, "I just made a connection, but I need to do some research.  Can you do me a favor?")
+end
+
+function dlg4_3(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayAnimation(NPC, 11882)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I will.  What am I looking for?", "dlg4_5")
+StartConversation(conversation, NPC, Spawn, "I've heard of a few people falling ill around the city.  This is nothing too alarming - it happens all of the time.  A few are gravely sick, and I want to know more about their symptoms.  Can you look into this?")
+end
+
+function dlg4_5(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, QUEST2, 8)
+PlayAnimation(NPC, 10745)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I see.  All right, I'll look for them and let you know what I find out.", "dlg4_6")
+StartConversation(conversation, NPC, Spawn, "There's three I know about.  One is in one of the taverns, right where he fell when the sickness took hold.  There's another that apparently tried to seek help at the Temple of War, but their magic did not help.  And I've heard of one who simply fell in the streets near the docks, and was left there.")
+end
+
+function dlg4_6(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1032.mp3", "", "bow", 0, 0, Spawn)
+AddConversationOption(conversation, "I will.  What am I looking for?")
+StartConversation(conversation, NPC, Spawn, "I've heard of a few people falling ill around the city.  This is nothing too alarming - it happens all of the time.  A few are gravely sick, and I want to know more about their symptoms.  Can you look into this?")
+end
 
 function offer2(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -256,7 +356,11 @@ function offer1(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 OfferQuest(NPC, Spawn, QUEST1)
 end
- 
+
+
+
+
+
 function respawn(NPC)
 
 end

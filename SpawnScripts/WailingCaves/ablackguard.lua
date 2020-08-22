@@ -19,7 +19,7 @@ function respawn(NPC)
 end
 
 function group_dead(NPC, Spawn)
-local widget = GetSpawn(Spawn, 2580104)
+local widget = GetSpawnByLocationID(Spawn, 439914)
 UseWidget(widget)
 local zone = GetZone(Spawn)
 local WorgMaster = GetSpawnByLocationID(zone, 404870)

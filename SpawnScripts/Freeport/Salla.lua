@@ -19,7 +19,10 @@ function hailed(NPC, Spawn)
     local  conversation = CreateConversation()
     AddConversationOption(conversation, "Wait, one of who?", "dlg01")
     StartConversation(conversation, NPC, Spawn, "Who are you??  Are you... are you one of them?")
+   else
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1031.mp3", "", "", 0, 0, Spawn)
 end
+   end
 
 function dlg01(NPC, Spawn)
  FaceTarget(NPC, Spawn)
