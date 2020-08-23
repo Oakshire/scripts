@@ -47,7 +47,7 @@ function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found a few of the sickened citizens, and the news I have for Sneel does not appear to be good.")
 
-	AddQuestStepChat(Quest, 4, "Return to Sneel in Freeport with the news.", 1, "I should return to Sneel, and inform him of what I found.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 4, "Return to Sneel in Freeport with the news.", 1, "I should return to Sneel, and inform him of what I found.", 11, 5590218)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
@@ -61,21 +61,21 @@ end
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "")
 
-	AddQuestStepLocation(Quest, 6, "I should investigate the door that the ratonga were standing close to.", 1, "I should return to Sneel, and inform him of what I found.", 11, --[[ ID's --]])
+	AddQuestStepLocation(Quest, 6, "I should investigate the door that the ratonga were standing close to.", 1, "I should return to Sneel, and inform him of what I found.", 11, 123) -- need ID
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")
 end
 
 function Step6Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 6, "")
 
-	AddQuestStepKill(Quest, 7, "Defeat the roekillik", 1, 100, "I should return to Sneel, and inform him of what I found.", 2483, --[[ ID's --]])
+	AddQuestStepKill(Quest, 7, "Defeat the roekillik", 1, 100, "I should return to Sneel, and inform him of what I found.", 2483, 123) -- need ID
 	AddQuestStepCompleteAction(Quest, 7, "Step7Complete")
 end
 
 function Step7Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "")
 
-	AddQuestStepChat(Quest, 8, "Return to Sneel with the news of your discovery", 1, "I should return to Sneel, and inform him of what I found.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 8, "Return to Sneel with the news of your discovery", 1, "I should return to Sneel, and inform him of what I found.", 11, 5590218)
 	AddQuestStepCompleteAction(Quest, 8, "QuestComplete")
 end
 

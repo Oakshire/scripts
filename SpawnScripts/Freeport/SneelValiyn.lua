@@ -8,10 +8,12 @@
 
 QUEST1 = 574
 QUEST2 = 575
+QUEST3 = 576
 
 function spawn(NPC)
  ProvidesQuest(NPC, QUEST1)
  ProvidesQuest(NPC, QUEST2)
+ ProvidesQuest(NPC, QUEST3)
 end
  
 
@@ -34,15 +36,54 @@ function hailed(NPC, Spawn)
     quest2progress1(NPC, Spawn)
     elseif GetQuestStep(Spawn, QUEST2) == 7 or GetQuestStep(Spawn, QUEST2) == 8 then
     quest2progress2(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) then
+    dlg4_6(NPC, Spawn)
+    elseif HasQuest(Spawn, QUEST3) and GetQuestStep(Spawn, QUEST2) < 4 then
+    quest3progress(NPC, Spawn)
+    end
+    if HasQuest(Spawn, QUEST3) and GetQuestStep(Spawn, QUEST3) >= 5 then
+    quest3progress1(NPC, Spawn)
     end
     elseif GetRace(Spawn) ~= 13 then
     PlayFlavor(NPC, "", "The Grand Inquisitor speaks for Sir Lucan in all matters regarding the Dismal Rage.", "bow", 1689589577, 4560189, Spawn) 
 end
    end
+      
+
+
+-- QUEST IN PROGRESS DIALOGUES
+
+function quest3progress1(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
+if HasQuest(Spawn, QUEST3) and GetQuestStep(Spawn, QUEST3)  < 8 then
+AddConversationOption(conversation, "I'm still searching, but I will let you know soon.")
+elseif GetQuestStep(Spawn, QUEST3) == 8 then
+AddConversationOption(conversation, "It isn't good, Sneel.  The true roekillik, the masters of the Dark Agenda, are here in Freeport.  Or they were, until I destroyed them.")
+end
+StartConversation(conversation, NPC, Spawn, "Oh, "..GetName(Spawn).."  You're here!  What did you find out?")
+end
+  
+ 
+
+
+function quest3progress(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
+if HasQuest(Spawn, QUEST3) and GetQuestStep(Spawn, QUEST3) < 4 then
+AddConversationOption(conversation, "No, I am still looking for them all.  I'll come back when I've found them.")
+elseif HasQuest(Spawn, QUEST3) and GetQuestStep(Spawn, QUEST3) == 4 then
+AddConversationOption(conversation, "Yes, I believe I found them.  I couldn't tell you what they were sick with, but they all had the same symptoms.  Shallow breath, burning with fever, non-responsive to touch, and a green mist around them.  They looked like death itself had already taken them.", "dlg4_8")
+end
+StartConversation(conversation, NPC, Spawn, "Hello, "..GetName(Spawn)..". I have been looking forward to you coming back.  Did you find the sickened citizens?")
+end
+
 
 function quest2progress2(NPC, Spawn)
 FaceTarget(NPC, Spawn)
-local conversation = CreateConversation()
+conversation = CreateConversation()
 PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
 if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 7 then
 AddConversationOption(conversation, "I haven't found any yet, but I haven't searched the whole city.  Give me some more time.")
@@ -54,7 +95,7 @@ end
 
 function quest2progress1(NPC, Spawn)
 FaceTarget(NPC, Spawn)
-local conversation = CreateConversation()
+conversation = CreateConversation()
 PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
 if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 3 then
 AddConversationOption(conversation, "I haven't finished speaking with them yet.  Give me a little while longer.")
@@ -68,7 +109,7 @@ end
 
 function quest2progress(NPC, Spawn)
 FaceTarget(NPC, Spawn)
-local conversation = CreateConversation()
+conversation = CreateConversation()
 PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3", "", "bow", 0, 0, Spawn)
 if HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 1 then
 AddConversationOption(conversation, "No, I'm still searching for them.  I'll return soon.")
@@ -338,14 +379,55 @@ conversation = CreateConversation()
 AddConversationOption(conversation, "I see.  All right, I'll look for them and let you know what I find out.", "dlg4_6")
 StartConversation(conversation, NPC, Spawn, "There's three I know about.  One is in one of the taverns, right where he fell when the sickness took hold.  There's another that apparently tried to seek help at the Temple of War, but their magic did not help.  And I've heard of one who simply fell in the streets near the docks, and was left there.")
 end
+-- QUEST 3 PART
 
 function dlg4_6(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 conversation = CreateConversation()
 PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1032.mp3", "", "bow", 0, 0, Spawn)
-AddConversationOption(conversation, "I will.  What am I looking for?")
+AddConversationOption(conversation, "I will.  What am I looking for?", "dlg4_7")
 StartConversation(conversation, NPC, Spawn, "I've heard of a few people falling ill around the city.  This is nothing too alarming - it happens all of the time.  A few are gravely sick, and I want to know more about their symptoms.  Can you look into this?")
 end
+
+function dlg4_7(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I see.  All right, I'll look for them and let you know what I find out." , "offer3")
+StartConversation(conversation, NPC, Spawn, "There's three I know about.  One is in one of the taverns, right where he fell when the sickness took hold.  There's another that apparently tried to seek help at the Temple of War, but their magic did not help.  And I've heard of one who simply fell in the streets near the docks, and was left there.")
+end
+
+function dlg4_8(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Of course!  It really couldn't be missed.", "dlg4_9")
+StartConversation(conversation, NPC, Spawn, "A green haze?  Are you certain?")
+end
+
+function dlg4_9(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "What do you mean?  You don't suppose this has something to do with the Dark Agenda, do you?", "dlg5_0")
+StartConversation(conversation, NPC, Spawn, "Oh no... I don't want to imagine it, but too many things are beginning to add up in a frightening way.")
+end
+
+function dlg5_0(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Could the followers of the roekillik really unleash such a thing?  I thought the roekillik would do that themselves.", "dlg5_1")
+StartConversation(conversation, NPC, Spawn, "I'm afraid it might!  Those sickened people were only a sample - the sickness of the Dark Agenda would wipe out all life on Norrath.  We'd all suffer and die, while the roekillik laughed and took Norrath as their own.  We have to know if this is what is happening!")
+end
+
+function dlg5_1(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, QUEST3, 4)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I will.  I'll come back once I know what's happening.")
+StartConversation(conversation, NPC, Spawn, "I don't know.  We need to find out, though.  The followers must be hiding out here someplace.  Find them!  See what they are hiding!  I need to warn others of the danger!")
+end
+
+
+
+
 
 function offer2(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -357,6 +439,10 @@ FaceTarget(NPC, Spawn)
 OfferQuest(NPC, Spawn, QUEST1)
 end
 
+function offer3(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST3)
+end
 
 
 

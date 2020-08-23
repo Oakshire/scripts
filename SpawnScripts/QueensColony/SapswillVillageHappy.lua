@@ -9,7 +9,7 @@
 local ADiplomaticMission = 166
 
 function spawn(NPC)
-	SpawnSet(NPC, "visual_state", 11150)
+	SpawnSet(NPC, "visual_state", 13054)
 end
 
 function respawn(NPC)
