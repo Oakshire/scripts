@@ -3,7 +3,7 @@
 	Script Purpose	:	Handles events in Antonica
 	Script Author	:	Jabantiz/neatz09
 	Script Date		:	6/16/2016/ 2/23/19
-	Script Notes	:	<special-instructions>
+	Script Notes	:	
 --]]
 
 function init_zone_script(zone)

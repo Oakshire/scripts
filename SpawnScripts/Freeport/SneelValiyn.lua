@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/Freeport/SneelValiyn.lua
     Script Author  : Premierio015
     Script Date    : 2020.07.15 06:07:50
-    Script Purpose : 
+    Script Purpose : Dialogues for Ratonga Freeport Racial Questlines
                    : 
 --]]
 
@@ -43,6 +43,8 @@ function hailed(NPC, Spawn)
     end
     if HasQuest(Spawn, QUEST3) and GetQuestStep(Spawn, QUEST3) >= 5 then
     quest3progress1(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST3) then
+    PlayFlavor(NPC, "", "Those treacherous Thexians paid dearly for what they did, as was just!", "shakefish", 1689589577, 4560189, Spawn)
     end
     elseif GetRace(Spawn) ~= 13 then
     PlayFlavor(NPC, "", "The Grand Inquisitor speaks for Sir Lucan in all matters regarding the Dismal Rage.", "bow", 1689589577, 4560189, Spawn) 
@@ -60,13 +62,11 @@ PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3",
 if HasQuest(Spawn, QUEST3) and GetQuestStep(Spawn, QUEST3)  < 8 then
 AddConversationOption(conversation, "I'm still searching, but I will let you know soon.")
 elseif GetQuestStep(Spawn, QUEST3) == 8 then
-AddConversationOption(conversation, "It isn't good, Sneel.  The true roekillik, the masters of the Dark Agenda, are here in Freeport.  Or they were, until I destroyed them.")
+AddConversationOption(conversation, "It isn't good, Sneel.  The true roekillik, the masters of the Dark Agenda, are here in Freeport.  Or they were, until I destroyed them.", "5_2")
 end
 StartConversation(conversation, NPC, Spawn, "Oh, "..GetName(Spawn).."  You're here!  What did you find out?")
 end
   
- 
-
 
 function quest3progress(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -130,6 +130,8 @@ elseif HasQuest(Spawn, QUEST1) and GetQuestStep(Spawn, QUEST1) == 6 then
 end  
   StartConversation(conversation, NPC, Spawn, "Welcome back, "..GetName(Spawn).." ! Were you able to decipher the gnomish equations?")      
 end
+
+-- QUEST 1 PART
 
 function dlg1(NPC, Spawn)
  FaceTarget(NPC, Spawn)
@@ -198,6 +200,8 @@ conversation = CreateConversation()
 AddConversationOption(conversation, "What is it you need me for?", "dlg2_1")
 StartConversation(conversation, NPC, Spawn, "Excellent work.  However, the next foe is not going to be so easy.  I think, though, with your aptitude, maybe you can help us.")
 end
+
+-- QUEST 2 PART
 
 function dlg2_1(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -425,10 +429,38 @@ AddConversationOption(conversation, "I will.  I'll come back once I know what's 
 StartConversation(conversation, NPC, Spawn, "I don't know.  We need to find out, though.  The followers must be hiding out here someplace.  Find them!  See what they are hiding!  I need to warn others of the danger!")
 end
 
+function dlg5_2(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "There was no mistaking it.  I fought them myself.  The roekillik are here, on the surface of Norrath.", "dlg5_3")
+StartConversation(conversation, NPC, Spawn, "This... this is impossible!!  They've come to Norrath?  Are you certain?  It was the roekillik themselves??")
+end
+
+function dlg5_3(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Who will we tell?  We've tried to explain this to the other races of this world several times, and it always goes unheard!", "dlg5_4")
+StartConversation(conversation, NPC, Spawn, "If what you say is true, then we must begin preparations.  I have no doubt this incursion was little more than a test - but I have a feeling it was a successful test.  Cucumbo, we need to warn the city that the roekillik are here.")
+end
+
+function dlg5_4(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Indeed, we must watch after ourselves.", "complete")
+StartConversation(conversation, NPC, Spawn, "Well, this is part of the reason some of us left for Qeynos.  If nothing else, we ratonga will do all we can to survive if the roekillik do finally emerge from the Underfoot, and begin the Dark Agenda.  If the races of Norrath do not heed our warning before then, they will find themselves on their own.")
+end
+
+function complete(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, QUEST3, 8)
+conversation = CreateConversation()
+AddConversationOption(conversation, "My thoughts exactly - the fall of the other races will be their own doing in that case.  Watch your back, as I will watch mine.  Farewell.")
+StartConversation(conversation, NPC, Spawn, "I will begin speaking to the other ratonga, and spreading the word.  I'll see about getting someone to speak to Sir Lucan as well, but I suspect the outcome will be largely the same.  In spite of this, I do appreciate your help - at least we can do what we must to save ourselves if the time comes to it.")
+end
 
 
 
-
+-- OFFERING THE QUESTS
 function offer2(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 OfferQuest(NPC, Spawn, QUEST2)

@@ -22,6 +22,8 @@ function casted_on(NPC, Spawn, SpellName)
 	if HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) == 3  then
 		if SpellName == 'Decipher Equation' then
                         SetStepComplete(Spawn, QUEST, 3)
+                        SpawnSet(NPC, "display_hand_icon", "0")
+                        SpawnSet(NPC, "show_command_icon", "0")
 		end
 	end
 end

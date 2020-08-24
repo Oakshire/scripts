@@ -20,10 +20,7 @@ end
 function respawn(NPC)
          spawn(NPC)
 end 
-
-
-
-
+ 
 function SpawnAccess(NPC, Spawn)
                 if HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) == 5 then
                 AddSpawnAccess(NPC, Spawn)
@@ -34,4 +31,5 @@ function SpawnAccess(NPC, Spawn)
                 RemoveSpawnAccess(NPC, Spawn)
                 end
 end
+
        

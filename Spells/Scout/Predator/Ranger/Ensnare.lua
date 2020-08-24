@@ -6,7 +6,7 @@
                    : 
 --]]
 
-function cast(Caster, Target, Mit, Snare)
+function cast(Caster, Target, Mit, BonusAmt, Snare)
     -- Decreases Mitigation of target vs elemental damage by 197
     AddSpellBonus(Target, 201, BonusAmt)
 
@@ -15,7 +15,7 @@ function cast(Caster, Target, Mit, Snare)
     --     5% chance to dispel when target receives hostile action
     --     5% chance to dispel when target takes damage
     local slow = 100.0 - snare
-    SetSpeedMultiplier(Target, slow)
+    SetSpeedMultiplier(Target, Snare)
 end
 
 function remove(Caster, Target)
