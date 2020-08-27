@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	Quests/SerpentSewers/CrazyIsAsCrazyDoes.lua)
+	Script Name		:	Quests/SerpentSewers/CrazyIsAsCrazyDoes.lua
 	Script Purpose	:	Handles the quest, "Crazy is as Crazy Does"
 	Script Author	:	premierio015
 	Script Date		:	16.06.2020

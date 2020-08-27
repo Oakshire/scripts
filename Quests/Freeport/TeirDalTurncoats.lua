@@ -40,7 +40,7 @@ function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I helped reduce the number of remaining Thexians in Longshadow Alley and obtained some Arasai torture instruments for Dyymona K'Vexx.")
 
-	AddQuestStepChat(Quest, 3, "Return to Dyymona K'Vexx", 1, "I should return to Dyymona K'Vexx, at the Academy of Arcane Science in the city of Freeport.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 3, "Return to Dyymona K'Vexx", 1, "I should return to Dyymona K'Vexx, at the Academy of Arcane Science in the city of Freeport.", 11, 5590238)
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end
 
