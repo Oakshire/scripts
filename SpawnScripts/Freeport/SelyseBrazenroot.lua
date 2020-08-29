@@ -21,8 +21,10 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "I'm not following.", "dlg01")
     AddConversationOption(conversation, "Yes, horrible.  Goodbye!")
     StartConversation(conversation, NPC, Spawn, "I tell ya, I'm glad to be out of that damned slum, but to see our clan thrown out like week-old wolf meat?  Terrible!")
-    elseif HasQuest(Spawn, QUEST1) and not HasCompletedQuest(Spawn, QUEST1) then
+    elseif HasQuest(Spawn, QUEST1) and not GetQuestStep(Spawn, QUEST1, 3) then
     PlayFlavor(NPC, "", "Honor your heritage by retrieving the Halasian heirlooms and killing the greedy guards in Scale Yard.", "", 1689589577, 4560189, Spawn)
+    elseif HasQuest(Spawn, QUEST1) and GetQuestStep(Spawn, QUEST1, 3) then
+    dlg06(NPC, Spawn)
     end
     else
     PlayFlavor(NPC, "", "Glory to The Overlord.", "", 1689589577, 4560189, Spawn)
@@ -84,6 +86,33 @@ function dlg05(NPC, Spawn)
         AddConversationOption(conversation, "I'm not going to mess with those guards.")
 	StartConversation(conversation, NPC, Spawn, "I agree!  And show them how a Halasian fights, first hand!  But they know me too well, considering my position here.  I could never get away with it.  You, on the other hand, can!  Go in there, get us back our Halasian heirlooms, and kill the greedy guards that are hoarding them.")
 end
+
+function dlg06(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_009.mp3", "", "", 3247274285, 200045010, Spawn)
+AddConversationOption(conversation, "It was invigorating!", "complete")
+AddConversationOption(conversation, "I wouldn't call it a mauling.", "dlg07")
+StartConversation(conversation, NPC, Spawn, "You've honored your heritage by retrieving the Halasian heirlooms from Scale Yard, "..GetName(Spawn).."  How did it feel mauling those greedy guards?")
+end
+
+function dlg07(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_010.mp3", "", "", 2533066692, 351799116, Spawn)
+AddConversationOption(conversation, "Speaking of Halas, why don't you move there?")
+StartConversation(conversation, NPC, Spawn, "You can call it what ya like.  This Halasian likes that they're dead!")
+end
+
+
+
+
+function complete(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, QUEST1, 3)
+end
+
+
 
 function offer(NPC, Spawn)
         FaceTarget(NPC, Spawn)
