@@ -7,6 +7,7 @@
 --]]
 
 function spawn(NPC)
+  SetPlayerProximityFunction(NPC, 20, "InRange", "LeaveRange")
   EmoteLoop (NPC)
 end
 
@@ -30,3 +31,31 @@ function EmoteLoop(NPC)
                 AddTimer(NPC, timer, "EmoteLoop")
         end
 end
+
+
+function InRange(NPC, Spawn)
+PlayersLevel = GetLevel(Spawn)
+SpawnSet(NPC, "level", PlayersLevel)
+end
+
+function LeaveRange(NPC, Spawn)
+
+end
+
+function attacked(NPC, Spawn)
+local choice = math.random(1, 4)
+if choice == 1 then
+PlayFlavor(NPC, "", "Welcome to a lifetime of slavery.", "", 1689589577, 4560189)
+elseif choice == 2 then
+PlayFlavor(NPC, "", "The iksar fear nothing!", "", 1689589577, 4560189)
+elseif choice == 3 then
+PlayFlavor(NPC, "", "You made a very serious mistake, my subject.", "", 1689589577, 4560189)
+else
+PlayFlavor(NPC, "", "Now, prepare to face an eternity of fear.", "", 1689589577, 4560189)
+end
+   end
+
+function death(NPC, Spawn)
+PlayFlavor(NPC, "", "Fall back!  We'll meet again.", "", 1689589577, 4560189)
+end
+  

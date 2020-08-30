@@ -1,24 +1,18 @@
 --[[
     Script Name    : Spells/Priest/Druid/CircleofGrowth.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 07:08:20
+    Script Author  : neatz09
+    Script Date    : 2020.08.29 07:08:24
     Script Purpose : 
                    : 
 --]]
 
+-- Opens a portal that transports adventurers to any Druid Ring in Norrath.
+
 function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
-
--- Info from spell_display_effects (remove from script when done)
-
-end
-
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
-end
-
-function remove(Caster, Target)
-    -- code to remove the spell
+	local zone = GetZone(Caster)
+	local X = GetX(Caster)
+	local Y = GetY(Caster)
+	local Z = GetZ(Caster)
+		SpawnMob(zone, 121087, false, X, Y, Z)
 end
 

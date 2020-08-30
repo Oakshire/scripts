@@ -7,6 +7,7 @@
 --]]
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 50, "InRange", "InRange")
 SpawnSet(NPC, "visual_state", 228)
 end
 
@@ -18,3 +19,7 @@ function respawn(NPC)
          spawn(NPC)
 end
 
+function InRange(NPC, Spawn)
+PlayersLevel = GetLevel(Spawn)
+SpawnSet(NPC, "level", PlayersLevel)
+end

@@ -6,7 +6,7 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
+
 -- Decreases Threat to targets in Area of Effect by 1,850 
 -- Mesmerizes targets in Area of Effect
 --     If Target is not Epic
@@ -16,7 +16,7 @@
 function cast(Caster, Target, Hate)
     AddHate(Caster, Target, Hate, 1)
     AddControlEffect(Target, 1)
-    Say(Caster, "leve resistability not implemented")
+    Say(Caster, "level resistability not implemented. nor if target is not epic.")
 end
 
 function remove(Caster, Target)

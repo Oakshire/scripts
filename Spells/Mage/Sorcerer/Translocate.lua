@@ -6,5 +6,12 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Opens a portal that transports adventurers to any Spire in Norrath.
+function cast(Caster, Target)
+	local zone = GetZone(Caster)
+	local X = GetX(Caster)
+	local Y = GetY(Caster)
+	local Z = GetZ(Caster)
+		SpawnMob(zone, 121134, false, X, Y, Z)
+end
+

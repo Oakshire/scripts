@@ -6,7 +6,23 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- On a melee hit this spell will cast Rampaging Blow on target of attack.  
---     Inflicts 250 - 466 melee damage on targets in Area of Effect
 --     Grants a total of 10 triggers of the spell.
+
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    Say(Caster, "Needs AoE override. This spell really should cast a subspell")
+		AddProc(Target, 3, 100)
+		SetSpellTriggerCount(10, 1)
+end
+
+function proc(Caster, Target, Type, DmgType, MinVal, MaxVal)
+	if Type == 3 then
+        ---     Inflicts 250 - 466 melee damage on targets in Area of Effect
+        ProcDamage(Caster, Target, "Rampaging Blow", DmgType, MinVal, MaxVal)
+        RemoveTriggerFromSpell(1)
+    end
+end
+
+function remove(Caster, Target)
+	RemoveProc(Target)
+end

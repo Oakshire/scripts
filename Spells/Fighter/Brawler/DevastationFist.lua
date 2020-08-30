@@ -10,3 +10,9 @@
 -- Inflicts 1795 - 2992 melee damage on target
 -- Inflicts 100.0% of max health in crushing damage on target
 --     If Target is Standard or weaker
+
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    SpellDamage(Target, DmgType, MinVal, MaxVal)
+    Say(Caster, "max health component not implemented")
+
+end
