@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Kill Crazy Peepers.", 1, 100, "Cicero would like me to dispatch of some gnome known only as "Crazy Peepers."  If I take care of this Peepers character Cicero will tell me where I can find a secret room with plenty of loot.", 611, 1550074)
+	AddQuestStepKill(Quest, 1, "Kill Crazy Peepers.", 1, 100, "Cicero would like me to dispatch of some gnome known only as ''Crazy Peepers.''  If I take care of this Peepers character Cicero will tell me where I can find a secret room with plenty of loot.", 611, 1550074)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -33,7 +33,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've taken care of Peepers.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've taken care of that Peepers character, I should return to Cicero.")
 
-	AddQuestStepChat(Quest, 2, "Return to Cicero.", 1, "I've dispatched of that Crazy Peepers character for Cicero, I should go back to him and get the location of this "secret" room.", 11, 1550022, 1550059)
+	AddQuestStepChat(Quest, 2, "Return to Cicero.", 1, "I've dispatched of that Crazy Peepers character for Cicero, I should go back to him and get the location of this ''secret'' room.", 11, 1550022, 1550059)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 

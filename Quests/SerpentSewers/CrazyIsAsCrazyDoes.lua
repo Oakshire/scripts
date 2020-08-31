@@ -15,7 +15,7 @@
 function Init(Quest)
 	SetQuestFeatherColor(Quest, 3)
 	SetQuestRepeatable(Quest)
-	AddQuestStepKill(Quest, 1, "Find and kill Crazy Peepers.", 1, 100, "This note was apparently meant for someone else.", 611, --[[ ID's --]])
+	AddQuestStepKill(Quest, 1, "Find and kill Crazy Peepers.", 1, 100, "This note was apparently meant for someone else.", 611, 1550074)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 

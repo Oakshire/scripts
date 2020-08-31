@@ -30,7 +30,7 @@ function Option1(NPC, Spawn)
 	local conversation = CreateConversation()
              AddConversationOption(conversation, "Queen Cristanos.", "Option2")
               AddConversationOption(conversation, "The Overlord.", "Option2")
-               AddConversationOption(conversation, "Talvus Thex." "Talvus")
+               AddConversationOption(conversation, "Talvus Thex.", "Talvus")
 	AddConversationOption(conversation, "None of your concern.  Farewell.")
 	StartConversation(conversation, NPC, Spawn, "The only ones that influence this conversation, yes.")
 end
