@@ -14,15 +14,17 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if HasQuest(Spawn, TheHiddenNewHalasian) and GetQuestStep(Spawn, TheHiddenNewHalasian, 2) then
+    if GetQuestStep(Spawn, TheHiddenNewHalasian, 2) then
     conversation = CreateConversation()
     PlayFlavor(NPC, "clan_chief_malachi_sleetsaber/freeport_combined/quest/racial/barbarian/chief_malachi_sleetsaber_001.mp3", "", "hello", 1526248790, 2883383247, Spawn)
     AddConversationOption(conversation, "A little of both.", "dlg1")
     AddConversationOption(conversation, "Looking for it!", "dlg1")
     AddConversationOption(conversation, "Betting it will find me.", "dlg1")
     StartConversation(conversation, NPC, Spawn, "Hello there, little cub!  You lookin' for trouble, or waiting for it to find you?")
+    elseif QuestStepIsComplete(Spawn, TheHiddenNewHalasian, 2) or HasCompletedQuest(Spawn, TheHiddenNewHalasian) then
+    PlayFlavor(NPC, "", "Watch what troubles ya find, or find you in this great city.  A back is a fine place to sheathe an axe!", "", 1689589577, 4560189, Spawn)
     else
-    PlayFlavor(NPC, "", "Watch what troubles ya find, or find you in this great city.  A back is a fine place to sheathe an axe!", "", 1689589577, 4560189, Spawn) 
+    PlayFlavor(NPC, "", "Watch what troubles ya find, or find you in this great city.  A back is a fine place to sheathe an axe!", "", 1689589577, 4560189, Spawn)
 end
    end
 
