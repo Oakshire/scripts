@@ -1,26 +1,20 @@
 --[[
-	Script Name     :	Quests/Freeport/TheHiddenNewHalasian.lua
+	Script Name		:	Quests/Freeport/TheHiddenNewHalasian.lua
 	Script Purpose	:	Handles the quest, "The Hidden New Halasian"
-	Script Author	:	premierio015
-	Script Date     :	30.08.2020
+	Script Author	:	QuestParser (Replace this)
+	Script Date		:	30.08.2020
 	Script Notes	:	Auto generated with QuestParser.
 
-	Zone	        :	The City of Freeport
-	Quest Giver	:	Selyse Brazenroot
-	Preceded by	:	None
-	Followed by	:	Barbarian Justice(577)
+	Zone			:	The City of Freeport
+	Quest Giver		:	
+	Preceded by		:	None
+	Followed by		:	None
 --]]
 
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "Speak with Mikki Denune, near Dreadnaught's Plaza", 1, "I need to speak with the suspected traitors on the topics of New Halas and religion, in hopes that they’ll reveal themselves.", 11, 5590179)
-        AddQuestStepChat(Quest, 2, "Speak with Clan Chief Malachi Sleetsaber, near the guild hall in southern Freeport", 1, "I need to speak with the suspected traitors on the topics of New Halas and religion, in hopes that they’ll reveal themselves.", 11, 5590515)
-        AddQuestStepChat(Quest, 3, "Speak with Gerhild Maclennan, near The Emporium", 1, "I need to speak with the suspected traitors on the topics of New Halas and religion, in hopes that they’ll reveal themselves.", 11, 5590198)
-        AddQuestStepChat(Quest, 4, "Speak with Asbjorn Greyaxe, in the Jade Tiger's Den", 1, "I need to speak with the suspected traitors on the topics of New Halas and religion, in hopes that they’ll reveal themselves.", 11, 5590315)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-        AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
-        AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
-        AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -37,28 +31,32 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "")
-        CheckProgress(Quest, QuestGiver, Player)
+
+	AddQuestStepChat(Quest, 2, "Speak with Clan Chief Malachi Sleetsaber, near the guild hall in southern Freeport", 1, "I need to speak with the suspected traitors on the topics of New Halas and religion, in hopes that they’ll reveal themselves.", 11, 5590515)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "")
-        CheckProgress(Quest, QuestGiver, Player)
+
+	AddQuestStepChat(Quest, 3, "Speak with Gerhild Maclennan, near The Emporium", 1, "I need to speak with the suspected traitors on the topics of New Halas and religion, in hopes that they’ll reveal themselves.", 11, 5590198)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "Gerhild Maclennan spoke of Erollisi Marr and New Halas!")
-        CheckProgress(Quest, QuestGiver, Player)
+
+	AddQuestStepChat(Quest, 4, "Speak with Asbjorn Greyaxe, in the Jade Tiger's Den", 1, "I need to speak with the suspected traitors on the topics of New Halas and religion, in hopes that they’ll reveal themselves.", 11, 5590315)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I believe that I flushed out the traitor, Gerhild Maclennan, by striking up a conversation about New Halas and religion.")
-        CheckProgress(Quest, QuestGiver, Player)
+
+	AddQuestStepChat(Quest, 5, "Return to Selyse Brazenroot", 1, "I should return to Selyse Brazenroot, at the Freeport Militia House in the city of Freeport.", 11, 5590142)
+	AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
 end
-    
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
@@ -68,14 +66,6 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestDescription(Quest, "Selyse Brazenroot, the barbarian mentor in Freeport, appreciated my attempt to flush out the barbarian encouraging others to move from Freeport to New Halas, despite her doubts that I found the individual.")
 	GiveQuestReward(Quest, Player)
 end
- 
-
-function CheckProgress(Quest, QuestGiver, Player)
-if QuestStepIsComplete(Player, 578, 1) and QuestStepIsComplete(Player, 578, 2) and QuestStepIsComplete(Player, 578, 3) and QuestStepIsComplete(Player, 578, 4) then
-AddQuestStepChat(Quest, 5, "Return to Selyse Brazenroot", 1, "I should return to Selyse Brazenroot, at the Freeport Militia House in the city of Freeport.", 11, 5590142)
-AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
-end
-   end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
@@ -90,4 +80,5 @@ function Reload(Quest, QuestGiver, Player, Step)
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end
+
 

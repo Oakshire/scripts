@@ -10,6 +10,7 @@ function cast(Caster, Target, HateAmt)
     -- Decreases threat priority of target by 1 position
     -- Decreases Threat to target by 283 
     AddHate(Target, HateAmt, 1)
+    Say(Caster, "Stealth not implemented")
 
     -- Applies Lie Low on termination.  Lasts for 12 hours.
     --     Grants stealth to caster

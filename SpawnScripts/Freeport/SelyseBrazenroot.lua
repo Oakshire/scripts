@@ -7,10 +7,13 @@
 --]]
 local QUEST1 = 577
 local QUEST2 = 578
+local QUEST3 = 579
+
 
 function spawn(NPC)
  ProvidesQuest(NPC, QUEST1)
  ProvidesQuest(NPC, QUEST2)
+ ProvidesQuest(NPC, QUEST3)
 end
 
 function hailed(NPC, Spawn)
@@ -19,7 +22,7 @@ function hailed(NPC, Spawn)
     if GetRace(Spawn) == 0 then
     if not HasQuest(Spawn, QUEST1) and not HasCompletedQuest(Spawn, QUEST1) then
     PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_001.mp3", "", "", 1119188187, 48635974, Spawn)
-    AddConversationOptieon(conversation, "Wait.  What do you mean?", "dlg01")
+    AddConversationOption(conversation, "Wait.  What do you mean?", "dlg01")
     AddConversationOption(conversation, "I'm not following.", "dlg01")
     AddConversationOption(conversation, "Yes, horrible.  Goodbye!")
     StartConversation(conversation, NPC, Spawn, "I tell ya, I'm glad to be out of that damned slum, but to see our clan thrown out like week-old wolf meat?  Terrible!")
@@ -27,12 +30,14 @@ function hailed(NPC, Spawn)
     PlayFlavor(NPC, "", "Honor your heritage by retrieving the Halasian heirlooms and killing the greedy guards in Scale Yard.", "", 1689589577, 4560189, Spawn)
     elseif HasQuest(Spawn, QUEST1) and GetQuestStep(Spawn, QUEST1, 3) then
     dlg06(NPC, Spawn)
-    elseif HasCompletedQuest(Spawn, QUEST1) and not HasCompletedQuest(Spawn, QUEST2) then
+    elseif HasCompletedQuest(Spawn, QUEST1) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) then
     dlg08(NPC, Spawn)
-    elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) <= 4 then
+    elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) < 5 then
     PlayFlavor(NPC, "", "Be sure to speak with each and every one of those suspects.  We have to find out who is preaching this message of defection to New Halas.", "", 1689589577, 4560189, Spawn)
     elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) == 5 then
     dlg13(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) then
+    dlg14(NPC, Spawn)
     end
     else
     PlayFlavor(NPC, "", "Glory to The Overlord.", "", 1689589577, 4560189, Spawn)
@@ -109,10 +114,18 @@ FaceTarget(NPC, Spawn)
 SetStepComplete(Spawn, QUEST1, 3)
 local conversation = CreateConversation()
 PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_010.mp3", "", "", 2533066692, 351799116, Spawn)
-AddConversationOption(conversation, "Speaking of Halas, why don't you move there?", "dlg8")
+AddConversationOption(conversation, "Speaking of Halas, why don't you move there?", "dlg08")
 StartConversation(conversation, NPC, Spawn, "You can call it what ya like.  This Halasian likes that they're dead!")
 end
 
+
+function dlg08(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_012.mp3", "", "", 3597618993, 2154374839, Spawn)
+AddConversationOption(conversation, "A little too goodie-goody, huh?", "dlg09")
+StartConversation(conversation, NPC, Spawn, "Let it be known that there is a frozen sea of difference between New Halas and Halas.  Don't ya be fooled!  Many of those that moved to New Halas came lumbering back, cursing Marr to the Ethernere for having established the city and making it a beacon for Truth and Love.")
+end
 
 
 
@@ -123,15 +136,6 @@ local conversation = CreateConversation()
 PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_011.mp3", "", "", 592397197, 4111904685, Spawn)
 AddConversationOption(conversation, "Speaking of Halas, why don't you move there?", "dlg08")
 StartConversation(conversation, NPC, Spawn, "Ha!  A Halasian after me own frigid heart!")
-end
-
-
-function dlg08(NPC, Spawn)
-FaceTarget(NPC, Spawn)
-local conversation = CreateConversation()
-PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_012.mp3", "", "", 3597618993, 2154374839, Spawn)
-AddConversationOption(conversation, "A little too goodie-goody, huh?", "dlg09")
-StartConversation(conversation, NPC, Spawn, "Let it be known that there is a frozen sea of difference between New Halas and Halas.  Don't ya be fooled!  Many of those that moved to New Halas came lumbering back, cursing Marr to the Ethernere for having established the city and making it a beacon for Truth and Love.")
 end
 
 function dlg09(NPC, Spawn)
@@ -174,14 +178,59 @@ function dlg13(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 local conversation = CreateConversation()
 PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_017.mp3", "", "", 326365756, 1910070032, Spawn)
-AddConversationOption(conversation, "Yes. Gerhild Maclennan admitted her faith in Love.  But I dealt with her.", "dlg14")
+AddConversationOption(conversation, "Yes. Gerhild Maclennan admitted her faith in Love.  But I dealt with her.", "complete2")
 StartConversation(conversation, NPC, Spawn, "Glad to see ya've returned, "..GetName(Spawn)..".  Did any of them take the bait?")
 end
 
-function dlg14(NPC, Spawn)
+function complete2(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 SetStepComplete(Spawn, QUEST2, 5)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_019.mp3", "", "", 2898618356, 835984458, Spawn)
+AddConversationOption(conversation, "I didn't?!", "dlg14")
+StartConversation(conversation, NPC, Spawn, "You may have dealt with someone with an inclination toward New Halas, but you did not sever the head from this beast.")
 end
+
+
+function dlg14(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_020.mp3", "", "", 1474636537, 2379671147, Spawn)
+AddConversationOption(conversation, "And how are you to ''deal with it''?", "dlg15")
+AddConversationOption(conversation, "The Overlord?  You have your orders then.  Goodbye!")
+StartConversation(conversation, NPC, Spawn, "There has been more talk amongst our Northmen brothers and sisters.  It has been growing ever since we were forced from Scale yard and into Beggar's Court.  The Overlord is aware of the rising popularity in barbarian relocation to New Halas.  He has commanded The Militia to deal with it.")
+end
+
+
+function dlg15(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_021.mp3", "", "", 1714203856, 3757134511, Spawn)
+AddConversationOption(conversation, "That makes sense.", "dlg16")
+AddConversationOption(conversation, "Killing them would be fun though.", "dlg17")
+StartConversation(conversation, NPC, Spawn, "I suggested we coerce them into changing their minds!  It's more effective than watching the offenders bleed out upon the cobbled streets.  Killing the traitors would only persuade more to consider their message, and there is no guarantee that all of them would be slain, anyway.")
+end
+
+function dlg16(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_022.mp3", "", "", 3870033274, 1910681182, Spawn)
+AddConversationOption(conversation, "How should I coerce them?", "dlg17")
+AddConversationOption(conversation, "Good luck with that!")
+StartConversation(conversation, NPC, Spawn, "I know damned well that the situation in Beggar's Court is not the best, but I'm convinced that it is better than it was in Scale Yard.  You'll have better luck identifying the true leader of this movement within Beggar's Court.")
+end
+
+function dlg17(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_023.mp3", "", "", 3880259447, 4087733008, Spawn)
+AddConversationOption(conversation, "I will succeed.", "offer3")
+AddConversationOption(conversation, "I can't be a part of this.")
+StartConversation(conversation, NPC, Spawn, "I don't care what ya do; threaten their family, burn down their house.  Do what you must to force them into being a happy citizen of Freeport!")
+end
+
+
+
 
 
 function offer(NPC, Spawn)
@@ -189,10 +238,16 @@ function offer(NPC, Spawn)
         OfferQuest(NPC, Spawn, QUEST1)
 end
 
-function offer2(NPC, Spawn)
+  function offer2(NPC, Spawn)
         FaceTarget(NPC, Spawn)
         OfferQuest(NPC, Spawn, QUEST2)
 end
+
+function offer3(NPC, Spawn)
+   FaceTarget(NPC, Spawn)
+   OfferQuest(NPC, Spawn, QUEST3)
+end
+
 
 function respawn(NPC)
          spawn(NPC)

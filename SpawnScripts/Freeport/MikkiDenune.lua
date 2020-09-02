@@ -14,13 +14,11 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if HasQuest(Spawn, TheHiddenNewHalasian) and GetQuestStep(Spawn, TheHiddenNewHalasian, 1) then
+    if GetQuestStep(Spawn, TheHiddenNewHalasian) == 1 then
     conversation = CreateConversation()
     PlayFlavor(NPC, "mikki_denune/freeport_combined/quest/racial/barbarian/mikki_denune_001.mp3", "", "hello", 1266503208, 1855564642, Spawn)
     AddConversationOption(conversation, "Actually, I was wondering if you could give me some religious advice.", "dlg1")
     StartConversation(conversation, NPC, Spawn, "Greetings, my fellow barbarian!  Come to join in a brawl or two?")
-    elseif QuestStepIsComplete(Spawn, TheHiddenNewHalasian, 1) or HasCompletedQuest(Spawn, TheHiddenNewHalasian) then
-    PlayFlavor(NPC, "", "Join in the fights and bring glory to the Ancient Sister, Sullon Zek, Goddes of Rage!", "", 0, 0, Spawn)
     else
      PlayFlavor(NPC, "", "Join in the fights and bring glory to the Ancient Sister, Sullon Zek, Goddes of Rage!", "", 0, 0, Spawn)
 end

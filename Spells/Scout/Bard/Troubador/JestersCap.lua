@@ -5,6 +5,15 @@
     Script Purpose : 
                    : 
 --]]
-
--- Info from spell_display_effects (remove from script when done)
 -- Increases Ability Reuse Speed of target by 22.5%
+
+function cast(Caster, Target, Reuse)
+    AddSpellBonus(Target, 662, Reuse)
+
+end
+
+
+function remove(Caster, Target)
+    RemoveSpellBonus(Target)
+
+end

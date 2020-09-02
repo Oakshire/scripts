@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal, TgtAmt, CastAmt)
 -- Inflicts 257 - 428 melee damage on target

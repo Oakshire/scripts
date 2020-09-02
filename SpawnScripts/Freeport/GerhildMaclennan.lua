@@ -14,7 +14,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if HasQuest(Spawn, TheHiddenNewHalasian) and GetQuestStep(Spawn, TheHiddenNewHalasian, 3) then
+    if GetQuestStep(Spawn, TheHiddenNewHalasian) == 3 then
     conversation = CreateConversation()
     PlayFlavor(NPC, "gerhild_maclennan/freeport_combined/quest/racial/barbarian/gerhild_maclennan_001.mp3", "", "", 1385565985, 2770955771, Spawn)
     AddConversationOption(conversation, "A question of faith.", "dlg1")

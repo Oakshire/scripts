@@ -14,7 +14,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if HasQuest(Spawn, TheHiddenNewHalasian) and GetQuestStep(Spawn, TheHiddenNewHalasian, 4) then
+    if GetQuestStep(Spawn, TheHiddenNewHalasian) == 4 then
     conversation = CreateConversation()
     PlayFlavor(NPC, "asbjorn_greyaxe/freeport_combined/quest/racial/barbarian/asbjorn_greyaxe_001.mp3", "", "", 3279743071, 361114308, Spawn)
     AddConversationOption(conversation, "Don't you mean meat pies and strong ale?", "dlg1")
