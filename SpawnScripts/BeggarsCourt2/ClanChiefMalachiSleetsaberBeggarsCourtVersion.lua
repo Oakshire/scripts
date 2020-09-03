@@ -9,7 +9,7 @@
 local QUEST = 579
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 5, "InRange", "InRange")
+SetPlayerProximityFunction(NPC, 10, "InRange", "OutRange")
 end
 
 function hailed(NPC, Spawn)
@@ -17,7 +17,7 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+         spawn(NPC)
 end
 
 function InRange(NPC, Spawn)
@@ -26,7 +26,7 @@ end
 
 
 function speech(NPC, Spawn)
-if GetQuestStep(Spawn, QUEST) == 2 then
+if HasQuest(Spawn, QUEST) and  GetQuestStep(Spawn, QUEST) == 3 then
 AddTimer(NPC, 10000, "speech1", 1, Spawn)
 end 
    end
@@ -54,4 +54,7 @@ end
 function speech5(NPC, Spawn)
 PlayFlavor(NPC, "", "We will remove the humans, frogloks, halflings and the rest of the thin-bloods, and remake it a city for the Northmen!  A city worthy of us!", "", 1689589577, 4560189, Spawn)
 SetStepComplete(Spawn, QUEST, 3)
+end
+
+function OutRange(NPC, Spawn)
 end

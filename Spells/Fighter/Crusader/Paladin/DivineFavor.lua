@@ -1,24 +1,16 @@
 --[[
     Script Name    : Spells/Fighter/Crusader/Paladin/DivineFavor.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 06:08:38
+    Script Author  : neatz09
+    Script Date    : 2020.09.03 12:09:56
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
-
 -- Info from spell_display_effects (remove from script when done)
-
-end
-
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
-end
-
-function remove(Caster, Target)
-    -- code to remove the spell
-end
-
+-- On death this spell will cast Divine Favor on caster.  Lasts for 12.0 seconds.  
+--     Heals caster for 45.0% of max health
+--         This effect cannot be critically applied.
+--     Dazes caster
+--     Stifles caster
+--     The healing of this spell cannot be modified except by direct means
+--     Grants a total of 1 trigger of the spell.

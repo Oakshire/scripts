@@ -3,12 +3,12 @@
 	Script Purpose	: a Qeynos Guardsman <Guard>
 	Script Author	: John Adams - updated by Rylec (updated movement - old is saved)
 	Script Date	: 2008.11.26
-	Script Notes	: Attempting to create a "leader" guard the other 3 will follow around the island.
+	Script Notes	: Patrol leader. Script will set model type to allow all relevant races 
 --]]
 
 function spawn(NPC)
+        setmodel(NPC)
 	waypoints(NPC)
-        shout(NPC)
 end
 
 function respawn(NPC)
@@ -17,6 +17,25 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+end
+
+function setmodel(NPC)
+        local RandomModel = math.random (1,4) 
+        local shouttime = math.random (90000,270000)     
+
+                if RandomModel == 1 then
+                        SpawnSet(NPC, "model_type", "82") 
+                	AddTimer(NPC, shouttime, "kerra")
+                elseif RandomModel == 2 then
+                        SpawnSet(NPC, "model_type", "110") 
+                	AddTimer(NPC, shouttime, "dwarf")
+                elseif RandomModel == 3 then
+                        SpawnSet(NPC, "model_type", "112") 
+                	AddTimer(NPC, shouttime, "barbarian")
+                elseif RandomModel == 4 then
+                        SpawnSet(NPC, "model_type", "134") 
+                	AddTimer(NPC, shouttime, "human")
+                end
 end
 
 function waypoints(NPC)
@@ -41,7 +60,57 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, -10.74, -5.21, 190.95, 2, 0)
 end
 
-function shout(NPC)
+function kerra(NPC)
+        math.randomseed(os.time())
+        local choice = math.random (1,3)
+
+        if choice == 1 then
+                Say(NPC, "Wraaaaa!")
+        elseif choice == 2 then
+                Say(NPC, "For Qeynos!")
+        elseif choice == 3 then
+                Say(NPC, "Look at Luclin! Shar Vahl...")
+                Emote(NPC, "groans.") 
+        end
+
+        local time = math.random (90000,2700000)       
+	AddTimer(NPC, time, "kerra")	
+end
+
+function dwarf(NPC)
+        math.randomseed(os.time())
+        local choice = math.random (1,3)
+
+        if choice == 1 then
+                Say(NPC, "When I am off duty that rock is mine!")
+                Emote(NPC, "points at a shiny stone.")                
+        elseif choice == 2 then
+                Say(NPC, "For the strength of Kaladim!")
+        elseif choice == 3 then
+                Say(NPC, "Onward boys and keep in line!")
+        end
+
+        local time = math.random (90000,2700000)       
+	AddTimer(NPC, time, "dwarf")	
+end
+
+function barbarian(NPC)
+        math.randomseed(os.time())
+        local choice = math.random (1,3)
+
+        if choice == 1 then
+                Say(NPC, "For the love of Halas, I could use a stout!")
+        elseif choice == 2 then
+                Say(NPC, "All clear here!")
+        elseif choice == 3 then
+                Say(NPC, "I long to return to Qeynos.")
+        end
+
+        local time = math.random (90000,2700000)       
+	AddTimer(NPC, time, "barbarian")	
+end
+
+function human(NPC)
         math.randomseed(os.time())
         local choice = math.random (1,3)
 
@@ -52,11 +121,11 @@ function shout(NPC)
                 Say(NPC, "In honor of the Queen.")
                 Emote(NPC, "salutes.")  
         elseif choice == 3 then
-                Say(NPC, "Keep your eyes peeled boys!.")
+                Say(NPC, "Keep your eyes peeled boys!")
         end
 
-        local time = math.random (10000,30000)       
-	AddTimer(NPC, time, "shout")	
+        local time = math.random (90000,2700000)       
+	AddTimer(NPC, time, "human")	
 end
 
 --[[	--Syntax is NPC, x, y, z, speed, delay (in seconds) (John Adams old path, might be old path so keeping it for now)

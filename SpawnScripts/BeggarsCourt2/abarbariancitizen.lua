@@ -9,7 +9,7 @@
 local QUEST = 579
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange", "InRange")
+SetPlayerProximityFunction(NPC, 10, "InRange", "OutRange")
 end
 
 function hailed(NPC, Spawn)
@@ -22,6 +22,10 @@ end
 
 function InRange(NPC, Spawn)
 AddTimer(NPC, 5000, "callout", 1, Spawn)
+end
+
+function OutRange(NPC, Spawn)
+
 end
 
 function callout(NPC, Spawn)

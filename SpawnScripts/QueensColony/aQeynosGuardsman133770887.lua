@@ -1,8 +1,9 @@
 --[[
-    Script Name    : SpawnScripts/QueensColony/aQeynosGuardsmanFollower.lua
+    Script Name    : SpawnScripts/QueensColony/aQeynosGuardsman133770887.lua
     Script Author  : Cynnar (edited by Rylec)
     Script Date    : 2018.10.07 10:10:32
-    Script Purpose : Patrol follower. Script will set model type to allow all relevant races 
+    Script Purpose : 
+                   : 
 --]]
 
 function spawn(NPC)
@@ -21,7 +22,7 @@ end
 
 function setmodel(NPC)
         local RandomModel = math.random (1,4) 
-        local shouttime = math.random (90000,270000)     
+        local shouttime = math.random (90,270)     
 
                 if RandomModel == 1 then
                         SpawnSet(NPC, "model_type", "82") 
