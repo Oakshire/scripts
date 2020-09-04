@@ -1,5 +1,5 @@
 --[[
-        Script Name        : SpawnScripts/QueensColony/PaulaMarx.lua
+    Script Name    : SpawnScripts/QueensColony/PaulaMarx133770926.lua
         Script Author      : Zcoretri
         Script Date        : 2015.07.30
         Script Purpose     : Paula Marx dialog
@@ -9,16 +9,20 @@
 --]]
 
 function spawn(NPC)
-    MovementLoopAddLocation(NPC, 5.65, -6.50, 208.26, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 0.71, -5.83, 198.18, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 10.66, -6.90, 200.55, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 18.65, -6.87, 194.36, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 26.80, -6.86, 187.05, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 31.08, -6.24, 197.45, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 9.11, -6.80, 206.29, 2, 9, "InitialPause")
-    -- return to spawn point and hang out.
-    MovementLoopAddLocation(NPC, -6.18, -4.96, 218.46, 2, 0)
-    MovementLoopAddLocation(NPC, -5.91, -4.96, 218.24, 2, 30)
+	MovementLoopAddLocation(NPC, 3.64, -6.45, 199.01, 2, 4)
+	MovementLoopAddLocation(NPC, 6.62, -6.81, 202.53, 2, 0)
+	MovementLoopAddLocation(NPC, 10.55, -6.89, 204.86, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 18.74, -6.86, 204.71, 2, 0)
+	MovementLoopAddLocation(NPC, 22.69, -6.8, 201.84, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 18.09, -6.86, 200.92, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 11.89, -6.9, 199.77, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 5.76, -6.83, 199.71, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 18.49, -6.86, 195.18, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 27.11, -6.86, 191.62, 2, 0)
+	MovementLoopAddLocation(NPC, 32.16, -6.28, 190.58, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 29.39, -6.84, 191.92, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 13.91, -6.9, 195.83, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 5.89, -6.88, 198.05, 2, 9, "InitialPause")
 end
 
 function respawn(NPC)

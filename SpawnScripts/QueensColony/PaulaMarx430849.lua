@@ -1,5 +1,5 @@
 --[[
-        Script Name        : SpawnScripts/QueensColony/PaulaMarx.lua
+        Script Name        : SpawnScripts/QueensColony/PaulaMarx430849.lua
         Script Author      : Zcoretri
         Script Date        : 2015.07.30
         Script Purpose     : Paula Marx dialog

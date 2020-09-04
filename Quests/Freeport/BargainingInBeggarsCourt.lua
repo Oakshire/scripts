@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "Search the region for clues", 5, "I need to find out who it it that is encouraging barbarians to leave Freeport for New Halas inside Beggar's Court: Sweat-Stained Cobbles.", 11, 51, -7, 62)
+	AddQuestStepLocation(Quest, 1, "Search the region for clues", 5, "I need to find out who it it that is encouraging barbarians to leave Freeport for New Halas inside Beggar's Court: Sweat-Stained Cobbles.", 11, 47.60, -7.00, 52.80)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -32,7 +32,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I heard of a meeting being held in the northwestern common domicile.")
 
-	AddQuestStepLocation(Quest, 2, "Investigate the meeting being held in the northwestern common domicile", 1 , "I need to find out who it it that is encouraging barbarians to leave Freeport for New Halas inside Beggar's Court: Sweat-Stained Cobbles.", 11, 50.15, 5.00, -29.73)
+	AddQuestStepLocation(Quest, 2, "Investigate the meeting being held in the northwestern common domicile", 5 , "I need to find out who it it that is encouraging barbarians to leave Freeport for New Halas inside Beggar's Court: Sweat-Stained Cobbles.", 11, 51.18, 5.10, -31.55)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
@@ -47,7 +47,7 @@ function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Clan Chief Malachi Sleetsaber is the one encouraging barbarians to leave Freeport for New Halas.")
 
-	AddQuestStepLocation(Quest, 4, "Find Chief Sleetsaber's home", 1, "I need to find a way to coerce Clan Chief Malachi Sleetsaber into recanting his speech.  He must encourage barbarians to remain in Freeport, instead.", 11, -32, 3, -30)
+	AddQuestStepLocation(Quest, 4, "Find Chief Sleetsaber's home", 5, "I need to find a way to coerce Clan Chief Malachi Sleetsaber into recanting his speech.  He must encourage barbarians to remain in Freeport, instead.", 11, -30.10, 2.50, -28.19)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 

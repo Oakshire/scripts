@@ -1,5 +1,5 @@
 --[[
-        Script Name        : SpawnScripts/QueensColony/PaulaMarx.lua
+        Script Name        : SpawnScripts/QueensColony/PaulaMarx133770927.lua
         Script Author      : Zcoretri
         Script Date        : 2015.07.30
         Script Purpose     : Paula Marx dialog
@@ -9,16 +9,31 @@
 --]]
 
 function spawn(NPC)
-    MovementLoopAddLocation(NPC, 5.65, -6.50, 208.26, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 0.71, -5.83, 198.18, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 10.66, -6.90, 200.55, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 18.65, -6.87, 194.36, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 26.80, -6.86, 187.05, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 31.08, -6.24, 197.45, 2, 9, "InitialPause")
-    MovementLoopAddLocation(NPC, 9.11, -6.80, 206.29, 2, 9, "InitialPause")
-    -- return to spawn point and hang out.
-    MovementLoopAddLocation(NPC, -6.18, -4.96, 218.46, 2, 0)
-    MovementLoopAddLocation(NPC, -5.91, -4.96, 218.24, 2, 30)
+	MovementLoopAddLocation(NPC, 24.61, -6.86, 189.72, 2, 4)
+	MovementLoopAddLocation(NPC, 27.1, -6.86, 188.37, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 20.14, -6.86, 198.61, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 18.14, -6.86, 201.7, 2, 0)
+	MovementLoopAddLocation(NPC, 15.83, -6.86, 202.99, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 10.2, -6.82, 206.04, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 7.12, -6.79, 207.43, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 6.85, -5.69, 190.36, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 5.65, -6.52, 195.48, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 3.52, -6.4, 202.95, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 2.49, -6.17, 206.08, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 0.51, -5.94, 200.45, 2, 0)
+	MovementLoopAddLocation(NPC, 0.66, -5.75, 197.3, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 12.62, -6.9, 195.45, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 22.06, -6.86, 193.71, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 31.93, -6.2, 192.05, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 31.13, -6.59, 190.29, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 27.48, -6.77, 182.7, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 17.69, -6.9, 192.91, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 11.02, -6.9, 200, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 4.45, -6.5, 207.14, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 4.68, -6.61, 204.23, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 4.9, -6.63, 200.69, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 9.1, -6.9, 198.35, 2, 9, "InitialPause")
+	MovementLoopAddLocation(NPC, 11.82, -6.9, 196.84, 2, 9, "InitialPause")
 end
 
 function respawn(NPC)

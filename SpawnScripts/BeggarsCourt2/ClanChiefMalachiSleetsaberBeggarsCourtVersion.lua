@@ -7,8 +7,10 @@
 --]]
 
 local QUEST = 579
+local citizenID = 133770930
 
 function spawn(NPC)
+AddSpawnAccess(NPC, NPC)
 SetPlayerProximityFunction(NPC, 10, "InRange", "OutRange")
 end
 
@@ -21,8 +23,18 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+AddSpawnAccess(NPC, Spawn)
+if GetQuestStep(Spawn, QUEST) == 3 then
 AddTimer(NPC, 10000, "speech", 1, Spawn)
+elseif GetQuestStep(Spawn, QUEST) == 5 then
+RemoveSpawnAccess(NPC, Spawn)
+elseif GetQuestStep(Spawn, QUEST) == 7 then
+AddSpawnAccess(NPC, Spawn)
+AddTimer(NPC, 10000, "speech6", 1, Spawn)
+elseif not HasQuest(Spawn, QUEST)
+RemoveSpawnAccess(NPC, Spawn)
 end
+  end
 
 
 function speech(NPC, Spawn)
@@ -55,6 +67,47 @@ function speech5(NPC, Spawn)
 PlayFlavor(NPC, "", "We will remove the humans, frogloks, halflings and the rest of the thin-bloods, and remake it a city for the Northmen!  A city worthy of us!", "", 1689589577, 4560189, Spawn)
 SetStepComplete(Spawn, QUEST, 3)
 end
+
+function speech6(NPC, Spawn)
+PlayFlavor(NPC, "", "My barbarian brothers and sisters, One of our brave clan stood up and showed me the error of my thoughts.", "", 1689589577, 4560189, Spawn)
+AddTimer(NPC, 10000, "speech7", 1, Spawn)
+end
+
+function speech7(NPC, Spawn)
+PlayFlavor(NPC, "", "I have been so focused on rebuilding the past, I had not seen the present.", "", 1689589577, 4560189, Spawn)
+AddTimer(NPC, 10000, "speech8", 1, Spawn)
+end
+
+function speech8(NPC, Spawn)
+PlayFlavor(NPC, "", "The Overlord will surely see us as betrayers and command The Militia to deal with all of us, if I continue.", "", 1689589577, 4560189, Spawn)
+AddTimer(NPC, 10000, "citizenspeech", 1, Spawn)
+end
+
+function citizenspeech(NPC, Spawn)
+local zone = GetZone(NPC)
+local citizen = GetSpawnByLocationID(zone, citizenID)
+if citizen ~= nil then
+PlayFlavor(citizen, "", "Let them try!  There would be nothing left but ashes and wailing women by the end!", "", 1689589577, 4560189)
+AddTimer(NPC, 10000, "speech9", 1, Spawn)
+end
+   end
+
+function speech9(NPC, Spawn)
+PlayFlavor(NPC, "", "Yes, some theirs, but mostly ours.  And then who would be left to take on New Halas?", "",  1689589577, 4560189, Spawn)
+AddTimer(NPC, 10000, "speech10", 1, Spawn)
+end
+
+function speech10(NPC, Spawn)
+PlayFlavor(NPC, "", "Freeport is not the Halas of old, but it is a strong place, where we are free to battle and feast.", "",  1689589577, 4560189, Spawn)
+AddTimer(NPC, 10000, "speech11", 1, Spawn)
+end
+
+function speech11(NPC, Spawn)
+PlayFlavor(NPC, "", "I am proud to call this bastion of strength and wealth my home and follow our fearful leader, The Overlord, into any battlefield!", "", 1689589577, 4560189, Spawn)
+SetStepComplete(Spawn, QUEST, 7)
+end
+
+
 
 function OutRange(NPC, Spawn)
 end

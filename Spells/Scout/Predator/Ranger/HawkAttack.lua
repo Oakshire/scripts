@@ -6,5 +6,16 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Summons a pet attack hawk
+function cast(Caster, Target, PetID)
+   -- Summons a pet
+       Say(Caster, "hate transfer not implemented")
+   SummonPet(Caster, PetID)
+end
+
+function remove(Caster, Target)
+   pet = GetPet(Caster)
+   if pet ~= nil then
+      DismissPet(pet)
+   end
+end
