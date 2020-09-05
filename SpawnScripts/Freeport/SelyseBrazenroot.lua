@@ -38,6 +38,10 @@ function hailed(NPC, Spawn)
     dlg13(NPC, Spawn)
     elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) then
     dlg14(NPC, Spawn)
+    elseif GetQuestStep(Spawn, QUEST3) == 8 then
+    dlg18(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST1) and HasCompletedQuest(Spawn, QUEST2) and HasCompletedQuest(Spawn, QUEST3) then
+    PlayFlavor(NPC, "", "You make our ancestors proud, "..GetName(Spawn).."!  Go forth; bare your teeth and cull the weak, my friend!", "",  1689589577, 4560189, Spawn)
     end
     else
     PlayFlavor(NPC, "", "Glory to The Overlord.", "", 1689589577, 4560189, Spawn)
@@ -229,8 +233,22 @@ AddConversationOption(conversation, "I can't be a part of this.")
 StartConversation(conversation, NPC, Spawn, "I don't care what ya do; threaten their family, burn down their house.  Do what you must to force them into being a happy citizen of Freeport!")
 end
 
+function dlg18(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_024.mp3", "", "",  596545421, 406094570, Spawn)
+AddConversationOption(conversation, "I was.  Clan Chief Sleetsaber gave a convincing speech to all.", "complete3")
+StartConversation(conversation, NPC, Spawn, "You look quite pleased, "..GetName(Spawn)..".  Tell me, were you able to cleave some sense into the would-be betrayer?")
+end
 
-
+function complete3(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, QUEST3, 8)
+local conversation = CreateConversation()
+PlayFlavor(NPC, "selyse_brazenroot/freeport_combined/quest/racial/barbarian/selyse_brazenroot_025.mp3", "", "", 1770656376, 337080574, Spawn)
+AddConversationOption(conversation, "I plan on it!")
+StartConversation(conversation, NPC, Spawn, "That is good news!  You have made our ancestors proud this day!  Go forth; bare your teeth and cull the weak, my friend!")
+end
 
 
 function offer(NPC, Spawn)

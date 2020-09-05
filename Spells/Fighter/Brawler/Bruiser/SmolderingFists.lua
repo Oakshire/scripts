@@ -7,7 +7,9 @@
 --]]
 
 function cast(Caster, Target, Def, OffSkills, ProcDmgType, ProcDmgMin, ProcDmgMax)
-    -- Decreases Defense of caster by 1.8
+        Say(Caster, "potency and Stoneskin/deathprevention/avoid not implemented.")
+
+-- Decreases Defense of caster by 1.8
     AddSkillBonus(Target, GetSkillIDByName("Defense"), Def)
 
     -- Increases Ranged, Crushing, Piercing and Slashing of caster by 2.4

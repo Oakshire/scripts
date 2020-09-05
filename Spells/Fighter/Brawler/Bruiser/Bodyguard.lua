@@ -8,7 +8,7 @@
 
 function cast(Caster, Target, PhyDmg, Avoid, Deflect, Parry, OffSkill, Agg, DefSkill, NoxMit, Armor)
     -- Reduces physical damage done to caster by 5%
-    -- AddSpellBonus(Target, , PhyDmg)
+    -- AddSpellBonus(Target, 600, PhyDmg)
     Say(Caster, "Not Implemented: physical damage reduction")
 
     -- Adds 1.3% to base avoidance.

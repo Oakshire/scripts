@@ -9,7 +9,8 @@
 local QUEST = 579
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange", "OutRange")
+AddSpawnAccess(NPC, NPC)
+SetPlayerProximityFunction(NPC, 25, "InRange", "OutRange")
 end
 
 function hailed(NPC, Spawn)
@@ -22,7 +23,11 @@ end
 
 function InRange(NPC, Spawn)
 AddTimer(NPC, 5000, "callout", 1, Spawn)
+AddSpawnAccess(NPC, Spawn)
+if not HasQuest(Spawn, QUEST) or GetQuestStep(Spawn, QUEST) == 5  or GetQuestStep(Spawn, QUEST) == 6  then
+RemoveSpawnAccess(NPC, Spawn)
 end
+   end
 
 function OutRange(NPC, Spawn)
 

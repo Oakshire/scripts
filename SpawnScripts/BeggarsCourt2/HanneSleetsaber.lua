@@ -10,7 +10,7 @@
 local QUEST = 579
 local Pup1LocationID = 133770922
 local Pup2LocationID = 133770923
-local MalachiSleetsaber = 133770925
+local HubbyID = 133770925
 
 function spawn(NPC)
 
@@ -42,7 +42,7 @@ local Wife = GetSpawnByLocationID(zone, NPC)
 if Wife ~= nil then
 local Pup1 = SpawnByLocationID(zone, Pup1LocationID)
 local Pup2 = SpawnByLocationID(zone, Pup2LocationID)
-local Hubby = SpawnByLocationID(zone, MalachiSleetsaber)
+local Hubby = SpawnByLocationID(zone, HubbyID)
 end
    end
 

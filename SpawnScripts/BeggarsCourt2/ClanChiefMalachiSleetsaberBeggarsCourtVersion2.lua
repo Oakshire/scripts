@@ -9,32 +9,33 @@
 QUEST = 579
 
 function spawn(NPC)
-distance(NPC, Spawn)
 SetPlayerProximityFunction(NPC, 10, "InRange", "OutRange")
 end
+  
 
 
 
 
-
-function InRange(NPC, Spawn)
-hailed(NPC, Spawn)
+function InRange(NPC, Spawn) 
+hailed(NPC, Spawn) 
+if not HasQuest(Spawn, QUEST) or GetQuestStep(Spawn, QUEST) == 8 then
+Despawn(NPC)
 end
+   end
 
 function OutRange(NPC, Spawn)
-Despawn(NPC)
 end
 
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-    if GetQuestStep(Spawn, QUEST) == 6 then
-    local conversation = CreateConversation()
-    PlayFlavor(NPC, "clan_chief_malachi_sleetsaber/freeport_combined/quest/racial/barbarian/chief_malachi_sleetsaber_005.mp3", "", "", 3795501104, 75086374, Spawn)
-    AddConversationOption(conversation, "I think not, Clan Chief.  Your bluster does not fool me!", "dlg1")
-    StartConversation(conversation, NPC, Spawn, "Stand down, little cub, else I'll paint my stoop with yer blood!")  
-    else
-    PlayFlavor(NPC, "", "Return to the meeting room.  I will do as you wish.", "", 1689589577, 4560189, Spawn)
+  FaceTarget(NPC, Spawn)
+  if GetQuestStep(Spawn, QUEST) == 6 then
+  local conversation = CreateConversation()
+  PlayFlavor(NPC, "clan_chief_malachi_sleetsaber/freeport_combined/quest/racial/barbarian/chief_malachi_sleetsaber_005.mp3", "", "", 3795501104, 75086374, Spawn)
+  AddConversationOption(conversation, "I think not, Clan Chief.  Your bluster does not fool me!", "dlg1")
+  StartConversation(conversation, NPC, Spawn, "Stand down, little cub, else I'll paint my stoop with yer blood!")
+ elseif GetQuestStep(Spawn, QUEST) == 7 then
+ PlayFlavor(NPC, "", "Return to the meeting room.  I will do as you wish.", "", 1689589577, 4560189, Spawn)
 end
    end
 

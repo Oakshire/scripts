@@ -10,8 +10,9 @@ local QUEST = 579
 local citizenID = 133770930
 
 function spawn(NPC)
+SetTempVariable(NPC, "speak", "true") 
 AddSpawnAccess(NPC, NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange", "OutRange")
+SetPlayerProximityFunction(NPC, 5, "InRange", "OutRange")
 end
 
 function hailed(NPC, Spawn)
@@ -24,21 +25,24 @@ end
 
 function InRange(NPC, Spawn)
 AddSpawnAccess(NPC, Spawn)
-if GetQuestStep(Spawn, QUEST) == 3 then
+if GetQuestStep(Spawn, QUEST) == 3 and GetTempVariable(NPC, "speak")  == "true" then
+SetTempVariable(NPC, "speak", "false")
 AddTimer(NPC, 10000, "speech", 1, Spawn)
-elseif GetQuestStep(Spawn, QUEST) == 5 then
-RemoveSpawnAccess(NPC, Spawn)
-elseif GetQuestStep(Spawn, QUEST) == 7 then
-AddSpawnAccess(NPC, Spawn)
+elseif GetQuestStep(Spawn, QUEST) == 7 and GetTempVariable(NPC, "speak")  == "true" then
+SetTempVariable(NPC, "speak", "false")
 AddTimer(NPC, 10000, "speech6", 1, Spawn)
-elseif not HasQuest(Spawn, QUEST)
+elseif not HasQuest(Spawn, QUEST) or GetQuestStep(Spawn, QUEST) == 1 or GetQuestStep(Spawn, QUEST) == 5 then
 RemoveSpawnAccess(NPC, Spawn)
 end
   end
 
 
+function OutRange(NPC, Spawn)
+
+end
+
 function speech(NPC, Spawn)
-if HasQuest(Spawn, QUEST) and  GetQuestStep(Spawn, QUEST) == 3 then
+if GetQuestStep(Spawn, QUEST) == 3 then
 AddTimer(NPC, 10000, "speech1", 1, Spawn)
 end 
    end
@@ -64,6 +68,7 @@ AddTimer(NPC, 10000, "speech5", 1, Spawn)
 end
 
 function speech5(NPC, Spawn)
+SetTempVariable(NPC, "speak", "true") 
 PlayFlavor(NPC, "", "We will remove the humans, frogloks, halflings and the rest of the thin-bloods, and remake it a city for the Northmen!  A city worthy of us!", "", 1689589577, 4560189, Spawn)
 SetStepComplete(Spawn, QUEST, 3)
 end
@@ -103,11 +108,9 @@ AddTimer(NPC, 10000, "speech11", 1, Spawn)
 end
 
 function speech11(NPC, Spawn)
+SetTempVariable(NPC, "speak", "true")
 PlayFlavor(NPC, "", "I am proud to call this bastion of strength and wealth my home and follow our fearful leader, The Overlord, into any battlefield!", "", 1689589577, 4560189, Spawn)
 SetStepComplete(Spawn, QUEST, 7)
 end
 
 
-
-function OutRange(NPC, Spawn)
-end
