@@ -1,24 +1,14 @@
 --[[
     Script Name    : Spells/Mage/Sorcerer/Wizard/FrigidGift.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 07:08:31
+    Script Author  : neatz09
+    Script Date    : 2020.09.05 09:09:36
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
-
 -- Info from spell_display_effects (remove from script when done)
-
-end
-
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
-end
-
-function remove(Caster, Target)
-    -- code to remove the spell
-end
-
+-- On a hostile spell cast this spell will cast Ice Lash on target of spell.  Lasts for 6.0 seconds.  
+--     Inflicts 54 - 67 cold damage on target
+--     Slows target by 33.3%
+--     5% chance to dispel when target receives hostile action
+--     5% chance to dispel when target takes damage

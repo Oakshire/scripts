@@ -23,7 +23,7 @@ end
 function casted_on(NPC, Spawn, SpellName)
 	if HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) == 1  then
 		if SpellName == 'Collect Slate' then
-                     AddStepProgress(Spawn, QUEST, 1, 1)  
+                     AddStepProgress(Spawn, QUEST, 2, 1)  
                      Despawn(NPC)
 end
    end

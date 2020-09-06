@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Increases AGI of caster by 47.0
 -- Increases Fervor of caster by 2.0
 -- Adds 14.0% to base avoidance.
@@ -16,3 +15,33 @@
 --     Inflicts 39 - 65 mental damage on target
 -- When damaged with a spell this spell has a 20% chance to cast Song Barrier on target's attacker.  
 --     Inflicts 39 - 65 mental damage on target
+
+function cast(Caster, Target, Agi, Avoid, Phys, EleMit, DmgType, MinVal, MaxVal)
+        Say(Caster, "Fervor not Implemented")
+
+AddSpellBonus(Caster, 2, Agi)
+    AddSpellBonus(Caster, 696, Avoid)
+    AddSpellBonus(Caster, 200, Phys)
+    AddSpellBonus(Caster, 201, EleMit)
+    AddSpellBonus(Caster, 202, EleMit)
+    AddSpellBonus(Caster, 203, EleMit)
+	AddProc(Target, 16, 20)
+	AddProc(Target, 17, 20)
+end
+
+function proc(Caster, Target, Agi, Avoid, Phys, EleMit, DmgType, MinVal, MaxVal)
+	if Type == 1 then    
+		ProcDamage(Caster, Target, "Song Barrier", DmgType, MinVal, MaxVal)
+			end
+
+	if Type == 7 then
+		ProcDamage(Caster, Target, "Song Barrier", DmgType, MinVal, MaxVal)
+			end
+end
+
+function remove(Caster, Target)
+    RemoveSpellBonus(Target)
+	RemoveProc(Target)
+end
+
+

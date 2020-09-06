@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	teirdal_turncoats.lua
+	Script Name		:	Quests/Freeport/TeirDalTurncoats.lua
 	Script Purpose	        :	Handles the quest, "Teir'Dal Turncoats"
 	Script Author          	:	premierio015
 	Script Date		:	07.06.2020
@@ -14,7 +14,9 @@
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Kill Thexians", 8, 100, "The Arasai and other Teir'Dal are busy hunting down and torturing the remaining Thexians in Longshadow Alley.", 611, 6480003, 6480012, 6480013)
+        AddQuestStep(Quest, 2, "Gather Arasai torture instruments", 6, 100, "The Arasai and other Teir'Dal are busy hunting down and torturing the remaining Thexians in Longshadow Alley.", 11, 6480037)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+        AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -31,18 +33,24 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "")
-
-	AddQuestStepHarvest(Quest, 2, "Gather Arasai torture instruments", 6, 100, "The Arasai and other Teir'Dal are busy hunting down and torturing the remaining Thexians in Longshadow Alley.", 11, 6480036)
-	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+        CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I helped reduce the number of remaining Thexians in Longshadow Alley and obtained some Arasai torture instruments for Dyymona K'Vexx.")
+        CheckProgress(Quest, QuestGiver, Player)
+end
 
-	AddQuestStepChat(Quest, 3, "Return to Dyymona K'Vexx", 1, "I should return to Dyymona K'Vexx, at the Academy of Arcane Science in the city of Freeport.", 11, 5590238)
+
+function CheckProgress(Quest, QuestGiver, Player)
+ if QuestStepIsComplete(Player, 566, 1) and QuestStepIsComplete(Player, 566, 2) then
+        UpdateQuestTaskGroupDescription(Quest, 1, "I helped reduce the number of remaining Thexians in Longshadow Alley and obtained some Arasai torture instruments for Dyymona K'Vexx.")
+ 	AddQuestStepChat(Quest, 3, "Return to Dyymona K'Vexx", 1, "I should return to Dyymona K'Vexx, at the Academy of Arcane Science in the city of Freeport.", 11, 5590238)
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end
+   end
+
+
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
