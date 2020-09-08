@@ -1,7 +1,7 @@
 --[[
     Script Name    : SpawnScripts/ThunderingSteppes/GrennStiles.lua
-    Script Author  : Zcoretri
-    Script Date    : 2014.07.14 07:07:35
+    Script Author  : Patrick_Boyd
+    Script Date    : 2020.09.07
     Script Purpose : Grenn Stiles spawn script
                    : 
 --]]
@@ -25,12 +25,18 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
-    if HasQuest(Spawn, RecyclingTheOldFashoinedWay) then
+    if HasQuest(Spawn, RecycleTheOldFashionedWay) then
         -- Has the quest
-        if GetQuestStep(Spawn, RecyclingTheOldFashoinedWay) == 1 then
+        if GetQuestStep(Spawn, RecycleTheOldFashionedWay) == 1 then
             -- Has not completed the quest yet
-            AddConversationOption(conversation, "Ah! Got the bones, eh? Let me see them.")
-            StartConversation(conversation, NPC, Spawn, "Er, no, not quite. Just stopped by to say hello. I'll be back")
+            AddConversationOption(conversation, "Er, no, not quite. Just stopped by to say hello. I'll be back") 
+            StartConversation(conversation, NPC, Spawn,  "Ah! Got the bones, eh? Let me see them.")
+	else 
+	    -- Has completed the quest
+	    AddConversationOption(conversation, "Er, no, not quite. Just stopped by to say hello. I'll be back")
+	    -- This is placeholder text, not in the dump. TODO replace with actual text...
+	    AddConversationOption(conversation, "Yes, right here!", "EndRecycling")
+	    StartConversation(conversation, NPC, Spawn,  "Ah! Got the bones, eh? Let me see them.")
         end
     else
         AddConversationOption(conversation, "What kind of opportunity?", "Option1")
@@ -51,5 +57,9 @@ end
 function Option2(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     OfferQuest(NPC, Spawn, RecycleTheOldFashionedWay)
+end
+
+function EndRecycling(NPC, Spawn)
+    SetStepComplete(Spawn, RecycleTheOldFashionedWay, 2)
 end
 

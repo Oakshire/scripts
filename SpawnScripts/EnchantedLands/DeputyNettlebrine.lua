@@ -1,11 +1,12 @@
 --[[
 	Script Name	: SpawnScripts/EnchantedLands/DeputyNettlebrine.lua
 	Script Purpose	: Deputy Nettlebrine 
-	Script Author	: Cynnar
-	Script Date	: 2015.0.29
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Author	: Cynnar/Patrick_Boyd
+	Script Date	: 2020.9.7
+	Script Notes	: Updated to include WatchYourStepInTheTSPartIV quest complete. Still has bugs
 --]]
 
+local WatchYourStepInTheTSPartIV = 102
 local StartofSomethingBig = 118
 
 function spawn(NPC)
@@ -20,14 +21,20 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	if HasQuest(Spawn, StartofSomethingBig)
+	if HasQuest(Spawn, StartofSomethingBig) then
 		PlayFlavor(NPC, "", "Greetings, stranger!", "", 1689589577, 4560189, Spawn)
 		AddConversationOption(conversation, "No, not yet.")
 		StartConversation(conversation, NPC, Spawn, "How's it going? Any luck getting back the artifacts?")
+	elseif HasQuest(Spawn, WatchYourStepInTheTSPartIV) and GetQuestStep(Spawn, WatchYourStepInTheTSPartIV) == 1 then
+		PlayFlavor(NPC, "", "Greetings, stranger!", "", 1689589577, 4560189, Spawn)
+		AddConversationOption(conversation, "I have a letter for you.", "dlg_5_0")
+		StartConversation(conversation, NPC, Spawn, "How can I help you?")
 	else
+		//This seems to be a bug... anyone know what the default conversation is supposed to be?
 		PlayFlavor(NPC, "", "Greetings, stranger!", "", 1689589577, 4560189, Spawn)
 		AddConversationOption(conversation, "No, not yet.")
 		StartConversation(conversation, NPC, Spawn, "How's it going? Any luck getting back the artifacts?")
+	end	
 
 end
 
@@ -103,6 +110,10 @@ function dlg_4_2(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
 		AddConversationOption(conversation, "I'll see what I can do.", "dlg_4_3")
 	StartConversation(conversation, NPC, Spawn, "Terrific!  You see, I'm trying to gather up some of the artifacts from the old days.  The wagon I'd been storing the items in was smashed to bits and those mischievous fairies and sirens conspired to get all my artifacts!  I've been able to get most of them, but there's still a few missing.  Could you look around and get them back for me?")
+end
+
+function dlg_5_0(NPC, Spawn)
+	SetStepComplete(Spawn, WatchYourStepInTheTSPartIV, 1)
 end
 
 --[[ raw_conversations

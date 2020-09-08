@@ -48,7 +48,7 @@ function hailed(NPC, Spawn)
 			end
 			StartConversation(conversation, NPC, Spawn, "Well, it's about time.  I, uh, was beginning to worry.")
 		else
-			AddConversationOption(conversation, "If I ever go to Nektulos, I'll look her up.")
+			AddConversationOption(conversation, "If I ever go to Nektulos, I'll look her up.", "Option6")
 			StartConversation(conversation, NPC, Spawn, "I appreciate the report.  This is all the coin I have to pay you for your work.  My sister Tanny Granville says I spend too much on ingredients.  Well, if you want more work you can always speak with her.  She's out in Nektulos Forest getting some ingredients out that-a-way.  Thanks for the work, friend.")
 		end
 	else
@@ -101,4 +101,8 @@ function Option5(NPC, Spawn)
 
 	AddConversationOption(conversation, "I'll investigate and report back.")
 	StartConversation(conversation, NPC, Spawn, "He used to gather my ingredients at Thundermist Valley's cove.  Last I saw him, he was babbling about singing.  I suspect there's a concentration of sirens out there that might have a hand in hoarding not only my ingredients but my suppliers as well.  They might have some kind of underwater gathering place near the shore.")
+end
+
+function Option6(NPC, Spawn)
+	SetStepComplete(Spawn, GranvillesRestaurantAntonica, 6)
 end
