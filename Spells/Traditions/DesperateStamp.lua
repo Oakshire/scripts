@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Increases Defense of group members (AE) by 0.0
 
 function cast(Caster, Target)

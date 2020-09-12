@@ -6,10 +6,10 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Inflicts 1 - 2 crushing damage on target
 -- Inflicts 1 - 2 slashing damage on target
 
 function cast(Caster, Target)
-    Say(Target, "Hah, nice try! That's not implemented yet!")
+    SpellDamage(Target, DmgType, MinVal, MaxVal)
+    SpellDamage(Target, DmgType2, Minval2, MaxVal2)
 end

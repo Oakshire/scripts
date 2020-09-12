@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Stuns target
 -- Epic targets gain an immunity to Stun effects of 7.5 seconds and duration is reduced to 0.8 seconds.
 -- Resistibility increases against targets higher than level 29.
