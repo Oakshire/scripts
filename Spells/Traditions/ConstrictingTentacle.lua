@@ -20,7 +20,8 @@ function cast(Caster, Target, MinVal, MaxVal)
 end
 
 function randomFloat(Val1, Val2)
-	return Val1 + math.random()  * (Val2 - Val1);
+math.randomseed(os.time())	
+return Val1 + math.random()  * (Val2 - Val1);
 end
 
 function remove(Caster, Target)

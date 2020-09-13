@@ -6,12 +6,18 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Inflicts 1 - 2 crushing damage on target
 -- Stuns target
 -- Epic targets gain an immunity to Stun effects of 5.6 seconds and duration is reduced to 0.6 seconds.
 -- Resistibility increases against targets higher than level 29.
 
-function cast(Caster, Target)
-    Say(Target, "Hah, nice try! That's not implemented yet!")
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    AddControlEffect(Target, 4)
+	SpellDamage(Target, DmgType, MinVal, MaxVal)
+end
+
+
+function remove(Caster, Target)
+    RemoveControlEffect(Target, 4)
+
 end

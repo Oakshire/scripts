@@ -6,10 +6,14 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Inflicts 1 - 2 slashing damage on target
 -- Inflicts 1 - 2 slashing damage on target every 8 seconds
 
 function cast(Caster, Target)
-    Say(Target, "Hah, nice try! That's not implemented yet!")
+    SpellDamage(Target, DmgType, MinVal, MaxVal)
+end
+
+
+function tick(Caster, Target, DmgType, MinVal, MaxVal)
+	SpellDamage(Target, DmgType, MinVal, MaxVal)
 end
