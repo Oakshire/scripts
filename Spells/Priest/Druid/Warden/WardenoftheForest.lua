@@ -12,7 +12,7 @@ function cast(Caster, Target, Focus, PhysMit, Resists)
 -- Increases Focus of caster by 8.1
 -- Increases Mitigation of caster vs physical damage by 90
 -- Increases Mitigation of caster vs elemental, noxious and arcane damage by 342
-
+SetSeeInvis(Target,1)
     AddSkillBonus(Target, GetSkillIDByName("Focus"), Focus)
     AddSpellBonus(Target, 200, PhysMit)
     AddSpellBonus(Target, 201, Resists)
@@ -24,5 +24,6 @@ end
 function remove(Caster, Target)
     RemoveSpellBonus(Target)
     ResetIllusion(Target)
+SetSeeInvis(Target,0)
 end
 
