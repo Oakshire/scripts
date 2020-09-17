@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Decreases STR and INT of target by 19.4
 -- Only affects targets level 20 and above
 function cast(Caster, Target, BonusAmt)
@@ -16,6 +15,6 @@ function cast(Caster, Target, BonusAmt)
 end
 
 function remove(Caster, Target, BonusAmt)
-    RemoveSkillBonus(Target)
+    RemoveSpellBonus(Target)
 end
 
