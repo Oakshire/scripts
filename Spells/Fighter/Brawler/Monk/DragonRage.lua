@@ -15,9 +15,11 @@ function cast(Caster, Target, Hate)
 end
 
 function proc(Caster, Target, Type, Hate)
-	ProcHate(Caster, Target, Hate, "Dragon Stance")
+if Type == 3 then	
+ProcHate(Caster, Target, Hate, "Dragon Stance")
 end
 
+end
 
 function remove(Caster, Target)
 	RemoveProc(Target)

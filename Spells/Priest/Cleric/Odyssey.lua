@@ -13,7 +13,7 @@
 -- If not a City Betrayer
 -- Teleports you to your recall point.
 function precast(Caster, Target)
-    if GetBoundZoneID(Caster) == 0 then
+    if GetBoundZoneID(Target) == 0 then
         return false
     end
 
@@ -21,5 +21,5 @@ function precast(Caster, Target)
 end
 
 function cast(Caster, Target)
-    Gate(Caster)
+    Gate(Target)
 end

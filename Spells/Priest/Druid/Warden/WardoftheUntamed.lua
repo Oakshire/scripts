@@ -6,6 +6,16 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Wards group members (AE) against 13 points of elemental damage
 -- Increases Mitigation of group members (AE) vs elemental damage by 901
+
+function cast(Caster, Target, Mit)   
+AddSpellBonus(Target, 201, Mit)
+
+end
+
+
+function remove(Caster, Target)
+    RemoveSpellBonus(Target)
+
+end

@@ -7,8 +7,10 @@
 --]]
 
 function cast(Caster, Target, DefAmt, SkillAmt, DmgType, DmgAmt)
-    -- Decreases Defense of caster by 3.9
-    AddSkillBonus(Target, GetSkillIDByName("Slashing"), SkillAmt)
+        Say(Caster, "Fervor not Implemented")
+
+-- Decreases Defense of caster by 3.9
+    AddSkillBonus(Target, GetSkillIDByName("Defense"), DefAmt)
 
     -- Increases Slashing of caster by 5.3
     -- Increases Piercing, Crushing and Ranged of caster by 5.3
