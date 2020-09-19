@@ -1,23 +1,38 @@
 --[[
-    Script Name    : Spells/Scout/Bard/Troubadour/DepressingChant.lua
-    Script Author  : Zcoretri
-    Script Date    : 17.March.2014
+    Script Name    : Spells/Scout/Bard/Troubador/DepressingChant.lua
+    Script Author  : neatz09
+    Script Date    : 2020.09.19 03:09:13
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target, SlowAmt, HostileChance, DmgChance, Mitigation)
-    -- Applies Snare.  Lasts for 24.0 seconds.
-    -- Slows target
-    -- chance to dispel when target receives hostile action
-    -- chance to dispel when target takes damage
-    Say(Caster, "Slow portion is not scripted yet!")
+-- Applies Snare.  Lasts for 24.0 seconds.
+--     Slows target by 28.3%
+--     5% chance to dispel when target receives hostile action
+--     5% chance to dispel when target takes damage
+-- Decreases Mitigation of target vs arcane damage by 197
 
-    -- Decreases Mitigation of target vs arcane damage
-    AddSpellBonus(Target, 203, Mitigation)
+function cast(Caster, Target, SlowAmt, HostileChance, DmgChance, DebuffAmt)
+local Slow = 100 - SlowAmt
+local Spell = GetSpellID()
+-- Slows target
+-- chance to dispel when target receives hostile action
+-- chance to dispel when target takes damage
+-- Decreases Mitigation of target vs noxious damage
+	AddSpellBonus(Target, 202, DebuffAmt)
+	SetSpeedMultiplier(Target, Slow)
+	AddProc(Target, 1, HostileChance)
+	AddProc(Target, 15, DmgChance)
+end
+
+function proc(Caster, Target, Type, SlowAmt, HostileChance, DmgChance, DebuffAmt)
+	if (Type == 1 or type == 15) and HasSpellEffect(Target, Spell) then
+		SetSpeedMultiplier(Target, 1)
+			end
 end
 
 function remove(Caster, Target)
     RemoveSpellBonus(Target)
+	RemoveProc(Target)
+	SetSpeedMultiplier(Target, 1)
 end
-
