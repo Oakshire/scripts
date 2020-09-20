@@ -10,12 +10,15 @@
 --     Inflicts 30 - 51 disease damage on target
 
 function cast(Caster, Target)
-   AddProc(Target, 1, 12, nil, 1)
+   AddProc(Target, 3, 12, nil, 1)
 end
 
 function proc(Caster, Target, Type, DmgType, MinVal, MaxVal)
-	ProcDamage(Caster, Target, "Crypt's Revenge", DmgType, MinVal, MaxVal)
+if Type == 3 then	
+ProcDamage(Caster, Target, "Crypt's Revenge", DmgType, MinVal, MaxVal)
 end
+end
+
 function remove(Caster, Target)
 	RemoveProc(Target)
 end

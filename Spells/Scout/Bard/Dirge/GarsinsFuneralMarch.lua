@@ -10,10 +10,10 @@
 -- 30% chance to dispel when target takes damage
 -- Does not affect Epic targets
 -- Resistibility increases against targets higher than level 29.
-local Spell = GetSpellID()
+
 
 function cast(Caster, Target, Chance)
-    Say(Caster, "Resist level 29 or < not implemented.")
+  Say(Caster, "Resist level 29 or < not implemented.")
 	Say(Caster, "Need a check for ifhascontroleffect")
 	if not IsEpic(Target) then
 		AddControlEffect(Target, 6)
@@ -22,7 +22,8 @@ function cast(Caster, Target, Chance)
 end
 
 function proc(Caster, Target, Type, Chance)
-	if Type == 15 and HasSpellEffect(Target, Spell) then
+local Spell = GetSpellID()	
+if Type == 15 and HasSpellEffect(Target, Spell) then
 		RemoveControlEffect(Target, 6)
 			end
 end

@@ -14,7 +14,6 @@
 
 function cast(Caster, Target, SlowAmt, HostileChance, DmgChance, DebuffAmt)
 local Slow = 100 - SlowAmt
-local Spell = GetSpellID()
 -- Slows target
 -- chance to dispel when target receives hostile action
 -- chance to dispel when target takes damage
@@ -26,7 +25,8 @@ local Spell = GetSpellID()
 end
 
 function proc(Caster, Target, Type, SlowAmt, HostileChance, DmgChance, DebuffAmt)
-	if (Type == 1 or type == 15) and HasSpellEffect(Target, Spell) then
+local Spell = GetSpellID()	
+if (Type == 1 or type == 15) and HasSpellEffect(Target, Spell) then
 		SetSpeedMultiplier(Target, 1)
 			end
 end

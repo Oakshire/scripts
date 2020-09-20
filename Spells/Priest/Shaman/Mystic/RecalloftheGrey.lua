@@ -7,6 +7,12 @@
 --]]
 
 -- Info from spell_display_effects (remove from script when done)
+function cast(Caster, Target)
+Resurrect(15, 15, 1, "Heal")
+    Say(Caster, "Rez Sickness neededs to be implemented.")
+    Say(Caster, "Need to Cast subspell Grey Ward.")
+
+end
 -- Applies Grey Ward on termination.  Lasts for 30.0 seconds.
 --     Wards target against 590 points of all damage
 --     Heals target for 15.0% of max health

@@ -21,6 +21,7 @@ function proc(Target, Caster, Type, DmgType, MinVal, MaxVal, Hate)
 		Say(Caster, "Needs To Cast Spell for hate")
 RemoveTriggerFromSpell()
 end
+end
 
 function remove(Caster, Target)
 	RemoveProc(Target)

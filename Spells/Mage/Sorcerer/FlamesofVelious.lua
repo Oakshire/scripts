@@ -6,15 +6,14 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Inflicts 190 heat damage on target
 -- Inflicts 190 cold damage on target
 -- Slows target by 33.3%
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, DmgType2, MinVal2, MaxVal2, SlowAmt)
+function cast(Caster, Target, DmgType, MinVal, DmgType2, MinVal2, SlowAmt)
 local Slow = 100 - SlowAmt
-	SpellDamage(Target, DmgType, MinVal, MaxVal)
-	SpellDamage(Target, DmgType2, MinVal2, MaxVal2)
+	SpellDamage(Target, DmgType, MinVal)
+	SpellDamage(Target, DmgType2, MinVal2)
 	SetSpeedMultiplier(Target, Slow)
 end
 

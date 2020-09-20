@@ -12,3 +12,23 @@
 -- Dispelled when target takes damage
 -- Does not affect Epic targets
 -- Resistibility increases against targets higher than level 29.
+
+function precast(Caster, Target)
+    -- Does not affect Epic targets
+    if IsEpic(Target) then
+        return false, 43
+    end
+
+    return true
+end
+
+function cast(Caster, Target)
+AddControlEffect(Target, 1)
+    Say(Caster, "Resistibility not implemented")
+
+end
+
+
+function remove(Caster, Target)
+RemoveControlEffect(Target, 1)
+end
