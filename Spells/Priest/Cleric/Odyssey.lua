@@ -5,7 +5,7 @@
     Script Purpose : 
                    : 
 --]]
-
+--Casting power cost scales with the character's total power. A rough equation is Max Power x 54.6% = power cost. 
 -- Info from spell_display_effects (remove from script when done)
 -- Teleports target to a zone landmark
 --     You must be a citizen to benefit from an odyssey.

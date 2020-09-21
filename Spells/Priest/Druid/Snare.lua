@@ -1,26 +1,30 @@
 --[[
     Script Name    : Spells/Priest/Druid/Snare.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 07:08:18
+    Script Author  : neatz09
+    Script Date    : 2020.09.21 12:09:26
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
-
 -- Info from spell_display_effects (remove from script when done)
 -- Slows target by 40.0%
 -- Does not affect Epic targets
+function precast(Caster, Target)
+    -- Does not affect Epic targets
+    if IsEpic(Target) then
+        return false, 43
+    end
 
+    return true
 end
 
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
+
+function cast(Caster, Target, SlowAmt)
+local Slow = 100 - SlowAmt
+	SetSpeedMultiplier(Target, Slow)
 end
+
 
 function remove(Caster, Target)
-    -- code to remove the spell
+SetSpeedMultiplier(Target, 1)
 end
-

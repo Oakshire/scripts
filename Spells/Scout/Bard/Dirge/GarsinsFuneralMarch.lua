@@ -12,12 +12,19 @@
 -- Resistibility increases against targets higher than level 29.
 
 
+function precast(Caster, Target)
+    -- Does not affect Epic targets
+    if IsEpic(Target) then
+        return false, 43
+    end
+
+    return true
+end
+
 function cast(Caster, Target, Chance)
   Say(Caster, "Resist level 29 or < not implemented.")
 	Say(Caster, "Need a check for ifhascontroleffect")
-	if not IsEpic(Target) then
-		AddControlEffect(Target, 6)
-			end
+		AddControlEffect(Target, 6)	
 	AddProc(Target, 15, Chance)
 end
 

@@ -6,7 +6,7 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
+
 -- Mesmerizes target
 -- Prevents AOE (except when direct) 
 -- Dispelled when target takes damage

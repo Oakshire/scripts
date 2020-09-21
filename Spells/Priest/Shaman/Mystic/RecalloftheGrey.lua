@@ -8,7 +8,7 @@
 
 -- Info from spell_display_effects (remove from script when done)
 function cast(Caster, Target)
-Resurrect(15, 15, 1, "Heal")
+Resurrect(15, 15, 1)
     Say(Caster, "Rez Sickness neededs to be implemented.")
     Say(Caster, "Need to Cast subspell Grey Ward.")
 

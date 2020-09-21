@@ -7,7 +7,7 @@
 --]]
 
 function cast(Caster, Target)
-Resurrect(15, 15, 1, "Heal")
+Resurrect(15, 15, 1, Target, "Heal")
     Say(Caster, "Rez Sickness neededs to be implemented.")
 
 end

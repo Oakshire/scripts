@@ -5,10 +5,12 @@
     Script Purpose : 
                    : 
 --]]
-
 function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
+    Resurrect(15, 15, 1)
+    Say(Caster, "casts 2 subspells")
+
+end
+
 
 -- Info from spell_display_effects (remove from script when done)
 -- Resurrects target with 15% health and power
@@ -28,14 +30,4 @@ function cast(Caster, Target)
 -- Decreases All Attributes of target by 5.0%
 -- If between levels 1 - 6
 -- If outside an arena
-
-end
-
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
-end
-
-function remove(Caster, Target)
-    -- code to remove the spell
-end
 
