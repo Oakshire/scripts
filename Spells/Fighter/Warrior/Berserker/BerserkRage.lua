@@ -17,6 +17,24 @@
 --     Increases Haste of target by 8.6
 --     Increases DPS of target by 8.6
 
-function cast(Caster, Target)
 
+function cast(Caster, Target, Haste, DPS)
+	AddProc(Target, 1, 12.5) --Combat
+	AddProc(Target, 15, 30) --Damaged
+	AddProc(Target, 14, 100) --Kill
+end
+
+
+function proc(Caster, Target, Type, Haste)
+Spell = GetSpell(5172, GetSpellTier())
+	if Type == 1 or Type == 15 or Type == 14 then
+		SetSpellDataIndex(Spell, 0, Haste)
+		SetSpellDataIndex(Spell, 1, Haste)
+			CastCustomSpell(Spell, Caster, Target)
+				end
+	end
+
+
+function remove(Caster, Target)
+RemoveProc(Target)
 end
