@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- On any combat or spell hit this spell may cast Berserk on target.  Lasts for 10.0 seconds.  Triggers about 2.0 times per minute. 
 --     Increases Haste of target by 8.6
 --     Increases DPS of target by 8.6
@@ -18,7 +17,7 @@
 --     Increases DPS of target by 8.6
 
 
-function cast(Caster, Target, Haste, DPS)
+function cast(Caster, Target, Haste)
 	AddProc(Target, 1, 12.5) --Combat
 	AddProc(Target, 15, 30) --Damaged
 	AddProc(Target, 14, 100) --Kill
@@ -29,7 +28,6 @@ function proc(Caster, Target, Type, Haste)
 Spell = GetSpell(5172, GetSpellTier())
 	if Type == 1 or Type == 15 or Type == 14 then
 		SetSpellDataIndex(Spell, 0, Haste)
-		SetSpellDataIndex(Spell, 1, Haste)
 			CastCustomSpell(Spell, Caster, Target)
 				end
 	end

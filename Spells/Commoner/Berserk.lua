@@ -10,9 +10,9 @@
 -- Increases Haste of target by 8.6
 -- Increases DPS of target by 8.6
 
-function cast(Caster, Target, Haste, DPS)
+function cast(Caster, Target, Haste)
     AddSpellBonus(Target, 617, Haste)
-    AddSpellBonus(Target, 629, DPS)
+    AddSpellBonus(Target, 629, Haste)
 
 end
 
