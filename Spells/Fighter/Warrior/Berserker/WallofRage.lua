@@ -25,10 +25,10 @@ AddProc(Target, 3, 12)
 end
 
 function proc(Caster, Target, Type, Haste, Mit, SlowAmt, Chance)
-    Say(Caster, CastCrippleHere)
+    Say(Caster, "CastCrippleHere")
 end
 
-function remove
+function remove(Caster, Target)
 RemoveSpellBonus(Caster)
 SetSpeedMultiplier(Target, 1)
 end
