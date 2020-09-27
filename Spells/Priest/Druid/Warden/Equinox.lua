@@ -6,7 +6,13 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
+
+function cast(Caster, Target)
+Resurrect(13, 13, 1)
+    Say(Caster, "two subspells needed.")
+
+end
+
 -- Applies Nature's Blessing on termination.  Lasts for 1 minute.
 --     Heals target for 3.0% of max health instantly and every 6 seconds
 --         This effect cannot be critically applied.
