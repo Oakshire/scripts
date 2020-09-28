@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Scout/Rogue/Swashbuckler/SleightofHand.lua
     Script Author  : neatz09
-    Script Date    : 2019.10.24 04:10:42
+    Script Date    : 2020.09.27 10:09:38
     Script Purpose : 
                    : 
 --]]

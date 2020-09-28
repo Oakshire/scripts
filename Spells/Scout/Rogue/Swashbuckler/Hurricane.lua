@@ -1,24 +1,10 @@
 --[[
     Script Name    : Spells/Scout/Rogue/Swashbuckler/Hurricane.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 08:08:56
+    Script Author  : neatz09
+    Script Date    : 2020.09.27 10:09:10
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
-
 -- Info from spell_display_effects (remove from script when done)
-
-end
-
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
-end
-
-function remove(Caster, Target)
-    -- code to remove the spell
-end
-
+-- Caster has a 28.1% chance of having one of their weapons' auto-attack affect multiple targets they are facing, who are within range of that weapon.

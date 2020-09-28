@@ -1,24 +1,24 @@
 --[[
     Script Name    : Spells/Scout/Rogue/Swashbuckler/InspiredDaring.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 08:08:49
+    Script Author  : neatz09
+    Script Date    : 2020.09.27 08:09:39
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
+-- On a melee hit this spell will cast Daring Attack on target of attack.  
+--     Inflicts 80 - 133 piercing damage on target
 
--- Info from spell_display_effects (remove from script when done)
-
+function cast(Caster, Target, DmgType MinVal, MaxVal)
+AddProc(Target, 3, 100)
 end
 
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
+function proc(Caster, Target, Type, DmgType MinVal, MaxVal)
+if Type == 3 then
+ProcDamage(Caster, Target, "Daring Attack", DmgType, MinVal, MaxVal)
+end
 end
 
 function remove(Caster, Target)
-    -- code to remove the spell
+RemoveProc(Target)
 end
-

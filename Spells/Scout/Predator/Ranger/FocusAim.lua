@@ -19,3 +19,12 @@
 -- Increases Multi Attack of caster by 34.1
 -- Decreases Slashing and Piercing of caster by 66.0
 -- Increases Ranged of caster by 23.8
+
+function cast(Caster, Target)
+
+end
+
+
+function remove(Caster, Target)
+
+end
