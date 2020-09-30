@@ -6,10 +6,11 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Interrupts target encounter
 -- Decreases Threat to target encounter by 998 - 1,220 
 
-function cast(Caster, Target)
-
+function cast(Caster, Target, HateLow, HateHigh)
+    Interrupt(Caster, Target)
+AddHate(Caster, Target, math.random(HateLow, HateHigh), 1)
+    Say(Caster, "This spell needs a formula based on level")
 end

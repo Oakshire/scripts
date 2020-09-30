@@ -9,16 +9,16 @@
 -- On a melee hit this spell will cast Daring Attack on target of attack.  
 --     Inflicts 80 - 133 piercing damage on target
 
-function cast(Caster, Target, DmgType MinVal, MaxVal)
-AddProc(Target, 3, 100)
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+	AddProc(Target, 3, 100)
 end
 
-function proc(Caster, Target, Type, DmgType MinVal, MaxVal)
-if Type == 3 then
-ProcDamage(Caster, Target, "Daring Attack", DmgType, MinVal, MaxVal)
-end
+function proc(Caster, Target, Type, DmgType, MinVal, MaxVal)
+	if Type == 3 then
+		ProcDamage(Caster, Target, "Daring Attack", DmgType, MinVal, MaxVal)
+			end
 end
 
 function remove(Caster, Target)
-RemoveProc(Target)
+	RemoveProc(Target)
 end

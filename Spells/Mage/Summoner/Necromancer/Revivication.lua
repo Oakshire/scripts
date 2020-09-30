@@ -5,8 +5,11 @@
     Script Purpose : 
                    : 
 --]]
+function cast(Caster, Target)
+Resurrect(13, 13, 1)
+    Say(Caster, "1 sub spell needed.")
 
--- Info from spell_display_effects (remove from script when done)
+end
 -- Applies Revived Sickness on termination.  Lasts for 2 minutes.
 --     Decreases All Attributes of target by 20.0%
 --         If not between levels 1 - 6

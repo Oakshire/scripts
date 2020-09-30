@@ -5,8 +5,12 @@
     Script Purpose : 
                    : 
 --]]
+function cast(Caster, Target)
+Resurrect(13, 13, 1)
+    Say(Caster, "2 Subspells needed")
 
--- Info from spell_display_effects (remove from script when done)
+end
+
 -- Applies Resurrect on termination.
 --     Heals target for 100.0% of max health
 --         This effect cannot be critically applied.
