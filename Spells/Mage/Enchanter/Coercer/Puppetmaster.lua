@@ -1,10 +1,14 @@
---[[
-    Script Name    : Spells/Mage/Enchanter/Coercer/Puppetmaster.lua
-    Script Author  : neatz09
-    Script Date    : 2019.11.04 10:11:50
-    Script Purpose : 
-                   : 
---]]
-
--- Info from spell_display_effects (remove from script when done)
--- Summons 4 limited pets to aid the caster
+function cast(Caster, Target, PetID)
+    local x = GetX(Caster)
+    local y = GetY(Caster)
+    local z = GetZ(Caster)
+local count = 0;
+while (count < 4) do
+    local pet = SummonDumbFirePet(Caster, Target, PetID, x, y, z)
+    if pet ~= nil then
+  CopySpawnAppearance(pet, Target)
+        SpawnSet(pet, "size", "6")
+    end
+    count = count + 1
+end
+end
