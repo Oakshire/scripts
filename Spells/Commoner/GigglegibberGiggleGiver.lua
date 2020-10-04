@@ -21,6 +21,7 @@ SpawnMob(Zone, 5590951, false, X, Y, Z, Heading)
     end
 end
 
+
 function remove(Caster, Target)
 local S = GetSpawn(Caster, 5590951)
  if S ~= nil then
