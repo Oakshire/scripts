@@ -8,6 +8,7 @@
 
 function spawn(NPC)
 	waypoints(NPC)
+        SpawnSet(NPC, "difficulty", "2")  
 end
 
 function hailed(NPC, Spawn)
