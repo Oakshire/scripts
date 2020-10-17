@@ -33,6 +33,7 @@ function hailed(NPC, Spawn)
 
 function Emote (NPC)
 	PlayAnimation(NPC, 12028)
-	AddTimer(NPC, 10000, "Emote")
+        local time = math.random (10000,15000) 
+	AddTimer(NPC, time, "Emote")
 		end
 end
