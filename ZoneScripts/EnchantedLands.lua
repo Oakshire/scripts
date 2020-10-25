@@ -7,7 +7,7 @@
 --]]
 
 function init_zone_script(zone)
-    SetLocationProximityFunction(zone, -194.83, 3.27, -292.25, 5, "Sokokar", "Leave") -- Rivervale (from Docks) 20
+    SetLocationProximityFunction(zone, -194.83, 3.27, -292.25, 5, "StableMasters", "Leave") -- Rivervale (from Docks) 20
     SetLocationProximityFunction(zone, 303.07, 1.17, -244.39, 5, "StableMasters", "Leave")   -- The Great Guard (from Docks) 21
     SetLocationProximityFunction(zone, -186.22, -3.31, -605.63, 5, "StableMasters", "Leave") -- Chomper's Pond (from Docks) 42
     SetLocationProximityFunction(zone, 157.14, 25.31, -777.63, 5, "StableMasters", "Leave")  -- Goblin Pass (from Docks) 45
