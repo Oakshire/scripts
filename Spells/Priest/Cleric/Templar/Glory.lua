@@ -6,6 +6,21 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- On a hit this spell may cast Combat Glory on target.  Triggers about 1.0 times per minute. 
 --     Heals group members (AE) for 470
+
+function cast(Caster, Target, HealAmt)
+AddProc(Target, 1, 4)
+end
+
+function proc(Caster, Target, Type, HealAmt)
+    if Type == 1 then
+Say(Caster, "Custom spell needed.")
+
+end
+
+end
+
+function remove(Caster, Target)
+RemoveProc(Target)
+end

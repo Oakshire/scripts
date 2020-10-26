@@ -14,7 +14,6 @@
 -- On a melee hit this spell may cast Engulf on target of attack.  Triggers about 1.0 times per minute. 
 --     Inflicts 155 - 258 heat damage on target
 
-
 function cast(Caster, Target, Deflect, Parry, Skills, Nox, Armor, DmgType, MinVal, MaxVal)
 	AddProc(Target, 3, 3)    
 	AddSpellBonus(Target, 670, Deflect)
@@ -26,9 +25,14 @@ function cast(Caster, Target, Deflect, Parry, Skills, Nox, Armor, DmgType, MinVa
     AddSkillBonus(Target, GetSkillIDByName("Ranged"), Skills)
     AddSpellBonus(Target, 202, Nox)
     AddSpellBonus(Target, 678, Armor)
-
 end
 
 function proc(Caster, Target, Type, Deflect, Parry, Skills, Nox, Armor, DmgType, MinVal, MaxVal)
 	ProcDamage(Caster, Target, "Engulf", DmgType, MinVal, MaxVal)
+end
+
+function remove(Caster, Target)
+	RemoveProc(Target)
+	RemoveSpellBonus(Target)
+	RemoveSkillBonus(Target)
 end

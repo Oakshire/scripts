@@ -6,6 +6,11 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Interrupts target
 -- Inflicts 541 - 903 melee damage on target
+
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    Say(Caster, "Teleport and max range not implemented.")
+    Interrupt(Caster, Target)
+SpellDamage(Target, DmgType, MinVal, MaxVal)
+end

@@ -7,7 +7,9 @@
 --]]
 
 function cast(Caster, Target, BonusAmt)
-    AddSpellBonus(Target, 200, BonusAmt)
+    Say(Caster, "This Spell costs health overtime - not implemented.")
+  
+AddSpellBonus(Target, 200, BonusAmt)
 end
 
 

@@ -6,13 +6,21 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Decreases Weapon Damage of caster by 50.0
 -- Slows caster by 88.9%
 -- Increases Mitigation of caster vs physical damage by 1727
 
 
-function cast(Caster, Target)
+function cast(Caster, Target, Dmg, SlowAmt, Mit)
+local Slow = 100 - SlowAmt
     AddSpellBonus(Target, 685, Dmg)
+	SetSpeedMultiplier(Target, Slow)
+    AddSpellBonus(Target, 200, Mit)
 
+end
+
+
+function remove(Caster, Target)
+    RemoveSpellBonus(Target)
+	SetSpeedMultiplier(Target, 1)
 end

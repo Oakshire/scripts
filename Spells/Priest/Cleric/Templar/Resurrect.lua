@@ -12,3 +12,9 @@
 --         This effect cannot be critically applied.
 -- Resurrects target with 15% health and power
 -- If outside an arena
+
+function cast(Caster, Target)
+Resurrect(15, 15, 1)
+    Say(Caster, "Subspells needed")
+
+end
