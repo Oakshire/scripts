@@ -11,5 +11,5 @@ function cast(Caster, Target, HealthAmt, MitAmt)
 end
 
 function remove(Caster, Target, HealthAmt, MitAmt)
-    RemoveSpellBonus()
+    RemoveSpellBonus(Target)
 end

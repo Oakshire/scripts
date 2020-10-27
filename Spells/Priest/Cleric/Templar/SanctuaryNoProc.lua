@@ -1,8 +1,8 @@
 --[[
-    Script Name    : Spells/Priest/Cleric/Templar/Sanctuary.lua
+    Script Name    : Spells/Priest/Cleric/Templar/SanctuaryNoProc.lua
     Script Author  : neatz09
     Script Date    : 2020.10.27 12:10:19
-    Script Purpose : 
+    Script Purpose : Sanctuary II
                    : 
 --]]
 
@@ -12,11 +12,8 @@
 -- Makes group members (AE) immune to Fear effects
 -- Makes group members (AE) immune to Daze effects
 -- Makes group members (AE) immune to Mesmerize effects
--- 1% chance to dispel when target takes damage
--- 1% chance to dispel when target receives hostile action
 
-function cast(Caster, Target, Chance)
-	AddProc(Target, 15, 1, nil, 1)
+function cast(Caster, Target)
 	AddImmunitySpell(5, Target) --Root
 	AddImmunitySpell(2, Target) --Stifle
 	AddImmunitySpell(4, Target) --Stun
@@ -26,14 +23,7 @@ function cast(Caster, Target, Chance)
 		Say(Caster, "PVP Immunity not implemented.")
 end
 
-function proc(Caster, Target, Type, Chance)
-	if Type == 15 then 
-		CancelSpell()
-					end
-end
-
 function remove(Caster, Target)
-	RemoveProc(Target)
 	RemoveImmunitySpell(5, Target) --Root
 	RemoveImmunitySpell(2, Target) --Stifle
 	RemoveImmunitySpell(4, Target) --Stun

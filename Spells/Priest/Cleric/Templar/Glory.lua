@@ -2,7 +2,7 @@
     Script Name    : Spells/Priest/Cleric/Templar/Glory.lua
     Script Author  : neatz09
     Script Date    : 2020.02.29 04:02:59
-    Script Purpose : 
+    Script Purpose :
                    : 
 --]]
 
@@ -15,9 +15,11 @@ end
 
 function proc(Caster, Target, Type, HealAmt)
     if Type == 1 then
-Say(Caster, "Custom spell needed.")
+		Spell = GetSpell(5447, GetSpellTier())
+			SetSpellDataIndex(Spell, 0, HealAmt)
+				CastCustomSpell(Spell, Caster, Target)
+				end
 
-end
 
 end
 

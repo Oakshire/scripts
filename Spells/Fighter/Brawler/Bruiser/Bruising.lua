@@ -28,7 +28,9 @@ function cast(Caster, Target, Deflect, Parry, Skills, Nox, Armor, DmgType, MinVa
 end
 
 function proc(Caster, Target, Type, Deflect, Parry, Skills, Nox, Armor, DmgType, MinVal, MaxVal)
-	ProcDamage(Caster, Target, "Engulf", DmgType, MinVal, MaxVal)
+	if Type == 3 then 
+ProcDamage(Caster, Target, "Engulf", DmgType, MinVal, MaxVal)
+end
 end
 
 function remove(Caster, Target)

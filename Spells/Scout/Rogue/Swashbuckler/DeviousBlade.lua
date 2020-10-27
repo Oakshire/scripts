@@ -25,8 +25,9 @@ function proc(Target, Caster, Type, DmgType, MinVal, MaxVal, Hate)
 		Spell = GetSpell(5446, GetSpellTier())
 			SetSpellDataIndex(Spell, 0, Hate)
 				CastCustomSpell(Spell, Caster, Target)
-				end
 	RemoveTriggerFromSpell()
+end
+
 end
 
 function remove(Caster, Target)

@@ -15,11 +15,12 @@ function cast(Caster, Target, HealLow, HealHigh, Triggers)
     SetSpellTriggerCount(Triggers, 1)
 end
 
-function proc(Caster, Target, ProcType, HealLow, HealHigh)
-    SpellHeal("Heal", HealLow, HealHigh)
+function proc(Caster, Target, Type, HealLow, HealHigh)
+if Type == 15 then    
+SpellHeal(Spawn, "heal", min, max, Target, 0, 0, "Supplicant's Prayer")
     RemoveTriggerFromSpell()
 end
-
+end
 function remove(Caster, Target)
     RemoveProc(Target)
 end
