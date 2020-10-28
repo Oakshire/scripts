@@ -1,24 +1,33 @@
 --[[
     Script Name    : Spells/Priest/Druid/Fury/FeralTenacity.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 07:08:43
+    Script Author  : neatz09
+    Script Date    : 2020.10.27 11:10:43
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
+-- On death this spell will cast Feral Tenacity on target.  Lasts for 24.0 seconds.  
+--     Heals target for 256
+--     Heals target for 64 every 2 seconds
+--     Increases AGI of target by 28.6
+--     Grants a total of 1 trigger of the spell.
 
--- Info from spell_display_effects (remove from script when done)
-
+function cast(Caster, Target, HealAmt, TickAmt, Agi, Triggers)
+	AddProc(Target, 13, 100)
+	SetSpellTriggerCount(Triggers, 1)
 end
 
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
+function proc(Caster, Target, Type, HealAmt, TickAmt, Agi, Triggers)
+	if Type == 13 then
+    	Spell = GetSpell(5451, GetSpellTier())
+			SetSpellDataIndex(Spell, 0, HealAmt)
+			SetSpellDataIndex(Spell, 1, TickAmt)
+			SetSpellDataIndex(Spell, 2, Agi)
+				CastCustomSpell(Spell, Caster, Target)
+					RemoveTriggerFromSpell()
+						end
 end
 
 function remove(Caster, Target)
-    -- code to remove the spell
+	RemoveProc(Target)
 end
-

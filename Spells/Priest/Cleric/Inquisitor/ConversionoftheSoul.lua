@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Applies Conversion of the Soul on termination.
 --     Heals target for 50.0% of max health
 --         This effect cannot be critically applied.
@@ -14,3 +13,9 @@
 --         This effect cannot be critically applied.
 -- Resurrects target with 15% health and power
 -- If outside an arena
+
+function cast(Caster, Target)
+Resurrect(15, 15, 1)
+    Say(Caster, "No Summoning sickness + may need subspell")
+
+end

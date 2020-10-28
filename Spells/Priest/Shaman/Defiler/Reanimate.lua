@@ -6,7 +6,13 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
+
+function cast(Caster, Target)
+Resurrect(15, 15, 1)
+    Say(Caster, "Spell will need a subspell + should heal for % of health at termination.")
+
+end
+
 -- Applies Reanimate on termination.  Lasts for 1 minute.
 --     Heals target for 30.0% of max health
 --         This effect cannot be critically applied.
