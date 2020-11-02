@@ -11,7 +11,9 @@ local InTheNameOfHonor = 490
 local TheTunarianPlot = 491
 
 function spawn (NPC)
-         
+ ProvidesQuest(NPC, InTheNameOfPrestige) 
+ ProvidesQuest(NPC, InTheNameOfHonor)
+ ProvidesQuest(NPC, TheTunarianPlot)        
 end
 
 function respawn (NPC)

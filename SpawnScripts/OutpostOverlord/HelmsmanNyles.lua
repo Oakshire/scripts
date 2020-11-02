@@ -7,7 +7,6 @@
 --]]
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	choice = math.random(1,2)
 
 	if choice == 1 then
