@@ -9,5 +9,5 @@
 
 function cast(Caster, Target)
     Say(Caster, "Threat Position Not Implemented.")
-AddHate(Caster, Target, Hate)
+AddHate(Caster, Target, Hate, 1)
 end

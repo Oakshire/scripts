@@ -1,26 +1,11 @@
 --[[
     Script Name    : Spells/Scout/Ambush.lua
-    Script Author  : John Adams
-    Script Date    : 2013.08.11 02:08:52
+    Script Author  : neatz09
+    Script Date    : 2020.11.03 03:11:37
     Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-    -- code to cast the spell
-    Say(Caster, "Whoops! Guess this is not implemented yet!")
-
 -- Info from spell_display_effects (remove from script when done)
--- Inflicts 19 - 32 melee damage on target
+-- Inflicts 12 - 20 melee damage on target
 -- You must be sneaking to use this ability.
-
-end
-
-function tick(Caster, Target)
-    -- code to process each call_frequency (tick) set in spell_tiers
-end
-
-function remove(Caster, Target)
-    -- code to remove the spell
-end
-

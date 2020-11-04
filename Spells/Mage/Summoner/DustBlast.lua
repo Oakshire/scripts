@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Inflicts 33 - 49 magic damage on target
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
