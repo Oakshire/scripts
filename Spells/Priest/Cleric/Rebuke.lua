@@ -7,8 +7,8 @@
 --]]
 
 -- Decreases Mitigation of target vs physical damage by 108
-function cast(Caster, Target)
-    AddSpellBonus(Target, 200, BonusAmt)
+function cast(Caster, Target, Mit)
+    AddSpellBonus(Target, 200, Mit)
 end
 
 function remove(Caster, Target)

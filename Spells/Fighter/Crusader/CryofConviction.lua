@@ -1,12 +1,12 @@
 --[[
-    Script Name    : Spells/Fighter/Brawler/FlyingKick.lua
+    Script Name    : Spells/Fighter/Crusader/CryofConviction.lua
     Script Author  : neatz09
-    Script Date    : 2020.11.05 05:11:45
+    Script Date    : 2020.11.05 04:11:37
     Script Purpose : 
                    : 
 --]]
 
--- Inflicts 30 - 50 crushing damage on target
+-- Inflicts 34 - 57 divine damage on targets in Area of Effect
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
 	SpellDamage(Target, DmgType, MinVal, MaxVal)

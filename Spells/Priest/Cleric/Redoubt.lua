@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Increases Max Health of target by 91.3
 -- Increases Slashing and Crushing of target by 2.2
 -- Increases Piercing of target by 4.3
@@ -16,12 +15,10 @@ function cast(Caster, Target, HP, OffSkill, Pierce)
     AddSkillBonus(Target, GetSkillIDByName("Slashing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Crushing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Piercing"), Pierce)
-
 end
 
 
 function remove(Caster, Target)
     RemoveSpellBonus(Target)
     RemoveSkillBonus(Target)
-
 end

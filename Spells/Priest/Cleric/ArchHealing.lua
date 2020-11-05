@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Heals target for 182 - 223
 
 function cast(Caster, Target, MinVal, MaxVal)

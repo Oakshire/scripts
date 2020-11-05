@@ -6,19 +6,16 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Inflicts 25 - 31 divine damage on target
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
-    else
-        SpellDamage(Target, DmgType, MinVal)
-    end
+    Say(Caster, "Resistability and hostile dispell should be hardcoded.. not implemented.")
+	if not IsEpic() then
+		AddControlEffect(Target, 3)
+			end	
+	SpellDamage(Target, DmgType, MinVal, MaxVal)
 end
 
--- Dazes target
---     If Target is not Epic
--- Dispelled when target receives hostile action
--- Dispelled when target takes damage
--- Resistibility increases against targets higher than level 29.
+function remove(Caster, Target)
+    RemoveControlEffect(Target, 3)
+end
