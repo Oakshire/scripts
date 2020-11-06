@@ -20,5 +20,4 @@ end
 
 function remove(Caster, Target)
     RemoveSkillBonus(Target)
-
 end

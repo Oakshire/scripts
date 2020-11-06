@@ -6,9 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
-
-
 function cast(Caster, Target, Debuff, DefSkill, Mit)
 -- Decreases Slashing, Piercing and Crushing of caster by 4.8
     AddSkillBonus(Target, GetSkillIDByName("Slashing"), Debuff)
@@ -26,7 +23,4 @@ function remove(Caster, Target)
     RemoveSkillBonus(Target)
 
 end
-
-
-
 

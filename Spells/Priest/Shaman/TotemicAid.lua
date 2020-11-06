@@ -12,7 +12,7 @@
 
 function cast(Caster, Target, MinHeal, MaxHeal, HP)
 SpellHeal("Heal", MinHeal, MaxHeal)
-    AddSpellBonus(Target, 600, HP)
+    AddSpellBonus(Target, 606, HP)
 end
 
 function remove(Caster, Target)

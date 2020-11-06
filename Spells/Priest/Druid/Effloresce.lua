@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Heals target for 102 - 125
 -- Heals target for 13 - 16 every second
 

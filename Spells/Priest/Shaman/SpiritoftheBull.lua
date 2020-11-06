@@ -9,12 +9,10 @@
 -- Increases STR and STA of group members (AE) by 13.1
 
 function cast(Caster, Target, BonusAmt)
-    AddSpellBonus(Target, 600, BonusAmt)
+    AddSpellBonus(Target, 0, BonusAmt)
+	AddSpellBonus(Target, 1, BonusAmt)
 end
 
 function remove(Caster, Target)
     RemoveSpellBonus(Target)
 end
-
-
-
