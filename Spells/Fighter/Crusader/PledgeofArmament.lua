@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Increases Mitigation of target vs physical damage by 73
 -- Decreases Mitigation of caster vs physical damage by 162
 

@@ -7,8 +7,11 @@
 --]]
 
 function precast(Caster, Target)
-    -- Must be flanking or behind
-    return IsFlanking(Target, Caster)
+	if not IsFlanking(Target, Caster) then
+		SendMessage(Caster, "Must be flanking or behind", "yellow")
+			return false
+				end
+	return true
 end
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal, BonusAmt)

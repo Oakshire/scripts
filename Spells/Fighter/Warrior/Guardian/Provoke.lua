@@ -12,10 +12,6 @@ function cast(Caster, Target, MinVal, MaxVal)
     else
         AddHate(Caster, Target, MinVal, 1)
     end
-end
-
     -- Interrupts target
-    if target ~= nil then
         Interrupt(Caster, Target)
-    end
 end

@@ -9,7 +9,8 @@
 -- Decreases AGI and STR of target encounter by 27.4
 
 function cast(Caster, Target, BuffAmt)
-    AddSkillBonus(Target, 0, BuffAmt)
+    Say(Caster, "Power upkeep not implemented")
+	AddSkillBonus(Target, 0, BuffAmt)
     AddSkillBonus(Target, 2, BuffAmt)
 end
 

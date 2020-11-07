@@ -6,7 +6,7 @@
                    : 
 --]]
 
-function precast(Caster,Target)
+function precast(Caster, Target)
     -- You must be sneaking to use this ability.
     if not IsStealthed(Caster) then
         SendMessage(Caster, "You must be sneaking to use this ability.", "yellow")

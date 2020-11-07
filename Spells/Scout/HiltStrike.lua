@@ -6,22 +6,20 @@
                    : 
 --]]
 
-
 -- Interrupts target
 -- Inflicts 17 - 21 crushing damage on target
 -- Stuns target
 --     If Target is not Epic
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-        Say(Caster, "This need spell needs a formula")
+	if not IsEpic() then
+		AddControlEffect(Target, 4)
+			end        
+	Say(Caster, "This need spell needs a formula")
     Interrupt(Caster, Target)
     SpellDamage(Target, DmgType, MinVal, MaxVal)
-    AddControlEffect(Target, 4)
-
 end
-
 
 function remove(Caster, Target)
     RemoveControlEffect(Target, 4)
-
 end

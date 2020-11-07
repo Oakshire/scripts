@@ -1,12 +1,12 @@
 --[[
-    Script Name    : Spells/Scout/QuickStrike.lua
+    Script Name    : Spells/Scout/Bard/AlinsKeeningLamentation.lua
     Script Author  : neatz09
-    Script Date    : 2020.01.02 04:01:39
+    Script Date    : 2020.11.06 06:11:26
     Script Purpose : 
                    : 
 --]]
 
--- Inflicts 6 - 10 melee damage on target
+-- Inflicts 46 - 76 mental damage on target encounter
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
 	SpellDamage(Target, DmgType, MinVal, MaxVal)
