@@ -12,6 +12,7 @@
 
 function Init(Quest)
     AddQuestStepChat(Quest, 1, "I need to speak with Murrar Shar. He is at the entrance to Myrrin's Tower in the center of the Colony.", 1, "Speak to Murrar Shar, outside the entrance of Myrrin's Tower in the center of the colony.", 0, 2530076)
+--    AddQuestStepChat(Quest, 1, "Speak to Murrar Shar, outside the entrance of Myrrin's Tower in the center of the colony.", 0, 2530076)
     AddQuestStepCompleteAction(Quest, 1, "step1_complete")
 end
 
