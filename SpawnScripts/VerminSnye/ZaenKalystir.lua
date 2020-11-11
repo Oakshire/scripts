@@ -10,7 +10,7 @@ local roviotm = 532   -- Ruins of Varsoon: Investigation Of The Mausoleum
 local rovrte = 534  -- Ruins of Varsoon: Revealing the Entrance
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange", Spawn)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange", Spawn)
 end
 
 function respawn(NPC)

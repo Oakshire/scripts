@@ -13,12 +13,16 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Kill the dregs sneaks till I find the journal", 1, 100, "From the crossroads, cross the southern bridge and head south until you find a small encampment of ratonga dregs.  Among them find the sneak that stole the journal.", 195, 330044, 330690, 330691)
+	AddQuestStepKill(Quest, 1, "Kill the dregs sneaks till I find the journal", 1, 50, "From the crossroads, cross the southern bridge and head south until you find a small encampment of ratonga dregs.  Among them find the sneak that stole the journal.", 195, 330044, 330690, 330691)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	conversation = CreateConversation()
+        PlayFlavor(NPC, "voiceover/english/optional2/master_of_the_hunt/commonlands/quests/master_hunter/master_hunter001.mp3", "", "", 849307995, 144655211, Spawn)
+        AddConversationOption(conversation, "Yeah, kill the rat and get your book.")
+        StartConversation(conversation, QuestGiver, Player, "Splendid. A ratonga stole my hunting journal, the little wretch.  Find him, kill him, and return with my journal.  Is that understood?")
+
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -9,7 +9,7 @@
 -- Increases AGI of caster by 10.0
 -- Increases STR of caster by 15.0
 
-function cast(Caster, Target)
+function cast(Caster, Target, Agi, Str)
     AddSpellBonus(Target, 2, Agi)
     AddSpellBonus(Target, 0, Str)
 

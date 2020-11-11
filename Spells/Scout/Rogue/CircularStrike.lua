@@ -6,15 +6,12 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Interrupts targets in Area of Effect
 -- Inflicts 38 - 64 melee damage on targets in Area of Effect
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
-    else
-        SpellDamage(Target, DmgType, MinVal)
-    end
+	SpellDamage(Target, DmgType, MinVal, MaxVal)
+		if LastSpellAttackHit() then
+			Interrupt(Caster, Target)
+				end
 end
-

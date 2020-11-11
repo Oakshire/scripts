@@ -6,7 +6,16 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Applies Blessed Strike on termination.
 --     Inflicts 23 - 38 divine damage on target
 -- Inflicts 9 - 16 divine damage on target
+
+function cast(Caster, Target, Dmg1, Dmg1Min, Dmg1Max, Dmg2, Dmg2Min, Dmg2Max)
+	SpellDamage(Target, Dmg2, Dmg2Min, Dmg2Max)
+end
+
+function remove(Caster, Target)
+	if LastSpellAttackHit() then
+		ProcDamage(Caster, Target, "Blessed Strike", Dmg1, Dmg1Min, Dmg1Max)
+	end
+end
