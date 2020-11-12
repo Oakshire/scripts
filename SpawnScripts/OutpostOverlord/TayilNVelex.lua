@@ -103,7 +103,7 @@ function WhoIsOverlord(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/tayil_n_velex/tutorial_island02_evil_revamp/quests/citizenship/tayilnvelex/tayilnvelex003.mp3", "", "", 416547700, 1925188764, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/tayil_n_velex/tutorial_island02_evil_revamp/quests/citizenship/tayilnvelex/tayilnvelex003.mp3", "", "orate", 416547700, 1925188764, Spawn)
 	AddConversationOption(conversation, "I will remember that. What can you tell me of Freeport?", "WhatIsFreeport")
 	AddConversationOption(conversation, "I'll hear more of this later.")
 	StartConversation(conversation, NPC, Spawn, "The Overlord is the fiercely courageous rule of Freeport. A statue of his glowing visage graces the pond in the center of the outpost. Though he is merciless to his enemies, he is generous to those who serve him. Pray you never do anything to fall from his grace, " .. GetName(Spawn) .. ".")

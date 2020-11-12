@@ -2,8 +2,10 @@
 	Script Name	: SpawnScripts/Graveyard/acrumblingskeleton.lua 
 	Script Purpose	: a crumbling skeleton
 	Script Author	: Scatman
-	Script Date	: 2009.07.10
+	Script Date	: 2009.07.10/ 2020.11.11
 	Script Notes	: 
+        Modified by     : premierio015
+        Modified Notes: : Added bone fragments function for quest Bone Dust(583)
 --]]
 
 local spoke = false
@@ -49,6 +51,18 @@ function ResetSpoke(NPC)
 end
 
 function death(NPC, Spawn)
+      if HasQuest(Spawn, 583) then
+        local choice = math.random(1, 4)
+        if choice == 1 then
+        AddStepProgress(Spawn, 583, 1, 2)
+        elseif choice == 2 then
+         AddStepProgress(Spawn, 583, 1, 4)
+        elseif choice == 3 then
+         AddStepProgress(Spawn, 583, 1, 6)
+        elseif choice == 4 then
+         AddStepProgress(Spawn, 583, 1, 7)
+       end
+          end
 	spoke = false
 	local chance = math.random(1, 100)
 	if chance <= 10 then

@@ -16,8 +16,13 @@ SpellDamage(Target, DmgType, MinVal, MaxVal)
 --     Does not affect Epic targets
 if not IsEpic(Target) then
         Knockback(Caster, Target, 4000)
+		AddControlEffect(Target, 4)
         BlurVision(Target, 1.0)
-        AddSpellTimer(1500, "RemoveKnockback")
+        AddSpellTimer(1500, "RemoveStunBlur")
     end
+end
 
+function RemoveStunBlur(Caster, Target)
+    RemoveControlEffect(Target, 4)
+    BlurVision(Target, 0)
 end

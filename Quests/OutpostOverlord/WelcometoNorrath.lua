@@ -20,10 +20,10 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I spoke with Tayil N'Velex.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I spoke with Tayil N'Velex.")
+        UpdateQuestStepDescription(Quest, 1, "I spoke with Tayil N'Velex")
+        UpdateQuestTaskGroupDescription(Quest, 1, "I spoke with Tayil N'Velex.")
 
-	UpdateQuestDescription(Quest, "I have spoken to Tayil N'Velex.")
+	UpdateQuestDescription(Quest, "I have spoken with Tayil N'Velex.")
 	GiveQuestReward(Quest, Player)
 end
 
@@ -35,6 +35,9 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is accepted
+end
+function Deleted(Quest, QuestGiver, Player)
+	-- Remove any quest specific items here when the quest is deleted
 end
 
 function Declined(Quest, QuestGiver, Player)

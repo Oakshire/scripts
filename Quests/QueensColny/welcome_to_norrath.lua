@@ -13,7 +13,7 @@
 function Init(Quest)
     AddQuestStepChat(Quest, 1, "I need to speak with Murrar Shar. He is at the entrance to Myrrin's Tower in the center of the Colony.", 1, "Speak to Murrar Shar, outside the entrance of Myrrin's Tower in the center of the colony.", 0, 2530076)
 --    AddQuestStepChat(Quest, 1, "Speak to Murrar Shar, outside the entrance of Myrrin's Tower in the center of the colony.", 0, 2530076)
-    AddQuestStepCompleteAction(Quest, 1, "step1_complete")
+    AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -24,12 +24,24 @@ function Declined(Quest, QuestGiver, Player)
 
 end
 
-function step1_complete(Quest, QuestGiver, Player)
-    UpdateQuestDescription(Quest, "I spoke with Murrar Shar.")
+
+
+
+function QuestComplete(Quest, QuestGiver, Player)
+     UpdateQuestStepDescription(Quest, 3, "I spoke with Murrar Shar.")
+     UpdateQuestTaskGroupDescription(Quest, 3, "I spoke with Murrar Shar.")
+
+    UpdateQuestDescription(Quest, "I have spoken to Murrar Shar.")
     GiveQuestReward(Quest, Player)
 end
 
+function Deleted(Quest, QuestGiver, Player)
+	-- Remove any quest specific items here when the quest is deleted
+end
+
+
 function Reload(Quest, QuestGiver, Player, Step)
+
 
 end
 

@@ -1,23 +1,26 @@
 --[[
     Script Name    : Spells/Commoner/Knockdown.lua
-    Script Author  : John Adams
-    Script Date    : 2013.11.22 01:11:34
-    Script Purpose : Apply Knockdown
+    Script Author  : neatz09
+    Script Date    : 2020.11.12 12:11:15
+    Script Purpose : 
                    : 
 --]]
 
-function cast(Caster, Target)
-
-    --Throws target back
-    --Stuns target
-    AddControlEffect(Target, 4)
-
-    --Blurs vision of target (to do)
-    
-    --Except Epic
-
+-- Apply Knockdown
+--     Throws target back
+--     Stuns target
+--     Blurs vision of target
+--     Except Epic
+function cast(Caster, Target, Timer)
+if not IsEpic(Target) then
+        Knockback(Caster, Target, Timer)
+		AddControlEffect(Target, 4)
+        BlurVision(Target, 1.0)
+        AddSpellTimer(Timer, "RemoveStunBlur")
+    end
 end
 
-function remove(Caster, Target)
+function RemoveStunBlur(Caster, Target)
     RemoveControlEffect(Target, 4)
+    BlurVision(Target, 0)
 end
