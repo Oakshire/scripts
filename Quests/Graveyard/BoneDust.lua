@@ -32,9 +32,6 @@ function Deleted(Quest, QuestGiver, Player)
 	-- Remove any quest specific items here when the quest is deleted
 end
 
-function Removed(Quest, QuestGiver, Player)
-
-end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have collected the bone fragments.")

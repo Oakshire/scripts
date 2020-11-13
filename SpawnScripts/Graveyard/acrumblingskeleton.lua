@@ -63,6 +63,9 @@ function death(NPC, Spawn)
          AddStepProgress(Spawn, 583, 1, 7)
        end
           end
+       if HasQuest(Spawn, 584) or HasCompletedQuest(Spawn, 584) then
+        RemoveLootItem(NPC, 2555)
+       end	
 	spoke = false
 	local chance = math.random(1, 100)
 	if chance <= 10 then
