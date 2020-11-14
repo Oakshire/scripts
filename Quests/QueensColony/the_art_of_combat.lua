@@ -24,8 +24,10 @@ function Accepted(Quest, QuestGiver, Player)
         if GetDistance(Player, QuestGiver) < 30 then
 	    FaceTarget(QuestGiver, Player)
 	    conversation = CreateConversation()
+
+            PlayFlavor(QuestGiver, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar032.mp3", "", "", 80247345, 2680267873, Player)
 	    AddConversationOption(conversation, "Thanks.")
-	    StartConversation(conversation, QuestGiver, Player, "Goodluck.")
+	    StartConversation(conversation, QuestGiver, Player, "Good luck.")
         end
     end
 end

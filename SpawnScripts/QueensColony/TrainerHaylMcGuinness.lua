@@ -8,6 +8,7 @@
     Notes          : Added animations
 --]]
 
+--[[
 function spawn(NPC)
 
 end
@@ -19,6 +20,7 @@ end
 function respawn(NPC)
 
 end
+--]]
 
 --[[
 	Script Name	: SpawnScripts/QueensColony/TrainerHaylMcGuinness.lua
@@ -234,7 +236,7 @@ function dlg_8_18(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good016.mp3", "", "", 3175726067, 1849673241, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good016.mp3", "", "nod", 3175726067, 1849673241, Spawn)
 	AddConversationOption(conversation, "How do I tell if an opponent is too weak or too strong for me?", "dlg_8_19")
 	StartConversation(conversation, NPC, Spawn, "Picking the right fight is crucial to victory. A weak opponent won't provide worthwhile rewards, while an overly powerful foe will result in your defeat. You need to keep your resources in mind as well as choosing the right target.")
 end
@@ -243,7 +245,7 @@ function dlg_8_19(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good017.mp3", "", "", 1334502220, 1072117512, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good017.mp3", "", "point", 1334502220, 1072117512, Spawn)
 	AddConversationOption(conversation, "What resources should I be keeping an eye on?", "dlg_8_20")
 	StartConversation(conversation, NPC, Spawn, "Targeting an opponent will show you detailed information on its overall potency. Generally speaking, you'll find the best results from fighting opponents with blue, white, or yellow names. Talk to Trainer Marla Gilliam for more information on evaluating your opponents.")
 end
@@ -252,7 +254,7 @@ function dlg_8_20(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good018.mp3", "", "", 4117626633, 2141014135, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good018.mp3", "", "no", 4117626633, 2141014135, Spawn)
 	AddConversationOption(conversation, "Teach me about knowing my surroundings.", "dlg_8_21")
 	AddConversationOption(conversation, "Tell me about using my abilities.", "dlg_8_24")
 	AddConversationOption(conversation, "Teach me the basics of combat.", "dlg_8_2")
@@ -264,7 +266,7 @@ function dlg_8_21(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good019.mp3", "", "", 2725345993, 3739954421, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good019.mp3", "", "scold", 2725345993, 3739954421, Spawn)
 	AddConversationOption(conversation, "Anything else I should watch out for?", "dlg_8_22")
 	StartConversation(conversation, NPC, Spawn, "Keeping your surroundings in mind is crucial to victory. Fighting in areas with lots of aggressive creatures is a bad idea, because they won't hesitate to gang up on you.")
 end
@@ -273,7 +275,7 @@ function dlg_8_22(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good020.mp3", "", "", 4260973055, 2919672507, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good020.mp3", "", "cutthroat", 4260973055, 2919672507, Spawn)
 	AddConversationOption(conversation, "Any other tips?", "dlg_8_23")
 	StartConversation(conversation, NPC, Spawn, "Staying too long on the exact spot where you just defeated a foe can be dangerous. Another enemy is likely to show up there soon after, which can be an unpleasant surprise if you're already in another battle.")
 end
@@ -282,7 +284,7 @@ function dlg_8_23(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good021.mp3", "", "", 2035277963, 965678861, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good021.mp3", "", "nod", 2035277963, 965678861, Spawn)
 	AddConversationOption(conversation, "Tell me about selecting the right opponent.", "dlg_8_24")
 	AddConversationOption(conversation, "Tell me about using my abilities.", "dlg_8_24")
 	AddConversationOption(conversation, "Teach me the basics of combat.", "dlg_8_2")
@@ -294,7 +296,7 @@ function dlg_8_24(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good022.mp3", "", "", 3488047041, 965083005, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good022.mp3", "", "no", 3488047041, 965083005, Spawn)
 	AddConversationOption(conversation, "What do you mean?", "dlg_8_25")
 	StartConversation(conversation, NPC, Spawn, "Successful fighting isn't about turning on your auto-attack and walking away from battle. Your odds of victory are much better if you prepare well and are active during combat. You should be using every spell or combat art that has a positive effect on your chances to win.")
 end
@@ -303,7 +305,8 @@ function dlg_8_25(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good023.mp3", "", "", 3086044683, 813829457, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good023.mp3", "", "agree", 3086044683, 813829457, Spawn)
+--      PlayFlavor keys are correct, but the VO doesn't work on Live or EMU.
 	AddConversationOption(conversation, "What about during battle?", "dlg_8_26")
 	StartConversation(conversation, NPC, Spawn, "Before you begin fighting, make sure you and your allies have activated all beneficial spells, also known as 'buffs,' so that you're operating at peak efficiency. Buffs can add health or power, increase your rate of regeneration, enhance your physical attributes, make you attack faster or do more damage, and more.")
 end
@@ -312,7 +315,7 @@ function dlg_8_26(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good024.mp3", "", "", 2201642498, 2339371912, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good024.mp3", "", "nod", 2201642498, 2339371912, Spawn)
 	AddConversationOption(conversation, "What else should I know about spells and arts?", "dlg_8_27")
 	StartConversation(conversation, NPC, Spawn, "Whether you're a front-lines melee type or someone attacking from a distance with weapons or spells, you should be using abilities that damage your foes effectively and efficiently. Right click on your spells and arts and select 'Examine' to see details on their effects.")
 end
@@ -321,7 +324,7 @@ function dlg_8_27(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good025.mp3", "", "", 1394782063, 4291748674, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good025.mp3", "", "point", 1394782063, 4291748674, Spawn)
 	AddConversationOption(conversation, "Tell me about selecting the right opponent.", "dlg_8_24")
 	AddConversationOption(conversation, "Teach me about knowing my surroundings.", "dlg_8_21")
 	AddConversationOption(conversation, "Teach me the basics of combat.", "dlg_8_2")
