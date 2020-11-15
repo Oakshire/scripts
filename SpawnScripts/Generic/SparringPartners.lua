@@ -19,9 +19,15 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
+function death(NPC, Spawn)
+        Despawn(NPC) 
+end
+
+
+--[[
 function CombatReset(NPC)
-local hp = GetMaxHP(NPC) * 0.10
-SetHP(NPC, hp)
+        local hp = GetMaxHP(NPC) * 0.10
+        SetHP(NPC, hp)
 end
 
 function healthchanged(NPC, Spawn)
@@ -33,5 +39,5 @@ function healthchanged(NPC, Spawn)
         ClearEncounter(NPC)
 	end
 end
-
+--]]
  
