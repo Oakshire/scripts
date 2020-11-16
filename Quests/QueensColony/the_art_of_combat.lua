@@ -46,6 +46,7 @@ end
 
 function step2_complete_killedSparringPartner(Quest, QuestGiver, Player)
     UpdateQuestStepDescription(Quest, 2, "I have defeated a sparring partner in combat.")
+    UpdateQuestTaskGroupDescription(Quest, 2, "I have defeated a sparring partner in combat.")
 	
     AddQuestStepChat(Quest, 3, "I should speak with Trainer Hayl McGuinness and tell him of my victory.", 1, "I need to learn about combat from Trainer Hayl McGuinness.", 0, 2530070) 
     AddQuestStepCompleteAction(Quest, 3, "step3_complete_talkToHayl")
@@ -53,7 +54,7 @@ end
 
 function step3_complete_talkToHayl(Quest, QuestGiver, Player)
     UpdateQuestStepDescription(Quest, 3, "I have spoken to Sergeant Hayl McGuinness.")
-    UpdateQuestTaskGroupDescription(Quest, 1, "I have won a match against one of the sparring partners.") 
+    UpdateQuestTaskGroupDescription(Quest, 3, "I have won a match against one of the sparring partners.") 
 	
     AddQuestStepChat(Quest, 4, "I should tell Murrar that my training was successful.", 1, "I should return to Murrar Shar to show that I am ready for my next challenege.", 0, 2530076) 
     AddQuestStepCompleteAction(Quest, 4, "step4_complete_talkToMurrar")
@@ -61,6 +62,7 @@ end
 
 function step4_complete_talkToMurrar(Quest, QuestGiver, Player)
     UpdateQuestDescription(Quest, "I have learned some of the basics of combat from Trainer Hayl McGuinness at the Queen's Colony. Hopefully this knowledge helps me serve Qeynos and uncover the trouble here.")
+--    UpdateQuestTaskGroupDescription(Quest, "I have reported back to Murrar Shar.")
     GiveQuestReward(Quest, Player)
 end
 

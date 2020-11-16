@@ -45,12 +45,13 @@ function hailed(NPC, Spawn)
    
    if HasCompletedQuest(Spawn, TheArtOfCombat) then
 		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good026.mp3", "", "agree", 1881020230, 3830147813, Spawn)
-		AddConversationOption(conversation, "I'd like to learn about combat so that I can help the colony.", "dlg_8_1")
+	        AddConversationOption(conversation, "Teach me the basics of combat.", "dlg_8_28")
+	        AddConversationOption(conversation, "Teach me more advanced aspects of combat.", "dlg_8_17")
+	        AddConversationOption(conversation, "I'll come back later.")
 		StartConversation(conversation, NPC, Spawn, "Hello there, " .. GetName(Spawn) .. "! I'm here to teach new recruits the basics of combat. Murrar told me you show great promise!")
    elseif HasQuest(Spawn, TheArtOfCombat) and GetQuestStep(Spawn, TheArtOfCombat) < 4 then
 		if GetQuestStep(Spawn, TheArtOfCombat) == 1 then
-			-- on the first step
-			
+			-- on the first step			
 			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good026.mp3", "", "agree", 1881020230, 3830147813, Spawn)
 			AddConversationOption(conversation, "I'd like to learn about combat so that I can help the colony.", "dlg_8_1")
 			StartConversation(conversation, NPC, Spawn, "Hello there, " .. GetName(Spawn) .. "! I'm here to teach new recruits the basics of combat. Murrar told me you show great promise!")
@@ -65,7 +66,9 @@ function hailed(NPC, Spawn)
 		end
 	else
 		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good026.mp3", "", "", 1881020230, 3830147813, Spawn)
-		AddConversationOption(conversation, "I'd like to learn about combat so that I can help the colony.", "dlg_8_1")
+	        AddConversationOption(conversation, "Teach me the basics of combat.", "dlg_8_28")
+	        AddConversationOption(conversation, "Teach me more advanced aspects of combat.", "dlg_8_17")
+	        AddConversationOption(conversation, "I'll come back later.")
 		StartConversation(conversation, NPC, Spawn, "Hello there, " .. GetName(Spawn) .. "! I'm here to teach new recruits the basics of combat. Murrar told me you show great promise!")
 	end
 end
@@ -74,7 +77,7 @@ function Victorious(NPC, Spawn)
    SetStepComplete(Spawn, TheArtOfCombat, 3)
    conversation = CreateConversation()
 
-   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good_quest002.mp3", "", "nod", 1477689908, 1568507038, Spawn)
+   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_hayl_mcguinness/tutorial_island02_revamp/trainers/combat/combat_good_quest002.mp3", "", "agree", 1477689908, 1568507038, Spawn)
    AddConversationOption(conversation, "I'll report back to Murrar.")
    StartConversation(conversation, NPC, Spawn, "Great work! You've proven your worth and are ready for greater challenges. If you want further instruction later, just come see me. But right now you must report back to Murrar so that you can discover what's behind the trouble here at the colony.")
 end

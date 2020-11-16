@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I should speak to Nethet about Brandus's shipment", 1, "Brandus directed me to an individual named Nethet who frequents the City of Freeport gates in the Commonlands.", 11, 15)
+	AddQuestStepChat(Quest, 1, "I should speak to Nethet about Brandus's shipment", 1, "Brandus directed me to an individual named Nethet who frequents the City of Freeport gates in the Commonlands.", 11, 331135)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

@@ -3,23 +3,23 @@
 	Script Purpose	: Murrar Shar <Emissary of Queen Antonia Bayle>
 	Script Author	: Zcoretri
 	Script Date	: 2015.07.30
-        Modified Date :  2020.04.20
+        Modified Date   : 2020.04.20
         Modified by     : premierio015
-       Modified Notes: Added animations
+        Modified Notes  : Added animations
 	Script Notes	: 
 --]]
 
-local WelcomeToNorrath = 133
-local TheArtOfCombat = 132
-local APresenceOfEvil = 131
-local IntoTheTaintedForest = 162
-local JoiningTheForwardRanks = 163
-local TheSourceOfEvil = 164
+        local WelcomeToNorrath = 133
+        local TheArtOfCombat = 132
+        local APresenceOfEvil = 131
+        local IntoTheTaintedForest = 162
+        local JoiningTheForwardRanks = 163
+        local TheSourceOfEvil = 164
 
-local quest2_text = nil
+        local quest2_text = nil
 
 function spawn(NPC)
-    ProvidesQuest(NPC, TheArtOfCombat)
+        ProvidesQuest(NPC, TheArtOfCombat)
 	ProvidesQuest(NPC, APresenceOfEvil)
 	ProvidesQuest(NPC, IntoTheTaintedForest)
 	ProvidesQuest(NPC, JoiningTheForwardRanks)
@@ -175,7 +175,7 @@ function NiceSword(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar013.mp3", "", "", 271551862, 2243544574, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar013.mp3", "", "thanks", 271551862, 2243544574, Spawn)
 	AddConversationOption(conversation, "Okay, I will.")
 	StartConversation(conversation, NPC, Spawn, "Thank you for noticing. They call this one Berik, Sword of Thunder. I earned it in a dungeon in Antonica known as Stormhold. Work hard and you might find such a prize someday.")
 end
