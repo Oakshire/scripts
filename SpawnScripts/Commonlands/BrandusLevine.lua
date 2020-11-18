@@ -23,10 +23,17 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "I would be happy to help you.", "dlg2")
     AddConversationOption(conversation, "You have to be kidding me.  No thanks, find another lackey, I'm busy with my own important things.")
     StartConversation(conversation, NPC, Spawn, "Hrmmm... You do have the look of a citizen about you.  You're not just random rabble from the streets.  I could use your help.")
-    elseif HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment, 1) then
+    elseif HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 1 then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1034.mp3", "", "no", 0, 0, Spawn)
     AddConversationOption(conversation, "I'll be back when I'm done.")
     StartConversation(conversation, NPC, Spawn, "Look, I don't have time to sit around and talk about the weather.  We have an agreement and I expect you to live up to it.  Now don't come back unless you're done with what I asked.")
+    elseif HasQuest(Spawn, TheMysteriousMissingShipment) anad GetQuestStep(Spawn, TheMysteriousMissingShipment) == 4 then 
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3", "", "", 0, 0, Spawn)
+    AddConversationOption(conversation, "Nethet had me running all over the place helping friends of his.", "dlg8")
+    AddConversationOption(conversation, "Nethet had some information.  The dervish cutthroats stole your shipment and apparently have your sorcerer.", "dlg9")
+    AddConversationOption(conversation, "I don't have any new information yet.")
+    StartConversation(conversation, NPC, Spawn, "What did Nethet tell you?  That rat had better have known something or I'm back where I started.  That will not make me a happy man."
+   end    
 end
    end
 
@@ -86,8 +93,23 @@ AddConversationOption(conversation, "I'll start with him then.", "offer1")
 StartConversation(conversation, NPC, Spawn, "Fine, if I have to hold your hand through everything.  You might start with Nethet near the main gates of Freeport.  He watches most of who enter or leave the city.  If anyone knows anything about where my missing cargo went it would likely be him.")
 end
 
+function dlg8(NPC, Spawn)
+  FaceTarget(NPC, Spawn)
+  conversation = CreateConversation()
+  AddConversationOption(conversation, "Thanks for the sympathy.  Yes, he had information that the dervish cutthroats stole your shipment and your sorcerer.", "dlg9")
+  AddConversationOption(conversation, "With that tone of voice, find the shipment yourself, I'm through with this.")
+  StartConversation(conversation, NPC, Spawn, "Don't tell me your whining stories about what other people had you do.  He could have made you shovel pig dung for all I care, did you get the information or not?")
+end
 
-
+function dlg9(NPC, Spawn)
+  FaceTarget(NPC, Spawn)
+  conversation = CreateConversation()
+  AddConversationOption(conversation, "My pleasure, you'll hear their screams from here.")
+  AddConversationOption(conversation, "Now you want me to kill people for you?  What's in it for me?")
+  AddConversationOption(conversation, "I know you're selling refugees back to the Far Seas Trading Company.")
+  AddConversationOption(conversation, "I'm not killing anyone, do it yourself I'm done with you.")
+   StartConversation(conversation, NPC, Spawn, "The dervishes stole it!?  You can't be serious.  Argh!!  I'm tired of those lowlifes messing with my business.  I need you to do me a favor and kill a few dozen of them.")
+end 
 
 function offer1(NPC, Spawn)
 FaceTarget(NPC, Spawn)
