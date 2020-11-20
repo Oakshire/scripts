@@ -7,8 +7,6 @@
 --]]
 
 function cast(Caster, Target, Physical, Avoidance, SkillAmt, Aggro, Defense, MitNox, MitElem, Armor)
-    Say(Caster, "physical reduction looks wrong")
-
     AddSpellBonus(Caster, 200, Physical)        -- physical
     AddSpellBonus(Caster, 696, Avoidance)       -- avoidance
     AddSpellBonus(Caster, 202, MitNox)          -- mitigation against noxious
