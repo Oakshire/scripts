@@ -7,11 +7,7 @@
 --]]
 
 function cast(Caster, Target, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        AddHate(Caster, Target, math.random(MaxVal, MinVal), 1)
-    else
-        AddHate(Caster, Target, MinVal, 1)
-    end
+AddHate(Caster, Target, math.random(MinVal, MaxVal), 1)
     -- Interrupts target
         Interrupt(Caster, Target)
 end
