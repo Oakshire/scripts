@@ -10,20 +10,16 @@ function spawn(NPC)
 
 end
 
-function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-SpawnSet(NPC, visual_state, 10783)
-Say(NPC, "I should have changed my visual state")
+function attack(NPC)
+	SendStateCommand(NPC, 65)
+	AddTimer(NPC, 40000, "drake_rain")
 end
 
-function respawn(NPC)
-
+function drake_rain(NPC)
+	SendStateCommand(NPC, 910)
+	AddTimer(NPC, 10000, "drake_stop")
 end
 
-function startanimation(NPC, Spawn)
-	SpawnSet(NPC, "visual_state", "10783")
-end
-
-function stopanimation(NPC, Spawn)
-	SpawnSet(NPC, "visual_state", "0")
+function drake_stop(NPC)
+	SendStateCommand(NPC, 33678)
 end

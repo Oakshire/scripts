@@ -8,9 +8,5 @@
 
 -- Increases Threat to target encounter by 350 - 427 
 function cast(Caster, Target, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        AddHate(Caster, Target, math.random(MaxVal, MinVal), 1)
-    else
-        AddHate(Caster, Target, MinVal, 1)
-    end
+AddHate(Caster, Target, math.random(MinVal, MaxVal), 1)
 end

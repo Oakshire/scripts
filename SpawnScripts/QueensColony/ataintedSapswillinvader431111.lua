@@ -1,6 +1,6 @@
 --[[
-        Script Name     :       SpawnScripts/QueensColony/ataintedSapswillinvader431100.lua
-	Script Purpose	:	Waypoint Path for ataintedSapswillinvader431100.lua
+        Script Name     :       SpawnScripts/QueensColony/ataintedSapswillinvader431111.lua
+	Script Purpose	:	Waypoint Path for ataintedSapswillinvader431111.lua
 	Script Author	:	Rylec
 	Script Date	:	11-19-2020 05:12:27 
 	Script Notes	:	Locations collected from Live
@@ -19,8 +19,9 @@ function respawn(NPC)
 end
 
 function waypoints(NPC)
-	MoveToLocation(NPC, 174.34, -3.11, 155.46, 2)
-	MoveToLocation(NPC, 82.43, -4.49, 171.83, 2)
+	MoveToLocation(NPC, 194.31, -4.11, 159.76, 2)
+	MoveToLocation(NPC, 187.09, -3.68, 161.31, 2)
+	MoveToLocation(NPC, 83.92, -4.54, 171.92, 2)
 	MoveToLocation(NPC, 72.49, -4.30, 170.27, 2, "waypointsLoop")
 end
 

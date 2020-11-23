@@ -13,29 +13,19 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-
-GiveLoot(NPC, Spawn, 0, 20902, 15354, 185427)
-
-    Dialog.New(NPC, Spawn)
-    Dialog.AddDialog("Do you want to call down the Drake?")
-    Dialog.AddOption("Yes, I want to see him in action!", "callDrake")
-    Dialog.AddOption("Hell No!")
-    Dialog.Start()
+	goblin = GetSpawn(NPC, 270008)
+	if goblin == nil or IsAlive(goblin) == false then
+		FaceTarget(NPC, Spawn)	
+		choice = math.random(1, 2) 	    
+		if choice == 1 then
+			PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02_fvo_001.mp3", "Thanks for saving me", "thanks", 3802219844, 3242323771)
+		else
+			PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02/anikra_0_003.mp3", "I don't know how I did that. What was that?", "boggle", 927876289, 3048340606)
+		end
+	else
+		PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02_fvo_002.mp3", "I really miss my husband. Why did those smugglers have to throw him overboard?", "sigh", 1493499523, 2767493059)
+	end
 end
-
-function callDrake(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-    local drake = GetSpawn(NPC, 270013)
-    if drake ~= nil then
-        AddTimer(drake, 5000, "startanimation")
-	Say(NPC, "Drake should be flying")
-		
-	AddTimer(drake, 31000, "stopanimation")
-	Say(NPC, "Drake should be gone now")
-    end
-end
-
 
 --[[
 function callDrake(NPC, Spawn)

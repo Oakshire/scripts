@@ -6,16 +6,8 @@
                    : 
 --]]
 
-function cast(Caster, Target, MinTaunt, MaxTaunt)
-    -- Increases Threat to target by 51 - 62 
-    if MaxTaunt ~= nil and MinTaunt < MaxTaunt then
-        AddHate(Caster, Target, math.random(MinTaunt, MaxTaunt))
-    else
-        AddHate(Caster, Target, MinTaunt)
-    end
-
+function cast(Caster, Target, MinVal, MaxVal)
+AddHate(Caster, Target, math.random(MinVal, MaxVal), 1)
     -- Interrupts target
-    if target ~= nil then
         Interrupt(Caster, Target)
-    end
 end
