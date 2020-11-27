@@ -73,7 +73,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 6, "")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I returned to Dyymona K'Vexx, the dark elf mentor.")
 
-	UpdateQuestDescription(Quest, "After regaining the stolen tomes of arcanum and delivering a missive, Dyymona K'Vexx complimented me on my dependability, saying, "It is rare to find another Teir'Dal whom you can trust, implicitly."")
+	UpdateQuestDescription(Quest, "After regaining the stolen tomes of arcanum and delivering a missive, Dyymona K'Vexx complimented me on my dependability, saying, \"It is rare to find another Teir'Dal whom you can trust, implicitly.\"")
 	GiveQuestReward(Quest, Player)
 end
 
