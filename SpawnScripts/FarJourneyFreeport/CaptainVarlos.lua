@@ -42,7 +42,7 @@ function stop_get_attention(NPC, player)
 	end
 end
 
-function hailed(NPC, player)	
+function hailed(NPC, player)
     FaceTarget(NPC, player)
 	SendStateCommand(GetSpawn(NPC, 270000), 318)
 	SendStateCommand(GetSpawn(NPC, 270000), 0)
@@ -119,7 +119,22 @@ function ready_to_go_ashore(NPC, player)
 end
 
 function zone_to_isle(NPC, player)
-	Zone(GetZone(325), player)
+
+	serverType = GetRuleFlagInt32("R_World", "StartingZoneRuleFlag")
+	
+	-- if no server type is set (default of 0 wildcard) or odd number means bit 1 is set
+	if serverType == 0 or (serverType % 2) == 1 then
+		-- DoF alignment, 0 = evil (Outpost of Overlord), 1 = good (Queens Colony)
+		alignment = GetDeity(player)
+		if alignment == 0 then
+			Zone(GetZone(278), player) -- outpost of overlord
+		else
+			Zone(GetZone(253), player) -- queens colony
+		end
+	-- even value serverType > 0 (return 0) means isle of refuge (bit 2) is set
+	else
+		Zone(GetZone(325), player) -- isle of refuge
+	end
 end
 
 function quest_step_9(NPC, player)	
@@ -379,4 +394,3 @@ end
 function respawn(NPC)
 
 end
-
