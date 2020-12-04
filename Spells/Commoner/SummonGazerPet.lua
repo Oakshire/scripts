@@ -6,8 +6,8 @@
                    : 
 --]]
 
-function cast(Caster, Target)
-	SummonCosmeticPet(Caster, 880161)
+function cast(Caster, Target, PetID)
+	SummonCosmeticPet(Caster, PetID)
 
 end
 
