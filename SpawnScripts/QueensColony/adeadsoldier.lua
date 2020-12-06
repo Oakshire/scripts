@@ -25,7 +25,10 @@ function InRange(NPC, Spawn)
 		SetStepComplete(Spawn, APresenceOfEvil, 4)
 		SetTempVariable(NPC, "APresenceOfEvil_Activated", "True")
 		local defiled = SpawnMob(GetZone(NPC), DefiledSoldier, 0, GetX(NPC), GetY(NPC), GetZ(NPC), GetHeading(NPC))
-		if defiled ~= nil then
+
+                PlayAnimation(Spawn, 10838)		
+
+                if defiled ~= nil then
 			Attack(NPC, Spawn)
 		end
 		Despawn(NPC, 2000)
