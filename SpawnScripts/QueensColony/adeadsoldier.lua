@@ -26,7 +26,7 @@ function InRange(NPC, Spawn)
 		SetTempVariable(NPC, "APresenceOfEvil_Activated", "True")
 		local defiled = SpawnMob(GetZone(NPC), DefiledSoldier, 0, GetX(NPC), GetY(NPC), GetZ(NPC), GetHeading(NPC))
 
-                PlayAnimation(Spawn, 10838)		
+                SetActiveState(defiled)
 
                 if defiled ~= nil then
 			Attack(NPC, Spawn)
@@ -36,4 +36,13 @@ function InRange(NPC, Spawn)
 end
 
 function OutOfRange(NPC, Spawn)
+end
+
+function SetActiveState(defiled)
+        SpawnSet(defiled, "visual_state", 4009)     
+        AddTimer(defiled, 5000, "ResetState")    
+end
+
+function ResetState(defiled)
+        SpawnSet(defiled, "visual_state", 0)     
 end
