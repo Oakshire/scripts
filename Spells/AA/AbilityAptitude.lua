@@ -6,5 +6,12 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Increases Ability Mod of caster by 10.4
+
+function cast(Caster, Target, BonusAmt)
+    AddSpellBonus(Target, 707, BonusAmt)
+end
+
+function remove(Caster, Target)
+    RemoveSpellBonus(Target)
+end

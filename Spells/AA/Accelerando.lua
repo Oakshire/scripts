@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Spells/Accelerando.lua
+    Script Name    : Spells/AA/Accelerando.lua
     Script Author  : neatz09
-    Script Date    : 2019.10.06 02:10:18
+    Script Date    : 2020.12.10 01:12:58
     Script Purpose : 
                    : 
 --]]

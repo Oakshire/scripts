@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local DefiledSoldier = 2530024
+--local DefiledSoldier = 2530024
 local APresenceOfEvil = 131
 
 function spawn(NPC)
@@ -24,9 +24,8 @@ function InRange(NPC, Spawn)
 	if HasQuest(Spawn, APresenceOfEvil) and GetQuestStep(Spawn, APresenceOfEvil) == 4 and not (GetTempVariable(NPC, "APresenceOfEvil_Activated") == "True") then
 		SetStepComplete(Spawn, APresenceOfEvil, 4)
 		SetTempVariable(NPC, "APresenceOfEvil_Activated", "True")
-		local defiled = SpawnMob(GetZone(NPC), DefiledSoldier, 0, GetX(NPC), GetY(NPC), GetZ(NPC), GetHeading(NPC))
-
-                SetActionState(defiled)
+--		local defiled = SpawnMob(GetZone(NPC), DefiledSoldier, 0, GetX(NPC), GetY(NPC), GetZ(NPC), GetHeading(NPC))
+		local defiled = SpawnMob(GetZone(NPC), 2530223, 0, GetX(NPC), GetY(NPC), GetZ(NPC), GetHeading(NPC))
 
                 if defiled ~= nil then
 			Attack(NPC, Spawn)
@@ -37,12 +36,3 @@ end
 
 function OutOfRange(NPC, Spawn)
 end
-
-function SetActionState(defiled)
-        SpawnSet(defiled, "action_state", 4009)     
---        AddTimer(defiled, 5000, "ResetState", 1, Spawn)    
-end
-
---function ResetState(defiled)
---        SpawnSet(defiled, "action_state", 0)     
---end
