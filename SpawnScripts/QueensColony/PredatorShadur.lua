@@ -29,7 +29,8 @@ function hailed(NPC, Spawn)
 			AddConversationOption(conversation, "Easy there, all is not lost. I can help.", "AllNotLost")
 			AddConversationOption(conversation, "Then I'll just come back later.")
 			StartConversation(conversation, NPC, Spawn, "Wraaa! The day is grim. Has this world lost all of its goodness and left us with this cold husk? I suppose you were sent by Murrar, but my job has been halted.")
-		elseif GetQuestStep(Spawn, IntoTheTaintedForest) == 2 or GetQuestStep(Spawn, 9) == 4 then
+--		elseif GetQuestStep(Spawn, IntoTheTaintedForest) == 2 or GetQuestStep(Spawn, 9) == 4 then
+		elseif GetQuestStep(Spawn, IntoTheTaintedForest) == 2 then
 			-- on step 2
 			AddConversationOption(conversation, "I'm still looking.")
 			PlayAnimation(NPC, 11628)
@@ -39,6 +40,11 @@ function hailed(NPC, Spawn)
 			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/predator_sha_dur/tutorial_island02_revamp/quests/citizenship/predatorshadur/predatorshadur005.mp3", "", "", 2074453663, 3037764595, Spawn)
 			AddConversationOption(conversation, "There were no arrows to be found.", "NoArrowsFound")
 			StartConversation(conversation, NPC, Spawn, "Wra... my bow! You did this for me? Maybe this day is not so bad. Maybe you found my arrows too?")
+		elseif GetQuestStep(Spawn, IntoTheTaintedForest) == 4 then
+			-- on step 4
+			AddConversationOption(conversation, "I'm still looking.")
+			PlayAnimation(NPC, 11628)
+			StartConversation(conversation, NPC, Spawn, "Wraaa! Don't worry, I didn't expect to get my bow and arrows back anyway.")
 		elseif GetQuestStep(Spawn, IntoTheTaintedForest) == 5 then
 			Step5Complete(NPC, Spawn)
 		else

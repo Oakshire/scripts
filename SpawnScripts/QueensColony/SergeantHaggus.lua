@@ -33,21 +33,23 @@ function hailed(NPC, Spawn)
 			-- on 2nd part of quest
 			AddConversationOption(conversation, "I will.")
 			PlayAnimation(NPC, 20601)
+			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sergeant_haggus/tutorial_island02_revamp/quests/citizenship/sergeanthaggus/sergeanthaggus004.mp3", "", "chuckle", 2765536004, 3737520445, Spawn)
 			StartConversation(conversation, NPC, Spawn, "Har har! Don't give up yet, " .. GetName(Spawn) .. ". Slay some of those invaders. If you need some tips on combat, talk to Hayl McGuinness at the Training Grounds in the colony.")
 		elseif GetQuestStep(Spawn, APresenceOfEvil) == 3 then
 			--on 3rd part of quest
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sergeant_haggus/tutorial_island02_revamp/quests/citizenship/sergeanthaggus/sergeanthaggus005.mp3", "", "", 4260313183, 1230463125, Spawn)
+			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sergeant_haggus/tutorial_island02_revamp/quests/citizenship/sergeanthaggus/sergeanthaggus005.mp3", "", "thanks", 4260313183, 1230463125, Spawn)
 			AddConversationOption(conversation, "I'm ready!", "ImReady")
 			AddConversationOption(conversation, "Not yet.")
 			StartConversation(conversation, NPC, Spawn, "By the hilt of the Claymore, you're a strong one! I could use your strength for another task.")
 		elseif GetQuestStep(Spawn, APresenceOfEvil) == 4 then
 			--on 4th part of quest
+			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sergeant_haggus/tutorial_island02_revamp/quests/citizenship/sergeanthaggus/sergeanthaggus007.mp3", "", "", 4033698281, 2952828006, Spawn)
 			AddConversationOption(conversation, "Very well.")
 			StartConversation(conversation, NPC, Spawn, "Any news of the missing soldiers? Search Sunset Meadow for these soldiers and return to me with your findings.")
 		elseif GetQuestStep(Spawn, APresenceOfEvil) == 5 then
 			--on 5th part of quest
 			SetStepComplete(Spawn, APresenceOfEvil, 5)
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sergeant_haggus/tutorial_island02_revamp/quests/citizenship/sergeanthaggus/sergeanthaggus009.mp3", "", "13063", 3590531004, 2647104527, Spawn)
+			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sergeant_haggus/tutorial_island02_revamp/quests/citizenship/sergeanthaggus/sergeanthaggus009.mp3", "", "threaten", 3590531004, 2647104527, Spawn)
 			AddConversationOption(conversation, "Farewell to you.")
 			StartConversation(conversation, NPC, Spawn, "Ah, they'll pay for this! You've done well, " .. GetName(Spawn) .. ". Sometime when you're not so busy, maybe you'd take a job with the Qeynos Guard and we can fight along side one another again. Take this information back to Murrar. Farewell.")
 		end

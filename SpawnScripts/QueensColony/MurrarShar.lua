@@ -248,7 +248,7 @@ function ReadyToHelpNow(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar016.mp3", "", "", 943121762, 902772716, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar016.mp3", "", "ponder", 943121762, 902772716, Spawn)
 	AddConversationOption(conversation, "I could do that.", "ICouldDoThat")
 	AddConversationOption(conversation, "How do I leave the island?", "LeaveIsland")
 	AddConversationOption(conversation, "I can't right now.")
