@@ -8,11 +8,10 @@
 
 -- Prevents AOE (except when direct) 
 
-
 function cast(Caster, Target)
-AddImmunitySpell(7, Target
+AddImmunitySpell(7, Target)
 end
 
 function remove(Caster, Target)
-RemoveImmunitySpell(7, Target
+RemoveImmunitySpell(7, Target)
 end
