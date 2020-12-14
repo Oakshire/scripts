@@ -294,7 +294,7 @@ function dlg_19_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar020.mp3", "", "", 969547880, 3659700172, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar020.mp3", "", "nod", 969547880, 3659700172, Spawn)
 	AddConversationOption(conversation, "You want me to confront the Chieftain now?", "dlg_19_2")
 	StartConversation(conversation, NPC, Spawn, "That I do. My best guess is that the goblin leader, High Chieftain Grexx, is involved. He is the most powerful and influential figure to the goblins. If he were somehow corrupted, the goblins would follow any orders he demanded.")
 end
@@ -303,7 +303,7 @@ function dlg_19_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar021.mp3", "", "", 2156921006, 779590907, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar021.mp3", "", "nod", 2156921006, 779590907, Spawn)
 	AddConversationOption(conversation, "Will do.", "OfferQuest4")
 	AddConversationOption(conversation, "I can't right now.")
 	StartConversation(conversation, NPC, Spawn, "First things first ," .. GetName(Spawn) .. ". We need to break through to the goblin village. I have assigned this duty to Cleric Mara'Vaen. Seek her out and see how you can help.")
