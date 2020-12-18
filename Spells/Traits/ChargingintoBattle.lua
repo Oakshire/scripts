@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Increases speed of caster by 5.0%
 
 function cast(Caster, Target, Speed)
