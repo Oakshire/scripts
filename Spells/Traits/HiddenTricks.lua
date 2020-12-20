@@ -8,8 +8,10 @@
 
 -- Increases Mitigation of caster vs elemental damage by 3
 
-function cast(Caster, Target, BonusAmt)
-	AddSpellBonus(Target, 201, BonusAmt)
+function cast(Caster, Target, Modifier)
+    CurLevel = GetLevel(Target)
+    BonusAmt = CurLevel * Modifier
+    AddSpellBonus(Target, 201, BonusAmt)
 end
 
 function remove(Caster, Target)

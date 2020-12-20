@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Spells/Traits/RobustMight.lua
+    Script Name    : Spells/Traits/LeatherSkin.lua
     Script Author  : neatz09
-    Script Date    : 2020.12.19 05:12:56
+    Script Date    : 2020.12.20 01:12:25
     Script Purpose : 
                    : 
 --]]

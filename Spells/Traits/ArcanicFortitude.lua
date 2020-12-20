@@ -8,8 +8,10 @@
 
 -- Increases Mitigation of caster vs arcane damage by 3
 
-function cast(Caster, Target, BonusAmt)
-	AddSpellBonus(Target, 203, BonusAmt)
+function cast(Caster, Target, Modifier)
+    CurLevel = GetLevel(Target)
+    BonusAmt = CurLevel * Modifier
+    AddSpellBonus(Target, 203, BonusAmt)
 end
 
 function remove(Caster, Target)

@@ -8,8 +8,10 @@
 
 -- Increases Mitigation of caster vs noxious damage by 0
 
-function cast(Caster, Target, BonusAmt)
-	AddSpellBonus(Target, 202, BonusAmt)
+function cast(Caster, Target, Modifier)
+    Level = GetLevel(Target)
+    BonusAmt = Level * Modifier
+    AddSpellBonus(Target, 202, BonusAmt)
 end
 
 function remove(Caster, Target)
