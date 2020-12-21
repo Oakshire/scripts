@@ -17,14 +17,14 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
-    if HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment)  == 1 and not HasQuest(Spawn, AFriendInNeed) and not HasCompletedQuest(Spawn, AFriendInNeed) then
+    if HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment)  == 1 or GetQuestStep(Spawn, TheMysteriousMissingShipment) == 2 and not HasQuest(Spawn, AFriendInNeed) and not HasCompletedQuest(Spawn, AFriendInNeed) then
     PlayFlavor(NPC, "nethet/commonlands/quests/nethet/nethet001.mp3", "", "", 2714946193, 3558471860, Spawn)
     AddConversationOption(conversation, "Brandus sent me to talk to you about a missing shipment of his.  Do you know anything about it?", "dlg1")
     AddConversationOption(conversation, "Nothing right now, Nethet.")
     StartConversation(conversation, NPC, Spawn, "Yous comes to Nethet to speaks of things yes?  What's it that you wants to knows?")
     end
     
-    if HasCompletedQuest(Spawn, AFriendInNeed) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 3 then
+    if HasCompletedQuest(Spawn, AFriendInNeed) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 2 then
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     PlayFlavor(NPC, "nethet/commonlands/quests/nethet/nethet015.mp3",  "", "", 1826974413, 3018739056, Spawn)
@@ -46,7 +46,7 @@ function hailed(NPC, Spawn)
     if GetQuestStep(Spawn, AFriendInNeed) == 3 then
     AddConversationOption(conversation, "I found him.  Nikora was being hunted by some assassins the Blackshield smugglers had sent after him.", "dlg6")
     end
-    if not GetQuestStep(Spawn, AFriendInNeed) == 3 or GetQuestStep(Spawn, AFriendInNeed) == 3 then
+    if GetQuestStep(Spawn, AFriendInNeed) < 3 then
     AddConversationOption(conversation, "Nothing yet, I'll be back when I find him.")
     end
     StartConversation(conversation, NPC, Spawn, "Yous is back.  Whats did you learn of my friend?")  
@@ -176,8 +176,8 @@ end
 
 function dlg12(NPC, Spawn)
  FaceTarget(NPC, Spawn)
- if GetQuestStep(Spawn, TheMysteriousMissingShipment) == 3 then
- SetStepComplete(Spawn, TheMysteriousMissingShipment, 3)
+ if GetQuestStep(Spawn, TheMysteriousMissingShipment) == 2 then
+ SetStepComplete(Spawn, TheMysteriousMissingShipment, 2)
  end 
  PlayFlavor(NPC, "nethet/commonlands/quests/nethet/nethet019.mp3", "", "",  196718519, 1918116094, Spawn)
  conversation = CreateConversation()

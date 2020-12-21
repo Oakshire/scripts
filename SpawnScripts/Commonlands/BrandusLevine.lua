@@ -27,15 +27,15 @@ function hailed(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1034.mp3", "", "no", 0, 0, Spawn)
     AddConversationOption(conversation, "I'll be back when I'm done.")
     StartConversation(conversation, NPC, Spawn, "Look, I don't have time to sit around and talk about the weather.  We have an agreement and I expect you to live up to it.  Now don't come back unless you're done with what I asked.")
-    elseif HasQuest(Spawn, TheMysteriousMissingShipment) anad GetQuestStep(Spawn, TheMysteriousMissingShipment) == 4 then 
+    elseif HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 3 then 
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3", "", "", 0, 0, Spawn)
     AddConversationOption(conversation, "Nethet had me running all over the place helping friends of his.", "dlg8")
     AddConversationOption(conversation, "Nethet had some information.  The dervish cutthroats stole your shipment and apparently have your sorcerer.", "dlg9")
     AddConversationOption(conversation, "I don't have any new information yet.")
-    StartConversation(conversation, NPC, Spawn, "What did Nethet tell you?  That rat had better have known something or I'm back where I started.  That will not make me a happy man."
+    StartConversation(conversation, NPC, Spawn, "What did Nethet tell you?  That rat had better have known something or I'm back where I started.  That will not make me a happy man.")
    end    
 end
-   end
+   
 
 function dlg1(NPC, Spawn)
  FaceTarget(NPC, Spawn)
@@ -103,6 +103,7 @@ end
 
 function dlg9(NPC, Spawn)
   FaceTarget(NPC, Spawn)
+  SetStepComplete(Spawn, TheMysteriousMissingShipment, 3) 
   conversation = CreateConversation()
   AddConversationOption(conversation, "My pleasure, you'll hear their screams from here.")
   AddConversationOption(conversation, "Now you want me to kill people for you?  What's in it for me?")
