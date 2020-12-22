@@ -20,6 +20,8 @@ function Accepted(Quest, QuestGiver, Player)
 		if GetDistance(Player, QuestGiver) < 30 then
 			FaceTarget(NPC, Spawn)
 			conversation = CreateConversation()
+
+	                PlayFlavor(QuestGiver, "voiceover/english/tutorial_revamp/cleric_mara_vaen/tutorial_island02_revamp/quests/citizenship/clericmaravaen/clericmaravaen014.mp3", "", "nod", 1438987592, 3801497602, Player)
 			AddConversationOption(conversation, "Thanks")
 			StartConversation(conversation, QuestGiver, Player, "Bless you, child.")
 		end

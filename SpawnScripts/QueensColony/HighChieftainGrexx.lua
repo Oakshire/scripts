@@ -47,7 +47,7 @@ function SadTimes(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/high_chieftain_grexx/tutorial_island02_revamp/quests/citizenship/highchieftaingrexx/highchieftaingrexx001.mp3", "", "", 3594102111, 1132457141, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/high_chieftain_grexx/tutorial_island02_revamp/quests/citizenship/highchieftaingrexx/highchieftaingrexx001.mp3", "", "nod", 3594102111, 1132457141, Spawn)
 	AddConversationOption(conversation, "What do you mean?", "dlg_5_1")
 	AddConversationOption(conversation, "Sad times, indeed.")
 	StartConversation(conversation, NPC, Spawn, "Sad times upon us. The Great Balancing before us. Coming I knew you would be. Had to, you did.")

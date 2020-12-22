@@ -1,8 +1,8 @@
 --[[
-	Script Name		:	SpawnScripts/SourceEvil/goblins.lua
+	Script Name	:	SpawnScripts/SourceEvil/goblins.lua
 	Script Purpose	:	When the three goblins die enable the totems
 	Script Author	:	Jabantiz
-	Script Date		:	9/10/2016
+	Script Date	:	9/10/2016
 	Script Notes	:	
 --]]
 

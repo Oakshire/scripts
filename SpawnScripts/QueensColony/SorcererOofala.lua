@@ -82,7 +82,7 @@ function LoveThisJob(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala001.mp3", "", "chuckle", 3877143308, 4000536977, Spawn)
 	AddConversationOption(conversation, "Great like you I guess.", "GreatLikeYou")
 	AddConversationOption(conversation, "I don't have time for this.")
-	StartConversation(conversation, NPC, Spawn, "Boom! I love this job! Someday I'll be the greatest wizard in all of Qeynos. And you," .. GetName(Spawn) .. ", what do you aspire to be?")
+	StartConversation(conversation, NPC, Spawn, "Boom! I love this job! Someday I'll be the greatest wizard in all of Qeynos. And you, " .. GetName(Spawn) .. ", what do you aspire to be?")
 end
 
 function GreatLikeYou(NPC, Spawn)
@@ -172,7 +172,7 @@ function WhatAFight(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala010.mp3", "", "", 1430233881, 2273383755, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala010.mp3", "", "nod", 1430233881, 2273383755, Spawn)
 	AddConversationOption(conversation, "Should I report back to Murrar?", "ReportBack")
 	AddConversationOption(conversation, "Not right now.")
 	StartConversation(conversation, NPC, Spawn, "What a fight that was! For a moment there, I thought I would need to step in and help you. The Blademaster's insignia is very disturbing. I should have known Freeport was involved in this corruption somehow! We must act quickly if we are to stop the evil.")
@@ -183,7 +183,7 @@ function ReportBack(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala013.mp3", "", "", 911037523, 2792380927, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala013.mp3", "", "frustrated", 911037523, 2792380927, Spawn)
 	AddConversationOption(conversation, "I'll head to the High Chieftain.")
 	StartConversation(conversation, NPC, Spawn, "There's no time! Our forward scouts report that High Chieftain Grexx is still alive and holding off the invasion from his tree house to the east. You must go talk to him before it's too late!")
 end
@@ -192,7 +192,7 @@ function StavesHere(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
    
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala011.mp3", "", "", 2191225450, 1589931900, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala011.mp3", "", "nod", 2191225450, 1589931900, Spawn)
 	AddConversationOption(conversation, "I'll keep that in mind.")
 	StartConversation(conversation, NPC, Spawn, "If you ever need them, my guardian staves will be here.")
 end
