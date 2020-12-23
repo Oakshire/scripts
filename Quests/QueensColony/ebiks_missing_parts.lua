@@ -31,7 +31,7 @@ function Accepted(Quest, QuestGiver, Player)
 	 FaceTarget(QuestGiver, Player)
 	 conversation = CreateConversation()
 	 
-	 PlayFlavor(QuestGiver, "voiceover/english/ebik_wobblecog/tutorial_island01/ebik/ebik_secondtalk_01.mp3", "", "", 688070292, 1255284608, Player)
+	 PlayFlavor(QuestGiver, "voiceover/english/ebik_wobblecog/tutorial_island01/ebik/ebik_secondtalk_01.mp3", "", "nod", 688070292, 1255284608, Player)
 	 AddConversationOption(conversation, "Okay.")
 	 StartConversation(conversation, QuestGiver, Player, "I need all the parts, I can't leave without them and luckily the boat to Qeynos hasn't showed up yet. Please help me find all of the parts.")
 	   end
@@ -42,28 +42,32 @@ function Declined(Quest, QuestGiver, Player)
 end
 
 function step1_complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 1, "I have Ebik's size 7 clunker.")
+--	UpdateQuestStepDescription(Quest, 1, "I have Ebik's size 7 clunker.")
+	UpdateQuestStepDescription(Quest, 1, "I found a size 7 clunker.")
 	if QuestIsComplete(Player, EbiksMissingParts) then
 	   givePartsToEbik(Quest, QuestGiver, Player)
 	end
 end
 
 function step2_complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 2, "I have Ebik's copper-coated springer.")
+--	UpdateQuestStepDescription(Quest, 2, "I have Ebik's copper-coated springer.")
+	UpdateQuestStepDescription(Quest, 2, "I found a copper-coated springer.")
 	if QuestIsComplete(Player, EbiksMissingParts) then
 	   givePartsToEbik(Quest, QuestGiver, Player)
 	end
 end
 
 function step3_complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 3, "I have Ebik's triangle spinner.")
+--	UpdateQuestStepDescription(Quest, 3, "I have Ebik's triangle spinner.")
+	UpdateQuestStepDescription(Quest, 3, "I found a triangle spinner.")
 	if QuestIsComplete(Player, EbiksMissingParts) then
 	   givePartsToEbik(Quest, QuestGiver, Player)
 	end
 end
 
 function givePartsToEbik(Quest, QuestGiver, Player)
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have found all of Ebik's parts.")
+--	UpdateQuestTaskGroupDescription(Quest, 1, "I have found all of Ebik's parts.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have Ebik's three items.")
 	AddQuestStepChat(Quest, 4, "I should bring these parts back to Ebik.", 1, "I found all the parts Ebik needs and I should return them to him.", 0, 2530059)
 	AddQuestStepCompleteAction(Quest, 4, "quest_complete_gavePartsToEbik")
 end

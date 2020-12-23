@@ -324,7 +324,7 @@ function Quest5Done(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar028.mp3", "", "", 1703190849, 2791144430, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar028.mp3", "", "thanks", 1703190849, 2791144430, Spawn)
 	AddConversationOption(conversation, "It was nothing, really.", "ItWasNothingReally")
 	AddConversationOption(conversation, "How do I leave the island?", "LeaveIsland")
 	StartConversation(conversation, NPC, Spawn, "By the glory of Qeynos, you've done it! The source of evil is gone and the island is saved. You are on a path to greatness, " .. GetName(Spawn) .. ". Your deeds here shall not be forgotten and I forsee many adventures ahead of you.")

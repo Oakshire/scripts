@@ -28,7 +28,7 @@ function hailed(NPC, Spawn)
 			-- handing in quest
 			SetStepComplete(Spawn, EbiksMissingParts, 4)
 			
-			PlayFlavor(NPC, "voiceover/english/island_of_refuge/ebikwobblecog/ior_ebikwobblecog_021.mp3", "", "thank", 1116547002, 1635450019, Spawn)
+			PlayFlavor(NPC, "voiceover/english/island_of_refuge/ebikwobblecog/ior_ebikwobblecog_021.mp3", "", "thanks", 1116547002, 1635450019, Spawn)
 			AddConversationOption(conversation, "Good luck.")
 			StartConversation(conversation, NPC, Spawn, "Yes, yes, yes! There are all the parts I need! Thank you ever so much. Please take this as a token of my appreciation. I'm sure the boat will be here any minute now.")
 		else
@@ -39,6 +39,7 @@ function hailed(NPC, Spawn)
 		end
 	elseif HasCompletedQuest(Spawn, EbiksMissingParts) then
 		-- quest completed
+		PlayFlavor(NPC, "voiceover/english/ebik_wobblecog/tutorial_island01/ebik/ebik_notask_01.mp3", "", "tapfoot", 2668255955, 616331754, Spawn)
 		AddConversationOption(conversation, "Good luck.")
 		StartConversation(conversation, NPC, Spawn, "The boat really should be here by now. It must be running late, or maybe my pocket clock has a frizzer misaligned again... Hmmmm.")
 	else
@@ -199,7 +200,7 @@ function dlg_23_16(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/ebik_wobblecog/tutorial_island01/ebik/ebik_firsttalk_17.mp3", "", "sigh", 1279276755, 1158727410, Spawn)
+	PlayFlavor(NPC, "voiceover/english/ebik_wobblecog/tutorial_island01/ebik/ebik_firsttalk_17.mp3", "", "pout", 1279276755, 1158727410, Spawn)
 	AddConversationOption(conversation, "Maybe I can help?", "dlg_23_17")
 	AddConversationOption(conversation, "Sounds like you're out of luck.")
 	StartConversation(conversation, NPC, Spawn, "I'm missing the extra parts that my father asked me to collect. Oh no! This is disastrous! I can't leave the dock because I'll miss the boat and I can't go to Qeynos without those parts! What am I going to do?")

@@ -94,6 +94,7 @@ function RebuildWeWill(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 		
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/high_chieftain_grexx/tutorial_island02_revamp/quests/citizenship/highchieftaingrexx/highchieftaingrexx006.mp3", "", "", 553548766, 4027111296, Spawn)
 	AddConversationOption(conversation, "Good luck.")
 	StartConversation(conversation, NPC, Spawn, "Rebuild we will in your name, " .. GetName(Spawn) .. "!")
 end
