@@ -37,7 +37,8 @@ function Accepted(Quest, QuestGiver, Player)
 	if GetDistance(Player, QuestGiver) < 30 then
 	    FaceTarget(QuestGiver, Player)
 	    conversation = CreateConversation()
-			
+		
+            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/a_sapswill_soothsayer/tutorial_island02_revamp/quests/sapswill_soothsayer/sapswill_soothsayer011.mp3", "", "nod", 2132440732, 232283022, Spawn)
 	    AddConversationOption(conversation, "To long life!")
 	    StartConversation(conversation, QuestGiver, Player, "To long life, and happy friendships!")
 	end

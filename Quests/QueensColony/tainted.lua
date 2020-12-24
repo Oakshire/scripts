@@ -27,7 +27,7 @@ function Accepted(quest, questGiver, player)
 	 FaceTarget(questGiver, player)
 	 
 	 conversation = CreateConversation()
-	 PlayFlavor(questGiver, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_111dc711.mp3", "", "", 796380527, 3559718915, player)
+	 PlayFlavor(questGiver, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_111dc711.mp3", "", "thanks", 796380527, 3559718915, player)
 	 AddConversationOption(conversation, "I'll be back when I'm done with the spiders.")
 	 StartConversation(conversation, questGiver, player, "It's up to us to find the answers; they're never handed to us.")
 	    end

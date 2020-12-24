@@ -24,6 +24,7 @@ function Accepted(Quest, QuestGiver, Player)
 			FaceTarget(QuestGiver, Player)
 			conversation = CreateConversation()
 			
+                        PlayAnimation(NPC, 12236)
 			AddConversationOption(conversation, "Well Okay.")
 			StartConversation(conversation, QuestGiver, Player, "If they come back, you know where you'll find me -- up in this tree!")
 		end

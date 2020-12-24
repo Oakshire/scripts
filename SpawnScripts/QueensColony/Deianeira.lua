@@ -154,14 +154,19 @@ function Quest2RandomSay(NPC, Spawn)
    choice = math.random(1, 5)
 
    if choice == 1 then
+      PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_2d695f47.mp3", "", "", 274789492, 4201420419, Spawn)
       Say(NPC, "There's only so much I can do to earn someone's trust.")
    elseif choice == 2 then
+      PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_111dc711.mp3", "", "", 796380527, 3559718915, Spawn)
       Say(NPC, "It's up to us to find the answers; they're never handed to us.")
    elseif choice == 3 then
+      PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_3d524ae4.mp3", "", "", 34190012, 2231752517, Spawn)
       Say(NPC, "Evil is not always what it appears to be. That's the danger.")
    elseif choice == 4 then
+      PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_8e673792.mp3", "", "", 2025632812, 3072551906, Spawn)
       Say(NPC, "We Ayr'Dal are proud, though others may not appreciate us.")
    elseif choice == 5 then
+      PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_63f990af.mp3", "", "", 4194069030, 2414670370, Spawn)
       Say(NPC, "Freeport isn't that bad of a place, if you like watching over your shoulder all the time.")
    end
 end

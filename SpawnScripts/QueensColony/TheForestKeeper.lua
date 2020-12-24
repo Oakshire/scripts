@@ -54,7 +54,7 @@ function dlg_1_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/the_forest_keeper/tutorial_island02_revamp/quests/forest_keeper/forest_keeper002.mp3", "", "", 1673079737, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/the_forest_keeper/tutorial_island02_revamp/quests/forest_keeper/forest_keeper002.mp3", "", "", 3106650595, 2453750627, Spawn)
 	AddConversationOption(conversation, "Can we do anything to stop it?", "dlg_1_2")
 	StartConversation(conversation, NPC, Spawn, "Eh?  Who's that? Oh, that betrayer! She should go back to Freeport! Yes, I was once a Forest Keeper, maintaining this wood.  But look around you!  The other treants have succumbed to the evil that pervades this island.  They've become ghosts, trapped between this life and their rebirth.")
 end
@@ -64,7 +64,7 @@ function dlg_1_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/the_forest_keeper/tutorial_island02_revamp/quests/forest_keeper/forest_keeper003.mp3", "", "", 3694344031, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/the_forest_keeper/tutorial_island02_revamp/quests/forest_keeper/forest_keeper003.mp3", "", "", 859267020, 1249200348, Spawn)
 	AddConversationOption(conversation, "I will set them free.")
 	StartConversation(conversation, NPC, Spawn, "Trapped in those ghostly forms, they are contributing to the decay of the Forest.  I've been able to stave off the taint myself, but with so many of my brethren gone, it gets more and more difficult.  They must be set free, so that they can be reborn into the earth.  Without rebirth, there will be no living saplings!")
 end
@@ -74,7 +74,7 @@ function ReleasedGhosts(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/the_forest_keeper/tutorial_island02_revamp/quests/forest_keeper/forest_keeper004.mp3", "", "", 375881043, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/the_forest_keeper/tutorial_island02_revamp/quests/forest_keeper/forest_keeper004.mp3", "", "", 1736266561, 1301616150, Spawn)
 	AddConversationOption(conversation, "I'll do what I can. Stay strong!")
 	StartConversation(conversation, NPC, Spawn, "Alas, the decay runs too deep. You must learn what horrors those naughty goblins have released! There are still a few of them that are as yet untainted at the Last Stand, northeasterly of here. Speak to the soothsayer there; he may have ideas. We were friends in the old days.")
 end

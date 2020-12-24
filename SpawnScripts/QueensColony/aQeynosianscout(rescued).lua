@@ -43,6 +43,7 @@ function EvilMoraks(NPC, Spawn)
 		AddConversationOption(conversation, "I've gotten rid of them. Are there more?", "AreThereMore")
 	end
 	
+        PlayAnimation(NPC, 11256)
 	AddConversationOption(conversation, "Be brave!")
 	StartConversation(conversation, NPC, Spawn, "Wh..where are they? Those nasty, evil Moraks?")
 end
@@ -51,6 +52,7 @@ function AreThereMore(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	
+        PlayAnimation(NPC, 11796)
 	AddConversationOption(conversation, "I'll get rid of them.", "OfferQuest1")
 	AddConversationOption(conversation, "Good luck with that.")
 	StartConversation(conversation, NPC, Spawn, "Get them away! Who knew that Moraks were hounds, I ask you? They've got to be eliminated! Dratted beasts!")
@@ -64,7 +66,8 @@ end
 function ShakenUp(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
+
+        PlayAnimation(NPC, 12236)	
 	AddConversationOption(conversation, "These little pups? They don't scare me.", "DontScareMe")
 	StartConversation(conversation, NPC, Spawn, "Whew! When I was assigned to explore the village, I had no idea there would be these... these dogs! I'm deathly afraid of them. Got bitten very badly as a child you see. This is terrible! How can I finish my mission! Hmmm! You don't seem to be frightened of them.")
 end
@@ -73,7 +76,8 @@ function DontScareMe(NPC, Spawn)
 	SetStepComplete(Spawn, DoggoneIt, 2)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
+
+        PlayAnimation(NPC, 10844)	
 	AddConversationOption(conversation, "Not a problem. Wait for me here.")
 	StartConversation(conversation, NPC, Spawn, "I would be forever in your debt if you could perhaps take a quick peek around the village for me and clear out any of those wretched Moraks so that I can continue my misson please?")
 end
@@ -81,7 +85,8 @@ end
 function NotGoingToLike(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
+
+        PlayAnimation(NPC, 12246)	
 	AddConversationOption(conversation, "The Moraks are even more plentiful around the villages. I cleared a path, but they'll soon be back.", "SoonBeBack")
 	StartConversation(conversation, NPC, Spawn, "Oh, dear.")
 end
@@ -95,7 +100,8 @@ function SoonBeBack(NPC, Spawn)
 	if not HasItem(Spawn, 1565) then
 		SummonItem(Spawn, 1565)
 	end
-	
+
+        PlayAnimation(NPC, 13061)	
 	AddConversationOption(conversation, "I'll take care of it, no worries.")
 	StartConversation(conversation, NPC, Spawn, "I do owe you for this friend. I'm primarily a scout but also a diplomat-in-training. I'm supposed to open lines of communication with the Sapswill soothsayer, who supposedly knows a great deal about what's ailing our Colony. Can you take him this gift? As an act of diplomat-in-training?")
 end
