@@ -1,8 +1,8 @@
 --[[
-	Script Name		:	SpawnScripts/QueensColony/ebiksspringer.lua
+	Script Name	:	SpawnScripts/QueensColony/ebiksspringer.lua
 	Script Purpose	:	<purpose>
 	Script Author	:	Jabantiz
-	Script Date		:	9/13/2016
+	Script Date	:	9/13/2016
 	Script Notes	:	<special-instructions>
 --]]
 
