@@ -11,6 +11,7 @@ function cast(Caster, Target, Snare, Resist)
     --     Slows target by 28.3%
     SetSpellSnareValue(Snare)
     AddControlEffect(Target, 11)
+    Say(Caster, "Snare should be a seperate spell")
 
     --     5% chance to dispel when target receives hostile action
     --     5% chance to dispel when target takes damage
