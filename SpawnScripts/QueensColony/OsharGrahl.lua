@@ -7,8 +7,8 @@
 --]]
 
 function spawn(NPC)
-       	AddTimer(NPC, 1000, "visualstate")
-       	AddTimer(NPC, 1000, "shout")
+       	AddTimer(NPC, 3000, "Animations")
+       	AddTimer(NPC, 3000, "Text")
 end
 
 function hailed(NPC, Spawn)
@@ -19,27 +19,21 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function visualstate(NPC)
+function Animations(NPC)
         math.randomseed(os.time())
         local choice = math.random (1,2)
 
         if choice == 1 then
-	        SpawnSet(NPC, "visual_state", 891)
-	        AddTimer(NPC, 6000, "resetvisualstate")
-        elseif choice == 2 then
-	        SpawnSet(NPC, "visual_state", 13008)
-	        AddTimer(NPC, 15000, "resetvisualstate")
+                PlayAnimation(NPC, 891)
+        else
+                PlayAnimation(NPC, 13008)
         end
+
+        local time = math.random (30000,40000)         
+        AddTimer(NPC, time, "Animations")
 end
 
-function resetvisualstate(NPC)
-        SpawnSet(NPC, "visual_state", 0)
-
-        local time = math.random (30000,40000)       
-	AddTimer(NPC, time, "visualstate") 	
-end
-
-function shout(NPC)
+function Text(NPC)
         math.randomseed(os.time())
         local choice = math.random (1,3)
 
@@ -49,10 +43,10 @@ function shout(NPC)
         elseif choice == 2 then
                 Say(NPC, "All this sand in my fur, bah!")
                 Emote(NPC, "shakes.") 
-        elseif choice == 3 then
+        else
                 Say(NPC, "Our poor home... lost.")
         end
 
-        local time = math.random (60000,240000)       
-	AddTimer(NPC, time, "shout")	
+        local time2 = math.random (60000,240000)       
+	AddTimer(NPC, time2, "Text")	
 end

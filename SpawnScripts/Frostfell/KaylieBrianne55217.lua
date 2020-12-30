@@ -34,12 +34,12 @@ function InRange(NPC, Spawn)
         AddTimer(NPC, 1300, "TimerLyingDown", 1, Spawn)
 end
 
-function TimerLyingDown (NPC)
+function TimerLyingDown(NPC)
         PlayAnimation(NPC, 11769)
         AddTimer(NPC, 2400, "TimerGettingUp", 1, Spawn)
 end
 
-function TimerGettingUp (NPC)
+function TimerGettingUp(NPC)
         PlayAnimation(NPC, 11768)
         AddTimer(NPC, 2500, "TimerConfused", 1, Spawn)
 end

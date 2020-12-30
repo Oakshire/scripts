@@ -22,6 +22,6 @@ function hailed(NPC, Spawn)
     elseif choice == 2 then
         PlayFlavor(NPC, "voiceover/english/merchant_vim/boat_06p_tutorial02/020_merchant_vim_hail_481beac8.mp3", "I love traveling the seas... Oh! Did you need something?", "sniff", 2187888771, 2112320089, Spawn)
     else
-        Say(NPC, "The Far Journey is a beautiful ship, aint she?")
+        PlayFlavor(NPC, "voiceover/english/merchant_vim/boat_06p_tutorial02/020_merchant_vim_hail_6c0c3c22.mp3", "The Far Journey is a beautiful ship, ain't she?", "smirk", 139722646, 2672074756, Spawn)
     end
 end
