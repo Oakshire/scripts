@@ -7,24 +7,34 @@
 --]]
 
 function spawn(NPC)
-    SetPlayerProximityFunction(NPC, 10, "InRange")
+
 end
 
 function respawn(NPC)
-    spawn(NPC)
+        spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0, Spawn)
-end
+        FaceTarget(NPC, Spawn)
+	math.randomseed(os.time())
+	voice = math.random (1, 3)
+	str = tostring(choice)
 
-function InRange(NPC, Player)
-    choice = math.random(1,2)
+	if voice == 1 then
+            PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1050.mp3", "", "", 0, 0, Spawn)
+	elseif voice == 2 then
+	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1050.mp3", "", "", 0, 0, Spawn)
+	else
+	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1050.mp3", "", "", 0, 0, Spawn)
+        end
 
-    if choice == 1 then
-	PlayFlavor(NPC, "", "Welcome to Crestrider's Trading Post.", "", 1689589577, 4560189, Spawn)
-    else
-	PlayFlavor(NPC, "", "If you can trade it, we can buy it.", "", 1689589577, 4560189, Spawn)
-    end
+        text = math.random(1,3)
+
+        if text == 1 then
+            Say(NPC, "If you can trade it, we can buy it.")
+        elseif text == 2 then
+            Say(NPC, "Welcome to Crestrider's Trading Post.")
+        else
+            Say(NPC, "Got any goods for sale from your adventures?")	
+        end
 end

@@ -19,7 +19,7 @@ function hailed(NPC, Spawn)
         PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1019.mp3", "All your basic necessities you'll find here.", "", 0, 0, Spawn)
     elseif choice == 2 then
         PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1019.mp3", "The Deeppockets have a long history of good deals, ask anyone!", "", 0, 0, Spawn)
-	else
+    else
         PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1019.mp3", "All your basic necessities you'll find here.", "", 0, 0, Spawn)	
     end
 end

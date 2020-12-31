@@ -16,17 +16,28 @@ function respawn (NPC)
 end	 
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
+        FaceTarget(NPC, Spawn)
 	math.randomseed(os.time())
-	choice = math.random (1, 3)
+	voice = math.random (1, 3)
 	str = tostring(choice)
-	if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1062.mp3", "Aah! Once it hit the lips... i've been waiting for an ale all day.", "", 0, 0, Spawn)
-	elseif choice == 2 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1062.mp3", "I hear Murrar Shar is on the island.", "", 0, 0, Spawn)
+
+	if voice == 1 then
+            PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1062.mp3", "", "", 0, 0, Spawn)
+	elseif voice == 2 then
+	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1062.mp3", "", "", 0, 0, Spawn)
 	else
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1062.mp3", "You need to be careful not to fall off into the bay. Not becasue of the sharks, but because ale and seawater don't mix.", "", 0, 0, Spawn)
-end
+	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1062.mp3", "", "", 0, 0, Spawn)
+        end
+
+        text = math.random(1,3)
+
+        if text == 1 then
+            Say(NPC, "Aah! Once it hit the lips... I've been waiting for an ale all day.")
+        elseif text == 2 then
+            Say(NPC, "I hear Murrar Shar is on the island.")
+        else
+            Say(NPC, "Ya need to be careful not to fall off into the bay. Not becasue of the sharks, but because ale and seawater don't mix.")	
+        end
 end
 
 
