@@ -9,54 +9,72 @@
 --]]
 
 function spawn(NPC)
-    hailed(NPC,Spawn)
-	EmoteLoop(NPC)
+    EmoteLoop(NPC)
 end
 
 function respawn(NPC)
-      spawn(NPC)
+    spawn(NPC)
 end
 
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-	math.randomseed(os.time())
-	choice = math.random (1,4)
-	str = tostring(choice)
-    if choice == 1 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1019.mp3", "Left foot, right foot, spin...", "", 0, 0, Spawn)
-	elseif choice == 2 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1019.mp3", "I hope my father doesn't see this.", "", 0, 0, Spawn)
-	elseif choice == 3 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1019.mp3", "My father runs the bank here over behind Myrrin's tower", "", 0, 0, Spawn)
-	else
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1019.mp3", "Left foot, right foot, spin...", "", 0, 0, Spawn)
-	end
+    math.randomseed(os.time())
+    voice = math.random (1,4)
+    str = tostring(choice)
+
+    if voice == 1 then
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1019.mp3", "", "", 0, 0, Spawn)
+    elseif voice == 2 then
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1019.mp3", "", "", 0, 0, Spawn)
+    else
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1019.mp3", "", "", 0, 0, Spawn)
+    end
+
+    text = math.random(1,3)
+
+    if text == 1 then
+        Say(NPC, "Left foot, right foot, spin...")
+    elseif text == 2 then
+        Say(NPC, "I hope my father doesn't see this.")
+    else
+        Say(NPC, "My father runs the bank here over behind Myrrin's tower")	
+    end
 end
 
 function EmoteLoop (NPC)
     math.randomseed(os.time())
-    local choice = math.random(1,5)
-	str = tostring(choice)
-	if choice == 1 then
-    PlayAnimation(NPC, 11298)
-	FaceTarget(NPC, 2530054)
-    AddTimer(NPC, 5000, "EmoteLoop")	
-	elseif choice == 2 then
+    local choice = math.random(1,6)
+    str = tostring(choice)
+
+    if choice == 1 then
+-- dance
+        PlayAnimation(NPC, 11298)
+        AddTimer(NPC, 10500, "Idle")	
+    elseif choice == 2 then
+-- flustered
 	PlayAnimation(NPC, 11558)
-	FaceTarget(NPC, 2530054)
-	AddTimer(NPC, 5000, "EmoteLoop")
-	elseif choice == 3 then
+	AddTimer(NPC, 4500, "Idle")
+    elseif choice == 3 then
+-- shimmy
 	PlayAnimation(NPC, 12235)
-	FaceTarget(NPC, 2530054)
-	AddTimer(NPC, 5000, "EmoteLoop")
-	elseif choice == 4 then
+	AddTimer(NPC, 1700, "Idle")
+    elseif choice == 4 then
+-- kiss
 	PlayAnimation(NPC, 11762)
-	FaceTarget(NPC, 2530054)
-	AddTimer(NPC, 5000, "EmoteLoop")
-	else
+        AddTimer(NPC, 3500, "Idle")
+    elseif choice == 5 then
+-- flirt
+	PlayAnimation(NPC, 11557)
+        AddTimer(NPC, 30000, "Idle")
+    else
+-- flourish
 	PlayAnimation(NPC, 298)
-	FaceTarget(NPC, 2530054)
-	AddTimer(NPC, 5000, "EmoteLoop")
-	end
-	end
+	AddTimer(NPC, 8500, "Idle")
+    end
+end
+
+function Idle(NPC)
+	PlayAnimation(NPC, 323)    
+        EmoteLoop(NPC)
+end
