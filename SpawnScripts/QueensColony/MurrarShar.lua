@@ -92,7 +92,7 @@ function hailed(NPC, Spawn)
 			GoblinsAreVictims(NPC, Spawn)
 		end
 	else
-		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar030.mp3", "", "", 3165714952, 1304016911, Spawn)
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/murrar_shar/tutorial_island02_revamp/quests/citizenship/murrarshar/murrarshar030.mp3", "", "nod", 3165714952, 1304016911, Spawn)
 		AddConversationOption(conversation, "Farewell.")
 		AddConversationOption(conversation, "How do I leave the island?", "LeaveIsland")
 		StartConversation(conversation, NPC, Spawn, "Qeynos will live for you, my friend. Your deeds here will not be forgotten. Farewell.")

@@ -66,6 +66,7 @@ end
 
 function dlg_0_5(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+	PlayAnimation(NPC, 11882)
     conversation = CreateConversation()
     AddConversationOption(conversation, "Why do I need to increase my harvesting skills?", "dlg_0_6")
     StartConversation(conversation, NPC, Spawn, "The items found through harvesting are the basic building blocks of tradeskills.  They cannot be sold to vendors, but they can be traded or sold to other players who need them for their respective tradeskill professions.  Some components that can be found through harvesting are very rare and can be worth quite a bit of money to tradeskillers.")

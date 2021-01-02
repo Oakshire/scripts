@@ -101,6 +101,6 @@ function TurnIn(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	HandInCollections(Spawn)
 	conversation = CreateConversation()
-	AddConversationOption(conversation, "Okay,bye!")
+	AddConversationOption(conversation, "Okay, bye!")
 	StartConversation(conversation, NPC, Spawn, "This is a magnificent find!  Here, take this for all your hard work.")
 end

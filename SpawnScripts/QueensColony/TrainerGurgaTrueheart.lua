@@ -102,7 +102,7 @@ function dlg_14_7(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_gurga_trueheart/tutorial_island02_revamp/trainers/attributes/gurga_trueheart008.mp3", "", "", 3884845357, 2691699677, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_gurga_trueheart/tutorial_island02_revamp/trainers/attributes/gurga_trueheart008.mp3", "", "nod", 3884845357, 2691699677, Spawn)
 	AddConversationOption(conversation, "Are there other ways?", "dlg_14_8")
 	AddConversationOption(conversation, "Thank you for the information.")
 	StartConversation(conversation, NPC, Spawn, "Your physical attributes, as well as other aspects of your character, can be improved in a number of ways. Many items add points to your attributes, resistances, Health, or Power. Hold your mouse pointer over your items to see what benefits they provide.")
@@ -110,6 +110,7 @@ end
 
 function dlg_14_8(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+        AnimationSpiral(NPC)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_gurga_trueheart/tutorial_island02_revamp/trainers/attributes/gurga_trueheart009.mp3", "", "", 1275102729, 1764856299, Spawn)
@@ -117,6 +118,10 @@ function dlg_14_8(NPC, Spawn)
 	AddConversationOption(conversation, "How do I view my physical attributes?", "dlg_14_6")
 	AddConversationOption(conversation, "I will ask you about this later.")
 	StartConversation(conversation, NPC, Spawn, "Many spells and combat arts enhance your attributes. Some of these can be cast on yourself, while others can improve other player characters that you group with. Grouping with other classes provides a wider variety of ways to improve your attributes.")
+end
+
+function AnimationSpiral(NPC)
+        PlayAnimation(NPC, 2250)
 end
 
 --[[ raw_conversations

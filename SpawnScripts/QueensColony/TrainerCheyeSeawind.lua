@@ -19,21 +19,11 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     math.randomseed(os.time())
-	choice = math.random (1, 3)
-	str = tostring(choice)
-	if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1053.mp3", "", "peer", 0, 0, Spawn)
+    choice = math.random (1, 3)
+
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..choice.."_1053.mp3", "", "", 0, 0, Spawn)
     AddConversationOption(conversation, "What can cause my death? ", "dlg_7_1")
     StartConversation(conversation, NPC, Spawn, "Even the bravest champion of Queen Antonia will meet an untimely end on occasion. Let me teach you the consequences of death and how you can recover properly.")
-	elseif choice == 2 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1053.mp3", "", "peer", 0, 0, Spawn)
-    AddConversationOption(conversation, "What can cause my death? ", "dlg_7_1")
-    StartConversation(conversation, NPC, Spawn, "Even the bravest champion of Queen Antonia will meet an untimely end on occasion. Let me teach you the consequences of death and how you can recover properly.")
-	else
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1053.mp3", "", "peer", 0, 0, Spawn)
-    AddConversationOption(conversation, "What can cause my death? ", "dlg_7_1")
-    StartConversation(conversation, NPC, Spawn, "Even the bravest champion of Queen Antonia will meet an untimely end on occasion. Let me teach you the consequences of death and how you can recover properly.")
-end
 end
 
 function dlg_7_1(NPC, Spawn)

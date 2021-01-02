@@ -8,21 +8,33 @@
 
 function spawn(NPC)
     Start(NPC) 
-    --SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function Start(NPC)
-    AddTimer(NPC, 1200000, "speech1")
+    AddTimer(NPC, 4000, "visage01")
 end
 
---[[function InRange(NPC, Spawn)
-    speech1(NPC)
+function visage01(NPC, Spawn)
+    SpawnSet(NPC, "mood_state", "13046")	-- Give her serious face!
+--    SpawnSet(NPC, "action_state", "10756")	-- Start waving arms about wildly
+
+--    PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_propaganda_1_b_e5f9dee6.mp3", "Who performed this miracle?  We did.  All of us, by our own hands, guided by our vision and the blessings of the gods.  Qeynos stands as proof in the power of justice, equality, and compassion.  For, as our founding patriarch, Antonius Bayle, would say: If a city will be great, it must first be good!  And our city indeed owes its greatness to the goodness and benevolent ideals we citizens uphold.", "", 1818828034, 1870559483)
+
+--    AddTimer(NPC, 30000, "speech2")			-- for 30 seconds, then to next speech cycle
+
 end
 
-function LeaveRange(NPC, Spawn)
-    stop_speech(NPC)
-end--]]
 
+
+
+
+
+
+
+
+
+
+--[[
 function speech1(NPC, Spawn)
     SpawnSet(NPC, "mood_state", "13046")	-- Give her serious face!
     SpawnSet(NPC, "action_state", "10756")	-- Start waving arms about wildly
@@ -69,3 +81,4 @@ function stop_speech(NPC)
 	
     AddTimer(NPC, 1200000, "speech1")
 end 
+--]]

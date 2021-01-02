@@ -78,9 +78,19 @@ function dlg_10_6(NPC, Spawn)
     conversation = CreateConversation()
 
     PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_marla_gilliam/tutorial_island02_revamp/trainers/con_system/con_good007.mp3", "", "", 2126605511, 1738009054, Spawn)
-    AddConversationOption(conversation, "How does my opponent's level affect my rewards for victory?", "dlg_10_7")
+    AddConversationOption(conversation, "How does my opponent's level affect my rewards for victory?", "dlg_10_6b")
     AddConversationOption(conversation, "I will learn this lesson later.")
     StartConversation(conversation, NPC, Spawn, "As you adventure through Norrath, you will gain experience and increase your level. The opponents you will face in combat have levels as well. To be victorious, you will usually want to face foes that are close to your level.")
+end
+
+function dlg_10_6b(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+
+    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/trainer_marla_gilliam/tutorial_island02_revamp/trainers/con_system/con_good008.mp3", "", "", 1264665729, 3641307819, Spawn)
+    AddConversationOption(conversation, "What does the color of my opponent's name tell me?", "dlg_10_7")
+    AddConversationOption(conversation, "I will learn this lesson later.")
+    StartConversation(conversation, NPC, Spawn, "You gain more experience for defeating higher-level opponents, but they will be tougher to beat. Conversely, if you defeat foes much weaker than you, it will not be as rewarding.")
 end
 
 function dlg_10_7(NPC, Spawn)

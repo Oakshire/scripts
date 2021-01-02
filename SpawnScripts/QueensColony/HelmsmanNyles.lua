@@ -19,7 +19,7 @@ function hailed(NPC, Spawn)
         PlayFlavor(NPC, "", "Land!  I see land!", "", 1689589577, 4560189, Spawn)
     elseif choice == 2 then
         Say(NPC, "Ale salts! We're havin' rudder storm!")
-    elseif choice == 3 then
+    else
         PlayFlavor(NPC, "", "Crazy!  What are you talking about?", "", 1689589577, 4560189, Spawn)
     end
 end

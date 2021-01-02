@@ -196,6 +196,6 @@ end
 
 function LeaveIslandKelethin(NPC, Spawn)
     AddSpellBookEntry(Spawn, 8057, 1)	
-    ZoneRef = GetZone("QueensColony")
+    ZoneRef = GetZone("GreaterFaydark")
     Zone(ZoneRef,Spawn)
 end

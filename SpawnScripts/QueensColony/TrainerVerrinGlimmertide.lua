@@ -19,24 +19,12 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     math.randomseed(os.time())
-	choice = math.random (1, 3)
-	str = tostring(choice)
-	if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0, Spawn)
+    choice = math.random (1, 3)
+
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..choice.."_1022.mp3", "", "", 0, 0, Spawn)
     AddConversationOption(conversation, "I would like to hear about Heroic Opportunities now.", "dlg_11_1")
     AddConversationOption(conversation, "I will return to learn about Heroic Opportunities when I have reached level 5.")
-    StartConversation(conversation, NPC, Spawn, "Greetings," .. GetName(Spawn) .. ". I am here to train you in the use of Heroic Opportunities. This useful combat technique can be employed by adventurers who are level 5 and higher. Since you are not yet level 5, you cannot yet use them. If you don't want to hear about them now, you could return when you have reached level 5.")
-    elseif choice == 2 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1022.mp3", "", "", 0, 0, Spawn)
-    AddConversationOption(conversation, "I would like to hear about Heroic Opportunities now.", "dlg_11_1")
-    AddConversationOption(conversation, "I will return to learn about Heroic Opportunities when I have reached level 5.")
-    StartConversation(conversation, NPC, Spawn, "Greetings," .. GetName(Spawn) .. ". I am here to train you in the use of Heroic Opportunities. This useful combat technique can be employed by adventurers who are level 5 and higher. Since you are not yet level 5, you cannot yet use them. If you don't want to hear about them now, you could return when you have reached level 5.")
-	else
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1022.mp3", "", "", 0, 0, Spawn)
-    AddConversationOption(conversation, "I would like to hear about Heroic Opportunities now.", "dlg_11_1")
-    AddConversationOption(conversation, "I will return to learn about Heroic Opportunities when I have reached level 5.")
-    StartConversation(conversation, NPC, Spawn, "Greetings," .. GetName(Spawn) .. ". I am here to train you in the use of Heroic Opportunities. This useful combat technique can be employed by adventurers who are level 5 and higher. Since you are not yet level 5, you cannot yet use them. If you don't want to hear about them now, you could return when you have reached level 5.")
-end
+    StartConversation(conversation, NPC, Spawn, "Greetings, " .. GetName(Spawn) .. ". I am here to train you in the use of Heroic Opportunities. This useful combat technique can be employed by adventurers who are level 5 and higher. Since you are not yet level 5, you cannot yet use them. If you don't want to hear about them now, you could return when you have reached level 5.")
 end
 
 function dlg_11_1(NPC, Spawn)

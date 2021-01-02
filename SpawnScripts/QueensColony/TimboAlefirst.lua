@@ -20,9 +20,9 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     math.randomseed(os.time())
     voice = math.random (1,3)
-    str = tostring(choice)
+    str = tostring(voice)
 
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..choice.."_1026.mp3", "", "", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1026.mp3", "", "", 0, 0, Spawn)
 
     text = math.random(1,3)
 

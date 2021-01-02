@@ -1,15 +1,14 @@
 --[[
-    Script Name    : SpawnScripts/QueensColony/GrakusStonemallet.lua
-    Script Author  : Zcoretri
-    Script Date    : 2015.07.30
-    Script Purpose : Grakus Stonemallet dialog
-    Modified Date  : 2020.09.04
+        Script Name    : SpawnScripts/QueensColony/GrakusStonemallet.lua
+        Script Author  : Zcoretri
+        Script Date    : 2015.07.30
+        Script Purpose : Grakus Stonemallet dialog
+        Modified Date  : 2020.09.04
 	Modified by    : premierio015
 	Notes          : Added all dialogues, voiceovers, anims.
 --]]
 function spawn(NPC)
-hailed(NPC, Spawn)
-EmoteLoop(NPC)
+        EmoteLoop(NPC)
 end
 
 function respawn(NPC)
@@ -17,18 +16,12 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
+        FaceTarget(NPC, Spawn)
 	math.randomseed(os.time())
 	local voice = math.random (1,3)
-	str = tostring(choice)
+	str = tostring(voice)
 
-	if voice == 1 then
-            PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1062.mp3", "", "", 0, 0, Spawn)
-	elseif voice == 2 then
-	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1062.mp3", "", "", 0, 0, Spawn)
-	else
-	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1062.mp3", "", "", 0, 0, Spawn)
-        end
+        PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1062.mp3", "", "", 0, 0, Spawn)
 
         text = math.random(1,3)
         if text == 1 then
@@ -41,9 +34,10 @@ function hailed(NPC, Spawn)
 end 
 	
 function EmoteLoop (NPC)
-    math.randomseed(os.time())
-     choice = math.random(1,5)
+        math.randomseed(os.time())
+        choice = math.random(1,5)
 	str = tostring(choice)
+
 	if choice == 1 then
 	    PlayAnimation(NPC, 184)
 	elseif choice == 2 then
