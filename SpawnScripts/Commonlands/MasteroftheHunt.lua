@@ -33,7 +33,7 @@ function hailed(NPC, Spawn)
     StartConversation(conversation, NPC, Spawn, "You have my journal, yes?  Ahh, I am in your debt.  When you are ready, I will show you what it means to be the Master of the Hunt!")
     elseif HasCompletedQuest(Spawn, DirtySneakyRats) then
     PlayFlavor(NPC, "voiceover/english/master_of_the_hunt/commonlands/quest/016_quest_hunter_druid_aoi_callout_4b78dcf3.mp3", "Stay clear of that lot down there.", "", 1493660051, 776533557, Spawn) 
-    if
+
 end
    end
 
