@@ -19,27 +19,13 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     math.randomseed(os.time())
-	choice = math.random (1, 3)
-	str = tostring(choice)
-	if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1039.mp3", "", "", 0, 0)
+    choice = math.random (1, 3)
+
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..choice.."_1039.mp3", "", "hello", 0, 0)
     AddConversationOption(conversation, "Tell me about items and equipment.", "dlg_12_1")
     AddConversationOption(conversation, "Tell me about my inventory.", "dlg_12_11")
     AddConversationOption(conversation, "I will return for instruction later.")
     StartConversation(conversation, NPC, Spawn, "Good day, " .. GetName(Spawn) .. ". I'm here at the colony to teach our Queen's newest recruits about equipment and inventory space. Good equipment is one of the most important aspects of any adventurer!")
-	elseif choice == 2 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1039.mp3", "", "", 0, 0)
-    AddConversationOption(conversation, "Tell me about items and equipment.", "dlg_12_1")
-    AddConversationOption(conversation, "Tell me about my inventory.", "dlg_12_11")
-    AddConversationOption(conversation, "I will return for instruction later.")
-    StartConversation(conversation, NPC, Spawn, "Good day, " .. GetName(Spawn) .. ". I'm here at the colony to teach our Queen's newest recruits about equipment and inventory space. Good equipment is one of the most important aspects of any adventurer!")
-	else
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1039.mp3", "", "", 0, 0)
-    AddConversationOption(conversation, "Tell me about items and equipment.", "dlg_12_1")
-    AddConversationOption(conversation, "Tell me about my inventory.", "dlg_12_11")
-    AddConversationOption(conversation, "I will return for instruction later.")
-    StartConversation(conversation, NPC, Spawn, "Good day, " .. GetName(Spawn) .. ". I'm here at the colony to teach our Queen's newest recruits about equipment and inventory space. Good equipment is one of the most important aspects of any adventurer!")
-    end
 end
 
 function dlg_12_1(NPC, Spawn)
@@ -149,6 +135,7 @@ end
 function dlg_12_13(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
+    PlayAnimation(NPC, 11882)
     AddConversationOption(conversation, "Tell me about items and equipment.", "dlg_12_1")
     AddConversationOption(conversation, "I will return for instruction later.")
     StartConversation(conversation, NPC, Spawn, "Certain items, such as ammunition or harvested resources, can be stacked up to 200 at a time, depending on the item.  Many goods, such as armor and clothing, cannot be stacked at all.")

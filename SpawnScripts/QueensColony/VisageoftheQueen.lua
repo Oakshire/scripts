@@ -7,25 +7,22 @@
 --]]
 
 function spawn(NPC)
-    local EndSpeech = 1
-    Start(NPC) 
+    StartSpeech(NPC) 
 end
 
-function Start(NPC)
-    AddTimer(NPC, 5000, "flamesanimation")
+function StartSpeech(NPC)
+    AddTimer(NPC, 1200000, "flamesanimation")
 end
 
 function flamesanimation(NPC, Spawn)
---    PlayAnimation(NPC, 13041)
+    EndSpeech = 1
     PlayAnimation(NPC, 10756)
---    SpawnSet(NPC, "action_state", "10756")
     AddTimer(NPC, 3000, "visage01")	
 end
 
 function visage01(NPC, Spawn)
---    SpawnSet(NPC, "action_state", "0")
     EmoteLoop(NPC)
-    AddTimer(NPC, 2000, "visage19")	
+    AddTimer(NPC, 2000, "visage02")	
 end
 
 function visage02(NPC, Spawn)
@@ -115,23 +112,19 @@ end
 
 function visage19(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/antonia_isle_speech_18.mp3", "Now enter good traveler, and find your place among us.", "", 1587099913, 694440967, Spawn)
-    AddTimer(NPC, 4000, "endspeech")	
+    AddTimer(NPC, 1000, "endspeech")	
 end
 
-function endspeech(NPC, Spawn)
-    local EndSpeech = 2
-        Say(NPC, "EndSpeech is "..EndSpeech.."")
+function endspeech(NPC)
+    EndSpeech = 2
 end
 
 function EmoteCheck(NPC)
-        Say(NPC, "EndSpeech is "..EndSpeech.." check 2")
-    if EndSpeech == 2 then
---        SpawnSet(NPC, "action_state", "0")
-	PlayAnimation(NPC, 13042)
-        Say(NPC, "I should stop")
-    else 
-        Say(NPC, "New emote")
+    if EndSpeech == 1 then
         EmoteLoop(NPC)
+    else
+	PlayAnimation(NPC, 13042)
+        AddTimer(NPC, 1200000, "flamesanimation")
     end
 end
 
@@ -179,8 +172,8 @@ function EmoteLoop(NPC)
 end
 
 function Idle(NPC)
-	PlayAnimation(NPC, 13041)    
-        EmoteCheck(NPC)
+    PlayAnimation(NPC, 13042)    
+    EmoteCheck(NPC)
 end
 
 

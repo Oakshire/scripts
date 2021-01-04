@@ -9,10 +9,12 @@
 
 local TheMysteriousMissingShipment = 421
 local StartingtheNegotiations = 424
+local FinishingtheNegotiations = 425
 
 function spawn(NPC)
 ProvidesQuest(NPC, TheMysteriousMissingShipment)
 ProvidesQuest(NPC, StartingtheNegotiations)
+ProvidesQuest(NPC, FinishingtheNegotiations)
 end
 
 
@@ -28,7 +30,7 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "I would be happy to help you.", "dlg2")
     AddConversationOption(conversation, "You have to be kidding me.  No thanks, find another lackey, I'm busy with my own important things.")
     StartConversation(conversation, NPC, Spawn, "Hrmmm... You do have the look of a citizen about you.  You're not just random rabble from the streets.  I could use your help.")
-    elseif HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 1 or GetQuestStep(Spawn, StartingtheNegotiations) <= 8 and HasQuest(Spawn, StartingtheNegotiations)  then
+    elseif HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 1 or GetQuestStep(Spawn, StartingtheNegotiations) <= 8 and HasQuest(Spawn, StartingtheNegotiations) or HasQuest(Spawn, FinishingtheNegotiations) and GetQuestStep(Spawn, FinishingtheNegotiations) == 1 or GetQuestStep(Spawn, FinishingtheNegotiations) == 3 or GetQuestStep(Spawn, FinishingtheNegotiations) == 4   then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1034.mp3", "", "no", 0, 0, Spawn)
     AddConversationOption(conversation, "I'll be back when I'm done.")
     StartConversation(conversation, NPC, Spawn, "Look, I don't have time to sit around and talk about the weather.  We have an agreement and I expect you to live up to it.  Now don't come back unless you're done with what I asked.")
@@ -46,11 +48,15 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "Not enough, there were still some left.", "dlg14")
     AddConversationOption(conversation, "I just want to get this over with and get what is due to me.", "dlg14")
     StartConversation(conversation, NPC, Spawn, "That was faster than I expected, you're quite the dangerous one aren't you?  Well done, I applaud you and your efforts in our partnership here.  Keep it up and we might get very rich together.  Tell me, how many did you get rid of before coming back?")
-    elseif HasCompletedQuest(Spawn, TheMysteriousMissingShipment) and HasCompletedQuest(Spawn, StartingtheNegotiations) then
+    elseif HasCompletedQuest(Spawn, TheMysteriousMissingShipment) and HasCompletedQuest(Spawn, StartingtheNegotiations) and not HasQuest(Spawn, FinishingtheNegotiations) and NotHasCompletedQuest(Spawn,  FinishingtheNegotiations)  then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3", "", "", 0, 0, Spawn)
-    AddConversationOption(conversation, "Yes, I'm ready to continue.")
+    AddConversationOption(conversation, "Yes, I'm ready to continue.", "dlg15")
     AddConversationOption(conversation, "Not right now, I'll return later.")
     StartConversation(conversation, NPC, Spawn, "Shall we continue our business venture, partner?")
+    elseif GetQuestStep(Spawn,  FinishingtheNegotiations) == 2 then
+    dlg18(NPC, Spawn)
+    elseif GetQuestStep(Spawn,  FinishingtheNegotiations) == 6 then
+    dlg22(NPC, Spawn)
    end    
 end
    
@@ -180,6 +186,97 @@ AddConversationOption(conversation, "Thanks, I'll be back soon to continue our '
 StartConversation(conversation, NPC, Spawn, "I understand what you mean perfectly.  Here is the first of your profits, if you keep doing such excellent work there is a lot more where this came from.")
 end
 
+-- FINISHING THE NEGOTIATIONS PART
+
+function dlg15(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "And you want me to find out which is the truth?", "dlg16")
+AddConversationOption(conversation, "I don't really have time for this right now.")
+StartConversation(conversation, NPC, Spawn, "Good.  The dervishes are still not willing to negotiate.  I'm guessing they have either become more foolish than normal or they no longer have my shipment.")
+end
+
+function dlg16(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "So, I should go speak with this Captain Vertas?", "dlg17")
+AddConversationOption(conversation, "I thought this would be something interesting, forget it.")
+StartConversation(conversation, NPC, Spawn, "Yes, but I have another source that we might be able to use to our advantage.  Another militia guard by the name of Captain Vertas is stationed out in the Crossroads.  He has no love for the dervishes and keeps a close eye on them.")
+end
+
+function dlg17(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I'll be back when I learn anything.", "offer3")
+StartConversation(conversation, NPC, Spawn, "Yes, see what information he has on the dervishes and what we might be able to use.")
+end
+
+
+function dlg18(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1034.mp3", "", "", 0, 0, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Yes I have.  I learned the dervishes are working with the Deathfist orcs.", "dlg19")
+AddConversationOption(conversation, "No, not yet, I'll be back when I have.")
+StartConversation(conversation, NPC, Spawn, "Have you spoken with captain Vertas?")
+end
+
+function dlg19(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayFlavor(NPC, "brandus_levine/commonlands/quests/brandus_levine/brandus_levine030.mp3", "", "", 782844318, 2866426514, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "It would be my pleasure.", "dlg20")
+AddConversationOption(conversation, "Only if you can continue to pay for my expensive services.", "dlg21")
+AddConversationOption(conversation, "I don't think so.  I'm not really the enforcer type.")
+StartConversation(conversation, NPC, Spawn, "The Deathfist?  You cannot be serious.  Bah!  That's probably where my shipment went, there's no way I'm getting that back by now.  The orcs also have to pay for this, they had to know that shipment was mine.  Do you mind playing enforcer again?")
+end
+
+function dlg20(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, FinishingtheNegotiations, 2)
+conversation = CreateConversation()
+AddConversationOption(conversation, "I'll return as soon as I find anything interesting from these orc runners.")
+StartConversation(conversation, NPC, Spawn, "Good, then I need you to find out what the connection is with with dervishes and the orcs.  If you watch carefully you can sometimes see orc runners near the encampments in the Southern part of the Commonlands.  I want the information they might be carrying.  Let me know what you find.")
+end
+
+
+function dlg21(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Then we have a deal.", "dlg20")
+AddConversationOption(conversation, "On second thought, I think I'm done with this arrangement.")
+StartConversation(conversation, NPC, Spawn, "Of course, of course.  We have a business deal and I'm willing to pay what is necessary to have this situation resolved as soon as possible.")
+end
+
+function dlg22(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayFlavor(NPC, "brandus_levine/commonlands/quests/brandus_levine/brandus_levine033.mp3", "", "", 1996105356, 11511501, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Here is the note I intercepted and had to decode.", "dlg23")
+AddConversationOption(conversation, "Enough to know I really dislike the Bloodskulls.  And I found this note.", "dlg23")
+AddConversationOption(conversation, "Nothing yet.  I'll be back later.")
+StartConversation(conversation, NPC, Spawn, "It's good to see you again.  What did you learn from the orcs?")
+end
+
+
+function dlg23(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayFlavor(NPC, "brandus_levine/commonlands/quests/brandus_levine/brandus_levine034.mp3", "", "", 1083737725, 3622378931, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "What about my reward for that information?", "dlg24")
+AddConversationOption(conversation, "I'm getting out of this now, goodbye.")
+StartConversation(conversation, NPC, Spawn, "Hrmmm.  So they are having a meeting are they?  Let me look into this and verify it isn't a trap.  Come back when you're ready to crash their meeting.")
+end
+
+function dlg24(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SetStepComplete(Spawn, FinishingtheNegotiations, 6)
+PlayFlavor(NPC, "brandus_levine/commonlands/quests/brandus_levine/brandus_levine035.mp3", "", "", 2606991312, 3918213798, Spawn)
+conversation = CreateConversation()
+AddConversationOption(conversation, "Thank you.  It's a pleasure doing business with you.")
+StartConversation(conversation, NPC, Spawn, "Ah yes, your reward.  Here it is.  Remember that I have more work and more rewards when you return.")
+end
+
 -- QUEST OFFER FUNCTIONS
 
 function offer2(NPC, Spawn)
@@ -187,6 +284,11 @@ FaceTarget(NPC, Spawn)
 OfferQuest(NPC, Spawn, StartingtheNegotiations)
 end
 
+
+function offer3(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, FinishingtheNegotiations)
+end
 
 function offer1(NPC, Spawn)
 FaceTarget(NPC, Spawn)

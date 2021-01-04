@@ -17,22 +17,19 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    SpawnSet(NPC, "visual_state", 0) 
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     math.randomseed(os.time())
-	choice = math.random (1, 3)
-	str = tostring(choice)
-	if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "", "", 0, 0, Spawn)
+    choice = math.random (1, 3)
+    
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..choice.."_1004.mp3", "", "", 0, 0, Spawn)
     AddConversationOption(conversation, "Thanks, I will do so.")
     StartConversation(conversation, NPC, Spawn, "Hello there, " ..GetName(Spawn).. ". Menders like me repair your equipment after it is damaged due to death. For more information on repairs, speak to Trainer Zidget Sprogrudder nearby. I'll fix your gear for a small fee, but menders in Qeynos won't be quite so generous!")
-	elseif choice == 2 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1004.mp3", "", "", 0, 0, Spawn)
-    AddConversationOption(conversation, "Thanks, I will do so.")
-    StartConversation(conversation, NPC, Spawn, "Hello there, " ..GetName(Spawn).. ". Menders like me repair your equipment after it is damaged due to death. For more information on repairs, speak to Trainer Zidget Sprogrudder nearby. I'll fix your gear for a small fee, but menders in Qeynos won't be quite so generous!")
-	else
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0, Spawn)
-    AddConversationOption(conversation, "Thanks, I will do so.")
-    StartConversation(conversation, NPC, Spawn, "Hello there, " ..GetName(Spawn).. ". Menders like me repair your equipment after it is damaged due to death. For more information on repairs, speak to Trainer Zidget Sprogrudder nearby. I'll fix your gear for a small fee, but menders in Qeynos won't be quite so generous!")
-	end
+
+    AddTimer(NPC, 35000, "ResetState", 1, Spawn)
+end
+
+function ResetState(NPC)
+    SpawnSet(NPC, "visual_state", 11812) 
 end

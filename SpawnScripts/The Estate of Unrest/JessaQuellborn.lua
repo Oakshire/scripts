@@ -9,6 +9,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
+PlayAnimation(NPC, 1563)
 end
 
 function respawn(NPC)
