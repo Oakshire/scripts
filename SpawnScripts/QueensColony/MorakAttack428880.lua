@@ -14,7 +14,7 @@ function spawn(NPC)
         MoveToLocation(NPC, 257.61, -5.86, 68.2, 7, "aggro", false)
         MoveToLocation(NPC, 246.66, -7.01, 86.54, 7, "aggro", false)
         MoveToLocation(NPC, 233.63, -3.41, 152.32, 7, "aggro", false) 
---        MoveToLocation(NPC, 235.71, -4.86, 146.35, 7, "aggro", false)
+--        MoveToLocation(NPC, 235.71, -4.86, 146.35, 7, "aggro", true)
 end
 
 

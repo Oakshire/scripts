@@ -10,6 +10,7 @@
 
 function spawn(NPC)
     SetTempVariable(NPC, "HAILED1", "true")  
+    SetTempVariable(NPC, "AggroWestfall", "true")  -- to avoid aggro message triggering multiple times at once
 end
 
 function respawn(NPC)
@@ -21,10 +22,10 @@ function hailed(NPC, Spawn)
         PlayFlavor(NPC, "", "What's that there!  To arms, the Morak are coming!", "point", 1689589577, 4560189, Spawn)
         zone = GetZone(Spawn)
         Morak1 = SpawnByLocationID(zone, 428874)
-        Morak2= SpawnByLocationID(zone, 428880)
+        Morak2 = SpawnByLocationID(zone, 428880)
         Morak3 = SpawnByLocationID(zone, 428890)
         SetTempVariable(NPC, "HAILED1", "false")
-        AddTimer(NPC, 420000, "hailed2")
+        AddTimer(NPC, 10000, "hailed2")
     elseif GetTempVariable(NPC, "HAILED1") == "false" then
         local choice = math.random(1, 2)
         if choice == 1 then
@@ -40,11 +41,18 @@ function hailed2(NPC, Spawn)
 end
 
 function aggro(NPC)
-    local choice = math.random(1,2)
-    if choice == 1 then
-        PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a203c9ec.mp3", "Prepare to face your doom, meddler.", "", 1496819882, 365167432)
+    if GetTempVariable(NPC, "AggroWestfall")  == "true" then
+        local choice = math.random(1,3)
+        if choice == 1 then
+            PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a203c9ec.mp3", "Prepare to face your doom, meddler.", "", 1496819882, 365167432)
+        elseif choice == 2 then
+            PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_583690dc.mp3", "Summon help!  We have invaders!", "", 3340212225, 279643307)
+        else
+            PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a30c4f9d.mp3", "To arms!", "", 1238020980, 748146443)
+        end
+        SetTempVariable(NPC, "AggroWestfall", "false")
     else
-        PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a30c4f9d.mp3", "To arms!", "", 1238020980, 748146443)
+        AddTimer(NPC, 5000, "resetAggro")
     end
 end
 
@@ -59,4 +67,6 @@ function killed(NPC)
     end 
 end
 
-
+function resetAggro(NPC)
+    SetTempVariable(NPC, "AggroWestfall", "true") 
+end

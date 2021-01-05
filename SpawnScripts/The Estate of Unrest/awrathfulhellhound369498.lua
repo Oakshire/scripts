@@ -1,8 +1,8 @@
 --[[
-	Script Name	: SpawnScripts/The Estate of Unrest/awrathfulhellhound369498.lua
-	Script Purpose	:	Waypoint Path for RoamerHellhound.lua
+	Script Name	:	SpawnScripts/The Estate of Unrest/awrathfulhellhound369498.lua
+	Script Purpose	:	Waypoint Path for hellhound2.lua
 	Script Author	:	Auto Generated Neatz09
-	Script Date		:	01/03/2021 02:18:56 PM
+	Script Date		:	01/04/2021 01:06:07 PM
 	Script Notes	:	Locations collected from Live
 --]]
 
@@ -18,15 +18,12 @@ function respawn(NPC)
 end
 
 function waypoints(NPC)
-	MovementLoopAddLocation(NPC, 7.12, 3.88, 87.58, 2, 0)
-	MovementLoopAddLocation(NPC, 8.28, 3.88, 96.49, 2, 0)
-	MovementLoopAddLocation(NPC, 9.37, 3.88, 95.64, 2, 14)
-	MovementLoopAddLocation(NPC, 7.49, 3.88, 88.46, 2, 14)
-	MovementLoopAddLocation(NPC, 7.08, 3.88, 87.05, 2, 14)
-	MovementLoopAddLocation(NPC, 7.25, 3.88, 87.77, 2, 14)
-	MovementLoopAddLocation(NPC, 5.86, 3.88, 94.76, 2, 14)
-	MovementLoopAddLocation(NPC, 6.07, 3.88, 95.88, 2, 14)
-	MovementLoopAddLocation(NPC, 7.91, 3.88, 97.73, 2, 14)
-	MovementLoopAddLocation(NPC, 8.02, 3.88, 98.7, 2, 14)
-	MovementLoopAddLocation(NPC, 9.31, 3.88, 90.14, 2, 0)
+	MovementLoopAddLocation(NPC, 4.74, 3.88, 78.2, 2, 0)
+	MovementLoopAddLocation(NPC, 6.32, 3.88, 80.87, 2, 14)
+	MovementLoopAddLocation(NPC, 4.65, 3.88, 72.17, 2, 14)
+	MovementLoopAddLocation(NPC, 4.78, 3.88, 73.63, 2, 14)
+	MovementLoopAddLocation(NPC, 7.13, 3.88, 79.37, 2, 14)
+	MovementLoopAddLocation(NPC, 11.41, 3.88, 79.4, 2, 14)
+	MovementLoopAddLocation(NPC, 8.78, 3.88, 78.09, 2, 14)
+	MovementLoopAddLocation(NPC, 4.74, 3.88, 78.2, 2, 0)
 end
