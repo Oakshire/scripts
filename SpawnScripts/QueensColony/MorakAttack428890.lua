@@ -8,8 +8,9 @@
 
 function spawn(NPC, Spawn)
 	waypoints(NPC)
-        WestfallID1 = 433081
-        WestfallID2 = 133771741        
+        local Westfall01 = GetSpawn(Spawn, 433081)
+        local Westfall02 = GetSpawn(Spawn, 133771741)       
+        Westfall(NPC)
 end
 
 function respawn(NPC)
@@ -20,19 +21,16 @@ function waypoints(NPC)
         MoveToLocation(NPC, 254.46, -5.10, 65.5, 7, "aggro", false)
         MoveToLocation(NPC, 246.03, -6.98, 83.05, 7, "aggro", false)
         MoveToLocation(NPC, 233.07, -4.19, 148.65, 7, "aggro", false)
-        MoveToLocation(NPC, 232.17, -3.42, 152.3, 7, "aggro", false)   
-
-	if WestfallID1 ~= nil then
-		Attack(NPC, WestfallID1)
-        Say(NPC, "Yep")
-	end
-
-	if WestfallID2 ~= nil then
-		Attack(NPC, WestfallID2)
-        Say(NPC, "Nope")
-	end
+        MoveToLocation(NPC, 232.17, -3.42, 152.3, 7, "aggro", false) 
+--        AddTimer(NPC, 30000, "Westfall")
 end
 
-function aggro(NPC)
-
+function Westfall(NPC)
+	if Westfall01 ~= nil then
+		Attack(NPC, Westfall01)
+	end
+	
+	if Westfall02 ~= nil then
+		Attack(NPC, Westfall02)
+	end
 end

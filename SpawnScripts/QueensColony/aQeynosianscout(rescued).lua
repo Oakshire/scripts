@@ -18,8 +18,11 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	--Say(NPC, "Test")
-	
+	math.randomseed(os.time())
+	voice = math.random (1,3)
+
+        PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1026.mp3", "", "", 0, 0, Spawn)
+
 	if HasCompletedQuest(Spawn, DoggoneIt) then
 		Say(NPC, "I hate dogs!")
 	else
