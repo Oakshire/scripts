@@ -6,12 +6,18 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Inflicts 97 - 119 disease damage on target
 function cast(Caster, Target, DmgType, MinVal, MaxVal, pctHealMin, pctHealMax)
+	local Val1 = pctHealMin
+	local Val2 = pctHealMax
+	local HealAmt = randomFloat(Val1, Val2)
         SpellDamage(Target, DmgType, MinVal, MaxVal)
 -- Heals caster for 3.4 - 4.2% of max health
 --     This effect cannot be critically applied.
 -- The healing of this spell cannot be modified except by direct means
-SpellHeal("Heal", GetPCTOfHP(Caster, pctHealMin), GetPCTOfHP(Caster, pctHealMax), Caster, 2)
+SpellHealPct("Heal", HealAmt, false, true, Caster, 1, true)
+end
+
+function randomFloat(Val1, Val2)
+    return Val1 + math.random()  * (Val2 - Val1);
 end

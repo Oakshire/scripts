@@ -18,7 +18,7 @@ function cast(Caster, Target, SkillAmt, DmgType, MinVal, MaxVal, Triggers)
 	AddSkillBonus(Target, GetSkillIDByName("Defense"), SkillAmt)
     AddSkillBonus(Target, GetSkillIDByName("Parry"), SkillAmt)
     AddControlEffect(Target, 4)
-	AddProc(Target)
+	AddProc(Target, 15, 100)
 end
 
 function proc(Caster, Target, Type, SkillAmt, DmgType, MinVal, MaxVal, Triggers)

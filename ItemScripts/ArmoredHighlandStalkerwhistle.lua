@@ -7,5 +7,4 @@ Script Name		:	ItemScripts/ArmoredHighlandStalkerwhistle.lua
 --]]
 function used(Item, Player)
 CastSpell(Player, 5260, 1) 
-
 end
