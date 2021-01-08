@@ -7,9 +7,11 @@
 --]]
 
 function equipped(Item, Player)
-    CastSpell(Player, 5459, 1)   
+    CastSpell(Player, 5459, 1)
 end
 
 function unequipped(Item, Player)
-    CastSpell(Player, 5459, 1)   
+  if HasSpellEffect(Player, 5459, 1) then
+    CastSpell(Player, 5459, 1)
+end
 end

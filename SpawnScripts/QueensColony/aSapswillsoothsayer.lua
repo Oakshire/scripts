@@ -25,6 +25,41 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
    
 	if HasCompletedQuest(Spawn, GhostsAndGoblins) then
+
+        text = math.random(1,6)
+
+        if text == 1 then
+            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/a_sapswill_soothsayer/tutorial_island02_revamp/quest/qst_goblin_soothsayer_hail_df93707a.mp3", "Sapswill thirsty! Always thirsty!", "", 297731422, 2828024691, Spawn)
+        elseif text == 2 then
+            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/a_sapswill_soothsayer/tutorial_island02_revamp/quest/qst_goblin_soothsayer_hail_5b087fab.mp3", "Yoo hoo! Hello, happy friend!", "", 2294144427, 914727908, Spawn)
+        elseif text == 3 then
+            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/a_sapswill_soothsayer/tutorial_island02_revamp/quest/qst_goblin_soothsayer_hail_dbbe9e5a.mp3", "Learn from the plants!", "", 3158068630, 3373859959, Spawn)
+        elseif text == 4 then
+            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/a_sapswill_soothsayer/tutorial_island02_revamp/quest/qst_goblin_soothsayer_hail_5b15c9a5.mp3", "Greetings, happy friend!", "", 1580044071, 504462891, Spawn)
+        elseif text == 5 then
+            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/a_sapswill_soothsayer/tutorial_island02_revamp/quest/qst_goblin_soothsayer_hail_b4e9d8d7.mp3", "Grexx knows all!", "", 282355163, 2914685235, Spawn)
+        else
+            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/a_sapswill_soothsayer/tutorial_island02_revamp/quest/qst_goblin_soothsayer_hail_b576b38b.mp3", "Diplomats always diplomatic, I say!", "", 4290529755, 4235299010, Spawn)	
+        end
+
+	elseif HasQuest(Spawn, GhostsAndGoblins) then
+		if GetQuestStep(Spawn, GhostsAndGoblins) == 4 then
+			GrexxPromises(NPC, Spawn, 1)
+		elseif GetQuestStep(Spawn, GhostsAndGoblins) >= 4 and GetQuestStep(Spawn, GhostsAndGoblins) <= 8 then
+			GrexxPromises(NPC, Spawn, 0)
+		elseif GetQuestStep(Spawn, GhostsAndGoblins) == 9 then
+			GrexxPromises(NPC, Spawn, 2)
+		end
+	else
+		GrexxPromises(NPC, Spawn, 0)
+	end
+end
+
+--[[
+function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+   
+	if HasCompletedQuest(Spawn, GhostsAndGoblins) then
 		GrexxPromises(NPC, Spawn, 0)
 	elseif HasQuest(Spawn, GhostsAndGoblins) then
 		if GetQuestStep(Spawn, GhostsAndGoblins) == 4 then
@@ -38,6 +73,7 @@ function hailed(NPC, Spawn)
 		GrexxPromises(NPC, Spawn, 0)
 	end
 end
+--]]
 
 function GrexxPromises(NPC, Spawn, Choice)
 	FaceTarget(NPC, Spawn)

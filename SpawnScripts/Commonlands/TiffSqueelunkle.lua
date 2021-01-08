@@ -6,6 +6,7 @@
                    : 
 --]]
 
+local SmugglersSecrets = 452
 
 
 function spawn(NPC)
@@ -20,7 +21,12 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "Perfect fit for what, little bit?", "dlg1")
     AddConversationOption(conversation, "I don't think so.")
     StartConversation(conversation, NPC, Spawn, "You are a perfect fit!  No doubt of that cog being wrong sized, nuh uh.")
+    if HasQuest(Spawn, SmugglersSecrets) and GetQuestStep(Spawn,  SmugglersSecrets) == 1  then
+    dlg5(NPC, Spawn)
+    elseif HasQuest(Spawn, SmugglersSecrets) and GetQuestStep(Spawn, SmugglersSecrets) == 2 then
+    PlayFlavor(NPC, "", "Quick!  Do as I asked before they catch on to us!", "", 1689589577, 4560189, Spawn)
 end
+   end
 
 function dlg1(NPC, Spawn)
   FaceTarget(NPC, Spawn)
@@ -57,10 +63,28 @@ AddConversationOption(conversation, "Uh, kaaay.  So what should I be looking for
 end
 
 
+function dlg5(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+SummonItem(Spawn, 130009, 1)
+SetStepComplete(Spawn, SmugglersSecrets, 1)
+conversation = CreateConversation() 
+AddConversationOption(conversation, "I'll see what I can find.", "dlg6")
+AddConversationOption(conversation, "I'm not promising anything.")
+StartConversation(conversation, NPC, Spawn, "Now wear this outfit so they will not suspect you.  They are the clothes of the last courier to have come through.  Careful, they're worn through in parts.")
+end
+
+function dlg6(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation() 
+AddConversationOption(conversation, "Oh, I will!")
+StartConversation(conversation, NPC, Spawn, "Make sure to be wearing the courier costume when you snoop about at the smuggler's outpost, Ighi.")
+end
 
 
-
-
+function offer(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, SmugglersSecrets)
+end
 
 function respawn(NPC)
  spawn(NPC)
@@ -71,6 +95,7 @@ function InRange(NPC, Spawn)
 	PlayFlavor(NPC, "", "Psst!  You there!  C'mere and give me a hand.", "", 1689589577, 4560189, Spawn)  
 end
 	
+
 
 function LeaveRange(NPC, Spawn)
 
