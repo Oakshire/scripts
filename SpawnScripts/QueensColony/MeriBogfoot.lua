@@ -39,7 +39,6 @@ end
 function EmoteLoop (NPC)
     math.randomseed(os.time())
     local choice = math.random(1,6)
-    str = tostring(choice)
 
     if choice == 1 then
 -- dance

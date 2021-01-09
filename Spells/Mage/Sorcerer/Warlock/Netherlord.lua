@@ -6,7 +6,6 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Summons a limited pet to aid the caster
 function cast(Caster, Target, PetID)
 	local x = GetX(Caster)

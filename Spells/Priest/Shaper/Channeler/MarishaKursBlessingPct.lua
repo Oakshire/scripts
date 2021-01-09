@@ -13,7 +13,7 @@
 -- Increases Mitigation of group members (AE) vs elemental and noxious damage by 93
 
 function cast(Caster, Target, MaxHP, Mit, EleNox)
-    AddSpellBonus(Target, 606, MaxHP, 1)
+    AddSpellBonus(Target, 607, MaxHP, 1)
     AddSpellBonus(Target, 200, Mit, 11, 21, 31)
     AddSpellBonus(Target, 201, EleNox)
     AddSpellBonus(Target, 202, EleNox)

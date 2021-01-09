@@ -15,11 +15,11 @@ local ADiplomaticMission = 166
 function Init(Quest)
     -- Diplomat's Badge
   
-    AddQuestStepChat(Quest, 1, "Greet a musician.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530039)
-    AddQuestStepChat(Quest, 2, "Greet an incapacitated Sapswill.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530039)
+    AddQuestStepChat(Quest, 1, "Greet a musician.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530226)
+    AddQuestStepChat(Quest, 2, "Greet an incapacitated Sapswill.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530230)
     AddQuestStepChat(Quest, 3, "Greet a seated Sapswill.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530036)
-    AddQuestStepChat(Quest, 4, "Greet an active Sapswill.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530039)
-    AddQuestStepChat(Quest, 5, "Greet a happy Sapswill.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530039)
+    AddQuestStepChat(Quest, 4, "Greet an active Sapswill.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530228)
+    AddQuestStepChat(Quest, 5, "Greet a happy Sapswill.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530229)
     AddQuestStepChat(Quest, 6, "Greet Durg.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530035)
     AddQuestStepChat(Quest, 7, "Greet Gonk.", 1, "The Sapswill soothsayer said I need to get the members of their community. Guess it's all part of the diplomatic stuff.", 0, 2530034)
 	
