@@ -61,6 +61,7 @@ function step4_complete_foundDeadSoldier(Quest, QuestGiver, Player)
     UpdateQuestStepDescription(Quest, 4, "The missing soldiers were dead. Even worse, their remains seemed to rise from the dead and attack me as if controlled by some diabolical force.")
     UpdateQuestTaskGroupDescription(Quest, 4, "The missing soldiers were dead. Even worse, their remains seemed to rise from the dead and attack me as if controlled by some diabolical force.")
     SpawnMob(GetZone(Player), 2530174, false, GetX(Player), GetY(Player), GetZ(Player))
+--    SpawnMob(GetZone(Player), 2530223, false, GetX(Player), GetY(Player), GetZ(Player))
     AddQuestStepChat(Quest, 5, "Report the bad news to Sergeant Haggus.", 1, "I need to report back to Sergeant Haggus with this grim information.", 0, 2530078)
     AddQuestStepCompleteAction(Quest, 5, "step5_complete_talkToHaggus")
 end

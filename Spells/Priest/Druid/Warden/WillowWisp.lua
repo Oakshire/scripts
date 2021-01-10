@@ -26,8 +26,7 @@ end
 
 function proc(Caster, Target, Type, Hate)
 	if Type == 1 then 
-		RemoveControlEffect(Target, 5)
-		RemoveProc(Target)
+CancelSpell()
 	end
 end
 

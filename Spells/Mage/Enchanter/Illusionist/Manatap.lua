@@ -7,28 +7,27 @@
 --]]
 
 function cast(Caster, Target, HealType, EncPwr, GrpPwr)
-SpellHeal("Power", EncPwr)
-local group = GetGroup(Caster)
-if group == nil then
-    SpellHeal("Power", GrpPwr, 0, Caster)
-else
-    for k,v in ipairs(GetGroup(Spawn)) do
-        SpellHeal("Power", GrpPwr, 0, v)
-    end
+	local group = GetGroup(Caster)
+	SpellHeal("Power", EncPwr)
+	if group == nil then
+		SpellHeal("Power", GrpPwr, 0, Caster)
+	else
+		for k,v in ipairs(group) do
+			SpellHeal("Power", GrpPwr, 0, v)
+		end
+	end
 end
-end
-
 
 function tick(Caster, Target, HealType, EncPwr, GrpPwr)
 -- Decreases power of target encounter by 63 instantly and every 4 seconds
 -- Increases power of group members (AE) by 47 instantly and every 4 seconds
-SpellHeal("Power", EncPower)
-local group = GetGroup(Caster)
-if group == nil then
-    SpellHeal("Power", GrpPwr, 0, Caster)
-else
-    for k,v in ipairs(GetGroup(Spawn)) do
-        SpellHeal("Power", GrpPwr, 0, v)
-    end
-end
+	local group = GetGroup(Caster)
+	SpellHeal("Power", EncPower)
+	if group == nil then
+		SpellHeal("Power", GrpPwr, 0, Caster)
+	else
+		for k,v in ipairs(group) do
+			SpellHeal("Power", GrpPwr, 0, v)
+		end
+	end
 end

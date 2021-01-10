@@ -24,8 +24,9 @@ end
 
 function proc(Caster, Target, Type, DmgType, MinVal, MaxVal)
 	if Type == 15 then
-		RemoveControlEffect(Target, 5)
-		RemoveProc(Target)
+		CancelSpell()
+end
+
 end
 
 function remove(Caster, Target)

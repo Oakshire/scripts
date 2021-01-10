@@ -7,14 +7,23 @@
 --]]
 
 function spawn(NPC)
-         AnimationLoop(NPC)
+        SetPlayerProximityFunction(NPC, 15, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
-         spawn(NPC)
+        spawn(NPC)
 end
 
-function AnimationLoop(NPC)
-PlayAnimation(NPC, 4012)
-	AddTimer(NPC, 7000, "AnimationLoop")
+function InRange(NPC)
+        local zone = GetZone(NPC)
+        local Puppeteer = GetSpawnByLocationID(zone, 430289)
+
+        if Puppeteer ~= nil then
+            PlayAnimation(NPC, 4012)
+            AddTimer(NPC, 7000, "InRange")
+        end
+end
+
+function LeaveRange(NPC)
+        PlayAnimation(NPC, 4011) 
 end

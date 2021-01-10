@@ -6,6 +6,18 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
 -- Distributes the group members' total combined power evenly among all the members
 --need to loop the group memeber and add up all the power then divide by # of group members and loop over them again and set them
+  
+local group = GetGroup(Caster)
+    local totalpwr = 0
+    local members = table.getn(group)
+    if group ~= nil then 
+        for k, v ipairs(group) do
+            totalpwr = totalpwr + GetPower(v)
+        end
+
+        for k, v ipairs(group) do
+            SetPower(v, totalpwr / members)
+        end
+    end
