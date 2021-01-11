@@ -6,10 +6,10 @@
 	Script Notes	: 
 --]]
 
-local choice = 0
+
 
 function spawn(NPC)
-	AddTime(NPC, 300000, "Talk1")
+	AddTimer(NPC, 300000, "Talk1")
 end
 
 function respawn(NPC)
@@ -17,10 +17,11 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 
-	local choice = math.random(1,14)
---[[
+end
+
+function Talk1(NPC)
+        	local choice = math.random(1,14)
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/overlord_lucan_d_lere/fprt_west/lucan_isle_speech_5.mp3", "Prove yourself, and I shall grant you shelter at the edge of my city, and the chance to earn your place as a proud citizen of Freeport.", "", 4115014723, 2723692261, Spawn)
 	elseif choice == 2 then
@@ -51,10 +52,8 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/overlord_lucan_d_lere/fprt_west/200_statue_overlord_lucan_dlere_speech_glory_freeport_7_3b8ccc31.mp3", "But should you ever betray Freeport, or dare to rise against Lucan, you shall see why even the gods of old feared my wrath. Go, citizens of Freeport, and prepare for the work that lies ahead. The Age of Destiny has begun. ", "", 1852419614, 277309010, Spawn)
 	else
 	end
---]]
-end
 
-function Talk1(NPC)
+      --[[
 	choice = math.random(1, 3)
 	if choice == 1 then
 		Say(NPC, "Teach my enemies of the price of challenging Freeport, and you shall have gold and glory beyond your imagining.")
@@ -66,4 +65,6 @@ function Talk1(NPC)
 		Say(NPC, "The strong will always survive and prosper.")
 		AddTimer(NPC, 300000, "Talk1")
 	end
+           --]]
 end
+  

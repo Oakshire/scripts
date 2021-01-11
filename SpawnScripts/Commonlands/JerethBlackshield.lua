@@ -60,8 +60,10 @@ end
 
 function InRange(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
+        if HasQuest(Spawn, AFriendInNeed) then
         PlayFlavor(NPC, "", "I expected that rat Nethet to show up in order to save his friend.  It seems he sent a different sort of vermin in his place.", "ponder", 1689589577, 4560189, Spawn)
-end
+end 
+  end
 
 function LeaveRange(NPC, Spawn)
 

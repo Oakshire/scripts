@@ -36,7 +36,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have been given the courier costume from Tiff.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have spoken to Tiff.")
-
+        GiveQuestItem(Quest, Player, "I have spoken to Tiff.", 130009)
 	AddQuestStep(Quest, 2, "With the courier costume on, I should investigate the Blackshield Smugglers' outpost", 1, 100, "I am to go investigate who and what is funding the growth of the Blackshield Smugglers.", 11)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
@@ -44,6 +44,7 @@ end
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "The smugglers mistook me for the actual courier!")
 	UpdateQuestTaskGroupDescription(Quest, 2, "The smugglers mistook me for the actual courier, and gave me a scroll to deliver.")
+        GiveQuestItem(Quest, Player, "The smugglers mistook me for the actual courier, and gave me a scroll to deliver.", 9263)
 
 	AddQuestStepChat(Quest, 3, "I expect Tiff will be rather pleased with this scroll", 1, "I should return to Tiff with this scroll, right away!", 11, 330213)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")

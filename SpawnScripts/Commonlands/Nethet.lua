@@ -22,47 +22,36 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "Brandus sent me to talk to you about a missing shipment of his.  Do you know anything about it?", "dlg1")
     AddConversationOption(conversation, "Nothing right now, Nethet.")
     StartConversation(conversation, NPC, Spawn, "Yous comes to Nethet to speaks of things yes?  What's it that you wants to knows?")
-    end
-    
-    if HasCompletedQuest(Spawn, AFriendInNeed) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 2 then
+
+    elseif HasCompletedQuest(Spawn, AFriendInNeed) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 2 then
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     PlayFlavor(NPC, "nethet/commonlands/quests/nethet/nethet015.mp3",  "", "", 1826974413, 3018739056, Spawn)
     AddConversationOption(conversation, "What did you find out?", "dlg10")
     AddConversationOption(conversation, "I'm not interested in any information you have anymore.  Good day.", "dlg10")
     StartConversation(conversation, NPC, Spawn, "I remembers what yous lookings for.  Yes, I keeps promises, bad for businesses not to.  I spoke to manys contacts and finds information on your friends missings cargo.")
-    end
-    
-   if GetQuestStep(Spawn, TheMysteriousMissingShipment) == 3 then
+
+   elseif GetQuestStep(Spawn, TheMysteriousMissingShipment) == 3  then
    FaceTarget(NPC, Spawn)
    dlg12(NPC, Spawn)
-   end
 
- 
-
-
-    if HasQuest(Spawn, AFriendInNeed) then
-    PlayFlavor(NPC, "nethet/commonlands/quests/nethet/nethet007.mp3", "", "", 3445852647, 1618945566, Spawn)
-    if GetQuestStep(Spawn, AFriendInNeed) == 3 then
+    elseif GetQuestStep(Spawn, AFriendInNeed) == 3 then
     AddConversationOption(conversation, "I found him.  Nikora was being hunted by some assassins the Blackshield smugglers had sent after him.", "dlg6")
-    end
-    if GetQuestStep(Spawn, AFriendInNeed) < 3 then
     AddConversationOption(conversation, "Nothing yet, I'll be back when I find him.")
-    end
-    StartConversation(conversation, NPC, Spawn, "Yous is back.  Whats did you learn of my friend?")  
-   end 
-
-    if HasQuest(Spawn, AFriendInNeed) and GetQuestStep(Spawn, AFriendInNeed) >= 4 then
+    StartConversation(conversation, NPC, Spawn, "Yous is back.  Whats did you learn of my friend?")
+    elseif GetQuestStep(Spawn, AFriendInNeed) == 1 or GetQuestStep(Spawn, AFriendInNeed) == 2  then
+    AddConversationOption(conversation, "Nothing yet, I'll be back when I find him.")
+    StartConversation(conversation, NPC, Spawn, "Yous is back.  Whats did you learn of my friend?")
+    elseif HasQuest(Spawn, AFriendInNeed) and GetQuestStep(Spawn, AFriendInNeed) == 4 or GetQuestStep(Spawn, AFriendInNeed) == 5 then
      PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1032.mp3", "", "", 0, 0, Spawn)
-     if GetQuestStep(Spawn, AFriendInNeed) == 6 then
+    elseif GetQuestStep(Spawn, AFriendInNeed) == 6 then
      AddConversationOption(conversation, "You little liar you nearly got me killed!", "dlg8")
      AddConversationOption(conversation, "What kind of a fool do you think I am?  Jereth's thugs nearly killed me!", "dlg8")
-     end
      AddConversationOption(conversation, "Nothing as of yet, I still need to deliver the message.")
      StartConversation(conversation, NPC, Spawn, "It's good to see yous again, whats did Jereth have to say about my offers?")
 end
-    end
-   
+   end
+ 
 
    
 

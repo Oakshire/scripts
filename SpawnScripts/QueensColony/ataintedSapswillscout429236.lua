@@ -9,7 +9,7 @@
 function spawn(NPC)
         SpawnSet(NPC, "level", "3")        
         SpawnSet(NPC, "difficulty", "5")  
-	AddTimer(NPC, 900, "followmorak")      
+	AddTimer(NPC, 600, "followmorak")      
 end
 
 function hailed(NPC, Spawn)
@@ -34,5 +34,5 @@ function followmorak(NPC)
                 MoveToLocation(NPC, leaderX, leaderY, leaderZ, speed)
 	end 
 
-	AddTimer(NPC, 3000, "followmorak")	
+	AddTimer(NPC, 1300, "followmorak")	
 end
