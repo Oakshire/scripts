@@ -7,6 +7,10 @@
 --]]
 
 function spawn(NPC)
+        local level = GetLevel(NPC)
+        if level == 4 then
+            SpawnSet(NPC, "size", "28.8")
+        end
         SpawnSet(NPC, "difficulty", "2")        
         AddTimer(NPC, 2000, "FollowMorak")
 end

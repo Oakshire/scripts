@@ -7,6 +7,7 @@
 --]]
 
 function spawn(NPC)
+        SpawnSet(NPC, "level", "3")
         SpawnSet(NPC, "difficulty", "2")        
 	waypoints(NPC)
 end

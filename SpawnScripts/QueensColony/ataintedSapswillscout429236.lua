@@ -29,10 +29,10 @@ function followmorak(NPC)
         local leaderZ = GetZ(morak_location)
         local speed = 2
     
-	if GetDistance(NPC, morak_location) >= 2 then
+	if GetDistance(NPC, morak_location) >= 1 then
 		speed = 2
                 MoveToLocation(NPC, leaderX, leaderY, leaderZ, speed)
 	end 
 
-	AddTimer(NPC, 1300, "followmorak")	
+	AddTimer(NPC, 900, "followmorak")	
 end
