@@ -17,3 +17,6 @@ end
 function respawn(NPC)
          spawn(NPC)
 end
+
+
+-- Visual state: 3632
