@@ -10,8 +10,6 @@ function respawn(NPC)
 end
 
 function casted_on(NPC, Spawn, Message)
-
-Say(Spawn, Message)	
 if Message == "Travel the Skies" then
 conversation = CreateConversation()
 		AddConversationOption(conversation, "I would like to travel.", "dlg_1_1")
@@ -85,9 +83,10 @@ function dlg_1_1(NPC, Spawn)
 	    AddConversationOption(con, "To Isle of Discord.", "StrifeToDiscord")
 	    AddConversationOption(con, "To Whisperwind Isle.", "StrifeToWhisper")
 	else
+		Say(NPC, Spawn, "Not Implemented.")
+	end
 	AddConversationOption(con, "Nowhere.")
 	StartConversation(con, NPC, Spawn, "Where to?")
-end
 end
 
 function PrisonToAwakening(NPC, Spawn)
