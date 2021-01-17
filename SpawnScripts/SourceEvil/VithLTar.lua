@@ -12,6 +12,7 @@ local PetID = 2540008
 local VithID = 2540005
 
 function spawn(NPC)
+--	SetPlayerProximityFunction(NPC, 5, "InRange")
 end
 
 function respawn(NPC)
@@ -57,3 +58,6 @@ function death(NPC, Spawn)
         end                       
 end
 
+--function InRange(NPC)
+--    Say(NPC, "Remember any of these?  Maybe they were your friends."
+--end
