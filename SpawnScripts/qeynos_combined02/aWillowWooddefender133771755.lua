@@ -7,6 +7,9 @@
 --]]
 
 function spawn(NPC)
+    math.randomseed(os.time())
+    choice = math.random(1114,1116)
+    SpawnSet(NPC, "hair_type", choice)
     AddTimer(NPC, 3000, "EmoteLoop")
 end
 
