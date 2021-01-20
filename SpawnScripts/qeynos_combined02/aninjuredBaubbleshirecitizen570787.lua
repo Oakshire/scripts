@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/aninjuredBaubbleshirecitizen.lua
+    Script Name    : SpawnScripts/qeynos_combined02/aninjuredBaubbleshirecitizen570787.lua
     Script Author  : Rylec
     Script Date    : 2021.01.17 01:01:52
     Script Purpose : 
@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    AddTimer(NPC, 1000, "hairstyle")
+    AddTimer(NPC, 2000, "hairstyle")
 end
 
 function hailed(NPC, Spawn)
@@ -26,4 +26,3 @@ function hairstyle(NPC)
     choice = math.random(1133,1140)
     SpawnSet(NPC, "hair_type", choice)
 end
-

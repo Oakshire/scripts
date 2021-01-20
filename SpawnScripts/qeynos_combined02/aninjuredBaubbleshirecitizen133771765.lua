@@ -7,9 +7,7 @@
 --]]
 
 function spawn(NPC)
-    math.randomseed(os.time())
-    choice = math.random(1133,1139)
-    SpawnSet(NPC, "hair_type", choice)
+    AddTimer(NPC, 3000, "hairstyle")
 end
 
 function hailed(NPC, Spawn)
@@ -20,6 +18,11 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+    spawn(NPC)
 end
 
+function hairstyle(NPC)
+    math.randomseed(os.time())
+    choice = math.random(1133,1140)
+    SpawnSet(NPC, "hair_type", choice)
+end

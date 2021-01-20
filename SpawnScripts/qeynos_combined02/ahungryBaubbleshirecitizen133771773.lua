@@ -1,13 +1,13 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/ahungryBaubbleshirecitizen133771764.lua
+    Script Name    : SpawnScripts/qeynos_combined02/ahungryBaubbleshirecitizen133771773.lua
     Script Author  : Rylec
-    Script Date    : 2021.01.17 04:01:43
+    Script Date    : 2021.01.19 06:01:18
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-    AddTimer(NPC, 1000, "selectrace")
+    AddTimer(NPC, 300, "selectrace")
 end
 
 function hailed(NPC, Spawn)

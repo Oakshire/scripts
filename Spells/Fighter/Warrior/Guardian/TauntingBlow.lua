@@ -15,11 +15,6 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, MinTauntVal, MaxTauntVal)
         SpellDamage(Target, DmgType, MinVal)
     end
 
-    -- Increases Threat to target by 47 - 57 
-    if MaxTauntVal ~= nil and MinTauntVal < MaxTauntVal then
-        AddHate(Caster, Target, math.random(MinTauntVal, MaxTauntVal))
-    else
-        AddHate(Caster, Target, MinTauntVal)
-    end
+AddHate(Caster, Target, math.random(MinVal, MaxVal), 1)
 
 end

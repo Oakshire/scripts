@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/ahungryBaubbleshirecitizen133771762.lua
+    Script Name    : SpawnScripts/qeynos_combined02/ahungryBaubbleshirecitizen133771772.lua
     Script Author  : Rylec
-    Script Date    : 2021.01.17 04:01:43
+    Script Date    : 2021.01.19 06:01:10
     Script Purpose : 
                    : 
 --]]
@@ -16,7 +16,7 @@ function hailed(NPC, Spawn)
     math.randomseed(os.time())
     voice = math.random(1,3)
 
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1023.mp3", "", "", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1024.mp3", "", "", 0, 0, Spawn)
 end
 
 function respawn(NPC)
