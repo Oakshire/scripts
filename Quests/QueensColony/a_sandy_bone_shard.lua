@@ -42,7 +42,7 @@ function completed(quest, questGiver, player)
 end
 
 function Reload(quest, questGiver, player, Step)
-SendMessage(player, "before step 1","yellow")
+
 	if Step == 1 then
 	   step1(quest, questGiver, player)
 	elseif Step == 2 then

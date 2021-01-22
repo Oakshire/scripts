@@ -14,6 +14,7 @@ end
 
 function hailed(NPC, Spawn)
         Say(NPC, "Greetings.")
+        OfferQuest(NPC, Spawn, 456)
 end
 
 function respawn(NPC)

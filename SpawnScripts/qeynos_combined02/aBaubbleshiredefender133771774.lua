@@ -1,26 +1,28 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/aWillowWooddefender570801.lua
+    Script Name    : SpawnScripts/qeynos_combined02/aBaubbleshiredefender133771774.lua
     Script Author  : Rylec
-    Script Date    : 2021.01.16 05:01:26
+    Script Date    : 2021.01.21 06:01:50
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     math.randomseed(os.time())
-    choice = math.random(1133,1139)
+    choice = math.random(1134,1139)
     SpawnSet(NPC, "hair_type", choice)
     AddTimer(NPC, 3000, "EmoteLoop")
 end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    Say(NPC, "Your deeds here will not be forgotten.")
-    PlayAnimation(NPC, 12167)
+    math.randomseed(os.time())
+    voice = math.random(1,3)
+
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1040.mp3", "", "", 0, 0, Spawn)
 end
 
 function respawn(NPC)
-
+    spawn(NPC)
 end
 
 function EmoteLoop(NPC)
@@ -103,5 +105,4 @@ end
 --	PlayAnimation(NPC, 323)    
 --        EmoteLoop(NPC)
 --end
-
 

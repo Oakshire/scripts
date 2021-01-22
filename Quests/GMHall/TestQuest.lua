@@ -1,33 +1,25 @@
 --[[
-    Script Name    : Quests/GMHall/TestQuest.lua
-    Script Author  : TyroneSWG
-    Script Date    : 2019.01.29 02:01:27
-    Script Purpose : 
+	Script Name:	LeafySurprise
+	Script Purpose:	Test Quest
+	Script Author:	Roachie
+	Script Date:	2021.01.21
 
-        Zone       : GMHall
-        Quest Giver: 
-        Preceded by: None
-        Followed by: 
+	Quest ID:		999908
+	Zone:			houseofroachie
+	Preceded By:	
+	Followed By:	
 --]]
 
 function Init(Quest)
-    	SetQuestFeatherColor(Quest, 2)
-        AddQuestStepKill(Quest, 1, "I need to help clean up the area.", 1, 100, "The Gods have asked that i help with clean up around the mythical hall.", 2693, 1970017)
+	AddQuestStepObtainItem(Quest, 1, "Get the leaves", 5, 2, "Freddums needs your help!", 0, 3352)
+	AddQuestStepCompleteAction(Quest, 1, "Quest_Complete")
 end
 
-function Accepted(Quest, QuestGiver, Player)
-
-end
-
-function Declined(Quest, QuestGiver, Player)
-
-end
-
-function quest_complete(Quest, QuestGiver, Player)
-
-end
+function Quest_Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 1, "I got the leaves!")
+	UpdateQuestTaskGroupDescription(Quest, 1, "You have helped roachie")
+	UpdateQuestDescription(Quest, "description")
+	GiveQuestReward(Quest, Player)
 
 function Reload(Quest, QuestGiver, Player, Step)
-
 end
-

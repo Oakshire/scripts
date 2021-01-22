@@ -7,14 +7,26 @@
 --]]
 
 function spawn(NPC)
-    SpawnSet(NPC, "hide_hood", "1")
+
 end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+    math.randomseed(os.time())
+    voice = math.random(1,3)
+
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1033.mp3", "", "", 0, 0, Spawn)
+
+    text = math.random(1,2)
+
+    if text == 1 then
+        Say(NPC, "It's a travesty what has become of The Willow Wood.")
+    else
+        Say(NPC, "Thankfully, it's still peaceful here in the Province District, but the same can't be said for my home within the Willow Wood.")
+    end
 end
 
 function respawn(NPC)
-
+    spawn(NPC)
 end
 
