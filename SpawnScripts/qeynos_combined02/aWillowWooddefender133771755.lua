@@ -20,13 +20,13 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+    spawn(NPC)
 end
 
 function EmoteLoop(NPC)
     math.randomseed(os.time())
     local choice = math.random(1,17)
-    local timer = math.random(6000,10000)
+    local timer = math.random(5000,10000)
 
     if choice == 1 then
 -- converse_male01

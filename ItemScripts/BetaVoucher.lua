@@ -1,4 +1,4 @@
 
 function examined(Item, Spawn)
-    Zone(GetZoneName(1), Spawn, 666.88, -35.90, 0, 225)
+    Zone(GetZone(1), Spawn, 48.28, -1.08, 44.05, 221.37)
 end

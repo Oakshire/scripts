@@ -10,7 +10,7 @@ function spawn(NPC)
     math.randomseed(os.time())
     choice = math.random(1134,1139)
     SpawnSet(NPC, "hair_type", choice)
-    AddTimer(NPC, 3000, "EmoteLoop")
+    AddTimer(NPC, 2000, "EmoteLoop")
 end
 
 function hailed(NPC, Spawn)
