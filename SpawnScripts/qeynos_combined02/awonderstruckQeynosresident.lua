@@ -19,7 +19,7 @@ function spawn(NPC)
             SpawnSet(NPC, "legs_type", "5550")
         end
 
-    SetPlayerProximityFunction(NPC, 20, "InRange")
+    SetPlayerProximityFunction(NPC, 15, "InRange")
 end
 
 function hailed(NPC, Spawn)

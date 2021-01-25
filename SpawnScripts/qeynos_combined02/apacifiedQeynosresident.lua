@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/anawestruckQeynosresident.lua
+    Script Name    : SpawnScripts/qeynos_combined02/apacifiedQeynosresident.lua
     Script Author  : Rylec
     Script Date    : 2021.01.23 01:01:55
     Script Purpose : 
@@ -8,26 +8,23 @@
 
 function spawn(NPC)
     local model = MakeRandomInt(1,2)
---    local beard = MakeRandomInt(1164,1191)
+    local beard = MakeRandomInt(1164,1191)
 
         if model == 1 then
-            SetModelType(NPC, "132")
-            SpawnSet(NPC, "soga_model_type", "132")
-            SpawnSet(NPC, "chest_type", "5529")
-            SpawnSet(NPC, "legs_type", "5530")
+            SetModelType(NPC, "135")
+            SpawnSet(NPC, "soga_model_type", "135")
+            SpawnSet(NPC, "chest_type", "5521")
+            SpawnSet(NPC, "legs_type", "5522")
         else
-            SetModelType(NPC, "134")
-            SpawnSet(NPC, "soga_model_type", "134")
-            SpawnSet(NPC, "chest_type", "5533")
-            SpawnSet(NPC, "legs_type", "5534")
+            SetModelType(NPC, "136")
+            SpawnSet(NPC, "soga_model_type", "136")
+            SpawnSet(NPC, "chest_type", "5525")
+            SpawnSet(NPC, "legs_type", "5526")
         end
 
-    local hair = MakeRandomInt(1121,1140)
+    local hair = MakeRandomInt(1133,1140)
         SpawnSet(NPC, "hair_type", hair)
         SpawnSet(NPC, "soga_hair_type", hair)
-
---    local beard = MakeRandomInt(1164,1191)
---        SpawnSet(NPC, "facial_hair_type", beard)
 
     SetPlayerProximityFunction(NPC, 15, "InRange")
 end
@@ -37,10 +34,10 @@ function hailed(NPC, Spawn)
     local type = GetModelType(NPC)
     local voice = MakeRandomInt(1,3)
 
-        if type == 132 then
-            PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1033.mp3", "", "", 0, 0, Spawn)
+        if type == 135 then
+            PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1011.mp3", "", "", 0, 0, Spawn)
         else
-            PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1004.mp3", "", "", 0, 0, Spawn)
+            PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1012.mp3", "", "", 0, 0, Spawn)
         end
 
     InRange(NPC)
