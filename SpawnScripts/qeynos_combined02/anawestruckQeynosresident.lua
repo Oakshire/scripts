@@ -8,8 +8,6 @@
 
 function spawn(NPC)
     local model = MakeRandomInt(1,2)
---    local beard = MakeRandomInt(1164,1191)
-
         if model == 1 then
             SetModelType(NPC, "132")
             SpawnSet(NPC, "soga_model_type", "132")
@@ -26,8 +24,8 @@ function spawn(NPC)
         SpawnSet(NPC, "hair_type", hair)
         SpawnSet(NPC, "soga_hair_type", hair)
 
---    local beard = MakeRandomInt(1164,1191)
---        SpawnSet(NPC, "facial_hair_type", beard)
+    local beard = MakeRandomInt(1164,1191)
+        SpawnSet(NPC, "facial_hair_type", beard)
 
     SetPlayerProximityFunction(NPC, 15, "InRange")
 end
