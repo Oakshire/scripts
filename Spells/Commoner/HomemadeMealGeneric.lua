@@ -11,5 +11,5 @@ function cast(Caster, Target, Regen) -- Add more params as needed for the values
 end
 
 function remove(Caster, Target)
-	RemoveSpellBonus
+	RemoveSpellBonus(Caster)
 end

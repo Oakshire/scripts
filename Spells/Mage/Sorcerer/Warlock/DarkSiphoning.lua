@@ -32,7 +32,7 @@ function tick(Caster, Target, PotDebuffMin, PotDebuffMax, DoTType, DotMin, DotMa
     SpellDamage(Target, DoTType, DoTMin, DoTMax)
     local group = GetGroup(Caster)
     if group == nil then
-        SpellHeal("Heal", HealMin, HealMax,Caster)
+        SpellHeal("Heal", HealMin, HealMax, Caster)
         SpellHealPct("Power", HealAmt, false, true, Caster, 1, true)
     else
         for k,v in ipairs(group) do

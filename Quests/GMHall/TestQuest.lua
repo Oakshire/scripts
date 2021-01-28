@@ -20,6 +20,7 @@ function Quest_Complete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "You have helped roachie")
 	UpdateQuestDescription(Quest, "description")
 	GiveQuestReward(Quest, Player)
+end
 
 function Reload(Quest, QuestGiver, Player, Step)
 end
