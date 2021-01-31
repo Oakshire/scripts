@@ -13,7 +13,7 @@
 function Init(Quest)
 	SetQuestFeatherColor(Quest, 2)
 	AddQuestStepCraft(Quest, 1, "I need to create a chainmail coat using the forge.", 1, 100, "I must follow the tutor's instructions to review the crafting process.", 2407, 185658)
-	AddQuestStepCraft(Quest, 2, "I should return to the tutor with the equipment I created.", 1, 100, "I should return to the tutor with my work.", 402, 20805)
+	AddQuestStepCraft(Quest, 2, "I must create a rawhide backpack using the sewing table.", 1, 100, "I must follow the tutor's instructions to review the crafting process.", 402, 20805)
 	AddQuestStepCompleteAction(Quest, 1, "MadeCoat")
 	AddQuestStepCompleteAction(Quest, 2, "MadePack")
 end
@@ -60,5 +60,8 @@ function Reload(Quest, QuestGiver, Player, Step)
 	end
 	if QuestStepIsComplete(Player, 97, 2) then
 		MadePack(Quest, QuestGiver, Player)
+	end
+        if QuestStepIsComplete(Player, 97, 2) then
+	        CompleteQuest(Quest, QuestGiver, Player)
 	end
 end

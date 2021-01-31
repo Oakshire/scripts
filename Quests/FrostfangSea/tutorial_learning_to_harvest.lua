@@ -40,6 +40,7 @@ function AddStep8(Quest, QuestGiver, Player)
 	SetCompleteFlag(Quest)
     AddQuestStepChat(Quest, 8, "I must return to the trainer with the harvested items.", 1, "I must return to the trainer who sent me out harvesting.", 0, GetSpawnID(QuestGiver))
 	AddQuestStepCompleteAction(Quest, 8, "CompleteQuest")
+say(QuestGiver,GetName(QuestGiver))
 end
 
 function Root(Quest, QuestGiver, Player)

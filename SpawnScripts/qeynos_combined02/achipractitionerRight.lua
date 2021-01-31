@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/achipractitioner.lua
+    Script Name    : SpawnScripts/qeynos_combined02/achipractitionerRight.lua
     Script Author  : Rylec
     Script Date    : 2021.01.27 03:01:52
     Script Purpose : 
