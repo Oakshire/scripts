@@ -27,7 +27,7 @@ function Declined(Quest, QuestGiver, Player)
 end
 
 function MadeCider(Quest, QuestGiver, Player)
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have created some jum jum cider.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have reviewed the process of crafting an item.")
 	SetCompleteFlag(Quest)
 	AddQuestStepChat(Quest, 2, "I should return to the tutor with the jum jum cider.", 1, "I should return to the tutor with my work.", 0, GetSpawnID(QuestGiver))
 	AddQuestStepCompleteAction(Quest, 2, "CompleteQuest")

@@ -27,7 +27,7 @@ end
 
 function MadeIntercept(Quest, QuestGiver, Player)
 	SetCompleteFlag(Quest)
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have created an Essence of Intercept (Journeyman).")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have reviewed the process of crafting an item..")
 	AddQuestStepChat(Quest, 2, "I should return to the tutor with the Essence of Intercept.", 1, "I should return to the tutor with the Essence of Intercept.", 0, GetSpawnID(QuestGiver))
 	AddQuestStepCompleteAction(Quest, 2, "CompleteQuest")
 end

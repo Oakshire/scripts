@@ -12,14 +12,13 @@ function cast(Caster, Target, DebuffAmt, BuffAmt)
     AddSpellBonus(Target, 0, DebuffAmt)
     AddSpellBonus(Target, 4, DebuffAmt)
 --Buff Amt
-    AddSpellBonus(Caster, 0, BuffAmt)
-    AddSpellBonus(Caster, 4, BuffAmt)
+    AddSpawnSpellBonus(Caster, 0, BuffAmt)
+    AddSpawnSpellBonus(Caster, 4, BuffAmt)
 
 end
 
 function remove(Caster, Target)
     RemoveSpellBonus(Target)
     RemoveSpellBonus(Caster)
-
 end
 

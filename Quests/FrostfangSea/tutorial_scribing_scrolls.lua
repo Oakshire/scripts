@@ -28,8 +28,8 @@ end
 
 function MadeScroll(Quest, QuestGiver, Player)
 	SetCompleteFlag(Quest)
-	UpdateQuestTaskGroupDescription(Quest, 1, "	I have created a spell scroll of Shackle (Journeyman).")
-	AddQuestStepChat(Quest, 2, "I should return to the tutor with the scroll of Shackle.", 1, 100, "I should return to the tutor with my work.", 0, GetSpawnID(QuestGiver))
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have created a spell scroll of Shackle (Journeyman).")
+	AddQuestStepChat(Quest, 2, "I should return to the tutor with the scroll of Shackle.", 1, "I should return to the tutor with my work.", 0, GetSpawnID(QuestGiver))
 	AddQuestStepCompleteAction(Quest, 2, "CompleteQuest")
 end
 

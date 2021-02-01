@@ -61,7 +61,5 @@ function Reload(Quest, QuestGiver, Player, Step)
 	if QuestStepIsComplete(Player, 97, 2) then
 		MadePack(Quest, QuestGiver, Player)
 	end
-        if QuestStepIsComplete(Player, 97, 2) then
-	        CompleteQuest(Quest, QuestGiver, Player)
-	end
+       
 end

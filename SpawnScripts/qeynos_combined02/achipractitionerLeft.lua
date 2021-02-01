@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/achipractitionerRight.lua
+    Script Name    : SpawnScripts/qeynos_combined02/achipractitionerLeft.lua
     Script Author  : Rylec
     Script Date    : 2021.01.27 03:01:52
     Script Purpose : 
@@ -31,8 +31,6 @@ function spawn(NPC)
 
     local beard = MakeRandomInt(1164,1191)
         SpawnSet(NPC, "facial_hair_type", beard)
-
-    SetPlayerProximityFunction(NPC, 15, "InRange")
 
     AddTimer(NPC, 5000, "Stand")    
 end
@@ -163,7 +161,8 @@ function Sit(NPC)
 end
 
 function SitIdle(NPC)
-    SpawnSet(NPC, "visual_state", "540")  
+    SpawnSet(NPC, "visual_state", "540")
+--    PlayAnimation(NPC, 540)    
     AddTimer(NPC, 20000, "Stand")
 end
 
@@ -173,50 +172,4 @@ end
 
 function LeavesStart(NPC)
     SpawnSet(NPC, "action_state", "144")
-end
-
-function InRange(NPC, Spawn)
-    local type = GetModelType(NPC)
-    
-        if type == 132 then
-            humanFemaleProximity(NPC)
-        elseif type == 134 then
-            humanMaleProximity(NPC)
-        else
-            kerranProximity(NPC)
-        end
-end
-
-function humanFemaleProximity(NPC)
-    local chiChoice = MakeRandomInt(1,3)
-
-        if chiChoice == 1 then
-            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_79781fd.mp3", "Welcome to the city, newcomer.  All are welcome in the court of Antonia Bayle.", "bow", 4027811518, 2764738720, Spawn)
-        elseif chiChoice == 2 then
-            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_aoi_gf_7b765111.mp3", "You stand within the sturdy and unyielding walls of Qeynos, give thanks for their existence!", "point", 1908238477, 1252205270, Spawn)
-        else
-            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_1dba0c5b.mp3", "Salutations and warm greetings to you.", "curtsey", 707852693, 1737331106, Spawn)
-        end
-end
-
-function humanMaleProximity(NPC)
-    local chiChoice = MakeRandomInt(1,4)
-
-        if chiChoice == 1 then
-            PlayFlavor(NPC, "", "Welcome...welcome traveler, to the fair city of Qeynos! My, isn't it a magnificent day?", "hello", 0, 0, Spawn)
-        elseif chiChoice == 2 then
-            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_aoi_gm_4d212798.mp3", "I'm confident that the merchants of our city will fill all equipment needs with the utmost hospitality.", "smile", 2600666744, 586734676, Spawn)
-        elseif chiChoice == 3 then
-            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_aoi_gm_2c5409ba.mp3", "Another lovely day in the city of Qeynos!", "sigh", 2759856909, 614688407, Spawn)
-        else
-            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gm_34d7a9e6.mp3", "Well met. Here, in Qeynos, you shall find a wealth of useful supplies, and more importantly, ale.", "wink", 3467166298, 3144147842, Spawn)
-        end
-end
-
-function kerranProximity(NPC)
---    local chiChoice = MakeRandomInt(1,8)
-
---        if chiChoice == 1 then
---            PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_6b58eeec.mp3", "Glad you made it!  Was the road as difficult as I remember?", "thanks", 3670900464, 1104739099, Spawn)
---        end
 end

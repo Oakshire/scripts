@@ -34,7 +34,7 @@ function Declined(Quest, QuestGiver, Player)
 end
 
 function CraftedBracelet(Quest, QuestGiver, Player)
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have created a lead bracelet.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have reviewed the process of crafting an item.")
 	AddQuestStepChat(Quest, 2, "I should return to the tutor with my bracelet.", 1, "I should return to the tutor with my bracelet.", 0, GetSpawnID(QuestGiver))
 	AddQuestStepCompleteAction(Quest, 2, "CompleteQuest")
 end

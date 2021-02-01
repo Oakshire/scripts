@@ -7,9 +7,9 @@
 --]]
 
 function cast(Caster, Target, Regen) -- Add more params as needed for the values from the db
-	AddSpellBonus(Caster, 603, Regen)
+	AddSpellBonus(Target, 603, Regen)
 end
 
 function remove(Caster, Target)
-	RemoveSpellBonus(Caster)
+	RemoveSpellBonus(Target)
 end
