@@ -12,8 +12,8 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
---    FaceTarget(NPC, Spawn)
     Say(NPC, "10709 1h_sword_enter")
+    PlayAnimation(NPC, 10709)
 end
 
 function respawn(NPC)

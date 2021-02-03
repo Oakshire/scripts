@@ -12,8 +12,8 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
---    FaceTarget(NPC, Spawn)
-    Say(NPC, "1h_sword_strafe_left")
+    PlayAnimation(NPC, 10709)
+    Say(NPC, "10712 1h_sword_strafe_left")
 end
 
 function respawn(NPC)
@@ -27,7 +27,7 @@ end
 
 function animation2(NPC)
     PlayAnimation(NPC, 10712)
-    AddTimer(NPC, 1800, "Idle")
+    AddTimer(NPC, 1700, "Idle")
 end
 
 function Idle(NPC)

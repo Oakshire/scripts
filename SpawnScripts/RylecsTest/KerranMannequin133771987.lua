@@ -12,7 +12,7 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
---    FaceTarget(NPC, Spawn)
+    PlayAnimation(NPC, 10709)
     Say(NPC, "10713 1h_sword_strafe_right")
 end
 

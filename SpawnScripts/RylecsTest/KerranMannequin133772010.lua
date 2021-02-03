@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/RylecsTest/KerranMannequin133771985.lua
+    Script Name    : SpawnScripts/RylecsTest/KerranMannequin133772010.lua
     Script Author  : Rylec
     Script Date    : 2021.01.30 07:01:25
     Script Purpose : 
@@ -12,8 +12,8 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    Say(NPC, "1272 1h_sword_dodge_down")
     PlayAnimation(NPC, 10709)
-    Say(NPC, "10714 1h_sword_walk")
 end
 
 function respawn(NPC)
@@ -26,8 +26,9 @@ function animation(NPC)
 end
 
 function animation2(NPC)
-    PlayAnimation(NPC, 10714)
-    AddTimer(NPC, 2300, "Idle")
+    PlayAnimation(NPC, 1272)
+    AddTimer(NPC, 1000, "Idle")
+
 end
 
 function Idle(NPC)
