@@ -32,7 +32,7 @@ function spawn(NPC)
     local beard = MakeRandomInt(1164,1191)
         SpawnSet(NPC, "facial_hair_type", beard)
 
-    SetPlayerProximityFunction(NPC, 15, "InRange")
+    SetPlayerProximityFunction(NPC, 20, "InRange")
 
     AddTimer(NPC, 5000, "Stand")    
 end
@@ -176,6 +176,7 @@ function LeavesStart(NPC)
 end
 
 function InRange(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
     local type = GetModelType(NPC)
     
         if type == 132 then
@@ -214,9 +215,5 @@ function humanMaleProximity(NPC)
 end
 
 function kerranProximity(NPC)
---    local chiChoice = MakeRandomInt(1,8)
-
---        if chiChoice == 1 then
---            PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_6b58eeec.mp3", "Glad you made it!  Was the road as difficult as I remember?", "thanks", 3670900464, 1104739099, Spawn)
---        end
+    PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_3fd40378.mp3", "Keep your ears open.", "listen", 1525987814, 3335262701, Spawn)
 end
