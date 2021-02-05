@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	ItemScripts/FriedFrogLeg.lua
+	Script Name		:	ItemScripts/SteamedKingPrawnDumplings.lua
 	Script Purpose	:	
 	Script Author	:	Neatz09
 	Script Date		:	1/31/2021
@@ -7,15 +7,15 @@
 --]]
 
 function cast(Item, Player)
-	Spell = GetSpell(5462, 2, "Spells/Commoner/HomemadeMealGenericAgi.lua")
-	Regenz = 10.0
-	Stat = 2.4
-	newDuration = 36000
+	Spell = GetSpell(5462, 2, "Spells/Commoner/HomemadeMealGenericInt.lua")
+	Regenz = 190.0
+	Stat = 17.8
+	newDuration = 209400
 	SetSpellData(Spell, "duration1", newDuration)
 	SetSpellData(Spell, "duration2", newDuration)
 	SetSpellDataIndex(Spell, 0, Regenz)
 	SetSpellDataIndex(Spell, 1, Stat)
-	SetSpellDisplayEffect(Spell, 0, "description", "Increases AGI of target by " .. Stat)
+	SetSpellDisplayEffect(Spell, 0, "description", "Increases Int of target by " .. Stat)
 	SetSpellDisplayEffect(Spell, 1, "description", "Increases Out-of-Combat Health Regeneration of target by " .. Regenz)
 	CastCustomSpell(Spell, Player, Player)
 end

@@ -15,6 +15,7 @@ function cast(Item, Player)
 	SetSpellData(Spell, "duration2", newDuration)
 	SetSpellDataIndex(Spell, 0, Regenz)
 	SetSpellDataIndex(Spell, 1, Stat)
-	SetSpellDisplayEffect(Spell, 0, "description", "Increases Out-of-Combat Health Regeneration of target by " .. Regenz)
+	SetSpellDisplayEffect(Spell, 0, "description", "Increases AGI of target by " .. Stat)
+	SetSpellDisplayEffect(Spell, 1, "description", "Increases Out-of-Combat Health Regeneration of target by " .. Regenz)
 	CastCustomSpell(Spell, Player, Player)
 end

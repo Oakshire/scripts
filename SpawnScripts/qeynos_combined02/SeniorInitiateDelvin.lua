@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    MoveStart(NPC)
+    AddTimer(NPC, 3000, "MoveStart")
 end
 
 function hailed(NPC, Spawn)
@@ -20,44 +20,50 @@ end
 
 function MoveStart(NPC)
     MoveToLocation(NPC, 767.33, -19.36, -378.62, 2, "OpenDoorInside")
-    MoveToLocation(NPC, 758.09, -19.64, -379.09, 2, "OutsideDoor")
+    MoveToLocation(NPC, 758.01, -19.64, -378.51, 2, "GoOutside")
 end
 
-function OutsideDoor(NPC)
+function GoOutside(NPC)
+    MoveLeft1(NPC)
+--[[
     math.randomseed(os.time())
-    choiceOutsideDoor = math.random (1,6)
+    local choiceOutsideDoor = math.random(1,6)
+    local choiceDirection = math.random(1,3)
 
         if choiceOutsideDoor == 1 then
-            AddTimer(NPC, math.random (3000,10000), "MoveRight")
+            AddTimer(NPC, math.random(3000,7000), "MoveRight"..choiceDirection.."")
         elseif choiceOutsideDoor == 2 then
-            AddTimer(NPC, math.random (3000,10000), "MoveLeft")
+            AddTimer(NPC, math.random(3000,7000), "MoveLeft"..choiceDirection.."")
         elseif choiceOutsideDoor == 3 or choiceOutsideDoor == 4 then
-            MoveRight(NPC)     
+            MoveRight"..choiceDirection.."(NPC)     
         else
-            MoveLeft(NPC)
+            MoveLeft"..choiceDirection.."(NPC)
         end
+--]]
 end
 
-function MoveRight(NPC)
+function MoveLeft1(NPC)
+    MoveToLocation(NPC, 758.01, -19.63, -363.77, 2, "MoveLeft1Continue")
+end
+
+function MoveLeft1Continue(NPC)
+--    MoveToLocation(NPC, 758.01, -19.63, -363.77, 2)
     math.randomseed(os.time())
-    choiceMoveRight = math.random (1,3)
-
-        if choiceOutsideDoor == 1 then
-            AddTimer(NPC, math.random (3000,10000), "MoveRight")
-        elseif choiceOutsideDoor == 2 then
-            MoveRight(NPC)     
-        else
-            MoveLeft(NPC)
-        end
+    AddTimer(NPC, math.random(0,14000), "MoveLeft1Continue2")
 end
 
-
+function MoveLeft1Continue2(NPC)
+    MoveToLocation(NPC, 783.49, -19.63, -363.37, 2)
+    MoveToLocation(NPC, 783.39, -19.63, -393.25, 2)
+    MoveToLocation(NPC, 757.87, -19.63, -393.97, 2)
+    MoveToLocation(NPC, 757.40, -19.65, -378.78, 2)
+end
 
 
 function OpenDoorInside(NPC)
     zone = GetZone(NPC)
     local widget = SpawnByLocationID(zone, 571400)
-    UseWidget(widget)    
+    OpenDoor(widget)
 end
 
 

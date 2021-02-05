@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	ItemScripts/FriedFrogLeg.lua
+	Script Name		:	ItemScripts/SunfishRolls.lua
 	Script Purpose	:	
 	Script Author	:	Neatz09
 	Script Date		:	1/31/2021

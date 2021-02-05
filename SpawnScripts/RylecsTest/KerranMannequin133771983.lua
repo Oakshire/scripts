@@ -7,20 +7,15 @@
 --]]
 
 function spawn(NPC)
-    AddTimer(NPC, 5000, "animation")
     SetEquippedItemByID(NPC, 0, 83850)
+    SpawnSet(NPC, "visual_state", "11420")
+    SpawnSet(NPC, "action_state", "10710")
 end
 
 function hailed(NPC, Spawn)
---    FaceTarget(NPC, Spawn)
     Say(NPC, "10710 1h_sword_exit")
 end
 
 function respawn(NPC)
     spawn(NPC)
-end
-
-function animation(NPC)
-    PlayAnimation(NPC, 10710)
-    AddTimer(NPC, 3000, "animation")
 end
