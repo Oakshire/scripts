@@ -215,5 +215,11 @@ function humanMaleProximity(NPC)
 end
 
 function kerranProximity(NPC)
-    PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_3fd40378.mp3", "Keep your ears open.", "listen", 1525987814, 3335262701, Spawn)
+    local chiChoice = MakeRandomInt(1,2)
+
+        if chiChoice == 1 then
+            PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_3fd40378.mp3", "Keep your ears open.", "listen", 1525987814, 3335262701, Spawn)
+        else
+            PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_aoi_gm_a3788b05.mp3", "Watch the tail!  Watch the tail!", "scold", 1917905155, 2497295526, Spawn)
+        end
 end
