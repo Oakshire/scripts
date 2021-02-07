@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	ItemScripts/CranberryMargarita.lua
+	Script Name		:	ItemScripts/SoaringCappuccino.lua
 	Script Purpose	:	
 	Script Author	:	Neatz09
 	Script Date		:	1/31/2021
@@ -8,9 +8,9 @@
 
 function cast(Item, Player)
 	Spell = GetSpell(5463, 2, "Spells/Commoner/HomemadeDrinkGenericAgi.lua")
-	Regenz = 120.0
-	Stat = 13.2
-	newDuration = 181800
+	Regenz = 105.0
+	Stat = 11.0
+	newDuration = 54000
 	SetSpellData(Spell, "duration1", newDuration)
 	SetSpellData(Spell, "duration2", newDuration)
 	SetSpellDataIndex(Spell, 0, Regenz)

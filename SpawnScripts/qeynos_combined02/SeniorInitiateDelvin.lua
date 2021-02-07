@@ -7,6 +7,7 @@
 --]]
 
     local NumberOfTrips = 0
+    local SpecialEventTrigger = 0
 
 function spawn(NPC)
     AddTimer(NPC, 3000, "move_start")
@@ -40,7 +41,6 @@ end
 
 function pick_special_event(NPC)
     NumberOfTrips = 1
-    left_no_pause(NPC)
 
 --[[
     math.randomseed(os.time())
@@ -49,31 +49,50 @@ function pick_special_event(NPC)
         if SpecialEvent == 1 then
             left_no_pause(NPC)
         elseif SpecialEvent == 2 then
-            left_short_pause_first_corner(NPC)
+--          left_short_pause_first_corner
+            SpecialEventTrigger = 2
+            MoveToLocation(NPC, 757.84, -19.63, -363.12, 2, "special_event")
         elseif SpecialEvent == 3 then
-            left_short_pause_second_corner(NPC)
+--          left_short_pause_second_corner
+            SpecialEventTrigger = 3  
+            MoveToLocation(NPC, 758.68, -19.63, -364.16, 2)
+            MoveToLocation(NPC, 783.59, -19.63, -364.16, 2, "special_event")
         elseif SpecialEvent == 4 then
-            left_long_pause_first_corner(NPC)
+--          left_long_pause_first_corner
+            SpecialEventTrigger = 4
+            MoveToLocation(NPC, 757.84, -19.63, -363.12, 2, "special_event")
         elseif SpecialEvent == 5 then
-            left_long_pause_second_corner(NPC)
+--          left_long_pause_second_corner
+            SpecialEventTrigger = 5
+            MoveToLocation(NPC, 758.68, -19.63, -364.16, 2)
+            MoveToLocation(NPC, 783.59, -19.63, -364.16, 2, "special_event")
         elseif SpecialEvent == 6 then
             left_restless_first_corner(NPC)
         elseif SpecialEvent == 7 then
-            left_restless_second_corner(NPC)
+          MoveToLocation(NPC, 758.05, -19.63, -363.92, 2, "left_restless_second_corner")
         elseif SpecialEvent == 8 then
             right_no_pause(NPC)
         elseif SpecialEvent == 9 then
-            right_short_pause_first_corner(NPC)
+--          right_short_pause_first_corner
+            SpecialEventTrigger = 9
+            MoveToLocation(NPC, 758.29, -19.63, -394.06, 2, "special_event")
         elseif SpecialEvent == 10 then
-            right_short_pause_second_corner(NPC)
-        elseif SpecialEvent == 11 then
-            right_long_pause_first_corner(NPC)
+--          right_short_pause_second_corner--]]
+            SpecialEventTrigger = 10
+            MoveToLocation(NPC, 758.29, -19.63, -393.24, 2)
+            MoveToLocation(NPC, 783.44, -19.63, -394.01, 2, "special_event")
+--[[        elseif SpecialEvent == 11 then
+--          right_long_pause_first_corner(NPC)
+            SpecialEventTrigger = 11
         elseif SpecialEvent == 12 then
-            right_long_pause_second_corner(NPC)
+--          right_long_pause_second_corner(NPC)
+            SpecialEventTrigger = 12
         elseif SpecialEvent == 13 then
-            right_restless_first_corner(NPC)
+--          right_restless_first_corner(NPC)
+            SpecialEventTrigger = 13
         else
-            right_restless_second_corner(NPC)
+--          right_restless_second_corner(NPC)
+            SpecialEventTrigger = 14
         end
 --]]
 end
@@ -85,8 +104,134 @@ function left_no_pause(NPC)
     MoveToLocation(NPC, 757.29, -19.63, -394.07, 2, "return_to_start_left")
 end
 
+function left_restless_first_corner(NPC)
+    SpecialEventTrigger = 6
+    MoveToLocation(NPC, 757.84, -19.63, -363.12, 2, "left_restless_first_corner_first_pause")
+end
+
+function left_restless_first_corner_first_pause(NPC)
+    AddTimer(NPC, math.random(1000,1500), "left_restless_first_corner_animation") 
+end
+
+function left_restless_first_corner_animation(NPC)
+    math.randomseed(os.time())
+    local PauseAnimation = math.random(1,4)  
+
+        if PauseAnimation == 1 then
+            PlayAnimation(NPC, 12030)
+        elseif PauseAnimation == 2 then
+            PlayAnimation(NPC, 12246)
+        elseif PauseAnimation == 3 then
+            PlayAnimation(NPC, 12329)
+        else
+            PlayAnimation(NPC, 323)
+        end
+
+    AddTimer(NPC, math.random(15000,60000), "left_restless_first_corner_second_pause") 
+end
+
+function left_restless_first_corner_second_pause(NPC)
+    MoveToLocation(NPC, 756.50, -19.63, -364.08, 2)
+    AddTimer(NPC, math.random(15000,60000), "left_restless_first_corner_third_pause") 
+end
+
+function left_restless_first_corner_third_pause(NPC)
+    MoveToLocation(NPC, 758.87, -19.63, -364.19, 2)
+    AddTimer(NPC, math.random(15000,60000), "left_restless_first_corner_fourth_pause") 
+end
+
+function left_restless_first_corner_fourth_pause(NPC)
+    MoveToLocation(NPC, 756.50, -19.63, -364.08, 2)
+    AddTimer(NPC, math.random(7000,10000), "left_first_corner_continue") 
+end    
+
+function left_restless_second_corner(NPC)
+    SpecialEventTrigger = 7
+    MoveToLocation(NPC, 784.36, -19.63, -362.99, 2, "left_restless_first_corner_second_pause")
+end
+
+function left_restless_first_corner_second_pause(NPC)
+    AddTimer(NPC, math.random(1000,1500), "left_restless_second_corner_animation") 
+end
+
+function left_restless_second_corner_animation(NPC)
+    math.randomseed(os.time())
+    local PauseAnimation = math.random(1,4)  
+
+        if PauseAnimation == 1 then
+            PlayAnimation(NPC, 12030)
+        elseif PauseAnimation == 2 then
+            PlayAnimation(NPC, 12246)
+        elseif PauseAnimation == 3 then
+            PlayAnimation(NPC, 12329)
+        else
+            PlayAnimation(NPC, 323)
+        end
+
+    AddTimer(NPC, math.random(15000,60000), "left_restless_second_corner_second_pause") 
+end
+
+function left_restless_second_corner_second_pause(NPC)
+    MoveToLocation(NPC, 783.53, -19.63, -362.90, 2)
+    AddTimer(NPC, math.random(15000,60000), "left_restless_second_corner_third_pause") 
+end
+
+function left_restless_second_corner_third_pause(NPC)
+    MoveToLocation(NPC, 784.43, -19.63, -363.03, 2)
+    AddTimer(NPC, math.random(15000,60000), "left_restless_second_corner_fourth_pause") 
+end
+
+function left_restless_second_corner_fourth_pause(NPC)
+    MoveToLocation(NPC, 783.35, -19.63, -394.01, 2)
+    AddTimer(NPC, math.random(7000,10000), "left_second_corner_continue") 
+end
+
+function right_no_pause(NPC)
+    MoveToLocation(NPC, 756.64, -19.65, -393.05, 2)
+    MoveToLocation(NPC, 783.47, -19.63, -393.09, 2)
+    MoveToLocation(NPC, 783.93, -19.63, -363.73, 2)
+    MoveToLocation(NPC, 757.48, -19.63, -364.03, 2, "return_to_start_right")
+end
 
 
+
+function special_event(NPC)
+    if SpecialEventTrigger == 2 then
+        AddTimer(NPC, math.random(2500,5000), "left_first_corner_continue")        
+    elseif SpecialEventTrigger == 3 then
+        AddTimer(NPC, math.random(2500,5000), "left_second_corner_continue")
+    elseif SpecialEventTrigger == 4 then
+        AddTimer(NPC, math.random(95000,120000), "left_first_corner_continue")    
+    elseif SpecialEventTrigger == 5 then
+        AddTimer(NPC, math.random(95000,120000), "left_second_corner_continue")  
+    elseif SpecialEventTrigger == 9 then
+        AddTimer(NPC, math.random(2500,5000), "right_first_corner_continue")  
+    elseif SpecialEventTrigger == 10 then
+        AddTimer(NPC, math.random(2500,5000), "right_second_corner_continue")  
+    end
+end
+
+function left_first_corner_continue(NPC)
+    MoveToLocation(NPC, 783.46, -19.63, -363.05, 2)
+    MoveToLocation(NPC, 783.31, -19.63, -393.26, 2)
+    MoveToLocation(NPC, 758.15, -19.63, -394.00, 2, "return_to_start_left")
+end
+
+function left_second_corner_continue(NPC)
+    MoveToLocation(NPC, 783.31, -19.63, -393.26, 2)
+    MoveToLocation(NPC, 758.15, -19.63, -394.00, 2, "return_to_start_left")
+end
+
+function right_first_corner_continue(NPC)
+    MoveToLocation(NPC, 783.31, -19.63, -393.26, 2)
+    MoveToLocation(NPC, 783.46, -19.63, -363.05, 2)
+    MoveToLocation(NPC, 757.48, -19.63, -364.03, 2, "return_to_start_right")
+end
+
+function right_second_corner_continue(NPC)
+    MoveToLocation(NPC, 783.46, -19.63, -363.05, 2)
+    MoveToLocation(NPC, 757.48, -19.63, -364.03, 2, "return_to_start_right")
+end
 
 
 
@@ -106,14 +251,17 @@ end
 function extra_trip_left(NPC)
     if NumberOfTrips == 1 then
         math.randomseed(os.time())
-        local ThirdTripRandom = math.random(1,100)
+        local SecondTripRandom = math.random(1,100)
         
-            if ThirdTripRandom <= 10 then
-                return_to_base(NPC)
+            if SecondTripRandom <= 10 then
+                  return_to_base(NPC)
+--                open_door(NPC)
+--                and_back_again(NPC)
             else
                 NumberOfTrips = 2
                 math.randomseed(os.time())
                 local PickTrip = math.random(1,3)
+
                     if PickTrip == 1 then
                         left_01(NPC)
                     elseif PickTrip == 2 then
@@ -122,13 +270,35 @@ function extra_trip_left(NPC)
                         left_03(NPC)
                     end
             end
+    elseif NumberOfTrips == 2 then
+        math.randomseed(os.time())
+        local ThirdTripRandom = math.random(1,100)                
+        
+            if ThirdTripRandom <= 10 then
+                NumberOfTrips = 3
+                math.randomseed(os.time())
+                local PickLastTrip = math.random(1,3)
+
+                    if PickLastTrip == 1 then
+                        left_01(NPC)
+                    elseif PickLastTrip == 2 then
+                        left_02(NPC)
+                    else
+                        left_03(NPC)
+                    end
+            else
+                return_to_base(NPC)
+--                open_door(NPC)
+--                and_back_again(NPC)           
+            end
     else
         return_to_base(NPC)
+--        open_door(NPC)
+--        and_back_again(NPC)  
     end          
 end
 
 function left_01(NPC)
-    Say(NPC, "I picked 1")
     MoveToLocation(NPC, 758.82, -19.63, -363.06, 2)
     MoveToLocation(NPC, 783.61, -19.63, -362.95, 2)
     MoveToLocation(NPC, 783.36, -19.63, -393.23, 2)
@@ -136,7 +306,6 @@ function left_01(NPC)
 end
 
 function left_02(NPC)
-    Say(NPC, "I picked 2")
     MoveToLocation(NPC, 758.04, -19.63, -363.98, 2)
     MoveToLocation(NPC, 783.89, -19.63, -363.04, 2)
     MoveToLocation(NPC, 783.35, -19.63, -394.04, 2)
@@ -144,12 +313,99 @@ function left_02(NPC)
 end
 
 function left_03(NPC)
-    Say(NPC, "I picked 3")
     MoveToLocation(NPC, 756.82, -19.63, -363.92, 2)
     MoveToLocation(NPC, 784.13, -19.63, -363.03, 2)
     MoveToLocation(NPC, 783.29, -19.63, -393.11, 2)
     MoveToLocation(NPC, 758.33, -19.63, -393.04, 2, "extra_trip_left")
 end
+
+
+
+function return_to_start_right(NPC)
+    math.randomseed(os.time())
+    local ReturnStart = math.random(1,3)
+
+        if ReturnStart == 1 then
+            MoveToLocation(NPC, 756.65, -19.65, -378.86, 2, "extra_trip_right")
+        elseif ReturnStart == 2 then
+            MoveToLocation(NPC, 757.38, -19.64, -377.92, 2, "extra_trip_right")
+        else
+            MoveToLocation(NPC, 758.01, -19.64, -378.51, 2, "extra_trip_right")
+        end
+end
+
+function extra_trip_right(NPC)
+    if NumberOfTrips == 1 then
+        math.randomseed(os.time())
+        local SecondTripRandom = math.random(1,100)
+        
+            if SecondTripRandom <= 10 then
+                  return_to_base(NPC)
+--                open_door(NPC)
+--                and_back_again(NPC)
+            else
+                NumberOfTrips = 2
+                math.randomseed(os.time())
+                local PickTrip = math.random(1,3)
+
+                    if PickTrip == 1 then
+                        right_01(NPC)
+                    elseif PickTrip == 2 then
+                        right_02(NPC)
+                    else
+                        right_03(NPC)
+                    end
+            end
+    elseif NumberOfTrips == 2 then
+        math.randomseed(os.time())
+        local ThirdTripRandom = math.random(1,100)                
+        
+            if ThirdTripRandom <= 10 then
+                NumberOfTrips = 3
+                math.randomseed(os.time())
+                local PickLastTrip = math.random(1,3)
+
+                    if PickLastTrip == 1 then
+                        right_01(NPC)
+                    elseif PickLastTrip == 2 then
+                        right_02(NPC)
+                    else
+                        right_03(NPC)
+                    end
+            else
+                return_to_base(NPC)
+--                open_door(NPC)
+--                and_back_again(NPC)           
+            end
+    else
+        return_to_base(NPC)
+--        open_door(NPC)
+--        and_back_again(NPC)  
+    end          
+end
+
+function right_01(NPC)
+    MoveToLocation(NPC, 757.61, -19.64, -394.02, 2)
+    MoveToLocation(NPC, 783.36, -19.63, -393.23, 2)
+    MoveToLocation(NPC, 783.61, -19.63, -362.95, 2)
+    MoveToLocation(NPC, 758.82, -19.63, -363.06, 2, "extra_trip_right")
+end
+
+function right_02(NPC)
+    MoveToLocation(NPC, 756.70, -19.65, -392.53, 2)
+    MoveToLocation(NPC, 783.35, -19.63, -394.04, 2)
+    MoveToLocation(NPC, 783.89, -19.63, -363.04, 2)
+    MoveToLocation(NPC, 758.04, -19.63, -363.98, 2, "extra_trip_right")
+end
+
+function right_03(NPC)
+    MoveToLocation(NPC, 758.33, -19.63, -393.04, 2)
+    MoveToLocation(NPC, 783.29, -19.63, -393.11, 2)
+    MoveToLocation(NPC, 784.13, -19.63, -363.03, 2)
+    MoveToLocation(NPC, 756.82, -19.63, -363.92, 2, "extra_trip_right")
+end
+
+
 
 function return_to_base(NPC)
     math.randomseed(os.time())
@@ -166,13 +422,24 @@ function return_to_base(NPC)
 end
 
 function and_back_again(NPC)
-    Say(NPC, "I am back!")
+    MoveToLocation(NPC, 774.207, -19.0057, -378.641, 2, "end_of_trip")
 end
 
+function end_of_trip(NPC)
+    AddTimer(NPC, math.random(1000,1500), "extra_delay_for_bow")  
+end
 
+function extra_delay_for_bow(NPC)
+    math.randomseed(os.time())
+    local EndTrip = math.random(1,3)
 
-
-
+        if EndTrip == 1 then
+            PlayAnimation(NPC, 121)
+            AddTimer(NPC, math.random(4000,7000), "move_start")
+        else
+            AddTimer(NPC, math.random(4000,7000), "move_start")  
+        end
+end
 
 
 function open_door(NPC)
@@ -180,50 +447,3 @@ function open_door(NPC)
     local widget = SpawnByLocationID(zone, 571400)
     OpenDoor(widget)
 end
-
-
-
-
-
-
-function MoveLeft1Continue(NPC)
---    MoveToLocation(NPC, 758.01, -19.63, -363.77, 2)
-    math.randomseed(os.time())
-    AddTimer(NPC, math.random(0,14000), "MoveLeft1Continue2")
-end
-
-function MoveLeft1Continue2(NPC)
-    MoveToLocation(NPC, 783.49, -19.63, -363.37, 2)
-    MoveToLocation(NPC, 783.39, -19.63, -393.25, 2)
-    MoveToLocation(NPC, 757.87, -19.63, -393.97, 2)
-    MoveToLocation(NPC, 757.40, -19.65, -378.78, 2)
-end
-
-
-
-
-
-
---[[
-
-
-
-MoveToLocation(NPC, 757.70, -19.63, -394.23, 2)
-
-function waypoints(NPC)
-    MovementLoopAddLocation(NPC, 774.33, -19.26, -378.61, 2, 4)
-    MovementLoopAddLocation(NPC, 758.09, -19.64, -379.09, 2, 4)
-    MovementLoopAddLocation(NPC, 757.22, -19.65, -388.55, 2, 0)
-    MovementLoopAddLocation(NPC, 756.2, -19.64, -394.21, 2, 4)
-    MovementLoopAddLocation(NPC, 783.41, -19.63, -394.48, 2, 0)
-    MovementLoopAddLocation(NPC, 783.36, -19.63, -363.89, 2, 0)
-    MovementLoopAddLocation(NPC, 757.1, -19.63, -364.23, 2, 0)
-    MovementLoopAddLocation(NPC, 757.26, -19.65, -378.64, 2, 0)
-    MovementLoopAddLocation(NPC, 756.54, -19.65, -393.07, 2, 0)
-    MovementLoopAddLocation(NPC, 783.31, -19.63, -393.15, 2, 0)
-    MovementLoopAddLocation(NPC, 783.41, -19.63, -363.8, 2, 0)
-    MovementLoopAddLocation(NPC, 757.24, -19.63, -363.51, 2, 0)
-    MovementLoopAddLocation(NPC, 758.25, -19.64, -378.57, 2, 0)
-    MovementLoopAddLocation(NPC, 774.12, -19.26, -378.7, 2, 4)
-end
---]]

@@ -14,7 +14,7 @@
 function Init(Quest)
 	SetQuestFeatherColor(Quest, 2)
 	AddQuestStepCraft(Quest, 1, "I need to create an elm greatstaff using the woodworking table.", 1, 100, "I must follow the tutor's instructions to review the crafting process.", 622, 76153)
-	AddQuestStepCraft(Quest, 2, "I must create a tin hand axe using the forge.", 1, 100, "I must follow the tutor's instructions to review the crafting process.", 2154, 89113)
+	AddQuestStepCraft(Quest, 2, "I must create a tin hand axe using the forge.", 1, 100, "I must follow the tutor's instructions to review the crafting process.", 2154, 89114)
 	AddQuestStepCompleteAction(Quest, 1, "MadeStaff")
 	AddQuestStepCompleteAction(Quest, 2, "MadeAxe")
 end

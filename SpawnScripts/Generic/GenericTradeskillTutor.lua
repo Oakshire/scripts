@@ -51,6 +51,7 @@ end
 function CraftingTutorHail(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+			
 	if GetQuestStep(Spawn, HadAHammer) == 5 then
 		SetStepComplete(Spawn, HadAHammer, 5)
 		if not HasCompletedQuest(Spawn, ForgingAhead) then
@@ -109,9 +110,9 @@ function CraftingTutorHail(NPC, Spawn)
 		Tut7Chat1(NPC, Spawn)
 	elseif CanReceiveQuest(Spawn, TutorialOutfitting) then
 		Tut7Chat1(NPC, Spawn)
-	elseif HasQuest(Spawn, TutorialOutfitting) and (not QuestStepIsComplete(Player, 97, 1) or not QuestStepIsComplete(Player, 97, 2)) then
+	elseif HasQuest(Spawn, TutorialOutfitting) and (not QuestStepIsComplete(Spawn, TutorialOutfitting, 1) or not QuestStepIsComplete(Spawn, TutorialOutfitting, 2)) then
 		PlayFlavor(NPC, "", "Take your time. It's dangerous to rush at the forge!", "", 0, 0, Spawn)
-	elseif HasQuest(Spawn, TutorialOutfitting) and QuestStepIsComplete(Player, 97, 1) and QuestStepIsComplete(Player, 97, 2) then
+	elseif HasQuest(Spawn, TutorialOutfitting) and QuestStepIsComplete(Spawn, TutorialOutfitting, 1) and QuestStepIsComplete(Spawn, 97, 2) then
 		SetStepComplete(Spawn, TutorialOutfitting, 3)
 		FinishedChat(NPC, Spawn)
 	else
