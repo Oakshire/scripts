@@ -7,7 +7,8 @@
 --]]
 
 function spawn(NPC)
-    AddTimer(NPC, 5000, "animation")
+--    AddTimer(NPC, 5000, "animation")
+    SpawnSet(NPC, "action_state", "121")
 end
 
 function hailed(NPC, Spawn)

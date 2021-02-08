@@ -7,30 +7,15 @@
 --]]
 
 function spawn(NPC)
-    AddTimer(NPC, 5000, "animation")
     SetEquippedItemByID(NPC, 0, 83850)
+    SpawnSet(NPC, "visual_state", "11420")
+    SpawnSet(NPC, "action_state", "1027")
 end
 
 function hailed(NPC, Spawn)
-    PlayAnimation(NPC, 10709)
     Say(NPC, "1027 1h_sword_attack01")
 end
 
 function respawn(NPC)
     spawn(NPC)
-end
-
-function animation(NPC)
-    PlayAnimation(NPC, 10709)
-    AddTimer(NPC, 1000, "animation2")
-end
-
-function animation2(NPC)
-    PlayAnimation(NPC, 1027)
-    AddTimer(NPC, 1800, "Idle")
-end
-
-function Idle(NPC)
-    PlayAnimation(NPC, 323)    
-    animation2(NPC)
 end

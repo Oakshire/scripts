@@ -1,19 +1,19 @@
 --[[
-    Script Name    : SpawnScripts/RylecsTest/KerranMannequin133771989.lua
+    Script Name    : SpawnScripts/RylecsTest/KerranMannequin133772019.lua
     Script Author  : Rylec
-    Script Date    : 2021.01.30 07:01:25
+    Script Date    : 2021.02.07 07:02:40
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-    SetEquippedItemByID(NPC, 0, 83850)
+    SetEquippedItemByID(NPC, 0, 83328)
     SpawnSet(NPC, "visual_state", "11420")
-    SpawnSet(NPC, "action_state", "1026")
+    SpawnSet(NPC, "action_state", "52")
 end
 
 function hailed(NPC, Spawn)
-    Say(NPC, "1026 1h_sword_attack")
+    Say(NPC, "52 2h_sword_idle")
 end
 
 function respawn(NPC)
