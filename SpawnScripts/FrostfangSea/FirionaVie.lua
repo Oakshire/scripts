@@ -12,13 +12,14 @@ end
 function hailed(NPC, Spawn)
         FaceTarget(NPC, Spawn)
         conversation = CreateConversation()
-        PlaySound(NPC, "blah.mp3", GetX(NPC), GetY(NPC), GetZ(NPC))
+        --PlaySound(NPC, "blah.mp3", GetX(NPC), GetY(NPC), GetZ(NPC))
         AddConversationOption(conversation, "How do I get to the Discord?", "Choice1")
         AddConversationOption(conversation, "How do I use commands?", "Choice2")
         AddConversationOption(conversation, "I need gear!", "Choice3")
-        AddConversationOption(conversation, "Can you take me to Memorial Island please?", "Choice4")
+        --AddConversationOption(conversation, "Can you take me to Memorial Island please?", "Choice4")
         AddConversationOption(conversation, "I do not require anything at this time.", "EndConvo")
         StartConversation(conversation, NPC, Spawn, "Hail, Adventurer. How may I assist you?")
+	--AddCharacterTitle(Spawn, "Lord")
 end
 
 function Choice1(NPC, Spawn)
