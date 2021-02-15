@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-
+    EmoteLoop(NPC)
 end
 
 function hailed(NPC, Spawn)
@@ -31,3 +31,19 @@ function respawn(NPC)
     spawn(NPC)
 end
 
+function EmoteLoop(NPC)
+    local emote = MakeRandomInt(1,4)  
+
+        if emote == 1 then
+            PlayAnimation(NPC, 11649)  -- glare
+        elseif emote == 2 then
+            PlayAnimation(NPC, 11881)  -- no
+        elseif emote == 3 then
+            PlayAnimation(NPC, 11882)  -- nod
+        else
+            PlayAnimation(NPC, 11976)  -- peer
+        end
+
+    math.randomseed(os.time())    
+    AddTimer(NPC, math.random(8000,17000), "EmoteLoop")
+end

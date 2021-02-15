@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/InitiateLunaru.lua
+    Script Name    : SpawnScripts/qeynos_combined02/InitiateTara.lua
     Script Author  : Rylec
-    Script Date    : 2021.02.14 08:02:49
+    Script Date    : 2021.02.14 04:02:57
     Script Purpose : 
                    : 
 --]]
@@ -13,19 +13,14 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    math.randomseed(os.time())
-    local voice = math.random(1,3)
-
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1048.mp3", "", "", 0, 0, Spawn)
-
     if count == 1 then
         stand(NPC, Spawn)   
     elseif count > 1 and count < 15 then
         count = count + 1
-        Say(NPC, "Sorry, I can't speak now.  I must prepare for my sparring exercises.")
+        PlayFlavor(NPC, "voiceover/english/optional1/initiate_tara/qey_elddar/100_monk_initiate_tara_token1_9ac42d88.mp3", "Tread softly and speak your purpose.", "", 3516598133, 1750026138, Spawn)
     else
         count = 1
-        Say(NPC, "Sorry, I can't speak now.  I must prepare for my sparring exercises.")
+        PlayFlavor(NPC, "voiceover/english/optional1/initiate_tara/qey_elddar/100_monk_initiate_tara_token1_9ac42d88.mp3", "Tread softly and speak your purpose.", "", 3516598133, 1750026138, Spawn)
     end
 
     AddTimer(NPC, 40000, "Sit")    
@@ -48,7 +43,7 @@ function turn(NPC, Spawn)
 end
 
 function talk(NPC)
-    Say(NPC, "Sorry, I can't speak now.  I must prepare for my sparring exercises.")  
+    PlayFlavor(NPC, "voiceover/english/optional1/initiate_tara/qey_elddar/100_monk_initiate_tara_token1_9ac42d88.mp3", "Tread softly and speak your purpose.", "", 3516598133, 1750026138, Spawn)
 end
 
 function Sit(NPC)
