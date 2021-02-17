@@ -10,6 +10,8 @@
 
 blackguard3 = 133769612
 blackguard4 = 133769613
+blackguard1 = 404841
+blackguard2 = 404844
 
 function spawn(NPC)
 SetTempVariable(NPC, "HAILED1", "true")  
@@ -23,7 +25,7 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "Your threats don't scare me!", "Phase1")
     AddConversationOption(conversation, "Yeah, good idea.")
     StartConversation(conversation, NPC, Spawn, "You are puny and weak!  Leave now or feel my wrath!")
-    SetTempVariable(NPC, "HAILED1", "false")
+  
 end
    end
 
@@ -33,8 +35,11 @@ function respawn(NPC)
 end
 
 function Phase1(NPC, Spawn)
+SetTempVariable(NPC, "HAILED1", "false")
 PlayFlavor(NPC, "", "Ha ha ha!  Blackguards, take care of this rodent!", "cackle", 1689589577, 4560189, Spawn)
 zone = GetZone(Spawn)
+BlackGuardSpawn3 = SpawnByLocationID(zone, blackguard1)
+BlackGuardSpawn3 = SpawnByLocationID(zone, blackguard2)
 BlackGuardSpawn3 = SpawnByLocationID(zone, blackguard3)
 BlackGuardSpawn4 = SpawnByLocationID(zone, blackguard4)
 end

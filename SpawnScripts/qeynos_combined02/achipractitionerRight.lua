@@ -20,7 +20,7 @@ function spawn(NPC)
             SpawnSet(NPC, "legs_type", "5534")
         else
             SetModelType(NPC, "97")
-            SpawnSet(NPC, "soga_model_type", "134")
+            SpawnSet(NPC, "soga_model_type", "97")
             SpawnSet(NPC, "chest_type", "5549")
             SpawnSet(NPC, "legs_type", "5550")
         end
