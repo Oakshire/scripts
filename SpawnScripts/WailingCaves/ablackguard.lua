@@ -9,8 +9,11 @@
 
 
 function spawn(NPC)
-         
+AddSpawnAccess(NPC, NPC)
+    
 end
+
+
 
 
 
@@ -19,8 +22,8 @@ function respawn(NPC)
 end
 
 function group_dead(NPC, Spawn)
-local widget = GetSpawnByLocationID(Spawn, 439914)
-UseWidget(widget)
+local door = GetSpawn(NPC, 2580104)
+OpenDoor(door)
 local zone = GetZone(Spawn)
 local WorgMaster = GetSpawnByLocationID(zone, 404870)
 if WorgMaster ~= nil then

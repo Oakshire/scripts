@@ -1,9 +1,9 @@
 --[[
 	Script Name	: SpawnScripts/FrostfangSea/EnvoyTamiSwifthammer.lua
 	Script Purpose	: Envoy Tami Swifthammer 
-	Script Author	: theFoof
-	Script Date	: 2013.09.16
-	Script Notes	:
+	Script Author	: EmemJr
+	Script Date	: 2/16/2021
+	Script Notes	: WIP
 --]]
 
 function spawn(NPC)

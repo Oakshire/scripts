@@ -21,15 +21,10 @@ end
 
 
 function spawn(NPC)
-         EmoteLoop(NPC)
+      
 end
 
 function respawn(NPC)
          spawn(NPC)
 end
 
-function EmoteLoop(NPC)
-        Say(NPC, "Your Sacrifice will be remembered! ADD PROXIMITY FUNCTION TO STOP SPAM")
-	PlayAnimation(NPC, 10844)
-	AddTimer(NPC, 20000, "EmoteLoop")
-end

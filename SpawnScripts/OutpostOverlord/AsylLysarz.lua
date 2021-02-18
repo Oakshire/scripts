@@ -28,7 +28,5 @@ function hailed(NPC, Spawn)
 end
 
 function EmoteLoop (NPC)
-        Say(NPC, "Your lives will not be forgotten! ADD PROXIMTY TO STOP SPAM")
-	PlayAnimation(NPC, 10844)
-	AddTimer(NPC, 15000, "EmoteLoop")
+
 end

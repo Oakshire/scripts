@@ -130,7 +130,7 @@ end
 
 function EmoteLoop(NPC)
     SpawnSet(NPC, "action_state", 0)
-    local choice = MakeRandomInt(1,9)
+    local choice = MakeRandomInt(1,10)
 
         if choice == 1 then
             PlayAnimation(NPC, 1181)
@@ -147,16 +147,16 @@ function EmoteLoop(NPC)
         elseif choice == 5 then
             PlayAnimation(NPC, 11824)
             AddTimer(NPC, 950, "Idle")
-        elseif choice == 5 then
+        elseif choice == 6 then
             PlayAnimation(NPC, 11828)
             AddTimer(NPC, 3000, "Idle")
-        elseif choice == 6 then
+        elseif choice == 7 then
             PlayAnimation(NPC, 11830)
             AddTimer(NPC, 1300, "Idle")
-        elseif choice == 7 then
+        elseif choice == 8 then
             PlayAnimation(NPC, 11831)
             AddTimer(NPC, 2450, "Idle")
-        elseif choice == 8 then
+        elseif choice == 9 then
             PlayAnimation(NPC, 11832)
             AddTimer(NPC, 1750, "Idle")
         else

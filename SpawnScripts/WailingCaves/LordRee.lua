@@ -8,10 +8,10 @@
 
 
 
-blackguard3 = 133769612
-blackguard4 = 133769613
-blackguard1 = 404841
-blackguard2 = 404844
+blackguard3_ID = 133769612
+blackguard4_ID = 133769613
+blackguard1_ID = 404841
+blackguard2_ID = 404844
 
 function spawn(NPC)
 SetTempVariable(NPC, "HAILED1", "true")  
@@ -37,11 +37,14 @@ end
 function Phase1(NPC, Spawn)
 SetTempVariable(NPC, "HAILED1", "false")
 PlayFlavor(NPC, "", "Ha ha ha!  Blackguards, take care of this rodent!", "cackle", 1689589577, 4560189, Spawn)
-zone = GetZone(Spawn)
-BlackGuardSpawn3 = SpawnByLocationID(zone, blackguard1)
-BlackGuardSpawn3 = SpawnByLocationID(zone, blackguard2)
-BlackGuardSpawn3 = SpawnByLocationID(zone, blackguard3)
-BlackGuardSpawn4 = SpawnByLocationID(zone, blackguard4)
+blackguard1 = GetSpawnByLocationID(Spawn, blackguard1_ID)
+blackguard2 = GetSpawnByLocationID(Spawn, blackguard2_ID)
+blackguard3 = GetSpawnByLocationID(Spawn, blackguard3_ID)
+blackguard4 = GetSpawnByLocationID(Spawn, blackguard4_ID)
+AddSpawnAccess(blackguard1, Spawn)
+AddSpawnAccess(blackguard2, Spawn)
+AddSpawnAccess(blackguard3, Spawn)
+AddSpawnAccess(blackguard4, Spawn)
 end
 
 function FinalPhase(NPC, Spawn)
