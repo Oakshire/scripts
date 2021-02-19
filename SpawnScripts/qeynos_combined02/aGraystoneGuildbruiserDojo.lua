@@ -97,6 +97,9 @@ function Face(NPC)
         elseif Type == 110 then
             local FaceHairType = MakeRandomInt(1164,1170)
             SpawnSet(NPC, "facial_hair_type", FaceHairType)
+        elseif Type == 112 then
+            local FaceHairType = MakeRandomInt(1185,1189)
+            SpawnSet(NPC, "facial_hair_type", FaceHairType)
         else
             local FaceHairType = MakeRandomInt(1166,1175)
             SpawnSet(NPC, "facial_hair_type", FaceHairType)
@@ -132,7 +135,7 @@ function hailed(NPC, Spawn)
             spawnvoice = 1004
         end
 
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_"..spawnvoice..".mp3", "", "", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_"..spawnvoice..".mp3", "", "hello", 0, 0, Spawn)
 
 end
 

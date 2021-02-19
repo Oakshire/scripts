@@ -1,41 +1,23 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/aGraystoneGuildbruiserDojo.lua
+    Script Name    : SpawnScripts/qeynos_combined02/aGraystoneGuildbruiserDojoFair02.lua
     Script Author  : Rylec
     Script Date    : 2021.02.17 12:02:26
     Script Purpose : 
                    : 
 --]]
 
-function spawn(NPC)
-    local model = MakeRandomInt(1,4)
+    local count = 1110
 
-        if model == 1 then
-            SetModelType(NPC, "132") -- human female
-            SpawnSet(NPC, "soga_model_type", "132")
-            SpawnSet(NPC, "chest_type", "5529")
-            SpawnSet(NPC, "legs_type", "5530")
-        elseif model == 2 then
-            SetModelType(NPC, "134") -- human male
-            SpawnSet(NPC, "soga_model_type", "134")
-            SpawnSet(NPC, "chest_type", "5533")
-            SpawnSet(NPC, "legs_type", "5534")
-        elseif model == 3 then
-            local KerraFemale = MakeRandomInt(91,96)
-            SetModelType(NPC, KerraFemale) -- kerra female
-            SpawnSet(NPC, "soga_model_type", KerraFemale)
-            SpawnSet(NPC, "chest_type", "5545")
-            SpawnSet(NPC, "legs_type", "5546")
-        else
-            local KerraMale = MakeRandomInt(97,102)
-            SetModelType(NPC, KerraMale) -- kerra male
-            SpawnSet(NPC, "soga_model_type", KerraMale)
-            SpawnSet(NPC, "chest_type", "5549")
-            SpawnSet(NPC, "legs_type", "5550")
-        end
+function spawn(NPC)
+--            local BarbarianMale = MakeRandomInt(1467,1471)
+            SetModelType(NPC, "112") -- barbarian male
+            SpawnSet(NPC, "soga_model_type", "112")
+            SpawnSet(NPC, "chest_type", "5461")
+            SpawnSet(NPC, "legs_type", "5462")
 
     Hair(NPC)
     Face(NPC)
-    AddTimer(NPC, math.random(2000,5000), "EmoteLoop")
+--    AddTimer(NPC, math.random(2000,5000), "EmoteLoop")
 end
 
 function Hair(NPC)  
@@ -58,19 +40,22 @@ function Hair(NPC)
 end
 
 function Face(NPC)
-    local Type = GetModelType(NPC)
-    local FaceHairType = 0
+    count = count + 1
+    Say(NPC, "Count "..count.."")
+--    local Type = GetModelType(NPC)
+--    local FaceHairType = 0
 
-        if Type == 134 then
-            local FaceHairType = MakeRandomInt(1164,1191)
-            SpawnSet(NPC, "facial_hair_type", FaceHairType)
-        elseif Type == 110 then
-            local FaceHairType = MakeRandomInt(1164,1170)
-            SpawnSet(NPC, "facial_hair_type", FaceHairType)
-        else
-            local FaceHairType = MakeRandomInt(1166,1175)
-            SpawnSet(NPC, "facial_hair_type", FaceHairType)
-        end
+--        if Type == 134 then
+--            local FaceHairType = MakeRandomInt(1164,1191)
+            SpawnSet(NPC, "facial_hair_type", count)
+--        elseif Type == 110 then
+--            local FaceHairType = MakeRandomInt(1164,1170)
+--            SpawnSet(NPC, "facial_hair_type", FaceHairType)
+--        else
+--            local FaceHairType = MakeRandomInt(1166,1175)
+--            SpawnSet(NPC, "facial_hair_type", FaceHairType)
+--        end
+            AddTimer(NPC, 2000, "Face")
 end
 
 function hailed(NPC, Spawn)

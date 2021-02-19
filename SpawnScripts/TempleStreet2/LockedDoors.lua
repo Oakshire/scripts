@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-
+ 
 end
 
 function casted_on(NPC, Spawn, SpellName)

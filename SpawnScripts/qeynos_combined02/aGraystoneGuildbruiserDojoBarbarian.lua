@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/aGraystoneGuildbruiserDojoFighting.lua
+    Script Name    : SpawnScripts/qeynos_combined02/aGraystoneGuildbruiserDojoBarbarian.lua
     Script Author  : Rylec
     Script Date    : 2021.02.17 12:02:26
     Script Purpose : 
@@ -7,51 +7,9 @@
 --]]
 
 function spawn(NPC)
-    local model = MakeRandomInt(1,10)
+    local model = MakeRandomInt(1,2)
 
         if model == 1 then
-            SetModelType(NPC, "132") -- human female
-            SpawnSet(NPC, "soga_model_type", "132")
-            SpawnSet(NPC, "chest_type", "5529")
-            SpawnSet(NPC, "legs_type", "5530")
-        elseif model == 2 then
-            SetModelType(NPC, "134") -- human male
-            SpawnSet(NPC, "soga_model_type", "134")
-            SpawnSet(NPC, "chest_type", "5533")
-            SpawnSet(NPC, "legs_type", "5534")
-        elseif model == 3 then
-            local KerraFemale = MakeRandomInt(91,96)
-            SetModelType(NPC, KerraFemale) -- kerra female
-            SpawnSet(NPC, "soga_model_type", KerraFemale)
-            SpawnSet(NPC, "chest_type", "5545")
-            SpawnSet(NPC, "legs_type", "5546")
-        elseif model == 4 then
-            local KerraMale = MakeRandomInt(97,102)
-            SetModelType(NPC, KerraMale) -- kerra male
-            SpawnSet(NPC, "soga_model_type", KerraMale)
-            SpawnSet(NPC, "chest_type", "5549")
-            SpawnSet(NPC, "legs_type", "5550")
-        elseif model == 5 then
-            SetModelType(NPC, "109") -- dwarf female
-            SpawnSet(NPC, "soga_model_type", "109")
-            SpawnSet(NPC, "chest_type", "5473")
-            SpawnSet(NPC, "legs_type", "5474")
-        elseif model == 6 then
-            SetModelType(NPC, "110") -- dwarf male
-            SpawnSet(NPC, "soga_model_type", "110")
-            SpawnSet(NPC, "chest_type", "5477")
-            SpawnSet(NPC, "legs_type", "5478")
-        elseif model == 7 then
-            SetModelType(NPC, "122") -- gnome female
-            SpawnSet(NPC, "soga_model_type", "122")
-            SpawnSet(NPC, "chest_type", "5497")
-            SpawnSet(NPC, "legs_type", "5498")
-        elseif model == 8 then
-            SetModelType(NPC, "121") -- gnome male
-            SpawnSet(NPC, "soga_model_type", "121")
-            SpawnSet(NPC, "chest_type", "5501")
-            SpawnSet(NPC, "legs_type", "5502")
-        elseif model == 9 then
             SetModelType(NPC, "111") -- barbarian female
             SpawnSet(NPC, "soga_model_type", "111")
             SpawnSet(NPC, "chest_type", "5457")

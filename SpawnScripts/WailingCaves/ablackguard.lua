@@ -9,7 +9,6 @@
 
 
 function spawn(NPC)
-AddSpawnAccess(NPC, NPC)
     
 end
 
