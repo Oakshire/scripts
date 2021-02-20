@@ -8,8 +8,8 @@
 
 function cast(Item, Player)
 	Spell = GetSpell(5463, 2, "Spells/Commoner/HomemadeDrinkGenericStaWis.lua")
-	Regenz = 13.2
-	Stat = 120.0
+	Regenz = 135.0
+	Stat = 15.4
 	newDuration = 181800
 	SetSpellData(Spell, "duration1", newDuration)
 	SetSpellData(Spell, "duration2", newDuration)

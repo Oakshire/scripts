@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	ItemScripts/WildAppleCookie.lua
+	Script Name		:	ItemScripts/CabilisCocoaSweetBread.lua
 	Script Purpose	:	
 	Script Author	:	Neatz09
 	Script Date		:	1/31/2021
@@ -7,15 +7,15 @@
 --]]
 
 function cast(Item, Player)
-	Spell = GetSpell(5462, 2, "Spells/Commoner/HomemadeMealGenericAgiSta.lua")
-	Regenz = 77.5
-	Stat = 6.2
-	newDuration = 121200
+	Spell = GetSpell(5462, 2, "Spells/Commoner/HomemadeMealGenericAgiWis.lua")
+	Regenz = 190.0
+	Stat = 13.2
+	newDuration = 24000
 	SetSpellData(Spell, "duration1", newDuration)
 	SetSpellData(Spell, "duration2", newDuration)
 	SetSpellDataIndex(Spell, 0, Regenz)
 	SetSpellDataIndex(Spell, 1, Stat)
-	SetSpellDisplayEffect(Spell, 0, "description", "Increases AGI and STA of target by " .. Stat)
+	SetSpellDisplayEffect(Spell, 0, "description", "Increases AGI and WIS of target by " .. Stat)
 	SetSpellDisplayEffect(Spell, 1, "description", "Increases Out-of-Combat Health Regeneration of target by " .. Regenz)
 	CastCustomSpell(Spell, Player, Player)
 end

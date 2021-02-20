@@ -54,7 +54,7 @@ function dlg4(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 conversation = CreateConversation()
  AddConversationOption(conversation, "You mean the Dark Elves allowed someone to build a castle in their forest?", "dlg5")
-  StartConversation(conversation, NPC, Spawn, "I tracked down where he found his original test subjects, and it led me into the Nektulos Forest.  It seems the "golems" he was originally using were coming from a mysterious manor, more a castle, actually.  I wasn't able to find out too much about the origins of the place, but it surely wasn't Teir'Dal in origin.")
+  StartConversation(conversation, NPC, Spawn, "I tracked down where he found his original test subjects, and it led me into the Nektulos Forest.  It seems the ''golems'' he was originally using were coming from a mysterious manor, more a castle, actually.  I wasn't able to find out too much about the origins of the place, but it surely wasn't Teir'Dal in origin.")
  end
  
  function dlg5(NPC, Spawn)
@@ -132,6 +132,4 @@ end
 
 function offer(NPC, Spawn)
 FaceTarget(NPC, Spawn)
-conversation = CreateConversation()
-OfferQuest(NPC, Spawn, ZarvonLegacy)
 end
