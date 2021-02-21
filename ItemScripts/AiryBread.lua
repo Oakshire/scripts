@@ -9,7 +9,7 @@
 function cast(Item, Player)
 	Spell = GetSpell(5010)
 	Regenz = 63.5
-	newDuration = 20400
+	newDuration = 18000
 	SetSpellData(Spell, "duration1", newDuration)
 	SetSpellData(Spell, "duration2", newDuration)
 	SetSpellDataIndex(Spell, 0, Regenz)

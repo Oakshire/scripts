@@ -190,12 +190,14 @@ function InRange(NPC, Spawn)
 end
 
 function humanFemaleProximity(NPC)
-    local chiChoice = MakeRandomInt(1,3)
+    local chiChoice = MakeRandomInt(1,4)
 
         if chiChoice == 1 then
             PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_79781fd.mp3", "Welcome to the city, newcomer.  All are welcome in the court of Antonia Bayle.", "bow", 4027811518, 2764738720, Spawn)
         elseif chiChoice == 2 then
             PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_aoi_gf_7b765111.mp3", "You stand within the sturdy and unyielding walls of Qeynos, give thanks for their existence!", "point", 1908238477, 1252205270, Spawn)
+        elseif chiChoice == 3 then
+            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_9a63d2e3.mp3", "Hail, I am pleased to see so many eager new adventurers among us.", "hello", 3500366421, 3655995659, Spawn)
         else
             PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_1dba0c5b.mp3", "Salutations and warm greetings to you.", "curtsey", 707852693, 1737331106, Spawn)
         end
@@ -216,10 +218,14 @@ function humanMaleProximity(NPC)
 end
 
 function kerranProximity(NPC)
-    local chiChoice = MakeRandomInt(1,2)
+    local chiChoice = MakeRandomInt(1,4)
 
         if chiChoice == 1 then
             PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_3fd40378.mp3", "Keep your ears open.", "listen", 1525987814, 3335262701, Spawn)
+        elseif chiChoice == 2 then
+            PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_aoi_gm_c0c28955.mp3", "Honest as a kerra, when the fish are out of reach.", "wink", 306655625, 4097745959, Spawn)
+        elseif chiChoice == 3 then
+            PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_a981f363.mp3", "It is better to swallow your pride than to lose your life.", "nod", 2178756893, 2548415956, Spawn)
         else
             PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_aoi_gm_a3788b05.mp3", "Watch the tail!  Watch the tail!", "scold", 1917905155, 2497295526, Spawn)
         end

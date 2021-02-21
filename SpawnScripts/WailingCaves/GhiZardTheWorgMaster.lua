@@ -33,8 +33,10 @@ PlayFlavor(NPC, "", "Just picking my target, Master.", "", 1689589577, 4560189, 
 end
 
 function WorgMaster3(NPC, Spawn)
-MoveToLocation(NPC, -278.72, -49.44, -85.01, 2, "WorgMaster4", false)
+MoveToLocation(NPC, -278.72, -49.44, -85.01, 2, "WorgMaster4")
 end
+
+-- BELOW MAKES WORGS AND GHI'ZARD ATTACKABLE
 
 function WorgMaster4(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -42,11 +44,11 @@ PlayFlavor(NPC, "", "Find your food, worgs!  Attack!", "", 1689589577, 4560189, 
 SpawnSet(NPC, "attackable", "1")
 SpawnSet(NPC, "show_level", "1")
 SpawnSet(NPC, "faction", "1")
-Attack(NPC, Spawn)
 local zone = GetZone(NPC)
 local Worg1 = GetSpawnByLocationID(zone, 404849)
 local Worg2 = GetSpawnByLocationID(zone, 404850)
 local Worg3 = GetSpawnByLocationID(zone, 404851)
+local Worg4 = GetSpawnByLocationID(zone, 404852)
 
 SpawnSet(Worg1, "attackable", "1")
 SpawnSet(Worg1, "show_level", "1")
@@ -64,6 +66,9 @@ SpawnSet(Worg4, "attackable", "1")
 SpawnSet(Worg4, "show_level", "1")
 SpawnSet(Worg4, "faction", "1")
 end
+  
+
+-- BELOW 
 
 function death(NPC, Spawn)
 local zone = GetZone(NPC)

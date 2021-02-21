@@ -1,32 +1,154 @@
 --[[
-    Script Name    : Quests/Commonlands/PlainOleDisease.lua
-    Script Author  : neatz09
-    Script Date    : 2018.12.30 10:12:56
-    Script Purpose : 
+	Script Name		:	Quests/Commonlands/PlainOleDisease.lua
+	Script Purpose	:	Handles the quest, "Plain 'Ole Disease?"
+	Script Author	:	premierio015
+	Script Date		:	20.02.2021
+	Script Notes	:	Auto generated with QuestParser.
 
-        Zone       : Commonlands
-        Quest Giver: 
-        Preceded by: None
-        Followed by: 
+	Zone			:	Commonlands
+	Quest Giver		:	
+	Preceded by		:	None
+	Followed by		:	None
 --]]
 
-function Init(Quest)
 
+function Init(Quest)
+	AddQuestStepKill(Quest, 1, "I should collect stone beetle mandibles", 2, 100, "Healer Hanif has sent me to get him some ingredients for use in making medicinal aids.", 161, 330066, 330070,330745)
+	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-
+	    FaceTarget(QuestGiver, Player)
+         conversation = CreateConversation()
+         AddConversationOption(conversation, "Sounds easy enough.", "mushrooms")
+         AddConversationOption(conversation, "Where should I look for them?")
+         StartConversation(conversation, QuestGiver, Player, "Great!  I require mushrooms, stone beetle mandibles and the festering skin of many scourge rats.")
 end
 
+function mushrooms(QuestGiver, Player)
+    FaceTarget(QuestGiver, Player)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "Thank you.")
+    StartConversation(conversation, QuestGiver, Player, "The mushrooms tend to grow on the banks of dog trapper lake.  The stone beetles and scourge rats have been seen congregating near Wasp Hill.")
+end
+    
+    
 function Declined(Quest, QuestGiver, Player)
-
+	-- Add dialog here for when the quest is declined
 end
 
-function quest_complete(Quest, QuestGiver, Player)
+function Deleted(Quest, QuestGiver, Player)
+	-- Remove any quest specific items here when the quest is deleted
+end
 
+function Step1Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 1, "I have the mandibles of some stone beetles.")
+
+	AddQuestStepHarvest(Quest, 2, "I should harvest mushrooms along Dog Trapper Lake's banks", 2, 100, "Healer Hanif has sent me to get him some ingredients for use in making medicinal aids.", 821, 331124)
+	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+end
+
+function Step2Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 2, "I harvested some riverbank mushrooms.")
+
+	AddQuestStepKill(Quest, 3, "I should hunt scourge rats for their festering skin", 3, 100, "Healer Hanif has sent me to get him some ingredients for use in making medicinal aids.", 415, 330064, 330718)
+	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+end
+
+function Step3Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 3, "I have the sore covered skins from some scourge rats.")
+
+	AddQuestStepChat(Quest, 4, "I should return to Hanif after collecting each of the medicinal ingredients", 1, "Healer Hanif has sent me to get him some ingredients for use in making medicinal aids.", 11, 330135)
+	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
+end
+
+function Step4Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 4, "I gave the items to Healer Hanif.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have obtained each of the ingredients Healer Hanif requested.")
+
+	AddQuestStepChat(Quest, 5, "Give the medicine to the leper, Durio Caepio", 1, "Healer Hanif has asked me to help by administering the medicinal aids to several of the victims.", 11, 330136)
+	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
+end
+
+function Step5Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 5, "Durio Caepio spoke of bizarre visions.")
+
+	AddQuestStepChat(Quest, 6, "Give the medicine to the leper, Galla Lentula", 1, "Healer Hanif has asked me to help by administering the medicinal aids to several of the victims.", 11, 330138)
+	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")
+end
+
+function Step6Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 6, "Galla Lentula was lucid enough to explain the visions that many victims have had.")
+
+	AddQuestStepChat(Quest, 7, "I should tell Hanif about the victims' disturbing visions", 1, "Healer Hanif has asked me to help by administering the medicinal aids to several of the victims.", 11, 330135 )
+	AddQuestStepCompleteAction(Quest, 7, "Step7Complete")
+end
+
+function Step7Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 7, "I spoke to Hanif.")
+	UpdateQuestTaskGroupDescription(Quest, 2, "I spoke to Hanif about the disturbing visions the victims have reported.")
+
+	AddQuestStepChat(Quest, 8, "I should find Lucretias studying graves", 1, "With Healer Hanif's studies now looking at magical influences for this suffering, he has asked me to get some items from Lucretias Domna.", 11, 330270)
+	AddQuestStepCompleteAction(Quest, 8, "Step8Complete")
+end
+
+function Step8Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 8, "I spoke with Lucretias Domna.")
+
+	AddQuestStepKill(Quest, 9, "I am to hunt zombies for sinew", 7, 100, "With Healer Hanif's studies now looking at magical influences for this suffering, he has asked me to get some items from Lucretias Domna.", 414, 330271, 330754, 330193, 330756, 330154)
+	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")
+end
+
+function Step9Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 9, "I was able to get the zombie sinew for Lucretias.")
+
+	AddQuestStepChat(Quest, 10, "Now to exchange the zombie sinew for the items Lucretias has", 1, "With Healer Hanif's studies now looking at magical influences for this suffering, he has asked me to get some items from Lucretias Domna.", 11, 330270)
+	AddQuestStepCompleteAction(Quest, 10, "Step10Complete")
+end
+
+function Step10Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 10, "I got the items from Lucretias Domna.")
+	UpdateQuestTaskGroupDescription(Quest, 3, "I helped Lucretias Domna in exchange for the required scroll and flesh.")
+
+	AddQuestStepChat(Quest, 11, "I should return to Hanif at the leper camp", 1, "The Dismal Rage contact gave me the scroll and flesh that Healer Hanif needs for his testing.", 11, 330135)
+	AddQuestStepCompleteAction(Quest, 11, "QuestComplete")
+end
+
+function QuestComplete(Quest, QuestGiver, Player)
+	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
+	UpdateQuestStepDescription(Quest, 11, "Healer Hanif gave me the rewards that he promised.")
+	UpdateQuestTaskGroupDescription(Quest, 4, "Healer Hanif gave me the rewards that he promised in exchange for my help.")
+
+	UpdateQuestDescription(Quest, "Healer Hanif rewarded me in exchange for my help in his studies concerning the particularly virulent strain of leprosy.  He seemed excited that it may be one of the poxes come from the Plane of Disease, long since dormant.")
+	GiveQuestReward(Quest, Player)
 end
 
 function Reload(Quest, QuestGiver, Player, Step)
-
+	if Step == 1 then
+		Step1Complete(Quest, QuestGiver, Player)
+	elseif Step == 2 then
+		Step2Complete(Quest, QuestGiver, Player)
+	elseif Step == 3 then
+		Step3Complete(Quest, QuestGiver, Player)
+	elseif Step == 4 then
+		Step4Complete(Quest, QuestGiver, Player)
+	elseif Step == 5 then
+		Step5Complete(Quest, QuestGiver, Player)
+	elseif Step == 6 then
+		Step6Complete(Quest, QuestGiver, Player)
+	elseif Step == 7 then
+		Step7Complete(Quest, QuestGiver, Player)
+	elseif Step == 8 then
+		Step8Complete(Quest, QuestGiver, Player)
+	elseif Step == 9 then
+		Step9Complete(Quest, QuestGiver, Player)
+	elseif Step == 10 then
+		Step10Complete(Quest, QuestGiver, Player)
+	elseif Step == 11 then
+		QuestComplete(Quest, QuestGiver, Player)
+	end
 end
+
+
+
 

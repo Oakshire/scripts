@@ -14,11 +14,11 @@ blackguard1_ID = 404841
 blackguard2_ID = 404844
 
 function spawn(NPC)
-SetTempVariable(NPC, "HAILED1", "true")  
+SetTempVariable(NPC, "HAILED1", "true") -- IMPORTANT, USED TO RESTRICT PLAYERS TO TALK WITH BOSS AND LAUNCH THE BOSS SCRIPT AGAIN UNTIL HE RESPAWNS 
 end
 
 function hailed(NPC, Spawn)
-    if GetTempVariable(NPC, "HAILED1")  == "true" then
+    if GetTempVariable(NPC, "HAILED1")  == "true" then  -- IMPORTANT, USED TO RESTRICT PLAYERS TO TALK WITH BOSS AND LAUNCH THE BOSS SCRIPT AGAIN UNTIL HE RESPAWNS
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     PlayFlavor(NPC, "lord_ree/wailingcaves/lord_ree/lord_ree000.mp3", "", "", 376398214, 2276802800, Spawn)
@@ -34,16 +34,19 @@ function respawn(NPC)
          spawn(NPC)
 end
 
-function Phase1(NPC, Spawn)
-SetTempVariable(NPC, "HAILED1", "false")
+function Phase1(NPC, Spawn) 
+SetTempVariable(NPC, "HAILED1", "false") -- IMPORTANT, USED TO RESTRICT PLAYERS TO TALK WITH BOSS AND LAUNCH THE BOSS SCRIPT AGAIN UNTIL HE RESPAWNS
 PlayFlavor(NPC, "", "Ha ha ha!  Blackguards, take care of this rodent!", "cackle", 1689589577, 4560189, Spawn)
+
+-- BELOW SPAWNS BLACKGUARDS AFTER THE SPEECH
 local zone = GetZone(NPC)
 blackguard1 = SpawnByLocationID(zone, blackguard1_ID)
 blackguard2 = SpawnByLocationID(zone, blackguard2_ID)
-blackguard3 = SpawnByLocationID(zone, blackguard3_ID)
+blackguard3 = SpawnByLocationID(zone, blackguard3_ID)   
 blackguard4 = SpawnByLocationID(zone, blackguard4_ID)
 end
 
+-- BELOW MAKES CONCUBINE ATTACKABLE AND CHANGE THEIR APPEARANCE
 function FinalPhase(NPC, Spawn)
 local zone = GetZone(NPC)
 local Concubine1 = GetSpawnByLocationID(zone, 404836)

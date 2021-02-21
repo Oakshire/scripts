@@ -131,7 +131,9 @@ end
 
 function dlg9(NPC, Spawn)
   FaceTarget(NPC, Spawn)
-  SetStepComplete(Spawn, TheMysteriousMissingShipment, 3) 
+  if HasQuest(Spawn, TheMysteriousMissingShipment) and GetQuestStep(Spawn, TheMysteriousMissingShipment) == 3 then
+  SetStepComplete(Spawn, TheMysteriousMissingShipment, 3)
+  end
   conversation = CreateConversation()
   AddConversationOption(conversation, "My pleasure, you'll hear their screams from here.", "dlg10")
   AddConversationOption(conversation, "Now you want me to kill people for you?  What's in it for me?", "dlg11")
