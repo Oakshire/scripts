@@ -27,7 +27,7 @@ function spawn(NPC)
     local beard = MakeRandomInt(1164,1191)
         SpawnSet(NPC, "facial_hair_type", beard)
 
---    SetPlayerProximityFunction(NPC, 10, "InRange")
+    SetPlayerProximityFunction(NPC, 10, "InRange")
 
     AddTimer(NPC, 4000, "EmoteLoop")
 end
@@ -103,12 +103,14 @@ function InRange(NPC, Spawn)
 end
 
 function humanFemaleProximity(NPC)
-    local chiChoice = MakeRandomInt(1,3)
+    local chiChoice = MakeRandomInt(1,4)
 
         if chiChoice == 1 then
             PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_79781fd.mp3", "Welcome to the city, newcomer.  All are welcome in the court of Antonia Bayle.", "bow", 4027811518, 2764738720, Spawn)
         elseif chiChoice == 2 then
             PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_aoi_gf_7b765111.mp3", "You stand within the sturdy and unyielding walls of Qeynos, give thanks for their existence!", "point", 1908238477, 1252205270, Spawn)
+        elseif chiChoice == 3 then
+            PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_9a63d2e3.mp3", "Hail, I am pleased to see so many eager new adventurers among us.", "hello", 3500366421, 3655995659, Spawn)
         else
             PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gf_1dba0c5b.mp3", "Salutations and warm greetings to you.", "curtsey", 707852693, 1737331106, Spawn)
         end

@@ -7,15 +7,18 @@
 --]]
 
 function spawn(NPC)
- 
+
 end
 
-function casted_on(NPC, Spawn, SpellName)
-                 if SpellName == "use" then
-                 SendMessage(Spawn, "This door is securely locked!", "yellow")
+function usedoor(NPC, Spawn, IsOpen)
+if IsOpen == true then
+CloseDoor()
+else
+    if Spawn then 
+SendMessage(Spawn, "This door is closed.", "yellow")
 end
-   end         
-             
+   end
+     end
     
 
 

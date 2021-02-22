@@ -8,7 +8,7 @@
 
 
 function spawn(NPC)
-
+SetAggroRadius(NPC, 20, true)
 end
 
 

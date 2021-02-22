@@ -10,11 +10,25 @@ function spawn(NPC)
 
 end
 
-function casted_on(NPC, Spawn, Spell)
-                 if Spell == "use" then
-                 SendMessage(Spawn, "This door is closed!", "yellow")
+function usedoor(NPC, Spawn, IsOpen)
+     local zone = GetZone(NPC)
+    local LordRee = GetSpawnByLocationID(zone, 404840)
+    
+    if GetTempVariable(LordRee, "HAILED1") == "false" and IsOpen == false then
+    CloseDoor(NPC)
+    SendMessage(Spawn, "Door is closed.", "yellow")
+    elseif GetTempVariable(LordRee, "HAILED1") == "false" and IsOpen == true then
+    CloseDoor(NPC)
+    SendMessage(Spawn, "Door is closed.", "yellow")
+    elseif IsAlive(LordRee) and IsOpen == true then
+    CloseDoor(NPC)
+    elseif IsAlive(LordRee) and IsOpen == false then
+    OpenDoor(NPC)
+    elseif not IsAlive(LordRee) and IsOpen == false then
+    SendMessage(Spawn, "Door is closed.", "yellow")
+  end
 end
-   end  
+
 
 function respawn(NPC)
          spawn(NPC)

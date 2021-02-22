@@ -49,11 +49,13 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I feel I have eliminated enough of the Dervish cutthroats.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I feel I have eliminated enough of the Dervish cutthroats.")
         CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I feel I have eliminated enough of the Dervish thugs.")
+
         CheckProgress(Quest, QuestGiver, Player)
 end
 

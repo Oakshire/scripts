@@ -19,7 +19,6 @@ function respawn(NPC)
 end
 
 function waypoints(NPC)
-    math.randomseed(os.time())
 	MovementLoopAddLocation(NPC, 746.75, -25.95, -424.81, 2, math.random(10, 20))
 	MovementLoopAddLocation(NPC, 757.57, -26.29, -423.17, 2, 0)
 	MovementLoopAddLocation(NPC, 764.1, -26.69, -421.83, 2, math.random(10, 20))

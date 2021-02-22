@@ -164,9 +164,9 @@ function Option9(NPC, Spawn)
  local conversation = CreateConversation()  
  PlayFlavor(NPC, "dyymona_k_vexx/freeport_combined/quest/racial/darkelf/dyymona_kvexx_017.mp3", "", "", 3264193808, 1800689916, Spawn)
   AddConversationOption(conversation, "That could be fun.", "Option10")
-  StartConversation(conversation, NPC, Spawn, "That is to be expected, "..GetName(Spawn.."!  I can't tell you how many times I've been tempted to pluck their wings off, just to watch them squirm.")
+  StartConversation(conversation, NPC, Spawn, "That is to be expected, "..GetName(Spawn).."!  I can't tell you how many times I've been tempted to pluck their wings off, just to watch them squirm.")
 end
-
+   
 
 function Option10(NPC, Spawn)
  FaceTarget(NPC, Spawn)

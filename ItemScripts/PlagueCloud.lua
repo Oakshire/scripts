@@ -7,5 +7,4 @@ Script Name		:	ItemScripts/PlagueCloud.lua
 --]]
 function used(Item, Player)
 CastSpell(Player, 5028, 1) 
-
 end
