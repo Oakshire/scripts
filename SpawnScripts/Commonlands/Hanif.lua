@@ -8,8 +8,23 @@
 
 local PlainOleDisease = 454
 
+function EmoteLoop (NPC)
+        local choice = math.random(1,2)
+        local timer = math.random(2500,3500)
+  
+        if choice == 1 then
+                PlayAnimation(NPC, 12030)
+                AddTimer(NPC, timer, "EmoteLoop")
+        elseif choice == 2 then
+                PlayAnimation(NPC, 13056)
+                AddTimer(NPC, timer, "EmoteLoop")
+   end
+      end
+  
+
 function spawn(NPC)
 ProvidesQuest(NPC, PlainOleDisease)
+EmoteLoop(NPC)
 end
 
 function hailed(NPC, Spawn)
@@ -43,7 +58,8 @@ function hailed(NPC, Spawn)
       AddConversationOption(conversation, "They spoke of visions when I gave them the medicine.", "dlg4")
      StartConversation(conversation, NPC, Spawn, "Delightful!  You have once again, proven that each one of us can do a little to bring some portion of misery to an end.")
    elseif GetQuestStep(Spawn, PlainOleDisease) == 11 and HasItem(Spawn, 14012) and HasItem(Spawn, 11167) then
-       GiveLoot(Spawn, NPC, 0, 14012, 11167 )
+       RemoveItem(Spawn, 14012)
+       RemoveItem(Spawn, 11167)
        AddConversationOption(conversation, "Ahem.  My reward?", "dlg9")
        AddConversationOption(conversation, "I seem to recall you mentioning some ''crude rewards'' for my help.", "dlg9")
        AddConversationOption(conversation, "I am glad to have been able to help.  It is so rewarding to me!", "dlg10")
@@ -135,9 +151,9 @@ end
 
 function dlg9(NPC, Spawn)
 FaceTarget(NPC, Spawn)
--- PlayAnimation(NPC, "thank you")
+PlayAnimation(NPC, 13061)
 conversation = CreateConversation()
- AddConversationOption(conversation, "Thank you.")
+ AddConversationOption(conversation, "Thank you.", "complete")
 StartConversation(conversation, NPC, Spawn, "And you are so deserving of it.  I am just so excited about this breakthrough.  Forgive my one track mind.  You have been an invaluable help to me!  Such help is rather difficult to find these days.  Here are the rewards you have earned.")
 end
 
@@ -145,8 +161,12 @@ end
 function dlg10(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 conversation = CreateConversation()
-AddConversationOption(conversation, "Thank you.")
+AddConversationOption(conversation, "Thank you.", "complete")
 StartConversation(conversation, NPC, Spawn, "A good deed is its own reward, but I can think of none more deserving of some physical rewards than you.  You have been an invaluable help to me!  Such help is rather difficult to find these days.  Here are the rewards you have earned.")
+end
+
+function complete(NPC, Spawn)
+SetStepComplete(Spawn, PlainOleDisease, 11)
 end
 
 
@@ -166,5 +186,6 @@ end
     
 function respawn(NPC)
 spawn(NPC)
+EmoteLoop(NPC)
 end
 

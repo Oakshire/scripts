@@ -20,10 +20,11 @@ function usedoor(NPC, Spawn, IsOpen)
     elseif GetTempVariable(LordRee, "HAILED1") == "false" and IsOpen == true then
     CloseDoor(NPC)
     SendMessage(Spawn, "Door is closed.", "yellow")
-    elseif IsAlive(LordRee) and IsOpen == true then
+    elseif IsAlive(LordRee) and IsOpen == true and HasItem(Spawn, 2006) then
     CloseDoor(NPC)
-    elseif IsAlive(LordRee) and IsOpen == false then
+    elseif IsAlive(LordRee) and HasItem(Spawn, 2006) and IsOpen == false then
     OpenDoor(NPC)
+    RemoveItem(Spawn, 2006)
     elseif not IsAlive(LordRee) and IsOpen == false then
     SendMessage(Spawn, "Door is closed.", "yellow")
   end

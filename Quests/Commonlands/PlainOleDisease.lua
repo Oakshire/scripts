@@ -25,6 +25,7 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	    FaceTarget(QuestGiver, Player)
+	     PlayFlavor(QuestGiver, "voiceover/english/orwen_neovra/commonlands/quests/orwen_neovra/orwen_neovra003.mp3", "", "", 2440483082, 3137658382, Spawn)
          conversation = CreateConversation()
          AddConversationOption(conversation, "Sounds easy enough.")
          AddConversationOption(conversation, "Where should I look for them?", "mushrooms")

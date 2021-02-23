@@ -19,10 +19,13 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	 FaceTarget(QuestGiver, Player)
+	    PlayFlavor(NPC, "voiceover/english/orwen_neovra/commonlands/quests/orwen_neovra/orwen_neovra003.mp3", "", "", 2440483082, 3137658382, Spawn)
          conversation = CreateConversation()
          AddConversationOption(conversation, "I'll be right back.")
          StartConversation(conversation, QuestGiver, Player, "I knows.")
 end
+
+
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

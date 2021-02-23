@@ -43,6 +43,8 @@ end
 
 function Phase1(NPC, Spawn) 
 SetTempVariable(NPC, "HAILED1", "false") -- IMPORTANT, USED TO RESTRICT PLAYERS TO TALK WITH BOSS AND LAUNCH THE BOSS SCRIPT AGAIN UNTIL HE RESPAWNS
+local door = GetSpawn(NPC, 2580105)
+CloseDoor(door)
 PlayFlavor(NPC, "", "Ha ha ha!  Blackguards, take care of this rodent!", "cackle", 1689589577, 4560189, Spawn)
 
 -- BELOW SPAWNS BLACKGUARDS AFTER THE SPEECH
@@ -87,3 +89,6 @@ SpawnSet(NPC, "show_level", "1")
 SpawnSet(NPC, "faction", "1")
 end
    end
+
+
+
