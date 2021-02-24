@@ -11,9 +11,7 @@ local quest = 527
 function examined(Item, Player)
 	if not HasQuest(Player, quest) and not HasCompletedQuest(Player, quest) then
 		OfferQuest(nil, Player, quest)
-
-		if HasItem(Player, 4766) or HasCompletedQuest(Player, quest) then
+		elseif HasQuest(Player, quest) then
 			RemoveItem(Player, 4766)
 end
 	end
-        end

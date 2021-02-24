@@ -13,7 +13,7 @@ function precast(Caster, Target)
         return false
     end
 
-if not IsFlanking(Target, Caster) then
+if not IsFlanking(Caster, Target) then
     SendMessage(Caster, "Must be flanking or behind", "yellow")
     return false
 end

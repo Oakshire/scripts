@@ -10,14 +10,16 @@ ZarvonLegacy = 446
 
 
 function spawn(NPC)
-
+ProvidesQuest(NPC, ZarvonLegacy)
 end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/impelia_abettus/commonlands/qst_impeliaabettus.mp3", "", "", 1488175295, 2563794, Spawn)
 	conversation = CreateConversation()
+	if not HasQuest(Spawn, ZarvonLegacy) and not HasCompletedQuest(Spawn, ZarvonLegacy) then
 	AddConversationOption(conversation, "What disease have you contracted?", "dlg1")
+	end
 	AddConversationOption(conversation, "Thanks for the warning.")
 	StartConversation(conversation, NPC, Spawn, "Please.  Don't come near me.  I'm very sick right now, and I don't want to harm anyone else.  Let me just pass.  In peace.")
 end
@@ -132,4 +134,5 @@ end
 
 function offer(NPC, Spawn)
 FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, ZarvonLegacy)
 end
