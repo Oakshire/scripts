@@ -9,6 +9,8 @@
 local FarSeasRequisitionWC124 = 5212
 local FarSeasRequisitionWC002 = 5213
 local FarSeasRequisitionWC154 = 5214
+local FarSeasRequisitionWC077 = 5215
+local FarSeasRequisitionWC045 = 5216
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange", Spawn)
@@ -33,6 +35,10 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "I have requisition # WC 002", "COMPLETE")
     elseif GetQuestStep(Spawn, FarSeasRequisitionWC154) == 2 then
     AddConversationOption(conversation, "I have requisition # WC 154", "COMPLETE")
+    elseif GetQuestStep(Spawn, FarSeasRequisitionWC077) == 3 then
+     AddConversationOption(conversation, "I have requisition # WC 077", "COMPLETE") 
+    elseif GetQuestStep(Spawn, FarSeasRequisitionWC045) == 2 then
+     AddConversationOption(conversation, "I have requisition # WC 045", "COMPLETE") 
     end
 	AddConversationOption(conversation, "Then I'll leave.")
 	StartConversation(conversation, NPC, Spawn, "Where's your requisition? Only those who filled requisitions should speak to me.")
@@ -64,7 +70,11 @@ function COMPLETE(NPC, Spawn)
 	elseif GetQuestStep(Spawn, FarSeasRequisitionWC002) == 5 then
 	SetStepComplete(Spawn, FarSeasRequisitionWC002, 5)
 	elseif 	GetQuestStep(Spawn, FarSeasRequisitionWC154) == 2 then
-	SetStepComplete(Spawn, FarSeasRequisitionWC154, 2) 
+	SetStepComplete(Spawn, FarSeasRequisitionWC154, 2)
+	elseif GetQuestStep(Spawn, FarSeasRequisitionWC077) == 3 then
+	SetStepComplete(Spawn, FarSeasRequisitionWC077, 3)
+	elseif GetQuestStep(Spawn, FarSeasRequisitionWC045) == 2 then
+	SetStepComplete(Spawn, FarSeasRequisitionWC045, 2)
 	AddConversationOption(conversation, "Okay.")
 	StartConversation(conversation, NPC, Spawn, "Lets me see ... Yes, yes! Here we are. This order is overdue, and the Far Seas Trading Company never pays full price for late orders. Consider yourself lucky that you get paid at all.  Thank you, come again.")
 end

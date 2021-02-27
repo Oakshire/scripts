@@ -10,11 +10,8 @@
 
 function cast(Caster, Target, Speed)
     AddSpellBonus(Target, 609, Speed)
-
 end
 
 function remove(Caster, Target)
     RemoveSpellBonus(Target)
-
 end
-
