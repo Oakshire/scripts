@@ -26,6 +26,7 @@ function spawn(NPC)
 
     local beard = MakeRandomInt(1164,1191)
         SpawnSet(NPC, "facial_hair_type", beard)
+        SpawnSet(NPC, "soga_facial_hair_type", beard)
 
     SetPlayerProximityFunction(NPC, 10, "InRange")
 

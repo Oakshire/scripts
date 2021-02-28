@@ -75,15 +75,19 @@ function Hair(NPC)
         if Type == 132 or Type == 134 then
             HairType = MakeRandomInt(1121,1140)
             SpawnSet(NPC, "hair_type", HairType)
+            SpawnSet(NPC, "soga_hair_type", HairType)
         elseif Type == 110 or Type == 112 or Type == 121 or Type == 122 then
             HairType = MakeRandomInt(1133,1140)
             SpawnSet(NPC, "hair_type", HairType)
+            SpawnSet(NPC, "soga_hair_type", HairType)
         elseif Type == 109 then
             HairType = MakeRandomInt(1135,1140)
             SpawnSet(NPC, "hair_type", HairType)
+            SpawnSet(NPC, "soga_hair_type", HairType)
         else
             HairType = MakeRandomInt(1136,1140)
             SpawnSet(NPC, "hair_type", HairType)
+            SpawnSet(NPC, "soga_hair_type", HairType)
         end
 end
 
@@ -94,15 +98,19 @@ function Face(NPC)
         if Type == 134 then
             local FaceHairType = MakeRandomInt(1164,1191)
             SpawnSet(NPC, "facial_hair_type", FaceHairType)
+            SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
         elseif Type == 110 then
             local FaceHairType = MakeRandomInt(1164,1170)
             SpawnSet(NPC, "facial_hair_type", FaceHairType)
+            SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
         elseif Type == 112 then
             local FaceHairType = MakeRandomInt(1185,1189)
             SpawnSet(NPC, "facial_hair_type", FaceHairType)
+            SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
         else
             local FaceHairType = MakeRandomInt(1166,1175)
             SpawnSet(NPC, "facial_hair_type", FaceHairType)
+            SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
         end
 end
 
