@@ -7,33 +7,30 @@
 --]]
 
 function spawn(NPC)
---[[ Don't use this code (crashes things)
-
         math.randomseed(os.time())
-        local petname = math.random (1,10)
+        local choice = math.random (1,10)
 
-        if petname == 1 then
+        if choice == 1 then
             SpawnSet(NPC, "name", "Jonobtik") 
-        elseif petname == 2 then
+        elseif choice == 2 then
             SpawnSet(NPC, "name", "Jibaner") 
-        elseif petname == 3 then
+        elseif choice == 3 then
             SpawnSet(NPC, "name", "Zartik")
-        elseif petname == 4 then
+        elseif choice == 4 then
             SpawnSet(NPC, "name", "Konantik")
-        elseif petname == 5 then
+        elseif choice == 5 then
             SpawnSet(NPC, "name", "Kebn")
-        elseif petname == 6 then
+        elseif choice == 6 then
             SpawnSet(NPC, "name", "Lenarn")
-        elseif petname == 7 then
+        elseif choice == 7 then
             SpawnSet(NPC, "name", "Jonarn")
-        elseif petname == 8 then
+        elseif choice == 8 then
             SpawnSet(NPC, "name", "Jonober")
-        elseif petname == 9 then
+        elseif choice == 9 then
             SpawnSet(NPC, "name", "Ganer")
         else
             SpawnSet(NPC, "name", "Gobantik")
         end
---]]
 end
 
 function hailed(NPC, Spawn)
