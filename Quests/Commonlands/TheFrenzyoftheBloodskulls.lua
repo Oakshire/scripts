@@ -15,7 +15,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to kill 7 Bloodskull warriors.", 7, 100, "I need to kill some Bloodskull orcs and collect some samples of the frenzy root.", 611, 330123, 330250)
 	AddQuestStepKill(Quest, 2, "I need to kill 3 Bloodskull priests", 3, 100, "I need to kill some Bloodskull orcs and collect some samples of the frenzy root.", 611, 330249)
-	AddQuestStepHarvest(Quest, 3, "I need to collect five samples of Bloodskull Frenzy Root", 5, 100, "I need to kill some Bloodskull orcs and collect some samples of the frenzy root.", 197, 331123)
+	AddQuestStepHarvest(Quest, 3, "I need to collect five samples of Bloodskull Frenzy Root", 5, 100, "I need to kill some Bloodskull orcs and collect some samples of the frenzy root.", 197, 4403)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
@@ -38,14 +38,17 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have slain 7 Bloodskull warriors.")
+	CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have slain 3 Bloodskull priests.")
+	CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I have collected five Bloodskull Frenzy Root samples.")
+	CheckProgress(Quest, QuestGiver, Player)
 end
 
 
@@ -62,7 +65,7 @@ end
 
 function CheckProgress(Quest, QuestGiver, Player)
 if QuestStepIsComplete(Player, 402, 1) and QuestStepIsComplete(Player, 402, 2) and QuestStepIsComplete(Player, 402, 3) then
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain the orcs and collected the root samples.")
+UpdateQuestTaskGroupDescription(Quest, 1, "I have slain the orcs and collected the root samples.")
 AddQuestStepChat(Quest, 4, "I need to return to Rainus", 1, "Now that I have done as he asked, I should return to Rainus Canton.", 11, 330246)
 AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end

@@ -8,12 +8,23 @@
 
 local Rainus = 401
 local QUEST = 402
+local QUEST2 = 403
 
 function spawn(NPC)
 
 end
 
 function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    local choice = math.random(1, 3)
+    if choice == 1 then
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0, Spawn)
+    elseif choice == 2 then
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1004.mp3", "", "", 0, 0, Spawn)
+    else
+     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "", "", 0, 0, Spawn)
+    end
+    
     if not HasQuest(Spawn, QUEST) and not HasCompletedQuest(Spawn, QUEST) then
     if GetQuestStep(Spawn, Rainus) == 1 then
     SetStepComplete(Spawn, Rainus, 1)
@@ -24,8 +35,59 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, " " .. GetName(Spawn) .. ", bound in service to none.", "Option1")
 	AddConversationOption(conversation, " " .. GetName(Spawn) .. ", my loyalties remain private.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Rainus Canton, a once wandering sword now bound in service to the Overlord. And yourself?")
-end
+	elseif GetQuestStep(Spawn, QUEST) == 1 or GetQuestStep(Spawn, QUEST) == 2 or GetQuestStep(Spawn, QUEST) == 3 then
+    progress0(NPC, Spawn)
+    elseif GetQuestStep(Spawn, QUEST) == 4 then
+    progress1(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST) then
+    quest_complete1(NPC, Spawn)
+    elseif GetQuestStep(Spawn, QUEST2) == 1 or GetQuestStep(Spawn, QUEST2) == 2 then
+    function quest2_progress0(NPC, Spawn)
     end
+    if GetQuestStep(Spawn, QUEST2) == 3 then
+    function quest2_progress1(NPC, Spawn)
+    end
+ end
+
+function progress0(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Not yet.")
+	StartConversation(conversation, NPC, Spawn, "Have you done as I asked?")
+end
+
+function progress1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I have, here are the root samples.", "quest_complete1")
+	StartConversation(conversation, NPC, Spawn, "Have you done as I asked?")
+end
+
+function quest2_progress0(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Not yet.")
+	StartConversation(conversation, NPC, Spawn, "Did you slay the orcs and get the orders?")
+
+end
+
+function quest2_progress1(NPC, Spawn)
+    
+    
+end
+
+
+
+
+function quest_complete1(NPC, Spawn)
+    if GetQuestStep(Spawn, QUEST) == 4 then
+    SetStepComplete(Spawn, QUEST, 4)
+    end
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "You mentioned having more work for me.")
+	StartConversation(conversation, NPC, Spawn, "Good work, " .. GetName(Spawn) .. ". I'll get these to our alchemist for study.")
+end
 
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -86,6 +148,19 @@ function Option7(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Head west of here. Once you find the orcs, pay your respects to the Overlord: kill some of the Bloodskull warriors and priests. However, and this is the important part, I would also like some samples of the Frenzy Root. The shaman mixture we have, don't worry about that, but bring me at least five root samples.")
 end
 
+function Option8(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "All right.", "offer2")
+	StartConversation(conversation, NPC, Spawn, "That's right. I believe the orcs in this region are acting without new orders, they seem to be somewhat stagnant, or at the very least slow. They either have an inept leader or an absent one. I'd like you to head to the ruined towers west of here. There are some Bloodskull tower guards, kill them and search the corpses for the standing orders for these Bloodskull orcs. I'd like to see what they're working toward, if anything.")
+end
+
+function offer2(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST2)
+end
+
+   
 
 function offer(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
