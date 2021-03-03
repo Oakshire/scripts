@@ -39,15 +39,15 @@ function hailed(NPC, Spawn)
     progress0(NPC, Spawn)
     elseif GetQuestStep(Spawn, QUEST) == 4 then
     progress1(NPC, Spawn)
-    elseif HasCompletedQuest(Spawn, QUEST) then
+    elseif HasCompletedQuest(Spawn, QUEST) and not HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST2) then
     quest_complete1(NPC, Spawn)
     elseif GetQuestStep(Spawn, QUEST2) == 1 or GetQuestStep(Spawn, QUEST2) == 2 then
-    function quest2_progress0(NPC, Spawn)
+    quest2_progress0(NPC, Spawn)
+    elseif GetQuestStep(Spawn, QUEST2) == 3 then
+     quest2_progress1(NPC, Spawn)
     end
-    if GetQuestStep(Spawn, QUEST2) == 3 then
-    function quest2_progress1(NPC, Spawn)
-    end
- end
+end
+ 
 
 function progress0(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -68,11 +68,13 @@ function quest2_progress0(NPC, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "Not yet.")
 	StartConversation(conversation, NPC, Spawn, "Did you slay the orcs and get the orders?")
-
 end
 
 function quest2_progress1(NPC, Spawn)
-    
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I did. Here you go.")
+	StartConversation(conversation, NPC, Spawn, "Did you slay the orcs and get the orders?")
     
 end
 
@@ -85,7 +87,7 @@ function quest_complete1(NPC, Spawn)
     end
     FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "You mentioned having more work for me.")
+	AddConversationOption(conversation, "You mentioned having more work for me.", "Option8")
 	StartConversation(conversation, NPC, Spawn, "Good work, " .. GetName(Spawn) .. ". I'll get these to our alchemist for study.")
 end
 
@@ -154,6 +156,50 @@ function Option8(NPC, Spawn)
 	AddConversationOption(conversation, "All right.", "offer2")
 	StartConversation(conversation, NPC, Spawn, "That's right. I believe the orcs in this region are acting without new orders, they seem to be somewhat stagnant, or at the very least slow. They either have an inept leader or an absent one. I'd like you to head to the ruined towers west of here. There are some Bloodskull tower guards, kill them and search the corpses for the standing orders for these Bloodskull orcs. I'd like to see what they're working toward, if anything.")
 end
+
+
+function Option9(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	SetStepComplete(Spawn, QUESt2, 3)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What do the orders say?", "Option10")
+	StartConversation(conversation, NPC, Spawn, "Wonderful. Unfortunately we still don't have any word on the root.")
+end
+
+
+function Option10(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "...", "Option11")
+	StartConversation(conversation, NPC, Spawn, "Give me a moment, the orcs aren't known for their grammar.")
+end
+
+
+function Option11(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "What for?", "Option12")
+	StartConversation(conversation, NPC, Spawn, "It looks like these are orders to build up a ''cha nu durk.'' Which is--I think--the minimum size of a orc fighting unit.")
+end
+
+function Option12(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "What?", "Option12")
+	StartConversation(conversation, NPC, Spawn, "Carnage, no doubt. Orcs always wear their hearts upon their sleeves. The only thing a force that small would be useful for is routing civilians... Maybe a hit and run force for the Crossroads... ah hah!")
+end
+
+function Option12(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "A siege tower?")
+	StartConversation(conversation, NPC, Spawn, "I read the orcs as books. They've two camps south-west of the Crossroads, just south of the kerran and ratonga villages. The orcs of these two camps will likely make up the cha nu durk... Kill the orcs and destroy their supplies. If they have a siege tower, destroy it as well.")
+end
+
 
 function offer2(NPC, Spawn)
 FaceTarget(NPC, Spawn)

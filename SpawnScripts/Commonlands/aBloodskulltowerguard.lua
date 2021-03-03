@@ -6,6 +6,8 @@
                    : 
 --]]
 
+local BloodskullIntentions = 403
+
 function spawn(NPC)
 
 end
@@ -20,15 +22,17 @@ end
 
 
 function death(NPC, Spawn)
+  if GetQuestStep(Spawn, BloodskullIntentions) == 2 then
   local chance = math.random(100)
   if chance >= 50 then
   local zone = GetZone(Spawn)
-  local X = GetX(Spawn)
-  local Y = GetY(Spawn)
-  local Z = GetZ(Spawn)
+  local X = GetX(NPC)
+  local Y = GetY(NPC)
+  local Z = GetZ(NPC)
    local BloodskullOrders = SpawnMob(zone, 331126, true, X, Y, Z, 33.71)
      if new_spawn ~= nil then
         AddSpawnAccess(new_spawn, Spawn)
  end
+end
 end
 end

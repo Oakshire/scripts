@@ -18,7 +18,10 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+		AddConversationOption(conversation, "Thanks.")
+		StartConversation(conversation, QuestGiver, Player, "While you do that maybe we can figure out how better to unlock the power of this root. Good luck!")
 end
 
 function Declined(Quest, QuestGiver, Player)
