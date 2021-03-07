@@ -12,7 +12,10 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+
+	PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_76da37c9.mp3", "I hate working this shift!  If the gnolls don't attack now, I may die of boredom.", "grumble", 4099618783, 4191002419, Spawn)
 end
+
 
 function respawn(NPC)
 	spawn(NPC)

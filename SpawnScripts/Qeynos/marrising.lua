@@ -12,6 +12,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_a64f6eec.mp3", "What hast thou done?  When thou greets a Daughter of Marr, a small bow is in order.", "", 2184035287, 59673464, Spawn)
 end
 
 function respawn(NPC)

@@ -8,6 +8,7 @@
 
 function spawn(NPC)
 	waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function hailed(NPC, Spawn)
@@ -16,6 +17,26 @@ end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+function InRange(NPC, Spawn)
+	local choice = math.random(1,5)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_hail_gf_cbbaf023.mp3", "I've gotta get rid of these clothes; they're so one-hundred years ago.", "grumble", 3038038462, 3464193459, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_hail_gf_5b0f480.mp3", "I'm tired of waiting!  I want to make something of myself!", "pout", 3723196832, 16921270, Spawn)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_hail_gf_4a0665a0.mp3", "I'm so depressed!  I had to work all day!", "sad", 3176397311, 2616932103, Spawn)
+	elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_hail_gf_1f61925a.mp3", "Are my roots showing?  I think I'll go for a light blueberry mixed with jum-jum highlights.", "ponder", 4153154191, 497875539, Spawn)
+	elseif choice == 5 then
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_hail_gf_5c8eceae.mp3", "My ancestors don't understand me.  They're from a completely different era.", "flustered", 2843616704, 1740340084, Spawn)
+	else
+	end
+end
+
+function LeaveRange(NPC, Spawn)
 end
 
 function waypoints(NPC)

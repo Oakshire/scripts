@@ -7,6 +7,7 @@
 --]]
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 	waypoints(NPC)
 end
 
@@ -17,6 +18,25 @@ end
 function respawn(NPC)
 		spawn(NPC)
 	end
+function InRange(NPC, Spawn)
+		local choice = math.random(1,5)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_tunarianalliance/ft/eco/good/human_eco_good_tunarianalliance_hail_gm_1bda6347.mp3", "The destructive methods of the Qeynos Guard will ravage that which it seeks to defend.", "", 421213855, 4168573173, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_tunarianalliance/ft/eco/good/human_eco_good_tunarianalliance_hail_gm_e274bc0f.mp3", "The mechanical beasts of the Ironforge Exchange belch forth black clouds to choke out life within the forests.", "", 1242578412, 4198131350, Spawn)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_tunarianalliance/ft/eco/good/human_eco_good_tunarianalliance_hail_gm_c57df74b.mp3", "I fear that the Concordium is unable to control its disciples. If corrupted the sorcerers would surely bring harm to the woodlands and their creatures.", "", 63339104, 2681140716, Spawn)
+	elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_tunarianalliance/ft/eco/good/human_eco_good_tunarianalliance_hail_gm_2c2d0ef6.mp3", "The Tunarian Alliance preserves our memories of the breathing trees and singing streams of Jaggedpine.", "", 1912930054, 3530428976, Spawn)
+	elseif choice == 5 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_tunarianalliance/ft/eco/good/human_eco_good_tunarianalliance_hail_gm_24723d84.mp3", "While the land suffers and cries out for immediate protection the Celestial Watch is content to look to myths and superstitions for our salvation.", "", 1704735533, 1025969438, Spawn)
+	else
+	end
+end
+
+function LeaveRange(NPC, Spawn)
+end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 448.85, -20.75, 212.18, 2, 0)

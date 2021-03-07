@@ -12,6 +12,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+		PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_hail_gf_910f06b6.mp3", "Tunare blesses those who remain faithful and trust in her return.", "", 2463890902, 2461742088, Spawn)
 end
 
 function respawn(NPC)

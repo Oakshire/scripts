@@ -1,5 +1,5 @@
 --[[
-	Script Name		:	lanalie.lua
+	Script Name		:	raleigh.lua
 	Script Purpose	:	Waypoint Path for raleigh.lua
 	Script Author	:	Devn00b
 	Script Date		:	04/11/2020 06:51:30 PM
@@ -7,16 +7,25 @@
 --]]
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 	waypoints(NPC)
+end
+
+function respawn(NPC)
+	spawn(NPC)
+end
+
+function InRange(NPC, Spawn)
+		FaceTarget(NPC, Spawn)
+		PlayFlavor(NPC, "voiceover/english/optional2/highelf_eco_good_1/ft/service/guard/highelf_guard_service_good_1_hail_gf_fb093bc0.mp3", "Good day to you, citizen! All preserve Queen Antonia.", "salute", 3107888555, 4143955557, Spawn)
+end
+
+function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 end
-
-function respawn(NPC)
-		spawn(NPC)
-	end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 518.13, -10.48, 148.06, 6.0, 1)

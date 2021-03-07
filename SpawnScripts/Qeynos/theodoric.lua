@@ -12,7 +12,17 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-end
+		local choice = math.random(1,3)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_barmaid_gm_a1d96f41.mp3", "My stein hasn't any legs to walk over and fill itself up.", "glare", 2656968471, 1396939792, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_hail_gm_622bfa69.mp3", "What do you mean ye drank more than I did?", "boggle", 3046379177, 1648095152, Spawn)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_barmaid_gm_7f76ecc6.mp3", "Hurry up! My stomach's near dry thanks to ya.", "frustrated", 2014105974, 2128019974, Spawn)
+	else
+	end
+	end
 
 function respawn(NPC)
 		spawn(NPC)

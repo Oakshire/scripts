@@ -12,6 +12,15 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	
+	local choice = math.random(1,2)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/gnome_eco_race_good/ft/eco/good/gnome_eco_race_good_hail_gf_39da4f6d.mp3", "Cheers and boggle chippers to you!", "", 3143145827, 3768593316, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/gnome_eco_race_good/ft/eco/good/gnome_eco_race_good_barbarian_gf_68486376.mp3", "Watch your step, you rusty-pated, slow-witted, half-turned knob on a cognizoid!  Can't you see I'm busy?", "", 2020911566, 1624319994, Spawn)
+	else
+	end
 end
 
 function respawn(NPC)

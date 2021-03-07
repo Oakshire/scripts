@@ -12,7 +12,18 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+
+	local choice = math.random(1,2)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/optional2/highelf_eco_good_1/ft/service/guard/highelf_guard_service_good_1_hail_gf_d7fdb65.mp3", "Greetings, citizen. I am on guard duty.  Should you get into trouble, seek me out.", "attention", 2772203714, 1169089481, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/optional2/highelf_eco_good_1/ft/service/guard/highelf_guard_service_good_1_hail_gf_9e30d7b1.mp3", "I hate the night shift!  If the gnolls don't attack now, I may die of boredom.", "grumble", 1243870883, 2445109433, Spawn)
+	else
+	end
+
 end
+
 
 function respawn(NPC)
 	spawn(NPC)

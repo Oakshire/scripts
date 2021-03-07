@@ -1,15 +1,4 @@
 --[[
-    Script Name    : SpawnScripts/QeynosHarbor/charlene.lua
-    Script Author  : Cynnar
-    Script Date    : 2020.04.11 11:04:00
-    Script Purpose : 
-                   : 
---]]
-
-function spawn(NPC)
-
-end
---[[
 	Script Name		:	charlene.lua
 	Script Purpose	:	Waypoint Path for charlene.lua
 	Script Author	:	Devn00b
@@ -83,13 +72,4 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 832.06, -23.31, 45.72, 2, 0)
 end
 
-
-
-function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-end
-
-function respawn(NPC)
-
-end
 

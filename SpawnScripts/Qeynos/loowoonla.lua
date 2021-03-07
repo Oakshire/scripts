@@ -16,7 +16,7 @@ end
 
 function respawn(NPC)
 		spawn(NPC)
-end
+		end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 673.87, -17.95, 193.59, 2, 0)
@@ -54,4 +54,23 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 673.87, -17.95, 193.59, 2, 0)
 end
 
+function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+
+	local choice = math.random(1,5)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_aoi_gf_7fcbca60.mp3", "An era of darkness has finally come to a close. Now we must see what future Norrath has in store.", "confused", 2437621868, 2071976840, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_5453f96d.mp3", "Paradise has always been here on Norrath for those who are thoughtful and responsible for their actions.", "thanks", 3529954798, 1064012556, Spawn)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_e0bc946.mp3", "I have felt the stirrings of a strong magical influence.  Good fortune will follow to those with the will to persevere!", "ponder", 4152344209, 239250643, Spawn)
+	elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_84882e21.mp3", "You must not be afraid to trust others.  Openness is the key to finding a correct solution.", "sigh", 1792907516, 2786700542, Spawn)
+	elseif choice == 5 then
+		PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_7895591c.mp3", "If we focus on the higher truths that govern our actions, we fathom the underlying power within them.", "curtsey", 2416988832, 3319542974, Spawn)
+	else
+	end
+
+end
 

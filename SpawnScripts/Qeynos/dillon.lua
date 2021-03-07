@@ -12,6 +12,35 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1004.mp3", "", "", 0, 0, Spawn)
+		AddConversationOption(conversation, "Nothing.", "dlg_0_1")
+	StartConversation(conversation, NPC, Spawn, "Excuse me?")
+	if convo==3 then
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0, Spawn)
+		AddConversationOption(conversation, "Nothing.", "dlg_3_1")
+		StartConversation(conversation, NPC, Spawn, "Excuse me?")
+	end
+
+	if convo==4 then
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0, Spawn)
+		AddConversationOption(conversation, "Nothing.", "dlg_4_1")
+		StartConversation(conversation, NPC, Spawn, "Excuse me?")
+	end
+
+	if convo==25 then
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "", "", 0, 0, Spawn)
+		AddConversationOption(conversation, "Nothing.", "dlg_25_1")
+		StartConversation(conversation, NPC, Spawn, "Excuse me?")
+	end
+
+	if convo==26 then
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1004.mp3", "", "", 0, 0, Spawn)
+		AddConversationOption(conversation, "Nothing.", "dlg_26_1")
+		StartConversation(conversation, NPC, Spawn, "Excuse me?")
+	end
+
 end
 
 function respawn(NPC)

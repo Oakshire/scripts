@@ -12,7 +12,8 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-end
+	PlayFlavor(NPC, "", "I am not at all interested in fish, so please, do not mention them to me.", "", 1689589577, 4560189, Spawn)
+	end
 
 function respawn(NPC)
 		spawn(NPC)

@@ -1,6 +1,6 @@
 --[[
 	Script Name		:	Bilur.lua
-	Script Purpose	:	Waypoint Path for Oakhall.lua
+	Script Purpose	:	Waypoint Path for Bilur.lua
 	Script Author	:	Devn00b
 	Script Date		:	04/09/2020 01:10:38 AM
 	Script Notes	:	Locations collected from Live
@@ -12,6 +12,16 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+
+	local choice = math.random(1,2)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_ee473c11.mp3", "Good day to you, citizen. All preserve Queen Antonia.", "salute", 2997871263, 2912813719, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_ebfceda5.mp3", "Greetings, citizen. I am on guard duty.  Should you get into trouble, seek me out.", "attention", 1945337199, 2685949436, Spawn)
+	else
+	end
+
 end
 
 function respawn(NPC)

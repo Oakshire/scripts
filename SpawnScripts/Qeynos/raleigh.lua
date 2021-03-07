@@ -12,6 +12,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "no", 1689589577, 4560189, Spawn)
 end
 
 function respawn(NPC)
