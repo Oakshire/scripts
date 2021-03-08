@@ -45,7 +45,7 @@ function returned_hat(NPC, player)
 	Dialog.Start()
 end
 
-function returned_hat(NPC, player)
+function received_charm(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Well now, Ingrid o'er there, can show ya' the rest of the ship. Me needs ta' plot the course ta' the isles now.")
 	Dialog.AddVoiceover("voiceover/english/waulon/boat_06p_tutorial02/walon_0_007.mp3", 1973137904, 2648127610)

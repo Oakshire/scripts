@@ -153,7 +153,7 @@ function CurrentStep(Quest, QuestGiver, Player)
 			Despawn(delrat)
 		end
 		if HasItem(Player, 88140) == false then
-			GiveImmediateQuestReward(Quest, Player, 0, 0, "88140")
+			GiveQuestItem(Quest, Player, "", 88140 )
 		end
 		if HasItemEquipped(Player, 88140) == false then
 			ShowWindow(Player, "Inventory.Inventory", 0)
@@ -209,7 +209,7 @@ end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	RemoveItem(Player, WaulonsHat)
-	GiveImmediateQuestReward(Quest, Player, 0, 0, "9357")
+	GiveQuestItem(Quest, Player, "", 9357 )
 	Step4Init(Quest, QuestGiver, Player)	
 	CurrentStep(Quest, QuestGiver, Player)
 end

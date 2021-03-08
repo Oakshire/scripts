@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/qeynos_combined02/abrightenedQeynosresident.lua
+    Script Name    : SpawnScripts/qeynos_combined02/anemotionalQeynosresident.lua
     Script Author  : Rylec
     Script Date    : 2021.01.23 01:01:55
     Script Purpose : 
