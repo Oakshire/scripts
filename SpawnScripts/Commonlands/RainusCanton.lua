@@ -6,9 +6,10 @@
                    : 
 --]]
 
-local Rainus = 401
-local QUEST = 402
-local QUEST2 = 403
+local Rainus = 401 -- Rainus Quest
+local QUEST = 402 -- The Frenzy of the Bloodskulls Quest
+local QUEST2 = 403 -- Bloodskull Intention quest
+local QUEST3 = 404 -- Bloodskull Disruption Quest
 
 function spawn(NPC)
 
@@ -45,6 +46,12 @@ function hailed(NPC, Spawn)
     quest2_progress0(NPC, Spawn)
     elseif GetQuestStep(Spawn, QUEST2) == 3 then
      quest2_progress1(NPC, Spawn)
+    elseif GetQuestStep(Spawn, QUEST3) == 1 or GetQuestStep(Spawn, QUEST3) == 2 or GetQuestStep(Spawn, QUEST3) == 3 or GetQuestStep(Spawn, QUEST3) == 4 then
+     quest3_progress0(NPC, Spawn)
+    elseif GetQuestStep(Spawn, QUEST3) == 5 then
+      quest3_progress1(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) then
+     Option9(NPC, Spawn)
     end
 end
  
@@ -73,12 +80,24 @@ end
 function quest2_progress1(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "I did. Here you go.")
+	AddConversationOption(conversation, "I did. Here you go.", "Option9")
 	StartConversation(conversation, NPC, Spawn, "Did you slay the orcs and get the orders?")
-    
+end
+
+function quest3_progress0(NPC, Spawn)
+     FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I'll return when it's done.")
+	StartConversation(conversation, NPC, Spawn, "The orcs?")
 end
 
 
+function quest3_progress1(NPC, Spawn)
+     FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Taken care of.")
+	StartConversation(conversation, NPC, Spawn, "The orcs?")
+end
 
 
 function quest_complete1(NPC, Spawn)
@@ -160,11 +179,14 @@ end
 
 function Option9(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	SetStepComplete(Spawn, QUESt2, 3)
+	if HasQuest(Spawn, QUEST2) then
+	SetStepComplete(Spawn, QUEST2, 3)
+	end
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "What do the orders say?", "Option10")
 	StartConversation(conversation, NPC, Spawn, "Wonderful. Unfortunately we still don't have any word on the root.")
 end
+   
 
 
 function Option10(NPC, Spawn)
@@ -188,17 +210,25 @@ function Option12(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 
-	AddConversationOption(conversation, "What?", "Option12")
+	AddConversationOption(conversation, "What?", "Option13")
 	StartConversation(conversation, NPC, Spawn, "Carnage, no doubt. Orcs always wear their hearts upon their sleeves. The only thing a force that small would be useful for is routing civilians... Maybe a hit and run force for the Crossroads... ah hah!")
 end
 
-function Option12(NPC, Spawn)
+function Option13(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 
-	AddConversationOption(conversation, "A siege tower?")
+	AddConversationOption(conversation, "A siege tower?", "offer3")
 	StartConversation(conversation, NPC, Spawn, "I read the orcs as books. They've two camps south-west of the Crossroads, just south of the kerran and ratonga villages. The orcs of these two camps will likely make up the cha nu durk... Kill the orcs and destroy their supplies. If they have a siege tower, destroy it as well.")
 end
+
+
+function offer3(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST3)
+end
+
+
 
 
 function offer2(NPC, Spawn)
