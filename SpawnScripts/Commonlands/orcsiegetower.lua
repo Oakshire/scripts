@@ -1,5 +1,5 @@
 --[[
-    Script Name    : SpawnScripts/Commonlands/bloodskullsupplies.lua
+    Script Name    : SpawnScripts/Commonlands/orcsiegetower.lua
     Script Author  : Premierio015
     Script Date    : 2021.03.08 08:03:54
     Script Purpose : 
@@ -14,43 +14,44 @@ end
 
 
 function InRange(NPC, Spawn)
-if HasQuest(Spawn, BloodskullDisruption)  then
+if HasQuest(Spawn, BloodskullDisruption) then
 AddPrimaryEntityCommand(Spawn, NPC, "Destroy")
-AddPrimaryEntityCommand(SPawn, NPC, "Search for Explosives")
 SpawnSet(NPC, "display_hand_icon", 1)
 SpawnSet(NPC, "show_command_icon", 1)
+
 end
    end
 
 
 function casted_on(NPC, Spawn, SpellName)
 		if SpellName == 'Destroy' then
-		       if not HasItem(Spawn, 6975) then
+		    if not HasItem(Spawn, 6975) then
 		           SendPopUpMessage(Spawn, "You need explosives to destroy this. Perhaps you can find some in the orc supplies", 255, 215, 0)
-		       else
+	            else
 	                 AddTimer(NPC, 2000, "explode")
 	                 SpawnSet(NPC, "visual_state", "2017")
-	                 if GetQuestStep(Spawn, BloodskullDisruption) == 3 then
-                     AddStepProgress(Spawn, BloodskullDisruption, 3, 1)  
+	                 if GetQuestStep(Spawn, BloodskullDisruption) == 4 then
+                     SetStepComplete(Spawn, BloodskullDisruption, 4)
                      end
-               end
-                  end
-        if SpellName == 'Search for Explosives' then
-           SummonItem(Spawn, 6975, 1)
-           SendPopUpMessage(Spawn, "You receive explosives.", 255, 255, 255)
-       end
+end
+end
    end
+ 
    
 function explode(NPC, Spawn)
-if HasItem(Spawn, 6975) then
 RemoveItem(Spawn, 6975)
+SpawnSet(NPC, "model_type", 2375)
+SpawnSet(NPC, "visual_state", "0")
+AddTimer(NPC, 150000, "default_state")
 end
-Despawn(NPC)
+
+
+function default_state(NPC, Spawn)
+SpawnSet(NPC, "model_type", 2374)
 end
-  
+
 function respawn(NPC)
 spawn(NPC)
 end
-
 
 

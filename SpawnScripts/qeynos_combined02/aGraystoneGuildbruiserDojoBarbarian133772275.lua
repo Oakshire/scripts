@@ -8,6 +8,7 @@
 
 function spawn(NPC)
     local model = MakeRandomInt(5,6)
+
         if model == 1 then
             SetModelType(NPC, "132") -- human female
             SpawnSet(NPC, "soga_model_type", "132")
@@ -39,7 +40,6 @@ function spawn(NPC)
             SpawnSet(NPC, "legs_type", "5458")
             BarbarianCosmetics(NPC)
         else
---            local BarbarianMale = MakeRandomInt(1467,1471)
             SetModelType(NPC, "112") -- barbarian male
             SpawnSet(NPC, "soga_model_type", "112")
             SpawnSet(NPC, "chest_type", "5461")
@@ -48,14 +48,60 @@ function spawn(NPC)
         end
         
     SetEquipment(NPC, 3, 991, 255, 255, 255, 255, 255, 255)
-    SetEquipment(NPC, 5, 0)
-    SetEquipment(NPC, 6, 1010, 255, 255, 255, 255, 255, 255)
     SetEquipment(NPC, 7, 4570, 255, 255, 255, 255, 255, 255)
     SetEquipment(NPC, 8, 992, 255, 255, 255, 255, 255, 255)
+
+    local Forearms_chance = MakeRandomInt(1,100)  
+
+        if Forearms_chance < 51 then
+            SetEquipment(NPC, 5, 1009, 255, 255, 255, 255, 255, 255)
+        else
+            SetEquipment(NPC, 5, 0)
+        end 
 end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+    local Type = GetModelType(NPC)
+    local choice = MakeRandomInt(1,2) 
+    
+        if Type == 132 then
+            if choice == 1 then
+                PlayFlavor(NPC, "voiceover/english/human_eco_race_good/ft/eco/good/human_eco_race_good_hail_gf_2d0e8823.mp3", "Almost time to stop and have an ale, isn't it?", "wink", 1106325239, 2982056892, Spawn)
+            else
+                PlayFlavor(NPC, "voiceover/english/human_eco_race_good/ft/eco/good/human_eco_race_good_hail_gf_837968a9.mp3", "Oh, my aching back!  As good a time to stop and chat as any, I say.", "yawn", 3270846909, 2717985314, Spawn)
+            end
+        elseif Type == 134 then
+            if choice == 1 then
+                PlayFlavor(NPC, "", "Almost time to stop and have an ale, isn't it?", "", 0, 0, Spawn)
+            else
+                PlayFlavor(NPC, "", "Oh, my aching back!  As good a time to stop and chat as any, I say.", "yawn", 0, 0, Spawn)
+            end
+        elseif Type == 109 then
+            if choice == 1 then
+                PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_bce06b4a.mp3", "A hard day of adventuring makes one long for home, don't it?", "", 2210732036, 3144200859, Spawn)
+            else
+                PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_c221a26e.mp3", "Ah, what I wouldn't give to be cradling a mug of good dwarven ale.", "", 409704670, 4015848226, Spawn)
+            end
+        elseif Type == 110 then
+            if choice == 1 then
+                PlayFlavor(NPC, "", "A hard day of adventuring makes one long for home, don't it?", "", 0, 0, Spawn)
+            else
+                PlayFlavor(NPC, "", "Ah, what I wouldn't give to be cradling a mug of good dwarven ale.", "", 0, 0, Spawn)
+            end
+        elseif Type == 111 then
+            if choice == 1 then
+                PlayFlavor(NPC, "", "I'm not used to this weather, but my people can adapt to any change in order to survive.", "", 0, 0, Spawn)
+            else
+                PlayFlavor(NPC, "", "Treasures from the past can be found throughout the lands, for those who care to look.", "", 0, 0, Spawn)
+            end
+        elseif Type == 112 then
+            if choice == 1 then
+                PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_d571c130.mp3", "I'm not used to this weather, but my people can adapt to any change in order to survive.", "", 3421348121, 1004876500, Spawn)
+            else
+                PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_5a6b643f.mp3", "Treasures from the past can be found throughout the lands, for those who care to look.", "", 3614931515, 1601871948, Spawn)
+            end
+        end
 end
 
 function respawn(NPC)
@@ -82,7 +128,7 @@ function BarbarianCosmetics(NPC)
             SpawnSet(NPC, "facial_hair_type", FaceHairType)
             SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
 
-    local overall_look = MakeRandomInt(6,6)
+    local overall_look = MakeRandomInt(1,6)
 
         if overall_look == 1 then -- Light chestnut (yellowish)
             SpawnSet(NPC, "skin_color", "206 162 137")

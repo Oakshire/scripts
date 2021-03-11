@@ -48,14 +48,60 @@ function spawn(NPC)
         end
         
     SetEquipment(NPC, 3, 991, 255, 255, 255, 255, 255, 255)
-    SetEquipment(NPC, 5, 0)
-    SetEquipment(NPC, 6, 1010, 255, 255, 255, 255, 255, 255)
     SetEquipment(NPC, 7, 4570, 255, 255, 255, 255, 255, 255)
     SetEquipment(NPC, 8, 992, 255, 255, 255, 255, 255, 255)
+
+    local Forearms_chance = MakeRandomInt(1,100)  
+
+        if Forearms_chance < 51 then
+            SetEquipment(NPC, 5, 1009, 255, 255, 255, 255, 255, 255)
+        else
+            SetEquipment(NPC, 5, 0)
+        end
 end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+    local Type = GetModelType(NPC)
+    local choice = MakeRandomInt(1,2) 
+    
+        if Type == 132 then
+            if choice == 1 then
+                PlayFlavor(NPC, "voiceover/english/human_eco_race_good/ft/eco/good/human_eco_race_good_hail_gf_2d0e8823.mp3", "Almost time to stop and have an ale, isn't it?", "wink", 1106325239, 2982056892, Spawn)
+            else
+                PlayFlavor(NPC, "voiceover/english/human_eco_race_good/ft/eco/good/human_eco_race_good_hail_gf_837968a9.mp3", "Oh, my aching back!  As good a time to stop and chat as any, I say.", "yawn", 3270846909, 2717985314, Spawn)
+            end
+        elseif Type == 134 then
+            if choice == 1 then
+                PlayFlavor(NPC, "", "Almost time to stop and have an ale, isn't it?", "", 0, 0, Spawn)
+            else
+                PlayFlavor(NPC, "", "Oh, my aching back!  As good a time to stop and chat as any, I say.", "yawn", 0, 0, Spawn)
+            end
+        elseif Type == 109 then
+            if choice == 1 then
+                PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_bce06b4a.mp3", "A hard day of adventuring makes one long for home, don't it?", "", 2210732036, 3144200859, Spawn)
+            else
+                PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_c221a26e.mp3", "Ah, what I wouldn't give to be cradling a mug of good dwarven ale.", "", 409704670, 4015848226, Spawn)
+            end
+        elseif Type == 110 then
+            if choice == 1 then
+                PlayFlavor(NPC, "", "A hard day of adventuring makes one long for home, don't it?", "", 0, 0, Spawn)
+            else
+                PlayFlavor(NPC, "", "Ah, what I wouldn't give to be cradling a mug of good dwarven ale.", "", 0, 0, Spawn)
+            end
+        elseif Type == 111 then
+            if choice == 1 then
+                PlayFlavor(NPC, "", "I'm not used to this weather, but my people can adapt to any change in order to survive.", "", 0, 0, Spawn)
+            else
+                PlayFlavor(NPC, "", "Treasures from the past can be found throughout the lands, for those who care to look.", "", 0, 0, Spawn)
+            end
+        elseif Type == 112 then
+            if choice == 1 then
+                PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_d571c130.mp3", "I'm not used to this weather, but my people can adapt to any change in order to survive.", "", 3421348121, 1004876500, Spawn)
+            else
+                PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_5a6b643f.mp3", "Treasures from the past can be found throughout the lands, for those who care to look.", "", 3614931515, 1601871948, Spawn)
+            end
+        end
 end
 
 function respawn(NPC)
@@ -74,15 +120,35 @@ function DwarfCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_type", HairType)
         else
             HairType = MakeRandomInt(1136,1140)
-            SpawnSet(NPC, "hair_type", HairType)
-            SpawnSet(NPC, "soga_hair_type", HairType)
+            local bald_chance = MakeRandomInt(1,100)    
+
+                if bald_chance < 11 then
+                    SpawnSet(NPC, "hair_type", "0")
+                    SpawnSet(NPC, "soga_hair_type", "0")
+                else
+                    SpawnSet(NPC, "hair_type", HairType)
+                    SpawnSet(NPC, "soga_hair_type", HairType)
+                end
         end
 
     local FaceHairType = MakeRandomInt(1164,1191)
-            SpawnSet(NPC, "facial_hair_type", beard)
-            SpawnSet(NPC, "soga_facial_hair_type", beard)
 
-    local overall_look = MakeRandomInt(4,4)
+        if Type == 109 then    
+             local beard_chance = MakeRandomInt(1,100)    
+
+                if beard_chance < 11 then
+                    SpawnSet(NPC, "facial_hair_type", FaceHairType)
+                    SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
+                else
+                    SpawnSet(NPC, "facial_hair_type", "0")
+                    SpawnSet(NPC, "soga_facial_hair_type", "0")
+                end   
+        else
+            SpawnSet(NPC, "facial_hair_type", FaceHairType)
+            SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
+        end
+
+    local overall_look = MakeRandomInt(1,7)
 
         if overall_look == 1 then -- Dark beige
             SpawnSet(NPC, "skin_color", "225 171 169")
@@ -136,6 +202,45 @@ function DwarfCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_type_highlight_color", "50 41 28") 
             SpawnSet(NPC, "hair_face_highlight_color", "50 41 28")
             SpawnSet(NPC, "soga_hair_face_highlight_color", "50 41 28")
+        elseif overall_look == 5 then -- Dark orange
+            SpawnSet(NPC, "skin_color", "196 146 123")
+            SpawnSet(NPC, "soga_skin_color", "196 146 123") 
+            SpawnSet(NPC, "eye_color", "121 176 192")
+            SpawnSet(NPC, "soga_eye_color", "121 176 192") 
+            SpawnSet(NPC, "hair_type_color", "119 43 9")
+            SpawnSet(NPC, "soga_hair_type_color", "119 43 9") 
+            SpawnSet(NPC, "hair_face_color", "119 43 9")
+            SpawnSet(NPC, "soga_hair_face_color", "119 43 9")
+            SpawnSet(NPC, "hair_type_highlight_color", "66 28 9")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "66 28 9") 
+            SpawnSet(NPC, "hair_face_highlight_color", "66 28 9")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "66 28 9")
+        elseif overall_look == 6 then -- White (light grey/yellowish)
+            SpawnSet(NPC, "skin_color", "245 248 246")
+            SpawnSet(NPC, "soga_skin_color", "245 248 246") 
+            SpawnSet(NPC, "eye_color", "131 163 133")
+            SpawnSet(NPC, "soga_eye_color", "131 163 133") 
+            SpawnSet(NPC, "hair_type_color", "247 239 212")
+            SpawnSet(NPC, "soga_hair_type_color", "247 239 212") 
+            SpawnSet(NPC, "hair_face_color", "247 239 212")
+            SpawnSet(NPC, "soga_hair_face_color", "247 239 212")
+            SpawnSet(NPC, "hair_type_highlight_color", "54 47 3")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "54 47 3") 
+            SpawnSet(NPC, "hair_face_highlight_color", "54 47 3")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "54 47 3")
+        elseif overall_look == 7 then -- Light beige
+            SpawnSet(NPC, "skin_color", "209 217 217")
+            SpawnSet(NPC, "soga_skin_color", "209 217 217") 
+            SpawnSet(NPC, "eye_color", "97 105 57")
+            SpawnSet(NPC, "soga_eye_color", "97 105 57") 
+            SpawnSet(NPC, "hair_type_color", "159 155 143")
+            SpawnSet(NPC, "soga_hair_type_color", "159 155 143") 
+            SpawnSet(NPC, "hair_face_color", "159 155 143")
+            SpawnSet(NPC, "soga_hair_face_color", "159 155 143")
+            SpawnSet(NPC, "hair_type_highlight_color", "165 155 144")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "165 155 144") 
+            SpawnSet(NPC, "hair_face_highlight_color", "165 155 144")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "165 155 144")
         end
 end
 
