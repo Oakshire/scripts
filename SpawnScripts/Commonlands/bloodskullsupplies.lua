@@ -19,6 +19,7 @@ AddPrimaryEntityCommand(Spawn, NPC, "Destroy")
 AddPrimaryEntityCommand(SPawn, NPC, "Search for Explosives")
 SpawnSet(NPC, "display_hand_icon", 1)
 SpawnSet(NPC, "show_command_icon", 1)
+SetVisualFlag(Spawn)
 end
    end
 

@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    local model = MakeRandomInt(5,6)
+    local model = MakeRandomInt(1,6)
 
         if model == 1 then
             SetModelType(NPC, "132") -- human female
@@ -58,6 +58,8 @@ function spawn(NPC)
         else
             SetEquipment(NPC, 5, 0)
         end 
+        
+    AddTimer(NPC, 6000, "EmoteLoop")
 end
 
 function hailed(NPC, Spawn)
@@ -107,7 +109,6 @@ end
 function respawn(NPC)
     spawn(NPC)
 end
-
 
 function BarbarianCosmetics(NPC)
 
@@ -247,7 +248,140 @@ function BarbarianCosmetics(NPC)
         end
 end
 
+function DwarfCosmetics(NPC)
 
+    local Type = GetModelType(NPC)
+    local HairType = 0
+
+        if Type == 109 then
+            HairType = MakeRandomInt(1135,1140)
+            SpawnSet(NPC, "hair_type", HairType)
+            SpawnSet(NPC, "soga_hair_type", HairType)
+        else
+            HairType = MakeRandomInt(1136,1140)
+            local bald_chance = MakeRandomInt(1,100)    
+
+                if bald_chance < 11 then
+                    SpawnSet(NPC, "hair_type", "0")
+                    SpawnSet(NPC, "soga_hair_type", "0")
+                else
+                    SpawnSet(NPC, "hair_type", HairType)
+                    SpawnSet(NPC, "soga_hair_type", HairType)
+                end
+        end
+
+    local FaceHairType = MakeRandomInt(1164,1191)
+
+        if Type == 109 then    
+             local beard_chance = MakeRandomInt(1,100)    
+
+                if beard_chance < 11 then
+                    SpawnSet(NPC, "facial_hair_type", FaceHairType)
+                    SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
+                else
+                    SpawnSet(NPC, "facial_hair_type", "0")
+                    SpawnSet(NPC, "soga_facial_hair_type", "0")
+                end   
+        else
+            SpawnSet(NPC, "facial_hair_type", FaceHairType)
+            SpawnSet(NPC, "soga_facial_hair_type", FaceHairType)
+        end
+
+    local overall_look = MakeRandomInt(1,7)
+
+        if overall_look == 1 then -- Dark beige
+            SpawnSet(NPC, "skin_color", "225 171 169")
+            SpawnSet(NPC, "soga_skin_color", "225 171 169") 
+            SpawnSet(NPC, "eye_color", "70 59 31")
+            SpawnSet(NPC, "soga_eye_color", "70 59 31") 
+            SpawnSet(NPC, "hair_type_color", "83 77 59")
+            SpawnSet(NPC, "soga_hair_type_color", "83 77 59") 
+            SpawnSet(NPC, "hair_face_color", "83 77 59")
+            SpawnSet(NPC, "soga_hair_face_color", "83 77 59")
+            SpawnSet(NPC, "hair_type_highlight_color", "75 47 0")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "75 47 0") 
+            SpawnSet(NPC, "hair_face_highlight_color", "75 47 0")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "75 47 0")
+        elseif overall_look == 2 then -- Light reddish beige
+            SpawnSet(NPC, "skin_color", "224 178 171")
+            SpawnSet(NPC, "soga_skin_color", "224 178 171") 
+            SpawnSet(NPC, "eye_color", "59 119 134")
+            SpawnSet(NPC, "soga_eye_color", "59 119 134") 
+            SpawnSet(NPC, "hair_type_color", "213 133 99")
+            SpawnSet(NPC, "soga_hair_type_color", "213 133 99") 
+            SpawnSet(NPC, "hair_face_color", "213 133 99")
+            SpawnSet(NPC, "soga_hair_face_color", "213 133 99")
+            SpawnSet(NPC, "hair_type_highlight_color", "93 33 15")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "93 33 15") 
+            SpawnSet(NPC, "hair_face_highlight_color", "93 33 15")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "93 33 15")
+        elseif overall_look == 3 then -- Dark brown
+            SpawnSet(NPC, "skin_color", "213 189 156")
+            SpawnSet(NPC, "soga_skin_color", "213 189 156") 
+            SpawnSet(NPC, "eye_color", "50 62 34")
+            SpawnSet(NPC, "soga_eye_color", "50 62 34") 
+            SpawnSet(NPC, "hair_type_color", "61 52 29")
+            SpawnSet(NPC, "soga_hair_type_color", "61 52 29") 
+            SpawnSet(NPC, "hair_face_color", "61 52 29")
+            SpawnSet(NPC, "soga_hair_face_color", "61 52 29")
+            SpawnSet(NPC, "hair_type_highlight_color", "56 47 2")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "56 47 2") 
+            SpawnSet(NPC, "hair_face_highlight_color", "56 47 2")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "56 47 2")
+        elseif overall_look == 4 then -- Dark Chestnut
+            SpawnSet(NPC, "skin_color", "200 198 174")
+            SpawnSet(NPC, "soga_skin_color", "200 198 174") 
+            SpawnSet(NPC, "eye_color", "34 70 78")
+            SpawnSet(NPC, "soga_eye_color", "34 70 78") 
+            SpawnSet(NPC, "hair_type_color", "36 22 6")
+            SpawnSet(NPC, "soga_hair_type_color", "36 22 6") 
+            SpawnSet(NPC, "hair_face_color", "36 22 6")
+            SpawnSet(NPC, "soga_hair_face_color", "36 22 6")
+            SpawnSet(NPC, "hair_type_highlight_color", "50 41 28")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "50 41 28") 
+            SpawnSet(NPC, "hair_face_highlight_color", "50 41 28")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "50 41 28")
+        elseif overall_look == 5 then -- Dark orange
+            SpawnSet(NPC, "skin_color", "196 146 123")
+            SpawnSet(NPC, "soga_skin_color", "196 146 123") 
+            SpawnSet(NPC, "eye_color", "121 176 192")
+            SpawnSet(NPC, "soga_eye_color", "121 176 192") 
+            SpawnSet(NPC, "hair_type_color", "119 43 9")
+            SpawnSet(NPC, "soga_hair_type_color", "119 43 9") 
+            SpawnSet(NPC, "hair_face_color", "119 43 9")
+            SpawnSet(NPC, "soga_hair_face_color", "119 43 9")
+            SpawnSet(NPC, "hair_type_highlight_color", "66 28 9")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "66 28 9") 
+            SpawnSet(NPC, "hair_face_highlight_color", "66 28 9")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "66 28 9")
+        elseif overall_look == 6 then -- White (light grey/yellowish)
+            SpawnSet(NPC, "skin_color", "245 248 246")
+            SpawnSet(NPC, "soga_skin_color", "245 248 246") 
+            SpawnSet(NPC, "eye_color", "131 163 133")
+            SpawnSet(NPC, "soga_eye_color", "131 163 133") 
+            SpawnSet(NPC, "hair_type_color", "247 239 212")
+            SpawnSet(NPC, "soga_hair_type_color", "247 239 212") 
+            SpawnSet(NPC, "hair_face_color", "247 239 212")
+            SpawnSet(NPC, "soga_hair_face_color", "247 239 212")
+            SpawnSet(NPC, "hair_type_highlight_color", "54 47 3")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "54 47 3") 
+            SpawnSet(NPC, "hair_face_highlight_color", "54 47 3")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "54 47 3")
+        elseif overall_look == 7 then -- Light beige
+            SpawnSet(NPC, "skin_color", "209 217 217")
+            SpawnSet(NPC, "soga_skin_color", "209 217 217") 
+            SpawnSet(NPC, "eye_color", "97 105 57")
+            SpawnSet(NPC, "soga_eye_color", "97 105 57") 
+            SpawnSet(NPC, "hair_type_color", "159 155 143")
+            SpawnSet(NPC, "soga_hair_type_color", "159 155 143") 
+            SpawnSet(NPC, "hair_face_color", "159 155 143")
+            SpawnSet(NPC, "soga_hair_face_color", "159 155 143")
+            SpawnSet(NPC, "hair_type_highlight_color", "165 155 144")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "165 155 144") 
+            SpawnSet(NPC, "hair_face_highlight_color", "165 155 144")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "165 155 144")
+        end
+end
 
 function HumanCosmetics(NPC)
 
@@ -500,3 +634,51 @@ function HumanCosmetics(NPC)
         end
 end
 
+function EmoteLoop(NPC)
+    local choice = MakeRandomInt(1,14) 
+    local timer = math.random(5000,10000)
+
+    if choice == 1 then  -- cackle 
+        PlayAnimation(NPC, 125)
+        AddTimer(NPC, timer, "EmoteLoop")	
+    elseif choice == 2 then  -- converse_male04
+	    PlayAnimation(NPC, 2983)
+	    AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 3 then  -- confused
+	    PlayAnimation(NPC, 11214)
+	    AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 4 then  -- converse_male05
+	    PlayAnimation(NPC, 11236)
+	    AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 5 then  -- converse_male06  
+	    PlayAnimation(NPC, 11237)
+	    AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 6 then  -- converse_male07    
+	    PlayAnimation(NPC, 11238)
+        AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 7 then  -- converse_male10    
+	    PlayAnimation(NPC, 11241)
+        AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 8 then  -- converse_male11 
+	    PlayAnimation(NPC, 11242)
+        AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 9 then  -- doubletake
+	    PlayAnimation(NPC, 11415)
+        AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 10 then  -- happy  
+	    PlayAnimation(NPC, 11668)
+        AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 11 then  -- heckno  
+	    PlayAnimation(NPC, 11680)
+        AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 12 then  -- howl  
+	    PlayAnimation(NPC, 11718)
+	    AddTimer(NPC, timer, "EmoteLoop")
+    elseif choice == 13 then  -- smile 
+	    PlayAnimation(NPC, 12285)
+        AddTimer(NPC, timer, "EmoteLoop")
+    else  -- wink 
+    	PlayAnimation(NPC, 13304)
+        AddTimer(NPC, timer, "EmoteLoop")
+    end
+end

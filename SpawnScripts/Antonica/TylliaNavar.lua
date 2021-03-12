@@ -88,7 +88,7 @@
     	FaceTarget(NPC, Spawn)
     	conversation = CreateConversation()
     	AddConversationOption(conversation, "And what have you found so far?", "dlg_0_6")
-    	StartConversation(conversation, NPC, Spawn, "Magnon Baelvurn the former fisherman and Bulvar Rakgam, a self proclaimed /"true Halasian,/" make up the other two thirds of the unit. Magnon and I keep watch on the northern and southern portions of western Antonica, respectively. Magnon alone watches over the east side. We harry the gnolls to keep them from gaining strength. At the same time we watch for signs of concern.")
+    	StartConversation(conversation, NPC, Spawn, "Magnon Baelvurn the former fisherman and Bulvar Rakgam, a self proclaimed \"true Halasian,\" make up the other two thirds of the unit. Magnon and I keep watch on the northern and southern portions of western Antonica, respectively. Magnon alone watches over the east side. We harry the gnolls to keep them from gaining strength. At the same time we watch for signs of concern.")
     end
 
     function dlg_0_6(NPC, Spawn)
