@@ -21,25 +21,23 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	if HasCompletedQuest(Spawn, SpeckledRattlerVenom) and not HasQuest(Spawn, BeetleShells) then
+	if HasCompletedQuest(Spawn, SpeckledRattlerVenom) and not HasQuest(Spawn, BeetleShells) and not HasCompletedQuest(Spawn, BeetleShells) then
 		Option2(NPC, Spawn)
-	elseif HasQuest(Spawn, SpeckledRattlerVenom) then
-	if GetQuestStep(Spawn, SpeckledRattlerVenom) == 1 then
+	elseif GetQuestStep(Spawn, SpeckledRattlerVenom) == 1 then
 			HaventGotTheVenom(NPC, Spawn)
 	elseif GetQuestStep(Spawn, SpeckledRattlerVenom) == 2 then
 			HasGotTheVenom(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and not HasCompletedQuest(Spawn, ArmadilloHides) then
+	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and not HasCompletedQuest(Spawn, BeetleShells) and not HasQuest(Spawn, BeetleShells) and not HasCompletedQuest(Spawn, ArmadilloHides) and not HasQuest(Spawn, ArmadilloHides) then
 	     Option3(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and HasCompletedQuest(Spawn, ArmadilloHides) and not HasCompletedQuest(Spawn, OrcsAndGhosts) then
+	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and HasCompletedQuest(Spawn, ArmadilloHides) and not HasCompletedQuest(Spawn, OrcsAndGhosts) and not HasQuest(Spawn, OrcsAndGhosts) then
 	     Option5(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and HasCompletedQuest(Spawn, ArmadilloHides) and HasCompletedQuest(Spawn, OrcsAndGhosts) and not HasCompletedQuest(Spawn, Rainus)then
+	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and HasCompletedQuest(Spawn, ArmadilloHides) and HasCompletedQuest(Spawn, OrcsAndGhosts) and not HasCompletedQuest(Spawn, Rainus) and not HasQuest(Spawn, Rainus) then
 	    orcscomplete(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and HasCompletedQuest(Spawn, ArmadilloHides) and HasCompletedQuest(Spawn, OrcsAndGhosts) and HasQuest(Spawn, Rainus) or HasCompletedQUest(Spawn, Rainus) then
+	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and HasCompletedQuest(Spawn, ArmadilloHides) and HasCompletedQuest(Spawn, OrcsAndGhosts) and HasQuest(Spawn, Rainus) or HasCompletedQuest(Spawn, Rainus) then
 	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "Thanks for the help", "", 0, 0, Spawn)
-		end
-    
-		
-	if GetQuestStep(Spawn, BeetleShells) == 1 then
+	elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) and HasCompletedQuest(Spawn, BeetleShells) and not HasQuest(Spawn, ArmadilloHides) and not HasCompletedQuest(Spawn, ArmadilloHides) and not HasQuest(Spawn, ArmadilloHides) then
+	    Option11(NPC, Spawn)
+	elseif GetQuestStep(Spawn, BeetleShells) == 1 then
 	    HaventGotTheShells(NPC, Spawn)
 	elseif GetQuestStep(Spawn, BeetleShells) == 2 then
 	    HasGotTheShells(NPC, Spawn)
@@ -51,14 +49,10 @@ function hailed(NPC, Spawn)
 	    OrcsNotKilled(NPC, Spawn)
 	elseif GetQuestStep(Spawn, OrcsAndGhosts) == 2 then
 	    OrcsKilled(NPC, Spawn)
-	end
-	
-	else
+	elseif not HasQuest(Spawn, SpeckledRattlerVenom) and not HasCompletedQuest(Spawn, SpeckledRattlerVenom) then
 		FirstTimeSpeaking(NPC, Spawn)
 	end
 end
- 
-
 
 function dlg_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -118,8 +112,8 @@ function HasGotTheVenom(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0, Spawn)
-	AddConversationOption(Conversation, "Yes, here it is.", "CompleteSpeckledRattlerVenom")
-	StartConversation(Conversation, NPC, Spawn, "Did you get the venom?")
+	AddConversationOption(conversation, "Yes, here it is.", "CompleteSpeckledRattlerVenom")
+	StartConversation(conversation, NPC, Spawn, "Did you get the venom?")
 end
 
 
@@ -143,7 +137,7 @@ end
 function OrcsKilled(NPC, Spawn)
      FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "Yes, they are dead.", "Option6")
+	AddConversationOption(conversation, "Yes, they are dead.", "orcscomplete")
 	StartConversation(conversation, NPC, Spawn, "Are the orcs dead?")
 end
 
@@ -151,8 +145,8 @@ end
 function OrcsNotKilled(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	Conversation = CreateConversation()
-	AddConversationOption(conversation, "Not yet.")
-	StartConversation(conversation, NPC, Spawn, "Are the orcs dead?")
+	AddConversationOption(Conversation, "Not yet.")
+	StartConversation(Conversation, NPC, Spawn, "Are the orcs dead?")
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0, Spawn)
 end
 
@@ -177,15 +171,15 @@ function HaventGotTheShells(NPC, Spawn)
     	FaceTarget(NPC, Spawn)
 	    local conversation = CreateConversation()
 	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0, Spawn)
-	    AddConversationOption(conversation, "Yes.", "Option3")
+	    AddConversationOption(conversation, "Not yet.")
 	    StartConversation(conversation, NPC, Spawn, "Do you have the shells?")
 end
 
 function Option5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-
 	AddConversationOption(conversation, "What is it?", "offer4")
+	AddConversationOption(conversation, "No thanks.")
 	StartConversation(conversation, NPC, Spawn, "I do have something a bit more exciting if you're interested.")
 end
 
@@ -224,14 +218,15 @@ function Option3(NPC, Spawn)
 	SetStepComplete(Spawn, BeetleShells, 2)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "Yeah, I can do more.", "Option11")
+		AddConversationOption(conversation, "Sorry, not interested right now.")
 	StartConversation(conversation, NPC, Spawn, "Great! Are you tired yet or can you do more?")
 end
 
 function Option11(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-
 	AddConversationOption(conversation, "I can get them.", "offer3")
+	AddConversationOption(conversation, "Not interested.")
 	StartConversation(conversation, NPC, Spawn, "All right. I've got some buyers lined up for some armadillo hides. You can find some if you follow the road west and along the wall that stretches to the north. I need ten of their hides.")
 end
 

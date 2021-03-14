@@ -6,10 +6,11 @@
                    : 
 --]]
 
+local OrcSiegeTowerExplosionID = 330917 
 local BloodskullDisruption = 404
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 5, "InRange", "InRange")
+SetPlayerProximityFunction(NPC, 5, "InRange")
 end
 
 
@@ -28,6 +29,7 @@ function casted_on(NPC, Spawn, SpellName)
 		    if not HasItem(Spawn, 6975) then
 		           SendPopUpMessage(Spawn, "You need explosives to destroy this. Perhaps you can find some in the orc supplies", 255, 215, 0)
 	            else
+	                 RemoveItem(Spawn, 6975, 1)
 	                 AddTimer(NPC, 2000, "explode")
 	                 SpawnSet(NPC, "visual_state", "2017")
 	                 if GetQuestStep(Spawn, BloodskullDisruption) == 4 then
@@ -39,7 +41,8 @@ end
  
    
 function explode(NPC, Spawn)
-RemoveItem(Spawn, 6975)
+local OrcSiegeTowerExplosion = GetSpawn(Spawn, 330917)
+SpawnSet(OrcSiegeTowerExplosion, "visual_state", "4557")
 SpawnSet(NPC, "model_type", 2375)
 SpawnSet(NPC, "visual_state", "0")
 AddTimer(NPC, 150000, "default_state")

@@ -5,15 +5,31 @@
     Script Purpose : 
                    : 
 --]]
-
+local OrcsAndGhosts = 400 -- Orcs and Ghosts Quest
 local Rainus = 401 -- Rainus Quest
 local QUEST = 402 -- The Frenzy of the Bloodskulls Quest
 local QUEST2 = 403 -- Bloodskull Intention quest
 local QUEST3 = 404 -- Bloodskull Disruption Quest
+local QUEST4 = 405 -- Captain Feralis
 
 function spawn(NPC)
-
+	SetPlayerProximityFunction(NPC, 10, "InRange")
 end
+
+
+function InRange(NPC, Spawn)
+  if HasCompletedQuest(Spawn, OrcsAndGhosts) then
+  ProvidesQuest(NPC, Rainus)
+  elseif HasCompletedQuest(Spawn, Rainus) then
+  ProvidesQuest(NPC, QUEST)
+  elseif HasCompletedQuest(Spawn, QUEST) then
+  ProvidesQuest(NPC, QUEST2)
+  elseif HasCompletedQuest(Spawn, QUEST2) then
+  ProvidesQuest(NPC, QUEST3)
+ elseif HasCompletedQuest(Spawn, QUEST3) then
+  ProvidesQuest(NPC, QUEST4)
+end
+   end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -50,8 +66,12 @@ function hailed(NPC, Spawn)
      quest3_progress0(NPC, Spawn)
     elseif GetQuestStep(Spawn, QUEST3) == 5 then
       quest3_progress1(NPC, Spawn)
-    elseif HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) then
+    elseif HasCompletedQuest(Spawn, Rainus) and HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) then
      Option9(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, Rainus) and HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) and not HasCompletedQuest(Spawn, QUEST4) then
+     Option16(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, Rainus) and HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and HasCompletedQuest(Spawn, QUEST3) and HasQuest(Spawn, QUEST4) or HasCompletedQuest(Spawn, QUEST4) then
+    PlayFlavor(NPC, "",  "Your help did not go unappreciated, but i have nothing more to ask of you.", "", 0, 0, Spawn)
     end
 end
  
@@ -95,7 +115,7 @@ end
 function quest3_progress1(NPC, Spawn)
      FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "Taken care of.")
+	AddConversationOption(conversation, "Taken care of.", "Option14")
 	StartConversation(conversation, NPC, Spawn, "The orcs?")
 end
 
@@ -220,6 +240,38 @@ function Option13(NPC, Spawn)
 
 	AddConversationOption(conversation, "A siege tower?", "offer3")
 	StartConversation(conversation, NPC, Spawn, "I read the orcs as books. They've two camps south-west of the Crossroads, just south of the kerran and ratonga villages. The orcs of these two camps will likely make up the cha nu durk... Kill the orcs and destroy their supplies. If they have a siege tower, destroy it as well.")
+end
+
+
+
+function Option14(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    SetStepComplete(Spawn, QUEST3, 5)
+	AddConversationOption(conversation, "What did you discover?", "Option15")
+	StartConversation(conversation, NPC, Spawn, "Wonderful job, "..GetName(Spawn).." The orcs will be feeling this for a while. In theory we could harry them endlessly if their leader never returned. That would make an interesting study to return home with. Speaking of that, I got word back on the orc roots.")
+end
+
+function Option15(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "Perfect?", "Option16")
+	StartConversation(conversation, NPC, Spawn, "That the orcs are more stupid than we thought. The elixir they create is triggered whenever the orc's adrenaline gets high enough. When this happens it actually eats away at the orc's brain! This damages the orc permanently. This is, of course, perfect.")
+end
+
+function Option16(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "I can do that.", "offer4")
+	StartConversation(conversation, NPC, Spawn, "If it's good enough for one clan of orcs why not others? I'd like you to deliver some of these treated roots to Captain Feralis at the Crossroads for me.")
+end
+
+
+function offer4(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST4)
 end
 
 
