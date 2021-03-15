@@ -29,7 +29,6 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
 	local choice = math.random(1,3)
 	
 	if HasQuest(Spawn, QuestFromGraveyard) or HasQuest(Spawn, QuestFromSprawl) or HasQuest(Spawn, QuestFromSunkenCity) then

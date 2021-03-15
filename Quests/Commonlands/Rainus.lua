@@ -18,11 +18,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+		FaceTarget(QuestGiver, Player)
+	   local  conversation = CreateConversation()
+	    AddConversationOption(conversation, "Thank you.")
+	    StartConversation(conversation, QuestGiver, Player, "May the Overlord hasten your path, "..GetName(Player)..".")
 end
 
 function Declined(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is declined
+	
 end
 
 function Deleted(Quest, QuestGiver, Player)
