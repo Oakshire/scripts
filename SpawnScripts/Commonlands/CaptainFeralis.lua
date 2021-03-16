@@ -24,6 +24,8 @@ function hailed(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Yes?")
 	elseif HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) <= 7 then
 	 QUEST_PROGRESS(NPC, Spawn)
+	elseif HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) == 8 then
+	  QUEST_COMPLETE(NPC, Spawn)
 end
 end
 
@@ -54,8 +56,16 @@ function Option3(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Head down to that small ratonga and kerran community south west of here and collect their taxes. You'll need to collect from every house owner. Normally they place the money in their mailbox, on the front of their houses. Sometimes they forget... when that happens you remind them, understood?")
 end
 
-
-
+function Option4(NPC, Spawn)
+    if GetQuestStep(Spawn, QUEST) == 8 then
+    SetStepComplete(Spawn, QUEST, 8)
+    end
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    AddConversationOption(conversation, "Sure.")
+    AddConversationOption(conversation, "No thanks.")
+    StartConversation(conversation, NPC, Spawn, "Nice work, here's your cut. While you were out another job came up, interested?")
+end
 
 function QUEST_PROGRESS(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -63,6 +73,14 @@ function QUEST_PROGRESS(NPC, Spawn)
 	AddConversationOption(conversation, "I'll be back.")
     StartConversation(conversation, NPC, Spawn, "Well?")
  end   
+ 
+ 
+ function QUEST_COMPLETE(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Here's the money.")
+	StartConversation(conversation, NPC, Spawn, "Well?")
+end
 
 function offer(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
