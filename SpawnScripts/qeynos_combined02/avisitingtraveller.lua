@@ -379,11 +379,11 @@ function KerraCosmetics(NPC)
             SpawnSet(NPC, "soga_model_type", "94")
             SpawnSet(NPC, "chest_type", "5545")
             SpawnSet(NPC, "legs_type", "5546")
-            local color_variation = MakeRandomInt(1,2)
+            local color_variation = MakeRandomInt(1,3)
                 if color_variation == 1 then
                     SpawnSet(NPC, "skin_color", "74 64 39")
                     SpawnSet(NPC, "soga_skin_color", "74 64 39")               
-                else 
+                elseif color_variation == 2 then 
                     SpawnSet(NPC, "skin_color", "95 29 1")
                     SpawnSet(NPC, "soga_skin_color", "95 29 1") 
                 end
@@ -392,8 +392,14 @@ function KerraCosmetics(NPC)
             SpawnSet(NPC, "soga_model_type", "95")
             SpawnSet(NPC, "chest_type", "5545")
             SpawnSet(NPC, "legs_type", "5546")
-            SpawnSet(NPC, "skin_color", "150 61 12")
-            SpawnSet(NPC, "soga_skin_color", "150 61 12") 
+            local color_variation = MakeRandomInt(1,3)
+                if color_variation == 1 then
+                    SpawnSet(NPC, "skin_color", "150 61 12")
+                    SpawnSet(NPC, "soga_skin_color", "150 61 12") 
+                else
+                    SpawnSet(NPC, "skin_color", "221 188 99")
+                    SpawnSet(NPC, "soga_skin_color", "221 188 99") 
+                end
         elseif Random_Model == 7 then
             SetModelType(NPC, "97")
             SpawnSet(NPC, "soga_model_type", "97")
