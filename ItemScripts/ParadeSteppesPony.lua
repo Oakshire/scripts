@@ -6,6 +6,5 @@ Script Name		:	ItemScripts/ParadeSteppesPony.lua
 	Script Notes	:	
 --]]
 function used(Item, Player)
-CastSpell(Player, 5120, 1) 
-
+    Castspell(Player, 5120, 1)
 end

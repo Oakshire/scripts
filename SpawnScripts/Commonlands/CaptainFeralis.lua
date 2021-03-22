@@ -8,6 +8,7 @@
 
 local CaptainFeralis = 405
 local QUEST = 406 -- Filling the Coffers quest
+local QUEST2 = 406 -- Ventar T'Kal quest
 
 function spawn(NPC)
 
@@ -15,10 +16,15 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+    local choice = MakeRandomInt(1, 2)
     if not HasQuest(Spawn, CaptainFeralis) and not HasQuest(Spawn, QUEST) then
+        if choice == 1 then
     PlayFlavor(NPC, "", "Loyalty first!", "", 0, 0, Spawn)
+    else
+        PlayFlavor(NPC, "", "Orcs, Undead... I'm more worried about what the Dervish Cutthroaths are up to.", "", 0, 0, Spawn)
+        end
     end
-    if HasQuest(Spawn, CaptainFeralis) or HasCompletedQuest(Spawn, CaptainFeralis) then
+    if HasQuest(Spawn, CaptainFeralis) or HasCompletedQuest(Spawn, CaptainFeralis) and not HasQuest(Spawn, QUEST) then
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "I am "..GetName(Spawn)..". Rainus asked me to deliver these root samples to you.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Yes?")
@@ -26,6 +32,8 @@ function hailed(NPC, Spawn)
 	 QUEST_PROGRESS(NPC, Spawn)
 	elseif HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) == 8 then
 	  QUEST_COMPLETE(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) then
+	   Option5(NPC, Spawn)
 end
 end
 
@@ -62,10 +70,31 @@ function Option4(NPC, Spawn)
     end
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-    AddConversationOption(conversation, "Sure.")
+    AddConversationOption(conversation, "Sure.", "Option5")
     AddConversationOption(conversation, "No thanks.")
     StartConversation(conversation, NPC, Spawn, "Nice work, here's your cut. While you were out another job came up, interested?")
 end
+
+
+function Option5(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "All right, I will go speak with him.", "offer2")
+	StartConversation(conversation, NPC, Spawn, "Yeah, that's what I thought. Ventar T'Kal is a man of mine. You can find him north west of here, in the company of nomads. I need you to deliver these Bloodskull Frenzy Root samples to him. They've already been treated... so don't eat them.")
+end
+
+
+function offer(NPC, Spawn)
+	FaceTarget(NPC, Spawn)    
+    OfferQuest(NPC, Spawn, QUEST)
+end
+
+function offer(NPC, Spawn)
+	FaceTarget(NPC, Spawn)    
+    OfferQuest(NPC, Spawn, QUEST2)
+end
+
 
 function QUEST_PROGRESS(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -78,14 +107,12 @@ function QUEST_PROGRESS(NPC, Spawn)
  function QUEST_COMPLETE(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "Here's the money.")
+	AddConversationOption(conversation, "Here's the money.", "Option4")
 	StartConversation(conversation, NPC, Spawn, "Well?")
 end
 
-function offer(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	OfferQuest(NPC, Spawn, QUEST)
-end	
+
+
 
 function respawn(NPC)
 
