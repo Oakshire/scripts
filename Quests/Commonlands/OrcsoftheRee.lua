@@ -18,6 +18,7 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
+    AddItem(Player, 46427, 6)
 	FaceTarget(QuestGiver, Player)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "I will return.")

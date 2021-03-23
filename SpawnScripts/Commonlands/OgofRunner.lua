@@ -11,7 +11,7 @@ function spawn(NPC)
 
 end
 
-function follow_Ogof(NPC)
+function follow_Ogof(NPC, Spawn)
 	local zone = GetZone(NPC)
 	local captOgof = GetSpawnByLocationID(zone, 1585710)
 	local whoAmI = GetSpawnLocationID(NPC)

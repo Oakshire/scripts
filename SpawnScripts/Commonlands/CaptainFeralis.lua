@@ -8,7 +8,7 @@
 
 local CaptainFeralis = 405
 local QUEST = 406 -- Filling the Coffers quest
-local QUEST2 = 406 -- Ventar T'Kal quest
+local QUEST2 = 407 -- Ventar T'Kal quest
 
 function spawn(NPC)
 
@@ -17,7 +17,7 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     local choice = MakeRandomInt(1, 2)
-    if not HasQuest(Spawn, CaptainFeralis) and not HasQuest(Spawn, QUEST) then
+    if HasQuest(Spawn, QUEST2) or HasCompletedQuest(Spawn, QUEST2) then
         if choice == 1 then
     PlayFlavor(NPC, "", "Loyalty first!", "", 0, 0, Spawn)
     else
@@ -33,7 +33,7 @@ function hailed(NPC, Spawn)
 	elseif HasQuest(Spawn, QUEST) and GetQuestStep(Spawn, QUEST) == 8 then
 	  QUEST_COMPLETE(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) then
-	   Option5(NPC, Spawn)
+	   Option4(NPC, Spawn)
 end
 end
 
@@ -90,7 +90,7 @@ function offer(NPC, Spawn)
     OfferQuest(NPC, Spawn, QUEST)
 end
 
-function offer(NPC, Spawn)
+function offer2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)    
     OfferQuest(NPC, Spawn, QUEST2)
 end

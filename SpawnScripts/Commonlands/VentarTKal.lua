@@ -7,8 +7,8 @@
 --]]
 
 
-local QUEST = 406 -- Ventar T'Kal quest
-local QUEST2 = 407
+local QUEST = 407 -- Ventar T'Kal quest
+local QUEST2 = 408
 
 function spawn(NPC)
 
@@ -18,23 +18,27 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1048.mp3", "", "", 0, 0, Spawn)
 	if not HasQuest(Spawn, QUEST) then
-	    local choice = MakeRandomInt(1, 2)
-	    if choice == 1 then
+	local choice = MakeRandomInt(1, 2)
+	if choice == 1 then
 	PlayFlavor("", "These nomads can be quite pleasant to deal with.", "", 1689589577, 4560189, Spawn)
      else
     PlayFlavor("", "Overlord protect us!", "", 1689589577, 4560189, Spawn)
 	end
-elseif HasQuest(Spawn, QUEST) and GetItem(Spawn, 14661) then
-	local conversation = CreateConversation()
+   end
+   
+   if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) then
+    local conversation = CreateConversation()
 	AddConversationOption(conversation, "Yes. I have these roots for you.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Are you "..GetName(Spawn).."?")
-elseif GetQuestStep(Spawn, QUEST2) == 1   and GetQuestStep(Spawn, QUEST2) == 2  then
+   elseif GetQuestStep(Spawn, QUEST2) == 1 or  GetQuestStep(Spawn, QUEST2) == 2 then
       QUEST2_PROGRESS(NPC, Spawn)
-	  end
-end
+    end
+    end
 
 function Option1(NPC, Spawn)
-    SetStepComplete(Spawn, QUEST)
+    if GetQuestStep(Spawn, QUEST) == 1 then
+    SetStepComplete(Spawn, QUEST, 1)
+    end
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "With what?", "Option2")
@@ -83,9 +87,17 @@ end
 function QUEST2_PROGRESS(NPC, Spawn)
         local conversation = CreateConversation()
 	    AddConversationOption(conversation, "Not yet.")
+	    if not HasItem(Spawn, 46427) then
+	    AddConversationOption(conversation, "I need the treated frenzy root.", "root")
+	    end
 	    StartConversation(conversation, NPC, Spawn, "Is it done?")
-end
+end 
 
+function root(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "", "Of course, here you are.")
+	AddItem(Spawn, 46427, 6)
+end	
 
 function respawn(NPC)
 	spawn(NPC)
