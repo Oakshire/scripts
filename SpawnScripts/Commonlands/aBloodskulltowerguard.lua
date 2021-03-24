@@ -30,8 +30,8 @@ function death(NPC, Spawn)
   local Y = GetY(NPC)
   local Z = GetZ(NPC)
    local BloodskullOrders = SpawnMob(zone, 331126, true, X, Y, Z, 33.71)
-     if new_spawn ~= nil then
-        AddSpawnAccess(new_spawn, Spawn)
+        if BloodskullOrders ~= nil then
+        AddSpawnAccess(BloodskullOrders, Spawn)
  end
 end
 end

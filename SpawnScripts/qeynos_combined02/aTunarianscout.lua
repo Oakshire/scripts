@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    local model = MakeRandomInt(7,8)
+    local model = MakeRandomInt(3,4)
 
         if model == 1 then
             SetModelType(NPC, "132") -- human female
@@ -72,12 +72,12 @@ end
 
 function HalfElfCosmetics(NPC)
 
-    local hair = MakeRandomInt(1137,1140) -- 1133 (f|)
+    local hair = MakeRandomInt(1137,1140) -- 1127 (f|), 1133 (f|m), 1138 (f|)
 
         SpawnSet(NPC, "hair_type", hair)
         SpawnSet(NPC, "soga_hair_type", hair)
         
-    local piercing = MakeRandomInt(1185,1191) -- 1184 (f|), 1185
+    local piercing = MakeRandomInt(1185,1191) -- 1166 (|m), 1184 (f|), 1185 (|), 1191 (f|)
     local piercing_chance = MakeRandomInt(1,100)    
 
         if piercing_chance < 21 then
@@ -88,7 +88,7 @@ function HalfElfCosmetics(NPC)
             SpawnSet(NPC, "soga_facial_hair_type", piercing)
         end
 
-    local overall_look = MakeRandomInt(5,5)
+    local overall_look = MakeRandomInt(8,8)
 
         if overall_look == 1 then -- Bright white
             SpawnSet(NPC, "skin_color", "146 147 120")
@@ -165,21 +165,57 @@ function HalfElfCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_color2", "185 97 0") 
             SpawnSet(NPC, "hair_highlight", "239 221 86")
             SpawnSet(NPC, "soga_hair_highlight", "239 221 86") 
-        else -- Dark yellow
-            SpawnSet(NPC, "skin_color", "240 249 246")
-            SpawnSet(NPC, "soga_skin_color", "240 249 246") 
-            SpawnSet(NPC, "eye_color", "105 85 44")
-            SpawnSet(NPC, "soga_eye_color", "105 85 44") 
-            SpawnSet(NPC, "hair_type_color", "211 157 3")
-            SpawnSet(NPC, "soga_hair_type_color", "211 157 3") 
-            SpawnSet(NPC, "hair_type_highlight_color", "125 50 1")
-            SpawnSet(NPC, "soga_hair_type_highlight_color", "125 50 1") 
+        elseif overall_look == 6 then -- White and yellow
+            SpawnSet(NPC, "skin_color", "213 187 157")
+            SpawnSet(NPC, "soga_skin_color", "213 187 157") 
+            SpawnSet(NPC, "eye_color", "76 60 30")
+            SpawnSet(NPC, "soga_eye_color", "76 60 30") 
+            SpawnSet(NPC, "hair_type_color", "244 246 246")
+            SpawnSet(NPC, "soga_hair_type_color", "244 246 246") 
+            SpawnSet(NPC, "hair_type_highlight_color", "233 184 31")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "233 184 31") 
+            SpawnSet(NPC, "hair_color1", "161 165 168")
+            SpawnSet(NPC, "soga_hair_color1", "161 165 168") 
+            SpawnSet(NPC, "hair_color2", "50 69 69")
+            SpawnSet(NPC, "soga_hair_color2", "50 69 69") 
+            SpawnSet(NPC, "hair_highlight", "246 219 114")
+            SpawnSet(NPC, "soga_hair_highlight", "246 219 114")
+        elseif overall_look == 7 then -- Orange and red
+            SpawnSet(NPC, "skin_color", "137 134 101")
+            SpawnSet(NPC, "soga_skin_color", "137 134 101") 
+            SpawnSet(NPC, "eye_color", "55 115 127")
+            SpawnSet(NPC, "soga_eye_color", "55 115 127") 
+            SpawnSet(NPC, "hair_type_color", "93 10 9")
+            SpawnSet(NPC, "soga_hair_type_color", "93 10 9") 
+            SpawnSet(NPC, "hair_type_highlight_color", "168 59 22")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "168 59 22") 
+            SpawnSet(NPC, "hair_color1", "109 14 49")
+            SpawnSet(NPC, "soga_hair_color1", "109 14 49") 
+            SpawnSet(NPC, "hair_color2", "185 97 0")
+            SpawnSet(NPC, "soga_hair_color2", "185 97 0") 
+            SpawnSet(NPC, "hair_highlight", "89 21 21")
+            SpawnSet(NPC, "soga_hair_highlight", "89 21 21") 
+        elseif overall_look == 8 then -- Red light and black/lilac
+            SpawnSet(NPC, "skin_color", "242 233 234")
+            SpawnSet(NPC, "soga_skin_color", "242 233 234") 
+            SpawnSet(NPC, "eye_color", "37 71 51")
+            SpawnSet(NPC, "soga_eye_color", "37 71 51") 
+            SpawnSet(NPC, "hair_type_color", "15 1 21")
+            SpawnSet(NPC, "soga_hair_type_color", "15 1 21") 
+            SpawnSet(NPC, "hair_type_highlight_color", "119 36 33")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "119 36 33") 
+            SpawnSet(NPC, "hair_color1", "29 21 28")
+            SpawnSet(NPC, "soga_hair_color1", "29 21 28") 
+            SpawnSet(NPC, "hair_color2", "39 32 39")
+            SpawnSet(NPC, "soga_hair_color2", "39 32 39") 
+            SpawnSet(NPC, "hair_highlight", "91 21 51")
+            SpawnSet(NPC, "soga_hair_highlight", "91 21 51") 
         end
 end
 
 function WoodElfCosmetics(NPC)
 
-    local hair = MakeRandomInt(1133,1139) -- 1131 (f|), 1136 (|m)
+    local hair = MakeRandomInt(1133,1139) -- 1131 (f|), 1133 (|m), 1136 (|m)
 
         SpawnSet(NPC, "hair_type", hair)
         SpawnSet(NPC, "soga_hair_type", hair)
@@ -311,12 +347,12 @@ end
 
 function HighElfCosmetics(NPC)
 
-    local hair = MakeRandomInt(1133,1140)  -- 1133 (f|), 1137 (|m)
+    local hair = MakeRandomInt(1133,1140)  -- 1133 (f|m), 1137 (f|m)
 
         SpawnSet(NPC, "hair_type", hair)
         SpawnSet(NPC, "soga_hair_type", hair)
 
-    local overall_look = MakeRandomInt(8,8)
+    local overall_look = MakeRandomInt(10,10)
 
         if overall_look == 1 then -- White
             SpawnSet(NPC, "skin_color", "235 243 243")
@@ -423,7 +459,7 @@ function HighElfCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_color2", "0 0 0") 
             SpawnSet(NPC, "hair_highlight", "0 0 0")
             SpawnSet(NPC, "soga_hair_highlight", "0 0 0") 
-        elseif overall_look == 8 then -- Dark orange
+        elseif overall_look == 8 then -- Orange dark
             SpawnSet(NPC, "skin_color", "218 229 229")
             SpawnSet(NPC, "soga_skin_color", "218 229 229") 
             SpawnSet(NPC, "eye_color", "102 70 30")
@@ -432,6 +468,36 @@ function HighElfCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_type_color", "219 136 25") 
             SpawnSet(NPC, "hair_type_highlight_color", "59 54 48")
             SpawnSet(NPC, "soga_hair_type_highlight_color", "59 54 48") 
+            SpawnSet(NPC, "hair_color1", "0 0 0")
+            SpawnSet(NPC, "soga_hair_color1", "0 0 0") 
+            SpawnSet(NPC, "hair_color2", "0 0 0")
+            SpawnSet(NPC, "soga_hair_color2", "0 0 0") 
+            SpawnSet(NPC, "hair_highlight", "0 0 0")
+            SpawnSet(NPC, "soga_hair_highlight", "0 0 0") 
+        elseif overall_look == 9 then -- Orange light
+            SpawnSet(NPC, "skin_color", "225 232 227")
+            SpawnSet(NPC, "soga_skin_color", "225 232 227") 
+            SpawnSet(NPC, "eye_color", "200 175 137")
+            SpawnSet(NPC, "soga_eye_color", "200 175 137") 
+            SpawnSet(NPC, "hair_type_color", "220 138 23")
+            SpawnSet(NPC, "soga_hair_type_color", "220 138 23") 
+            SpawnSet(NPC, "hair_type_highlight_color", "113 39 21")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "113 39 21") 
+            SpawnSet(NPC, "hair_color1", "0 0 0")
+            SpawnSet(NPC, "soga_hair_color1", "0 0 0") 
+            SpawnSet(NPC, "hair_color2", "0 0 0")
+            SpawnSet(NPC, "soga_hair_color2", "0 0 0") 
+            SpawnSet(NPC, "hair_highlight", "0 0 0")
+            SpawnSet(NPC, "soga_hair_highlight", "0 0 0")
+        elseif overall_look == 10 then -- White yellow light
+            SpawnSet(NPC, "skin_color", "221 225 225")
+            SpawnSet(NPC, "soga_skin_color", "221 225 225") 
+            SpawnSet(NPC, "eye_color", "138 174 156")
+            SpawnSet(NPC, "soga_eye_color", "138 174 156") 
+            SpawnSet(NPC, "hair_type_color", "222 210 186")
+            SpawnSet(NPC, "soga_hair_type_color", "222 210 186") 
+            SpawnSet(NPC, "hair_type_highlight_color", "118 116 114")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "118 116 114") 
             SpawnSet(NPC, "hair_color1", "0 0 0")
             SpawnSet(NPC, "soga_hair_color1", "0 0 0") 
             SpawnSet(NPC, "hair_color2", "0 0 0")

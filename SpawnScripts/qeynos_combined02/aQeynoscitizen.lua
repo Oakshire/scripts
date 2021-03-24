@@ -70,7 +70,7 @@ function BarbarianCosmetics(NPC)
         SpawnSet(NPC, "soga_hair_type", hair)
     end
         
-    local beard = MakeRandomInt(1185,1189) -- 1185, 1186, 1188
+    local beard = MakeRandomInt(1185,1189) -- 1184, 1185, 1186, 1188
     local beard_chance = MakeRandomInt(1,100)    
 
         if beard_chance < 11 then

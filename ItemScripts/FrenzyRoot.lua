@@ -7,13 +7,15 @@
 --]]
 
 
-
-
-function used(Item, Player)
-		 local zone = GetZone(Player)
-	     local X = GetX(Player)
-	     local Y = GetY(Player)
-	     local Z = GetZ(Player)
-        SpawnMob(zone, 331123, true, X, Y, Z)
-        RemoveItem(Player, 46427)
-		end
+           
+function used(Item, Spawn)
+         local zone = GetZone(Spawn)
+	     local X = GetX(Spawn)
+	     local Y = GetY(Spawn)
+	     local Z = GetZ(Spawn)
+        local FrenzyRoot = SpawnMob(zone, 331123, false, X, Y, Z, 50)
+        if FrenzyRoot ~= nil then
+        AddSpawnAccess(FrenzyRoot, Spawn)
+        RemoveItem(Spawn, 46427)           
+        end
+           end
