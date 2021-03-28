@@ -184,7 +184,8 @@ end
 function InRange(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
         if not HasQuest(Spawn, SmugglersSecrets) then
-	PlayFlavor(NPC, "", "Psst!  You there!  C'mere and give me a hand.", "", 1689589577, 4560189, Spawn)  
+    ProvidesQuest(NPC, SmugglersSecrets)
+	PlayFlavor(NPC, "", "Psst!  You there!  C'mere and give me a hand.", "", 1689589577, 4560189, Spawn)
 end
    end
 	
