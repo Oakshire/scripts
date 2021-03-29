@@ -12,21 +12,15 @@ function precast(Caster, Target)
 end
 
 function cast(Caster, Target)
-    -- Stuns target
-    AddControlEffect(Target, 4)
-end
-
-function remove(Caster, Target)
     -- Applies Cheap Shot on termination.  Lasts for 2.0 seconds.
     --     Stuns target
     --     Does not affect Heroic or Epic targets.
     if not IsHeroic(Target) then
-        AddSpellTimer(2000, "RemoveStun")
-    else
-        RemoveControlEffect(Target, 4)
+        AddControlEffect(Target, 4)
     end
 end
 
-function RemoveStun(Caster, Target)
+function remove(Caster, Target)
+    -- Remove Mez Effect
     RemoveControlEffect(Target, 4)
 end

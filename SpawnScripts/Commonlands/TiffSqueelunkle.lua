@@ -7,6 +7,7 @@
 --]]
 
 local SmugglersSecrets = 452
+local CratesOnTheNerves = 453 
 
 
 function spawn(NPC)
@@ -25,12 +26,23 @@ function hailed(NPC, Spawn)
     StartConversation(conversation, NPC, Spawn, "You are a perfect fit!  No doubt of that cog being wrong sized, nuh uh.")
     elseif HasQuest(Spawn, SmugglersSecrets) and GetQuestStep(Spawn,  SmugglersSecrets) == 1  then
     dlg5(NPC, Spawn)
-    elseif HasQuest(Spawn, SmugglersSecrets) and GetQuestStep(Spawn, SmugglersSecrets) == 2 or GetQuestStep(Spawn, SmugglersSecrets) == 4 then
+    elseif HasQuest(Spawn, SmugglersSecrets) and GetQuestStep(Spawn, SmugglersSecrets) == 2 or GetQuestStep(Spawn, SmugglersSecrets) == 4 or GetQuestStep(Spawn, CratesOnTheNerves) == 3 then
     PlayFlavor(NPC, "", "Quick!  Do as I asked before they catch on to us!", "", 1689589577, 4560189, Spawn)
     elseif GetQuestStep(Spawn, SmugglersSecrets) == 3 then
     dlg7(NPC, Spawn)
-    elseif GetQuestStep(Spawn, SmugglersSecrets) == 5 then 
+    elseif GetQuestStep(Spawn, SmugglersSecrets) == 5 then
     dlg16(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, SmugglersSecrets) and not HasQuest(Spawn, CratesOnTheNerves) then
+     conversation = CreateConversation()
+	AddConversationOption(conversation, "Oh, good.  More work.", "dlg2_1")
+    AddConversationOption(conversation, "And there's something I can do, right?", "dlg_2_1")
+	StartConversation(conversation, NPC, Spawn, "Now we can track the scroll to 'elp us learn who is involved, but there's more gears turnin' in this clockwork then meets the eye.")
+	elseif GetQuestStep(Spawn, CratesOnTheNerves) == 1 then
+	conversation = CreateConversation()
+	AddConversationOption(conversation, "Sounds easy enough.")
+	StartConversation(conversation, NPC, Spawn, "Get me five wisp embers to make the potion, and we'll be all set.")
+	elseif GetQuestStep(Spawn, CratesOnTheNerves) == 2 then
+	  dlg2_3(NPC, Spawn)
 end
    end
 
@@ -171,11 +183,54 @@ AddConversationOption(conversation, "Thank you.")
 StartConversation(conversation, NPC, Spawn, "Excellent!  'Ere.  Take this for your troubles.")
 end
 
+function dlg2_1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I hear a task coming on.", "dlg2_2")
+	AddConversationOption(conversation, "Let me guess, i can get you some.", "dlg2_2")
+	StartConversation(conversation, NPC, Spawn, "Aye, there is!  What's bein' shipped, where?  What dark elves wanna help others?  Trackin' the items is key!  'Cept, it's too bad I'm out of the trackin' powder.")    
+end
+
+function dlg2_2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I can do that.", "offer2")
+	AddConversationOption(conversation, "I'm gonna pass on that one")
+	StartConversation(conversation, NPC, Spawn, "Sassy!  Talk'n like that is how I lost my tongue, you know.  At sea, they don't take kindly to such.  Wait!  You could get me sa' more.  Good idea!")
+end
+
+
+
+function dlg2_3(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    AddConversationOption(conversation, "I do.", "dlg2_4")
+    AddConversationOption(conversation, "I have not let you down.")
+	StartConversation(conversation, NPC, Spawn, "I 'ave the potion all set.  You've got the wisp embers?")
+end
+
+function dlg2_4(NPC, Spawn)
+    SetStepComplete(Spawn, CratesOnTheNerves, 2)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Yeah, yeah. I got it.")
+	AddConversationOption(conversation, "Dawdle...heh heh.")
+	StartConversation(conversation, NPC, Spawn, "Good, good!  There we go.  Now take this pouch of trackin' powder, and sprinkle it on any of 'em empty crates that are in the Blackshield Smugglers' outpost.  'Urry now.  Don't dawdle!")
+end
+
+
+
 
 function offer(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 OfferQuest(NPC, Spawn, SmugglersSecrets)
 end
+
+function offer2(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, CratesOnTheNerves)
+end
+
 
 function respawn(NPC)
  spawn(NPC)

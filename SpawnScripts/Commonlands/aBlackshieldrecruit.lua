@@ -113,7 +113,7 @@ end
 
 
 function InRange(NPC, Spawn)
-        if HasSpellEffect(Spawn, 5459) then
+        if HasSpellEffect(Spawn, 5459) and GetQuestStep(Spawn, SmugglersSecrets) == 2 then
         BlackshieldRecruitLine(NPC, Spawn)
 end
    end
