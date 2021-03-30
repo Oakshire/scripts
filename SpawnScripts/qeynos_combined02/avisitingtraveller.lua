@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    local model = MakeRandomInt(11,12)
+    local model = MakeRandomInt(7,8)
 
         if model == 1 then
             SetModelType(NPC, "132") -- human female
@@ -82,7 +82,7 @@ function EruditeCosmetics(NPC)
         SpawnSet(NPC, "hair_type", "0")
         SpawnSet(NPC, "soga_hair_type", "0")
 
-    local overall_look = MakeRandomInt(11,11)
+    local overall_look = MakeRandomInt(12,12)
 
         if overall_look == 1 then -- Beige golden
             SpawnSet(NPC, "skin_color", "136 103 55")
@@ -139,6 +139,11 @@ function EruditeCosmetics(NPC)
             SpawnSet(NPC, "soga_skin_color", "155 143 88") 
             SpawnSet(NPC, "eye_color", "95 96 0")
             SpawnSet(NPC, "soga_eye_color", "95 96 0") 
+        elseif overall_look == 12 then -- Grey light
+            SpawnSet(NPC, "skin_color", "101 95 57")
+            SpawnSet(NPC, "soga_skin_color", "101 95 57") 
+            SpawnSet(NPC, "eye_color", "0 145 146")
+            SpawnSet(NPC, "soga_eye_color", "0 145 146") 
         end
 end
 

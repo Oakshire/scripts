@@ -52,7 +52,7 @@ function HumanCosmetics(NPC)
             SpawnSet(NPC, "soga_facial_hair_type", beard)
         end
 
-    local overall_look = MakeRandomInt(19,19)
+    local overall_look = MakeRandomInt(20,20)
 
         if overall_look == 1 then -- Chestnut yellow stribes
             SpawnSet(NPC, "skin_color", "234 195 198")
@@ -415,5 +415,24 @@ function HumanCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_color2", "173 99 44") 
             SpawnSet(NPC, "hair_highlight", "43 36 70")
             SpawnSet(NPC, "soga_hair_highlight", "43 36 70") 
+        elseif overall_look == 20 then -- White
+            SpawnSet(NPC, "skin_color", "195 205 205")
+            SpawnSet(NPC, "soga_skin_color", "195 205 205") 
+            SpawnSet(NPC, "eye_color", "116 124 67")
+            SpawnSet(NPC, "soga_eye_color", "116 124 67") 
+            SpawnSet(NPC, "hair_type_color", "224 230 231")
+            SpawnSet(NPC, "soga_hair_type_color", "224 230 231") 
+            SpawnSet(NPC, "hair_face_color", "224 230 231")
+            SpawnSet(NPC, "soga_hair_face_color", "224 230 231")
+            SpawnSet(NPC, "hair_type_highlight_color", "219 179 16")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "219 179 16")
+            SpawnSet(NPC, "hair_face_highlight_color", "219 179 16")
+            SpawnSet(NPC, "soga_hair_face_highlight_color", "219 179 16")
+            SpawnSet(NPC, "hair_color1", "161 165 168")
+            SpawnSet(NPC, "soga_hair_color1", "161 165 168") 
+            SpawnSet(NPC, "hair_color2", "50 69 69")
+            SpawnSet(NPC, "soga_hair_color2", "50 69 69") 
+            SpawnSet(NPC, "hair_highlight", "239 221 86")
+            SpawnSet(NPC, "soga_hair_highlight", "239 221 86") 
         end
 end
