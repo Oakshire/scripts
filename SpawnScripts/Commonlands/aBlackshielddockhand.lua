@@ -8,9 +8,10 @@
 
 local BlackshieldRecruitID = 299540
 local SmugglersSecrets = 452
+local CratesOnTheNerves = 453 
 
 function spawn(NPC)
-
+SetPlayerProximityFunction(NPC, 10, "InRange")
 end
 
 function hailed(NPC, Spawn)
@@ -42,7 +43,29 @@ local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID)
 if BlackshieldRecruit ~= nil then
 AddTimer(BlackshieldRecruit, 1000, "BlackshieldRecruitLine4", 1, Spawn)
 end
+    end
+
+
+function dlgtimer_CratesOnTheNerves01(NPC, Spawn)
+local zone = GetZone(NPC)
+local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID)
+if BlackshieldRecruit ~= nil then
+AddTimer(BlackshieldRecruit, 1000, "BlackshieldRecruitLine_CratesOnTheNerves", 1, Spawn)
+end
+    end
+
+function dlgtimer_CratesOnTheNerves03(NPC, Spawn)
+local zone = GetZone(NPC)
+local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID)
+if BlackshieldRecruit ~= nil then
+AddTimer(BlackshieldRecruit, 1000, "BlackshieldRecruitLine_CratesOnTheNerves_Final", 1, Spawn)
+end
    end
+
+
+
+
+
 
 -- Dialog Part for "a Blackshield Dockhand"
 
@@ -89,4 +112,36 @@ function  BlackshieldDockhandLine4(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "Riiiight.")
     StartConversation(conversation, NPC, Spawn, "Should be.  Now see to it this message gets to the rendezvous at Pride Lake, and be quick about it!")
+end
+
+
+function BlackshieldDockhandLine_CratesOnTheNerves(NPC, Spawn)
+    local zone = GetZone(NPC)
+    local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID) 
+      FaceTarget(NPC, BlackshieldRecruit)
+      conversation = CreateConversation()
+        StartConversation(conversation, NPC, Spawn, "You unloaded that quick. Good job.")
+         AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimer_CratesOnTheNerves01")
+end
+
+
+function BlackshieldDockhandLine_CratesOnTheNerves2(NPC, Spawn)
+    local zone = GetZone(NPC)
+    local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID) 
+      FaceTarget(NPC, BlackshieldRecruit)
+      conversation = CreateConversation()
+         AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimer_CratesOnTheNerves03")
+         StartConversation(conversation, NPC, Spawn, "I don't. I like the profit that lines the Blackshield coffers.")
+end
+
+
+function InRange(NPC, Spawn)
+        if GetQuestStep(Spawn, CratesOnTheNerves) == 12 then
+        BlackshieldDockhandLine_CratesOnTheNerves(NPC, Spawn)
+end
+   end
+
+
+function respawn(NPC)
+    spawn(NPC)
 end

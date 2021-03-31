@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    local model = MakeRandomInt(3,4)
+    local model = MakeRandomInt(5,6)
 
         if model == 1 then
             SetModelType(NPC, "132") -- human female
@@ -72,12 +72,12 @@ end
 
 function HalfElfCosmetics(NPC)
 
-    local hair = MakeRandomInt(1137,1140) -- 1127 (f|), 1133 (f|m), 1138 (f|)
+    local hair = MakeRandomInt(1137,1140) -- 1125 (f|), 1127 (f|), 1133 (f|m), 1138 (f|)
 
         SpawnSet(NPC, "hair_type", hair)
         SpawnSet(NPC, "soga_hair_type", hair)
         
-    local piercing = MakeRandomInt(1185,1191) -- 1166 (|m), 1184 (f|), 1185 (|), 1187 (|m), 1191 (f|)
+    local piercing = MakeRandomInt(1185,1191) -- 1166 (f|m), 1184 (f|), 1185 (|), 1187 (|m), 1191 (f|)
     local piercing_chance = MakeRandomInt(1,100)    
 
         if piercing_chance < 21 then
@@ -88,7 +88,7 @@ function HalfElfCosmetics(NPC)
             SpawnSet(NPC, "soga_facial_hair_type", piercing)
         end
 
-    local overall_look = MakeRandomInt(8,8)
+    local overall_look = MakeRandomInt(9,9)
 
         if overall_look == 1 then -- Bright white
             SpawnSet(NPC, "skin_color", "146 147 120")
@@ -210,6 +210,21 @@ function HalfElfCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_color2", "39 32 39") 
             SpawnSet(NPC, "hair_highlight", "91 21 51")
             SpawnSet(NPC, "soga_hair_highlight", "91 21 51") 
+        elseif overall_look == 9 then -- White and yellow
+            SpawnSet(NPC, "skin_color", "132 141 137")
+            SpawnSet(NPC, "soga_skin_color", "132 141 137") 
+            SpawnSet(NPC, "eye_color", "199 174 134")
+            SpawnSet(NPC, "soga_eye_color", "199 174 134") 
+            SpawnSet(NPC, "hair_type_color", "244 246 246")
+            SpawnSet(NPC, "soga_hair_type_color", "244 246 246") 
+            SpawnSet(NPC, "hair_type_highlight_color", "193 100 45")
+            SpawnSet(NPC, "soga_hair_type_highlight_color", "193 100 45") 
+            SpawnSet(NPC, "hair_color1", "161 165 168")
+            SpawnSet(NPC, "soga_hair_color1", "161 165 168") 
+            SpawnSet(NPC, "hair_color2", "56 62 62")
+            SpawnSet(NPC, "soga_hair_color2", "56 62 62") 
+            SpawnSet(NPC, "hair_highlight", "105 26 26")
+            SpawnSet(NPC, "soga_hair_highlight", "105 26 26")
         end
 end
 

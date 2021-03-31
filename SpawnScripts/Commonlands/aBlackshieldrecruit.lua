@@ -9,6 +9,7 @@
 
 local BlackshieldDockhandID = 299539
 local SmugglersSecrets = 452
+local CratesOnTheNerves = 453 
 
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 10, "InRange")
@@ -62,6 +63,15 @@ end
    end
 
 
+function dlgtimer_CratesOnTheNerves02(NPC, Spawn)
+local zone = GetZone(NPC)
+local BlackshieldDockhand = GetSpawnByLocationID(zone, BlackshieldDockhandID)
+if BlackshieldDockhand ~= nil then
+AddTimer(BlackshieldDockhand, 1000, "BlackshieldDockhandLine_CratesOnTheNerves2", 1, Spawn)
+end
+   end
+
+
 -- Dialog Part for "a Blackshield Recruit"
 
 function BlackshieldRecruitLine(NPC, Spawn)
@@ -88,7 +98,6 @@ end
 
 
 
-
 function BlackshieldRecruitLine3(NPC, Spawn)
     local zone = GetZone(NPC)
     local BlackshieldDockhand = GetSpawnByLocationID(zone, BlackshieldDockhandID)
@@ -110,7 +119,25 @@ function BlackshieldRecruitLine4(NPC, Spawn)
 end
  
  
+function BlackshieldRecruitLine_CratesOnTheNerves(NPC, Spawn)
+   local zone = GetZone(NPC)
+    local BlackshieldDockhand = GetSpawnByLocationID(zone, BlackshieldDockhandID)
+    FaceTarget(NPC, BlackshieldDockhand)
+     conversation = CreateConversation()  
+       AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimer_CratesOnTheNerves02")
+        StartConversation(conversation, NPC, Spawn, "Thanks you! Is find it odd to unpack goods and repack thems to be sold, though.")
+end
 
+
+function BlackshieldRecruitLine_CratesOnTheNerves_Final(NPC, Spawn)
+      SetStepComplete(Spawn, CratesOnTheNerves, 12)
+      local zone = GetZone(NPC)
+    local BlackshieldDockhand = GetSpawnByLocationID(zone, BlackshieldDockhandID)
+    FaceTarget(NPC, BlackshieldDockhand)
+     conversation = CreateConversation()  
+       AddConversationOption(conversation, "[You've heard enough.]")
+        StartConversation(conversation, NPC, Spawn, "Profits is always good. Such contracts to get rid of sellable good is nices.")
+end
 
 function InRange(NPC, Spawn)
         if HasSpellEffect(Spawn, 5459) and GetQuestStep(Spawn, SmugglersSecrets) == 2 then

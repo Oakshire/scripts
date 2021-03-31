@@ -49,9 +49,9 @@ end
 
 function Step4Complete(Quest, QuestGiver, Player)
         UpdateQuestStepDescription(Quest, 4, "I told Tiff of my success.")
-         
          	AddQuestStepLocation(Quest, 5, "I should try to find the crates west of the ratonga village", 30, "Use the map to follow the crates, and watch where the scroll ends up.", 11, -80, -47, 12)
          	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
+         	GiveQuestItem(Quest, Player, "After using the magical powder on several smuggling crates, we can now track their movement.", 2141)
 end
 
 
@@ -87,7 +87,7 @@ end
 function Step9Complete(Quest, QuestGiver, Player)
     UpdateQuestStepDescription(Quest, 9, "I found the location, but the crates are no longer here.")
     
-     AddQuestStepLocation(Quest, 10, "The map now shows that the crates were moved west into the Yapping Maze", 30, "Use the map to follow the crates, and watch where the scroll ends up.", 11, 1325, -36, -188)
+     AddQuestStep(Quest, 10, "The map now shows that the crates were moved west into the Yapping Maze", 30, "Use the map to follow the crates, and watch where the scroll ends up.", 11)
       AddQuestStepCompleteAction(Quest, 10, "Step10Complete")
       
 end       
