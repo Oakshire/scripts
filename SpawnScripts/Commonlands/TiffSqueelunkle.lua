@@ -32,7 +32,7 @@ function hailed(NPC, Spawn)
     dlg7(NPC, Spawn)
     elseif GetQuestStep(Spawn, SmugglersSecrets) == 5 then
     dlg16(NPC, Spawn)
-    elseif HasCompletedQuest(Spawn, SmugglersSecrets) and not HasQuest(Spawn, CratesOnTheNerves) then
+    elseif HasCompletedQuest(Spawn, SmugglersSecrets) and not HasQuest(Spawn, CratesOnTheNerves) and not HasCompletedQuest(Spawn, CratesOnTheNerves) then
      conversation = CreateConversation()
 	AddConversationOption(conversation, "Oh, good.  More work.", "dlg2_1")
     AddConversationOption(conversation, "And there's something I can do, right?", "dlg_2_1")
@@ -56,6 +56,13 @@ function hailed(NPC, Spawn)
 	PlayAnimation(NPC, 12216)
 	elseif GetQuestStep(Spawn, CratesOnTheNerves) == 11 then
 	  dlg2_5(NPC, Spawn)
+	elseif GetQuestStep(Spawn, CratesOnTheNerves) == 13 then
+	 PlayAnimation(NPC, 12030)
+	 conversation = CreateConversation()       
+	 AddConversationOption(conversation, "I did.  I heard more interesting bits.", "dlg3_3")
+	StartConversation(conversation, NPC, Spawn, "Did'n you find somethin'?  Anythin'?")
+	elseif HasCompletedQuest(Spawn, SmugglersSecrets) and HasCompletedQuest(Spawn, CratesOnTheNerves) then
+	 PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1019.mp3", "I appreciated your 'elp investigatin' the Smuggler's activities.", "", 0, 0, Spawn)
 end
    end
 
@@ -302,6 +309,49 @@ function dlg3_2(NPC, Spawn)
 end
 
 
+function dlg3_3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "The Thexians are sending the crates back with gems and ore to the smugglers. They then sell the goods. That is the contract.", "dlg3_4")
+	StartConversation(conversation, NPC, Spawn, "Stop with the suspense!")
+end	
+
+function dlg3_4(NPC, Spawn)
+    PlayAnimation(NPC, 12030)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What would the Thexians gain?", "dlg3_5")
+	AddConversationOption(conversation, "I can't make sense of it.", "dlg3_5")
+	StartConversation(conversation, NPC, Spawn, "Wha?  Then they are fundin' the smugglin' with the shipments, themselves.  Payment is the shipment of gems 'n ore.")
+end    
+
+
+function dlg3_5(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    AddConversationOption(conversation, "Does that help you?", "dlg3_6")
+	AddConversationOption(conversation, "Doesn't mean I'm interested.", "dlg3_6")
+	StartConversation(conversation, NPC, Spawn, "Oh!  So sneaky.  They been fundin' the smugglers as a diversion.  That is why we had not realized their growth and activities in the Commonlands!")
+end    
+
+
+function dlg3_6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Good.  Then you can afford to pay me for my services.", "quest2_complete")
+	StartConversation(conversation, NPC, Spawn, "We Buccaneers may be able to break in on this 'n extract a bit of that profit.  Either by attacks at sea or by gettin' protection taxes from the smugglers themselves, now that we know the plans, too.")
+end
+
+
+function quest2_complete(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	SetStepComplete(Spawn, CratesOnTheNerves, 13)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Right you are.")
+	StartConversation(conversation, NPC, Spawn, "I know, ya' rapscallion!  Here is the payment.  You earned it.")
+end
+
+
 
 function OPTION1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -348,6 +398,7 @@ end
 
 
 
+--  QUEST OFFER FUNCTIONS
 
 function offer(NPC, Spawn)
 FaceTarget(NPC, Spawn)
@@ -366,16 +417,19 @@ function respawn(NPC)
  spawn(NPC)
 end
 
+
+-- FOR CORRECT DISPLAY OF QUEST FEATHER ICON ABOVE NPC HEAD
+
 function InRange(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
         if not HasQuest(Spawn, SmugglersSecrets) then
     ProvidesQuest(NPC, SmugglersSecrets)
+     elseif HasCompletedQuest(Spawn, SmugglersSecrets) and not HasQuest(Spawn, CratesOnTheNerves) and not HasCompletedQuest(Spawn, CratesOnTheNerves) then
+    ProvidesQuest(NPC, CratesOnTheNerves)
 	PlayFlavor(NPC, "", "Psst!  You there!  C'mere and give me a hand.", "", 1689589577, 4560189, Spawn)
 end
    end
 	
-
-
 function LeaveRange(NPC, Spawn)
 
 end

@@ -46,19 +46,19 @@ end
     end
 
 
-function dlgtimer_CratesOnTheNerves01(NPC, Spawn)
+function dlgtimerCratesOnTheNerves01(NPC, Spawn)
 local zone = GetZone(NPC)
 local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID)
 if BlackshieldRecruit ~= nil then
-AddTimer(BlackshieldRecruit, 1000, "BlackshieldRecruitLine_CratesOnTheNerves", 1, Spawn)
+AddTimer(BlackshieldRecruit, 1000, "BlackshieldRecruitLineCratesOnTheNerves", 1, Spawn)
 end
     end
 
-function dlgtimer_CratesOnTheNerves03(NPC, Spawn)
+function dlgtimerCratesOnTheNerves03(NPC, Spawn)
 local zone = GetZone(NPC)
 local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID)
 if BlackshieldRecruit ~= nil then
-AddTimer(BlackshieldRecruit, 1000, "BlackshieldRecruitLine_CratesOnTheNerves_Final", 1, Spawn)
+AddTimer(BlackshieldRecruit, 1000, "BlackshieldRecruitLineCratesOnTheNervesFinal", 1, Spawn)
 end
    end
 
@@ -115,29 +115,29 @@ function  BlackshieldDockhandLine4(NPC, Spawn)
 end
 
 
-function BlackshieldDockhandLine_CratesOnTheNerves(NPC, Spawn)
+function BlackshieldDockhandLineQuest2Part1(NPC, Spawn)
     local zone = GetZone(NPC)
     local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID) 
       FaceTarget(NPC, BlackshieldRecruit)
       conversation = CreateConversation()
-        StartConversation(conversation, NPC, Spawn, "You unloaded that quick. Good job.")
-         AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimer_CratesOnTheNerves01")
+         AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimerCratesOnTheNerves01")
+          StartConversation(conversation, NPC, Spawn, "You unloaded that quick. Good job.")
 end
 
 
-function BlackshieldDockhandLine_CratesOnTheNerves2(NPC, Spawn)
+function BlackshieldDockhandLineCratesOnTheNerves2(NPC, Spawn)
     local zone = GetZone(NPC)
     local BlackshieldRecruit = GetSpawnByLocationID(zone, BlackshieldRecruitID) 
       FaceTarget(NPC, BlackshieldRecruit)
       conversation = CreateConversation()
-         AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimer_CratesOnTheNerves03")
+         AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimerCratesOnTheNerves03")
          StartConversation(conversation, NPC, Spawn, "I don't. I like the profit that lines the Blackshield coffers.")
 end
 
 
 function InRange(NPC, Spawn)
         if GetQuestStep(Spawn, CratesOnTheNerves) == 12 then
-        BlackshieldDockhandLine_CratesOnTheNerves(NPC, Spawn)
+        BlackshieldDockhandLineQuest2Part1(NPC, Spawn)
 end
    end
 

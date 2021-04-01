@@ -63,11 +63,11 @@ end
    end
 
 
-function dlgtimer_CratesOnTheNerves02(NPC, Spawn)
+function dlgtimerCratesOnTheNerves02(NPC, Spawn)
 local zone = GetZone(NPC)
 local BlackshieldDockhand = GetSpawnByLocationID(zone, BlackshieldDockhandID)
 if BlackshieldDockhand ~= nil then
-AddTimer(BlackshieldDockhand, 1000, "BlackshieldDockhandLine_CratesOnTheNerves2", 1, Spawn)
+AddTimer(BlackshieldDockhand, 1000, "BlackshieldDockhandLineCratesOnTheNerves2", 1, Spawn)
 end
    end
 
@@ -119,17 +119,17 @@ function BlackshieldRecruitLine4(NPC, Spawn)
 end
  
  
-function BlackshieldRecruitLine_CratesOnTheNerves(NPC, Spawn)
+function BlackshieldRecruitLineCratesOnTheNerves(NPC, Spawn)
    local zone = GetZone(NPC)
     local BlackshieldDockhand = GetSpawnByLocationID(zone, BlackshieldDockhandID)
     FaceTarget(NPC, BlackshieldDockhand)
      conversation = CreateConversation()  
-       AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimer_CratesOnTheNerves02")
+       AddConversationOption(conversation, "[Continue eavesdropping.]", "dlgtimerCratesOnTheNerves02")
         StartConversation(conversation, NPC, Spawn, "Thanks you! Is find it odd to unpack goods and repack thems to be sold, though.")
 end
 
 
-function BlackshieldRecruitLine_CratesOnTheNerves_Final(NPC, Spawn)
+function BlackshieldRecruitLineCratesOnTheNervesFinal(NPC, Spawn)
       SetStepComplete(Spawn, CratesOnTheNerves, 12)
       local zone = GetZone(NPC)
     local BlackshieldDockhand = GetSpawnByLocationID(zone, BlackshieldDockhandID)
