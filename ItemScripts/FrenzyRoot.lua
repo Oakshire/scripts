@@ -17,6 +17,7 @@ function used(Item, Player)
     local FrenzyRoot = SpawnMob(zone, 331123, false, X, Y, Z, 50)
     if FrenzyRoot ~= nil then
         AddSpawnAccess(FrenzyRoot, Player)
-        RemoveItem(Player, 46427)           
+        RemoveItem(Player, 46427)
+    
     end
 end
