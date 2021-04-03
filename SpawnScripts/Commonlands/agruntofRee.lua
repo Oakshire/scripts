@@ -6,17 +6,21 @@
                    : 
 --]]
 
+
 require "SpawnScripts/Generic/MovementCircleSmall"
+
+
 function spawn(NPC)
     SpawnChooseRandomMovement(NPC)
-
 end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 end
 
-function respawn(NPC)
 
+
+function respawn(NPC)
+spawn(NPC)
 end
 

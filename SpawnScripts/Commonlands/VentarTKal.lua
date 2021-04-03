@@ -96,7 +96,7 @@ end
 function root(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	PlayFlavor(NPC, "", "Of course, here you are.")
-	AddItem(Spawn, 46427, 6)
+	AddItem(Spawn, 46427, 5)
 end	
 
 function respawn(NPC)
