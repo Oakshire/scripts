@@ -60,7 +60,7 @@ function hailed(NPC, player)
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Ahoy! 'Tis good to see you awake. Ya seem a little squiffy, least ya' cheated death!")
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_001.mp3", 1930075150, 2666442405)
-		Dialog.AddEmote("salute")
+		Dialog.AddEmote("hello")
 		Dialog.AddOption("Where am I?", "where_am_I")
 		Dialog.Start()		
 		AddTimer(NPC, 8000, "hailed_instructions", 1, player)
@@ -86,13 +86,14 @@ function hailed(NPC, player)
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Arr! Ya saved the Far Journey and me crew! Seems ya' proved ta' be quite a hero.  Well, with the help of that young lass there, ya' do.")
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_024.mp3", 998172564, 1159207795)
+		-- Todo: Add missing gesture/emote
 		Dialog.AddOption("It was nothing.", "quest_completed")
 		Dialog.Start()
 	elseif HasCompletedQuest(player, 524) == true then
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("So, ya' ready ta go ashore matey?")
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_027.mp3", 2285948102, 2994720481)
-		Dialog.AddOption("Yes.", "ready_to_go_ashore")
+		Dialog.AddOption("Yes. Send me to the Isle of Refuge!", "ready_to_go_ashore")
 		Dialog.AddOption("No. I would like some more time.", "conversation8_2")
 		Dialog.Start()
 	end
@@ -107,7 +108,11 @@ function quest_completed(NPC, player)
 end
 
 function drop_anchor(NPC, player)
-	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_026.mp3", "Ingrid! Swing the lead and prepare to drop anchor!", "", 3011518245, 3851752713)
+	Dialog.New(NPC, player)
+	Dialog.AddDialog("Ingrid! Swing the lead and prepare to drop anchor!")
+	Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_026.mp3", 3011518245, 3851752713)
+	Dialog.AddOption("[Continue]", "hailed")
+	Dialog.Start()
 end
 
 function ready_to_go_ashore(NPC, player)
@@ -247,11 +252,8 @@ function quest_step_7c(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Wit this 'ere club. It is nice and splintered, sure ta' cause them some pain.")
 	Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_014.mp3", 2083163804, 202693960)
-	Dialog.AddOption("Aye, aye, Captain!", "quest_step_7d")
+	Dialog.AddOption("Aye, aye, Captain!", "")
 	Dialog.Start()
-end
-
-function quest_step_7d(NPC, player)	
 	SetStepComplete(player, 524, 7) 
 end
 
@@ -263,6 +265,7 @@ function hailed_instructions(NPC, player)
 		needs_selection_help = false
 	end
 end
+
 function where_am_I(NPC, player)
 	finished_hailed = true
 	--[[Say(NPC, "Testing function call")
@@ -282,6 +285,7 @@ function where_am_I(NPC, player)
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Me apologies.")
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_002.mp3", 2054400186, 1976167819)
+		Dialog.AddEmote("bow")
 		Dialog.AddOption("Who are you?", "who_are_you")
 		Dialog.Start()
 	end
@@ -341,30 +345,42 @@ function high_winds_1(NPC, player)
 		FaceTarget(NPC, GetSpawn(NPC, 270001))
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_006.mp3", "Ingrid! Quit gawking at the shorty and fix that yard-arm!", "", 2753489262, 3183736171)
 		SendStateCommand(GetSpawn(NPC, 270001), 0)
-		AddTimer(NPC, 3500, "high_winds_2", 1, player)
+		--This should be improved w/ MovementLoop to remove delay when walking
+		MoveToLocation(GetSpawn(NPC, 270001), -1.86, -2.03, -8.17, 8, "", true)
+		MoveToLocation(GetSpawn(NPC, 270001), -2.31, 1.21, -15.09, 8, "", true)
+		MoveToLocation(GetSpawn(NPC, 270001), 1.24, 1.21, -14.47, 8, "", true)
+		MoveToLocation(GetSpawn(NPC, 270001), 1.40, 1.18, -11.82, 8, "", false)
+		AddTimer(NPC, 4500, "high_winds_2", 1, player)
 	end
 end
 
 function high_winds_2(NPC, player)
 	finished_high_winds_1 = true
 	if finished_high_winds_2 == false then
-		PlayFlavor(GetSpawn(NPC, 270001), "voiceover/english/ingrid/boat_06p_tutorial02/020_deckhand_ingrid_010_1637e047.mp3", "Aye, aye, Captain!", "", 1250282628, 237171958)
-		SendStateCommand(GetSpawn(NPC, 270001), 520)
-		AddTimer(NPC, 2500, "high_winds_3", 1, player)
+		FaceTarget(GetSpawn(NPC, 270001), NPC)
+		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_007.mp3", "Don't want the ship to come apart in these high winds, do ya'?!", "scold", 517097409, 4194681002)
+		SendStateCommand(GetSpawn(NPC, 270001), 0)
+		AddTimer(NPC, 4000, "high_winds_3", 1, player)
 	end
 end
 
 function high_winds_3(NPC, player)
 	finished_high_winds_2 = true
 	if finished_high_winds_3 == false then
-		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_007.mp3", "Don't want the ship to come apart in these high winds, do ya'?!", "", 517097409, 4194681002)
-		SendStateCommand(GetSpawn(NPC, 270001), 0)
-		AddTimer(NPC, 5000, "high_winds_4", 1, player)
+		PlayFlavor(GetSpawn(NPC, 270001), "voiceover/english/ingrid/boat_06p_tutorial02/020_deckhand_ingrid_010_1637e047.mp3", "Aye, aye, Captain!", "salute", 1250282628, 237171958)
+		SendStateCommand(GetSpawn(NPC, 270001), 520)
+		AddTimer(NPC, 2500, "high_winds_4", 1, player)
 	end
 end
 
 function high_winds_4(NPC, player)
 	finished_high_winds_3 = true
+	--This should be improved w/ MovementLoop to remove delay when walking
+	MoveToLocation(GetSpawn(NPC, 270001), 1.40, 1.18, -11.82, 8, "", true)
+	MoveToLocation(GetSpawn(NPC, 270001), 1.24, 1.21, -14.47, 8, "", true)
+	MoveToLocation(GetSpawn(NPC, 270001), -2.31, 1.21, -15.09, 8, "", true)
+	MoveToLocation(GetSpawn(NPC, 270001), -1.86, -2.03, -8.17, 8, "", true)
+	MoveToLocation(GetSpawn(NPC, 270001), 2.38, -2.07, -3.41, 8, "", false)
 	FaceTarget(NPC, player)
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_008.mp3", "Ya think she'd never seen a gnome afore.", "", 2447879193, 4289147535)
 	SendStateCommand(GetSpawn(NPC, 270001), 630)
