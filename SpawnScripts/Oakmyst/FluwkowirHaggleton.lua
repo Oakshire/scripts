@@ -6,7 +6,7 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local QUEST_FROM_JORN = 18
+local QUEST_FROM_JORN = 5220
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange")

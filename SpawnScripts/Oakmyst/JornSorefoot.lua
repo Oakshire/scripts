@@ -8,7 +8,7 @@
 
 local BARBARIAN = 0
 local QUEST_FROM_BURK = 66
-local QUEST_1 = 18
+local QUEST_1 = 5220
 local QUEST_OAKMYST_LAST = 208
 
 function spawn(NPC)
@@ -77,7 +77,7 @@ end
 
 function MightyTired(NPC, Spawn, conversation)
 	AddConversationOption(conversation, "Why are you tired?", "BeenWorkingHard")
-	StartConversation(conversation, NPC, Spawn, "I'm mighty tired right now, mighty tired indeed.")
+	StartConversation(conversation, NPC, Spawn, "I'm mighty tired right now, mighty indeed.")
 end
 
 function BeenWorkingHard(NPC, Spawn)

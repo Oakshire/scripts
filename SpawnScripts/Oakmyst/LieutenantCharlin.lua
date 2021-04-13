@@ -10,7 +10,7 @@
 --]]
 
 local MIN_LEVEL = 5
-local QUEST_FROM_JORN = 18
+local QUEST_FROM_JORN = 5220
 local QUEST_FROM_ADALIN = 294
 local QUEST_FROM_MARV = 526
 local QUEST_1 = 207
