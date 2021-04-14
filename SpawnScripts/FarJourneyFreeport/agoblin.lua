@@ -2,8 +2,8 @@
     Script Name    : SpawnScripts/FarJourneyFreeport/a goblin.lua
     Script Author  : LethalEncounter
     Script Date    : 2020.07.02
-    Script Purpose : 
-                   : 
+    Script Purpose : Govern movement and spawn behavior of the goblin on the Far Journey.
+                     Edited for syntax.
 --]]
 
 function spawn(NPC)
@@ -54,7 +54,7 @@ end
 
 function stop_animation(NPC)
 	SendStateCommand(NPC, 0)
-	if GetSpawn(NPC, 270011) == Nil then
+	if GetSpawn(NPC, 270011) == nil then
 		AddTimer(NPC, 500, "run_around_loop_init")
 	else
 		AddTimer(NPC, math.random(3000, 10000), "idle_loop")
