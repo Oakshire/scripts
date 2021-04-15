@@ -1,9 +1,9 @@
 --[[
-    Script Name    : SpawnScripts/FarJourneyFreeport/CaptainVarlos.lua
-    Script Author  : Cynnar
-    Script Date    : 2019.09.28 03:09:56
-    Script Purpose : 
-                   : 
+	Script Name     : SpawnScripts/FarJourneyFreeport/CaptainVarlos.lua
+	Script Author   : Cynnar
+	Script Date     : 2019.09.28 03:09:56
+	Script Notes    : 
+	Script Purpose  : 
 --]]
 
 get_attention_animation = true
@@ -380,7 +380,7 @@ function high_winds_4(NPC, player)
 	MoveToLocation(GetSpawn(NPC, 270001), 1.24, 1.21, -14.47, 8, "", true)
 	MoveToLocation(GetSpawn(NPC, 270001), -2.31, 1.21, -15.09, 8, "", true)
 	MoveToLocation(GetSpawn(NPC, 270001), -1.86, -2.03, -8.17, 8, "", true)
-	MoveToLocation(GetSpawn(NPC, 270001), 2.38, -2.07, -3.41, 8, "", false)
+	MoveToLocation(GetSpawn(NPC, 270001), 2.48, -2.07, -3.26, 8, "", false)
 	FaceTarget(NPC, player)
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_008.mp3", "Ya think she'd never seen a gnome afore.", "", 2447879193, 4289147535)
 	SendStateCommand(GetSpawn(NPC, 270001), 630)
@@ -393,7 +393,7 @@ end
 
 function offer_quest(NPC, player)
 	if HasQuest(player, 524) == false then
-		OfferQuest(NPC, player, 524, true)
+		OfferQuest(NPC, player, 524)
 		AddTimer(NPC, 7000, "Accepted_Tutorial_Instructions", 1, player)	
 	end
 end
