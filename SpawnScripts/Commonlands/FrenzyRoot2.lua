@@ -3,7 +3,7 @@
     Script Author  : Premierio015
     Script Date    : 2021.04.02 07:04:37
     Script Purpose : 
-                   : 
+    Script Notes   :  NEED TO ADD STOP MOVEMENT LUA FUNCTION, OTHERWISE ORCS ARE MOVING WHILE GATHERING
 --]]
 
 local QUEST = 408 -- Orcs of the Ree quest 
@@ -26,12 +26,12 @@ function SpawnAccess(NPC, Spawn)
 	end
 	local Orc = GetSpawn(NPC, OrcID)
 	local OrcDistance = GetDistance(NPC, Orc)
-     if OrcDistance <= 4 then
+     if OrcDistance <= 3 then
       FaceTarget(Orc, NPC)
       SpawnSet(Orc, "visual_state", 2809)
       AddTimer(NPC, 12000, "progress", 1, Spawn)
 end
-end
+   end
 
 
 function casted_on(NPC, Spawn, SpellName)
