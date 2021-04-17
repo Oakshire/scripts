@@ -14,10 +14,10 @@ end
 
 
 function SpawnAccess(NPC, Spawn)
-if HasQuest(Spawn, QUEST) then
+if GetQuestStep(Spawn, QUEST) == 2 then
 SpawnSet(NPC, "show_command_icon", 1)
 SpawnSet(NPC, "display_hand_icon", 1)
-elseif GetQuestStep(Spawn, QUEST) == 2 then
+elseif GetQuestStep(Spawn, QUEST) == 1 then
 SpawnSet(NPC, "show_command_icon", 0)
 SpawnSet(NPC, "display_hand_icon", 0)
 end

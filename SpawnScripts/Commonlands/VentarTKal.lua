@@ -17,23 +17,29 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1048.mp3", "", "", 0, 0, Spawn)
-	if not HasQuest(Spawn, QUEST) then
+	if not HasQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) then
 	local choice = MakeRandomInt(1, 2)
 	if choice == 1 then
 	PlayFlavor("", "These nomads can be quite pleasant to deal with.", "", 1689589577, 4560189, Spawn)
      else
     PlayFlavor("", "Overlord protect us!", "", 1689589577, 4560189, Spawn)
 	end
-   end
+        end
    
-   if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) then
+   if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) then
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Yes. I have these roots for you.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Are you "..GetName(Spawn).."?")
    elseif GetQuestStep(Spawn, QUEST2) == 1 or  GetQuestStep(Spawn, QUEST2) == 2 then
       QUEST2_PROGRESS(NPC, Spawn)
+   elseif GetQuestStep(Spawn, QUEST2) == 3 then
+       QUEST2_FINISH(NPC, Spawn)
+   elseif HasCompletedQuest(Spawn, QUEST2) then
+       Option6(NPC, Spawn)
     end
-    end
+   end
+   
+  
 
 function Option1(NPC, Spawn)
     if GetQuestStep(Spawn, QUEST) == 1 then
@@ -78,6 +84,15 @@ function Option5(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "My intent is to get you to do work for me while I continue dealing with these nomads. What do I intend you to do on my behalf? I'd like you to travel west of here with the root, they have an encampment there. When you reach the orcs, place it near them. Let them consume it. From there I'm sure nature will take its course.")
 end
 
+function Option6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	
+	AddConversationOption(conversation, "What do you mean?")
+	StartConversation(conversation, NPC, Spawn, "Interesting, quite interesting. I may have been wrong on their intentions.")
+end
+
+
 function offer(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     OfferQuest(NPC, Spawn, QUEST2)
@@ -92,6 +107,14 @@ function QUEST2_PROGRESS(NPC, Spawn)
 	    end
 	    StartConversation(conversation, NPC, Spawn, "Is it done?")
 end 
+
+function QUEST2_FINISH(NPC, Spawn)
+    SetStepComplete(Spawn, QUEST2, 3)
+    local conversation = CreateConversation()
+     AddConversationOption(conversation, "...", "Option6")
+      StartConversation(conversation, NPC, Spawn, "Nice, very nice. Give me a moment while I read over these orders.")
+end   
+
 
 function root(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

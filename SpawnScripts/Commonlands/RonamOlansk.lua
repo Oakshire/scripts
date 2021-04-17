@@ -39,7 +39,7 @@ function Option1(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "I'm not so certain...  but I suppose there's no harm in letting you risk your own life trying.  If you kill enough of the skeletons inside the cave, the skeletons outside may return to their resting place.  My people and I will scrape together what little we have to pay for your services.")
 end
 
-function Option1(NPC, Spawn)
+function Option2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	SetStepComplete(Spawn, QUEST, 2)
 	local conversation = CreateConversation()
