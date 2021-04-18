@@ -10,8 +10,18 @@
 local QUEST = 453 -- Crates on the Nerves Quest
 
 function spawn(NPC)
-
+	SetPlayerProximityFunction(NPC, 10, "SpawnAccess", "SpawnAccess")    
 end
+
+function SpawnAccess(NPC, Spawn)
+if GetQuestStep(Spawn, QUEST) == 3 then
+SpawnSet(NPC, "show_command_icon", 1)
+SpawnSet(NPC, "display_hand_icon", 1)
+elseif not HasQuest(Spawn, QUEST) then
+SpawnSet(NPC, "show_command_icon", 0)
+SpawnSet(NPC, "display_hand_icon", 0)
+end
+   end
 
 
 function casted_on(NPC, Spawn, SpellName)
