@@ -26,10 +26,10 @@ function SpawnAccess(NPC, Spawn)
 	end
 	local Orc = GetSpawn(NPC, OrcID)
 	local OrcDistance = GetDistance(NPC, Orc)
-     if OrcDistance <= 3 then
+     if OrcDistance <= 3 and not HasSpellEffect(Orc, 5468) then
       FaceTarget(Orc, NPC)
       SpawnSet(Orc, "visual_state", 2809)
-      AddTimer(NPC, 12000, "progress", 1, Spawn)
+      AddTimer(NPC, 5000, "progress", 1, Spawn)
 end
    end
 
@@ -47,8 +47,9 @@ function casted_on(NPC, Spawn, SpellName)
 function progress(NPC, Spawn)
 local Orc = GetSpawn(NPC, OrcID)
 SpawnSet(Orc, "visual_state", 0)
+AddStepProgress(Spawn, QUEST, 1, 1)
+CastSpell(Spawn, 5468, 1, Orc)
 Despawn(NPC)
-AddStepProgress(Spawn, QUEST, 1, 1)  
 end
 
 

@@ -27,7 +27,8 @@ function hailed(NPC, Spawn)
 	end
         end
    
-   if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) then
+   --if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) then
+   if HasItem(Spawn, 14661) then
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Yes. I have these roots for you.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Are you "..GetName(Spawn).."?")
@@ -35,8 +36,8 @@ function hailed(NPC, Spawn)
       QUEST2_PROGRESS(NPC, Spawn)
    elseif GetQuestStep(Spawn, QUEST2) == 3 then
        QUEST2_FINISH(NPC, Spawn)
-   elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) then
-       Option6(NPC, Spawn)
+   --elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) then
+       --Option6(NPC, Spawn)
    elseif GetQuestStep(Spawn, QUEST3) == 1 or GetQuestStep(Spawn, QUEST3) == 2 then
        QUEST3_PROGRESS(NPC, Spawn)
     end
