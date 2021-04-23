@@ -30,6 +30,9 @@ function SpawnAccess(NPC, Spawn)
       FaceTarget(Orc, NPC)
       SpawnSet(Orc, "visual_state", 2809)
       AddTimer(NPC, 5000, "progress", 1, Spawn)
+      if HasSpellEffect(Orc, 5468) then
+      CastSpell(Spawn, 5468,1, Orc)
+      end
 end
    end
 
@@ -48,7 +51,9 @@ function progress(NPC, Spawn)
 local Orc = GetSpawn(NPC, OrcID)
 SpawnSet(Orc, "visual_state", 0)
 AddStepProgress(Spawn, QUEST, 1, 1)
+if not HasSpellEffect(Orc, 5468) then
 CastSpell(Spawn, 5468, 1, Orc)
+end
 Despawn(NPC)
 end
 

@@ -27,8 +27,7 @@ function hailed(NPC, Spawn)
 	end
         end
    
-   --if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) then
-   if HasItem(Spawn, 14661) then
+   if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) then
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Yes. I have these roots for you.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Are you "..GetName(Spawn).."?")
@@ -36,12 +35,14 @@ function hailed(NPC, Spawn)
       QUEST2_PROGRESS(NPC, Spawn)
    elseif GetQuestStep(Spawn, QUEST2) == 3 then
        QUEST2_FINISH(NPC, Spawn)
-   --elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) then
-       --Option6(NPC, Spawn)
+   elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) then
+       Option6(NPC, Spawn)
    elseif GetQuestStep(Spawn, QUEST3) == 1 or GetQuestStep(Spawn, QUEST3) == 2 then
        QUEST3_PROGRESS(NPC, Spawn)
-    end
+   elseif GetQuestStep(Spawn, QUEST3) == 3 then
+       QUEST3_FINISH(NPC, Spawn)
    end
+      end
    
   
 
@@ -124,6 +125,16 @@ function Option10(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Two ways, both involving the orc courier. I am not sure precisely how old these orders are, but the sooner we act the better. Find the runner of Ree. If he is on his way to the docks then kill him and take the shipping receipt. Use it to get the package from the docks. If you catch the runner on the way from the docks then he will have the shipment, in which case you can take it directly from him. He'll be somewhere between the Ree camp west of here and the docks.")   
 end   
 
+
+function Option11(NPC, Spawn)
+ SetStepComplete(Spawn, QUEST3, 3)
+ FaceTarget(NPC, Spawn)
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "...")
+ StartConversation(conversation, NPC, Spawn, "Excellent work. If I am right this will tell us where the orc buried this \'' useful \'' treasure. Give me a moment, please.")
+end
+ 
+ 
 function offer(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     OfferQuest(NPC, Spawn, QUEST2)
@@ -146,14 +157,15 @@ end
 
 function QUEST3_PROGRESS(NPC, Spawn)
  local conversation = CreateConversation()
- if GetQuestStep(Spawn, QUEST3) == 1 or GetQuestStep(Spawn, QUEST3) == 2 then
  AddConversationOption(conversation, "Not yet.")
- end
- if GetQuestStep(Spawn, QUEST3) == 3 then
-  AddConversationOption(conversation, "I did, here you go.")
- end
-  StartConversation(conversation, NPC, Spawn, "Did you get the shipment?")
+ StartConversation(conversation, NPC, Spawn, "Did you get the shipment?")
 end
+
+function QUEST3_FINISH(NPC, Spawn)
+  local conversation = CreateConversation()
+  AddConversationOption(conversation, "I did, here you go.", "Option11")
+  StartConversation(conversation, NPC, Spawn, "Did you get the shipment?")
+ end
   
 
 function QUEST2_FINISH(NPC, Spawn)
