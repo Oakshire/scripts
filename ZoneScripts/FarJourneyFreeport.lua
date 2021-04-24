@@ -18,7 +18,7 @@ function signal_changed(zone, player, signal)
 				ChangeHandIcon(spawn, 0)
 			end
 			i = i + 1
-		until spawn == Nil
+		until spawn == nil
 		InstructionWindow(player, 10.0, "Welcome to Norrath, the world of EverQuest II. Left click on the help button at any time for more detailed help and information.", "voiceover/english/narrator/boat_06p_tutorial02/narrator_001_63779ca0.mp3", 3450229107, 2555116653, "introduction", "", "continue")
 		ShowWindow(player, "MainHUD.StartMenu", 1)
 		FlashWindow(player, "MainHUD.StartMenu.help", 10.0)
