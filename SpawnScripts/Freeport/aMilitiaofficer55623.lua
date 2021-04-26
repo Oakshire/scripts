@@ -23,7 +23,7 @@ AddTimer(NPC, 10000, "waypoint", 1)
 end
 
 
-function waypoint(NPC)
+function waypoint(NPC, Spawn)
 MoveToLocation(NPC, 264.28, -3.52, -46.55, 2, "waypoint_delay")
 end
 
@@ -42,7 +42,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	AddTimer(NPC, 3000, "movement_loop_start")
+	AddTimer(NPC, 3000, "waypoint", 1, Spawn)
 end
 
 function respawn(NPC)

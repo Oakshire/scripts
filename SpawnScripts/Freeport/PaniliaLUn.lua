@@ -9,7 +9,8 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-
+MovementLoopAddLocation(NPC, 65.64, -20.26, 4.92, 2, 5)
+MovementLoopAddLocation(NPC, 189.23, -3.92, -78.29, 2, 5) 
 end
 
 function hailed(NPC, Spawn)
@@ -18,5 +19,5 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+spawn(NPC)
 end
