@@ -25,11 +25,10 @@ end
 function followguard(NPC, Spawn)
 local zone = GetZone(NPC)
 local leader = GetSpawnByLocationID(zone, 55809)
-if GetDistance(NPC, leader) >= 2 then
 SetFollowTarget(NPC, leader)
 if not IsFollowing(NPC) then
         ToggleFollow(NPC)
         SetSpeed(NPC, 1.9)
 end
 end 
-  end
+  
