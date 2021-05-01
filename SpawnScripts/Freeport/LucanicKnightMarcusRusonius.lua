@@ -9,7 +9,7 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-SetMount(NPC, 15739)
+SetMount(NPC, 16339)
 MovementLoopAddLocation(NPC, 33.94, -19.77, 45.84, 7, 0)
 MovementLoopAddLocation(NPC, 21.91, -19.97, 55.91, 7, 0)
 MovementLoopAddLocation(NPC, -20.13, -19.98, 57.29, 7, 0)
