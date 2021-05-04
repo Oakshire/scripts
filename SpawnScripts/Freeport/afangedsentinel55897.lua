@@ -7,25 +7,29 @@
 --]]
 
 function spawn(NPC)
-      AddTimer(NPC, 1000, "follow")
-   -- MovementLoopAddLocation(NPC, 69.91, -20.72, 24.58, 1.9, 0)
-   -- MovementLoopAddLocation(NPC, 67.12, -20.75, 64.72, 1.9, 0)
-	--MovementLoopAddLocation(NPC, 81.93, -20.73, 90.46, 1.9, 0)
-	--MovementLoopAddLocation(NPC, 81.72, -20.72, 98.83, 1.9, 5)
-	--MovementLoopAddLocation(NPC, 81.93, -20.73, 90.46, 1.9, 0)
-	--MovementLoopAddLocation(NPC, 67.12, -20.75, 64.72, 1.9, 0)
-	--MovementLoopAddLocation(NPC, 69.91, -20.72, 24.58, 1.9, 0)
+      AddTimer(NPC, 900, "followguard", 1)
+
 end
 
-function follow(NPC, Spawn)
-    local zone = GetZone(NPC)
-    local guard = GetSpawnByLocationID(zone, 55910)
-    SetFollowTarget(NPC, guard)
-    if not IsFollowing(NPC) then
-        ToggleFollow(NPC)
-        SetSpeed(NPC, 1.9)
-end
+function followguard(NPC, Spawn)
+	local zone = GetZone(NPC)
+	local GUARD_LEADER = GetSpawnByLocationID(zone, 55910)
+	if GUARD_LEADER ~= nil then
+    local leaderX = GetX(GUARD_LEADER)
+    local leaderY = GetY(GUARD_LEADER)
+    local leaderZ = GetZ(GUARD_LEADER)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+		if GetDistance(NPC, GUARD_LEADER) >= 8 then
+			speed = 2
+                        MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ -2, speed)
+                else
+                        speed = 2
+                        MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ -2, speed)
+		end
+		AddTimer(NPC, 3000, "followguard")	
    end
+      end
 
 
    

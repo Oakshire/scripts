@@ -25,6 +25,7 @@ end
 function followguard(NPC, Spawn)
 	local zone = GetZone(NPC)
 	local GUARD_LEADER = GetSpawnByLocationID(zone, 56131)
+	if GUARD_LEADER ~= nil then
     local leaderX = GetX(GUARD_LEADER)
     local leaderY = GetY(GUARD_LEADER)
     local leaderZ = GetZ(GUARD_LEADER)
@@ -38,6 +39,7 @@ function followguard(NPC, Spawn)
                         MoveToLocation(NPC, leaderX + 2, leaderY, leaderZ, speed)
 		end
 		AddTimer(NPC, 3000, "followguard")	
-	   end
+   end
+      end
    
    
