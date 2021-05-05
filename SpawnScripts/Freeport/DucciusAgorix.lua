@@ -32,11 +32,11 @@ function followguard(NPC, Spawn)
     local speed = 2
        -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
 		if GetDistance(NPC, GUARD_LEADER) >= 8 then
-			speed = 2
-                        MoveToLocation(NPC, leaderX -2, leaderY, leaderZ -2 , speed)
+			speed = 5
+                        MoveToLocation(NPC, leaderX +2 , leaderY, leaderZ  , speed)
                 else
                         speed = 2
-                        MoveToLocation(NPC, leaderX -2, leaderY, leaderZ -2 , speed)
+                        MoveToLocation(NPC, leaderX +2 , leaderY, leaderZ  , speed)
 		end
 		AddTimer(NPC, 3000, "followguard")	
    end
