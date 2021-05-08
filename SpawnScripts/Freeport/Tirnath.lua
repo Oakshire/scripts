@@ -6,11 +6,23 @@
                    : 
 --]]
 
+local ContharID = 57100
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-
+AddTimer(NPC, 500, "follow", 1)
 end
+
+function follow(NPC, Spawn)
+local zone = GetZone(NPC)
+local Conthar = GetSpawnByLocationID(zone, ContharID)
+  SetFollowTarget(NPC, Conthar)
+    if not IsFollowing(NPC) then
+        ToggleFollow(NPC)
+        SetSpeed(NPC, 2)
+end        
+    end
+
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -18,5 +30,5 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+spawn(NPC)
 end
