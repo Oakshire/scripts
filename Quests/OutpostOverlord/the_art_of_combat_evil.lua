@@ -35,7 +35,7 @@ end
 function step1_complete_talkedToDarg(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have spoken with Darg Frostwind.")
 	
-	AddQuestStepKill(Quest, 2, "I need to defeat a sparring partner in combat. There are several sparring partners just north of Trainer Darg Frostwind.", 1, 100, "I need to speak with Darg Frostwind. He will train me in the ways of combat.", 611, 2780002,2780000,2780001) 
+	AddQuestStep(Quest, 2, "I need to defeat a sparring partner in combat. There are several sparring partners just north of Trainer Darg Frostwind.", 1, 100, "I need to speak with Darg Frostwind. He will train me in the ways of combat.", 611) 
 	AddQuestStepCompleteAction(Quest, 2, "step2_complete_killedSparringPartner")
 end
 
