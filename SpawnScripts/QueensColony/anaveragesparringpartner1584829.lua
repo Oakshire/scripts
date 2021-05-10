@@ -6,24 +6,51 @@
                    : 
 --]]
 
-local ArtOfCombatQuest = 132
+
+
+
+--[[
+    Script Name    : SpawnScripts/QueensColony/aformidablesparringpartner133771498.lua
+    Script Author  : Rylec, premierio015
+    Script Date    : 2021.01.01 03:01:59
+    Script Purpose : 
+    Script Notes   : Added HP recovery and reset of the combat on 08.05.2021 
+--]]
+
+
+
+local TheArtOfCombat = 132
 
 function spawn(NPC)
+
 end
+  
    
-function healthchanged(NPC, Spawn) -- checks for Sparring Partner HP and Gives Max Amount back when value is low
-    if GetHP(NPC) <= 3 then
-        if GetQuestStep(Spawn, ArtOfCombatQuest) == 2 then
-            SetStepComplete(Spawn, ArtOfCombatQuest)
-        end    
-        Say(NPC, "Well Done.")
-        Say(NPC, "Okay, who's next?")
-        SetHP(NPC, GetMaxHP(NPC))  
-        SetInCombat(NPC, false)
-        ClearHate(NPC, Spawn)
-        ClearEncounter(NPC)
-    end
+
+function healthchanged(NPC, Spawn)
+ local npc_hp = GetHP(NPC)
+if npc_hp <= 5 then
+AddTimer(NPC, 1000, "stop_combat", 1, Spawn)
+Say(NPC, "Well Done.")
+Say(NPC, "Okay. Who's next?")
+if GetQuestStep(Spawn, TheArtOfCombat) == 2 then
+SetStepComplete(Spawn, TheArtOfCombat, 2)
 end
+SetHP(NPC, GetMaxHP(NPC))  
+end
+    end
+
+function stop_combat(NPC, Spawn)
+if IsInCombat(NPC) then
+ClearHate(NPC, Spawn)
+SetInCombat(NPC, false)
+SetInCombat(Spawn, false)
+ClearEncounter(NPC)
+end
+    end
+
+
+
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -31,6 +58,7 @@ function hailed(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1002.mp3", "You can attack me whenever you're ready. You can do that by double-clicking me, by right clicking me and selecting 'attack,' by using an offensive ability while you have me targeted, or by turning on auto attack by pressing the ~ key while you have me targeted.", "", 0, 0, Spawn)
 end
 
+
 function respawn(NPC)
-    spawn(NPC)
+spawn(NPC)
 end
