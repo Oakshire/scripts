@@ -10,6 +10,7 @@
 local QUEST = 407 -- Ventar T'Kal quest
 local QUEST2 = 408 -- Orcs of the Ree quest
 local QUEST3 = 409 -- An Aquisition quest
+local QUEST4 = 410 -- Gifts from the Earth
 
 function spawn(NPC)
 
@@ -27,7 +28,7 @@ function hailed(NPC, Spawn)
 	end
         end
    
-   if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) then
+   if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) and not HasCompletedQuest(Spawn, QUEST4) then
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Yes. I have these roots for you.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Are you "..GetName(Spawn).."?")
@@ -41,6 +42,14 @@ function hailed(NPC, Spawn)
        QUEST3_PROGRESS(NPC, Spawn)
    elseif GetQuestStep(Spawn, QUEST3) == 3 then
        QUEST3_FINISH(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) and not HasCompletedQuest(Spawn, QUEST4) then
+     Option11(NPC, Spawn)
+     elseif GetQuestStep(Spawn, QUEST4) == 1 or GetQuestStep(Spawn, QUEST4) == 2 then
+     QUEST4_PROGRESS(NPC, Spawn)
+     elseif GetQuestStep(Spawn, QUEST4) == 3 then
+     QUEST4_FINISH(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and HasCompletedQuest(Spawn, QUEST3) and HasCompletedQuest(Spawn, QUEST4) then 
+     Option13(NPC, Spawn)
    end
       end
    
@@ -127,13 +136,55 @@ end
 
 
 function Option11(NPC, Spawn)
+ if GetQuestStep(Spawn, QUEST3) == 3 then
  SetStepComplete(Spawn, QUEST3, 3)
+ end
  FaceTarget(NPC, Spawn)
  local conversation = CreateConversation()
- AddConversationOption(conversation, "...")
+ AddConversationOption(conversation, "...", "Option12")
  StartConversation(conversation, NPC, Spawn, "Excellent work. If I am right this will tell us where the orc buried this \'' useful \'' treasure. Give me a moment, please.")
 end
- 
+
+function Option12(NPC, Spawn)
+ FaceTarget(NPC, Spawn)
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "Ok.", "offer3")
+ StartConversation(conversation, NPC, Spawn, "Perfect. It's somewhere near the Nektulous Station griffin tower, west of here. Go find it, dig it up, and bring it back to me.")
+end
+
+function Option13(NPC, Spawn)
+ if GetQuestStep(Spawn, QUEST4) == 3 then
+    SetStepComplete(Spawn, QUEST4, 3)
+  end
+   FaceTarget(NPC, Spawn)
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "I can get a bloody orc hand!", "Option14")
+  AddConversationOption(conversation, "What can we do?", "Option15")
+ StartConversation(conversation, NPC, Spawn, "Aye. I've read more of the Ree orders. This is an old relic from the Shin'Ree clan. Apparently the \''key\'' to opening it was, \''...a Shin'Ree orc with bloodied hand.\''")
+end   
+
+function Option14(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "Well then what can we do?", "Option15")
+ StartConversation(conversation, NPC, Spawn, "I'm afraid it's not that simple.")
+end
+
+function Option15(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "How?", "Option16")
+ StartConversation(conversation, NPC, Spawn, "Well, orc magic is simplistic but it isn't something we can simply ignore. If the key to this chest is the bloodied hand of a Shin'Ree orc then that is what we must find. The skeletal orcs outside of the Wailing Caves are what's left of the Shin'Ree orcs. Among them you can find blood stained bones... which means hands. Unfortunately I doubt any of the skeletal orcs have preserved their bloody hands for us. But there is still a way.")
+end
+
+
+function Option16(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "I will bring you your fingers.", "offer4")
+ StartConversation(conversation, NPC, Spawn, "We can build a bloody hand ourselves! Slay the Shin'Ree orcs. Among their fallen bones collect the bloodied fingers--enough to form a hand. That will fulfill the needs of this orc spell, I am certain.")
+end
+
  
 function offer(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -144,6 +195,15 @@ end
 function offer2(NPC, Spawn)
  FaceTarget(NPC, Spawn)
  OfferQuest(NPC, Spawn, QUEST3)
+end
+
+function offer3(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC, Spawn, QUEST4)
+end
+
+function offer4(NPC, Spawn)
+FaceTarget(NPC, Spawn)
 end
  
 function QUEST2_PROGRESS(NPC, Spawn)
@@ -175,8 +235,17 @@ function QUEST2_FINISH(NPC, Spawn)
       StartConversation(conversation, NPC, Spawn, "Nice, very nice. Give me a moment while I read over these orders.")
 end   
 
+function QUEST4_PROGRESS(NPC, Spawn)
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "Not yet.")
+ StartConversation(conversation, NPC, Spawn, "Did you get it?")
+end
 
-
+function QUEST4_FINISH(NPC, Spawn)
+  local conversation = CreateConversation()
+ AddConversationOption(conversation, "I did. The buried chest is locked.", "Option13")
+ StartConversation(conversation, NPC, Spawn, "Did you get it?")
+end   
 
 function root(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
