@@ -10,7 +10,9 @@
 local QUEST = 407 -- Ventar T'Kal quest
 local QUEST2 = 408 -- Orcs of the Ree quest
 local QUEST3 = 409 -- An Aquisition quest
-local QUEST4 = 410 -- Gifts from the Earth
+local QUEST4 = 410 -- Gifts from the Earth quest
+local QUEST5 = 411 -- The Skeleton Key quest
+local QUEST6 = 412 -- Returning to Captain Feralis quest
 
 function spawn(NPC)
 
@@ -19,15 +21,14 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1048.mp3", "", "", 0, 0, Spawn)
-	if not HasQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) then
+	if not HasQuest(Spawn, QUEST) and not HasCompletedQuest(Spawn, QUEST) or HasQuest(Spawn, QUEST6) or HasCompletedQuest(Spawn, QUEST6) then
 	local choice = MakeRandomInt(1, 2)
 	if choice == 1 then
-	PlayFlavor("", "These nomads can be quite pleasant to deal with.", "", 1689589577, 4560189, Spawn)
-     else
-    PlayFlavor("", "Overlord protect us!", "", 1689589577, 4560189, Spawn)
+    PlayFlavor(NPC, "", "Overlord protect us!", "", 1689589577, 4560189, Spawn)
+    else
+    PlayFlavor(NPC, "", "These nomads can be quite pleasant to deal with.", "", 1689589577, 4560189, Spawn)
 	end
-        end
-   
+	   end
    if HasQuest(Spawn, QUEST) and HasItem(Spawn, 14661) or HasCompletedQuest(Spawn, QUEST) and HasItem(Spawn, 14661) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) and not HasCompletedQuest(Spawn, QUEST4) then
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Yes. I have these roots for you.", "Option1")
@@ -48,11 +49,15 @@ function hailed(NPC, Spawn)
      QUEST4_PROGRESS(NPC, Spawn)
      elseif GetQuestStep(Spawn, QUEST4) == 3 then
      QUEST4_FINISH(NPC, Spawn)
-    elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and HasCompletedQuest(Spawn, QUEST3) and HasCompletedQuest(Spawn, QUEST4) then 
+    elseif HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and HasCompletedQuest(Spawn, QUEST3) and HasCompletedQuest(Spawn, QUEST4) and not HasQuest(Spawn, QUEST5) and not HasCompletedQuest(Spawn, QUEST5) then 
      Option13(NPC, Spawn)
+     elseif GetQuestStep(Spawn, QUEST5) == 1 or  GetQuestStep(Spawn, QUEST5) == 2 or GetQuestStep(Spawn, QUEST5) == 3 or GetQuestStep(Spawn, QUEST5) == 4 or GetQuestStep(Spawn, QUEST5) == 5 then
+     QUEST5_PROGRESS(NPC, Spawn)
+     elseif GetQuestStep(Spawn, QUEST5) == 6 or HasCompletedQuest(Spawn, QUEST5) and not HasCompletedQuest(Spawn, QUEST6) and not HasQuest(Spawn, QUEST6) then
+     QUEST5_FINISH(NPC, Spawn)
    end
       end
-   
+      
   
 
 function Option1(NPC, Spawn)
@@ -185,6 +190,33 @@ FaceTarget(NPC, Spawn)
  StartConversation(conversation, NPC, Spawn, "We can build a bloody hand ourselves! Slay the Shin'Ree orcs. Among their fallen bones collect the bloodied fingers--enough to form a hand. That will fulfill the needs of this orc spell, I am certain.")
 end
 
+function Option17(NPC, Spawn)
+ if GetQuestStep(Spawn, QUEST5) == 6 then
+  SetStepComplete(Spawn, QUEST5, 6)
+  end
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Thanks.", "Option18")
+	StartConversation(conversation, NPC, Spawn, "Good, good... Opening it should be as simple as... yes! A sash?... worthless. And under it? ...paper... The Code of the Shin'Ree? Useful? USEFUL? It's nothing but PAPER")
+end
+
+
+function Option18(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Gee... thanks for telling me.", "Option19")
+	AddConversationOption(conversation, "Alright.", "offer5")
+	StartConversation(conversation, NPC, Spawn, "Yeah, yeah. Maybe next time we won't be so unlucky. Anyway, I neglected to mention this earlier--after all I wanted to get as much from you as I could--but Feralis has been asking for you. You should go speak with him, I believe he has another underling who could use your help.")
+end
+
+function Option19(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Right.", "offer5")
+	StartConversation(conversation, NPC, Spawn, "Push your advantages, "..GetName(Spawn).."...")
+end
+
+
  
 function offer(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -204,9 +236,16 @@ end
 
 function offer4(NPC, Spawn)
 FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST5)
 end
+
+function offer5(NPC, Spawn)
+ FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST6)
+end   
  
 function QUEST2_PROGRESS(NPC, Spawn)
+    	FaceTarget(NPC, Spawn)
          local conversation = CreateConversation()
 	    AddConversationOption(conversation, "Not yet.")
 	    if not HasItem(Spawn, 46427) then
@@ -216,12 +255,14 @@ function QUEST2_PROGRESS(NPC, Spawn)
 end
 
 function QUEST3_PROGRESS(NPC, Spawn)
+    	FaceTarget(NPC, Spawn)
  local conversation = CreateConversation()
  AddConversationOption(conversation, "Not yet.")
  StartConversation(conversation, NPC, Spawn, "Did you get the shipment?")
 end
 
 function QUEST3_FINISH(NPC, Spawn)
+    	FaceTarget(NPC, Spawn)
   local conversation = CreateConversation()
   AddConversationOption(conversation, "I did, here you go.", "Option11")
   StartConversation(conversation, NPC, Spawn, "Did you get the shipment?")
@@ -229,6 +270,7 @@ function QUEST3_FINISH(NPC, Spawn)
   
 
 function QUEST2_FINISH(NPC, Spawn)
+    	FaceTarget(NPC, Spawn)
     SetStepComplete(Spawn, QUEST2, 3)
     local conversation = CreateConversation()
      AddConversationOption(conversation, "...", "Option6")
@@ -236,20 +278,37 @@ function QUEST2_FINISH(NPC, Spawn)
 end   
 
 function QUEST4_PROGRESS(NPC, Spawn)
+    	FaceTarget(NPC, Spawn)
  local conversation = CreateConversation()
  AddConversationOption(conversation, "Not yet.")
  StartConversation(conversation, NPC, Spawn, "Did you get it?")
 end
 
 function QUEST4_FINISH(NPC, Spawn)
+    	FaceTarget(NPC, Spawn)
   local conversation = CreateConversation()
  AddConversationOption(conversation, "I did. The buried chest is locked.", "Option13")
  StartConversation(conversation, NPC, Spawn, "Did you get it?")
 end   
 
+
+function QUEST5_PROGRESS(NPC, Spawn)
+    	FaceTarget(NPC, Spawn)
+local conversation = CreateConversation()
+ AddConversationOption(conversation, "Not yet.")
+ StartConversation(conversation, NPC, Spawn, "Do you have the fingers?") 
+ end
+ 
+ function QUEST5_FINISH(NPC, Spawn)
+ FaceTarget(NPC, Spawn)    
+ local conversation = CreateConversation()
+ AddConversationOption(conversation, "I do.", "Option17")
+ StartConversation(conversation, NPC, Spawn, "Do you have the fingers?") 
+ end  
+
 function root(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "", "Of course, here you are.")
+	PlayFlavor(NPC, "", "Of course, here you are.", "", 0, 0, Spawn)
 	AddItem(Spawn, 46427, 5)
 end	
 

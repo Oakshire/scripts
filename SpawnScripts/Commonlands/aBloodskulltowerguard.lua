@@ -23,7 +23,7 @@ end
 
 function death(NPC, Spawn)
   if GetQuestStep(Spawn, BloodskullIntentions) == 2 then
-  local chance = math.random(100)
+  local chance = math.random(1, 100)
   if chance >= 50 then
   local zone = GetZone(Spawn)
   local X = GetX(NPC)
