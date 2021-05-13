@@ -6,6 +6,9 @@
     Script Notes   :  Added movement
 --]]
 
+QUEST = 414 -- Tesera Valnos Quest
+QUEST2 = 415 -- Broken Equipment Quest
+
 function spawn(NPC)
 MovementLoopAddLocation(NPC, 563.48, -42.51, 696.01, 2, 10)
 MovementLoopAddLocation(NPC, 589.12, -47.48, 686.90, 2, 10)
@@ -22,18 +25,76 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if HasQuest(Spawn, QUEST) or HasCompletedQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) then
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "I am "..GetName(Spawn)..". Feralis sent me to offer my help.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Make it quick, I am quite busy.")
+	elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) < 8 then
+	QUEST2_PROGRESS(NPC, Spawn)
 end
+   end
 
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if HasQuest(Spawn, QUEST) then
+	SetStepComplete(Spawn, QUEST, 1)
+	end
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "What business?")
+	AddConversationOption(conversation, "What business?", "Option2")
 	StartConversation(conversation, NPC, Spawn, "It's about time he sent help. I've nearly lost the band of Bloodskulls I'm tracking and now this business with the Ruins of Val'marr.")
 end
+    
 
+function Option2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Why?", "Option3")
+	StartConversation(conversation, NPC, Spawn, "We got new orders a while back. We were to keep a close watch on the undead north of here. So we started to watch. So far... nothing, yet we continue to waste resources.")
+end
+
+
+function Option3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What can I do to help?", "Option4")
+	StartConversation(conversation, NPC, Spawn, "It is not our job to question our orders, only to follow them. In dealing with these undead we set up some arcanic sentries about the ruins. Now those have been disabled and we're left with far less than what we started with. Meanwhile I'm working hard to keep my scouts on top of the Bloodskulls we had been tracking before. Needless to say things are hectic around here.")
+end
+
+function Option4(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "How can they be repaired?", "Option5")
+	StartConversation(conversation, NPC, Spawn, "That's what I like to hear! We need the arcanic sentries back in action. The undead are too stupid to have taken them out--perhaps that's why our superiors are so interested in this area. The sentries are equipped with rudimentary magic that can conceal their location from future attacks, however. Before that will work they need to be repaired.")
+end
+
+
+function Option5(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "How many sentries are there?", "Option6")
+	StartConversation(conversation, NPC, Spawn, "We've got supplies cached in the houses south of the ruins. Some of those crates will contain essence injectors. You only need one. Once you have one, head into the ruins. The undead that are destroyed rot into undeath... and that can be reaped. Collect an essence of undeath from one of the fallen undead and use it with the injector to repair one of the sentries. After that collect another essence and repair the next one.")
+end
+
+function Option6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Yes.", "offer")
+	StartConversation(conversation, NPC, Spawn, "There are six: two above the road that runs east and west, and four below it. They are all on the outskirts of the ruins. Think you can do it?")
+end
+
+
+function offer(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC, Spawn, QUEST2)
+end
+
+
+function QUEST2_PROGRESS(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Not yet.")
+	StartConversation(conversation, NPC, Spawn, "Are the sentries repaired?")
+end
 
 function respawn(NPC)
 	spawn(NPC)

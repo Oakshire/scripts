@@ -19,7 +19,7 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     local choice = MakeRandomInt(1, 3)
-    if HasQuest(Spawn, QUEST2) or HasCompletedQuest(Spawn, QUEST2) or HasCompletedQuest(Spawn, QUEST3) and HasQuest(Spawn, QUEST4) then
+    if HasQuest(Spawn, QUEST2) or HasCompletedQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST3) or HasCompletedQuest(Spawn, QUEST4) or HasQuest(Spawn, QUEST4) then
         if choice == 1 then
     PlayFlavor(NPC, "", "Loyalty first!", "", 0, 0, Spawn)
     elseif choice == 2 then

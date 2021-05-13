@@ -6,6 +6,11 @@
                    : 
 --]]
 require "SpawnScripts/Generic/MovementCircleSmall"
+
+
+local BrokenEquipment = 415
+
+
 function spawn(NPC)
     SpawnChooseRandomMovement(NPC)
 end
@@ -18,3 +23,10 @@ function respawn(NPC)
 
 end
 
+function death(NPC, Spawn)
+if GetQuestStep(Spawn, BrokenEquipment) > 1 then
+ AddLootItem(NPC, 15095, 1)
+else
+RemoveLootItem(NPC, 15095)    
+end  
+end
