@@ -76,6 +76,10 @@ function Step6Complete(Quest, QuestGiver, Player)
      CheckProgress(Quest, QuestGiver, Player)
 end
 
+function Step7Complete(Quest, QuestGiver, Player)
+	 UpdateQuestStepDescription(Quest, 7, "I have repaired the southeastern arcanic sentry.")
+     CheckProgress(Quest, QuestGiver, Player)
+end
 
 
 function QuestComplete(Quest, QuestGiver, Player)
