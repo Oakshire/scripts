@@ -18,16 +18,22 @@ end
 
 
 function InRange(NPC, Spawn)
-  if HasCompletedQuest(Spawn, OrcsAndGhosts) then
-  ProvidesQuest(NPC, Rainus)
-  elseif HasCompletedQuest(Spawn, Rainus) then
+  if HasCompletedQuest(Spawn, Rainus) then
   ProvidesQuest(NPC, QUEST)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
   elseif HasCompletedQuest(Spawn, QUEST) then
   ProvidesQuest(NPC, QUEST2)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
   elseif HasCompletedQuest(Spawn, QUEST2) then
   ProvidesQuest(NPC, QUEST3)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
  elseif HasCompletedQuest(Spawn, QUEST3) then
   ProvidesQuest(NPC, QUEST4)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
 end
    end
 

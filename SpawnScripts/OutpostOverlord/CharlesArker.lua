@@ -10,11 +10,33 @@ local InTheNameOfPrestige = 489
 local InTheNameOfHonor = 490
 local TheTunarianPlot = 491
 
-function spawn (NPC)
- ProvidesQuest(NPC, InTheNameOfPrestige) 
- ProvidesQuest(NPC, InTheNameOfHonor)
- ProvidesQuest(NPC, TheTunarianPlot)        
+
+
+
+function spawn(NPC)
+SetPlayerProximityFunction(NPC, 10, "InRange")
 end
+
+
+
+function InRange(NPC, Spawn)
+if not HasCompletedQuest(Spawn, InTheNameOfPrestige) then
+ProvidesQuest(NPC, InTheNameOfPrestige)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, InTheNameOfPrestige) then
+ProvidesQuest(NPC, InTheNameOfHonor)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, InTheNameOfHonor) then
+ProvidesQuest(NPC, TheTunarianPlot)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+   end
+
+
+
 
 function respawn (NPC)
          spawn(NPC)

@@ -18,7 +18,10 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+     conversation = CreateConversation()
+     AddConversationOption(conversation, "Okay, I'll be right back.")
+      StartConversation(conversation, QuestGiver, Player, "Good...Yes, Mooshga make Hyena Jerky for you.")
 end
 
 function Declined(Quest, QuestGiver, Player)

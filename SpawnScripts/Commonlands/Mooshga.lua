@@ -6,12 +6,14 @@
                    : 
 --]]
 
-HyenaJerky = 429
+local HyenaJerky = 429
+local SeafoodSurprise = 430
 
 function spawn(NPC)
 
 end
 
+--[[
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
@@ -26,6 +28,27 @@ function hailed(NPC, Spawn)
     dlg3(NPC, Spawn)
 end   
     end
+--]]
+
+
+function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1055.mp3", "", "", 0, 0, Spawn)
+    if not HasQuest(Spawn, HyenaJerky) and not HasCompletedQuest(Spawn, HyenaJerky) then
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "No, I'm not hungry.")
+	AddConversationOption(conversation, "I guess that depends on the menu.", "dlg1")
+	StartConversation(conversation, NPC, Spawn, "Mooshga meet new friend! You look hungry. Mooshga hungry. You hungry?")
+	elseif GetQuestStep(Spawn, HyenaJerky) == 1 or GetQuestStep(Spawn, SeafoodSurprise) == 1 then
+	questprogress(NPC, Spawn)
+	elseif GetQuestStep(Spawn, HyenaJerky) == 2 then
+	dlg3(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, HyenaJerky) and not HasCompletedQuest(Spawn, SeafoodSurprise) then
+	dlg4(NPC, Spawn)
+	elseif GetQuestStep(Spawn, SeafoodSurprise) == 2 then
+	dlg7(NPC, Spawn)
+end
+   end
 
 function dlg1(NPC, Spawn)
  FaceTarget(NPC, Spawn)
@@ -46,11 +69,56 @@ end
 function dlg3(NPC, Spawn)
  FaceTarget(NPC, Spawn)
  conversation = CreateConversation()
- PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1055.mp3", "", "", 0, 0, Spawn)
  AddConversationOption(conversation, "I have brought you the ears that you asked for.", "quest1complete")
  AddConversationOption(conversation, "Nothing right now.")
  StartConversation(conversation, NPC, Spawn, "You back so quick! What you have for Mooshga?")
 end
+
+function dlg4(NPC, Spawn)
+     FaceTarget(NPC, Spawn)
+     conversation = CreateConversation()
+	AddConversationOption(conversation, "Yes, I am. I would love more of your cooking, Mooshga.", "dlg5")
+	AddConversationOption(conversation, "What? No thanks... I just ate!")
+	StartConversation(conversation, NPC, Spawn, "You still look hungry! You hungry? Mooshga knows when people hungry. Mooshga will feed you but you do something for Mooshga first.")
+end
+
+
+function dlg5(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What type of claws?", "dlg6")
+		AddConversationOption(conversation, "I think i just lost my apetite")
+	StartConversation(conversation, NPC, Spawn, "Mooshga make special surprise today. Mooshga needs claws for surprise recipe she figure out.")
+end
+
+function dlg6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I'm getting hungrier by the minute.", "offer2")
+	AddConversationOption(conversation, "Oh... I think i just lost my apetite.")
+	StartConversation(conversation, NPC, Spawn, "Mooshga need special claws from crabs. The HUGE ones. You find crabs in southeast. They live in freshwater. Near old tower there is good spot. You go find crabs and snap tasty claws off, then bring back to Mooshga.")
+end
+
+function dlg7(NPC, Spawn)
+        FaceTarget(NPC, Spawn)
+	    local conversation = CreateConversation()
+        AddConversationOption(conversation, "I have the huge crab claws for your soup, Mooshga.", "dlg8")
+         AddConversationOption(conversation, "Nothing right now.")
+    	StartConversation(conversation, NPC, Spawn, "You back so quick! What you have for Mooshga?")
+end    
+
+
+function dlg8(NPC, Spawn)
+    SetStepComplete(Spawn, SeafoodSurprise, 2)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Thanks, Mooshga.")
+	StartConversation(conversation, NPC, Spawn, "Mooshga makes you some too. Here you go.")
+end  
+
+
+
+
 
 function quest1complete(NPC, Spawn)
  FaceTarget(NPC, Spawn)
@@ -65,12 +133,18 @@ function offer(NPC, Spawn)
  OfferQuest(NPC, Spawn, HyenaJerky)
 end
 
-function quest1progress(NPC, Spawn)
-FaceTarget(NPC, Spawn)
-conversation = CreateConversation()
-AddConversationOption(conversation, "Okay, I'll be right back.")
-StartConversation(conversation, NPC, Spawn, "Good...Yes, Mooshga make Hyena Jerky for you.")
+function offer2(NPC, Spawn)
+ FaceTarget(NPC, Spawn)
+ OfferQuest(NPC, Spawn, SeafoodSurprise)
 end
+
+
+function questprogress(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "Okay, okay. Mooshga, I'm going.")
+	StartConversation(conversation, NPC, Spawn, "You don't look hungry enough. You go away! NO FOOD FOR YOU!")
+end	
 
 
 function respawn(NPC)

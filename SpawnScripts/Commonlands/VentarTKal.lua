@@ -14,6 +14,25 @@ local QUEST4 = 410 -- Gifts from the Earth quest
 local QUEST5 = 411 -- The Skeleton Key quest
 local QUEST6 = 412 -- Returning to Captain Feralis quest
 
+
+function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange")
+end
+
+function InRange(NPC, Spawn)
+  if HasCompletedQuest(Spawn, QUEST) then
+  ProvidesQuest(NPC, QUEST2)
+  elseif HasCompletedQuest(Spawn,  QUEST2) then
+  ProvidesQuest(NPC, QUEST3)
+  elseif HasCompletedQuest(Spawn, QUEST3) then
+  ProvidesQuest(NPC, QUEST4)
+  elseif HasCompletedQuest(Spawn, QUEST4) then
+  ProvidesQuest(NPC, QUEST5)
+ elseif HasCompletedQuest(Spawn, QUEST5) then
+  ProvidesQuest(NPC, QUEST6)
+end
+   end
+
 function spawn(NPC)
 
 end

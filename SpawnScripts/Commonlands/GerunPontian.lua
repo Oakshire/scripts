@@ -11,14 +11,41 @@ local BeetleShells = 398
 local ArmadilloHides = 399
 local OrcsAndGhosts = 400
 local Rainus = 401
+local ReturningToCaptainFeralis = 5221
 
 function spawn(NPC)
-	ProvidesQuest(NPC, SpeckledRattlerVenom)
+	SetPlayerProximityFunction(NPC, 10, "InRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
+
+
+function InRange(NPC, Spawn)
+  if not HasCompletedQuest(Spawn, SpeckledRattlerVenom) then
+  ProvidesQuest(NPC, SpeckledRattlerVenom)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, SpeckledRattlerVenom) then
+  ProvidesQuest(NPC, BeetleShells)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, BeetleShells) then
+  ProvidesQuest(NPC, ArmadilloHides)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, ArmadilloHides) then
+  ProvidesQuest(NPC, OrcsAndGhosts)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+ elseif HasCompletedQuest(Spawn, OrcsAndGhosts) then
+  ProvidesQuest(NPC, Rainus)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+   end
+
 
 function hailed(NPC, Spawn)
 	if HasCompletedQuest(Spawn, SpeckledRattlerVenom) and not HasQuest(Spawn, BeetleShells) and not HasCompletedQuest(Spawn, BeetleShells) then
@@ -51,6 +78,8 @@ function hailed(NPC, Spawn)
 	    OrcsKilled(NPC, Spawn)
 	elseif not HasQuest(Spawn, SpeckledRattlerVenom) and not HasCompletedQuest(Spawn, SpeckledRattlerVenom) then
 		FirstTimeSpeaking(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, ReturningToCaptainFeralis) then
+	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "Well done. I have heard much about your expoits", "hail", 0, 0, Spawn)
 	end
 end
 

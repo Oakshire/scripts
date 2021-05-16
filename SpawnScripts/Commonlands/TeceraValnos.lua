@@ -12,6 +12,7 @@ QUEST3 = 413 --  The Bloodskull Threat Quest
 QUEST4 = 5221 --  Returning to Captain Feralis(Final Quest)
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 10, "InRange")    
 MovementLoopAddLocation(NPC, 563.48, -42.51, 696.01, 2, 10)
 MovementLoopAddLocation(NPC, 589.12, -47.48, 686.90, 2, 10)
 MovementLoopAddLocation(NPC, 573.82, -43.50, 682.51, 2, 10)
@@ -25,21 +26,43 @@ MovementLoopAddLocation(NPC, 570.90, -46.07, 717.06, 2, 10)
 MovementLoopAddLocation(NPC, 577.86, -45.04, 691.07, 2, 10)
 end
 
+
+function InRange(NPC, Spawn)
+if not HasCompletedQuest(Spawn, QUEST) then
+ProvidesQuest(NPC, QUEST2)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, QUEST2) then
+ProvidesQuest(NPC, QUEST3)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, QUEST3) then
+ProvidesQuest(NPC, QUEST4)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+   end
+
+
+
+
+
+
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	if HasQuest(Spawn, QUEST) or HasCompletedQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) then
+	if HasQuest(Spawn, QUEST) or HasCompletedQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST4) then
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "I am "..GetName(Spawn)..". Feralis sent me to offer my help.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Make it quick, I am quite busy.")
-	elseif HasQuest(Spawn, QUEST2) and GetQuestStep(Spawn, QUEST2) < 8 then
+	elseif GetQuestStep(Spawn, QUEST2) < 8 and not HasCompletedQuest(Spawn, QUEST2) then
 	QUEST2_PROGRESS(NPC, Spawn)
-	elseif GetQuestStep(Spawn, QUEST2) == 8 or HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3) then
+	elseif GetQuestStep(Spawn, QUEST2) == 8 or HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not HasCompletedQuest(Spawn, QUEST3)  then
 	QUEST2_FINISH(NPC, Spawn)
-	elseif GetQuestStep(Spawn, QUEST3) < 5 then
-	QUEST3_PROGRESS(Spawn, QUEST3)
-	elseif GetQuestStep(Spawn, QUEST3) == 5 or HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) and not HasCompletedQuest(Spawn, QUEST4) then
+	elseif GetQuestStep(Spawn, QUEST3) < 5 and not HasCompletedQuest(Spawn, QUEST3) then
+	QUEST3_PROGRESS(NPC, Spawn)
+	elseif GetQuestStep(Spawn, QUEST3) == 5 or  HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) and not HasCompletedQuest(Spawn, QUEST4) then
 	QUEST3_FINISH(NPC, Spawn)
-	elseif HasQuest(Spawn, QUEST4) or HasCompletedQuest(Spawn, QUEST4) then
+	elseif HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and HasCompletedQuest(Spawn, QUEST3) and HasQuest(Spawn, QUEST4) or HasCompletedQuest(Spawn, QUEST4) then
 	PlayFlavor(NPC, "", "Thank you, friend.", "salute", 0, 0, Spawn)
 end
    end
@@ -95,11 +118,12 @@ end
 function Option8(NPC, Spawn)
     if GetQuestStep(Spawn, QUEST2) == 8 then
     SetStepComplete(Spawn, QUEST2, 8)
+    end
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "You're welcome.", "Option9")
 	StartConversation(conversation, NPC, Spawn, "Great work! This is going to save us a lot of scouting time. Thank you, Ighi.")
-end
+
 end
 
 function Option9(NPC, Spawn)
@@ -167,7 +191,7 @@ OfferQuest(NPC, Spawn, QUEST3)
 end
 
 
-function offer2(NPC, Spawn)
+function offer3(NPC, Spawn)
 FaceTarget(NPC, Spawn)
 OfferQuest(NPC, Spawn, QUEST4)
 end

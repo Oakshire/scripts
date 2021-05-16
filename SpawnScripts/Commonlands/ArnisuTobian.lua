@@ -16,6 +16,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", 0, 0, Spawn)
 	if GetQuestStep(Spawn, TheBloodskullThreat) == 4 then
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "Tecera sent me.", "Option2")

@@ -9,8 +9,9 @@
 local CaptainFeralis = 405
 local QUEST = 406 -- Filling the Coffers quest
 local QUEST2 = 407 -- Ventar T'Kal quest
-local QUEST3 = 412 -- Returning to Captain Feralis quest
+local QUEST3 = 412 -- Returning to Captain Feralis quest (Ventar)
 local QUEST4 = 414 -- Tesera Valnos quest
+local QUEST5 = 5221 -- Returning to Captain Feralis quest ( Tecera)
 
 function spawn(NPC)
 
@@ -40,8 +41,12 @@ function hailed(NPC, Spawn)
 	   Option4(NPC, Spawn)
 	elseif HasQuest(Spawn, QUEST3) or HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) then
 	   Option6(NPC, Spawn)
+	elseif HasQuest(Spawn, QUEST5) then
+	    QUEST5_COMPLETE(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, QUEST5) then
+	    PlayFlavor(NPC, "", "Good work. The Overlord will hear of you.", "", 0, 0, Spawn)
 end
-end
+   end
 
 
 function Option1(NPC, Spawn)
@@ -107,6 +112,15 @@ function Option7(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "I don't care about Ventar and I don't have time to be angry with you. Tecera Valnos has been working from the outpost south of the Ruins of Val'marr. Originally I had planned on her helping deal with the orcs, but as of late she has had her hands full. I need you to report to her and give her whatever assistance you can.")
 end
 
+function Option8(NPC, Spawn)
+    SetStepComplete(Spawn, QUEST5, 1)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Thank you.")
+	StartConversation(conversation, NPC, Spawn, "Better than you know. Please, take this, the city of Freeport thanks you.")
+end
+
+
 
 
 
@@ -141,6 +155,13 @@ function QUEST_PROGRESS(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Well?")
 end
 
+
+function QUEST5_COMPLETE(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    AddConversationOption(conversation, "That is good to hear.", "Option2")
+	StartConversation(conversation, NPC, Spawn, "Tecera sent word. I am very pleased with your work, "..GetName(Spawn)..". You've been a great asset, right when we needed it, too. The Overlord will be glad to hear it as well.")
+end
 
 
 
