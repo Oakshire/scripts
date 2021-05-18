@@ -34,5 +34,6 @@ end
 function casted_on(NPC, Spawn, SpellName)
 		if SpellName == 'Pick a Dark Forest Cap' then
 	     AddStepProgress(Spawn, MushroomMadness, 1, 1)
+	     Despawn(NPC)
 	     end
 	        end
