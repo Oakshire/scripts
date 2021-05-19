@@ -34,6 +34,12 @@ end
 function casted_on(NPC, Spawn, SpellName)
 		if SpellName == 'Pick a Dark Forest Cap' then
 	     AddStepProgress(Spawn, MushroomMadness, 1, 1)
-	     Despawn(NPC)
+	     RemoveSpawnAccess(NPC, Spawn)
+	     AddTimer(NPC, 30000, "return_access", 1, Spawn)
 	     end
-	        end
+        end
+        
+        
+function return_access(NPC, Spawn)
+AddSpawnAccess(NPC, Spawn)
+end

@@ -14,7 +14,13 @@
 
 function Init(Quest)
 	AddQuestStepHarvest(Quest, 1, "I need to gather maple from wind felled trees", 5, 100, "J.P. Feterman has asked me to gather some components for him to fix his favorite bow.", 824, 12101)
+		AddQuestStepHarvest(Quest, 2, "I need to gather tuber strands from desert roots", 3, 100, "J.P. Feterman has asked me to gather some components for him to fix his favorite bow.", 194, 14701)
+			AddQuestStepKill(Quest, 3, "I need compound bow cams from dervish cutthroats", 2, 100, "J.P. Feterman has asked me to gather some components for him to fix his favorite bow.", 2279, 330092, 330104)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+			AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+
+
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -36,22 +42,24 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have gathered maple for J.P. Feterman.")
         UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered maple for J.P. Feterman.")
-	AddQuestStepHarvest(Quest, 2, "I need to gather tuber strands from desert roots", 3, 100, "J.P. Feterman has asked me to gather some components for him to fix his favorite bow.", 194, 14701)
-	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+        CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have J.P. Feterman's tuber strands.")
         UpdateQuestTaskGroupDescription(Quest, 2, "I have J.P. Feterman's tuber strands.")
-	AddQuestStepKill(Quest, 3, "I need compound bow cams from dervish cutthroats", 2, 100, "J.P. Feterman has asked me to gather some components for him to fix his favorite bow.", 2279, 330092, 330104)
-	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+        CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I have the bow cams for J.P. Feterman.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the components and should return to J.P. Feterman.")
+        CheckProgress(Quest, QuestGiver, Player)
+end
 
-	AddQuestStepChat(Quest, 4, "I need to return to J.P. Feterman", 1, "I have J.P. Feterman's bow components and should speak with him again.", 9, 330261)
+function CheckProgress(Quest, QuestGiver, Player)
+    if QuestStepIsComplete(Player, 418, 1) and QuestStepIsComplete(Player, 418, 2) and QuestStepIsComplete(Player, 418, 3) then
+    UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the components and should return to J.P. Feterman.")
+    AddQuestStepChat(Quest, 4, "I need to return to J.P. Feterman", 1, "I have J.P. Feterman's bow components and should speak with him again.", 9, 330261)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
 

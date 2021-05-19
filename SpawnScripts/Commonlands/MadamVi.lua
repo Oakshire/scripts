@@ -236,8 +236,3 @@ function QuestProgress(NPC, Spawn)
 end	
 
 
-
---[[ raw_conversations
-	PlayFlavor(NPC, "", "Wonderful to see you, thanks again for all of your help.", "", 1689589577, 4560189, Spawn)
---]]
-
