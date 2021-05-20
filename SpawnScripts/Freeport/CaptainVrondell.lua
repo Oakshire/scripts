@@ -15,9 +15,8 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
-
     PlayFlavor(NPC, "voiceover/english/optional5/captain_vrondell/fprt_west/quests/captain_vrondell000.mp3", "", "brandish", 1599544138, 213130892, Spawn)
-    if GetQuestStep(Spawn, BloodskullOrcBounty) then
+    if GetQuestStep(Spawn, BloodskullOrcBounty) == 2  then
     AddConversationOption(conversation, "I've come to collect on the Bloodskull earring bounty.", "complete")
     end
     AddConversationOption(conversation, "Mercy, great captain. Forgive my foolish actions.")

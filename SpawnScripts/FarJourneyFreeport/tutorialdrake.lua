@@ -10,6 +10,8 @@ function spawn(NPC)
 
 end
 
+
+
 function attack(NPC)
 	SendStateCommand(NPC, 65)
 	AddTimer(NPC, 40000, "drake_rain")
@@ -23,3 +25,4 @@ end
 function drake_stop(NPC)
 	SendStateCommand(NPC, 33678)
 end
+
