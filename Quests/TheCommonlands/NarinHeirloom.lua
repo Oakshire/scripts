@@ -16,8 +16,32 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What was your brother looking for?", "Continue")
+	StartConversation(conversation, QuestGiver, Player, "Excellent ... in the last letter I received from him, he said he found my family's heirloom and was returning with it.  I have not heard from him since.")
+	PlayFlavor(NPC, "voiceover/english/v_tal_narin/commonlands/quests/vtalnarin/vtalnarin005.mp3", "", "", 3927176102, 1208729032, Spawn)
 end
+
+function Continue(Quest, QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What if your brother is no longer alive?", "Continue2")
+	StartConversation(conversation, QuestGiver, Player, "That is information you need not know.  My brother took a small lockbox to carry the item.  When you find him, he should have the box.")
+	PlayFlavor(NPC, "voiceover/english/v_tal_narin/commonlands/quests/vtalnarin/vtalnarin006.mp3", "", "", 2007241749, 1986842596, Spawn)
+end
+
+
+
+function Continue2(Quest, QuestGiver, Player)
+  	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I'll return once I have found your brother and the box.")
+	StartConversation(conversation, QuestGiver, Player, "If that is so, then bring me just the box. It is made of dark wood and has a falcon engraved on its lid.")
+	PlayFlavor(NPC, "voiceover/english/v_tal_narin/commonlands/quests/vtalnarin/vtalnarin007.mp3", "", "", 1495924345, 491648823, Spawn)
+end
+  
+    
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined
