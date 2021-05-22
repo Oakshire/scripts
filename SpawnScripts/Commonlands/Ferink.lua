@@ -7,10 +7,33 @@
 --]]
 
 local ARatDivided = 447
+local CantWeAllJustGetAlong = 448
+local TheLoverbirdsRoost = 449
+local AHardManToPlease = 450
 
 function spawn(NPC)
-
+SetPlayerProximityFunction(NPC, 10, "InRange")    
 end
+
+function InRange(NPC, Spawn)
+if not HasQuest(Spawn, ARatDivided) and not  HasCompletedQuest(Spawn, ARatDivided) then
+ProvidesQuest(NPC, ARatDivided)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, ARatDivided) then
+ProvidesQuest(NPC, CantWeAllJustGetAlong)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, CantWeAllJustGetAlong) then
+ProvidesQuest(NPC,  TheLoverbirdsRoost)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn,  TheLoverbirdsRoost) then
+ProvidesQuest(NPC,  AHardManToPlease)
+SetInfoFlag(NPC)
+SetVisualFlag(NPC)   
+end
+   end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -19,8 +42,16 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "What's wrong, Ferink?", "Option1")
 	AddConversationOption(conversation, "I must be going.")
 	StartConversation(conversation, NPC, Spawn, "Oh whys oh whys can't we be together?  Oh whys oh whys. My true love, the loves of my life is locked away on the other sides of the river and I can't be with her. Oh whys does it has to be this ways? It's not fair, not fair at all. Something must be done!")
-	elseif GetQuestStep(Spawn, ARatDivided) == 1 then
+	elseif GetQuestStep(Spawn, ARatDivided) == 1  or GetQuestStep(Spawn,  CantWeAllJustGetAlong) == 1 or GetQuestStep(Spawn,  CantWeAllJustGetAlong) == 2  or GetQuestStep(Spawn, TheLoverbirdsRoost) == 1 or GetQuestStep(Spawn, TheLoverbirdsRoost) == 2 or GetQuestStep(Spawn, AHardManToPlease) == 1 or GetQuestStep(Spawn, AHardManToPlease) == 2 then
 	QuestProgress(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, ARatDivided) and not HasQuest(Spawn, CantWeAllJustGetAlong ) and not  HasCompletedQuest(Spawn, CantWeAllJustGetAlong)  then
+	Option5(NPC, Spawn)
+	elseif GetQuestStep(Spawn, ARatDivided) == 2 or GetQuestStep(Spawn, CantWeAllJustGetAlong) == 3 or GetQuestStep(Spawn, TheLoverbirdsRoost) == 3 then
+	QuestFinish(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, CantWeAllJustGetAlong) and not HasCompletedQuest(Spawn, TheLoverbirdsRoost) then
+	Option10(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn,TheLoverbirdsRoost) and not HasCompletedQuest(Spawn,  AHardManToPlease) then
+	Option14(NPC, Spawn)
 end
     end
 
@@ -56,6 +87,103 @@ function Option4(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "She was?  Oh my Amoora! I am lost without her.")
 end
 
+function Option5(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Yes, I told you that I talked to her. Calm down, Ferink.", "Option6")
+	AddConversationOption(conversation, "Yes I did,  but I don't have time for this.")
+	StartConversation(conversation, NPC, Spawn, "I must gets her back! Did you see her? Did you... did you tell her I loves her?  Did you? Answer me!  ")
+end
+
+function Option6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "She is beautiful.", "Option7")
+	AddConversationOption(conversation, "And the flowers too, good bye!")
+	StartConversation(conversation, NPC, Spawn, "How was she? What did she say to you? You must tells me. You see why I loves her so... her voice, her beauty, even the day seems brighter when she's nearby. ")
+end
+
+function Option7(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Yes, of course.", "Option8")
+	AddConversationOption(conversation, "No I don't have time for this. Bye!")
+	StartConversation(conversation, NPC, Spawn, "More beautiful than anyone! I has an idea... maybe if you talks to her father and my mother... If you talks to them they might agree to let us be together. Yes, will you do this for me?  My Amoora!")
+end
+
+function Option8(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Okay, I will give it a shot.", "offer2")
+	StartConversation(conversation, NPC, Spawn, "Oh good... You will need to go to the ratongas and talks to my mother. You will needs to go to the kerra and talk to her father. Yes, you tells them we love each other and wants to spend our lives together for ever and always. You go tell them, all right?")
+end
+
+function Option9(NPC, Spawn)
+    SetStepComplete(Spawn,  CantWeAllJustGetAlong, 3)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Alright.")
+	StartConversation(conversation, NPC, Spawn, "I know! It's awful! I haves to think of something.")
+end
+
+
+function Option10(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What favor?", "Option11")
+		AddConversationOption(conversation, "No, I don't have time.")
+	StartConversation(conversation, NPC, Spawn, "Oh my heart aches, I needs my Amoora. Our parents are set in the old ways. It seems like there is nothing that will change their minds about us. Wait, I haves an idea!  Will you do me a favor?")
+end
+
+function Option11(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Where is he?", "Option12")
+	AddConversationOption(conversation, "I can't right now... maybe later.")
+	StartConversation(conversation, NPC, Spawn, "You go find my friend. My friend's name is Jojo.  He'll knows what to do. He always knows what to do.")
+end
+
+function Option12(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I can do that for you.", "offer3")
+	AddConversationOption(conversation, "It's too far out of my way, sorry.")
+	StartConversation(conversation, NPC, Spawn, "My friend Jojo Karanja rests in the Seafarer's Roost in the City of Freeport. Jojo is very smart. Yes, he knows what to do. He help Amoora and mes.  He knows!")
+end
+
+function Option13(NPC, Spawn)
+    SetStepComplete(Spawn, TheLoverbirdsRoost, 3)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "He doesn't seem to like you much, that's for sure.")
+	StartConversation(conversation, NPC, Spawn, "Wonderful! I knews you could do it. Now, if somehow we can convice Jaharin.")
+end
+
+function Option14(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Defend her from what?", "Option15")
+	AddConversationOption(conversation, "I can't right now.")
+	StartConversation(conversation, NPC, Spawn, "Danger! There is much danger now. You came just in time to help me! She is in danger! You must helps me defend my Amoora.")
+end
+
+function Option15(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "What do you want me to do?", "Option16")
+	AddConversationOption(conversation, "No, I have to go.")
+	StartConversation(conversation, NPC, Spawn, "The orcses! They're coming to hurts my Amoora. Oh, I couldn't let anything happens to my Amoora, my love, the passions of my life. No I would just die inside if anything were to happens to my Amoora. You will help me, yes?")
+end
+
+function Option16(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "No, Good luck.")
+	AddConversationOption(conversation, "Okay.", "offer4")
+	StartConversation(conversation, NPC, Spawn, "When the orcses come, you fight them away. The orcses are coming to hurts Amoora and her family! We must not let them! We keep the orcses away!")
+end
+
+
 
 
 
@@ -71,6 +199,10 @@ function QuestFinish(NPC, Spawn)
 	local conversation = CreateConversation()
 	if GetQuestStep(Spawn, ARatDivided) == 2 then
 	AddConversationOption(conversation, "I spoke to Amoora, Ferink.  She seems as upset as you are over this whole thing.", "Option4")
+	elseif GetQuestStep(Spawn, CantWeAllJustGetAlong) == 3 then
+	AddConversationOption(conversation, "I spoke with Riki and Jaharin.  I'm afraid they are not very happy about you and Amoora.", "Option9")
+	elseif GetQuestStep(Spawn, TheLoverbirdsRoost) == 3 then
+	AddConversationOption(conversation, "Great news, Ferink!  You were right.  Jojo helped me convince Riki to give Amoora a chance.", "Option13")
 	end
 	StartConversation(conversation, NPC, Spawn, "Sob!... Sniffle! ...")
 end
@@ -79,6 +211,17 @@ function offer(NPC, Spawn)
 OfferQuest(NPC, Spawn, ARatDivided)
 end
 
+function offer2(NPC, Spawn)
+OfferQuest(NPC, Spawn, CantWeAllJustGetAlong)
+end
+
+function offer3(NPC, Spawn)
+OfferQuest(NPC, Spawn, TheLoverbirdsRoost)
+end
+
+function offer4(NPC, Spawn)
+OfferQuest(NPC, Spawn, AHardManToPlease)
+end
 
 
 function respawn(NPC)

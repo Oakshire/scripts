@@ -62,6 +62,7 @@ function CheckProgress(Quest, QuestGiver, Player)
     AddQuestStepChat(Quest, 4, "I need to return to J.P. Feterman", 1, "I have J.P. Feterman's bow components and should speak with him again.", 9, 330261)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
+  end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around

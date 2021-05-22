@@ -7,7 +7,7 @@
 --]]
 
 local ARatDivided = 447
-
+local  AHardManToPlease = 450
 
 function spawn(NPC)
 
@@ -21,6 +21,13 @@ function hailed(NPC, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "You don't happen to mean a handsome little ratonga named Ferink, do you?", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Every day is the same, now that he's gone.")
+	elseif GetQuestStep(Spawn, AHardManToPlease) == 1 then
+	zone = GetZone(Spawn)
+	orc1 = SpawnByLocationID(zone, 133772310)
+	orc2 = SpawnByLocationID(zone, 133772311)
+	orc3 = SpawnByLocationID(zone, 133772312)
+	orc4 = SpawnByLocationID(zone, 133772314)
+
 end
    end
 
