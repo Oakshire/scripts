@@ -78,6 +78,8 @@ function hailed(NPC, Spawn)
      Option16(NPC, Spawn)
     elseif HasCompletedQuest(Spawn, Rainus) and HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and HasCompletedQuest(Spawn, QUEST3) and HasQuest(Spawn, QUEST4) or HasCompletedQuest(Spawn, QUEST4) then
     PlayFlavor(NPC, "",  "Your help did not go unappreciated, but i have nothing more to ask of you.", "", 0, 0, Spawn)
+    elseif not HasQuest(Spawn, Rainus) and not  HasCompletedQuest(Spawn, Rainus) then
+    PlayFlavor(NPC, "", "Return when you're not so green", "hail", 0, 0, Spawn)
     end
 end
  

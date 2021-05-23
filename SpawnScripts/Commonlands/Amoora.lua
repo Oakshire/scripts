@@ -10,27 +10,34 @@ local ARatDivided = 447
 local  AHardManToPlease = 450
 
 function spawn(NPC)
-
+    SetTempVariable(NPC, "HAILED", "true")  
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	if GetQuestStep(Spawn, ARatDivided) == 2 then
-	PlayFlavor(NPC, "", "...sigh... Hello there... You remind me of him, somehow...", "", 0, 0, Spawn)
-	elseif GetQuestStep(Spawn, ARatDivided) == 1 then
+	if GetQuestStep(Spawn, ARatDivided) == 1 then
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "You don't happen to mean a handsome little ratonga named Ferink, do you?", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Every day is the same, now that he's gone.")
 	elseif GetQuestStep(Spawn, AHardManToPlease) == 1 then
+    if GetTempVariable(NPC, "HAILED")  == "true" then
 	zone = GetZone(Spawn)
 	orc1 = SpawnByLocationID(zone, 133772310)
 	orc2 = SpawnByLocationID(zone, 133772311)
 	orc3 = SpawnByLocationID(zone, 133772312)
 	orc4 = SpawnByLocationID(zone, 133772314)
-
+	SetTempVariable(NPC, "HAILED", "false")
+	AddTimer(NPC, 300000, "reset", 1)
+	end
+    else
+	PlayFlavor(NPC, "", "...sigh... Hello there... You remind me of him, somehow...", "", 0, 0, Spawn)
 end
    end
 
+
+function reset(NPC)
+ SetTempVariable(NPC, "HAILED", "true")  
+ end
 
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

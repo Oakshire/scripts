@@ -46,12 +46,14 @@ function hailed(NPC, Spawn)
 	QuestProgress(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, ARatDivided) and not HasQuest(Spawn, CantWeAllJustGetAlong ) and not  HasCompletedQuest(Spawn, CantWeAllJustGetAlong)  then
 	Option5(NPC, Spawn)
-	elseif GetQuestStep(Spawn, ARatDivided) == 2 or GetQuestStep(Spawn, CantWeAllJustGetAlong) == 3 or GetQuestStep(Spawn, TheLoverbirdsRoost) == 3 then
+	elseif GetQuestStep(Spawn, ARatDivided) == 2 or GetQuestStep(Spawn, CantWeAllJustGetAlong) == 3 or GetQuestStep(Spawn, TheLoverbirdsRoost) == 3 or GetQuestStep(Spawn, AHardManToPlease) == 3 then
 	QuestFinish(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn, CantWeAllJustGetAlong) and not HasCompletedQuest(Spawn, TheLoverbirdsRoost) then
+	elseif HasCompletedQuest(Spawn, CantWeAllJustGetAlong) and not HasQuest(Spawn, TheLoverbirdsRoost) and not HasCompletedQuest(Spawn, TheLoverbirdsRoost) then
 	Option10(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn,TheLoverbirdsRoost) and not HasCompletedQuest(Spawn,  AHardManToPlease) then
+	elseif HasCompletedQuest(Spawn,TheLoverbirdsRoost) and not HasQuest(Spawn, AHardManToPlease) and not HasCompletedQuest(Spawn,  AHardManToPlease) then
 	Option14(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn,TheLoverbirdsRoost) and HasCompletedQuest(Spawn, CantWeAllJustGetAlong) and HasCompletedQuest(Spawn,  AHardManToPlease)  and HasCompletedQuest(Spawn, ARatDivided) then
+	PlayFlavor(NPC, "", "Hello again! Amoora and I are doing wonderful, thanks again.", "", 0, 0, Spawn)
 end
     end
 
@@ -178,10 +180,19 @@ end
 function Option16(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "No, Good luck.")
 	AddConversationOption(conversation, "Okay.", "offer4")
+	AddConversationOption(conversation, "No, Good luck.")
 	StartConversation(conversation, NPC, Spawn, "When the orcses come, you fight them away. The orcses are coming to hurts Amoora and her family! We must not let them! We keep the orcses away!")
 end
+
+function Option17(NPC, Spawn)
+    SetStepComplete(Spawn, AHardManToPlease, 3)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "You are welcome, Ferink.")
+	StartConversation(conversation, NPC, Spawn, "Well, I was right behind you... I was about to charge into the battle, but then I thoughts of Amoora and how upset she would be if I got hurt... Anyways, you were amazing! Thank you so much! Now I can be with my Amoora again! Here, takes this as a small token of my appreciation.")
+end
+
 
 
 
@@ -203,7 +214,10 @@ function QuestFinish(NPC, Spawn)
 	AddConversationOption(conversation, "I spoke with Riki and Jaharin.  I'm afraid they are not very happy about you and Amoora.", "Option9")
 	elseif GetQuestStep(Spawn, TheLoverbirdsRoost) == 3 then
 	AddConversationOption(conversation, "Great news, Ferink!  You were right.  Jojo helped me convince Riki to give Amoora a chance.", "Option13")
+	elseif GetQuestStep(Spawn,  AHardManToPlease) == 3 then
+	AddConversationOption(conversation, "We did it, Ferink!  Jaharin is not only going to give you a chance; he wants you to come to dinner with his family tonight.  By the way, where were you during the fight?", "Option17")
 	end
+	AddConversationOption(conversation, "I'm a little tired of you sobbing all the time.")
 	StartConversation(conversation, NPC, Spawn, "Sob!... Sniffle! ...")
 end
 

@@ -6,7 +6,7 @@
                    : 
 --]]
 
-local QUEST = 448
+local CantWeAllJustGetALong = 448
 local TheLoverbirdsRoost = 449
 
 function spawn(NPC)
@@ -15,9 +15,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	if GetQuestStep(Spawn, QUEST) ~= 2 then
-	PlayFlavor(NPC, "", "What do you want?", "glare", 1689589577, 4560189)
-	elseif  GetQuestStep(Spawn, QUEST) == 2  then
+	if  GetQuestStep(Spawn, QUEST) == 2  then
 	local conversation = CreateConversation()    
 	AddConversationOption(conversation, "Wait, I am here to talk to you about your son.", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Yes? I'm sorry, we don't need any more supplies until the end of the month. Good day.")
@@ -25,6 +23,8 @@ function hailed(NPC, Spawn)
     local conversation = CreateConversation()
    	AddConversationOption(conversation, "I have something you might find interesting.", "Option4")
 	StartConversation(conversation, NPC, Spawn, "You again? You just don't get it, do you?")
+	else 
+	PlayFlavor(NPC, "", "What do you want?", "glare", 1689589577, 4560189)    
 end
    end
 

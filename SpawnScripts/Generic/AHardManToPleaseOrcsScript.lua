@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 15, "InRange")
+	SetPlayerProximityFunction(NPC, 50, "InRange")
 end
 
 function InRange(NPC, Spawn)

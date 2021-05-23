@@ -6,6 +6,8 @@
 	Script Notes     :    n/a
 --]]
 
+
+local InHisName = 5228
 local SpeckledRattlerVenom = 375
 local BeetleShells = 398
 local ArmadilloHides = 399
@@ -80,6 +82,8 @@ function hailed(NPC, Spawn)
 		FirstTimeSpeaking(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, ReturningToCaptainFeralis) then
 	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "Well done. I have heard much about your expoits", "hail", 0, 0, Spawn)
+	elseif HasQuest(Spawn, InHisName) then
+	    SetStepComplete(Spawn, InHisName, 1)
 	end
 end
 
