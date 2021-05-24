@@ -31,14 +31,16 @@ end
 
 
 
-
 function casted_on(NPC, Spawn, SpellName)
 		if SpellName == 'repair' and HasItem(Spawn, 15095) then
             if HasQuest(Spawn, BrokenEquipment) and not QuestStepIsComplete(Spawn, BrokenEquipment, 6) then
                 SetStepComplete(Spawn, BrokenEquipment, 6)
                 RemoveItem(Spawn, 15095)
+                RemovePrimaryEntityCommand(Spawn, NPC, "repair")
             elseif not HasItem(Spawn, 15095) then
                 SendMessage(Spawn, "You need an undying essence to repair the sentry. You can get one from the undead that patrol these ruins")    
    end
  end
 end
+
+

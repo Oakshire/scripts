@@ -44,7 +44,7 @@ end
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I've spoken with Surveyor Menak.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've found a Wheel, but it is incomplete.")
-
+    
 	AddQuestStepChat(Quest, 3, "Speak with Engineer Klaaska.", 1, "Surveyor Menak referred me to the engineer to learn more about the Wheel.", 11, 330278)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
@@ -52,7 +52,7 @@ end
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "Spoke with Engineer Klaaska.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "Engineer Klaaska gave me information about the Wheel.")
-
+     GiveQuestItem(Quest, Player, "Engineer Klaaska gave me information about the Wheel.", 14377)
 	AddQuestStep(Quest, 4, "Locate the Sacred Bottle of Contentment.", 1, 100, "I need to help the roekillik recreate the Wheel of Vaniki.  Engineer Klaaska gave me some information on what I will need.", 11)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
