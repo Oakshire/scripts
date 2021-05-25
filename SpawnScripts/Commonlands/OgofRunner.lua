@@ -15,7 +15,7 @@ function follow_Ogof(NPC, Spawn)
 	local zone = GetZone(NPC)
 	local captOgof = GetSpawnByLocationID(zone, 1585710)
 	local whoAmI = GetSpawnLocationID(NPC)
-	
+	if captOgof ~= nil then
 	local ogofX = GetX(captOgof)
 	local ogofY = GetY(captOgof)
 	local ogofZ = GetZ(captOgof)
@@ -33,8 +33,8 @@ function follow_Ogof(NPC, Spawn)
     speed = 2
 	AddTimer(NPC, 1500, "follow_Ogof")	
 end
-
-
+   end
+  
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 end

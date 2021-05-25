@@ -21,6 +21,9 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "My mistake.")
 	StartConversation(conversation, NPC, Spawn, "Quick, then, or the winged ones will roast me alive for sure.  What is your question?")
 	else
+    if GetQuestStep(Spawn, WheelOfVaniki) == 10 then
+    AddConversationOption(conversation, "I think I've repaired the Wheel of Vaniki.", "Option5")
+    end
 	AddConversationOption(conversation, "No problem.")
 	StartConversation(conversation, NPC, Spawn, "I am terribly busy! Terribly busy!  Come later when I have time to talk!")
 
@@ -50,8 +53,33 @@ function Option4(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "If we knew that, we could have done this ourselves!  Some things the little ones took out of spite, as they did with the Wheel.  The barrel is too big for them; something else must have taken it.  You must take the Wheel with you, for it must be with you in order to be fully restored.")
 end
 
+function Option5(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Savor it?", "Option6")
+   	StartConversation(conversation, NPC, Spawn, "Let me see the Wheel!  Ooooh, you have indeed restored it!  We shall savor it soon, yes!")
+end
+
+function Option6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "You can't mean...", "Option7")
+	StartConversation(conversation, NPC, Spawn, "For many years we have sought the device you found, which is the only container in which the Wheel of Vaniki can be made.  Your assistance has given us back the greatest delicacy of ancient times!")
+end
+
+function Option7(NPC, Spawn)
+    if HasItem(Spawn, 14377) then
+     RemoveItem(Spawn, 14377)
+     end
+     SetStepComplete(Spawn, WheelOfVaniki, 10)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I can't believe I did all that work for ... cheese!")
+	StartConversation(conversation, NPC, Spawn, "Legends have been told of the Wheel's power to make tasty cheese! All we had were the list of ingredients but no way to make it.  You have proven invaluable to our service!  We are very appreciative!")
+end
 
 
+	
 
 function respawn(NPC)
 	spawn(NPC)

@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Commonlands/someveryoldbottles.lua
+    Script Name    : SpawnScripts/Commonlands/questvanikibarrel.lua
     Script Author  : Premierio015
-    Script Date    : 2021.05.23 09:05:01
+    Script Date    : 2021.05.24 05:05:03
     Script Purpose : 
                    : 
 --]]
@@ -13,17 +13,17 @@ SetPlayerProximityFunction(NPC, 5, "InRange")
 end
 
 function InRange(NPC, Spawn)
-if GetQuestStep(Spawn, TheWheelOfVaniki) == 4 then
+if GetQuestStep(Spawn, TheWheelOfVaniki) == 8 then
 SpawnSet(NPC, "display_hand_icon", 1)
 SpawnSet(NPC, "show_command_icon", 1)
-AddPrimaryEntityCommand(Spawn, NPC, "Grab the bottle", 3, "", "", 100, "")
+AddPrimaryEntityCommand(Spawn, NPC, "Examine Barrel", 3, "", "", 100, "")
 end
    end
 
 function casted_on(NPC, Spawn, SpellName)
-		if SpellName == 'Grab the bottle' then
-		 if GetQuestStep(Spawn, TheWheelOfVaniki) == 4 then
-		SetStepComplete(Spawn, TheWheelOfVaniki, 4)
+		if SpellName == 'Examine Barrel' then
+		 if GetQuestStep(Spawn, TheWheelOfVaniki) == 8 then
+		SetStepComplete(Spawn, TheWheelOfVaniki, 8)
 		end
 		AddTimer(NPC, 150, "remove_access", 1)
 end	

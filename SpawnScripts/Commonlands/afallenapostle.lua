@@ -5,7 +5,11 @@
     Script Purpose : 
                    : 
 --]]
+
+require "SpawnScripts/Generic/ValmaarSkeletonVoiceOvers.lua"
 require "SpawnScripts/Generic/MovementCircleSmall"
+
+
 function spawn(NPC)
     SpawnChooseRandomMovement(NPC)
 end
@@ -18,3 +22,10 @@ function respawn(NPC)
 
 end
 
+function aggro(NPC, Spawn)
+generic_aggro(NPC, Spawn)
+end
+
+function death(NPC, Spawn)
+generic_death(NPC, Spawn)
+end

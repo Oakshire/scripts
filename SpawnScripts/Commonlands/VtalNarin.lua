@@ -10,7 +10,11 @@ local DoOrDieSaysIrizian = 5226
 local NarinHeirloom = 5227
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange")
+end
 
+function InRange(NPC, Spawn)
+PlayFlavor(NPC, "voiceover/english/v_tal_narin/commonlands/service/questgiver/020_vtal_narin_multhail1_733f89e7.mp3", "Get away from me! I know you're like the others! You heard me! Go away!", "", 1398229495, 3359813491, Spawn)
 end
 
 function hailed(NPC, Spawn)
