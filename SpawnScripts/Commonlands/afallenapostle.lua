@@ -6,7 +6,7 @@
                    : 
 --]]
 
-require "SpawnScripts/Generic/ValmaarSkeletonVoiceOvers.lua"
+require "SpawnScripts/Generic/ValmaarSkeletonVoiceOvers"
 require "SpawnScripts/Generic/MovementCircleSmall"
 
 

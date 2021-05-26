@@ -27,7 +27,7 @@ PlayFlavor(NPC, "voiceover/english/froglok_base_1/ft/froglok/froglok_base_1_1_de
 end
 
 function healthchanged(NPC, Spawn)
-local chance = math.radom(1, 100)
+local chance = math.random(1, 100)
 if chance  <= 20  then
 PlayFlavor(NPC, "", "Marr protect me!", "", 1689589577, 4560189, Spawn)
 end

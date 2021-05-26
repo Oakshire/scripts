@@ -14,4 +14,10 @@ function examined(Item, Player)
 		elseif HasQuest(Player, quest) then
 			RemoveItem(Player, 1621)
 end
-	end
+end
+
+function obtained(Item, Player)
+if HasCompletedQuest(Player, quest) then
+RemoveItem(Player, 1621)
+end
+   end
