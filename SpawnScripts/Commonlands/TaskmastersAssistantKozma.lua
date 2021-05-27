@@ -11,18 +11,21 @@ local FarSeasRequisitionWC002 = 5213
 local FarSeasRequisitionWC154 = 5214
 local FarSeasRequisitionWC077 = 5215
 local FarSeasRequisitionWC045 = 5216
+local FarSeasRequisitionFG016 = 5240
+local FarSeasRequisitionFG073 = 5241
+local FarSeasRequisitionFG158 = 5242
+local FarSeasRequisitionFG212 = 5243
+local FarSeasRequisitionFG244 = 5244
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange", Spawn)
+	SetPlayerProximityFunction(NPC, 10, "InRange")
 end
 
 function InRange(NPC, Spawn)
 PlayFlavor(NPC, "voiceover/english/taskmaster_s_assistant_koz_ma/commonlands/quest/015_taskmaster_assistant_kozma_qst_callout_b3f14a2b.mp3", "Bring your FSR's to me.  If you don't have them, then I don't want to talk to you.", "", 2096341840, 1469770936, Spawn)
 end
 
-function LeaveRange(NPC, Spawn)
 
-end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -38,7 +41,17 @@ function hailed(NPC, Spawn)
     elseif GetQuestStep(Spawn, FarSeasRequisitionWC077) == 3 then
      AddConversationOption(conversation, "I have requisition # WC 077", "COMPLETE") 
     elseif GetQuestStep(Spawn, FarSeasRequisitionWC045) == 2 then
-     AddConversationOption(conversation, "I have requisition # WC 045", "COMPLETE") 
+     AddConversationOption(conversation, "I have requisition # WC 045", "COMPLETE")
+   elseif GetQuestStep(Spawn,  FarSeasRequisitionFG016) == 4 then
+        AddConversationOption(conversation, "I have requisition # FG 016", "COMPLETE")
+     elseif GetQuestStep(Spawn,  FarSeasRequisitionFG073) == 3 then
+        AddConversationOption(conversation, "I have requisition # FG 073", "COMPLETE")
+         elseif GetQuestStep(Spawn,  FarSeasRequisitionFG158) == 3 then
+        AddConversationOption(conversation, "I have requisition # FG 158", "COMPLETE") 
+             elseif GetQuestStep(Spawn,  FarSeasRequisitionFG212) == 2 then
+        AddConversationOption(conversation, "I have requisition # FG 212", "COMPLETE")   
+                     elseif GetQuestStep(Spawn,  FarSeasRequisitionFG244) == 2 then
+        AddConversationOption(conversation, "I have requisition # FG 244", "COMPLETE")  
     end
 	AddConversationOption(conversation, "Then I'll leave.")
 	StartConversation(conversation, NPC, Spawn, "Where's your requisition? Only those who filled requisitions should speak to me.")
@@ -75,6 +88,16 @@ function COMPLETE(NPC, Spawn)
 	SetStepComplete(Spawn, FarSeasRequisitionWC077, 3)
 	elseif GetQuestStep(Spawn, FarSeasRequisitionWC045) == 2 then
 	SetStepComplete(Spawn, FarSeasRequisitionWC045, 2)
+	elseif GetQuestStep(Spawn, FarSeasRequisitionFG016) == 4 then
+	SetStepComplete(Spawn, FarSeasRequisitionFG016, 4)
+		elseif GetQuestStep(Spawn, FarSeasRequisitionFG073) == 3 then
+	SetStepComplete(Spawn, FarSeasRequisitionFG073, 3)
+	elseif GetQuestStep(Spawn, FarSeasRequisitionFG158) == 3 then
+	SetStepComplete(Spawn, FarSeasRequisitionFG158, 3)
+		elseif GetQuestStep(Spawn, FarSeasRequisitionFG212) == 2 then
+	SetStepComplete(Spawn, FarSeasRequisitionFG212, 2)
+			elseif GetQuestStep(Spawn, FarSeasRequisitionFG244) == 2 then
+	SetStepComplete(Spawn, FarSeasRequisitionFG244, 2)
 	AddConversationOption(conversation, "Okay.")
 	StartConversation(conversation, NPC, Spawn, "Lets me see ... Yes, yes! Here we are. This order is overdue, and the Far Seas Trading Company never pays full price for late orders. Consider yourself lucky that you get paid at all.  Thank you, come again.")
 end
