@@ -52,7 +52,8 @@ function  CheckProgress(Quest, QuestGiver, Player)
    	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered all of the items on the requisition.  I should turn them in.")
 	AddQuestStepChat(Quest, 4, "Find the Taskmaster at the Crossroads in the Commonlands", 1, "Deliver filled FSR order to the Taskmaster at the crossroads in the Commonlands.", 11, 330260)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete") 
-end    
+end   
+   end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I've collected enough shadow lurker venom.")
