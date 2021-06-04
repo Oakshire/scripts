@@ -39,7 +39,7 @@ end
 function Step4Complete(Quest, QuestGiver, Player)
     UpdateQuestStepDescription(Quest, 4, "I've spoken with Kanos X'aphon.")
     UpdateQuestTaskGroupDescription(Quest, 4, "I've returned to Kanos X'aphon, and told him of the Thexian gathering.")
-    AddQuestStep(Quest, 5, "I must find the leader of the Thexians and take her keys.", 1, 100, "I slaughtered the Thexians standing in my way in order to gather the keys needed.")
+    AddQuestStepKill(Quest, 5, "I must find the leader of the Thexians and take her keys.", 2, 100, "I slaughtered the Thexians standing in my way in order to gather the keys needed.", 4730010, 4730004)
    	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end  
 
