@@ -1,7 +1,7 @@
 --[[
-	Script Name		:	an_orcish_trinket.lua
+	Script Name		:	Quests/TheCommonlands/an_orcish_trinket.lua
 	Script Purpose	:	Handles the quest, "An Orcish Trinket"
-	Script Author	:	QuestParser (Replace this)
+	Script Author	:	premierio015
 	Script Date		:	05.06.2021
 	Script Notes	:	Auto generated with QuestParser.
 
@@ -63,7 +63,7 @@ end
    end
 
 function Step4Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 4, "I have acquired the &quot;Son of the Sky&quot; jewel.")
+	UpdateQuestStepDescription(Quest, 4, "I have acquired the ''Son of the Sky'' jewel.")
     CheckProgress(Quest, QuestGiver, Player)
 end
 
