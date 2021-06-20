@@ -55,7 +55,7 @@ StartDialogConversation(conversation, 2, Item, Player, "Arches are my weakness. 
 end
 
 function ArchesContinueStory2(Item, Player)
-if not HasQuest(Player, quest2 and not HasCompletedQuest(Player, quest2) then
+if not HasQuest(Player, quest2) and not HasCompletedQuest(Player, quest2) then
 OfferQuest(nil, Player, quest2)
 end
 conversation = CreateConversation()
@@ -83,7 +83,7 @@ OfferQuest(nil, Player, quest3)
 end
 conversation = CreateConversation()
 AddConversationOption(conversation, "Close", "CloseItemConversation")
-StartDialogConversation(conversation, 2, Item, Player, "I will admit, that there are few ceilings of note in Vermin's Snye.  However, once one knows what to look for, architecturally speaking, one will be able to recognize and identify elements of style in other similar catacombs.  Much of the Vermin's Snye area is in the Randalphesque style, with generally plain columns supporting plaster and lathe ceilings.  This early architecture was a "back-to-our-roots" reaction to the cataclysms reshaping the world, when people wanted simple yet homey structures.")
+StartDialogConversation(conversation, 2, Item, Player, "I will admit, that there are few ceilings of note in Vermin's Snye.  However, once one knows what to look for, architecturally speaking, one will be able to recognize and identify elements of style in other similar catacombs.  Much of the Vermin's Snye area is in the Randalphesque style, with generally plain columns supporting plaster and lathe ceilings.  This early architecture was a ''back-to-our-roots'' reaction to the cataclysms reshaping the world, when people wanted simple yet homey structures.")
 end
 
 
