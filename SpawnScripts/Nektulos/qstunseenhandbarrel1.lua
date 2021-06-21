@@ -27,7 +27,7 @@ function casted_on(NPC, Spawn, SpellName)
                 zone = GetZone(Spawn)
                 SpawnByLocationID(zone, 100433)
                 SetStepComplete(Spawn, ProveYourself, 3)
-                SetAccessToEntityCommand(Spawn,NPC,"Leave the supplies", 100)
+                SetAccessToEntityCommand(Spawn,NPC,"Leave the supplies", 0)
                 SpawnSet(NPC, "show_command_icon", 0)
                SpawnSet(NPC, "display_hand_icon", 0)
    end
