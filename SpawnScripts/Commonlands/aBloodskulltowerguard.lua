@@ -6,7 +6,7 @@
                    : 
 --]]
 
-require "SpawnScripts/Generic/BloodskullVoiceOvers"
+require("SpawnScripts/Generic/BloodskullVoiceOvers")
 
 local BloodskullIntentions = 403
 

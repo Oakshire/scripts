@@ -73,7 +73,7 @@ if GetGender(NPC) == 1 then -- MALE
     PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_aggro_gm_c8053a6e.mp3", "Alert the commander that intruders are here!", "", 3671636011, 19130394, Spawn)
     end
 elseif GetGender(NPC) == 2 then -- FEMALE
-    local choice = MakeRandomInt(1, 4)
+    local choice = MakeRandomInt(1, 6)
     if choice == 1 then
     PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_aggro_gf_c8053a6e.mp3", "Alert the commander that intruders are here!", "", 4095112003, 2636471416, Spawn)
     elseif choice == 2 then
@@ -84,6 +84,8 @@ elseif GetGender(NPC) == 2 then -- FEMALE
     PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_aggro_gf_7dd48aa0.mp3", "Destroy all of the intruders!", "", 3699228325, 3223205316, Spawn)
     elseif choice == 5 then
     PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_aggro_gf_d4cfd470.mp3", "Feel the might of Rallos!", "", 760635308, 455953200, Spawn)
+    elseif choice == 6 then
+    PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_aggro_gf_73e0b841.mp3", "Didn't expect to run into me, did you?", "", 1296281253, 1199123109, Spawn)
     end
 end
 
@@ -121,18 +123,30 @@ end
        end   -- END OF THE FUNCTION
 
 
-  function generic_death(NPC, Spawn)  -- CALLED ON NPC DEATH
+function generic_death(NPC, Spawn)  -- CALLED ON NPC DEATH
+      
 if GetRace(NPC) == 1  then  -- DARK ELF
     if GetGender(NPC) == 1  then -- MALE
+    local choice = MakeRandomInt(1, 2)
+    if choice == 1 then  
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_3_death_gm_25576197.mp3", "I will have vengeance!", "", 433254383, 1749773166, Spawn)
+    elseif choice == 2 then
+    PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_3_death_gm_8d7bb2b9.mp3", "Hold them and I'll return with help!", "", 1905250318, 2280015161, Spawn)
+    end
     elseif GetGender(NPC) == 2 then -- FEMALE
-    local choice = MakeRandomInt(1, 3)
+    local choice = MakeRandomInt(1, 6)
     if choice == 1 then    
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_1_death_gf_25576197.mp3", "I will have vengeance!", "", 2208779791, 246336299, Spawn)
     elseif choice == 2 then
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_3_death_gf_8d7bb2b9.mp3", "Hold them and I'll return with help!", "", 291851398, 546843337, Spawn)
     elseif choice == 3 then
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_death_gf_578a99eb.mp3", "Fall back, order a tactical retreat!", "", 2107410109, 3046072336, Spawn)
+    elseif choice == 4 then
+    PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_1_death_gf_8d7bb2b9.mp3", "Hold them and I'll return with help!", "", 2248940979, 3184577285, Spawn)
+    elseif choice == 5 then
+    PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_death_gf_8bbec3e3.mp3", "No matter what I promise, you will not survive!", "", 2832420662, 2950405548, Spawn)
+    elseif choice == 6 then
+    PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_3_death_gf_25576197.mp3", "I will have vengeance!", "", 58514974, 479667048, Spawn)
     end
 end
 
@@ -149,13 +163,15 @@ elseif GetRace(NPC) == 12 then -- OGRE
         PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_death_gm_4be2fecc.mp3", "You may win the battle, but the war is far from over!", "", 9065845, 102503565, Spawn)
         end
    elseif GetGender(NPC) == 2 then -- FEMALE
-        local choice = MakeRandomInt(1, 3)
+        local choice = MakeRandomInt(1, 4)
          if choice == 1 then
          PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_death_gf_4be2fecc.mp3", "You may win the battle, but the war is far from over!", "", 3327742171, 2045821391, Spawn)
          elseif choice == 2 then
          PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_death_gf_da93daa6.mp3", "Combat withdrawal! Follow me!", "", 2996415396, 2001289891, Spawn)
          elseif choice == 3 then
          PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_death_gf_f8085354.mp3", "Fall back and regroup.  The enemy has the upper hand!", "", 3880002939, 3376376480, Spawn)
+         elseif choice == 4 then
+         PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_halfhealth_gf_5a6c112c.mp3", "Do not surrender to the invaders!", "", 928337336, 4254092896, Spawn)
          end
 end
 
@@ -182,6 +198,15 @@ elseif GetRace(NPC) == 14 then -- TROLL
     end
 end 
 
+
+
+elseif GetRace(NPC) == 9 then -- HUMAN
+    if GetGender(NPC) == 1 then -- MALE
+    PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_death_gm_7612214f.mp3", "All hands retreat!", "", 3033325782, 1103449586, Spawn)
+    elseif GetGender(NPC) == 2 then -- FEMALE
+    PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_death_gf_7612214f.mp3", "All hands retreat!", "", 3620177897, 757784861, Spawn)
+    end   
+
 end   -- END OF THE "RACE CHECK"
    end -- END OF THE FUNCTION
 
@@ -201,11 +226,29 @@ end
 
 elseif GetRace(NPC) == 14 then -- TROLL
     if GetGender(NPC) == 1 then -- MALE
+    local choice = MakeRandomInt(1, 4)
+    if choice == 1 then       
     PlayFlavor(NPC, "voiceover/english/optional5/troll_base_2/ft/troll/troll_base_2_1_victory_gm_3ed1b9f0.mp3", "Mmmmm, I can taste that one now.", "", 2247378739, 1927164734, Spawn)
+    elseif choice == 2 then
+    PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_victory_gm_ce5c7f78.mp3", "We gave them the pummeling.", "", 1293662769, 1693540191, Spawn)
+    elseif choice == 3 then
+    PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_victory_gm_ae6d66e3.mp3", "Teach you to mess with the best.", "", 927528340, 2751002174, Spawn)
+    elseif choice == 4 then
+    PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_victory_gm_7dbd4c91.mp3", "That one will make a nice stew.", "", 3023908049, 2537001461, Spawn)
+    end
     elseif GetGender(NPC) == 2 then -- FEMALE
+    local choice = MakeRandomInt(1, 4)
+    if choice == 1 then    
     PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_victory_gf_c8721d34.mp3", "Culling the weak from the herd.", "", 1547671830, 2217549810, Spawn)
+    elseif choice == 2 then
+    PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_victory_gf_7dbd4c91.mp3", "That one will make a nice stew.", "", 4238344721, 832643250, Spawn)
+    elseif choice == 3 then
+    PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_victory_gf_aea1ef35.mp3", "Save that one before he spoils.", "", 3455464022, 3427621456, Spawn)
+    elseif choice == 4 then
+    PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_victory_gf_3ed1b9f0.mp3", "Mmmmm, I can taste that one now.", "", 4133059096, 3820060055, Spawn)
    end
-   
+end
+
    
  elseif GetRace(NPC) == 1  then  -- DARK ELF
     if GetGender(NPC) == 1  then -- MALE
@@ -228,9 +271,22 @@ end
 
 elseif GetRace(NPC) == 12 then -- OGRE
   if GetGender(NPC) == 1 then -- MALE
-      PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_victory_gm_1de29528.mp3", "Death was your only escape from me, coward!", "", 3626940960, 2890932770, Spawn)
-  end  
-
+     local choice = MakeRandomInt(1, 3)
+     if choice == 1 then
+     PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_victory_gm_1de29528.mp3", "Death was your only escape from me, coward!", "", 3626940960, 2890932770, Spawn)
+     elseif choice == 2 then
+     PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_victory_gm_a914f34c.mp3", "They get easier every time!", "", 1293022504, 4136529132, Spawn)
+     elseif choice == 3 then
+     PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_victory_gm_f08fc0b0.mp3", "For the glory of battle!", "", 15475659, 3009117692, Spawn)
+     end
+elseif GetGender(NPC) == 2 then -- FEMALE
+     local choice = MakeRandomInt(1, 2)
+     if choice == 1 then
+     PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_victory_gf_1c683d69.mp3", "Leave the carcasses to rot!", "", 1941316513, 697971111, Spawn)
+     elseif choice == 2 then
+     PlayFlavor(NPC, "")
+     end
+end
    end -- END OF THE "RACE CHECK"
        end -- END OF THE FUNCTION
 
@@ -239,28 +295,40 @@ elseif GetRace(NPC) == 12 then -- OGRE
 function generic_healthchanged(NPC, Spawn) -- CALLED WHEN NPC HP HAS CHANGED
 if GetRace(NPC) == 14 then -- TROLL
     if GetGender(NPC) == 1 then -- MALE
-        local choice = MakeRandomInt(1, 3)
+        local choice = MakeRandomInt(1, 6)
         if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/optional5/troll_base_2/ft/troll/troll_base_2_1_halfhealth_gm_5ba543d6.mp3", "That'll grow back.", "", 1284662505, 182502504, Spawn)
         elseif choice == 2 then
         PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_halfhealth_gm_f462f6ff.mp3", "Is this supposed to hurt?", "", 4202180867, 1393988988, Spawn)
         elseif choice == 3 then
         PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_gm_ee1e1a8.mp3", "Blood bath!", "", 3180104139, 2926558993, Spawn)
+        elseif choice == 4 then
+        PlayFlavor(NPC, "voiceover/english/optional5/troll_base_2/ft/troll/troll_base_2_1_halfhealth_gm_9e239695.mp3", "I can taste my own blood.", "", 3182034210, 3617807524, Spawn)
+        elseif choice == 5 then
+        PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_halfhealth_gm_aa145f4d.mp3", "Neat, that'll leave a pretty scar", "", 675684950, 4088135432, Spawn)
+        elseif choice == 6 then
+        PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_mm_2b9aa520.mp3", "Dis going to hurt you a lot.", "", 3832530810, 503465739, Spawn)
         end
   elseif GetGender(NPC) == 2 then -- FEMALE
-       local choice = MakeRandomInt(1, 3)
+       local choice = MakeRandomInt(1, 6)
        if choice == 1 then
        PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_mf_67c94743.mp3", "Careful not to damage the tasty livers.", "", 943087800, 1378210001, Spawn)
        elseif choice == 2 then
        PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_halfhealth_gf_5ba543d6.mp3", "That'll grow back.", "",  4062170117, 809175527, Spawn)
        elseif choice == 3 then
        PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_halfhealth_gf_aa145f4d.mp3", "Neat, that'll leave a pretty scar", "", 70455099, 2953679351, Spawn)
+       elseif choice == 4 then
+       PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_halfhealth_gf_9e239695.mp3", "I can taste my own blood.", "", 630688016, 620713228, Spawn)
+       elseif choice == 5 then
+       PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_victory_gf_3ed1b9f0.mp3", "Mmmmm, I can taste that one now.", "", 4133059096, 3820060055, Spawn)
+       elseif choice == 6 then
+       PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_victory_gf_aea1ef35.mp3", "Save that one before he spoils.", "", 3455464022, 3427621456, Spawn)
        end
 end
 
 elseif GetRace(NPC) == 12 then -- OGRE
   if GetGender(NPC) == 1 then -- MALE
-    local choice = MakeRandomInt(1,7)
+    local choice = MakeRandomInt(1, 9)
     if choice == 1 then 
     PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_halfhealth_gm_aff2b15d.mp3", "Now I'm really angry!", "", 1599348947, 4096819162, Spawn)
     elseif choice == 2 then
@@ -275,6 +343,10 @@ elseif GetRace(NPC) == 12 then -- OGRE
     PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_battle_mm_9fc6deb.mp3", "It's easier if you start begging now!", "", 399736626, 2966532528, Spawn)
     elseif choice == 7 then
     PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_battle_gm_fa6b8296.mp3", "They cannot match our strength. Charge!", "", 746723290, 3157649317, Spawn)
+    elseif choice == 8 then
+    PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_battle_mm_5bb7e77c.mp3", "I will turn you into a stain on the ground!", "", 2590854690, 2742765511, Spawn)
+    elseif choice == 9 then
+    PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_battle_gm_b07ff13.mp3", "Pummel them into mulch!", "",  4059634632, 2590934226, Spawn)
     end
 elseif GetGender(NPC) == 2 then -- FEMALE
     local choice = MakeRandomInt(1, 4)
@@ -302,7 +374,7 @@ elseif GetRace(NPC) == 1  then  -- DARK ELF
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_2_battle_mm_4832fde6.mp3", "Now, prepare to be eviscerated!", "", 3289459313, 747137322, Spawn)
     end
     elseif GetGender(NPC) == 2 then -- FEMALE
-    local choice = MakeRandomInt(1, 5)
+    local choice = MakeRandomInt(1, 6)
     if choice == 1 then    
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_battle_mf_2304c1b1.mp3", "For you there will be no mercy.", "", 3416003611, 1827385682, Spawn)
     elseif choice == 2 then
@@ -313,7 +385,18 @@ elseif GetRace(NPC) == 1  then  -- DARK ELF
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_battle_gf_666198d0.mp3", "Grind them all into dust!", "", 1850467700, 1020294863, Spawn)
     elseif choice == 5 then
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_1_halfhealth_gf_577ab333.mp3", "You'll pay for that one, peon!", "", 2534123849, 501758946, Spawn)
+    elseif choice == 6 then
+    PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_3_battle_gf_316a6c63.mp3", "I crave your suffering!", "", 515633448, 1264888848, Spawn)
     end
 end
+
+if GetRace(NPC) == 9 then -- HUMAN
+ if GetGender(NPC) == 1 then -- MALE
+  PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_halfhealth_gm_1babf022.mp3", "Is that all you have?", "", 170267964, 1158805306, Spawn)
+ elseif GetGender(NPC) == 2 then -- FEMALE
+  PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_halfhealth_gf_8529e507.mp3", "I can't hold them forever!", "", 3371581229, 792393228, Spawn)
+  end
+end
+
      end -- END OF THE "RACE CHECK"
 end -- END OF THE FUNCTION
