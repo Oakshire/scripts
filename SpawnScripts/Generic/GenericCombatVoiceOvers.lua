@@ -41,6 +41,8 @@ if GetRace(NPC) == 1  then  -- DARK ELF
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_3_aggro_gf_fe18133.mp3", "Look what strolled into the spider's web!", "", 2332756549, 3562953667, Spawn)
     elseif choice == 7 then
     PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_1/ft/darkelf/darkelf_base_1_3_aggro_gf_10fd87eb.mp3", "There is no escape for you now!", "", 3057301144, 689207639, Spawn)
+    elseif choice == 8 then
+    PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_aggro_gf_73e0b841.mp3", "Didn't expect to run into me, did you?", "", 1296281253, 1199123109, Spawn)
     end
 end
 
@@ -117,6 +119,8 @@ elseif GetRace(NPC) == 14 then -- TROLL
     PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_aggro_gf_d5e592e8.mp3", "Ungh? Time for pain!", "", 1433604950, 3891891742, Spawn)
     elseif choice == 5 then
     PlayFlavor(NPC, "voiceover/english/optional3/troll_base_2/ft/troll/troll_base_2_1_aggro_gf_62fd0e82.mp3", "What smells so good?", "", 3335229907, 713747453, Spawn)
+    elseif choice == 6 then
+    PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_aggro_gf_d1a345c7.mp3", "I'm gonna give you a smile like ol' one tooth!", "", 1201784314, 2598207561, Spawn)
      end
 end
    end  -- END OF THE "RACE CHECK"
@@ -280,11 +284,13 @@ elseif GetRace(NPC) == 12 then -- OGRE
      PlayFlavor(NPC, "voiceover/english/optional3/ogre_base_2/ft/ogre/ogre_base_2_1_victory_gm_f08fc0b0.mp3", "For the glory of battle!", "", 15475659, 3009117692, Spawn)
      end
 elseif GetGender(NPC) == 2 then -- FEMALE
-     local choice = MakeRandomInt(1, 2)
+     local choice = MakeRandomInt(1, 3)
      if choice == 1 then
      PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_victory_gf_1c683d69.mp3", "Leave the carcasses to rot!", "", 1941316513, 697971111, Spawn)
      elseif choice == 2 then
-     PlayFlavor(NPC, "")
+     PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_victory_gf_90f4b426.mp3", "Forward! Leave no survivors!", "", 1746137281, 1712355529, Spawn)
+     elseif choice == 3 then
+     PlayFlavor(NPC, "voiceover/english/ogre_base_1/ft/ogre/ogre_base_1_1_victory_gf_5a68124d.mp3", "Now, to finish your pitiful friends.", "", 2707229528, 1200546437, Spawn)
      end
 end
    end -- END OF THE "RACE CHECK"
