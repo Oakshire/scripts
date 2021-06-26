@@ -6,7 +6,7 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local QUEST_1 = 237
+local QUEST_1 = 5263
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
