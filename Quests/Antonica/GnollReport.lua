@@ -21,7 +21,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "Spoke with Captain Beltho.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've spoken with Captain Beltho, though he does not have the report ready at this time.")
 
-	AddQuestStepLocation(Quest, 2, "Go to the hidden entrance of the gnoll lair.", 30, "I must find the hidden entrance to the gnoll lair somewhere near the southern islands.", 11, -1214, -3, 912)
+	AddQuestStepZoneLoc(Quest, 2, "Go to the hidden entrance of the gnoll lair.", 30, "I must find the hidden entrance to the gnoll lair somewhere near the southern islands.", 11, -1214, -3, 912, 12)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
