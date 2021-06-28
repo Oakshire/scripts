@@ -10,6 +10,18 @@ local MALE = 1
 local FEMALE = 2
 local spoke = false
 
+
+
+function prespawn(NPC)
+local choice = MakeRandomInt(1, 2)
+if choice == 1 then
+SpawnSet(NPC, "model_type", 2851)
+SpawnSet(NPC, "gender", 2)
+elseif choice == 2 then
+SpawnSet(NPC, "model_type", 2852)
+SpawnSet(NPC, "gender", 1)
+end
+
 function spawn(NPC)
 	spoke = false
 end

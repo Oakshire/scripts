@@ -14,13 +14,7 @@ local Pie = 468
 local Mail = 469
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-	ProvidesQuest(NPC, Achoo)   
-	ProvidesQuest(NPC, Blub)   
-	ProvidesQuest(NPC, Killing)   
-	ProvidesQuest(NPC, Care)   
-	ProvidesQuest(NPC, Pie)   
-	ProvidesQuest(NPC, Mail)   
+	SetPlayerProximityFunction(NPC, 10, "InRange")
 end
 
 function respawn(NPC)
@@ -28,8 +22,31 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-	local choice = math.random(1,7)
-	if choice == 1 then
+    if HasCompletedQuest(Spawn, Achoo) then
+    ProvidesQuest(NPC, Blub)
+    SetInfoFlag(NPC)
+    SetVisualFlag(NPC)
+    elseif HasCompletedQuest(Spawn, Blub) then
+    ProvidesQuest(NPC, Killing)
+    SetInfoFlag(NPC)
+    SetVisualFlag(NPC)
+    elseif HasCompletedQuest(Spawn, Killing) then
+    ProvidesQuest(NPC, Care)
+    SetInfoFlag(NPC)
+    SetVisualFlag(NPC) 
+    elseif HasCompletedQuest(Spawn, Care) then
+    ProvidesQuest(NPC, Pie)
+    SetInfoFlag(NPC)
+    SetVisualFlag(NPC) 
+    elseif HasCompletedQuest(Spawn, Pie) then
+    ProvidesQuest(NPC, Mail)
+    SetInfoFlag(NPC)
+    SetVisualFlag(NPC) 
+    end
+end
+
+
+--[[ 	if choice == 1 then
 		PlayFlavor(NPC, "", "I need the extra fish if I am going to make more chowder. Were you still going to fetch that for me?", "", 1689589577, 4560189, Spawn)
 	elseif choice == 2 then
 		PlayFlavor(NPC, "", "That poor soul, is he still staggering around? Aroof is such a large one, you'd think he could hold his liquor better then most.", "", 1689589577, 4560189, Spawn)
@@ -46,16 +63,15 @@ function InRange(NPC, Spawn)
 	else
 	end
 end
+    ]]--
 
-function LeaveRange(NPC, Spawn)
-end
+
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1039.mp3", "", "", 0, 0, Spawn)
-	
 	if GetQuestStep(Spawn, Achoo) == 2 then
 		AddConversationOption(conversation, "Thanks a lot. I'm starving!")
 		StartConversation(conversation, NPC, Spawn, "Oh my! Pepper! That is exactly what I needed! Here, eat something. You look flush. Have you seen my ladle?")	
