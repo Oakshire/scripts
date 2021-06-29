@@ -13,3 +13,10 @@ function examined(Item, Player)
 		OfferQuest(nil, Player, quest)
 	end
 end
+
+function obtained(Item, Player)
+local ItemCount = GetItemCount(Item)
+if ItemCount > 1 then
+RemoveItem(Player, 3767)
+end
+  end 

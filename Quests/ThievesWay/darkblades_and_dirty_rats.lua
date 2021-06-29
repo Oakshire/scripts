@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Kill Darkblade Brigands to recover a trinket.", 1, 50, "I need to slay the Darkblade Brigands in Thieves' Way to recover a trinket they stole.", 1042, 1540018, 1540023)
+	AddQuestStepKill(Quest, 1, "Kill Darkblade Brigands to recover a trinket.", 1, 10, "I need to slay the Darkblade Brigands in Thieves' Way to recover a trinket they stole.", 1042, 1540018, 1540023)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

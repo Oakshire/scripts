@@ -35,7 +35,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I have killed one darkblade brigand.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have killed a darkblade brigand.")
-
+    RemoveItem(Player, ItemId)
 	UpdateQuestDescription(Quest, "I found a bounty that promised a reward for the return of a stolen chest.  After I recovered the chest from the Darkblade brigands, I returned it to Anrean Velvinna. She awarded me some money for returning the chest.")
 	GiveQuestReward(Quest, Player)
 end

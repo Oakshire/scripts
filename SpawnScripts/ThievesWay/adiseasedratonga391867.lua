@@ -6,6 +6,25 @@
 	Script Notes	:	Locations collected from Live
 --]]
 
+require("SpawnScripts/Generic/GenericCombatVoiceOvers") 
+
+
+function death(NPC, Spawn)
+generic_death(NPC, Spawn)
+end
+
+function aggro(NPC, Spawn)
+generic_aggro(NPC, Spawn)
+end
+
+function killed(NPC, Spawn)
+generic_killed(NPC, Spawn)
+end
+
+function healthchanged(NPC, Spawn)
+generic_healthchanged(NPC, Spawn)
+end
+
 function spawn(NPC)
 	waypoints(NPC)
 end
@@ -15,6 +34,7 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
+    spawn(NPC)
 end
 
 function waypoints(NPC)

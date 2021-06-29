@@ -42,7 +42,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 2, "I have inspected the orb.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have inspected the orb.")
-
+    RemoveItem(Player, itemId)
 	UpdateQuestDescription(Quest, "I found a magic stone that contained the spirit of a former Darkblade rogue.  The spirit was freed when I killed the Netherot Chanters.  The power of the stone is now mine.")
 	GiveQuestReward(Quest, Player)
 end

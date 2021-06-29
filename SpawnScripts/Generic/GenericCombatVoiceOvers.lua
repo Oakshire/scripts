@@ -117,7 +117,7 @@ elseif GetRace(NPC) == 14 then -- TROLL
     PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_aggro_gm_d1a345c7.mp3", "I'm gonna give you a smile like ol' one tooth!", "", 2209033822, 2591536638, Spawn)
     end
     elseif GetGender(NPC) == 2 then -- FEMALE
-    local choice = MakeRandomInt(1, 5)
+    local choice = MakeRandomInt(1, 6)
     if choice == 1 then
     PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_aggro_gf_b7e0b3a.mp3", "Me going to eat your kidney first.", "", 750980753, 3740010516, Spawn)
     elseif choice == 2 then
@@ -148,8 +148,18 @@ elseif GetRace(NPC) == 13 then -- RATONGA
  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_aggro_gm_a3d8a506.mp3", "Not very nice of you to be all sneaky.", "", 1692637839, 2224104916, Spawn)
  elseif choice == 3 then
  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_aggro_gm_1fca68dc.mp3", "Greetings friend, how would you like to die?", "", 2689492018, 3168721640, Spawn)
+ end
+elseif GetGender(NPC) == 2 then -- FEMALE
+ local choice = MakeRandomInt(1, 2)
+ if choice == 1 then
+ PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_1/ft/ratonga/ratonga_base_1_1_aggro_gf_ce5970ec.mp3", "Startle us, you did! We'll remedy that.", "", 3905874632, 4086824059, Spawn)
+ elseif choice == 2 then
+ PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_1/ft/ratonga/ratonga_base_1_1_aggro_gf_4af7a99.mp3", "You're not as sneaky as you thought.", "", 1898398655, 853136085, Spawn)
+ elseif choice == 3 then
+ PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_1/ft/ratonga/ratonga_base_1_1_aggro_gf_7c145a1f.mp3", "Sees us, did we? Must not let you talk then.", "", 2661963919, 697614069, Spawn)
+    end
 end
-   end
+
 
    end  -- END OF THE "RACE CHECK"
        end   -- END OF THE FUNCTION
@@ -256,9 +266,16 @@ elseif GetRace(NPC) == 6 then -- HALF ELF
 end
 
 elseif GetRace(NPC) == 13 then -- RATONGA
- if GetGender(NPC) == 1 then -- MALE 
- PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_death_gm_8c411c1d.mp3", "Should have escaped while I had the chance.", "", 540449850, 3466919170, Spawn)
- end     
+ if GetGender(NPC) == 1 then -- MALE
+  local choice = MakeRandomInt(1, 2)
+  if choice == 1 then
+  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_death_gm_8c411c1d.mp3", "Should have escaped while I had the chance.", "", 540449850, 3466919170, Spawn)
+  elseif choice == 2 then
+  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_death_gm_3595da9d.mp3", "Take my secrets to my grave, I shall.", "", 2934272708, 1278832110, Spawn)
+  end
+elseif GetGender(NPC) == 2 then -- FEMALE
+  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_1/ft/ratonga/ratonga_base_1_1_death_gf_1a206352.mp3", "Time to leave, yes. Definitely time to leave.", "", 3197509537, 237885544, Spawn)
+end
 
 end   -- END OF THE "RACE CHECK"
    end -- END OF THE FUNCTION
@@ -354,11 +371,18 @@ end
 
 elseif GetRace(NPC) == 13 then -- RATONGA
  if GetGender(NPC) == 1 then -- MALE
-  local choice = MakeRandomInt(1, 2)
-  if choice == 1 then
+ local choice = MakeRandomInt(1, 2)
+ if choice == 1 then
  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_victory_gm_63a80a84.mp3", "Ah, yes excellent no more worries.", "", 3582294440, 3055844859, Spawn)
-elseif choice == 2 then
-  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_victory_gm_d7a5c042.mp3", "No more snooping for you.", "", 2291733466, 1243527327, Spawn)
+ elseif choice == 2 then
+ PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_victory_gm_d7a5c042.mp3", "No more snooping for you.", "", 2291733466, 1243527327, Spawn)
+ end
+ elseif GetGender(NPC) == 2 then -- FEMALE
+ local choice = MakeRandomInt(1, 2)
+ if choice == 1 then
+ PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_1/ft/ratonga/ratonga_base_1_1_victory_gf_15e8fc93.mp3", "One less worry in my life!", "", 499443345, 1203285152, Spawn)
+ elseif choice == 2 then
+ PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_1/ft/ratonga/ratonga_base_1_1_victory_gf_935883a.mp3", "Shhh ... shhh ... it's ok ... shhh ...shhh. Stop fighting it...", "", 3346721105, 4290589490, Spawn)
  end
 end
  
@@ -485,6 +509,7 @@ elseif GetRace(NPC) == 13 then -- RATONGA
  elseif choice == 2 then
  PlayFlavor(NPC, "voiceover/english/optional3/ratonga_base_2/ft/ratonga/ratonga_base_2_1_battle_gm_e4984551.mp3", "Timeses for you to bleed!", "", 3561855509, 132291331, Spawn)
  end
+end
 
 elseif GetRace(NPC) == 6 then -- HALF ELF
  if GetGender(NPC) == 2 then -- FEMALE

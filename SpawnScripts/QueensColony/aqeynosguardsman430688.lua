@@ -19,6 +19,7 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 end
 
+
 function setmodel(NPC)
         local RandomModel = math.random (1,4) 
         local shouttime = math.random (90000,270000)     

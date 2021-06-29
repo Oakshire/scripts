@@ -39,3 +39,4 @@ function enter_location(Zone, Player, GridID)
 		SendPopUpMessage(Player, "Sunset Meadow", 255, 255, 0)
 	end
 end
+

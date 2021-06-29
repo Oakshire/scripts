@@ -9,9 +9,13 @@
 local quest = 480
 
 function examined(Item, Player)
-    Say(Player, "item examined")
 	if not HasQuest(Player, quest) and not HasCompletedQuest(Player, quest) then
-	    Say(Player, "offer quest")
 		OfferQuest(nil, Player, quest)
 	end
 end
+
+function obtained(Item, Player)
+if HasItem(Player, 2115) then
+RemoveItem(Player, 2115)
+end
+   end

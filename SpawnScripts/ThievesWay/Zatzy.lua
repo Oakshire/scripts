@@ -10,7 +10,7 @@ local DarkBladesAndDirtyRats = 5264
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "", Spawn)
-	
+	ProvidesQuest(NPC, DarkBladesAndDirtyRats)
 end
 
 function InRange(NPC, Spawn)

@@ -35,7 +35,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I have killed some diseased ratongas.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have killed ten diseased ratonga.")
-
+    RemoveItem(Player, itemId)
 	UpdateQuestDescription(Quest, "I found a call to duty hidden within the hilt of a Darkblade dagger. In the hope of benefiting from this order and gaining the rewards it promised, I killed ten diseased ratonga. The fulfillment of the duty by my hand awakened an enchantment that had been stored within the blade.")
 	GiveQuestReward(Quest, Player)
 end
