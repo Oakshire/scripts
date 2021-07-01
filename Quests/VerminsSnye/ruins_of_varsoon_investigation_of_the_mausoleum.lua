@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to investigate Varsoon's old tomb.", 1, "I must go to the tomb that once held the lich Varsoon just north of Qeynos.", 11, 362, -19, -662)
+	AddQuestStepZoneLoc(Quest, 1, "I need to investigate Varsoon's old tomb.", 1, "I must go to the tomb that once held the lich Varsoon just north of Qeynos.", 11, 362, -19, -662, 12)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
