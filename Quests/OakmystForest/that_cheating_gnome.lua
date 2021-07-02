@@ -1,5 +1,5 @@
 --[[
-	Script Name	: Quests/OakmystForest/that_cheating_gnome.lua
+	Script Name	: Quests/Oakmyst/that_cheating_gnome.lua
 	Script Purpose	: Handles the quest, "That Cheating Gnome!"
 	Script Author	: Scatman
 	Script Date	: 2009.05.03

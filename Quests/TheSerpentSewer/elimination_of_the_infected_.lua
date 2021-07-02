@@ -1,19 +1,21 @@
 --[[
-	Script Name		:	an_axes_revenge.lua
-	Script Purpose	:	Handles the quest, "An Axe's Revenge"
-	Script Author	:	premierio015
-	Script Date		:	25.06.2021
+	Script Name		:	elimination_of_the_infected.lua
+	Script Purpose	:	Handles the quest, "Elimination of the Infected"
+	Script Author	:	QuestParser (Replace this)
+	Script Date		:	02.07.2021
 	Script Notes	:	Auto generated with QuestParser.
 
-	Zone			:	The Ruins
-	Quest Giver		:	a carved orc axe
+	Zone			:	Serpent Sewer
+	Quest Giver		:	
 	Preceded by		:	None
 	Followed by		:	None
 --]]
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Kill orcs", 1, 100, "I feel the irresistible need to slay orcs in the Ruins!  I can reach the Ruins by using any of the bells in and around the City of Freeport.", 91, 1270017, 1270005, 1270006, 1270014, 1270040, 1270007, 1270042, 1270022, 1270009, 1270045, 1270024, 1270025, 1270013, 1270041, 1270043, 1270030)
+	SetQuestFeatherColor(Quest, 3)
+	SetQuestRepeatable(Quest)
+	AddQuestStepKill(Quest, 1, "Eliminate six pestilent ratonga.", 6, 100, "This note was apparently meant for someone else.", 611, 1550004, 1550041)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -31,14 +33,14 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have killed some orcs")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I killed six orcs before the urge went away.")
-    if HasItem(Player, 1335) then
-    RemoveItem(Player, 1335)
+	UpdateQuestStepDescription(Quest, 1, "I've slain the pestilent ratonga.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I've carried out the tasks stated in the note.")
+    if HasItem(Player, 10401) then
+    RemoveItem(Player, 10401)
     end
-	UpdateQuestDescription(Quest, "I had to kill six orcs before the urge left me.  The axe now rests quietly with me.")
+	UpdateQuestDescription(Quest, "Interesting... I guess it was worth it, for the experience.  I suppose it couldn't hurt to take on adventures such as these.")
 	GiveQuestReward(Quest, Player)
-   end
+end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then

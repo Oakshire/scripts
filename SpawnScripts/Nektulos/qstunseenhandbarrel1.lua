@@ -14,7 +14,7 @@ end
 
 function InRange(NPC, Spawn)
     if GetQuestStep(Spawn, ProveYourself) == 3 then
-    AddPrimaryEntityCommand(Spawn, NPC, "Leave the supplies", 3, "Leave the supplies", "", 100)
+     AddPrimaryEntityCommand(Spawn, NPC, "Leave the supplies", 3, "Leave the supplies", "", 100)    
     SpawnSet(NPC, "show_command_icon", 1)
     SpawnSet(NPC, "display_hand_icon", 1)
 end

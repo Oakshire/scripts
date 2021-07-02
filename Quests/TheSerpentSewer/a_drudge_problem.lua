@@ -1,19 +1,19 @@
 --[[
-	Script Name		:	an_axes_revenge.lua
-	Script Purpose	:	Handles the quest, "An Axe's Revenge"
+	Script Name		:	Quests/TheSerpentSewer/a_drudge_problem.lua
+	Script Purpose	:	Handles the quest, "A Drudge Problem"
 	Script Author	:	premierio015
-	Script Date		:	25.06.2021
+	Script Date		:	01.07.2021
 	Script Notes	:	Auto generated with QuestParser.
 
-	Zone			:	The Ruins
-	Quest Giver		:	a carved orc axe
+	Zone			:	Serpent Sewer
+	Quest Giver		:	widget_broken_barrel
 	Preceded by		:	None
 	Followed by		:	None
 --]]
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Kill orcs", 1, 100, "I feel the irresistible need to slay orcs in the Ruins!  I can reach the Ruins by using any of the bells in and around the City of Freeport.", 91, 1270017, 1270005, 1270006, 1270014, 1270040, 1270007, 1270042, 1270022, 1270009, 1270045, 1270024, 1270025, 1270013, 1270041, 1270043, 1270030)
+	AddQuestStepKill(Quest, 1, "I need to slay four drudge globules in Serpent Sewer.", 4, 100, "Someone is planting drudge globules in Serpent Sewer.  I have decided to destroy these creatures and scare him off.", 133, 1550001, 1550038)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -31,17 +31,16 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have killed some orcs")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I killed six orcs before the urge went away.")
-    if HasItem(Player, 1335) then
-    RemoveItem(Player, 1335)
-    end
-	UpdateQuestDescription(Quest, "I had to kill six orcs before the urge left me.  The axe now rests quietly with me.")
+	UpdateQuestStepDescription(Quest, 1, "I have slain the drudge globules.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain the drudge globules.  I think that will scare whoever skulking these sewers off.")
+
+	UpdateQuestDescription(Quest, "I have slain quite a few of the drudge globules in the area.")
 	GiveQuestReward(Quest, Player)
-   end
+end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end
+

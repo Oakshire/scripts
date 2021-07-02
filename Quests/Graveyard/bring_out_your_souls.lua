@@ -33,7 +33,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed the undead.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've killed ten undead and collected their souls.")
 
-	AddQuestStepChat(Quest, 2, "Speak with Zekvila", 1, "I should return the crystal to Zekvila in the Graveyard.  I can reach the Graveyard by using any of the bells in and around the City of Freeport.", 11, --[[ ID's --]])
+	AddQuestStepChat(Quest, 2, "Speak with Zekvila", 1, "I should return the crystal to Zekvila in the Graveyard.  I can reach the Graveyard by using any of the bells in and around the City of Freeport.", 11, 1250034)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

@@ -67,7 +67,7 @@ local conversation = CreateConversation()
 AddConversationOption(conversation, "I'm on it.")
 StartConversation(conversation, QuestGiver, Player, "I need more of the same, really, just bits and pieces, bits and pieces of the creatures down here. Now hop to it.  Remember, they need to be fresh!  The fresher, the more potent, that's what mom always said.")
 end
-
+   end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

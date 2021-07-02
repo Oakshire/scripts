@@ -40,3 +40,8 @@ function enter_location(Zone, Player, GridID)
 	end
 end
 
+function player_entry(Zone, Spawn)
+AddPlayerMail(Spawn, EQ2EmulatorDevTeam, "Welcome", "Welcome to EQ2Emulator, thank you for testing and enjoy your stay!", 2)
+end
+
+

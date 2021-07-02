@@ -10,6 +10,7 @@ local FreshSamples = 5265
 
 function spawn(NPC)
  SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange", Spawn)
+ ProvidesQuest(NPC, FreshSamples)
 end
 
 function hailed(NPC, Spawn)
@@ -59,14 +60,21 @@ function QuestFinish(NPC, Spawn)
   FaceTarget(NPC, Spawn)
   	PlayFlavor(NPC, "voiceover/english/marcus_puer/fprt_sewer02/marcuspuer011.mp3", "", "", 2331598292, 1508009067, Spawn)
   	local conversation = CreateConversation()
+  	    if GetQuestCompleteCount(Spawn, FreshSamples) <= 5 then
     	AddConversationOption(conversation, "Anything else you need?", "continue")
+    	end
     	AddConversationOption(conversation, "Thanks")
     	StartConversation(conversation, NPC, Spawn, "Splendid! It would've taken me days to collect these amounts.  Not to mention the time lost documenting the last study group.  Here, here take these; they're of my own design.  They may prove useful some day.")
 end   	
  
 
 function continue(NPC, Spawn)
-OfferQuest(NPC, Spawn, FreshSamples)
+      FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()    
+	PlayFlavor(NPC, "voiceover/english/marcus_puer/fprt_sewer02/marcuspuer002.mp3", "", "", 182637408, 2140196654, Spawn)
+AddConversationOption(conversation, "Sure how can I help this time? ", "offer")
+AddConversationOption(conversation, "No, not this time. ")
+StartConversation(conversation, NPC, Spawn, "Oh well, hello!  Back to help some more?")
 end
 
  
