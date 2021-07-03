@@ -6,11 +6,14 @@
                    : 
 --]]
 
+require("SpawnScripts/Generic/GenericVoiceOvers")
+
 function spawn(NPC)
 
 end
 
 function hailed(NPC, Spawn)
+    GenericHail(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "", "Venturing into the sewers eh? You are a brave soul aren't ya?", "", 1689589577, 4560189, Spawn)
 end

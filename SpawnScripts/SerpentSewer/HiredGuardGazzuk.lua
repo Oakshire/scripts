@@ -12,7 +12,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    local choice = math.random(1, 3)
+    local choice = MakeRandomInt(1, 3)
     if choice == 1 then
     PlayFlavor(NPC, "", "Excuse... Me nasty!", "sorry", 1689589577, 4560189, Spawn)
     elseif choice == 2 then
