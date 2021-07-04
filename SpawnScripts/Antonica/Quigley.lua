@@ -6,7 +6,7 @@
                    : 
 --]]
 
-require("SpawnScripts/Generic/GenericVoiceOvers.lua")
+require("SpawnScripts/Generic/GenericVoiceOvers")
 
 function spawn(NPC)
 

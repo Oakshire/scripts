@@ -1,12 +1,12 @@
 --[[
-	Script Name		:	Quests/SerpentSewers/CrazyIsAsCrazyDoes.lua
-	Script Purpose	:	Handles the quest, "Crazy is as Crazy Does"
+	Script Name		:	Quests/TheSerpentSewer/channel_mender_tea.lua
+	Script Purpose	:	Handles the quest, "Channel Mender Tea"
 	Script Author	:	premierio015
-	Script Date		:	16.06.2020
+	Script Date		:	03.07.2021
 	Script Notes	:	Auto generated with QuestParser.
 
 	Zone			:	Serpent Sewer
-	Quest Giver		:	final notice
+	Quest Giver		:	Tea leaves(item)
 	Preceded by		:	None
 	Followed by		:	None
 --]]
@@ -15,7 +15,7 @@
 function Init(Quest)
 	SetQuestFeatherColor(Quest, 3)
 	SetQuestRepeatable(Quest)
-	AddQuestStepKill(Quest, 1, "Find and kill Crazy Peepers.", 1, 100, "This note was apparently meant for someone else.", 611, 1550074)
+	AddQuestStepKill(Quest, 1, "Find more of the tea leaves that the channel menders have.", 5, 50, "I'm sure I can find more of these tea leaves with the crazed channel menders.", 336, 1550012, 1550013, 1550049, 1550050)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -33,12 +33,12 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I've killed Crazy Peepers.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I've carried out the tasks stated in the note.")
-    if HasItem(Player, 7239) then
-    RemoveItem(Player, 7239)
+	UpdateQuestStepDescription(Quest, 1, "I've found some more of the channel mender tea leaves.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I've acquired an ample supply of the channel mender tea leaves.")
+    if HasItem(Player, 13874) then
+    RemoveItem(Player, 13874)
     end
-	UpdateQuestDescription(Quest, "Interesting... I guess it was worth it for the experience.  I suppose it couldn't hurt to take on adventures such as these.")
+	UpdateQuestDescription(Quest, "I've acquired an ample supply of the channel menders tea leaves, it should last me for a good while.")
 	GiveQuestReward(Quest, Player)
 end
 
@@ -47,3 +47,5 @@ function Reload(Quest, QuestGiver, Player, Step)
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end
+
+
