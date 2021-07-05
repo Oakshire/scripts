@@ -24,7 +24,7 @@ end
 
 
 function obtained(Item, Player)
-if HasItem(Player, itemID) then
+if HasItem(Player, itemID) or  GetItemCount(Item) > 1 then
 RemoveItem(Player, itemID)
 end
 end

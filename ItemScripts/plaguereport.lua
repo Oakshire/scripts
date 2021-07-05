@@ -6,7 +6,7 @@
                    : 
 --]]
 
-local EliminationOfTheInfected
+local EliminationOfTheInfected = 5271
 
 function examined(Item, Player)
 if not HasQuest(Player,  EliminationOfTheInfected) and not HasCompletedQuest(Player,  EliminationOfTheInfected) then

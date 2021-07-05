@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    local model = MakeRandomInt(5,6)
+    local model = MakeRandomInt(1,8)
 
         if model == 1 then
             SetModelType(NPC, "132") -- human female
@@ -402,7 +402,7 @@ function WoodElfCosmetics(NPC)
             SpawnSet(NPC, "soga_hair_color2", "0 0 0") 
             SpawnSet(NPC, "hair_highlight", "0 0 0")
             SpawnSet(NPC, "soga_hair_highlight", "0 0 0") 
-        elseif overall_look == 12 then -- Yellow light
+        elseif overall_look == 12 then -- White and orange
             SpawnSet(NPC, "skin_color", "183 150 105")
             SpawnSet(NPC, "soga_skin_color", "183 150 105") 
             SpawnSet(NPC, "eye_color", "163 182 156")

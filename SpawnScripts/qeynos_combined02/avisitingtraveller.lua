@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    local model = MakeRandomInt(7,8)
+    local model = MakeRandomInt(1,12)
 
         if model == 1 then
             SetModelType(NPC, "132") -- human female

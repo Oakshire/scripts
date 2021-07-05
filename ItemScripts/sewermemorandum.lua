@@ -14,9 +14,5 @@ OfferQuest(nil, Player, StickySituation)
 end
 end
 
-function obtained(Item, Player)
-if GetItemCount(12108) > 1 then
-RemoveItem(Player, 12108)
-end
-   end
+
 
