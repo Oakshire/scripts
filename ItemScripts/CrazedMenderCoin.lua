@@ -14,9 +14,5 @@ OfferQuest(nil, Player, CrazedMenderCoins)
 end
 end
 
-function obtained(Item, Player)
-if GetItemCount(5646) > 1 then
-RemoveItem(Player, 5646)
-end
-   end
+
 

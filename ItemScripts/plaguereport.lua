@@ -14,10 +14,5 @@ OfferQuest(nil, Player,  EliminationOfTheInfected)
 end
 end
 
-function obtained(Item, Player)
-local count = GetItemCount(Item)
-if count > 1 then
-RemoveItem(Player, 10401)
-end
-  end
+
 

@@ -31,6 +31,9 @@ end
 
 function quest_complete(Quest, QuestGiver, Player)
 	UpdateQuestDescription(Quest, 3, "I have spoken with Chuggle Valvesplitter and returned the toolbox.")
+	if HasItem(Player, 5014) then
+	 RemoveItem(Player, 5014)
+	 end
 	GiveQuestReward(Quest, Player)
 end
 
