@@ -1,37 +1,40 @@
 --[[
-    Script Name    : SpawnScripts/FallenGate/tomelocationexaminebed.lua
+    Script Name    : SpawnScripts/FallenGate/tomemasteryzombiewidget.lua
     Script Author  : Premierio015
-    Script Date    : 2021.07.09 09:07:18
+    Script Date    : 2021.07.09 08:07:48
     Script Purpose : 
                    : 
 --]]
 
-local TheBloodOfTheBearPartOne =  13958
+local ZatirresFirstZombie = 15650
 
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 10, "InRange", Spawn)  
 end
 
+function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+end
+
 function InRange(NPC, Spawn)
- if not HasItem(Spawn,  TheBloodOfTheBearPartOne) then
+ if not HasItem(Spawn,  ZatirresFirstZombie) then
     SpawnSet(NPC, "show_command_icon", 1)
     SpawnSet(NPC, "display_hand_icon", 1)
-    SetAccessToEntityCommand(Spawn,NPC,"Search Bed", 1)
-elseif HasItem(Spawn, TheBloodOfTheBearPartOne) then
+    SetAccessToEntityCommand(Spawn,NPC,"Search Urn", 1)
+elseif HasItem(Spawn, ZatirresFirstZombie) then
         SpawnSet(NPC, "show_command_icon", 0)
     SpawnSet(NPC, "display_hand_icon", 0)
-    SetAccessToEntityCommand(Spawn,NPC,"Search Bed", 0)
+    SetAccessToEntityCommand(Spawn,NPC,"Search Urn", 0)
 end
 end
-
 
 function casted_on(NPC, Spawn, SpellName)
-		if SpellName == 'Search Bed' then
-		    if not HasItem(Spawn, TheBloodOfTheBearPartOne) then
+		if SpellName == 'Search Urn' then
+		    if not HasItem(Spawn, ZatirresFirstZombie) then
 		    SendMessage(Spawn, "You find an old tattered book.")
-		     SendPopUpMessage(Spawn, "You receive The Blood of The Bear, Part One.", 255, 255, 255)
-		    SummonItem(Spawn, TheBloodOfTheBearPartOne)
-		  elseif HasItem(Spawn, ZatirresFirstZombie) then
+		    SendPopUpMessage(Spawn, "You receive Zattire's First Zombie.", 255, 255, 255)
+		    SummonItem(Spawn, ZatirresFirstZombie)
+		    elseif HasItem(Spawn, ZatirresFirstZombie) then
    SpawnSet(NPC, "show_command_icon", 0)
     SpawnSet(NPC, "display_hand_icon", 0)
     SetAccessToEntityCommand(Spawn,NPC,"Search Urn", 0)

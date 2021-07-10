@@ -23,7 +23,7 @@ function casted_on(NPC, Spawn, SpellName)
          if not HasItem(Spawn, IlucidesBatteredJournal) then
          SummonItem(Spawn, IlucidesBatteredJournal, 1)
          SendMessage(Spawn, "You find an old battered journal.")
-         SendPopUpMessage(Spawn, "You receive Ilucide's battered journal")
+         SendPopUpMessage(Spawn, "You receive Ilucide's battered journal", 255, 255, 255)
          elseif HasItem(Spawn, IlucidesBatteredJournal) then
          SendMessage(Spawn, "You have already found the spell you needed.", 20)
          end
