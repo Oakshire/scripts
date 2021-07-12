@@ -17,6 +17,7 @@ RemoveSpawnAccess(NPC, Spawn)
 else
 AddSpawnAccess(NPC, Spawn)
 end
+   end
 
 
 function hailed(NPC, Spawn)
@@ -33,6 +34,7 @@ function hailed(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "You mean nothing to me, whelp. I seek one with ability enough to do my bidding.  Now, back out the door whence you came with your tail between your legs before I disembowel you and leave your entrails for the vermin infesting this filthy human city.")
 	PlayFlavor(NPC, "voiceover/english/optional1/kanos_x_aphon/fprt_north/kanosxaphon000.mp3", "", "", 2038969056, 4166254179, Spawn)
 end
+
 
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

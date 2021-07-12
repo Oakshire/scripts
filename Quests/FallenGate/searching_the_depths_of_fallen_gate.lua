@@ -1,15 +1,15 @@
 --[[
-	Script Name		:	Quests/FallenGate/searching_the_depths_of_fallen_gate.lu
-	Script Purpose	:	Handles the quest, "Searching the Depths of Fallen Gate"
-	Script Author	:	premierio015
-	Script Date		:	09.07.2021
-	Script Notes	:	Auto generated with QuestParser.
+    Script Name    : Quests/FallenGate/searching_the_depths_of_fallen_gate.lua
+    Script Author  : Premierio015
+    Script Date    : 2021.07.12 09:07:14
+    Script Purpose : 
 
-	Zone			:	Access Quests
-	Quest Giver		:	Ilucide's battered journal(8259)
-	Preceded by		:	None
-	Followed by		:	None
+        Zone       : FallenGate, City of Freeport
+        Quest Giver: 
+        Preceded by: None
+        Followed by: 
 --]]
+
 
 
 function Init(Quest)

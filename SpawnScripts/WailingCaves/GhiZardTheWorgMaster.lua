@@ -65,6 +65,7 @@ SpawnSet(Worg3, "faction", "1")
 SpawnSet(Worg4, "attackable", "1")
 SpawnSet(Worg4, "show_level", "1")
 SpawnSet(Worg4, "faction", "1")
+Attack(NPC, Spawn)
 end
   
 
