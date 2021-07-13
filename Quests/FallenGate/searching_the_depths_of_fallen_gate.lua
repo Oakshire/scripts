@@ -63,7 +63,11 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 5, "I've examined the bangle.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I've examined the bangle.")
-
+    if HasItem(Player, 7025) then
+    RemoveItem(Player, 7025)
+    elseif HasItem(Player, 8259) then
+    RemoveItem(Player, 8259)
+    end
 	UpdateQuestDescription(Quest, "I've managed to complete the incantation and the door at the bottom of Fallen Gate now opens for me. Based on what I've learned so far, a great evil has been sealed behind this barrier, perhaps the being which is responsible for the animation of all the dead in Fallen Gate.")
 	GiveQuestReward(Quest, Player)
 end

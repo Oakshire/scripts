@@ -47,7 +47,9 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 3, "I have found replacement end caps on the undead that reside within Hate's Forge in Fallen Gate.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I have found replacement end caps on the undead that reside within Hate's Forge in Fallen Gate.")
-    if HasItem(Player, )
+    if HasItem(Player, 2581) then
+    RemoveItem(Player, 2581)
+    end
 	UpdateQuestDescription(Quest, "I have found all the pieces and reassembled the Scorched Wooden Staff.  It seems to have only a measure of the power it once possessed but yet is still strong despite the appearance.")
 	GiveQuestReward(Quest, Player)
 end

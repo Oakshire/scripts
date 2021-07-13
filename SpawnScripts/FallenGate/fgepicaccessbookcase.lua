@@ -7,6 +7,7 @@
 --]]
 
 local IlucidesBatteredJournal = 8259
+local SearchTheDepthsOfFallenGate = 5307
 
 function spawn(NPC)
  
@@ -24,8 +25,15 @@ function casted_on(NPC, Spawn, SpellName)
          SummonItem(Spawn, IlucidesBatteredJournal, 1)
          SendMessage(Spawn, "You find an old battered journal.")
          SendPopUpMessage(Spawn, "You receive Ilucide's battered journal", 255, 255, 255)
-         elseif HasItem(Spawn, IlucidesBatteredJournal) then
+         elseif HasItem(Player, IlucidesBatteredJournal) and not HasQuest(Spawn, SearchTheDepthsOfFallenGate) then
          SendMessage(Spawn, "You have already found the spell you needed.", 20)
+         elseif HasQuest(Spawn, SearchTheDepthsOfFallenGate) and not QuestStepIsComplete(Spawn, SearchTheDepthsOfFallenGate, 3) then
+         SetStepComplete(Spawn, SearchTheDepthsOfFallenGate, 3)
+         SendMessage(Spawn, "You search through the books on the bookcase and quickly discern the book with the spell you need!")
+         elseif QuestStepIsComplete(Spawn, SearchTheDepthsOfFallenGate, 3) then
+        SetAccessToEntityCommand(Spawn,NPC,"Leave the supplies", 0)
+        SpawnSet(NPC, "show_command_icon", 0)
+        SpawnSet(NPC, "display_hand_icon", 0)
          end
       end
    end

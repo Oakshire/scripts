@@ -9,7 +9,7 @@
 local HelpTheTrollGetAhead = 5253
 
 function spawn(NPC)
-RegisterQuest(NPC, HelpTheTrollGetAhead )
+ProvidesQuest(NPC, HelpTheTrollGetAhead)
 end
 
 function hailed(NPC, Spawn)
