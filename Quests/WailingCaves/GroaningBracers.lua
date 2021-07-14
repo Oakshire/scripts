@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to bring these bracers to the Burial Pit in the Wailing Caves.", 1, "With a little effort, I believe I can transform these mysterious bracers into something better.", 11, -175, -55, -13)
+	AddQuestStepZoneLoc(Quest, 1, "I need to bring these bracers to the Burial Pit in the Wailing Caves.", 1, "With a little effort, I believe I can transform these mysterious bracers into something better.", 11, -175, -55, -13, 258)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 

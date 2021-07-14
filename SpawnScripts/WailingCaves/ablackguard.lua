@@ -6,6 +6,9 @@
                    : 
 --]]
 
+function prespawn(NPC)
+SetSpawnAnimation(NPC, 13016)
+end
 
 function spawn(NPC)
 SetAggroRadius(NPC, 20, true)
@@ -26,13 +29,11 @@ local zone = GetZone(Spawn)
 local WorgMaster = GetSpawnByLocationID(zone, 404870)
 if WorgMaster ~= nil then
 AddTimer(WorgMaster, 3000, "WorgMaster")
-local Worg = GetSpawnByLocationID(zone, 404852)
-if Worg ~= nil then
-AddTimer(Worg, 3000, "FollowMaster")
+end
 end
     end
-	   end 
-	      end
+	  
+	    
 
 
 

@@ -14,6 +14,7 @@ blackguard1_ID = 404841
 blackguard2_ID = 404844
 
 function spawn(NPC)
+SetAggroRadius(NPC, 20, true)    
 SetTempVariable(NPC, "HAILED1", "true") -- IMPORTANT, USED TO RESTRICT PLAYERS TO TALK WITH BOSS AND LAUNCH THE BOSS SCRIPT AGAIN UNTIL HE RESPAWNS
 if GetTempVariable(NPC, "HAILED1") == "false" then
 AddTimer(NPC, 1800000, "reset")
@@ -53,6 +54,15 @@ blackguard1 = SpawnByLocationID(zone, blackguard1_ID)
 blackguard2 = SpawnByLocationID(zone, blackguard2_ID)
 blackguard3 = SpawnByLocationID(zone, blackguard3_ID)   
 blackguard4 = SpawnByLocationID(zone, blackguard4_ID)
+AddTimer(NPC, 3000,  "blackguard_attack", 1, Spawn)
+end
+
+function blackguard_attack(NPC, Spawn)
+local zone = GetZone(NPC)
+local blackguard1 = GetSpawnByLocationID(zone, blackguard1_ID)
+local blackguard2 = GetSpawnByLocationID(zone, blackguard2_ID)
+local blackguard3 = GetSpawnByLocationID(zone, blackguard3_ID)   
+local blackguard4 = GetSpawnByLocationID(zone, blackguard4_ID)
 Attack(blackguard1, Spawn)
 Attack(blackguard2, Spawn)
 Attack(blackguard3, Spawn)

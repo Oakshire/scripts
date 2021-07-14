@@ -11,6 +11,7 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    SetAggroRadius(NPC, 20, true)
     FaceTarget(NPC, Spawn)
 end
 
@@ -25,6 +26,10 @@ local LordRee = GetSpawnByLocationID(zone, 404840)
 if LordRee ~= nil then
 PlayFlavor(LordRee, "", "Ahh, Ghi'Zard, just in time!  Are your worgs ready to feed?", "scheme", 1689589577, 4560189, Spawn)
 end
+local Worg = GetSpawnByLocationID(zone, 404852)
+if Worg ~= nil then
+AddTimer(Worg, 1000, "FollowMaster")
+end
    end
 
 function WorgMaster2(NPC, Spawn)
@@ -38,17 +43,19 @@ end
 
 -- BELOW MAKES WORGS AND GHI'ZARD ATTACKABLE
 
+
 function WorgMaster4(NPC, Spawn)
+ local zone = GetZone(NPC)
+local Worg1 = GetSpawnByLocationID(zone, 404849)
+local Worg2 = GetSpawnByLocationID(zone, 404850)
+local Worg3 = GetSpawnByLocationID(zone, 404851)
+local Worg4 = GetSpawnByLocationID(zone, 404852)   
 FaceTarget(NPC, Spawn)
 PlayFlavor(NPC, "", "Find your food, worgs!  Attack!", "", 1689589577, 4560189, Spawn)
 SpawnSet(NPC, "attackable", "1")
 SpawnSet(NPC, "show_level", "1")
 SpawnSet(NPC, "faction", "1")
-local zone = GetZone(NPC)
-local Worg1 = GetSpawnByLocationID(zone, 404849)
-local Worg2 = GetSpawnByLocationID(zone, 404850)
-local Worg3 = GetSpawnByLocationID(zone, 404851)
-local Worg4 = GetSpawnByLocationID(zone, 404852)
+
 
 SpawnSet(Worg1, "attackable", "1")
 SpawnSet(Worg1, "show_level", "1")
@@ -65,9 +72,10 @@ SpawnSet(Worg3, "faction", "1")
 SpawnSet(Worg4, "attackable", "1")
 SpawnSet(Worg4, "show_level", "1")
 SpawnSet(Worg4, "faction", "1")
-Attack(NPC, Spawn)
 end
-  
+
+
+
 
 -- BELOW 
 

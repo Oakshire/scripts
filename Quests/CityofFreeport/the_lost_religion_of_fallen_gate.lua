@@ -10,6 +10,7 @@
         Followed by: 
 --]]
 
+local QuestItemID = 5487 -- copied glyphs item
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "I must find the Gong of Uglan in Fallen Gate.", 1, 100, "I must find the Gong of Uglan in Fallen Gate.", 11)
@@ -19,7 +20,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 		FaceTarget(QuestGiver, Player)
 	local conversation = CreateConversation()
-
+    PlayFlavor(QuestGiver, "voiceover/english/optional1/mordgraahl_skullsprain/fprt_north/quests/mordgraahlskullsprain/mordgraahlskullsprain_x1_accept.mp3", "", "", 43853459, 3083967033, Player)
 	AddConversationOption(conversation, "Very well! Prepare your expeditionary force. I shall return.")
 	StartConversation(conversation, QuestGiver, Player, "Take this quill and papyrus. Should you find this gong, copy the runes written upon it. If these runes match those I found in ancient texts, then that shall warrant an expedition.")
 
@@ -36,7 +37,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found the Gong of Uglan and copied the glyphs.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have found the Gong of Uglan and copied the glyphs.")
-
+    GiveQuestItem(Quest, Player, "I have found the Gong of Uglan and copied the glyphs.", QuestItemID)
 	AddQuestStepChat(Quest, 2, "I must return the parchment of glyphs to Drund Mordgraahl Skullsprain in the Temple of War.", 1, "I must return the parchment of glyphs to Drund Mordgraahl Skullsprain in the Temple of War.", 11, 5590243)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
