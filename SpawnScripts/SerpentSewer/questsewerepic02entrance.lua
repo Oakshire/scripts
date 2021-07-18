@@ -10,25 +10,20 @@ local MurkwaterUniform = 568
 local BackAndForth = 569
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange")
-end
-
-function InRange(NPC, Spawn)
-if HasCompletedQuest(Spawn, MurkwaterUniform) and HasCompletedQuest(Spawn, BackAndForth) then
-SetAccessToEntityCommand(Spawn, NPC,"Open sewer grate", 1)
-elseif not HasCompletedQuest(Spawn, MurkwaterUniform) and not HasCompletedQuest(Spawn, BackAndForth) then
-SetAccessToEntityCommand(Spawn, NPC,"Open sewer grate", 0)
-end
+    
 end
 
 
-function casted_on(NPC, Spawn, SpellName)
-		if SpellName == 'Open sewer grate' then
+function can_use_command(NPC, Spawn, Command)
+if Command == 'Open sewer grate' then
                 if not HasCompletedQuest(Spawn, MurkwaterUniform) and  not HasCompletedQuest(Spawn, BackAndForth) then
                 SetAccessToEntityCommand(Spawn,NPC,"Open sewer grate", 0)
-   end
- end
+                elseif HasCompletedQuest(Spawn, MurkwaterUniform) and HasCompletedQuest(Spawn, BackAndForth) then
+                SetAccessToEntityCommand(Spawn,NPC,"Open sewer grate", 1)
+end                
 end
+end
+
 
 
 function respawn(NPC)
