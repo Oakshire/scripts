@@ -21,6 +21,7 @@ end
 
      
 function player_entry(zone, player)
+SendPopUpMessage(Player, "The Commonlands", 230, 230, 230)    
 end
 
 function enter_location(zone, spawn, grid)

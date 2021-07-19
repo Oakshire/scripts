@@ -35,9 +35,7 @@ function casted_on(NPC, Spawn, SpellName)
 end
 
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
+
 
 function respawn(NPC)
 	spawn(NPC)

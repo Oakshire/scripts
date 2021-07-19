@@ -42,6 +42,7 @@ end
 
 function player_entry(Zone, Spawn)
 AddPlayerMail(Spawn, EQ2EmulatorDevTeam, "Welcome", "Welcome to EQ2Emulator, thank you for testing and enjoy your stay!", 2)
+SendPopUpMessage(Player, "The Queen's Colony", 230, 230, 230)
 end
 
 

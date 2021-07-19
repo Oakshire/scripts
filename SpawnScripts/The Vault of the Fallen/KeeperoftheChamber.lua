@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/The Vault of the Fallen/KeeperoftheChamber.lua
     Script Author  : Premierio015
     Script Date    : 2021.07.17 12:07:29
-    Script Purpose : 
+    Script Purpose : script for Keeper of the Chamber which gives a quest to open Tseralith Door.
                    : 
 --]]
 
@@ -21,6 +21,8 @@ function hailed(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "The power that holds the final door is strong. You can not proceed.")
 	elseif GetQuestStep(Spawn, TseralithDoorQuest) == 31 then
 	   Option2(NPC, Spawn)
+	elseif HasQuest(Spawn, TseralithDoorQuest) and GetQuestStep(Spawn, TseralithDoorQuest) ~= 31  then
+	   PlayFlavor(NPC, "", "The door is still holding strong. It cannot be opened", "", 0, 0, Spawn)
 end
    end
 
@@ -42,7 +44,7 @@ function Option2(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "You can not enter. I will stop you.")
 end
 
-function Keeper_Attack(NPC, Spawn)
+function Keeper_Attack(NPC, Spawn) -- ATTACK STAGE
 SetStepComplete(Spawn, TseralithDoorQuest, 31)
 PlayFlavor(NPC, "", "You are not allowed in here.", "", 0, 0, Spawn)
 SpawnSet(NPC, "faction", 1)
@@ -51,12 +53,18 @@ SpawnSet(NPC, "show_level", 1)
 Attack(NPC, Spawn)
 end
 
-function death(NPC, Spawn)
+function death(NPC, Spawn) -- OPEN DOORS TO ROOM WITH TSERALITH UPON DEATH
 	local door = GetSpawn(NPC, 6420017)
 	local door2 = GetSpawn(NPC, 6420018)
      OpenDoor(door)
      OpenDoor(door2)
+    local zone = GetZone(Spawn)
+    local tseralith = GetSpawnByLocationID(zone, 345623)
+    if tseralith == nil then
+     SpawnByLocationID(zone, 345623)
+     end
 end
+   
 
 function respawn(NPC)
 	spawn(NPC)

@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/The Vault of the Fallen/dragoonclusssign.lua
+    Script Name    : SpawnScripts/The Vault of the Fallen/dragoonlnasign.lua
     Script Author  : Premierio015
-    Script Date    : 2021.07.17 04:07:52
+    Script Date    : 2021.07.18 08:07:49
     Script Purpose : 
                    : 
 --]]
@@ -26,9 +26,9 @@ end
 function casted_on(NPC, Spawn, SpellName)
 		if SpellName == "inspect" then
 		  local zone = GetZone(Spawn)
-		  local Dragoon = GetSpawnByLocationID(zone, 133772412)
+		  local Dragoon = GetSpawnByLocationID(zone, 345615)
 		  if Dragoon == nil then
-	     SpawnByLocationID(zone, 133772412)-- Dragoon C'Luss
+	     SpawnByLocationID(zone, 345615)-- Dragoon L'na
 	  SetAccessToEntityCommand(Spawn,NPC,"inspect", 0)
     SpawnSet(NPC, "show_command_icon", 0)
     SpawnSet(NPC, "display_hand_icon", 0)
@@ -37,9 +37,6 @@ end
 end
 
 
- 
-
-
 function respawn(NPC)
-	spawn(NPC)
+spawn(NPC)
 end
