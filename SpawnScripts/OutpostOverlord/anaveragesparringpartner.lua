@@ -1,14 +1,14 @@
 --[[
-    Script Name    : SpawnScripts/OutpostOverlord/aformidablesparringpartner.lua
+    Script Name    : SpawnScripts/OutpostOverlord/anaveragesparringpartner.lua
     Script Author  : Premierio015
-    Script Date    : 2021.05.08 10:05:39
+    Script Date    : 2021.07.19 04:07:53
     Script Purpose : 
                    : 
 --]]
 
+function spawn(NPC)
 
-local TheArtOfCombat = 363
-
+end
 function spawn(NPC)
 
 end
@@ -20,7 +20,7 @@ function healthchanged(NPC, Spawn)
 if npc_hp <= 5 then
 AddTimer(NPC, 1000, "stop_combat", 1, Spawn)
 Say(NPC, "Well Done.")
-Say(NPC, "Next!")
+Say(NPC, "Okay. Who's next?")
 if GetQuestStep(Spawn, TheArtOfCombat) == 2 then
 SetStepComplete(Spawn, TheArtOfCombat, 2)
 end

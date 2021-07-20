@@ -1,13 +1,10 @@
 --[[
-    Script Name    : SpawnScripts/OutpostOverlord/aformidablesparringpartner.lua
+    Script Name    : SpawnScripts/OutpostOverlord/aweaksparringpartner.lua
     Script Author  : Premierio015
-    Script Date    : 2021.05.08 10:05:39
+    Script Date    : 2021.07.19 04:07:25
     Script Purpose : 
                    : 
 --]]
-
-
-local TheArtOfCombat = 363
 
 function spawn(NPC)
 

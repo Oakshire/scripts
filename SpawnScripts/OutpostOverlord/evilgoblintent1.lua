@@ -38,9 +38,9 @@ function casted_on(NPC, Spawn, SpellName)
     end
 end
 
-function BurnTent(Caster, Target)
-    SpawnSet(Target, "show_command_icon", 0)
-	AddTimer(Target, 60000, "enable_command_icon_tent")
+function BurnTent(NPC, Spawn)
+    SpawnSet(NPC, "show_command_icon", 0)
+	AddTimer(NPC, 60000, "enable_command_icon_tent")
 end
 
 function enable_command_icon_tent(NPC, Player)
