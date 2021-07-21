@@ -9,18 +9,35 @@
 
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 7, "InRange", Spawn)
+		SetLuaBrain(NPC)
+	SetBrainTick(NPC, 500)
+	Think(NPC)
+end
+
+
+function Think(NPC)
+	local mostHated = GetMostHated(NPC)
+	if mostHated ~= nil then
+--[[ Say(NPC, "Has most hated") --]]
+		aggro(NPC, mostHated)
+	end
 end
 
 
 
-
-function InRange(NPC, Spawn)
-SendPopUpMessage(Spawn, "You hear a crackling sound from the nearby statue!", 255, 0, 0)
+function aggro(NPC, Spawn)
+       if GetDistance(NPC, Spawn, 1) <= 3 then
+    	if GetTempVariable(NPC, "CASTING") ~= "True" then
+    	    	SetTempVariable(NPC, "CASTING", "True")
 CastSpell(Spawn, 230170, 1, NPC)
+	AddTimer(NPC, 7000, "FinishedCasting")
 end
-
-
+    end
+ end
+ 
+function FinishedCasting(NPC)
+	SetTempVariable(NPC, "CASTING", "False")
+end
 
 
 

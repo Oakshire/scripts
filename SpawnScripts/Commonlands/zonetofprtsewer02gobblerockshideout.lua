@@ -6,8 +6,8 @@
                    : 
 --]]
 
-TheSewerItKey = 5321
-AnOldKey = 3773
+local TheSewerItKey = 5321
+local AnOldKey = 3773
 
 function spawn(NPC)
 
