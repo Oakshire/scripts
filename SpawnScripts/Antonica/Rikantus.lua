@@ -8,6 +8,7 @@
 
 local ScrawlingsInTheDark = 5329
 local TheTrialsOfSirMorgan = 5330
+local TheHiddenRiddle = 5331
 
 function spawn(NPC)
 
@@ -29,6 +30,8 @@ function hailed(NPC, Spawn)
 	Option8(NPC, Spawn)
 	elseif GetQuestStep(Spawn, TheTrialsOfSirMorgan) == 15 then
 	Option9(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, TheTrialsOfSirMorgan) and not HasCompletedQuest(Spawn, TheHiddenRiddle) then
+	Option11(NPC, Spawn)
 end
 end
 
@@ -119,18 +122,56 @@ function Option10(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/optional1/rikantus/antonica/rikantus011.mp3", "", "", 1018819553, 3991155928, Spawn)
-	AddConversationOption(conversation, "All i have is this amulet. Take it. It's worthless.")
+	AddConversationOption(conversation, "All i have is this amulet. Take it. It's worthless.", "Option11")
 	AddConversationOption(conversation, "I don't have time to talk. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "So, you read \"The Trials of Sir Morgan.\" Such a brave knight he was, loved by all. If you read his tale, then fortune has just begun.")
 end
 
 
 
+function Option11(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/optional1/rikantus/antonica/rikantus012.mp3", "", "", 3588173678, 2145543554, Spawn)
+	AddConversationOption(conversation, "It's yours?  But the book said it came from the Keep of Immortality?", "Option12")
+	AddConversationOption(conversation, "I don't have time to talk. Farewell.")
+	StartConversation(conversation, NPC, Spawn, "The Amulet of Ullkorruuk! I once held this many ages ago. I mean, many decades ago. Forgive an old man's memory. I meant to say my family held this long ago when I had a home. With it comes an ancient curse, a curse that cannot be lifted. I shall see that it makes its way home, should I ever return.")
+end
 
+
+function Option12(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/optional1/rikantus/antonica/rikantus013.mp3", "", "", 3290450870, 3371711202, Spawn)
+	AddConversationOption(conversation, "What is the Riddle of Saryrn?", "Option13")
+		AddConversationOption(conversation, "I don't have time for your stories. Farewell. ")
+	StartConversation(conversation, NPC, Spawn, "The Keep of Immortality housed many wondrous artifacts. Its master was known to associate with my ancestors. The master was a mage called Valdoartus Varsoon and if he holds this, then he must surely hold the Riddle of Saryrn.")
+end
+
+function Option13(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+     PlayFlavor(NPC, "voiceover/english/optional1/rikantus/antonica/rikantus014.mp3", "", "", 3295215206, 1663469634, Spawn)
+	AddConversationOption(conversation, "If I find this box for you, will you grant me true fortune?", "Option14")
+	AddConversationOption(conversation, "I don't have time for your stories. Farewell.")
+	StartConversation(conversation, NPC, Spawn, "The riddle is a puzzle box made of rare metals and forged over time in a vat of planar blood. Silly myth. It is nothing more than an ancient toy. It is nothing special at all, but it is a memento of my heritage.")
+end
+
+function Option14(NPC, Spawn)
+    if not HasQuest(Spawn, TheHiddenRiddle) then
+    OfferQuest(NPC, Spawn, TheHiddenRiddle)
+    end
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/optional1/rikantus/antonica/rikantus015.mp3", "", "", 89864911, 2778083584, Spawn)
+	AddConversationOption(conversation, "I will return with the puzzle box.  ")
+	StartConversation(conversation, NPC, Spawn, "Return to me the Riddle of Saryrn, and you will have your fortune. I promise this or may my soul be cursed to walk this land for eternity.")
+end
 
 function offer(NPC, Spawn)
 OfferQuest(NPC, Spawn, ScrawlingsInTheDark)
 end
+
 
 
 function respawn(NPC)
