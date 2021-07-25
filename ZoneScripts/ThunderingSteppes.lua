@@ -7,8 +7,8 @@
 --]]
 
 -- Location ID's for the doors
-local NorthDoor = 437017
-local SouthDoor = 437013
+local NorthDoor = 1437017
+local SouthDoor = 1437013
 
 local NorthDoorClosed = 352
 local SouthDoorClosed = 170
