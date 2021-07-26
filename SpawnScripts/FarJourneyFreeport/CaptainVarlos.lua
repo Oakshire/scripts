@@ -18,6 +18,38 @@ finished_high_winds_2 = false
 finished_high_winds_3 = false
 seen_quest_praise = false
 
+function GenerateStateDefines(player)
+    local bLegacy = (GetClientVersion(player) <= 526)
+    
+    if bLegacy then
+        VSTATE_WAVE = 883
+        VSTATE_HELLO = 318
+        VSTATE_DOUBLETAKE = 250
+        VSTATE_CROUCH_ENTER = 219
+        VSTATE_CROUCH_EXIT = 220
+        VSTATE_SQUEAL = 631
+        VSTATE_POINT = 429
+        VSTATE_COMBAT_TURN_LEFT = 210
+        VSTATE_OUCH = 403
+        VSTATE_CRINGE = 218
+        VSTATE_SALUTE = 520
+        VSTATE_SQUARE = 630
+    else
+        VSTATE_WAVE = 13287
+        VSTATE_HELLO = 11682
+        VSTATE_DOUBLETAKE = 11415
+        VSTATE_CROUCH_ENTER = 219
+        VSTATE_CROUCH_EXIT = 220
+        VSTATE_SQUEAL = 12979
+        VSTATE_POINT = 12028
+        VSTATE_COMBAT_TURN_LEFT = 11210
+        VSTATE_OUCH = 11911
+        VSTATE_CRINGE = 11256
+        VSTATE_SALUTE = 12167
+        VSTATE_SQUARE = 12978
+    end
+end
+
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
@@ -31,22 +63,24 @@ end
 
 function get_attention(NPC, player)	
 	FaceTarget(NPC, player)
-	SendStateCommand(NPC, 883)
+	GenerateStateDefines(player)
+	SendStateCommand(NPC, VSTATE_WAVE)
 	AddTimer(NPC, math.random(2000, 3000), "stop_get_attention", 1, player)	
 end
 
 function stop_get_attention(NPC, player)
 	SendStateCommand(NPC, 0)
-	if get_attention_animation and HasQuest(player, 524) == true and GetQuestStep(player, 524) == 7 then
+	if get_attention_animation and HasQuest(player, 524) and GetQuestStep(player, 524) == 7 then
 		AddTimer(NPC, 500, "get_attention", 1, player)
 	end
 end
 
 function hailed(NPC, player)
     FaceTarget(NPC, player)
-	SendStateCommand(GetSpawn(NPC, 270000), 318)
+    GenerateStateDefines(player)
+	SendStateCommand(GetSpawn(NPC, 270000), VSTATE_HELLO)
 	SendStateCommand(GetSpawn(NPC, 270000), 0)
-	if HasQuest(player, 524) == false and HasCompletedQuest(player, 524) == false then
+	if not HasQuest(player, 524) and not HasCompletedQuest(player, 524) then
 		InstructionWindowClose(player)
 		needs_selection_help = true
 		finished_hailed = false
@@ -64,7 +98,7 @@ function hailed(NPC, player)
 		Dialog.AddOption("Where am I?", "where_am_I")
 		Dialog.Start()		
 		AddTimer(NPC, 8000, "hailed_instructions", 1, player)
-	elseif HasQuest(player, 524) == true and GetQuestStep(player, 524) == 7 then
+	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 7 then
 		SetTutorialStep(player, 32)
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Avast ye! We need to talk.")
@@ -72,16 +106,16 @@ function hailed(NPC, player)
 		Dialog.AddOption("What is it?", "quest_step_7a")
 		Dialog.Start()
 		get_attention_animation = false
-	elseif HasQuest(player, 524) == true and GetQuestStep(player, 524) == 10 then
+	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 10 then
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_023.mp3", "You still need to kill that landlubber of a goblin! Get to it mate!", "", 3269557913, 3104212801)
-	elseif HasQuest(player, 524) == true and GetQuestStep(player, 524) == 9 then
+	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 9 then
 		SetTutorialStep(player, 51)
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Ya' made quick work of them vermin.")
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_016.mp3", 1130776869, 4119313971)
 		Dialog.AddOption("Thanks.", "quest_step_9")
 		Dialog.Start()
-	elseif HasCompletedQuest(player, 524) == true and seen_quest_praise == false then
+	elseif HasCompletedQuest(player, 524) and not seen_quest_praise then
 		seen_quest_praise = true
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Arr! Ya saved the Far Journey and me crew! Seems ya' proved ta' be quite a hero.  Well, with the help of that young lass there, ya' do.")
@@ -89,7 +123,7 @@ function hailed(NPC, player)
 		-- Todo: Add missing gesture/emote
 		Dialog.AddOption("It was nothing.", "quest_completed")
 		Dialog.Start()
-	elseif HasCompletedQuest(player, 524) == true then
+	elseif HasCompletedQuest(player, 524) then
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("So, ya' ready ta go ashore matey?")
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_027.mp3", 2285948102, 2994720481)
@@ -147,11 +181,12 @@ function quest_step_9(NPC, player)
 	AddTimer(NPC, 1000, "quest_step_9b", 1, player)	
 end
 
-function quest_step_9b(NPC, player)	
+function quest_step_9b(NPC, player)
 	FaceTarget(NPC, GetSpawn(NPC, 270013))
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_017.mp3", "Wait. Tis that a... No, it cain' be!", "", 1253231512, 1752159147)
 	AddTimer(NPC, 5000, "quest_step_9c", 1, player)	
-	SendStateCommand(GetSpawn(NPC, 270005), 250)	
+	GenerateStateDefines(player)
+	SendStateCommand(GetSpawn(NPC, 270005), VSTATE_DOUBLETAKE)	
 end
 
 function quest_step_9c(NPC, player)	
@@ -165,24 +200,26 @@ function quest_step_9c(NPC, player)
 	FaceTarget(Valik, Drake)	
 	FaceTarget(Geredo, Drake)		
 	
-	SendStateCommand(Anikra, 429)
-	SendStateCommand(Valik, 429)
-	SendStateCommand(Geredo, 429)
+	GenerateStateDefines(player)
+	SendStateCommand(Anikra, VSTATE_POINT)
+	SendStateCommand(Valik, VSTATE_POINT)
+	SendStateCommand(Geredo, VSTATE_POINT)
 	
-	SendStateCommand(GetSpawn(NPC, 270001), 219)
-	SendStateCommand(GetSpawn(NPC, 270007), 631)
+	SendStateCommand(GetSpawn(NPC, 270001), VSTATE_CROUCH_ENTER)
+	SendStateCommand(GetSpawn(NPC, 270007), VSTATE_SQUEAL)
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_018.mp3", "Quick! Ingrid, secure th'loot! Thar be a Drakota off the bow! Quick now! Secure those chests!", "", 3607547478, 39534308)
 	AddTimer(NPC, 9000, "quest_step_9d", 1, player)	
 end
 
 function quest_step_9d(NPC, player)	
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_019.mp3", "Everyone down! Watch it!", "", 2065401462, 2542613809)
-	SendStateCommand(GetSpawn(NPC, 270007), 219)
-	SendStateCommand(GetSpawn(NPC, 270001), 220)
-	SendStateCommand(GetSpawn(NPC, 270004), 210)
-	SendStateCommand(GetSpawn(NPC, 270006), 403)
-	SendStateCommand(GetSpawn(NPC, 270005), 218)
-	SendStateCommand(GetSpawn(NPC, 270002), 218)
+	GenerateStateDefines(player)
+	SendStateCommand(GetSpawn(NPC, 270007), VSTATE_CROUCH_ENTER)
+	SendStateCommand(GetSpawn(NPC, 270001), VSTATE_CROUCH_EXIT)
+	SendStateCommand(GetSpawn(NPC, 270004), VSTATE_COMBAT_TURN_LEFT)
+	SendStateCommand(GetSpawn(NPC, 270006), VSTATE_OUCH)
+	SendStateCommand(GetSpawn(NPC, 270005), VSTATE_CRINGE)
+	SendStateCommand(GetSpawn(NPC, 270002), VSTATE_CRINGE)
 	AddTimer(NPC, 3500, "quest_step_9e", 1, player)
 	i=1
 	spawns = GetSpawnListBySpawnID(player, 270011)
@@ -212,12 +249,13 @@ function quest_step_9g(NPC, player)
 end
 
 function quest_step_9h(NPC, player)
+    GenerateStateDefines(player)
 	SendStateCommand(GetSpawn(NPC, 270001), 0)
 	SendStateCommand(GetSpawn(NPC, 270004), 0)
 	SendStateCommand(GetSpawn(NPC, 270006), 0)
 	SendStateCommand(GetSpawn(NPC, 270005), 0)
 	SendStateCommand(GetSpawn(NPC, 270002), 0)	
-	SendStateCommand(GetSpawn(NPC, 270007), 220)
+	SendStateCommand(GetSpawn(NPC, 270007), VSTATE_CROUCH_EXIT)
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_020.mp3", "Blimey! That was close! It has been near two months since the last reported sightings of one of them.", "", 814285897, 1688547621)
 	AddTimer(NPC, 6000, "quest_step_9i", 1, player)	
 end
@@ -258,7 +296,7 @@ function quest_step_7c(NPC, player)
 end
 
 function hailed_instructions(NPC, player)	
-	if needs_selection_help == true then
+	if needs_selection_help then
 		InstructionWindowGoal(player,0)	
 		InstructionWindowClose(player)
 		InstructionWindow(player, -1.0, "To respond to the Captain and other characters you will meet, left click on the response text.", "voiceover/english/narrator/boat_06p_tutorial02/narrator_006_7521b625.mp3", 3936228257, 1877316160, "tutorial_stage_8", "Left click on one of the response options.", "server")
@@ -274,13 +312,13 @@ function where_am_I(NPC, player)
 	Say(drake, "attacking")
 	AddTimer(drake, 40000, "drake_rain")
 	--]]
-	if needs_selection_help == true then
+	if needs_selection_help then
 		needs_selection_help = false
 	else
-		InstructionWindowGoal(player,0)	
+		InstructionWindowGoal(player, 0)	
 		InstructionWindowClose(player)	
 	end
-	if finished_where_am_I == false then
+	if not finished_where_am_I then
 		FaceTarget(NPC, player)
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Me apologies.")
@@ -292,7 +330,7 @@ function where_am_I(NPC, player)
 end
 
 function who_are_you(NPC, player)
-	if finished_who_are_you == false then
+	if not finished_who_are_you then
 		finished_where_am_I = true
 		FaceTarget(NPC, player)
 		Dialog.New(NPC, player)
@@ -305,7 +343,7 @@ end
 
 function how_did_I_get_here(NPC, player)
 	finished_who_are_you = true
-	if finished_how_did_I_get_here == false then
+	if not finished_how_did_I_get_here then
 		FaceTarget(NPC, player)
 		Dialog.New(NPC, player)
 		Dialog.AddDialog("Me hearties pulled ya' from the sea, you an those other bilge rats. Do ya' remember?")
@@ -317,7 +355,7 @@ end
 
 function where_are_we_headed(NPC, player)
 	finished_how_did_I_get_here = true
-	if finished_where_are_we_headed == false then
+	if not finished_where_are_we_headed then
 		FaceTarget(NPC, player)
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_005.mp3", "We are heading to the Island of Refuge.", "", 1602680439, 2810422278)
 		AddTimer(NPC, 500, "shake_camera_medium", 1, player)
@@ -356,7 +394,7 @@ end
 
 function high_winds_2(NPC, player)
 	finished_high_winds_1 = true
-	if finished_high_winds_2 == false then
+	if not finished_high_winds_2 then
 		FaceTarget(GetSpawn(NPC, 270001), NPC)
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_007.mp3", "Don't want the ship to come apart in these high winds, do ya'?!", "scold", 517097409, 4194681002)
 		SendStateCommand(GetSpawn(NPC, 270001), 0)
@@ -366,9 +404,10 @@ end
 
 function high_winds_3(NPC, player)
 	finished_high_winds_2 = true
-	if finished_high_winds_3 == false then
+	if not finished_high_winds_3 then
 		PlayFlavor(GetSpawn(NPC, 270001), "voiceover/english/ingrid/boat_06p_tutorial02/020_deckhand_ingrid_010_1637e047.mp3", "Aye, aye, Captain!", "salute", 1250282628, 237171958)
-		SendStateCommand(GetSpawn(NPC, 270001), 520)
+		GenerateStateDefines(player)
+		SendStateCommand(GetSpawn(NPC, 270001), VSTATE_SALUTE)
 		AddTimer(NPC, 2500, "high_winds_4", 1, player)
 	end
 end
@@ -383,7 +422,8 @@ function high_winds_4(NPC, player)
 	MoveToLocation(GetSpawn(NPC, 270001), 2.48, -2.07, -3.26, 8, "", false)
 	FaceTarget(NPC, player)
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_008.mp3", "Ya think she'd never seen a gnome afore.", "", 2447879193, 4289147535)
-	SendStateCommand(GetSpawn(NPC, 270001), 630)
+	GenerateStateDefines(player)
+	SendStateCommand(GetSpawn(NPC, 270001), VSTATE_SQUARE)
 	AddTimer(NPC, 500, "shake_camera_medium", 1, player)
 	AddTimer(NPC, 3500, "shake_camera_high", 1, player)
 	AddTimer(NPC, 5500, "shake_camera_medium", 1, player)
