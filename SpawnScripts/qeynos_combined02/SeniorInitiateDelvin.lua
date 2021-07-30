@@ -7,8 +7,8 @@
 
 This script is quite complex and allows for all the behaviours of Delvin on Live: He can move left or right
 around the building and at each of the four corners he will either make a short or long pause, or he will step
-around a bit (intiaited by one of several emotes). He can also make between 1 and 3 rounds before going back 
-inside, where upon returning he may bow.
+around a bit (initiated by one of several emotes). He can also make between 1 and 3 rounds before going back 
+inside, and when returning he may bow.
 
 Not implemented yet: proximity for his conversation (it is using hail for now) and he also sometimes runs back 
 which is not included at it looks a bit odd.
