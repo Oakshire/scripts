@@ -60,7 +60,7 @@ function go_outside(NPC)
 end
 
 function pick_special_event(NPC)
---  First trip is initiated. Delvin alays does something special on first round (sometimes nothing)
+--  First trip is initiated. Most of the times Delvin does something special on first round (sometimes nothing)
     NumberOfTrips = 1
 
     math.randomseed(os.time())
