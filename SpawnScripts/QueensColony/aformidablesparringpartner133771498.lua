@@ -39,6 +39,11 @@ end
     end
 
 
+function death(NPC, Spawn)
+if GetQuestStep(Spawn, TheArtOfCombat) == 2 then
+SetStepComplete(Spawn, TheArtOfCombat, 2)
+end
+   end
 
 
 function hailed(NPC, Spawn)
