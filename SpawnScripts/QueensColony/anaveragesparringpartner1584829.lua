@@ -1,6 +1,6 @@
 --[[
     Script Name    : SpawnScripts/QueensColony/anaveragesparringpartner1584829.lua
-    Script Author  : Rylec, premierio015
+    Script Author  : Rylec, premierio015, Emagi
     Script Date    : 2020.11.15 08:11:43
     Script Purpose : 
                    : 
@@ -9,13 +9,6 @@
 
 
 
---[[
-    Script Name    : SpawnScripts/QueensColony/aformidablesparringpartner133771498.lua
-    Script Author  : Rylec, premierio015
-    Script Date    : 2021.01.01 03:01:59
-    Script Purpose : 
-    Script Notes   : Added HP recovery and reset of the combat on 08.05.2021 
---]]
 
 
 
@@ -27,18 +20,20 @@ end
   
    
 
-function healthchanged(NPC, Spawn)
+function healthchanged(NPC, Spawn, Damage)
  local npc_hp = GetHP(NPC)
-if npc_hp <= 5 then
-AddTimer(NPC, 1000, "stop_combat", 1, Spawn)
-Say(NPC, "Well Done.")
-Say(NPC, "Okay. Who's next?")
-if GetQuestStep(Spawn, TheArtOfCombat) == 2 then
-SetStepComplete(Spawn, TheArtOfCombat, 2)
-end
-SetHP(NPC, GetMaxHP(NPC))  
-end
+    if Damage >= npc_hp then
+        AddTimer(NPC, 1000, "stop_combat", 1, Spawn)
+        Say(NPC, "Well Done.")
+        Say(NPC, "Next!")
+        if GetQuestStep(Spawn, TheArtOfCombat) == 2 then
+        SetStepComplete(Spawn, TheArtOfCombat, 2)
+        end
+        SetHP(NPC, GetMaxHP(NPC))
+        return -1 -- DIPLOMATIC immunity!!
     end
+    return 0 -- use default Damage passed in
+end
 
 function stop_combat(NPC, Spawn)
 if IsInCombat(NPC) then

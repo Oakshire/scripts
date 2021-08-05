@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    SetEquippedItemByID(NPC, 0, 83850)
+
 end
 
 function hailed(NPC, Spawn)
@@ -18,7 +18,7 @@ function hailed(NPC, Spawn)
 
     conversation = CreateConversation()
     
-    AddConversationOption(conversation, "No, I am good to go thanks. ")
+    AddConversationOption(conversation, "No, I am good to go thanks.")
     StartConversation(conversation, NPC, Spawn, "Hello there!  Can I interest you in any wares for your travels?")
     
     AddTimer(NPC, 5000, "ResetState")  

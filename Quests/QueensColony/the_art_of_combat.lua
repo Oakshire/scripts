@@ -39,7 +39,7 @@ end
 function step1_complete_talkToHayl(Quest, QuestGiver, Player)
     UpdateQuestStepDescription(Quest, 1, "I have spoken with Hayl McGuinness.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have spoken with Hayl McGuinness.")
-    AddQuestStep(Quest, 2, "I need to defeat a sparring partner in combat. There are several sparring partners just north of Trainer Hayl McGuinness.", 1, 100, "I need to learn about combat from Trainer Hayl McGuinness.", 11)
+    AddQuestStep(Quest, 2, "I need to defeat a sparring partner in combat. There are several sparring partners just north of Trainer Hayl McGuinness.", 1, 100, "I need to learn about combat from Trainer Hayl McGuinness.", 11, 0, 2530070)
     AddQuestStepCompleteAction(Quest, 2, "step2_complete_killedSparringPartner")
 end
 

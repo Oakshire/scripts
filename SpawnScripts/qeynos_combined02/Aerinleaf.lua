@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    SetPlayerProximityFunction(NPC, 10, "hailed")
+    SetPlayerProximityFunction(NPC, 7, "hailed")
 end
 
 function hailed(NPC, Spawn)

@@ -144,7 +144,7 @@ function PledgeToFreeport(NPC, Spawn)
 	conversation = CreateConversation()
 	
 	-- update WelcomeToNorrath Quest
-	if not HasCompletedQuest (Spawn, WelcomeToNorrath) then
+	if GetQuestStep(Spawn, WelcomeToNorrath) == 1 then
 		SetStepComplete(Spawn, WelcomeToNorrath, 1)
                 PlaySound(Spawn, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn) --Ding!
 	end
