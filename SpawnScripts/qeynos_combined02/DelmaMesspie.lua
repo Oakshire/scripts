@@ -8,6 +8,7 @@
 
 function spawn(NPC)
     AddTimer(NPC, 1000, "EmoteLoop")
+    SetPlayerProximityFunction(NPC, 20, "InRange")
 end
 
 function hailed(NPC, Spawn)
@@ -27,6 +28,21 @@ function hailed(NPC, Spawn)
         else
             PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gf_bc49d3d0.mp3", "Laziness is nothing more than the habit of resting before you get tired.", "yawn", 2068417649, 3867807288, Spawn)
         end 
+end
+
+function InRange(NPC, Spawn)
+-- These lines will be triggered if you log in next to Delma, but are not included when you hail her. I put them in as a proximity function just to safe keep them (I have yet to trigger them as proximity on Live).
+
+    FaceTarget(NPC, Spawn)
+    local proximityChoice = MakeRandomInt(1,3)
+
+        if proximityChoice == 1 then
+            PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gf_971bdee0.mp3", "Sweetie, you really need to eat more.  Put some meat on those bones, that's what I always say.", "scold", 2249843470, 1892258594, Spawn)
+        elseif proximityChoice == 2 then
+            PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_aoi_gf_86c7855.mp3", [[Let's see, I'm going to need some baubbleshire berries, some elddar root, and a smidgen of spiced fish...]], "ponder", 1080385311, 773701526, Spawn)
+        else
+            PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_aoi_gf_4745a8ec.mp3", "Hello has anybody seen the baubbleberry pie I set out to cool? Come on, I know one of you took it!", "tapfoot", 3291474479, 2214928642, Spawn)
+        end
 end
 
 function EmoteLoop(NPC)
