@@ -3,7 +3,7 @@
     Script Author  : LethalEncounter
     Script Date    : 2020.07.02
     Script Purpose : Govern movement and spawn behavior of the goblin on the Far Journey.
-                     Edited for syntax.
+    Script Notes   : Re-wrote random behavior functions so they suck less. Neveruary 08/07/21
 --]]
 
 function spawn(NPC)
@@ -15,40 +15,8 @@ function hailed(NPC, player)
 end
 
 function idle_loop(NPC)
-    choice = math.random(0, 15) 
-	if choice == 0 then
-		SendStateCommand(NPC, 217)
-	elseif choice == 1 then
-		SendStateCommand(NPC, 218)
-	elseif choice == 2 then
-		SendStateCommand(NPC, 883)
-	elseif choice == 3 then
-		SendStateCommand(NPC, 226)		
-	elseif choice == 4 then
-		SendStateCommand(NPC, 296)
-	elseif choice == 5 then
-		SendStateCommand(NPC, 311)
-	elseif choice == 6 then
-		SendStateCommand(NPC, 315)
-	elseif choice == 7 then
-		SendStateCommand(NPC, 488)
-	elseif choice == 8 then
-		SendStateCommand(NPC, 519)
-	elseif choice == 9 then
-		SendStateCommand(NPC, 521)
-	elseif choice == 10 then
-		SendStateCommand(NPC, 524)
-	elseif choice == 11 then
-		SendStateCommand(NPC, 550)
-	elseif choice == 12 then
-		SendStateCommand(NPC, 632)
-	elseif choice == 13 then
-		SendStateCommand(NPC, 637)
-	elseif choice == 14 then
-		SendStateCommand(NPC, 717)
-	else
-		SendStateCommand(NPC, 82)
-	end
+    local states = {15, 217, 218, 883, 226, 296, 311, 315, 488, 519, 521, 524, 550, 632, 637, 717, 82}
+        SendStateCommand(NPC, states[math.random(#states)])
 	AddTimer(NPC, math.random(5000, 7000), "stop_animation")	
 end
 
@@ -89,18 +57,8 @@ function run_around_loop(NPC)
 end
 
 function run_around_loop_pause(NPC)
-	choice = math.random(0, 7) --[ mostly get threaten (125) this way ]--
-	if choice == 0 then
-		SendStateCommand(NPC, 217)
-	elseif choice == 1 then
-		SendStateCommand(NPC, 226)		
-	elseif choice == 2 then
-		SendStateCommand(NPC, 550)
-	elseif choice == 3 then
-		SendStateCommand(NPC, 717)
-	else
-		SendStateCommand(NPC, 125)
-	end
+	local choice = {217, 226, 550, 717, 125}
+        SendStateCommand(NPC, states[math.random(#states)])
 	AddTimer(NPC, 2800, "run_around_loop_stop_animation")
 end
 
