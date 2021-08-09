@@ -57,7 +57,7 @@ function run_around_loop(NPC)
 end
 
 function run_around_loop_pause(NPC)
-	local choice = {217, 226, 550, 717, 125}
+	local choice = {217, 226, 550, 717, 125, 125, 125, 125} -- update to retain intention of original script. mostly want threaten.
         SendStateCommand(NPC, states[math.random(#states)])
 	AddTimer(NPC, 2800, "run_around_loop_stop_animation")
 end
