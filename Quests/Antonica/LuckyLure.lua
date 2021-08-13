@@ -13,12 +13,15 @@
 
 
 function Init(Quest)
-	AddQuestStepHarvest(Quest, 1, "Find Blarton's fishing lure.", 1, 100, "I should search for Blarton's lost lure along the beach north of Windstalker Village in Antonica.", 1037, 121183)
+	AddQuestStep(Quest, 1, "Find Blarton's fishing lure.", 1, 100, "I should search for Blarton's lost lure along the beach north of Windstalker Village in Antonica.", 1037)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+   	FaceTarget(QuestGiver, Player)
+	conversation = CreateConversation()
+		AddConversationOption(conversation, "Okay.")
+	StartConversation(conversation, QuestGiver, Player, "Thank you very much! As I was saying, it should be somewhere near the beach to the north of here. Good luck!")
 end
 
 function Declined(Quest, QuestGiver, Player)
