@@ -29,9 +29,9 @@ function hailed(NPC, Spawn)
     else
         local choice = MakeRandomInt(1,2)
         if choice == 1 then
-            Say(NPC, "Be gone before I call the guards")
+            Say(NPC, "Be gone before I call the guards") -- Kelethin character
         else
-            Say(NPC, "Hello there, you seek woodlore do you?")
+            Say(NPC, "Hello there, you seek woodlore do you?") -- Qeynos character
         end
     end
 end
