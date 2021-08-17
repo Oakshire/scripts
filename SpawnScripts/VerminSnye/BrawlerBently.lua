@@ -10,7 +10,7 @@ local CalcifiedBoneOfTheTortured = 527
 
 function spawn(NPC)
         ProvidesQuest(NPC, QUEST)
-	SetPlayerProximityFunction(NPC, 15, "InRange", "LeaveRange", Spawn)
+	SetPlayerProximityFunction(NPC, 15, "InRange")
 end
 
 function respawn(NPC)
@@ -24,9 +24,6 @@ function InRange(NPC, Spawn)
 end
 	end
 
-function LeaveRange(NPC, Spawn)
-
-end
 
 function hailed(NPC, Spawn)
 FaceTarget(NPC, Spawn)

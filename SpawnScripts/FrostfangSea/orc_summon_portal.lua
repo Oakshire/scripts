@@ -12,5 +12,5 @@ end
 
 function SpawnTimer(NPC)
 	SpawnMob(GetZone(NPC), 4700096, 0, 750.68 + math.random(-4,4), 103.15, -504.11 + math.random(-4,4), 130)
-	AddTimer(NPC, math.random(0,12000), "SpawnTimer")
+	AddTimer(NPC, math.random(1,12000), "SpawnTimer")
 end
