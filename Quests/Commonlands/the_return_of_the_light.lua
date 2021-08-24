@@ -13,6 +13,7 @@
 
 
 function Init(Quest)
+    SetQuestRewardStatus(Quest, 23733)
 	AddQuestStepChat(Quest, 1, "I should find someone interested in this burned out lightstone.", 1, "I need to find someone who I can sell this burned out lightstone to.  Someone must be interested in a unique item like this.", 11, 330175)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
