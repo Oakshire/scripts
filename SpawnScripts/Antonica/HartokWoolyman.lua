@@ -11,8 +11,25 @@ local DoorToDoorDelivery = 5346 -- Door to Door Delivery quest
 local AttackOfTheKillerBear = 5347 -- Attack of the Killer Bear quest
 
 function spawn(NPC)
-
+SetPlayerProximityFunction(NPC, 10, "InRange")
 end
+
+
+function InRange(NPC, Spawn)
+  if not HasQuest(Spawn, PatchworkRugs) and not HasCompletedQuest(Spawn, PatchworkRugs) then
+  ProvidesQuest(NPC, PatchworkRugs)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, PatchworkRugs) then
+  ProvidesQuest(NPC, DoorToDoorDelivery)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, DoorToDoorDelivery) then
+  ProvidesQuest(NPC, AttackOfTheKillerBear)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+   end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
