@@ -18,7 +18,7 @@ function hailed(NPC, Spawn)
 	Option1(NPC, Spawn)
 	elseif GetQuestStep(Spawn, TheBalanceOfLife) == 1 then
 	Quest_Progress(NPC, Spawn)
-	elseif GetQuestStep(Spawn, TheBalanceOfLife) == 2 then
+	elseif GetQuestStep(Spawn, TheBalanceOfLife) == 4 then
 	Option4(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, TheBalanceOfLife) then
 	Quest_Finished(NPC, Spawn)
@@ -56,7 +56,7 @@ end
 function Option3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/daryann_stormrider/qey_village05/quests/daryann_stormrider/daryann003.mp3", "", "", 1849804125, 150143999, Spawn)
+    PlayFlavor(NPC, "voiceover/english/daryann_stormrider/qey_village05/quests/daryann_stormrider/daryann003.mp3", "", "smile", 1849804125, 150143999, Spawn)
 	AddConversationOption(conversation, "I will return.", "offer")
 	StartConversation(conversation, NPC, Spawn, "Sometimes a population grows rapidly, and we must hunt weak and sickly creatures to ensure others in the population remain healthy. Other times, predators disrupt nature's balance. I need you to hunt sea turtles and darkclaw crabs near our shores and any red tail hawks you come across here in Antonica.  Please return to me when you finish.")
 end
@@ -66,7 +66,7 @@ PlayFlavor(NPC, "", "Good luck on your hunt, Gaikako.", "", 1689589577, 4560189,
 end
 
 function Option4(NPC, Spawn)
-    SetStepComplete(Spawn, TheBalanceOfLife, 2)
+    SetStepComplete(Spawn, TheBalanceOfLife, 4)
     FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/daryann_stormrider/qey_village05/quests/daryann_stormrider/daryann010.mp3", "", "", 1284135083, 2776970357, Spawn)
