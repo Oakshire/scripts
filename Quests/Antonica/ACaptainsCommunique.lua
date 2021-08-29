@@ -49,3 +49,6 @@ end
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined
 end
+
+function Deleted(Quest, QuestGiver, Player)
+end

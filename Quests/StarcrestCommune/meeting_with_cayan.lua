@@ -55,10 +55,12 @@ function step3_complete_talkedToCayan(Quest, QuestGiver, Player)
 	GiveQuestReward(Quest, Player)
 end
 
-function Reload(Quset, QuestGiver, Player, Step)
+function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		step1_complete_talkedToCayan(Quest, QuestGiver, Player)
 	elseif Step == 2 then
 		step2_complete_obtainedBerries(Quest, QuestGiver, Player)
+		elseif Step == 3 then
+		step3_complete_talkedToCayan(Quest, QuestGiver, Player)
 	end
 end

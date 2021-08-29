@@ -31,7 +31,7 @@ function hailed(NPC, Spawn)
 end
 
 function InRange(NPC, Spawn)
--- These lines will be triggered if you log in next to Delma, but are not included when you hail her. I put them in as a proximity function just to safe keep them (I have yet to trigger them as proximity on Live).
+-- These lines will be triggered if you on Live log in next to Delma, but are not included when you hail her. I put them in as a proximity function just to safe keep them (I have yet to trigger them as proximity on Live).
 
     FaceTarget(NPC, Spawn)
     local proximityChoice = MakeRandomInt(1,3)
