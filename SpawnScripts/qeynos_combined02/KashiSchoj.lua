@@ -15,6 +15,7 @@ function hailed(NPC, Spawn)
     playerClass = GetClass(Spawn)
     
     local voice = MakeRandomInt(1,3)
+    local choice = MakeRandomInt(1,2)
 
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1035.mp3", "", "", 0, 0, Spawn)
     
@@ -27,12 +28,10 @@ function hailed(NPC, Spawn)
         StartConversation(conversation, NPC, Spawn, "I thought I heard another dirge singing songs of lamentation.  If I can be of any service, let me know.") 
     else
         if choice == 1 then
-            Say(NPC, "Be gone before I call the guards") -- Kelethin character?
-        else
-            conversation = CreateConversation()  -- Qeynos character
+            PlayFlavor(NPC, "voiceover/english/optional5/kerran_eco_neutral_2/ft/service/merchant/kerran_merchant_service_neutral_2_hail_gf_e4bce3ad.mp3", "Psst ... I'm cutting you in on the deal of a lifetime.", "agree", 1668699586, 882754848, Spawn)
+        elseif choice == 2 then
+            PlayFlavor(NPC, "voiceover/english/optional5/kerran_eco_neutral_2/ft/service/merchant/kerran_merchant_service_neutral_2_hail_gf_670060d5.mp3", "Calm down, friend. Just because this looks like your stolen backpack doesn't mean it is.", "boggle", 2037125351, 2488592551, Spawn)
 
-            AddConversationOption(conversation, "Just looking around.")
-            StartConversation(conversation, NPC, Spawn, "Well met, " .. GetName(Spawn) .. ". What brings you to the Elddar Grove this fine day?") 
         end
     end
 end

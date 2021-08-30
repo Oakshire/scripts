@@ -17,6 +17,7 @@ function hailed(NPC, Spawn)
     playerClass = GetClass(Spawn)
     
     local voice = MakeRandomInt(1,3)
+    local choice = MakeRandomInt(1,2)
 
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1048.mp3", "", "", 0, 0, Spawn)
     
