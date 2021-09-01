@@ -8,15 +8,15 @@
 	Notes          : Added all dialogues, voiceovers, anims.
 --]]
 function spawn(NPC)
-        EmoteLoop(NPC)
+    EmoteLoop(NPC)
 end
 
 function respawn(NPC)
-
+    spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-        FaceTarget(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
 	math.randomseed(os.time())
 	local voice = math.random (1,3)
 	str = tostring(voice)
@@ -34,8 +34,8 @@ function hailed(NPC, Spawn)
 end 
 	
 function EmoteLoop (NPC)
-        math.randomseed(os.time())
-        choice = math.random(1,5)
+    math.randomseed(os.time())
+    choice = math.random(1,5)
 	str = tostring(choice)
 
 	if choice == 1 then
@@ -50,5 +50,5 @@ function EmoteLoop (NPC)
 	    PlayAnimation(NPC, 186)
 	end
 
-        AddTimer(NPC, 10000, "EmoteLoop")
+    AddTimer(NPC, 10000, "EmoteLoop")
 end
