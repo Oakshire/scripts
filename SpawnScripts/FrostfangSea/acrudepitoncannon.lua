@@ -19,13 +19,13 @@ end
 
 function LoadCannon(NPC) -- sets the cannon to load the harpooon and start a timer
 	SpawnSet(NPC, "visual_state", "20580")
-	AddTimer(NPC, math.random(2000,5000), "FireCannon")
+	AddTimer(NPC, 5000, "FireCannon")
 end
 
 function FireCannon(NPC) -- fires the cannon and loops back to LoadCannon
 	SpawnSet(NPC, "visual_state", "20579")
 	AddTimer(NPC, 2000, "kill_fire")
-	AddTimer(NPC, math.random(6000,15000), "LoadCannon")
+	AddTimer(NPC, 15000, "LoadCannon")
 end
 
 function kill_fire(NPC) -- stops the firing animation from repeating

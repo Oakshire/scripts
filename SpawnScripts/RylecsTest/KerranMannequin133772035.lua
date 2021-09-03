@@ -13,7 +13,7 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    Say(NPC, "10726 2h_sword_parry_backhand")
+    Say(NPC, "10731 2h_sword_parry_backhand")
 end
 
 function respawn(NPC)

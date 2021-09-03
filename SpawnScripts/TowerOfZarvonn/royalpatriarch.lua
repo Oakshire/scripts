@@ -10,24 +10,25 @@ function spawn(NPC)
 end
  
 function runtozalak(NPC, Spawn)
-Shout(NPC, "I hear and I obey great king!")
-local zalak = GetSpawn(NPC, 5310002)
-local x = GetX(zalak)
-local y = GetY(zalak)
-local z = GetZ(zalak)
-MoveToLocation(NPC, x, y, z, 4)
-AddTimer(NPC, 100, "heal")
+    Shout(NPC, "I hear and I obey great king!")
+    zalak = GetSpawn(NPC, 5310002)
+    local x = GetX(zalak)
+    local y = GetY(zalak)
+    local z = GetZ(zalak)
+    MoveToLocation(NPC, x, y, z, 4)
+    AddTimer(NPC, 100, "heal")
 end
  
 function heal(NPC, Spawn)
-ModifyHP(zalak, 2000)
-AddTimer(NPC, 3000, "explode")
+    zalak = GetSpawn(NPC, 5310002)
+    ModifyHP(zalak, 2000)
+    AddTimer(NPC, 3000, "explode")
 end
  
 function explode(NPC, Spawn)
-Shout(NPC, "My life is for you King Zalak")
--- CastSpell(NPC, Soul Tide, 1, NPC)
-Despawn(NPC)
+    Shout(NPC, "My life is for you King Zalak")
+    -- CastSpell(NPC, Soul Tide, 1, NPC)
+    Despawn(NPC)
 end
  
 function respawn(NPC)
