@@ -10,13 +10,13 @@ function spawn(NPC)
 end
  
 function runtozalak(NPC, Spawn)
-    Shout(NPC, "I hear and I obey great king!")
     zalak = GetSpawn(NPC, 5310002)
     local x = GetX(zalak)
     local y = GetY(zalak)
     local z = GetZ(zalak)
     MoveToLocation(NPC, x, y, z, 4)
-    AddTimer(NPC, 100, "heal")
+    AddTimer(NPC, 25000, "heal")
+    Shout(NPC, "I hear and I obey great king!")
 end
  
 function heal(NPC, Spawn)
