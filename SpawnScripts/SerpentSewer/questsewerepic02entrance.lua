@@ -17,9 +17,9 @@ end
 function can_use_command(NPC, Spawn, Command)
 if Command == 'Open sewer grate' then
                 if not HasCompletedQuest(Spawn, MurkwaterUniform) and  not HasCompletedQuest(Spawn, BackAndForth) then
-                SetAccessToEntityCommand(Spawn,NPC,"Open sewer grate", 0)
+                return false
                 elseif HasCompletedQuest(Spawn, MurkwaterUniform) and HasCompletedQuest(Spawn, BackAndForth) then
-                SetAccessToEntityCommand(Spawn,NPC,"Open sewer grate", 1)
+                return true
 end                
 end
 end

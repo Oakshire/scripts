@@ -14,9 +14,9 @@ end
 
 function can_use_command(NPC, Spawn, Command)
 if HasCompletedQuest(Spawn, SearchingtheDepthsofFallenGate) then
-SetAccessToEntityCommand(Spawn,NPC,"Enter the Vault of the Fallen", 1)
+return true
 elseif not HasCompletedQuest(Spawn, SearchingtheDepthsofFallenGate) then
-SetAccessToEntityCommand(Spawn,NPC,"Enter the Vault of the Fallen", 0)
+return false
 end
 end
 

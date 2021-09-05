@@ -11,9 +11,12 @@ local Care = 467
 local FishingHoleHunt = 5337
 local TheOneThatGotAway = 5338
 local FishingForBait = 5339
+----
+local PracticalJokeOnBlarton = 5355
 
 function spawn(NPC)
- SetPlayerProximityFunction(NPC, 10, "InRange", Spawn)   
+ SetPlayerProximityFunction(NPC, 10, "InRange", Spawn) 
+ SetTempVariable(NPC, "Drunk", "false")
 end
 
 function InRange(NPC, Spawn)
@@ -42,6 +45,8 @@ end
 
 
 function hailed(NPC, Spawn)
+if GetTempVariable(NPC, "Drunk") == "false" then
+    if not HasQuest(Spawn, PracticalJokeOnBlarton) then
 	FaceTarget(NPC, Spawn)
 	local choice = MakeRandomInt(1, 3)
 	if choice == 1 then
@@ -71,6 +76,12 @@ function hailed(NPC, Spawn)
 	    Quest4_Complete(NPC, Spawn)
 		 elseif HasCompletedQuest(Spawn, Lucky) and HasCompletedQuest(Spawn, FishingHoleHunt) and HasCompletedQuest(Spawn, TheOneThatGotAway) and HasCompletedQuest(Spawn, FishingForBait) then
 		 PlayFlavor(NPC, "", "Thank you so much for all of your help! I can't wait to get back to fishing again.", "", 0, 0, Spawn)
+		 end
+end
+elseif  HasQuest(Spawn, PracticalJokeOnBlarton) and not QuestStepIsComplete(Spawn, PracticalJokeOnBlarton, 1) then
+SIDEQUEST_OPTION(NPC, Spawn) 
+elseif GetTempVariable(NPC, "Drunk") == "true" then
+PlayFlavor(NPC, "", "...", "",  0, 0, Spawn)
 	end
 end
 
@@ -185,6 +196,52 @@ function dlg_9_2(NPC, Spawn)
 		AddConversationOption(conversation, "No thanks.")
 	StartConversation(conversation, NPC, Spawn, "It hurt somethin' fierce and I only barely managed to drag myself back here. The next morning I found I could stand on it okay, but not for too long. I thought I'd try to do some fishin' here at this nice pond since I'm stuck until I can heal enough to get back to my favorite fishin' holes. Just as I was getting set up, I realized I'd lost my favorite lure! I must have dropped it somewhere up on the beach north of here near where I fell. With my leg like this, I can't go and look for it myself. I don't suppose you might be able to help find it for me?")
 end
+
+
+function SIDEQUEST_OPTION(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	AddConversationOption(conversation, "I have a gift for you.", "Sidequest_Option2")
+	StartConversation(conversation, NPC, Spawn, "What? Oh, hello there.")
+end
+
+function Sidequest_Option2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Oh, it's not from me.", "Sidequest_Option3")
+	StartConversation(conversation, NPC, Spawn, "Really? Why thank you, you shouldn't have.")
+end
+
+function Sidequest_Option3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Uh, your good friend from the bar.", "Sidequest_Option4")
+	StartConversation(conversation, NPC, Spawn, "Oh? Who is it from?")
+end
+
+function Sidequest_Option4(NPC, Spawn)
+    SetStepComplete(Spawn, PracticalJokeOnBlarton, 1)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Yeah, her. I delivered it for her. Drink up!", "drunk")
+	StartConversation(conversation, NPC, Spawn, "Matsy? She's my cousin, she's so nice!")
+end    
+
+function drunk(NPC, Spawn)
+SetTempVariable(NPC, "Drunk", "true")
+PlayFlavor(NPC, "", "I'll just have a sip for now...", "", 0, 0, Spawn)
+SpawnSet(NPC, "visual_state", 228)
+AddTimer(NPC, 60000, "wakeup")
+end
+
+function wakeup(NPC, Spawn)
+SetTempVariable(NPC, "Drunk", "false")
+SpawnSet(NPC, "visual_state", 540)
+PlayFlavor(NPC, "", "Ugh... just breathing is painful.", "", 0, 0, Spawn)
+end
+
+
+
 
 function offer(NPC, Spawn)
 OfferQuest(NPC, Spawn, Lucky)

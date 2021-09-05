@@ -14,10 +14,10 @@ end
 
 function can_use_command(NPC, Spawn, Command)
 if HasCompletedQuest(Spawn, KeyToFallenGate) then
-SetAccessToEntityCommand(Spawn,NPC,"Enter Fallen Gate",1)
-
+return true 
 elseif not HasCompletedQuest(Spawn, KeyToFallenGate) then
-SetAccessToEntityCommand(Spawn,NPC,"Enter Fallen Gate",0)
+SendMessage(Spawn, "This gates are closed", 20)      
+return false
 end
    end
 

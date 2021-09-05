@@ -32,7 +32,7 @@ end
 
 function casted_on(NPC, Spawn, SpellName)
 		if SpellName == 'Grab a beer' then
-		if GetQuestStep(Spawn, RunningOutOfBeer) == 1 then
+		if not QuestStepIsComplete(Spawn, RunningOutOfBeer, 1) then
         SetStepComplete(Spawn, RunningOutOfBeer, 1)
         end
     SetAccessToEntityCommand(Spawn,NPC,"Grab a beer", 0)

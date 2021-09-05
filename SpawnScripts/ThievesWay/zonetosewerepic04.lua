@@ -1,27 +1,26 @@
 --[[
-    Script Name    : SpawnScripts/Commonlands/zonetofprtsewer02gobblerockshideout.lua
+    Script Name    : SpawnScripts/ThievesWay/zonetosewerepic04.lua
     Script Author  : Premierio015
-    Script Date    : 2021.07.16 03:07:45
+    Script Date    : 2021.09.05 09:09:18
     Script Purpose : 
                    : 
 --]]
 
-local TheSewerItKey = 5321
-local AnOldKey = 3773
+local DarkbladesAndDirtyRats = 5264
 
 function spawn(NPC)
 
 end
 
+
 function can_use_command(NPC, Spawn, Command)
-if HasItem(Spawn, AnOldKey) or HasQuest(Spawn, TheSewerItKey) then
+if HasCompletedQuest(Spawn, DarkbladesAndDirtyRats) then
 return true
-elseif not HasItem(Spawn, AnOldKey) then
+elseif not HasCompletedQuest(Spawn, DarkbladesAndDirtyRats) then
 SendMessage(Spawn, "Requires a key", 20)    
 return false
 end
    end
-
 
 function respawn(NPC)
 	spawn(NPC)

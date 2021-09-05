@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/fprt_ph_5r01/InanaVSorn.lua
+    Script Name    : SpawnScripts/fprt_ph_5r01/TyvalisVSorn.lua
     Script Author  : Premierio015
-    Script Date    : 2021.06.03 04:06:48
+    Script Date    : 2021.09.05 09:09:52
     Script Purpose : 
                    : 
 --]]

@@ -8,6 +8,8 @@
 local KeyToFallenGate = 5252
 
 function spawn(NPC)
+AddSpawnAccess(NPC, NPC)
+ProvidesQuest(NPC, KeyToFallenGate)
 SetPlayerProximityFunction(NPC, 15, "InRange")
 end
 
