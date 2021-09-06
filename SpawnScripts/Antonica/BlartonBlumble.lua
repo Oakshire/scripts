@@ -11,12 +11,10 @@ local Care = 467
 local FishingHoleHunt = 5337
 local TheOneThatGotAway = 5338
 local FishingForBait = 5339
-----
 local PracticalJokeOnBlarton = 5355
 
 function spawn(NPC)
  SetPlayerProximityFunction(NPC, 10, "InRange", Spawn) 
- SetTempVariable(NPC, "Drunk", "false")
 end
 
 function InRange(NPC, Spawn)
@@ -45,8 +43,6 @@ end
 
 
 function hailed(NPC, Spawn)
-if GetTempVariable(NPC, "Drunk") == "false" then
-    if not HasQuest(Spawn, PracticalJokeOnBlarton) then
 	FaceTarget(NPC, Spawn)
 	local choice = MakeRandomInt(1, 3)
 	if choice == 1 then
@@ -56,34 +52,32 @@ if GetTempVariable(NPC, "Drunk") == "false" then
 	elseif choice == 3 then
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1040.mp3", "", "", 0, 0, Spawn)
 	end
-	if not HasQuest(Spawn, Lucky) and not HasCompletedQuest(Spawn, Lucky) then
+	if not HasQuest(Spawn, Lucky) and not HasCompletedQuest(Spawn, Lucky) and not HasQuest(Spawn,  PracticalJokeOnBlarton) then
 	  Option1(NPC, Spawn)
-	elseif GetQuestStep(Spawn, Lucky) == 1 or GetQuestStep(Spawn, FishingHoleHunt) == 1 or GetQuestStep(Spawn, FishingHoleHunt) == 2 or GetQuestStep(Spawn, FishingHoleHunt) == 3 or GetQuestStep(Spawn, FishingHoleHunt) == 4 or GetQuestStep(Spawn, FishingHoleHunt) == 5 or GetQuestStep(Spawn, FishingHoleHunt) == 6 or GetQuestStep(Spawn, TheOneThatGotAway) == 1 or GetQuestStep(Spawn, FishingForBait) == 1 then
+	elseif GetQuestStep(Spawn, Lucky) == 1 or GetQuestStep(Spawn, FishingHoleHunt) == 1 or GetQuestStep(Spawn, FishingHoleHunt) == 2 or GetQuestStep(Spawn, FishingHoleHunt) == 3 or GetQuestStep(Spawn, FishingHoleHunt) == 4 or GetQuestStep(Spawn, FishingHoleHunt) == 5 or GetQuestStep(Spawn, FishingHoleHunt) == 6 or GetQuestStep(Spawn, TheOneThatGotAway) == 1 or GetQuestStep(Spawn, FishingForBait) == 1 and not HasQuest(Spawn,  PracticalJokeOnBlarton) then
 	  Quest_Progress(NPC, Spawn)
-	elseif GetQuestStep(Spawn, Lucky) == 2 then
+	elseif GetQuestStep(Spawn, Lucky) == 2 and not HasQuest(Spawn,  PracticalJokeOnBlarton) then
 	   Quest1_Complete(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn, Lucky) and not HasQuest(Spawn, FishingHoleHunt) and not HasCompletedQuest(Spawn, FishingHoleHunt) then
+	elseif HasCompletedQuest(Spawn, Lucky) and not HasQuest(Spawn, FishingHoleHunt) and not HasCompletedQuest(Spawn, FishingHoleHunt) and not HasQuest(Spawn,  PracticalJokeOnBlarton)  then
 	  Option2(NPC, Spawn)
-	elseif GetQuestStep(Spawn, FishingHoleHunt) == 7 then
+	elseif GetQuestStep(Spawn, FishingHoleHunt) == 7 and not HasQuest(Spawn,  PracticalJokeOnBlarton) then
 	  Quest2_Complete(NPC, Spawn)
-	 elseif HasCompletedQuest(Spawn, Lucky) and HasCompletedQuest(Spawn, FishingHoleHunt) and not HasQuest(Spawn, TheOneThatGotAway) and not HasCompletedQuest(Spawn, TheOneThatGotAway) then
+	 elseif HasCompletedQuest(Spawn, Lucky) and HasCompletedQuest(Spawn, FishingHoleHunt) and not HasQuest(Spawn, TheOneThatGotAway) and not HasCompletedQuest(Spawn, TheOneThatGotAway) and not HasQuest(Spawn,  PracticalJokeOnBlarton) then
 	 Option4(NPC, Spawn)    
 	 elseif GetQuestStep(Spawn,  TheOneThatGotAway) == 2 then
 	  Quest3_Complete(NPC, Spawn)
-	 elseif HasCompletedQuest(Spawn, Lucky) and HasCompletedQuest(Spawn, FishingHoleHunt) and HasCompletedQuest(Spawn, TheOneThatGotAway) and not HasQuest(Spawn, FishingForBait) and not HasCompletedQuest(Spawn, FishingForBait) then
+	 elseif HasCompletedQuest(Spawn, Lucky) and HasCompletedQuest(Spawn, FishingHoleHunt) and HasCompletedQuest(Spawn, TheOneThatGotAway) and not HasQuest(Spawn, FishingForBait) and not HasCompletedQuest(Spawn, FishingForBait) and not HasQuest(Spawn,  PracticalJokeOnBlarton) then
 	   Option6(NPC, Spawn)
-	 	 elseif GetQuestStep(Spawn,  FishingForBait) == 2 then
+	 	 elseif GetQuestStep(Spawn,  FishingForBait) == 2 and not GetQuestStep(Spawn, PracticalJokeOnBlarton) == 1 then
 	    Quest4_Complete(NPC, Spawn)
-		 elseif HasCompletedQuest(Spawn, Lucky) and HasCompletedQuest(Spawn, FishingHoleHunt) and HasCompletedQuest(Spawn, TheOneThatGotAway) and HasCompletedQuest(Spawn, FishingForBait) then
+		 elseif HasCompletedQuest(Spawn, Lucky) and HasCompletedQuest(Spawn, FishingHoleHunt) and HasCompletedQuest(Spawn, TheOneThatGotAway) and HasCompletedQuest(Spawn, FishingForBait) and not HasQuest(Spawn,  PracticalJokeOnBlarton) then
 		 PlayFlavor(NPC, "", "Thank you so much for all of your help! I can't wait to get back to fishing again.", "", 0, 0, Spawn)
-		 end
+		 elseif GetQuestStep(Spawn, PracticalJokeOnBlarton) == 1 then
+		 SIDEQUEST_OPTION(NPC, Spawn)
+    elseif GetTempVariable(NPC, "Drunk") == "true" then
+  PlayFlavor(NPC, "", "...", "",  0, 0, Spawn)
 end
-elseif  HasQuest(Spawn, PracticalJokeOnBlarton) and not QuestStepIsComplete(Spawn, PracticalJokeOnBlarton, 1) then
-SIDEQUEST_OPTION(NPC, Spawn) 
-elseif GetTempVariable(NPC, "Drunk") == "true" then
-PlayFlavor(NPC, "", "...", "",  0, 0, Spawn)
-	end
-end
+   end
 
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -201,25 +195,25 @@ end
 function SIDEQUEST_OPTION(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	AddConversationOption(conversation, "I have a gift for you.", "Sidequest_Option2")
+	AddConversationOption(conversation, "I have a gift for you.", "SIDEQUEST_OPTION2")
 	StartConversation(conversation, NPC, Spawn, "What? Oh, hello there.")
 end
 
-function Sidequest_Option2(NPC, Spawn)
+function SIDEQUEST_OPTION2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "Oh, it's not from me.", "Sidequest_Option3")
+	AddConversationOption(conversation, "Oh, it's not from me.", "SIDEQUEST_OPTION3")
 	StartConversation(conversation, NPC, Spawn, "Really? Why thank you, you shouldn't have.")
 end
 
-function Sidequest_Option3(NPC, Spawn)
+function SIDEQUEST_OPTION3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	AddConversationOption(conversation, "Uh, your good friend from the bar.", "Sidequest_Option4")
+	AddConversationOption(conversation, "Uh, your good friend from the bar.", "SIDEQUEST_OPTION4")
 	StartConversation(conversation, NPC, Spawn, "Oh? Who is it from?")
 end
 
-function Sidequest_Option4(NPC, Spawn)
+function SIDEQUEST_OPTION4(NPC, Spawn)
     SetStepComplete(Spawn, PracticalJokeOnBlarton, 1)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
@@ -228,14 +222,14 @@ function Sidequest_Option4(NPC, Spawn)
 end    
 
 function drunk(NPC, Spawn)
-SetTempVariable(NPC, "Drunk", "true")
+SetTempVariable(NPC, "Drunk", "true")    
 PlayFlavor(NPC, "", "I'll just have a sip for now...", "", 0, 0, Spawn)
 SpawnSet(NPC, "visual_state", 228)
 AddTimer(NPC, 60000, "wakeup")
 end
 
 function wakeup(NPC, Spawn)
-SetTempVariable(NPC, "Drunk", "false")
+SetTempVariable(NPC, "Drunk", "false")      
 SpawnSet(NPC, "visual_state", 540)
 PlayFlavor(NPC, "", "Ugh... just breathing is painful.", "", 0, 0, Spawn)
 end

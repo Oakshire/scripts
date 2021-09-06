@@ -21,7 +21,7 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     math.randomseed(os.time())
-    choice = math.random (1, 3)
+    local choice = MakeRandomInt(1, 3)
     
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..choice.."_1004.mp3", "", "", 0, 0, Spawn)
     AddConversationOption(conversation, "Thanks, I will do so.")

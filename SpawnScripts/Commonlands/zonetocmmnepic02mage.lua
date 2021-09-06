@@ -9,13 +9,12 @@
 local ZarvonnsLegacy = 446
 
 function spawn(NPC)
-
 end
 
 
-  
-  
-function respawn(NPC)
 
+
+function respawn(NPC)
+spawn(NPC)
 end
 
