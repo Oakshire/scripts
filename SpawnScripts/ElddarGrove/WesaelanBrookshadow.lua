@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    AddTimer(NPC, 1000, "EmoteLoop")    
+    AddTimer(NPC, 5000, "EmoteLoop")    
 end
 
 function respawn(NPC)
@@ -18,7 +18,7 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/optional4/wesaelan_brookshadow/brookshadow_01.mp3", "", "", 2834600234, 1504715618, Spawn)
+	PlayFlavor(NPC, "voiceover/english/optional4/wesaelan_brookshadow/brookshadow_01.mp3", "", "idle", 2834600234, 1504715618, Spawn)
 	AddConversationOption(conversation, "Thank you, and good day to you.", "dlg_13_1")
 	StartConversation(conversation, NPC, Spawn, "Hail traveler!  All friends of the Elddar are welcome.")
 	

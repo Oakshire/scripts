@@ -8,7 +8,7 @@
 
 function spawn(NPC)
     math.randomseed(os.time())
-    choice = math.random(1134,1139)
+    local choice = math.random(1134,1139)
     SpawnSet(NPC, "hair_type", choice)
     AddTimer(NPC, 3000, "EmoteLoop")
 end
@@ -16,7 +16,7 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     math.randomseed(os.time())
-    voice = math.random(1,3)
+    local voice = math.random(1,3)
 
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1040.mp3", "", "", 0, 0, Spawn)
 end
