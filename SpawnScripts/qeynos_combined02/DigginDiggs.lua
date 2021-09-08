@@ -22,7 +22,7 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "Sorry. Just passing by.")
     StartConversation(conversation, NPC, Spawn, "You're looking a might shabby there.  You look like you can use some repair work.  My partner here, Steelguard, can mend any damaged piece of armor or weapons you might have, all for an outrageously low, low price!  We live for the community!")
 
-    AddTimer(NPC, 35000, "ResetState", 1, Spawn)
+    AddTimer(NPC, 40000, "ResetState", 1, Spawn)
 end
 
 function ResetState(NPC)
