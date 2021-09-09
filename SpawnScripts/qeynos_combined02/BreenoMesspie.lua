@@ -7,13 +7,16 @@
 --]]
 
 function spawn(NPC)
-    SpawnSet(NPC, "visual_state", "11420")
-    SpawnSet(NPC, "action_state", "10893")
+    SpawnSet(NPC, "visual_state", "2120")
+    SpawnSet(NPC, "action_state", "11420")
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
+--	FaceTarget(NPC, Spawn)
+    SpawnSet(NPC, "visual_state", "0")
+    PlayAnimation(NPC, 10893)
+    CastSpell(Spawn, 993, 1, NPC)
+ end
 
 function respawn(NPC)
 	spawn(NPC)
