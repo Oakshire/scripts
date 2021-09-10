@@ -4,11 +4,12 @@
 	Script Author	: John Adams
 	Script Date	: 2008.09.23
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
-  Modified Script Notes : Added SpawnAccess
-        Modified by     : premierio015
+    Modified Script Notes : Added SpawnAccess. Added support for In the Name Of Honor.
+    Modified by     : premierio015, Neveruary
 --]]
 
 local TheTunarianPlot = 491
+local NameOfHonor = 490
 
 function spawn(NPC)
    AddSpawnAccess(NPC, NPC)
@@ -16,7 +17,7 @@ function spawn(NPC)
 end
 
 function SpawnAccess(NPC, Spawn)
-  if GetQuestStep(Spawn, TheTunarianPlot) == 6 then
+  if GetQuestStep(Spawn, TheTunarianPlot) == 6 or GetQuestStep(Spawn, NameOfHonor) == 5 then
    AddSpawnAccess(NPC, Spawn)
   else
   RemoveSpawnAccess(NPC, Spawn)

@@ -96,10 +96,10 @@ function dlg_7(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 
-	Dialog.AddDialog("Excellent!  This ship is gonna be magnificent.  Here take this for your efforts.")
+	Dialog.AddDialog("Excellent!  This ship is gonna be magnificent.  Here, take this for your efforts.")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/bobble_whirlwidget/tutorial_island02_evil_revamp/quests/bobble_whirlwidget/bobble_whirlwidget009.mp3", 2861918733, 954207307)
 	Dialog.AddOption("Thanks.")
-	SetStepComplete(Spawn, THE_SECRET_SHIP, 1)
+	SetStepComplete(Spawn, THE_SECRET_SHIP, 2)
 
 
 	Dialog.Start()

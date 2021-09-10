@@ -3,8 +3,7 @@
 	Script Purpose	:	Handles the quest, "The Secret Ship"
 	Script Author	:	vo1d
 	Script Date	:	11/2/2019
-	Script Notes	:	Using "a sea shell" until Nautilus Shells can be created in the ItemDB.
-
+	Script Notes	:	Using "a sea shell" until Nautilus Shells can be created in the ItemDB
 	Zone		:	Outpost of the Overlord
 	Quest Giver	:	
 	Preceded by	:	None
@@ -49,7 +48,6 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 2, "I returned to Bobble.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I returned to Bobble and was rewarded for my time in the bay.")
-
 	UpdateQuestDescription(Quest, "I was able to collect all of the nautili that Bobble needed for his research into creating an underwater ship.  Those Qeynosians will have a run for their money now!")
 	GiveQuestReward(Quest, Player)
 end
