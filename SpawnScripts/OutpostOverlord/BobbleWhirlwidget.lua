@@ -46,7 +46,7 @@ end
 function Step2Complete(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-
+    SetStepComplete(Spawn,  THE_SECRET_SHIP, 2)
 	Dialog.AddDialog("Holy snogratchets, that was quick!")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/bobble_whirlwidget/tutorial_island02_evil_revamp/quests/bobble_whirlwidget/bobble_whirlwidget008.mp3", 2960606569, 1409207301)
 	Dialog.AddOption("Here's your specimens.", "dlg_7")
