@@ -31,31 +31,37 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
---[[ random greeting?
+       local choice = MakeRandomInt(1, 3)
+    if choice == 1 then
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1003.mp3", "", "", 0, 0, Spawn)
+	 AddConversationOption(conversation, "What Collections?","WhatCollections")
+	 elseif choice == 2 then
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1003.mp3", "", "", 0, 0, Spawn)
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1003.mp3", "", "", 0, 0, Spawn)
---]]
-
-	-- No Collections Completed
-	AddConversationOption(conversation, "I don't have any at the moment.", "dlg_1_1")
+	 AddConversationOption(conversation, "What Collections?","WhatCollections")
+	elseif choice == 3 then
+   PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1003.mp3", "", "", 0, 0, Spawn)
+    AddConversationOption(conversation, "What Collections?","WhatCollections")
+   end
+  if HasCollectionsToHandIn(Spawn) then
+     AddConversationOption(conversation, "I have a collection for you.", "dlg_8_1")
+     end
+	AddConversationOption(conversation, "I don't have any at the moment.")
 	StartConversation(conversation, NPC, Spawn, "Hello there!  If you have any collections that you've completed, I can take them off your hands and reward you for your time.  I'm just crazy for collections!")
-
-	-- Collection(s) to hand in
-	--AddConversationOption(conversation, "I have a collection for you.", "dlg_8_1")
-	--AddConversationOption(conversation, "I don't have any at the moment.")
-	--StartConversation(conversation, NPC, Spawn, "Hello there!  If you have any collections that you've completed, I can take them off your hands and reward you for your time.  I'm just crazy for collections!")
-
 end
 
 function dlg_8_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
-	-- no playflavor()
+	HandInCollections(Spawn)
 	AddConversationOption(conversation, "Okay, bye!")
 	StartConversation(conversation, NPC, Spawn, "This is a magnificent find! Here, take this for all your hard work.")
+end
+
+function WhatCollections(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	AddConversationOption(conversation, "I'll keep that in mind.")
+	StartConversation(conversation, NPC, Spawn, "Why, any sort of collection. There's so much out there to find! Just open your eyes and peek under the rocks.  If you find anything interesting, let me have a look. Collecting is the only way I seem to relive my youth!")
 end
 
 function Gather(NPC)
@@ -67,4 +73,9 @@ end
 function stop_gathering(NPC) 
 	GatherSpawn = GetSpawn(NPC, GetheHuggs )		-- get Gethe Huggs
 	SpawnSet(GatherSpawn, "visual_state", "0") 	-- Stop her from gathering
+end
+
+
+function respawn(NPC)
+ spawn(NPC)
 end

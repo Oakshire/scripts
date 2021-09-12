@@ -32,10 +32,7 @@ function hailed(NPC, Spawn)
 
     --if (player has a collection then add a conversation option to hand in a collection
     --end
-    math.randomseed(os.time())
-    local choice = math.random (1, 3)
-    str = tostring(choice)
-
+    local choice = MakeRandomInt(1, 3)
             if choice == 1 then
                     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1003.mp3", "", "hello", 0, 0, Spawn)
                     AddConversationOption(conversation, "What Collections?","WhatCollections")
