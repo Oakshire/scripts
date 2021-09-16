@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-
+SetTempVariable(NPC, "Feeded", 0) 
 end
 
 function hailed(NPC, Spawn)
