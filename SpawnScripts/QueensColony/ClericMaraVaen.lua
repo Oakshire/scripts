@@ -12,7 +12,7 @@ local TheSourceOfEvil = 164
 function spawn(NPC)
 	SetLuaBrain(NPC)
 	SetBrainTick(NPC, 500)
-	--Think(NPC, Spawn)
+	Think(NPC, Spawn)
 	ProvidesQuest(NPC, TheSourceOfEvil)
 end
 
