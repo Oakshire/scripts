@@ -11,3 +11,17 @@
 --     Inflicts 268 poison damage on target instantly and every 4 seconds
 -- If profession other than Predator
 -- If profession other than Rogue
+function cast(Caster, Target, Chance, DmgType, MinVal)
+    local class = GetClass(Target)
+    if class ~= 32 and class ~= 33 and class ~= 34 and class ~= 38 and class ~= 39 and class ~= 40 then
+    AddProc(Target, 3, 18)
+    end
+end
+
+function proc(Caster, Target, Type, Chance, DmgType, MinVal)
+        Say(Caster, "Need Custom Spell")
+end
+
+function remove(Caster, Target)
+    RemoveProc(Target)
+end
