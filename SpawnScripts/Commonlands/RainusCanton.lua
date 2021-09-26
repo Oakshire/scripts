@@ -18,6 +18,7 @@ end
 
 
 function InRange(NPC, Spawn)
+if GetAlignment(Spawn) ~= 1  then    
   if HasCompletedQuest(Spawn, Rainus) then
   ProvidesQuest(NPC, QUEST)
   SetInfoFlag(NPC)
@@ -35,11 +36,12 @@ SetVisualFlag(NPC)
   SetInfoFlag(NPC)
 SetVisualFlag(NPC)
 end
+end
    end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    local choice = math.random(1, 3)
+    local choice = MakeRandomInt(1, 3)
     if choice == 1 then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0, Spawn)
     elseif choice == 2 then
@@ -47,7 +49,7 @@ function hailed(NPC, Spawn)
     else
      PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "", "", 0, 0, Spawn)
     end
-    
+if GetAlignment(Spawn) ~= 1  then
     if not HasQuest(Spawn, QUEST) and not HasCompletedQuest(Spawn, QUEST) then
     if GetQuestStep(Spawn, Rainus) == 1 then
     SetStepComplete(Spawn, Rainus, 1)
@@ -81,7 +83,10 @@ function hailed(NPC, Spawn)
     elseif not HasQuest(Spawn, Rainus) and not  HasCompletedQuest(Spawn, Rainus) then
     PlayFlavor(NPC, "", "Return when you're not so green", "hail", 0, 0, Spawn)
     end
+else
+   PlayFlavor(NPC, "", "You know, the Overlord might hang me for talking to you.", "", 0, 0, Spawn)
 end
+   end
  
 
 function progress0(NPC, Spawn)

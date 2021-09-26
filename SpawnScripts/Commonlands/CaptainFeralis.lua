@@ -14,11 +14,33 @@ local QUEST4 = 414 -- Tesera Valnos quest
 local QUEST5 = 5221 -- Returning to Captain Feralis quest ( Tecera)
 
 function spawn(NPC)
-
+SetPlayerProximityFunction(NPC, 10, "InRange")
 end
+
+
+function InRange(NPC, Spawn)
+if GetAlignment(Spawn) ~= 1  then
+ if HasCompletedQuest(Spawn, CaptainFeralis) then
+    ProvidesQuest(NPC, QUEST)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, QUEST) then
+    ProvidesQuest(NPC, QUEST2)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, QUEST3) then
+    ProvidesQuest(NPC, QUEST4)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+  end
+   end
+
+
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+if GetAlignment(Spawn) ~= 1  then
     local choice = MakeRandomInt(1, 3)
     if HasQuest(Spawn, QUEST2) or HasCompletedQuest(Spawn, QUEST2) and not HasCompletedQuest(Spawn, QUEST3) or HasCompletedQuest(Spawn, QUEST4) or HasQuest(Spawn, QUEST4) then
         if choice == 1 then
@@ -45,9 +67,11 @@ function hailed(NPC, Spawn)
 	    QUEST5_COMPLETE(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, QUEST5) then
 	    PlayFlavor(NPC, "", "Good work. The Overlord will hear of you.", "", 0, 0, Spawn)
-end
    end
-
+else
+  PlayFlavor(NPC, "", "I see no need to speak to you.", "", 0, 0, Spawn)
+   end
+end
 
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

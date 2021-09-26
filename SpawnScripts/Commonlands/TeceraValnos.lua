@@ -28,6 +28,7 @@ end
 
 
 function InRange(NPC, Spawn)
+if GetAlignment(Spawn) ~= 1  then    
 if not HasCompletedQuest(Spawn, QUEST) then
 ProvidesQuest(NPC, QUEST2)
 SetInfoFlag(NPC)
@@ -41,7 +42,8 @@ ProvidesQuest(NPC, QUEST4)
 SetInfoFlag(NPC)
 SetVisualFlag(NPC)
 end
-   end
+  end
+     end
 
 
 
@@ -64,6 +66,8 @@ function hailed(NPC, Spawn)
 	QUEST3_FINISH(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, QUEST) and HasCompletedQuest(Spawn, QUEST2) and HasCompletedQuest(Spawn, QUEST3) and HasQuest(Spawn, QUEST4) or HasCompletedQuest(Spawn, QUEST4) then
 	PlayFlavor(NPC, "", "Thank you, friend.", "salute", 0, 0, Spawn)
+	elseif not HasQuest(Spawn, QUEST) and  not HasCompletedQuest(Spawn, QUEST) and not HasQuest(Spawn, QUEST2) and not  HasCompletedQuest(Spawn, QUEST2) and not HasQuest(Spawn, QUEST3) and not  HasCompletedQuest(Spawn, QUEST3) and not HasQuest(Spawn, QUEST4) and not  HasCompletedQuest(Spawn, QUEST4) then
+	PlayFlavor(NPC, "", "Talk to me later. once you've got your priorities sorted out.", "", 0, 0, Spawn)
 end
    end
 

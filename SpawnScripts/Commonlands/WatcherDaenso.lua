@@ -15,6 +15,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+if GetAlignment(Spawn) ~= 1  then	
 	if not HasQuest(Spawn, InHisName) and not HasCompletedQuest(Spawn, InHisName) then
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "What is required of me?", "Option1")
@@ -24,7 +25,10 @@ function hailed(NPC, Spawn)
 	PlayFlavor(NPC, "", "Made quite a name for yourself, hmm?", "", 0, 0, Spawn)
 	else
 	PlayFlavor(NPC, "", "Citizen.", "nod", 0, 0, Spawn)
-end
+	end
+else
+    PlayFlavor(NPC, "", "Be gone. Worm!", "", 0, 0, Spawn)
+    end
    end
 
 

@@ -25,6 +25,7 @@ end
 
 
 function InRange(NPC, Spawn)
+if GetAlignment(Spawn) == 0   then
   if not HasCompletedQuest(Spawn, SpeckledRattlerVenom) then
   ProvidesQuest(NPC, SpeckledRattlerVenom)
   SetInfoFlag(NPC)
@@ -45,11 +46,13 @@ SetVisualFlag(NPC)
   ProvidesQuest(NPC, Rainus)
   SetInfoFlag(NPC)
 SetVisualFlag(NPC)
+  end
 end
    end
 
 
 function hailed(NPC, Spawn)
+if GetAlignment(Spawn) == 0   then
 	if HasCompletedQuest(Spawn, SpeckledRattlerVenom) and not HasQuest(Spawn, BeetleShells) and not HasCompletedQuest(Spawn, BeetleShells) then
 		Option2(NPC, Spawn)
 	elseif GetQuestStep(Spawn, SpeckledRattlerVenom) == 1 then
@@ -85,6 +88,9 @@ function hailed(NPC, Spawn)
 	elseif HasQuest(Spawn, InHisName) then
 	    SetStepComplete(Spawn, InHisName, 1)
 	end
+elseif GetAlignment(Spawn) < 0   then
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1022.mp3", "You are less then welcome here.", "", 0, 0, Spawn)
+    end
 end
 
 function dlg_2(NPC, Spawn)
