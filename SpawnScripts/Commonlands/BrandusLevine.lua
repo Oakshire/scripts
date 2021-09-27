@@ -14,26 +14,38 @@ local  CollectingOnWhatIsEarned = 423
 
 
 function spawn(NPC)
-ProvidesQuest(NPC, TheMysteriousMissingShipment)
-ProvidesQuest(NPC, StartingtheNegotiations)
-ProvidesQuest(NPC, FinishingtheNegotiations)
+SetPlayerProximityFunction(NPC, 10, "InRange")    
 end
 
-
+function InRange(NPC, Spawn)
+if not HasCompletedQuest(Spawn, TheMysteriousMissingShipment) then
+ProvidesQuest(NPC, TheMysteriousMissingShipment)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, TheMysteriousMissingShipment) then
+ProvidesQuest(NPC, StartingtheNegotiations)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, StartingtheNegotiations) then
+ProvidesQuest(NPC, FinishingtheNegotiations)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+   end
 
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     if not HasQuest(Spawn, TheMysteriousMissingShipment) and not HasCompletedQuest(Spawn, TheMysteriousMissingShipment) then
-    if GetAlignment(Spawn) ~= 1  then
+    if GetDeity(Spawn) ~= 1  then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3", "", "ponder", 0, 0, Spawn)
     AddConversationOption(conversation, "Another person who needs help?  Fine, what do you need?", "dlg1")
     AddConversationOption(conversation, "I'll help you only if it pays well.", "dlg3")
     AddConversationOption(conversation, "I would be happy to help you.", "dlg2")
     AddConversationOption(conversation, "You have to be kidding me.  No thanks, find another lackey, I'm busy with my own important things.")
     StartConversation(conversation, NPC, Spawn, "Hrmmm... You do have the look of a citizen about you.  You're not just random rabble from the streets.  I could use your help.")
-    elseif GetAlignment(Spawn) == 1 then
+    elseif GetDeity(Spawn) == 1 then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3", "", "peer", 0, 0, Spawn)    
 	AddConversationOption(conversation, "No, you have it wrong I'm a loyal Freeport citizen.", "qey_citizen")
 	AddConversationOption(conversation, "I'm touring the countryside looking for evil to smite.  You wouldn't happen to be evil would you?", "qey_citizen2")

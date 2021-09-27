@@ -20,7 +20,7 @@ function spawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-if GetAlignment(Spawn) ~= 1  then
+if GetDeity(Spawn) ~= 1  then
   if HasCompletedQuest(Spawn, QUEST) then
   ProvidesQuest(NPC, QUEST2)
   elseif HasCompletedQuest(Spawn,  QUEST2) then
@@ -41,7 +41,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-if GetAlignment(Spawn) ~= 1  then
+if GetDeity(Spawn) ~= 1  then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1048.mp3", "", "", 0, 0, Spawn)
 	if not HasQuest(Spawn, QUEST) and not HasCompletedQuest(Spawn, QUEST) or HasQuest(Spawn, QUEST6) or HasCompletedQuest(Spawn, QUEST6) then
 	local choice = MakeRandomInt(1, 2)
@@ -78,7 +78,7 @@ if GetAlignment(Spawn) ~= 1  then
      elseif GetQuestStep(Spawn, QUEST5) == 6 or HasCompletedQuest(Spawn, QUEST5) and not HasCompletedQuest(Spawn, QUEST6) and not HasQuest(Spawn, QUEST6) then
      QUEST5_FINISH(NPC, Spawn)
      end
-else
+elseif GetDeity(Spawn) == 1 then
       PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1048.mp3", "Don't talk to me", 0, 0, Spawn)
       end
 end

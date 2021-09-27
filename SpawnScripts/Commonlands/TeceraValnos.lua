@@ -28,7 +28,7 @@ end
 
 
 function InRange(NPC, Spawn)
-if GetAlignment(Spawn) ~= 1  then    
+if GetDeity(Spawn) ~= 1  then    
 if not HasCompletedQuest(Spawn, QUEST) then
 ProvidesQuest(NPC, QUEST2)
 SetInfoFlag(NPC)
