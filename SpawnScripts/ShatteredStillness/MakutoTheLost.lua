@@ -1,18 +1,20 @@
 --[[
-    Script Name    : SpawnScripts/ShatteredStillnessEpic/achaoticelemental.lua
+    Script Name    : SpawnScripts/ShatteredStillness/MakutoTheLost.lua
     Script Author  : Neveruary
-    Script Date    : 2021.10.04 01:10:11
-    Script Purpose : Governs behavior of chaotic elemental adds in Shattered Stillness: Epic.
-    Script Notes   : Swirling Cloud of Blood and Stunning Shards need implementation.
+    Script Date    : 2021.10.04 11:10:52
+    Script Purpose : Governs the behavior of Makuto the Lost in Shattered Stillness: Epic
+    Script Notes   : Bolt of Fire needs implementation.
 --]]
 
-spells = {30159} -- Swirling Cloud of Blood, Stunning Shards}
+spells = {230163, 230106, 2000476}  -- Bolt Of Fire, Frost Shield?
 
 function spawn(NPC)
-    AddTimer(NPC, 1000, "spellLoop")
 end
 
-function spellLoop(NPC, Spawn) -- Loopback function for spellcasts.
+function aggro(NPC, Spawn)
+end
+
+    function spellLoop(NPC, Spawn) -- Loopback function for spellcasts.
     AddTimer(NPC, math.random(1500,2500), "spellChoice")
 end
 
