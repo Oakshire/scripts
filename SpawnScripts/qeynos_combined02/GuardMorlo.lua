@@ -30,7 +30,7 @@ function respawn(NPC)
 end
 
 function EmoteLoop(NPC)
-        local choice = MakeRandomInt(1,2)
+    local choice = MakeRandomInt(1,2)
 
         if choice == 1 then
                 PlayAnimation(NPC, 891)
@@ -38,6 +38,6 @@ function EmoteLoop(NPC)
                 PlayAnimation(NPC, 13008)
         end
 
-        local time = MakeRandomInt(30000,40000)         
-        AddTimer(NPC, time, "EmoteLoop")
+    local time = MakeRandomInt(30000,40000)         
+    AddTimer(NPC, time, "EmoteLoop")
 end

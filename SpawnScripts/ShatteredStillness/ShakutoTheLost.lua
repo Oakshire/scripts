@@ -4,6 +4,7 @@
     Script Date    : 2021.10.04 11:10:52
     Script Purpose : Governs the behavior of Shakuto the Lost in Shattered Stillness: Epic
     Script Notes   : Shock of Poison needs implementation.
+    Boss Mechanics : Casts custom spells every so often. Linked with Makuto the lost. 
 --]]
 
 spells = {240107, 240003, 2000476}  -- Shock of Poison
