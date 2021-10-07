@@ -8,7 +8,7 @@
 --]]
 
 -- spells = {Glare of Eradication, Gaze of Writhing Agony, Gaze of Oxulius, Gaze of Destruction}
-adds = {302038, 302036, 302037}
+adds = {5560004, 5560005, 5560006}
 
 function spawn(NPC)
 SetTempVariable(NPC, "addSpawn", "nil")
@@ -56,22 +56,26 @@ function summonAdds(NPC, Spawn)
     local y = GetY(NPC)
     local z = GetZ(NPC)
     local zone = GetZone(NPC)
-    if GetTempVariable(NPC, "addSpawn") == "1" then
-        SetTempVariable(NPC, "addSpawn", "0")
-        AddTimer(NPC, 5000, "overlordConvo1")
-        for k,v in pairs(adds) do
-            newSpawn = SpawnByLocationID(zone, v)
-            end
+        if GetTempVariable(NPC, "addSpawn") == "1" then
+            SetTempVariable(NPC, "addSpawn", "0")
+            AddTimer(NPC, 2500, "overlordConvoStart")
+            newSpawn1 = SpawnMob(zone, 5560004, false, x, y, z)
+            newSpawn2 = SpawnMob(zone, 5560005, false, x, y, z)
+            newSpawn3 = SpawnMob(zone, 5560006, false, x, y, z)
         end
-    end
+end
 
 function hailed(NPC, Spawn)
+end
+
+function overlordConvoStart(NPC, Spawn)
+    AddTimer(NPC, 2500, "overlordConvo1")
 end
 
 function overlordConvo1(NPC, Spawn)
     local zone = GetZone(NPC)
     local borxx = GetSpawnByLocationID(zone, 302038)
-    AddTimer(borxx, 2000, "borxxConvo1", 1, Spawn)
+    AddTimer(borxx, 2000, "borxxConvoStart", 1, Spawn)
     Say(NPC, "Borxx, you must aid me now.  Interlopers have threatened my plans, you owe me!")
 end
 

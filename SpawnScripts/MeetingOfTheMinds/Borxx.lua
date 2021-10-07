@@ -31,11 +31,15 @@ function spellChoice(NPC, Spawn) -- select a spell from table.
     AddTimer(NPC, math.random(1500, 2500), "spellLoop") 
 end
 
+function borxxConvoStart(NPC, Spawn)
+    AddTimer(NPC, 1000, "borxxConvo1")
+end
+
 function borxxConvo1(NPC, Spawn)
+    Say(NPC, "You lack dedication. I owe you nothing.")
     local zone = GetZone(NPC)
     local overlord = GetSpawnByLocationID(zone,302035)
     AddTimer(overlord, 2000, "overlordConvo2")
-    Say(NPC, "You lack dedication. I owe you nothing.")
 end
 
 function borxxConvo2(NPC, Spawn)
