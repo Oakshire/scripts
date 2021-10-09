@@ -19,23 +19,19 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
     FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
+	conversation = CreateConversation()
 	PlayFlavor(QuestGiver, "voiceover/english/fippy_darkpaw,_the_4th/qey_catacomb_epic01/fippydarkpaw006.mp3", "", "", 2198522684, 4136693998, Player)
-	AddConversationOption(conversation, "Fine. What's the task.")
+	AddConversationOption(conversation, "Fine. What's the task.", "task")
 	StartConversation(conversation, QuestGiver, Player, "I'll make a deal with you, scuffler ... you perform a little task for me,  and I'll feed you a few more crumbs to whet your appetite.")
+	if not HasItem(Player, 9897) then
 	GiveQuestItem(Quest, Player, "I listened to Fippy Darkpaw's instructions.", 9897)
 end
+   end
 
 
-function task(Quest, QuestGiver, Player)
-SetStepComplete(Player, 5368, 1)
-GiveQuestItem(Quest, Player, "I listened to Fippy Darkpaw's instructions.", 9897)    
-FaceTarget(QuestGiver, Player)
-local conversation = CreateConversation()   
-PlayFlavor(QuestGiver, "voiceover/english/fippy_darkpaw,_the_4th/qey_catacomb_epic01/fippydarkpaw007.mp3", "", "", 72606259, 3405108525, Spawn)
-AddConversationOption(conversation, "I will be back.")
-StartConversation(conversation, Player, QuestGiver, "Take this manifest. Our Qeynosian clients must sign it! The manifest contains all the information you need to complete your task. Return it to me when you're done. Now off with ya!")
-end
+
+
+
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

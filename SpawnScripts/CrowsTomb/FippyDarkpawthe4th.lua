@@ -23,6 +23,18 @@ function hailed(NPC, Spawn)
     StartConversation(conversation, NPC, Spawn, "What took you so long? You nearly lost me some coin.")
 end
 
+function task(NPC, Spawn)
+if GetQuestStep(Spawn, TheMotleyMerchantManifest) == 1 then
+SetStepComplete(Spawn, TheMotleyMerchantManifest, 1)
+end
+FaceTarget(NPC, Spawn)
+conversation = CreateConversation()   
+PlayFlavor(NPC, "voiceover/english/fippy_darkpaw,_the_4th/qey_catacomb_epic01/fippydarkpaw007.mp3", "", "", 72606259, 3405108525, Spawn)
+AddConversationOption(conversation, "I will be back.")
+StartConversation(conversation, Spawn, NPC, "Take this manifest. Our Qeynosian clients must sign it! The manifest contains all the information you need to complete your task. Return it to me when you're done. Now off with ya!")
+end
+
+
 
 
 
