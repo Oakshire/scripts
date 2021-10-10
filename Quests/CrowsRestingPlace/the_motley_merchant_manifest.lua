@@ -19,7 +19,7 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
     FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
+	local conversation = CreateConversation()
 	PlayFlavor(QuestGiver, "voiceover/english/fippy_darkpaw,_the_4th/qey_catacomb_epic01/fippydarkpaw006.mp3", "", "", 2198522684, 4136693998, Player)
 	AddConversationOption(conversation, "Fine. What's the task.", "task")
 	StartConversation(conversation, QuestGiver, Player, "I'll make a deal with you, scuffler ... you perform a little task for me,  and I'll feed you a few more crumbs to whet your appetite.")
