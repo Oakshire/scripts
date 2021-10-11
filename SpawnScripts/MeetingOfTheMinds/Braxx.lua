@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/MeetingOfTheMinds/Braxx.lua
     Script Author  : Neveruary
     Script Date    : 2021.10.05 12:10:19
-    Script Purpose : Governs the behavior of Braxx in A Meeting of the Minds. Braxx is private until summoned by Borxx.
+    Script Purpose : Governs the behavior of Braxx in A Meeting of the Minds.
                    : Spell functions de-activated pending proper spell implementation on mobs.
 --]]
 
@@ -20,7 +20,6 @@ function spellLoop(NPC, Spawn) -- referred from aggro. Loopback function for spe
 end
 
 function spellChoice(NPC, Spawn) -- select a spell from table.
-    Shout(NPC, "spellChoice firing.")
     local hated = GetMostHated(NPC) 
         if hated ~= nil then 
             FaceTarget(NPC, hated) 

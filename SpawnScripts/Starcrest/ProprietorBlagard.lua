@@ -7,6 +7,7 @@
 --]]
 
 local AnIntriguingEye = 5366
+local TheMotleyMerchantManifest = 5368
 
 function spawn(NPC)
 end
@@ -21,6 +22,8 @@ function hailed(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/proprietor_blagard/qey_village02/blagard000.mp3", "", "", 3622450968, 3253656744, Spawn)
 	if GetQuestStep(Spawn, AnIntriguingEye) == 7 then
 	AddConversationOption(conversation, "I am looking for the coin you swiped from Penwiggle.  ", "Option1")
+	elseif GetQuestStep(Spawn, TheMotleyMerchantManifest) == 4 then
+	AddConversationOption(conversation, "I believe you need to sign this manifest. ", "Option5")
 	end
 	AddConversationOption(conversation, "No thanks")
 	StartConversation(conversation, NPC, Spawn, "Step up to the bar, my friend. Never has coin been better spent.")
@@ -52,6 +55,16 @@ function Option4(NPC, Spawn)
 	AddConversationOption(conversation, "Constable Arathur you say? Thanks and farewell. ")
 	StartConversation(conversation, NPC, Spawn, "I prefer to keep my supply of rarities flowing, so I'll keep my mouth shut about that. As far as I know, you might be a mole of Constable Arathur.")
 end
+
+function Option5(NPC, Spawn)
+    SetStepComplete(Spawn, TheMotleyMerchantManifest, 4)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/proprietor_blagard/qey_village02/blagard004.mp3", "", "duck", 732322808, 602463247, Spawn)
+	AddConversationOption(conversation, "I'll be going now.")
+	StartConversation(conversation, NPC, Spawn, "You again! I see the Hand has made use of you rather than making a training dummy outta you. Now, shove off before the guards come waltzing over to see what all the hush hush is about.")
+end
+
 
 
 

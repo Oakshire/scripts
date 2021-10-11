@@ -51,17 +51,13 @@ end
 
 
 function summonAdds(NPC, Spawn)
-    Say("add summon running.")
     local x = GetX(NPC)
     local y = GetY(NPC)
     local z = GetZ(NPC)
     local zone = GetZone(NPC)
         if GetTempVariable(NPC, "addSpawn") == "1" then
             SetTempVariable(NPC, "addSpawn", "0")
-            AddTimer(NPC, 2500, "overlordConvoStart")
-            newSpawn1 = SpawnMob(zone, 5560004, false, x, y, z)
-            newSpawn2 = SpawnMob(zone, 5560005, false, x, y, z)
-            newSpawn3 = SpawnMob(zone, 5560006, false, x, y, z)
+            AddTimer(NPC, 4000, "overlordConvoStart")
         end
 end
 
@@ -74,36 +70,36 @@ end
 
 function overlordConvo1(NPC, Spawn)
     local zone = GetZone(NPC)
-    local borxx = GetSpawnByLocationID(zone, 302038)
-    AddTimer(borxx, 2000, "borxxConvoStart", 1, Spawn)
+    local borxx = GetSpawn(NPC, 5560006)
+    AddTimer(borxx, 2000, "borxxConvoStart")
     Say(NPC, "Borxx, you must aid me now.  Interlopers have threatened my plans, you owe me!")
 end
 
 function overlordConvo2(NPC, Spawn)
     local zone = GetZone(NPC)
-    local borxx = GetSpawnByLocationID(zone, 302038)
-    AddTimer(borxx, 2000, "borxxConvo2", 1, Spawn)
+    local borxx = GetSpawn(NPC, 5560006)
+    AddTimer(borxx, 2000, "borxxConvo2")
     Say(NPC, "I am not to be taken lightly. You don't understand! The plan benefits us all.  You must aid me NOW!")
 end
 
 function overlordConvo3(NPC, Spawn)
     local zone = GetZone(NPC)
-    local borxx = GetSpawnByLocationID(zone, 302038)
-    AddTimer(borxx, 2000, "borxxConvo3", 1, Spawn)
+    local borxx = GetSpawn(NPC, 5560006)
+    AddTimer(borxx, 2000, "borxxConvo3")
     Say(NPC, "If they are audacious enough to attack me, then what is to prevent them from treating you the same way?!  You must aid me NOW!")
 end
 
 function overlordConvo4(NPC, Spawn)
     local zone = GetZone(NPC)
-    local borxx = GetSpawnByLocationID(zone, 302038)
-    AddTimer(borxx, 2000, "borxxConvo4", 1, Spawn)
+    local borxx = GetSpawn(NPC, 5560006)
+    AddTimer(borxx, 2000, "borxxConvo4")
     Say(NPC, "You know full well I cannot agree to that! Be reasonable, I can make it worth your while! I must have aid NOW!")
 end
 
 function overlordConvo5(NPC, Spawn)
     local zone = GetZone(NPC)
-    local borxx = GetSpawnByLocationID(zone, 302038)
-    AddTimer(borxx, 2000, "borxxConvo5", 1, Spawn)
+    local borxx = GetSpawn(NPC, 5560006)
+    AddTimer(borxx, 2000, "borxxConvo5")
     Say(NPC, "Okay! I will meet your demands. Time grows short; I need you now!")
 end
 

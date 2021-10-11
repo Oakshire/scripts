@@ -7,6 +7,7 @@
 --]]
 
 local AnIntriguingEye = 5366
+local TheMotleyMerchantManifest = 5368
 
 function spawn(NPC)
 
@@ -27,6 +28,8 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "I seek a coin with an eye on it.", "Option2")
 	elseif GetQuestStep(Spawn, 	AnIntriguingEye) == 6 then
 	AddConversationOption(conversation, "Here are your items.  ", "Option4")
+	elseif GetQuestStep(Spawn, TheMotleyMerchantManifest) == 3 then
+	AddConversationOption(conversation, "I believe you need to sign this manifest. ", "Option7")    
 	end
 	AddConversationOption(conversation, "Gornit? That's an odd name. ", "Option1")
 	AddConversationOption(conversation, "I won't bother you. Bye.")
@@ -86,6 +89,13 @@ end
 
 
 
+function Option7(NPC, Spawn)
+    SetStepComplete(Spawn, TheMotleyMerchantManifest, 3)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Thank you.")
+	StartConversation(conversation, NPC, Spawn, "Ah! Yes, of course ... I need to sign for that quill delivery. Yep! That's all it is. Simple ... legal ... quills. ")
+end
 
 
 

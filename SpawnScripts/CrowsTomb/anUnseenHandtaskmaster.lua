@@ -6,6 +6,9 @@
                    : 
 --]]
 
+
+local TheMotleyMerchantManifest = 5368
+
 function spawn(NPC)
 	SetTempVariable(NPC, "spoken", "1")
 end
@@ -20,6 +23,9 @@ function hailed(NPC, Spawn)
     PlayFlavor(NPC, "", "Did you not hear me, I told you to clean.", "", 1689589577, 4560189, Spawn)
     elseif GetTempVariable(NPC, "spoken") == "3" then
     PlayFlavor(NPC, "", "Well since you finished cleaning up here, head to the back and see if there's anything you can do for them.", "", 1689589577, 4560189, Spawn)
+    elseif HasCompletedQuest(Spawn, TheMotleyMerchantManifest) then
+    PlayFlavor(NPC, "", "Welcome back, good work on that last task.", "", 1689589577, 4560189, Spawn)
+    
 end
    end
 
@@ -68,6 +74,7 @@ AddTimer(NPC, 500, "fippy_runaway", 1, Spawn)
 end
 
 function fippy_runaway(NPC, Spawn)
+if not HasQuest(Spawn, TheMotleyMerchantManifest) and not HasCompletedQuest(Spawn, TheMotleyMerchantManifest) then
 local zone = GetZone(Spawn)
 local Fippy = GetSpawnByLocationID(zone, 434509)
 MoveToLocation(Fippy, 18.47, 1.17, 0.28, 6)
@@ -76,6 +83,7 @@ MoveToLocation(Fippy, -16.11, -0.39, -8.09, 6)
 MoveToLocation(Fippy, -21.92, 0.00, -1.78, 6)
 AddTimer(NPC, 13000, "despawn_fippy", 1, Spawn)
 end
+   end
   
  function despawn_fippy(NPC, Spawn)
  local zone = GetZone(Spawn)

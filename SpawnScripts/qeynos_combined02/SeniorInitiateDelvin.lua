@@ -556,7 +556,7 @@ function and_back_again(NPC)
 end
 
 function end_of_trip(NPC)
---  This function is needed to give neough delay for the emote to trigger
+--  This function is needed to give enough delay for the emote to trigger
     AddTimer(NPC, math.random(1000,1500), "extra_delay_for_bow")  
 end
 

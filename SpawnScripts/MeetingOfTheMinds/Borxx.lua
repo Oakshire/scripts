@@ -10,7 +10,6 @@
 -- spells = {Gaze, Glare of Eradication, Gaze of Commandment, Gaze of Writhing Agony}
 
 function spawn(NPC)
-
 end
 
 function aggro(NPC, Spawn)
@@ -22,7 +21,6 @@ function spellLoop(NPC, Spawn) -- referred from aggro. Loopback function for spe
 end
 
 function spellChoice(NPC, Spawn) -- select a spell from table.
-    Shout(NPC, "spellChoice firing.")
     local hated = GetMostHated(NPC) 
         if hated ~= nil then 
             FaceTarget(NPC, hated) 
@@ -36,35 +34,48 @@ function borxxConvoStart(NPC, Spawn)
 end
 
 function borxxConvo1(NPC, Spawn)
-    Say(NPC, "You lack dedication. I owe you nothing.")
     local zone = GetZone(NPC)
     local overlord = GetSpawnByLocationID(zone,302035)
-    AddTimer(overlord, 2000, "overlordConvo2")
+    FaceTarget(NPC, Spawn)
+    Say(NPC, "You lack dedication. I owe you nothing.")
+    AddTimer(overlord, 3500, "overlordConvo2")
 end
 
 function borxxConvo2(NPC, Spawn)
-    Say(NPC, "Your scheming will lead to ruin.  If you wish my aid, you know the price.")
     local zone = GetZone(NPC)
     local overlord = GetSpawnByLocationID(zone,302035)
-    AddTimer(overlord, 2000, "overlordConvo3")
+    FaceTarget(NPC, Spawn)
+    Say(NPC, "Your scheming will lead to ruin.  If you wish my aid, you know the price.")
+    AddTimer(overlord, 3500, "overlordConvo3")
 end
 
 function borxxConvo3(NPC, Spawn)
-    Say(NPC, "If you wish my aid, you know the price.")
     local zone = GetZone(NPC)
     local overlord = GetSpawnByLocationID(zone,302035)
-    AddTimer(overlord, 2000, "overlordConvo4")
+    FaceTarget(NPC, Spawn)
+    Say(NPC, "If you wish my aid, you know the price.")
+    AddTimer(overlord, 3500, "overlordConvo4")
 end
 
 function borxxConvo4(NPC, Spawn)
-    Say(NPC, "If you wish my aid, you know the price.")
     local zone = GetZone(NPC)
     local overlord = GetSpawnByLocationID(zone,302035)
-    AddTimer(overlord, 2000, "overlordConvo5")
+    FaceTarget(NPC, Spawn)    
+    Say(NPC, "If you wish my aid, you know the price.")
+    AddTimer(overlord, 3500, "overlordConvo5")
 end
 
 function borxxConvo5(NPC, Spawn)
+    local zone = GetZone(NPC)
+    local overlord = GetSpawnByLocationID(zone,302035)
+    local hated = GetMostHated(overlord)
+    local braxx = GetSpawn(NPC, 5560004)
+    local brixx = GetSpawn(NPC, 5560005)
+    FaceTarget(NPC, Spawn)    
     Say(NPC, "So be it.")
+    Attack(NPC, hated)
+    Attack(braxx, hated)
+    Attack(brixx, hated)
 end
 
 function hailed(NPC, Spawn)

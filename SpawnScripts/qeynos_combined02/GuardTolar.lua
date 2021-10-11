@@ -8,8 +8,29 @@
 
 function spawn(NPC)
     SetPlayerProximityFunction(NPC, 15, "InRange")
+    AddTimer(NPC, 5000, "TimeDelay")
+end
+
+function TimeDelay(NPC)
+
+local test = GetSpawnID(NPC)
+
+--Say(NPC, "Test")
+--       Say(NPC, "My DB ID is: " .. GetSpawnID(NPC))
+
+
+   	if GetSpawnLocationID(NPC) == 133772661 then
+        SpawnByLocationID(GetZone(NPC), 133772662)
+        Say(NPC, "133772661")
+    else
+        SpawnByLocationID(GetZone(NPC), 133772659)
+        Say(NPC, "Other")
+    end
+
     AddTimer(NPC, 3000, "EmoteLoop")
 end
+
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -30,6 +51,7 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
+--[[
 function death(NPC)
     AddTimer(NPC, 300000, "ResetGuardTolar", 1, Spawn)
 end
@@ -59,6 +81,7 @@ function EmoteLoop(NPC)
     local time = MakeRandomInt(30000,40000)         
     AddTimer(NPC, time, "EmoteLoop")
 end
+--]]
 
 function InRange(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

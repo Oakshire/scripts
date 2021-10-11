@@ -19,6 +19,8 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "I refuse to speak to gnolls!")
 	if not HasQuest(Spawn, TheMotleyMerchantManifest) and not HasCompletedQuest(Spawn, TheMotleyMerchantManifest) then
 	AddConversationOption(conversation, "You're a gnoll! ", "Option1")
+	elseif GetQuestStep(Spawn, TheMotleyMerchantManifest) == 8 then
+	AddConversationOption(conversation, "I've returned with your completed manifest.", "Option6")
 	end
     StartConversation(conversation, NPC, Spawn, "What took you so long? You nearly lost me some coin.")
 end
@@ -31,7 +33,7 @@ FaceTarget(NPC, Spawn)
 local conversation = CreateConversation()   
 PlayFlavor(NPC, "voiceover/english/fippy_darkpaw,_the_4th/qey_catacomb_epic01/fippydarkpaw007.mp3", "", "", 72606259, 3405108525, Spawn)
 AddConversationOption(conversation, "I will be back.")
-StartConversation(conversation, Spawn, NPC, "Take this manifest. Our Qeynosian clients must sign it! The manifest contains all the information you need to complete your task. Return it to me when you're done. Now off with ya!")
+StartConversation(conversation, NPC, Spawn , "Take this manifest. Our Qeynosian clients must sign it! The manifest contains all the information you need to complete your task. Return it to me when you're done. Now off with ya!")
 end
 
 
@@ -85,6 +87,26 @@ function Option5(NPC, Spawn)
 	AddConversationOption(conversation, "Is there any way to get some answers around here.", "offer")
 	StartConversation(conversation, NPC, Spawn, "Please! Don't make me laugh. You may have earned my respect, but you haven't earned my trust. ")
 end
+
+function Option6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+   PlayFlavor(NPC, "voiceover/english/fippy_darkpaw,_the_4th/qey_catacomb_epic01/fippydarkpaw008.mp3", "", "", 3397253887, 1119158845, Spawn)
+	AddConversationOption(conversation, "What's to keep me from reporting you to the Qeynos Guard?", "Option7")
+	StartConversation(conversation, NPC, Spawn, "Good work. Maybe someday you'll earn coin but not today. Now run along ... back to the safety of the city streets.")
+end
+
+function Option7(NPC, Spawn)
+    SetStepComplete(Spawn, TheMotleyMerchantManifest, 8)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/fippy_darkpaw,_the_4th/qey_catacomb_epic01/fippydarkpaw009.mp3", "", "", 3745634529, 3662683774, Spawn)
+	AddConversationOption(conversation, "I get the picture.")
+	StartConversation(conversation, NPC, Spawn, "Oh! I forgot to mention ... we took the liberty of forging your signature on the merchant manifest. Many a day in the dungeons for you, should they ever find it. ")
+end
+
+
+
 
 function offer(NPC, Spawn)
 OfferQuest(NPC, Spawn, TheMotleyMerchantManifest)

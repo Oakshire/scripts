@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/MeetingOfTheMinds/strangeguardian.lua
     Script Author  : Neveruary
     Script Date    : 2021.10.05 01:10:31
-    Script Purpose : 
+    Script Purpose : Governs behavior for a strange guardian in Meeting of the Minds.
                    : 
 --]]
 
