@@ -279,8 +279,8 @@ function ReturnToSpawnPoint(NPC, Spawn)
 
 end
 
-function small_talk(NPC, player)
-    Dialog.New(NPC, player)
+function small_talk(NPC, Spawn)
+    Dialog.New(NPC, Spawn)
     Dialog.AddDialog(
         "I am fine, just... after the last pickup I have been working extra hard, since Vim said she would give me the piece of Luclin she found.")
     Dialog.AddVoiceover("voiceover/english/ingrid/boat_06p_tutorial02/ingrid_0_002.mp3", 3891218598, 1657063801)
@@ -288,8 +288,8 @@ function small_talk(NPC, player)
     Dialog.Start()
 end
 
-function vim_who(NPC, player)
-    Dialog.New(NPC, player)
+function vim_who(NPC, Spawn)
+    Dialog.New(NPC, Spawn)
     Dialog.AddDialog(
         "Yes, yes, Vim. The merchant over there. She found a small piece of the moon and is having me work for it. Maybe you can go buy it from her for me?")
     Dialog.AddVoiceover("voiceover/english/ingrid/boat_06p_tutorial02/ingrid_0_003.mp3", 3050752668, 1437910974)
@@ -297,29 +297,29 @@ function vim_who(NPC, player)
     Dialog.Start()
     vim = GetRandomSpawnByID(NPC, 270007)
     FaceTarget(NPC, vim)
-    AddTimer(NPC, 3000, "turn_towards_player", 1, player)
+    AddTimer(NPC, 3000, "turn_towards_player", 1, Spawn)
 end
 
-function turn_towards_player(NPC, player)
-    FaceTarget(NPC, player)
+function turn_towards_player(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
 end
 
-function no_money(NPC, player)
-    Dialog.New(NPC, player)
+function no_money(NPC, Spawn)
+    Dialog.New(NPC, Spawn)
     Dialog.AddDialog("Maybe you have something she will buy. Why don't you go talk to her.")
     Dialog.AddVoiceover("voiceover/english/ingrid/boat_06p_tutorial02/ingrid_0_004.mp3", 3978048706, 2537762235)
     Dialog.AddOption("Sure.", "finished_step_four")
     Dialog.Start()
 end
 
-function finished_step_four(NPC, player)
-    SetTutorialStep(player, 22)
-    SetStepComplete(player, 524, 4)
+function finished_step_four(NPC, Spawn)
+    SetTutorialStep(Spawn, 22)
+    SetStepComplete(Spawn, 524, 4)
 end
 
-function thanks_for_getting_shard(NPC, player)
-    SetStepComplete(player, 524, 6)
-    RemoveItem(player, ShardOfLuclin)
+function thanks_for_getting_shard(NPC, Spawn)
+    SetStepComplete(Spawn, 524, 6)
+    RemoveItem(Spawn, ShardOfLuclin)
 end
 
 function respawn(NPC)
