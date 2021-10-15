@@ -8,7 +8,6 @@
 --]]
 
 -- spells = {Glare of Eradication, Gaze of Writhing Agony, Gaze of Oxulius, Gaze of Destruction}
-adds = {5560004, 5560005, 5560006}
 
 function spawn(NPC)
 SetTempVariable(NPC, "addSpawn", "nil")
@@ -51,12 +50,18 @@ end
 
 
 function summonAdds(NPC, Spawn)
-    local x = GetX(NPC)
-    local y = GetY(NPC)
-    local z = GetZ(NPC)
     local zone = GetZone(NPC)
+    local braxx = GetSpawn(NPC, 5560004)
+    local brixx = GetSpawn(NPC, 5560005)
+    local borxx = GetSpawn(NPC, 5560006)
+    local players = GetPlayersInZone(zone)
         if GetTempVariable(NPC, "addSpawn") == "1" then
             SetTempVariable(NPC, "addSpawn", "0")
+            for k,v in pairs(players) do
+                AddSpawnAccess(braxx, v)
+                AddSpawnAccess(brixx, v)
+                AddSpawnAccess(borxx, v)
+            end
             AddTimer(NPC, 4000, "overlordConvoStart")
         end
 end

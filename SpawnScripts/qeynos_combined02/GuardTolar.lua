@@ -8,29 +8,17 @@
 
 function spawn(NPC)
     SetPlayerProximityFunction(NPC, 15, "InRange")
-    AddTimer(NPC, 5000, "TimeDelay")
-end
-
-function TimeDelay(NPC)
-
-local test = GetSpawnID(NPC)
-
---Say(NPC, "Test")
---       Say(NPC, "My DB ID is: " .. GetSpawnID(NPC))
-
-
-   	if GetSpawnLocationID(NPC) == 133772661 then
-        SpawnByLocationID(GetZone(NPC), 133772662)
-        Say(NPC, "133772661")
-    else
-        SpawnByLocationID(GetZone(NPC), 133772659)
-        Say(NPC, "Other")
-    end
-
+    SpawnCanineWatcher(NPC)
     AddTimer(NPC, 3000, "EmoteLoop")
 end
 
-
+function SpawnCanineWatcher(NPC)
+   	if GetSpawnLocationID(NPC) == 133772661 then
+        SpawnByLocationID(GetZone(NPC), 133772662)
+    else
+        SpawnByLocationID(GetZone(NPC), 133772659)
+    end
+end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -51,22 +39,22 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
---[[
-function death(NPC)
-    AddTimer(NPC, 300000, "ResetGuardTolar", 1, Spawn)
+function death(NPC) -- Removes any companion canine watcher in case a player just kills the guard so the respawned guard doesn't spawn a second watcher
+    AddTimer(NPC, 200000, "ResetCanineWatcher", 1, Spawn)
 end
 
-function ResetGuardTolar(NPC)
+function ResetCanineWatcher(NPC)
     local zone = GetZone(NPC)
-    local spawnChoice = MakeRandomInt(1,3)
+    local canine1 = GetSpawnByLocationID(zone, 133772659) 
+    local canine2 = GetSpawnByLocationID(zone, 133772662)     
 
-        if spawnChoice == 1 then 
-            local guardTolar = SpawnMob(zone, 6600388, false, 515.3297, -20.57685, -290.6479, 230)
-        elseif spawnChoice == 2 then 
-            local guardTolar = SpawnMob(zone, 6600388, false, 514.7665, -20.86097, -292.2155, 230)
-        else
-            local guardTolar = SpawnMob(zone, 6600388, false, 514.8268, -20.40517, -284.834, 269.4219)
-        end
+    if canine1 ~= nil then
+        Despawn(canine1)
+    end
+    
+    if canine2 ~= nil then
+        Despawn(canine2)
+    end    
 end
 
 function EmoteLoop(NPC)
@@ -81,7 +69,6 @@ function EmoteLoop(NPC)
     local time = MakeRandomInt(30000,40000)         
     AddTimer(NPC, time, "EmoteLoop")
 end
---]]
 
 function InRange(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

@@ -103,7 +103,8 @@ function SaluteGuardTolarTimer01(NPC)
 end
 
 function SaluteGuardTolar(NPC)
-    local Tolar = GetSpawn(NPC, 0)
+    local Tolar = GetSpawn(NPC, 6600388)
 	FaceTarget(NPC, Tolar)
     Emote(NPC, "salutes", Tolar)
+    PlayAnimation(NPC, 12167)
 end
