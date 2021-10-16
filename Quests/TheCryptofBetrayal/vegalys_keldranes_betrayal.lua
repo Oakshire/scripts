@@ -12,7 +12,11 @@
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to speak with Vegalys Keldrane's fallen comrade, Adun.", 1, "I must speak with Vegalys Keldrane's three fallen comrades here in the Crypt of Betrayal.", 11, 2010020)
+		AddQuestStepChat(Quest, 2, "I need to speak with Vegalys Keldrane's fallen comrade, Borthen.", 1, "I must speak with Vegalys Keldrane's three fallen comrades here in the Crypt of Betrayal.", 11, 2010025)
+			AddQuestStepChat(Quest, 3, "I need to speak with Vegalys Keldrane's fallen comrade, Vargon.", 1, "I must speak with Vegalys Keldrane's three fallen comrades here in the Crypt of Betrayal.", 11, 2010032)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+			AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -33,25 +37,26 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have spoken with Adun.")
-
-	AddQuestStepChat(Quest, 2, "I need to speak with Vegalys Keldrane's fallen comrade, Borthen.", 1, "I must speak with Vegalys Keldrane's three fallen comrades here in the Crypt of Betrayal.", 11, 2010025)
-	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I spoke with Borthen.")
-
-	AddQuestStepChat(Quest, 3, "I need to speak with Vegalys Keldrane's fallen comrade, Vargon.", 1, "I must speak with Vegalys Keldrane's three fallen comrades here in the Crypt of Betrayal.", 11, 2010032)
-	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I spoke with Vargon.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have spoken with all of Vegalys Keldrane's fallen comrades.  Now I need to speak again with Keldrane himself.")
-
-	AddQuestStepChat(Quest, 4, "Vegalys Keldrane's spirit is within the Crypt of Betrayal.", 1, "I must speak with Vegalys Keldrane.", 11, 2010030)
-	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
+	CheckProgress(Quest, QuestGiver, Player)
 end
+
+function CheckProgress(Quest, QuestGiver, Player)
+    if QuestStepIsComplete(Player, 5371, 1) and QuestStepIsComplete(Player, 5371, 2) and QuestStepIsComplete(Player, 5371, 3) then
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have spoken with all of Vegalys Keldrane's fallen comrades.  Now I need to speak again with Keldrane himself.")
+	AddQuestStepChat(Quest, 4, "Vegalys Keldrane's spirit is within the Crypt of Betrayal.", 1, "I must speak with Vegalys Keldrane.", 11, 2010030)
+	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")    
+end
+   end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around

@@ -20,6 +20,8 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "Who are you?", "Option1")
 	AddConversationOption(conversation, "I do not meddle with the dead.")
 	StartConversation(conversation, NPC, Spawn, "Why am I still held fast to this world?")
+	else
+    PlayFlavor(NPC, "", "", "hail", 0, 0, Spawn)
 	end
 end
 
