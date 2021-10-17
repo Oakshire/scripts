@@ -24,8 +24,60 @@ function waypoints(NPC, Spawn)
 	MoveToLocation(NPC, 586.6, -20.75, -257.61, 2)
 	MoveToLocation(NPC, 567.91, -20.16, -267.01, 2)
 	MoveToLocation(NPC, 551.11, -20.07, -278.67, 2)
-	MoveToLocation(NPC, 535.17, -20.19, -281.03, 2)
-	MoveToLocation(NPC, 521.49, -20.69, -288.62, 2, "FaceGuardTolar")
+	MoveToLocation(NPC, 535.17, -20.19, -281.03, 2, "WalkTowardsTolar")
+end
+
+function WalkTowardsTolar(NPC)
+    local Tolar = GetSpawn(NPC, 6600388)
+	if Tolar ~= nil then 
+        if GetSpawnLocationID(Tolar) == 133772661 then
+    	    MoveToLocation(NPC, 520.53, -20.48, -284.46, 2)	    
+    	else
+	        MoveToLocation(NPC, 519.5, -20.75, -289.63, 2)
+        end
+    end
+
+    AddTimer(NPC, 8000, "FaceGuardTolar") 
+end
+
+function FaceGuardTolar(NPC)
+    local Tolar = GetSpawn(NPC, 6600388)
+	
+	if Tolar ~= nil then 
+	    FaceTarget(NPC, Tolar)
+        AddTimer(NPC, 2000, "SaluteGuardTolar") 
+    end
+end
+
+function SaluteGuardTolar(NPC)
+    local Tolar = GetSpawn(NPC, 6600388)
+	
+	if Tolar ~= nil then 
+--        Emote(NPC, "salutes Guard Tolar")
+        PlayAnimation(NPC, 12167)
+        AddTimer(NPC, 1000, "TolarFacesGuardKaladenth") 
+    end
+end
+
+function TolarFacesGuardKaladenth(NPC)
+    local Tolar = GetSpawn(NPC, 6600388)
+	
+	if Tolar ~= nil then 
+	    FaceTarget(Tolar, NPC)
+        AddTimer(NPC, 500, "TolarSalutesGuardKaladenth") 
+    end
+end
+
+function TolarSalutesGuardKaladenth(NPC)
+    local Tolar = GetSpawn(NPC, 6600388)
+	
+	if Tolar ~= nil then 
+--        Emote(Tolar, "salutes Guard Kaladenth" )
+        PlayAnimation(Tolar, 12167)
+--        AddTimer(NPC, 1000, "TolarFacesGuardKaladenth") 
+    end
+end
+
 --[[	MoveToLocation(NPC, 532.86, -20.72, -295.55, 2, 0)
 	MoveToLocation(NPC, 546.85, -21.18, -306.05, 2, 0)
 	MoveToLocation(NPC, 554.54, -21.68, -313.88, 2, 0)
@@ -98,42 +150,4 @@ function waypoints(NPC, Spawn)
 	MoveToLocation(NPC, 534.96, -20.27, -282.58, 2, 0)
 	MoveToLocation(NPC, 550.78, -19.98, -276.7, 2, 0)
 	MoveToLocation(NPC, 583.18, -20.77, -258.08, 2, 0)
---]]end
-
-function FaceGuardTolar(NPC)
-    local Tolar = GetSpawn(NPC, 6600388)
-	
-	if Tolar ~= nil then 
-	    FaceTarget(NPC, Tolar)
-        AddTimer(NPC, 2000, "SaluteGuardTolar") 
-    end
-end
-
-function SaluteGuardTolar(NPC)
-    local Tolar = GetSpawn(NPC, 6600388)
-	
-	if Tolar ~= nil then 
---        Emote(NPC, "salutes Guard Tolar")
-        PlayAnimation(NPC, 12167)
-        AddTimer(NPC, 1000, "TolarFacesGuardKaladenth") 
-    end
-end
-
-function TolarFacesGuardKaladenth(NPC)
-    local Tolar = GetSpawn(NPC, 6600388)
-	
-	if Tolar ~= nil then 
-	    FaceTarget(Tolar, NPC)
-        AddTimer(NPC, 1000, "TolarSalutesGuardKaladenth") 
-    end
-end
-
-function TolarSalutesGuardKaladenth(NPC)
-    local Tolar = GetSpawn(NPC, 6600388)
-	
-	if Tolar ~= nil then 
---        Emote(Tolar, "salutes Guard Kaladenth" )
-        PlayAnimation(Tolar, 12167)
---        AddTimer(NPC, 1000, "TolarFacesGuardKaladenth") 
-    end
-end
+--]]

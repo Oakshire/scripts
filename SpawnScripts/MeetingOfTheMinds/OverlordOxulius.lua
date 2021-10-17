@@ -9,6 +9,8 @@
 
 -- spells = {Glare of Eradication, Gaze of Writhing Agony, Gaze of Oxulius, Gaze of Destruction}
 
+adds = {5560004, 5560005, 5560006}
+
 function spawn(NPC)
 SetTempVariable(NPC, "addSpawn", "nil")
 end
@@ -22,12 +24,6 @@ function spellLoop(NPC, Spawn) -- Loopback function for spellcasts.
 AddTimer(NPC, math.random(1500,2500), "spellChoice")
 end
 
-function tzkrLoop(NPC, Spawn)
-    if GetTempVariable(NPC, "addSpawn") == "nil" then
-    AddTimer(NPC, 3000, "tzkrCheck")
-end
-end
-
 function spellChoice(NPC, Spawn) -- select a spell from table.
     local hated = GetMostHated(NPC) 
         if hated ~= nil then 
@@ -37,47 +33,45 @@ function spellChoice(NPC, Spawn) -- select a spell from table.
     AddTimer(NPC, math.random(1500, 2500), "spellLoop")
 end
 
+function tzkrLoop(NPC, Spawn)
+    if GetTempVariable(NPC, "addSpawn") == "nil" then -- if we haven't spawned mobs yet, check if tzkr is alive.
+    AddTimer(NPC, 3000, "tzkrCheck")
+    elseif GetTempVariable(NPC, "addSpawn") == "0" then -- this is only set if we spawned mobs. stop checking to conserve cpu.
+end
+end
+
 function tzkrCheck(NPC, Spawn)
-    tkzr = GetSpawn(NPC, 5560002)
-    AddTimer(NPC, 1500, "tzkrLoop")
-    if GetTempVariable(NPC, "addSpawn") == "nil" then
-            if not IsAlive(tkzr) then
-                SetTempVariable(NPC, "addSpawn", "1")
-                AddTimer(NPC, 1000, "summonAdds")
+    tkzr = GetSpawn(NPC, 5560002) -- grab spawn pointer
+    AddTimer(NPC, 1500, "tzkrLoop") -- start loopback
+    if GetTempVariable(NPC, "addSpawn") == "nil" then -- this is set on spawn, so it should check the below conditions.
+            if not IsAlive(tkzr) then -- this should only be true if tzkr is killed first and oxulius is still alive.
+                SetTempVariable(NPC, "addSpawn", "1") -- set flag to summon adds for below function.
+                AddTimer(NPC, 1000, "summonAdds") -- add timer.
             end
     end
 end
 
-
 function summonAdds(NPC, Spawn)
-    local zone = GetZone(NPC)
-    local braxx = GetSpawn(NPC, 5560004)
-    local brixx = GetSpawn(NPC, 5560005)
-    local borxx = GetSpawn(NPC, 5560006)
-    local players = GetPlayersInZone(zone)
-        if GetTempVariable(NPC, "addSpawn") == "1" then
-            SetTempVariable(NPC, "addSpawn", "0")
-            for k,v in pairs(players) do
-                AddSpawnAccess(braxx, v)
-                AddSpawnAccess(brixx, v)
-                AddSpawnAccess(borxx, v)
-            end
-            AddTimer(NPC, 4000, "overlordConvoStart")
+    local zone = GetZone(NPC) -- grab zone
+    local x = GetX(NPC) -- grab coords
+    local y = GetY(NPC)
+    local z = GetZ(NPC)
+        if GetTempVariable(NPC, "addSpawn") == "1" then 
+            SetTempVariable(NPC, "addSpawn", "0") -- set to 0 to trigger termination of timer function to conserve cpu.
+                for k,v in pairs(adds) do -- I try to place all iterative actions in for loops like this. not sure if efficient.
+                    SpawnMob(zone, v, true, x, y, z)
+                end
+            AddTimer(NPC, 4000, "overlordConvo1") -- start conversation loops below
         end
-end
-
-function hailed(NPC, Spawn)
-end
-
-function overlordConvoStart(NPC, Spawn)
-    AddTimer(NPC, 2500, "overlordConvo1")
 end
 
 function overlordConvo1(NPC, Spawn)
     local zone = GetZone(NPC)
     local borxx = GetSpawn(NPC, 5560006)
-    AddTimer(borxx, 2000, "borxxConvoStart")
-    Say(NPC, "Borxx, you must aid me now.  Interlopers have threatened my plans, you owe me!")
+        if borxx ~= nil then
+            Say(NPC, "Borxx, you must aid me now.  Interlopers have threatened my plans, you owe me!")
+            AddTimer(borxx, 2000, "borxxConvo1")
+        end
 end
 
 function overlordConvo2(NPC, Spawn)

@@ -29,10 +29,6 @@ function spellChoice(NPC, Spawn) -- select a spell from table.
     AddTimer(NPC, math.random(1500, 2500), "spellLoop") 
 end
 
-function borxxConvoStart(NPC, Spawn)
-    AddTimer(NPC, 1000, "borxxConvo1")
-end
-
 function borxxConvo1(NPC, Spawn)
     local zone = GetZone(NPC)
     local overlord = GetSpawnByLocationID(zone,302035)
