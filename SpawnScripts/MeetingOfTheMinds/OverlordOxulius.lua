@@ -9,7 +9,7 @@
 
 -- spells = {Glare of Eradication, Gaze of Writhing Agony, Gaze of Oxulius, Gaze of Destruction}
 
-adds = {5560004, 5560005, 5560006}
+adds = {5560004, 5560005} -- 5560006}
 
 function spawn(NPC)
 SetTempVariable(NPC, "addSpawn", "nil")
@@ -59,7 +59,7 @@ function summonAdds(NPC, Spawn)
         if GetTempVariable(NPC, "addSpawn") == "1" then 
             SetTempVariable(NPC, "addSpawn", "0") -- set to 0 to trigger termination of timer function to conserve cpu.
                 for k,v in pairs(adds) do -- I try to place all iterative actions in for loops like this. not sure if efficient.
-                    SpawnMob(zone, v, true, x, y, z)
+                    SpawnMob(zone, v, false, x, y, z)
                 end
             AddTimer(NPC, 4000, "overlordConvo1") -- start conversation loops below
         end
@@ -68,37 +68,33 @@ end
 function overlordConvo1(NPC, Spawn)
     local zone = GetZone(NPC)
     local borxx = GetSpawn(NPC, 5560006)
-        if borxx ~= nil then
+        if borxx ~= nil and IsAlive(borxx) then
             Say(NPC, "Borxx, you must aid me now.  Interlopers have threatened my plans, you owe me!")
-            AddTimer(borxx, 2000, "borxxConvo1")
+            AddTimer(borxx, 3000, "borxxConvo1")
         end
 end
 
 function overlordConvo2(NPC, Spawn)
-    local zone = GetZone(NPC)
     local borxx = GetSpawn(NPC, 5560006)
-    AddTimer(borxx, 2000, "borxxConvo2")
+    AddTimer(borxx, 3000, "borxxConvo2")
     Say(NPC, "I am not to be taken lightly. You don't understand! The plan benefits us all.  You must aid me NOW!")
 end
 
 function overlordConvo3(NPC, Spawn)
-    local zone = GetZone(NPC)
     local borxx = GetSpawn(NPC, 5560006)
-    AddTimer(borxx, 2000, "borxxConvo3")
+    AddTimer(borxx, 3000, "borxxConvo3")
     Say(NPC, "If they are audacious enough to attack me, then what is to prevent them from treating you the same way?!  You must aid me NOW!")
 end
 
 function overlordConvo4(NPC, Spawn)
-    local zone = GetZone(NPC)
     local borxx = GetSpawn(NPC, 5560006)
-    AddTimer(borxx, 2000, "borxxConvo4")
+    AddTimer(borxx, 3000, "borxxConvo4")
     Say(NPC, "You know full well I cannot agree to that! Be reasonable, I can make it worth your while! I must have aid NOW!")
 end
 
 function overlordConvo5(NPC, Spawn)
-    local zone = GetZone(NPC)
     local borxx = GetSpawn(NPC, 5560006)
-    AddTimer(borxx, 2000, "borxxConvo5")
+    AddTimer(borxx, 3000, "borxxConvo5")
     Say(NPC, "Okay! I will meet your demands. Time grows short; I need you now!")
 end
 
