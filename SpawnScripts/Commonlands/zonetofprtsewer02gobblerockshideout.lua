@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/Commonlands/zonetofprtsewer02gobblerockshideout.lua
     Script Author  : Premierio015
     Script Date    : 2021.07.16 03:07:45
-    Script Purpose : 
+    Script Purpose : Access to Gobblerock's Hideout zone
                    : 
 --]]
 
