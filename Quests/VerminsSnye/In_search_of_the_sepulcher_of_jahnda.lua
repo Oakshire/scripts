@@ -17,7 +17,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I will leave you to your insanity. Farewell.")
+	StartConversation(conversation, QuestGiver, Player, "Huh? Yer not Ronicus! Blast! I told them that password was too obvious! Ronicus and his Red Raiders are gonna' have me head if this happens again. Ehem ... forget what I said, if you know what's best.")
+
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -55,8 +59,8 @@ end
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I slew Ayamia the Rat Queen.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "I slew Ayamia the Rat Queen and collected a sarcophagus key from her.")
-
-	AddQuestStepLocation(Quest, 5, "Go to the Central Stairwell", 1, "I must go to the Central Stairwell and Drain in Vermin's Snye.", 11, 120, 0, -109, 15)
+    GiveQuestItem(Quest, Player, "I slew Ayamia the Rat Queen and collected a sarcophagus key from her.", 7984)  
+	AddQuestStepZoneLoc(Quest, 5, "Go to the Central Stairwell", 10, "I must go to the Central Stairwell and Drain in Vermin's Snye.", 11, 120, 0, -109, 200)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
@@ -64,7 +68,7 @@ function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I went to the Central Stairwell.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I went to the Central Stairwell and Drain in Vermin's Snye.")
 
-	AddQuestStepLocation(Quest, 6, "Go to the Coldwind Coast Cliff painting", 1, "I must search for the alcove containing a painting of the Coldwind Coast Cliffs.", 11, 184, -5.11, -91.3, 5)
+	AddQuestStepZoneLoc(Quest, 6, "Go to the Coldwind Coast Cliff painting", 10, "I must search for the alcove containing a painting of the Coldwind Coast Cliffs.", 11, 184, -5.11, -91.3, 200)
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")
 end
 
@@ -72,7 +76,7 @@ function Step6Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 6, "I went to the Coldwind Coast Cliff painting.")
 	UpdateQuestTaskGroupDescription(Quest, 6, "I found the alcove containing a painting of the Coldwind Coast Cliffs.")
 
-	AddQuestStepLocation(Quest, 7, "Go to the Sepulcher of the Prime Healer", 1, "I must search for the main mausoleum called the Sepulcher of the Prime Healer.", 11, 237, -7, -81, 15)
+	AddQuestStepZoneLoc(Quest, 7, "Go to the Sepulcher of the Prime Healer", 10, "I must search for the main mausoleum called the Sepulcher of the Prime Healer.", 11, 237, -7, -81, 200)
 
 	AddQuestStepCompleteAction(Quest, 7, "Step7Complete")
 end
