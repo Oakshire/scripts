@@ -32,10 +32,17 @@ end
 
 
 function death(NPC, Spawn)
+SetTempVariable(Spawn, "MobAccess", nil)
 local group = GetSpawnByGroupID(zone, 1049684)
 if not IsAlive(group) then
 local zone = GetZone(NPC)
 local LordTonmerk = SpawnByLocationID(zone, LordTonmerkID)
+if GetTempVariable(Spawn, "turn_tonmerk_hostile") == "true" then
+SpawnSet(LordTonmerk, "faction", 1)
+SpawnSet(LordTonmerk, "show_command_icon", 1)
+SpawnSet(LordTonmerk, "attackable", 1)
+SpawnSet(LordTonmerk, "show_level", 1)
+end 
 end
    end
 
