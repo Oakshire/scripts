@@ -9,6 +9,7 @@
 local GetheHuggs = 2780039
 
 function spawn(NPC)
+    	SetPlayerProximityFunction(NPC, 25, "InRange")
 	MovementLoopAddLocation(NPC, 5.65, -6.50, 208.26, 2, 10, "Gather")
 
 	MovementLoopAddLocation(NPC, 0.71, -5.83, 198.18, 2, 10, "Gather")
@@ -27,6 +28,12 @@ function spawn(NPC)
 	MovementLoopAddLocation(NPC, -6.18, -4.96, 218.46, 2, 0)
 	MovementLoopAddLocation(NPC, -5.91, -4.96, 218.24, 2, 30)
 end
+
+function InRange(NPC, Spawn)
+ if HasCollectionsToHandIn(Spawn) then
+  SpawnSet(NPC, "visual_state", 6674 ) 
+  end
+end     
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -51,8 +58,9 @@ end
 
 function dlg_8_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+		HandInCollections(Spawn)
+		SpawnSet(NPC, "visual_state", 0) 
 	conversation = CreateConversation()
-	HandInCollections(Spawn)
 	AddConversationOption(conversation, "Okay, bye!")
 	StartConversation(conversation, NPC, Spawn, "This is a magnificent find! Here, take this for all your hard work.")
 end
