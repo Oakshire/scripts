@@ -198,7 +198,7 @@ function CurrentStep(Quest, QuestGiver, Player)
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
-	GiveExp(Player, 150)
+	GiveExp(Player, 110)
 	Step2Init(Quest, QuestGiver, Player)
 	CurrentStep(Quest, QuestGiver, Player)
 end
@@ -235,11 +235,7 @@ function Step7Complete(Quest, QuestGiver, Player)
 	CurrentStep(Quest, QuestGiver, Player)
 end
 
-function Step8Complete(Quest, QuestGiver, Player)
-	if GetLevel(Player) < 2 then
-		-- This should be changed to GiveExp once we have a way to calculate correct amount
-		SetPlayerLevel(Player, 2)
-	end
+function Step8Complete(Quest, QuestGiver, Player)	
 	Step9Init(Quest, QuestGiver, Player)	
 	CurrentStep(Quest, QuestGiver, Player)
 end

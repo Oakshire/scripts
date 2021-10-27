@@ -1,10 +1,3 @@
---[[
-    Script Name    : SpawnScripts/FarJourneyFreeport/Waulon.lua
-    Script Author  : Cynnar
-    Script Date    : 2019.09.28 03:09:55
-    Script Purpose : 
-                   : 
---]]
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
@@ -41,12 +34,11 @@ function returned_hat(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Now me is safe, thanks ta' ye. Here, take this charm. Ya' may find a use for it.")
 	Dialog.AddVoiceover("voiceover/english/waulon/boat_06p_tutorial02/walon_0_006.mp3", 316186630, 2628530085)
-	Dialog.AddEmote("smirk")
 	Dialog.AddOption("Thanks, Waulon.", "received_charm")
 	Dialog.Start()
 end
 
-function received_charm(NPC, player)
+function returned_hat(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Well now, Ingrid o'er there, can show ya' the rest of the ship. Me needs ta' plot the course ta' the isles now.")
 	Dialog.AddVoiceover("voiceover/english/waulon/boat_06p_tutorial02/walon_0_007.mp3", 1973137904, 2648127610)
@@ -62,7 +54,6 @@ function startled_me(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Can't seem ta' find me hat.")
 	Dialog.AddVoiceover("voiceover/english/waulon/boat_06p_tutorial02/walon_0_002.mp3", 1759807851, 3940656870)
-	Dialog.AddEmote("confused")
 	Dialog.AddOption("Do you need some help?", "help_find_hat")
 	Dialog.Start()
 end
@@ -86,4 +77,3 @@ end
 function respawn(NPC)
 
 end
-
