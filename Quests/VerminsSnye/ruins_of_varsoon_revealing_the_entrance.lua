@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to find the hidden entrance to Varsoon's lair.", 10, "I must find the location of the hidden entrance to Varsoon's new lair in the Thundering Steppes.", 11, -493, 0, 1032)
+	AddQuestStepZoneLoc(Quest, 1, "I need to find the hidden entrance to Varsoon's lair.", 10, "I must find the location of the hidden entrance to Varsoon's new lair in the Thundering Steppes.", 11, -493, 0, 1032, 249)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -58,7 +58,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I've spoken with Zaen once again.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "I've returned with the key to Zaen Kalystir.")
 
-	UpdateQuestDescription(Quest, "Zaen has discharged me to go investigate Varsoon's lair and interrupt the lich's plans.  I'm not certain how well this fits with the babbling of the undead I heard in Varsoon's old tomb. I am curious as to whether Zaen may possess an ulterior motive.  I will just have to explore the former Keep of Immortality in depth and discern the truth for myself. <br>")
+	UpdateQuestDescription(Quest, "Zaen has discharged me to go investigate Varsoon's lair and interrupt the lich's plans.  I'm not certain how well this fits with the babbling of the undead I heard in Varsoon's old tomb. I am curious as to whether Zaen may possess an ulterior motive.  I will just have to explore the former Keep of Immortality in depth and discern the truth for myself.")
 	GiveQuestReward(Quest, Player)
 end
 

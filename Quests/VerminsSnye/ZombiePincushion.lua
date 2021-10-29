@@ -1,7 +1,7 @@
 --[[
 	Script Name	:	Quests/VerminsSnye/ZombiePincushion.lua
 	Script Purpose	:	Handles the quest, "Zombie Pincushion"
-	Script Author	:	QuestParser (Replace this)
+	Script Author	:	premierio015
 	Script Date	:	04.06.2020
 	Script Notes	:	Auto generated with QuestParser.
 
