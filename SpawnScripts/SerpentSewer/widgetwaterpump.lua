@@ -17,6 +17,9 @@ function InRange(NPC, Spawn)
      AddPrimaryEntityCommand(Spawn, NPC, "examine pump", 5, "examine pump", "", 100) 
     SpawnSet(NPC, "show_command_icon", 1)
     SpawnSet(NPC, "display_hand_icon", 1)
+elseif HasQuest(Spawn, ASewageProblem) and not HasCompletedQuest(Spawn,  ASewageProblem) then
+        SpawnSet(NPC, "show_command_icon", 0)
+    SpawnSet(NPC, "display_hand_icon", 0)
 end
 end
 

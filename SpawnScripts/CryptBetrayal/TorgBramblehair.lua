@@ -69,6 +69,7 @@ function Option5(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/torg_bramblehair/qey_catacomb03/torg_bramblehair007.mp3", "", "", 840005073, 714277153, Spawn)
 	AddConversationOption(conversation, "He's Here?")
 	StartConversation(conversation, NPC, Spawn, "There he is!  Spike! Here, boy! I said, here, boy! Spike!")
+	local Spike = SpawnMob(NPC, 2010062, false, -27.7625, 6.91103, -14.8451, 125.266) -- spawns "Spike"
 end
 
 

@@ -11,7 +11,7 @@ local VegalysKeldranesBetrayal = 5371
 
 
 function spawn(NPC)
-
+ProvidesQuest(NPC, VegalysKeldranesBetrayal)
 end
 
 function hailed(NPC, Spawn)
