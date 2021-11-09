@@ -16,11 +16,7 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function InRange(NPC, Spawn)
-end
 
-function LeaveRange(NPC, Spawn)
-end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
