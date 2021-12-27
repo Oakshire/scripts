@@ -28,7 +28,7 @@ function Init(Quest)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")
 	AddQuestStepCompleteAction(Quest, 7, "Step7Complete")
-	    AddQuestStepCompleteAction(Quest, 8, "QuestComplete")
+	    AddQuestStepCompleteAction(Quest, 8, "Step8Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
