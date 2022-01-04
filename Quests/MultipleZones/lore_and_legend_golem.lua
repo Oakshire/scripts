@@ -113,7 +113,7 @@ function Step8Complete(Quest, QuestGiver, Player)
    CheckProgress(Quest, QuestGiver, Player)
 end
 
-function QuestComplete(Quest, QuestGiver, Player)
+function QuestIsComplete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have located all of the necessary golem body parts.")
 	UpdateQuestDescription(Quest, "I have learned the secrets of the golem.")
 	GiveQuestReward(Quest, Player)

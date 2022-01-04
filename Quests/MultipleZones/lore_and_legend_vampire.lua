@@ -75,7 +75,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 
 end
 
-function QuestComplete(Quest, QuestGiver, Player)
+function QuestIsComplete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have located all of the necessary vampire body parts.")
 	UpdateQuestDescription(Quest, "I have learned the secrets of the vamnpire.")
 	GiveQuestReward(Quest, Player)
