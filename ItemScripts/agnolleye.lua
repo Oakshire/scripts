@@ -22,6 +22,7 @@ end
 function Step_Complete(Item, Player)
 SetStepComplete(Player, LoreAndLegendGnoll, 7)
 RemoveItem(Player, 1818)
+CloseItemConversation()
 end
 
 
