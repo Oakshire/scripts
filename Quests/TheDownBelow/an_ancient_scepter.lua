@@ -34,7 +34,7 @@ function QuestComplete(Quest, QuestGiver, Player)
     if HasItem(Player, 2969) then -- a tarnished scepter Item
     RemoveItem(Player, 2969)
     end
-	UpdateQuestDescription(Quest, "As I replaced the scepter in its original position, a small ring fell from the finger of the statue. Had I not been returning the scepter to its original resting place, I would have never noticed it.  <br>")
+	UpdateQuestDescription(Quest, "As I replaced the scepter in its original position, a small ring fell from the finger of the statue. Had I not been returning the scepter to its original resting place, I would have never noticed it.")
 	GiveQuestReward(Quest, Player)
 end
 
