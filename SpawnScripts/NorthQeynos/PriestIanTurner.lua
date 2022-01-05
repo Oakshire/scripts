@@ -24,7 +24,7 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "I've recovered a shroud from the catacombs, can you help me?", "speak")
     StartConversation(conversation, NPC, Spawn, "Raise not your hand in judgment of others, for one day they may be your salvation.")
     else
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "Raise not your hand in judgment of others, for one day they may be your salvation.", "hail", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "Raise not your hand in judgment of others, for one day they may be your salvation.", "hail", 3050768414, 1599241603, Spawn)
 end
 
 function speak(NPC, Spawn)
