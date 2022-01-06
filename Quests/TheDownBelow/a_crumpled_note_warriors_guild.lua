@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to find a fighter at the Steel Warriors guild interested in the note.", 185, 2210218, 6600321)
+	AddQuestStepChat(Quest, 1, "I need to find a fighter at the Steel Warriors guild interested in the note.", 1, "I need to take this note to a fighter at the Steel Warriors guild.", 185, 2210218, 6600321)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 

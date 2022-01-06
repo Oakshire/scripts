@@ -24,7 +24,7 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "I've recovered a shroud from the catacombs, can you help me?", "speak")
     StartConversation(conversation, NPC, Spawn, "Raise not your hand in judgment of others, for one day they may be your salvation.")
     else
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "Raise not your hand in judgment of others, for one day they may be your salvation.", "hail", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/priest_ian_turner/qey_north/priestianturner000.mp3", "Raise not your hand in judgment of others, for one day they may be your salvation.", "hail", 3050768414, 1599241603, Spawn)
 end
 
 function speak(NPC, Spawn)
@@ -40,7 +40,7 @@ function apologize(NPC, Spawn)
  conversation = CreateConversation()
  PlayFlavor(NPC, "voiceover/english/priest_ian_turner/qey_north/priestianturner004.mp3", "", "", 1886276171, 266052076, Spawn) 
  AddConversationOption(conversation, "Thank you, I wouldn't ever disturb a crypt.", "takeshroudback")
- StartConversation(conversation, NPC, Spawn, "You disturbed a burial chamber?  What right do you have to commit such an atrocity? How could you violate someone in death?  Speak, before I truly lose my temper!") 
+ StartConversation(conversation, NPC, Spawn, "In that case, I apologize. Disturbing the sancitity of a grave is one of the few things that I feel reaches the depths of depravity. Let me have a look. I'll see what I can find for you.") 
 end
 
 function takeshroudback(NPC, Spawn)
