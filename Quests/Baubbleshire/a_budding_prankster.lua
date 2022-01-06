@@ -1,7 +1,7 @@
 --[[
 	Script Name	: Quests/Baubbleshire/a_budding_prankster.lua
 	Script Purpose	: Handles the quest, "A Budding Prankster"
-	Script Author	: Scatman
+	Script Author	: Scatman is a gangsta
 	Script Date	: 2009.09.27
 	
 	Zone       : The Baubbleshire
