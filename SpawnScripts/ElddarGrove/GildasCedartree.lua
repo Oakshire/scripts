@@ -27,7 +27,7 @@ function hailed(NPC, Spawn)
 	end
 
 		PlayFlavor(NPC, "voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree017.mp3", "", "", 3941972709, 1584350411, Spawn)
-	StartConversation(conversation, NPC, Spawn, "Sorry, friend. I can't offer you help at this time. Good day!")
+	AddConversationOption(conversation, NPC, Spawn, "Sorry, friend. I can't offer you help at this time. Good day!")
 end
 
 function dlg_4_1(NPC, Spawn)
@@ -35,7 +35,7 @@ function dlg_4_1(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree017.mp3", "", "", 3941972709, 1584350411, Spawn)
-	StartConversation(conversation, NPC, Spawn, "Sorry, friend. I can't offer you help at this time. Good day!")
+		AddConversationOption(conversation, NPC, Spawn, "Sorry, friend. I can't offer you help at this time. Good day!")
 end
 
 --[[ raw_conversations
