@@ -4,7 +4,7 @@
     Script Date    : 2021.10.28 05:10:55
     Script Purpose : 
                    : 
---]]
+- -]]
 
 local ACrumpledNote = 5375 -- A Crumpled Note Warriors Version quest
 

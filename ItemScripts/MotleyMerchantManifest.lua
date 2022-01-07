@@ -10,8 +10,8 @@ local TheMotleyMerchantManifest = 5368 -- The Motley Merchant Manifest quest
 
 function examined(Item, Player)
 conversation = CreateConversation()
-AddConversationOption(conversation, "Put away the book.", "CloseItemConversation")
 AddConversationOption(conversation, "Open the book", "page1")
+AddConversationOption(conversation, "Put away the book.", "CloseItemConversation")
 StartDialogConversation(conversation, 2, Item, Player, "On the cover of the book is a symbol of an eye within a circle formed of open palmed hands. The book is written in an odd language, one you can't read, but that you have seen carved into tavern tables.")
 end
 

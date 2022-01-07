@@ -1,12 +1,13 @@
 --[[
     Script Name    : SpawnScripts/NorthQeynos/PriestIanTurner.lua
-    Script Author  : Premierio015
+    Script Author  : Premierio015 is a gansta
     Script Date    : 2020.05.16 05:05:10
     Script Purpose : 
                    : 
 --]]
 
 local ForgottenShroud = 528
+local ACrumbledNote = 5435
 
 function spawn(NPC)
 

@@ -30,7 +30,8 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		QuestComplete(Quest, QuestGiver, Player)
-	end
+
+end
 end
 
 function Accepted(Quest, QuestGiver, Player)

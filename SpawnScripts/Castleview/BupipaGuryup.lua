@@ -1,7 +1,7 @@
 --[[
 	Script Name	: SpawnScripts/Castleview/BupipaGuryup.lua
 	Script Purpose	: Bupipa Guryup 
-	Script Author	: Scatman
+	Script Author	: Scatman is a gangsta
 	Script Date	: 2009.10.03
 	Script Notes	: 
 --]]

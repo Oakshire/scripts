@@ -1,12 +1,12 @@
 --[[
 	Script Name	: SpawnScripts/TheBaubbleshire/AlganTinmizer.lua
 	Script Purpose	: Algan Tinmizer 
-	Script Author	: Shatou
-	Script Date	: 2020.01.07
+	Script Author	: Dorbin
+	Script Date	: 2022.01.07
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local BAG_OF_PARTS_QUEST_ID = 505
+local BagoParts = 505
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
@@ -17,6 +17,7 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+    PlayFlavor(NPC, "","", "wave", 0, 0, Spawn)
 end
 
 function LeaveRange(NPC, Spawn)
@@ -25,37 +26,51 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-		PlayFlavor(NPC, "voiceover_new\voiceover\english\algan_tinmizer\qey_village06\ebikwobblecog000.mp3", "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?", "", 1689589577, 4560189, Spawn)
+	if HasQuest(Spawn, BagoParts) then
+   	 AddConversationOption(conversation, "Did you drop this bag of parts I found near the dock?", "quest_complete")
+   	 end
+   	AddConversationOption(conversation, "Wait, what? I think I must be going.")
+	  StartConversation(conversation, NPC, Spawn, "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?")
+end
 
+function quest_complete(NPC, Spawn)
+	SetStepComplete(Spawn, BagoParts, 1)
+	conversation = CreateConversation()
+    PlayFlavor(NPC, "", "", "", 3964717986, 1813107488, Spawn)
+   AddConversationOption(conversation, "Thanks!")
+   StartConversation(conversation, NPC, Spawn, "Oh my, it does indeed!  I thought I'd lost those parts.  You've saved me a great deal of trouble, friend.  Let me compensate you for your keen eyes and good nature.")	 
+end
+-- old imported information. Contains Forest Ruins quest.
+	--[[local choice = math.random(1,1)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "", "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?", "", 1689589577, 4560189, Spawn)
+	else
 	end
 
-	PlayFlavor(NPC, "voiceover_new\voiceover\english\algan_tinmizer\qey_village06\ebikwobblecog000.mp3", "", "", 1689589577, 4560189, Spawn)
-		AddConversationOption(conversation, "I found this bag of cogs and sprockets and I believe it belongs to you.", "dlg_1_1")
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1040.mp3", "", "", 0, 0, Spawn)
 		AddConversationOption(conversation, "Nothing I need. I will be going now.")
 	StartConversation(conversation, NPC, Spawn, "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?")
 	if convo==2 then
 		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1040.mp3", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "Are you kidding me?", "dlg_2_1")
 		AddConversationOption(conversation, "Nothing I need. I will be going now.")
 		StartConversation(conversation, NPC, Spawn, "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?")
 	end
 
 	if convo==3 then
 		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1040.mp3", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "Are you kidding me?", "dlg_3_1")
 		AddConversationOption(conversation, "Nothing I need. I will be going now.")
 		StartConversation(conversation, NPC, Spawn, "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?")
 	end
 
-
+end
 
 function dlg_1_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	
-	SetStepComplete(Spawn, BAG_OF_PARTS_QUEST_ID, 1)
-
-	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
+		if HasQuest(Spawn, BagoParts) then
+   	 AddConversationOption(conversation, "I believe I found this bag of parts with your name on it.", "quest_complete")
+   	 end
+	PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
 		AddConversationOption(conversation, "Thanks!", "dlg_1_2")
 	StartConversation(conversation, NPC, Spawn, "Oh my, it does indeed!  I thought I'd lost those parts.  You've saved me a great deal of trouble, friend.  Let me compensate you for your keen eyes and good nature.")
 end
@@ -64,8 +79,7 @@ function dlg_2_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "If you have the work I have the time.", "dlg_2_2")
+	PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
 		AddConversationOption(conversation, "I can't help you.")
 	StartConversation(conversation, NPC, Spawn, "I see my superior intellect confuses you.  Don't worry, it perplexes many people - tis' the curse of the Tinmizer name.  However, I can use your help, for even simple minds contribute to the greatness of Qeynos.")
 end
@@ -93,7 +107,6 @@ function dlg_3_1(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "If you have the work I have the time.", "dlg_3_2")
 		AddConversationOption(conversation, "I can't help you.")
 	StartConversation(conversation, NPC, Spawn, "I see my superior intellect confuses you.  Don't worry, it perplexes many people - tis' the curse of the Tinmizer name.  However, I can use your help, for even simple minds contribute to the greatness of Qeynos.")
 end
@@ -128,4 +141,4 @@ end
 --[[ raw_conversations
 	PlayFlavor(NPC, "", "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?", "", 1689589577, 4560189, Spawn)
 --]]
-
+--]]
