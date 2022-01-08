@@ -1,9 +1,9 @@
 --[[
-	Script Name	: SpawnScripts/Baubbleshire/Oatheaver.lua
-	Script Purpose	: Oatheaver <Combat Arts>
-	Script Author	: John Adams
-	Script Date	: 2008.09.23
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+    Script Name    : SpawnScripts/Baubbleshire/TestingNPC.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.01.07 06:01:39
+    Script Purpose : 
+                   : 
 --]]
 
 function spawn(NPC)
@@ -15,9 +15,23 @@ function hailed(NPC, Spawn)
 	SaySomethingRandom(NPC, Spawn)
 end
 
+--[[ Normal Callout example w/ quest
+	function InRange(NPC, Spawn)
+	    	if math.random(1, 100) <= 75 then
+            if not HasCompletedQuest(Spawn, EMBERS_FOR_XOOT) then
+
+	            PlayFlavor(NPC, "", "Oh to Drunder with this! How will I ever be able to get this thing working?", "frustrated", 0, 0, Spawn)
+ 	    else	   	
+		   	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+
+        end
+    end
+ end
+--]]
+
 function InRange(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	if math.random(1, 100) <= 25 then
+	if math.random(1, 100) <= 100 then
 		SaySomethingRandom(NPC, Spawn)
 	end
 end
@@ -40,3 +54,4 @@ function SaySomethingRandom(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/merchant/halfling_merchant_service_good_1_hail_gm_e4fa2bd8.mp3", "Confound it! Where did I put that ledger? It must be around here somewhere!", "confused", 1122140911, 2707150069, Spawn)
 	end
 end
+

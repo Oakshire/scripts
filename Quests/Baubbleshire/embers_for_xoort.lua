@@ -3,7 +3,7 @@
 	Script Purpose	: Handles the quest, "Embers for Xoort"
 	Script Author	: Scatman
 	Script Date	: 2009.09.27
-	
+	(Script Fixes & Callout: Dorbin 2021.01.07)
 	Zone       : The Baubbleshire
 	Quest Giver: Sage Xoort
 	Preceded by: None
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to gather coals from the fiery forgotten guardians in the Forest Ruins.", 1, 70, "I need to gather an everburning coal from the fiery forgotten guardians in the Forest Ruins.", 183, 1960019)
+	AddQuestStepKill(Quest, 1, "I need to gather coals from the fiery forgotten guardians in the Forest Ruins.", 2, 70, "I need to gather an everburning coal from the fiery forgotten guardians in the Forest Ruins.", 183, 1960019)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_gotGoal")
 end
 
@@ -44,6 +44,6 @@ end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
-		step1_complete_gotGoal(Quest, QuestGiver, Player)
+		quest_complete(Quest, QuestGiver, Player)
 	end
 end

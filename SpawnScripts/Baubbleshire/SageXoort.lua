@@ -6,15 +6,34 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
--- Quest ID's
-local EMBERS_FOR_XOOT = 333 -- was 57
+
+
+ local EMBERS_FOR_XOOT = 333 -- was 57
+
 
 function spawn(NPC)
 	ProvidesQuest(NPC, EMBERS_FOR_XOOT)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
+
+
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+	function InRange(NPC, Spawn)
+	    	if math.random(1, 100) <= 75 then
+            if not HasCompletedQuest(Spawn, EMBERS_FOR_XOOT) then
+
+	            PlayFlavor(NPC, "", "Oh to Drunder with this! How will I ever be able to get this thing working?", "frustrated", 0, 0, Spawn)
+ 	    else	   	
+		   	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+
+        end
+    end
+ end
+ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
@@ -87,4 +106,7 @@ function DoneQuests(NPC, Spawn)
 	else
 		Say(NPC, "Oops! Sorry friend! I thought you were someone else. Good day now!")
 	end
+	
+
 end
+

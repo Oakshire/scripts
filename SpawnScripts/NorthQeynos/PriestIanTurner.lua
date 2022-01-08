@@ -7,7 +7,7 @@
 --]]
 
 local ForgottenShroud = 528
-local ACrumbledNote = 5435
+local ACrumpledNote = 5435
 
 function spawn(NPC)
 
@@ -21,12 +21,56 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     if HasQuest(Spawn, ForgottenShroud) and GetQuestStep(Spawn, ForgottenShroud) == 1 then
-    PlayFlavor(NPC, "voiceover/english/priest_ian_turner/qey_north/priestianturner000.mp3", "", "", 3050768414, 1599241603, Spawn)
+   PlayFlavor(NPC, "voiceover/english/priest_ian_turner/qey_north/priestianturner000.mp3", "", "", 3050768414, 1599241603, Spawn)
     AddConversationOption(conversation, "I've recovered a shroud from the catacombs, can you help me?", "speak")
+   StartConversation(conversation, NPC, Spawn, "Raise not your hand in judgment of others, for one day they may be your salvation.")
+ elseif HasQuest(Spawn, ACrumpledNote) then
+     PlayFlavor(NPC, "voiceover/english/priest_ian_turner/qey_north/priestianturner000.mp3", "", "hail", 3050768414, 1599241603, Spawn)
+    AddConversationOption(conversation, "The priests here should see this note I found.", "FindThis")
     StartConversation(conversation, NPC, Spawn, "Raise not your hand in judgment of others, for one day they may be your salvation.")
-    else
-    PlayFlavor(NPC, "voiceover/english/priest_ian_turner/qey_north/priestianturner000.mp3", "Raise not your hand in judgment of others, for one day they may be your salvation.", "hail", 3050768414, 1599241603, Spawn)
+else
+    PlayFlavor(NPC, "voiceover/english/priest_ian_turner/qey_north/priestianturner000.mp3", "Raise not your hand in judgment of others, for one day they may be your salvation.", "hail", 3050768414, 1599241603, Spawn)end
 end
+   
+
+
+
+
+--[[function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+  if HasQuest(Spawn, ACrumpledNote) then
+ StartConversation(conversation, NPC, Spawn, "Raise not your hand in judgment of others, for one day they may be your salvation.")
+    AddConversationOption(conversation, "The priests here should see this note I found", "FindThis")
+end]]
+
+--Crumpled Note Quest
+
+function FindThis(NPC, Spawn)
+ FaceTarget(NPC, Spawn)
+ conversation = CreateConversation() 
+ PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+ AddConversationOption(conversation, "I found it on a Ratonga lurking in the catacombs. I believe it may be something important.","quest_complete")
+ StartConversation(conversation, NPC, Spawn, "Where did you find this?")
+end
+
+function quest_complete(NPC, Spawn)
+    SetStepComplete(Spawn, ACrumpledNote, 1)
+	conversation = CreateConversation()
+    PlayFlavor(NPC, "", "", "thank", 0, 0, Spawn)
+   AddConversationOption(conversation, "Thank you, I knew the Temple would take this seriously.")
+   StartConversation(conversation, NPC, Spawn, "Interesting. I will certainly address this. Thank you for bringing it to my attention. Please, allow our priesthood to award you.")	 
+end
+
+function FindThis(NPC, Spawn)
+ FaceTarget(NPC, Spawn)
+ conversation = CreateConversation() 
+ PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+ AddConversationOption(conversation, "I found it on a Ratonga lurking in the catacombs. I believe it may be something important.","quest_complete")
+ StartConversation(conversation, NPC, Spawn, "Where did you find this?")
+end
+
+--- 2nd quest burial shroud
 
 function speak(NPC, Spawn)
  FaceTarget(NPC, Spawn)
@@ -60,5 +104,4 @@ function LordMrallon(NPC, Spawn)
  AddConversationOption(conversation, "I will do so.") 
  StartConversation(conversation, NPC, Spawn, "The site you seek is  the tomb of Lord Mrallon. Many times he valiantly proved his worth to the city of Qeynos. You will search for the knight with the green armor and place this shroud over the likeness of his body.")
 end
-   end
 

@@ -9,10 +9,16 @@
 local InSearchoftheSepulcherofJahnda = 556
 
 function spawn(NPC)
+    	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+
+
+function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
@@ -38,6 +44,7 @@ function hailed(NPC, Spawn)
 	end
  end
 end
+
 
 
 function Option1(NPC, Spawn)
@@ -67,5 +74,14 @@ function Option2(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Ah, yes, the key. Unfortunately the key was swiped from my pack by a wretched being called the Rat Queen, wrangler of rodents. Find her and you find your key. Then you can follow my notes to the Sepulcher of Jahnda.")
 end
 
-
+function InRange(NPC, Spawn)
+	    	if math.random(1, 100) <= 75 then
+	    	local randomCall = MakeRandomInt(1, 2)
+	     if randomCall == 1 then
+		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!", "", 35546, 2556985953, Spawn)
+	elseif randomCall == 2 then
+	else	PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_multhail1_59e52ebd.mp3", "Good adventurer, have faith and be well!  Perhaps one day you too may serve Bristlebane!", "", 300423478, 2139393363, Spawn)
+	end
+        end
+    end
 
