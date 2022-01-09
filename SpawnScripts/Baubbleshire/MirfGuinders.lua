@@ -75,7 +75,7 @@ function Option2(NPC, Spawn)
 end
 
 function InRange(NPC, Spawn)
-	    	if math.random(1, 100) <= 75 then
+	    	if math.random(1, 100) <= 70 then
 	    	local randomCall = MakeRandomInt(1, 2)
 	     if randomCall == 1 then
 		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!", "", 35546, 2556985953, Spawn)

@@ -17,7 +17,7 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-    PlayFlavor(NPC, "","", "wave", 0, 0, Spawn)
+    PlayFlavor(NPC, "","", "ponder", 0, 0, Spawn)
 end
 
 function LeaveRange(NPC, Spawn)
@@ -26,12 +26,14 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	if HasQuest(Spawn, BagoParts) then
-   	 AddConversationOption(conversation, "Did you drop this bag of parts I found near the dock?", "quest_complete")
-   	 end
-   	AddConversationOption(conversation, "Wait, what? I think I must be going.")
+--PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog000.mp3", "", "", 1689589577, 4560189, Spawn)
+	
+   	 AddConversationOption(conversation, "Wait, what? I think I must be going.")
+   	if HasQuest(Spawn, BagoParts) and not HasCompletedQuest(Spawn, BagoParts) then
+	       	 AddConversationOption(conversation, "Did you drop this bag of parts I found near the dock?", "quest_complete")
+	       	 end
 	  StartConversation(conversation, NPC, Spawn, "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?")
-end
+    end
 
 function quest_complete(NPC, Spawn)
 	SetStepComplete(Spawn, BagoParts, 1)
@@ -40,11 +42,13 @@ function quest_complete(NPC, Spawn)
    AddConversationOption(conversation, "Thanks!")
    StartConversation(conversation, NPC, Spawn, "Oh my, it does indeed!  I thought I'd lost those parts.  You've saved me a great deal of trouble, friend.  Let me compensate you for your keen eyes and good nature.")	 
 end
+
+
 -- old imported information. Contains Forest Ruins quest.
 	--[[local choice = math.random(1,1)
 
 	if choice == 1 then
-		PlayFlavor(NPC, "", "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?", "", 1689589577, 4560189, Spawn)
+		PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog000.mp3", "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?", "", 1689589577, 4560189, Spawn)
 	else
 	end
 

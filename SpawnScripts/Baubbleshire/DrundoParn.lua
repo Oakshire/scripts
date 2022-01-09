@@ -35,8 +35,10 @@ function hailed(NPC, Spawn)
 			Say(NPC, "My face is so itchy all of a sudden. Gosh, and my eyes are watering. Ugh, is it me or is my face a little pudgy?", Spawn)
 		end
 	else
-		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/drundo_parn/qey_village06/qst_drundo_parn_notonquest_976bcd41.mp3", "Don't bother me, I'm drinking!", "", 2257928198, 1328794704, Spawn)
-	end
+	--	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/drundo_parn/qey_village06/qst_drundo_parn_notonquest_976bcd41.mp3", "Don't bother me, I'm drinking!", "", 2257928198, 1328794704, Spawn)
+    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/drundo_parn/qey_village06/qst_drundo_parn_notonquest_976bcd41.mp3", "Don't bother me, I'm drinking!", "", 2257928198, 1328794704, Spawn)
+   
+end
 	
 	
 end

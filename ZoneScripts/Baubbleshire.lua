@@ -14,7 +14,7 @@ function init_zone_script(Zone)
 end
 
 function AddBagOfParts(NPC, Spawn)
-    if not HasQuest(Spawn, BAG_OF_PARTS_QUEST_ID) and HasCompletedQuest(Spawn, BAG_OF_PARTS_QUEST_ID) then
+    if not HasQuest(Spawn, BAG_OF_PARTS_QUEST_ID) and not HasCompletedQuest(Spawn, BAG_OF_PARTS_QUEST_ID) then
 		SummonItem(Spawn, BAG_OF_PARTS_ID, 1)
 	end
 end

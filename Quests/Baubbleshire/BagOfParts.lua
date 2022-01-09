@@ -25,6 +25,9 @@ function QuestComplete(Quest, QuestGiver, Player)
 
 	UpdateQuestDescription(Quest, "Algan Tinmizer was very pleased that I had found and returned his bag of assorted parts.  He gave me a small reward to thank me.")
 	GiveQuestReward(Quest, Player)
+		if HasItem(Player, 4110) then
+	RemoveItem(Player, 4110)
+	end
 end
 
 function Reload(Quest, QuestGiver, Player, Step)

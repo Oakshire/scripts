@@ -28,9 +28,8 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
 	PlayFlavor(NPC, "voiceover/english/armorer_peona_toughins/qey_village06/quests/armorer_peona_toughins/armorer_peona_toughins001.mp3", "", "", 3593368605, 1432200573, Spawn)
+	conversation = CreateConversation()
 	AddConversationOption(conversation, "Maybe some other time.")
 	StartConversation(conversation, NPC, Spawn, "Dare I say, it's a fine day for shopping. How can I help you?")
 end
