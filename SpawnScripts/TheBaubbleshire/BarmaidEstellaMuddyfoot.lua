@@ -8,6 +8,7 @@
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+		waypoints(NPC)
 end
 
 function respawn(NPC)
@@ -18,6 +19,25 @@ function InRange(NPC, Spawn)
 end
 
 function LeaveRange(NPC, Spawn)
+end
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 882.68, -18.31, -445.37, 1, math.random(8, 15))
+	MovementLoopAddLocation(NPC, 881.69, -18.31, -444.24, 1, 0)
+	MovementLoopAddLocation(NPC, 880.83, -18.31, -442.82, 1, 0)
+	MovementLoopAddLocation(NPC, 881.84, -18.31, -441.04, 1, 0)
+	MovementLoopAddLocation(NPC, 881.4, -18.31, -439.63, 1, 0)
+	MovementLoopAddLocation(NPC, 880.29, -18.31, -439.28, 1, 0)
+	MovementLoopAddLocation(NPC, 879.01, -18.31, -439.34, 1, math.random(8, 15))
+	MovementLoopAddLocation(NPC, 880.51, -18.31, -438.76, 2, 0)
+	MovementLoopAddLocation(NPC, 881.23, -18.31, -437.99, 1, math.random(8, 15))
+	MovementLoopAddLocation(NPC, 881.44, -18.31, -439.47, 1, 0)
+	MovementLoopAddLocation(NPC, 881.79, -18.31, -441.09, 1, 0)
+	MovementLoopAddLocation(NPC, 883.93, -18.31, -441.43, 1, 0)
+	MovementLoopAddLocation(NPC, 886.1, -18.31, -441.78, 1, 0)
+	MovementLoopAddLocation(NPC, 887.61, -18.31, -441.62, 1, math.random(8, 15))
+	MovementLoopAddLocation(NPC, 886.42, -18.31, -442.78, 1, 0)
+	MovementLoopAddLocation(NPC, 883.58, -18.31, -445.54, 1, 0)
 end
 
 function hailed(NPC, Spawn)

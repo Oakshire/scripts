@@ -20,3 +20,5 @@ function hailed(NPC, Spawn)
 	GenericHail(NPC, Spawn)
 	PlayFlavor(NPC, mp3, "What brings you to the fair vale of Baubbleshire? Seeking a bit of merriment among the stouts? ", "", 1689589577, 4560189, Spawn)
 end
+
+-- Raw voiceover/english/ganla_dindlenod/qey_village06/ganladindlenod000.mp3 for actual mp3 above

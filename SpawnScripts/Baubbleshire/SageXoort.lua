@@ -27,7 +27,6 @@ end
 	    	if math.random(1, 100) <= 75 then
             if not HasCompletedQuest(Spawn, EMBERS_FOR_XOOT) then
                PlayFlavor(NPC, "voiceover/english/sage_xoort/qey_village06/100_sage_xoort_xoort_first_4b109355.mp3", "Oh to Drunder with this! How will I ever be able to get this thing working?", "frustrated", 1689589577, 4560189, Spawn)
-	            --PlayFlavor(NPC, "", "Oh to Drunder with this! How will I ever be able to get this thing working?", "frustrated", 0, 0, Spawn)
  	    else	   	
 		   	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
 
