@@ -12,12 +12,16 @@ local FIGHT_THE_FORGOTTEN_GUARDIANS = 334 -- was 59
 function spawn(NPC)
 	ProvidesQuest(NPC, FIGHT_THE_FORGOTTEN_GUARDIANS)
 	waypoints(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
 	Action(NPC)
 end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+function LeaveRange(NPC)
+     
 end
 
 function Action(NPC)
@@ -33,12 +37,15 @@ function Action(NPC)
     end
  end   
 	function InRange(NPC, Spawn)
+	  
 	    	if math.random(1, 100) <= 70 then
 	    local randomCall = MakeRandomInt(1, 2)
 	     if randomCall == 1 then
             if not HasCompletedQuest(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS) then
+          	FaceTarget(NPC, Spawn)
                PlayFlavor(NPC, "", "Forgotten guardians are no match for a Leatherfoot, Ha! Greetings adventurer. I can tell you're a fearless warrior!", "salute", 0, 0, Spawn)
-	elseif randomCall == 2 then	   	
+	elseif randomCall == 2 then	  
+	         	FaceTarget(NPC, Spawn)
 		   	PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
 
         end
