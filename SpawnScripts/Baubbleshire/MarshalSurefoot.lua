@@ -4,10 +4,12 @@
 	Script Author	: John Adams
 	Script Date	: 2008.09.23
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Updated: 2022.08.01 Dorbin
+	Script Update Notes: Included callout, waypoints, Action animations.
 --]]
 
 -- Quest ID's
-local FIGHT_THE_FORGOTTEN_GUARDIANS = 334 -- was 59
+local FIGHT_THE_FORGOTTEN_GUARDIANS =  334 -- was 59
 
 function spawn(NPC)
 	ProvidesQuest(NPC, FIGHT_THE_FORGOTTEN_GUARDIANS)

@@ -5,7 +5,7 @@
     Script Purpose : Handles the quest, "A Presence of Evil"
          Modified  : 2017.04.17
         Modified by: Ememjr
-              Note : Quest step 3 complete changed from AddQuestStep to AddQuestStepChat, was causing a quest listing erroro in journal
+              Note : Quest step 3 complete changed from AddQuestStep to AddQuestStepChat, was causing a quest listing error in journal
         Zone       : The Queen's Colony
         Quest Giver: Murrar Shar
         Preceded by: The Art of Combat
