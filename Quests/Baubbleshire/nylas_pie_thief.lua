@@ -12,7 +12,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I must check 'The Ringing Hammer' smithy.", 5, "I need to check the smithy for someone who may have taken the pie.", 0, 850.34, -18.22, -514.64, 238)
+	AddQuestStepLocation(Quest, 1, "I must check 'The Ringing Hammer' smithy.", 5, "I need to check the smithy for someone who may have taken the pie.", 2558, 850.34, -18.22, -514.64, 238)
 	AddQuestStepCompleteAction(Quest, 1, "step1beentothesmithy")
 end
 
@@ -33,7 +33,7 @@ function step1beentothesmithy(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I checked 'The Ringing Hammer'")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I checked the smithy, but found no one who took the pie")
 
-	AddQuestStepLocation(Quest, 2, "I need to check 'The Qeynos Exchange'.", 5, "I need to check the bank for someone who may have taken the pie", 0, 895.18, -18.01, -480.29, 238)
+	AddQuestStepLocation(Quest, 2, "I need to check 'The Qeynos Exchange'.", 5, "I need to check the bank for someone who may have taken the pie", 2558, 895.18, -18.01, -480.29, 238)
 	AddQuestStepCompleteAction(Quest, 2, "step2beentobank")
 end
 
@@ -41,7 +41,7 @@ function step2beentobank(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I checked 'The Qeynos Exchange'")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I checked the bank, but found no one who took the pie")
 
-    AddQuestStepLocation(Quest, 3, "I need to investigate 'The Deepmug Tavern'.", 5, "I need to check the tavern for someone who may have taken the pie", 0, 880.47, -18.31, -443.50, 238)
+    AddQuestStepLocation(Quest, 3, "I need to investigate 'The Deepmug Tavern'.", 5, "I need to check the tavern for someone who may have taken the pie", 2558, 880.47, -18.31, -443.50, 238)
 	AddQuestStepCompleteAction(Quest, 3, "step3deepmug")
 end
 

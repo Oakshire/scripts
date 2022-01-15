@@ -19,6 +19,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	conversation = CreateConversation()
+		UpdateQuestZone(Quest, "Oakmyst Forest")
 
 	AddConversationOption(conversation, "I will return victorious!")
 	StartConversation(conversation, QuestGiver, Player, "Good! Return when you've bested them!")
