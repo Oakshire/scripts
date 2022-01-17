@@ -6,7 +6,8 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local QUEST_1 = 211
+local QUEST_1 = 228
+
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
@@ -21,7 +22,7 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/scholar_neola/qey_adv01_oakmyst/scholarneola000.mp3", "", "", 684527020, 3141115058, Spawn)
-	if not HasCompletedQuest(Spawn, QUEST_1) and not HasQuest(Spawn, QUEST_1) then
+	if not HasCompletedQuest(Spawn, QUEST_1) and not HasQuest(Spawn, QUEST_1)  then
 		AddConversationOption(conversation, "What is wrong with the sapling?", "dlg_3_1")
 	elseif HasQuest(Spawn, QUEST_1) and GetQuestStep(Spawn, QUEST_1) == 3 then
 		AddConversationOption(conversation, "I saved the sapling.", "SavedSapling")

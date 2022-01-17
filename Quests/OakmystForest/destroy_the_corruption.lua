@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Find and defeat Rotweed.", 1, 100, "I must slay Rotweed. This being can be found in the Teardrop Cave in Oakmyst Forest.", 611, 1950204)
+	AddQuestStepKill(Quest, 1, "Find and defeat Rotweed.", 1, 100, "I must slay Rotweed. This being can be found in the Teardrop Cave in Oakmyst Forest.", 611, 1950029)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledRotweed")
 end
 

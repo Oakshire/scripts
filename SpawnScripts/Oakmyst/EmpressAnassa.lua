@@ -6,9 +6,9 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local QUEST_FROM_NEOLA = 211
-local QUEST_FROM_JUDGE = 212
-local QUEST_1 = 213
+local QUEST_FROM_NEOLA = 228
+local QUEST_FROM_JUDGE = 229
+local QUEST_1 = 230
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
