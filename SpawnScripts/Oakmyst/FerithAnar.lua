@@ -2,8 +2,8 @@
     Script Name    : SpawnScripts/Oakmyst/FerithAnar.lua
     Script Author  : Dorbin
     Script Date    : 2022.01.15 08:01:25
-    Script Purpose : Location ID 422488
-                   : 
+    Script Purpose : Roaming for Ferith'Anar
+    Note           : Needs attention for switching between movement loops.
 --]]
 
 
@@ -16,19 +16,19 @@ function hailed(NPC, Spawn)
 end
  --an attempt at combining all three spawn locations
 function waypoints(NPC)
-    local choice = math.random(1, 3)
     	if GetSpawnLocationID (NPC) == 422488 then
         waypoints1(NPC)
     elseif GetSpawnLocationID (NPC) == 422489 then
         waypoints2(NPC)
     elseif GetSpawnLocationID (NPC) == 422493 then
-      local choice = math.random(1, 3)
         waypoints3(NPC)
-        Pathway3 (NPC)
     end
 end   
 
-     
+
+
+-- Movement Loop sequences
+
 function waypoints1 (NPC)
     MovementLoopAddLocation(NPC, 798.83, 12.31, -265.92, 2, math.random(5, 10))
 	MovementLoopAddLocation(NPC, 780.68, 13.35, -256, 2, 0)
@@ -50,7 +50,6 @@ function waypoints1 (NPC)
 	MovementLoopAddLocation(NPC, 828.76, 5.19, -266.22, 2, 0)
 	MovementLoopAddLocation(NPC, 815.82, 8.04, -279.82, 2, 0)
 	MovementLoopAddLocation(NPC, 803.68, 11.49, -271.34, 2, math.random(5, 10), "Pathway1")
-	MoveToLocation(NPC, 803.68, 11.49, -271.34, 2, "Pathway1")
 
     end   
 
@@ -81,7 +80,6 @@ function waypoints2 (NPC)
 	MovementLoopAddLocation(NPC, 828.29, 12.61, -243.23, 2, math.random(5, 10))
 	MovementLoopAddLocation(NPC, 820.03, 13.53, -237.38, 2, 0)
 	MovementLoopAddLocation(NPC, 808.95, 6.35, -221.05, 2, math.random(5, 10),"Pathway2")
-	MoveToLocation(NPC, 808.95, 6.35, -221.05, 2,"Pathway2")
 
     end
 
@@ -106,76 +104,71 @@ function waypoints3 (NPC)
 	MovementLoopAddLocation(NPC, 891.65, 8.62, -292.25, 2, 0)
 	MovementLoopAddLocation(NPC, 900.08, 2.28, -293.41, 2, 0)
 	MovementLoopAddLocation(NPC, 896.93, 1.66, -269.96, 2, "Pathway3")
-	MoveToLocation(NPC, 896.93, 1.66, -269.96, 2, "Pathway3")
+
     end
 
 function respawn(NPC)
 	spawn(NPC)
 end
    
-
+   
+ -- Triggering Loop sequence rotation after initial time through movement waypoints
+        -- Does not work currently - Movement loops only repeat first pattern.
+        
 function Pathway3 (NPC)
-    local choice = math.random(1, 3)
-    if choice == 1 then
-    waypoints3(NPC)
-    elseif choice == 2 then
-    MoveToLocation(NPC, 879.66, 0.31, -245.20,math.random(5, 10)) 
-    MoveToLocation(NPC, 867.08, 1.34, -245.34,math.random(5, 10)) 
-    waypoints2(NPC)
+    local choice = MakeRandomInt(1, 2)
+    
+   -- if choice == 1 then
+    --waypoints3(NPC)
+    
+    if choice == 2 then
+    MovementLoopAddLocation(NPC, 879.66, 0.31, -245.20,2,0) 
+    MovementLoopAddLocation(NPC, 867.08, 1.34, -245.34,2,2,"waypoints2") 
+    
     else 
-    MoveToLocation(NPC, 852.36, 2.65, -244.06,math.random(5, 10))
-    MoveToLocation(NPC, 823.06, 6.45, -267.52,math.random(5, 10))
-    MoveToLocation(NPC, 818.50, 7.36, -278.27,math.random(5, 10)) 
-    waypoints1(NPC)  
+    MovementLoopAddLocation(NPC, 852.36, 2.65, -244.06,2,0)
+    MovementLoopAddLocation(NPC, 823.06, 6.45, -267.52,2,0)
+    MovementLoopAddLocation(NPC, 818.50, 7.36, -278.27,2,0,"waypoints1") 
     end
 end
 
 function Pathway2 (NPC)
-    local choice = math.random(1, 3)
+    local choice = MakeRandomInt(1, 2)
     
-    if choice == 1 then
-    waypoints2 (NPC)
+   -- if choice == 1 then
+   -- waypoints2 (NPC)
     
-     if choice == 2 then
-    MoveToLocation(NPC, 835.77, 3.68, -235.72,math.random(5, 10)) 
-    MoveToLocation(NPC, 839.33, 3.49, -257.94,math.random(5, 10)) 
-    waypoints1 (NPC)
+    if choice == 2 then
+    MovementLoopAddLocation(NPC, 835.77, 3.68, -235.72,2,0) 
+    MovementLoopAddLocation(NPC, 839.33, 3.49, -257.94,2,2,"waypoints1") 
    
     else   
-    MoveToLocation(NPC,856.26, 2.23, -242.68,math.random(5, 10))
-     MoveToLocation(NPC,883.08, 0.24, -249.14,math.random(5, 10))
-    waypoints3 (NPC)
+    MovementLoopAddLocation(NPC,856.26, 2.23, -242.68,2,0)
+     MovementLoopAddLocation(NPC,883.08, 0.24, -249.14,2,2,"waypoints3")
 
-    
     end
 end
 
 function Pathway1 (NPC)
-    local choice = math.random(1, 3)
+    local choice = MakeRandomInt(1, 2)
    
-    if choice == 1 then
-    waypoints1(NPC)
+   -- if choice == 1 then
+   -- waypoints1(NPC)
   
-   elseif choice == 2 then
-
-        MoveToLocation(NPC, 822.16, 6.54, -282.55,math.random(5, 10)) 
-    MoveToLocation(NPC, 844.21, 4.49, -318.7,math.random(5, 10)) 
-    MoveToLocation(NPC, 861.05, 2.11, -322.19,math.random(5, 10)) 
-    MoveToLocation(NPC, 872.81, 1.36, -320.97,0) 
-    MoveToLocation(NPC, 898.02, 2.14, -318.28,math.random(5, 10))
-    MoveToLocation(NPC, 911.11, 2.28, -304.26,math.random(5, 10))
-    waypoints3(NPC)  
+   if choice == 2 then
+    MovementLoopAddLocation(NPC, 822.16, 6.54, -282.55,2,0) 
+    MovementLoopAddLocation(NPC, 844.21, 4.49, -318.7,2,0) 
+    MovementLoopAddLocation(NPC, 861.05, 2.11, -322.19,2,0) 
+    MovementLoopAddLocation(NPC, 872.81, 1.36, -320.97,0,0) 
+    MovementLoopAddLocation(NPC, 898.02, 2.14, -318.28,2,0)
+    MovementLoopAddLocation(NPC, 911.11, 2.28, -304.26,2,0,"waypoints3")
     
     else 
-    MoveToLocation(NPC, 783.2, 13.35, -250.47,math.random(5, 10)) 
-    MoveToLocation(NPC, 794.22, 18.68, -237.53,math.random(5, 10))
-    MoveToLocation(NPC, 805.6, 14.40, -232.05,math.random(5, 10))
-     waypoints2(NPC, Spawn)
+    MovementLoopAddLocation(NPC, 783.2, 13.35, -250.47,2,0) 
+    MovementLoopAddLocation(NPC, 794.22, 18.68, -237.53,2,0)
+    MovementLoopAddLocation(NPC, 805.6, 14.40, -232.05,2,0,"waypoints2")
         
         end
     end
-
-     
-end
 
 

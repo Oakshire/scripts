@@ -4,6 +4,7 @@
 	Script Author	: scatman
 	Script Date	: 2009.05.09
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Update Notes    : 2022.01.17 Added final quest dialog, but missing MP3 Keys. - Dorbin
 --]]
 
 local QUEST_FROM_NEOLA = 228
@@ -63,7 +64,10 @@ function KilledRotweed(NPC, Spawn)
 	
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	
+	--Missing VoiceOver MP3 Keys (1/17/2022)- Dorbin
+    PlayFlavor(NPC, "voiceover/english/empress_anassa/qey_adv01_oakmyst/empressanassa004.mp3", "", "", 0, 0, Spawn)
+	AddConversationOption(conversation, "Thank you, Empress Anassa.")
+	StartConversation(conversation, NPC, Spawn, "This is good, but others like Rotweed will return someday. We will watch and defend. We, of this woodland, thank you.")
 
-	AddConversationOption(conversation, "Blllah x2")
-	StartConversation(conversation, NPC, Spawn, "Blah blah blah, if you see this I've forgotten to come back and put in wht she actually says.  Let Scatman know")
 end
