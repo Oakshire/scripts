@@ -13,21 +13,21 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must gather some mystail yearling tails.", 4, 100, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 172, 1950009)
+	AddQuestStepKill(Quest, 1, "I must gather some mystail yearling tails.", 4, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 172, 1950009)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have gathered some mystail yearling tails.")
 
-	AddQuestStepKill(Quest, 2, "I must gather tongues from clearwater frogs.", 3, 100, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 1104, 1950020)
+	AddQuestStepKill(Quest, 2, "I must gather tongues from clearwater frogs.", 3, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 1104, 1950020)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have gathered tongues from clearwater frogs.")
 
-	AddQuestStepKill(Quest, 3, "I must get the hide from one Oakmyst great bear.", 1, 100, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 127, 1950023)
+	AddQuestStepKill(Quest, 3, "I must get the hide from one Oakmyst great bear.", 1, 70, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 127, 1950023)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
@@ -35,7 +35,8 @@ function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I have collected the hide of an Oakmyst great bear.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have hunted down all the resources to fill the requisition.")
 
-	AddQuestStepChat(Quest, 4, "I need to talk to Diggin Diggs", 1, "I must go to the province district of Qeynos to seek out the client for this order.", 10, 6600085)
+ 	UpdateQuestZone(Quest, "Baubbleshire")	
+	AddQuestStepChat(Quest, 4, "I need to talk to Diggin Diggs", 1, "I must go to the Baubbleshire or the Qeynos Province District to seek out the client for this order.", 10, 6600085, 2380049)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
 
@@ -44,7 +45,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I talked to Diggin Diggs.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have delivered the goods to Diggin Diggs.")
 
-	UpdateQuestDescription(Quest, "I filled the Far Seas Requisition and delivered the goods to the client in the Qeynos Province District. I have been paid in full for this work, but the order was late.")
+	UpdateQuestDescription(Quest, "I filled the Far Seas Requisition and delivered the goods to the client in the Baubbleshire & Qeynos Province District. I have been paid in full for this work, but the order was late.")
 	GiveQuestReward(Quest, Player)
 end
 

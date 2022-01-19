@@ -8,6 +8,8 @@
 
 -- Quest ID's
 local BADGER_PELTS_FOR_DIGGS = 332 -- was 58
+local FarSeas_Fifty = 236
+local FarSeas_SixtyThree = 237
 
 function spawn(NPC)
 	ProvidesQuest(NPC, BADGER_PELTS_FOR_DIGGS)
@@ -30,6 +32,10 @@ function Begin(NPC, Spawn, conversation)
 		AddConversationOption(conversation, "I don't need a sales pitch. Got any work?", "GotAnyWork")
 	elseif HasQuest(Spawn, BADGER_PELTS_FOR_DIGGS) and GetQuestStep(Spawn, BADGER_PELTS_FOR_DIGGS) == 2 then
 		AddConversationOption(conversation, "Here is your bundle of badget pelts.", "BundleOfPelts")
+	elseif HasQuest(Spawn, FarSeas_Fifty) and GetQuestStep(Spawn, FarSeas_Fifty) == 4 then
+	    AddConversationOption(conversation, "I've finished your requisition order number fifty.", "FarSeas_FiftyDone")
+	elseif HasQuest(Spawn, FarSeas_SixtyThree) and GetQuestStep(Spawn, FarSeas_SixtyThree) == 4 then
+	    AddConversationOption(conversation, "I've finished your requisition order number sixty-three.", "FarSeas_SixtyThreeDone")
 	end
 	
 	AddConversationOption(conversation, "Sorry. Just passing by.")
@@ -65,4 +71,24 @@ function BundleOfPelts(NPC, Spawn)
 
 	AddConversationOption(conversation, "I guess this is better than nothing.")
 	StartConversation(conversation, NPC, Spawn, "Fine work ... fine work! I must tell you, I just paid my merchant taxes. 'Fraid the coin ain't as heavy as I promised. Sorry, taxes you know? I speak the truth!")
+end
+
+function FarSeas_FiftyDone(NPC, Spawn)
+    SetStepComplete(Spawn, FarSeas_Fifty, 4)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	
+	AddConversationOption(conversation, "I'm glad I could help.")
+	StartConversation(conversation, NPC, Spawn, "Grand work! A bit late, but grand none-the-less. These items will soon become fine garments and armor, Diggs Armor. Thank you, huntsman! Here is the payment for your labor.")
+	PlayFlavor(NPC, "","", "thank",0,0,Spawn)
+end
+
+function FarSeas_SixtyThree(NPC, Spawn)
+    SetStepComplete(Spawn, FarSeas_SixtyThree, 4)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	
+	AddConversationOption(conversation, "I'm glad I could help.")
+	StartConversation(conversation, NPC, Spawn, "Grand work! A bit late, but grand none-the-less. These items will soon become fine garments and armor, Diggs Armor. Thank you, huntsman! Here is the payment for your labor.")
+	PlayFlavor(NPC, "","", "thank",0,0,Spawn)
 end

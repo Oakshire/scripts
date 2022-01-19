@@ -99,7 +99,7 @@ elseif HasQuest(Spawn, OroRoots) and not HasCompletedQuest(Spawn, OroRoots) and 
 	PlayFlavor(NPC, "voiceover/english/lozoria_shinkicker/qey_village06/100_lozoria_shinkicker_multhail2_c18b6ff4.mp3", "", "", 1585254591, 550642986, Spawn)
 
 
-elseif not HasQuest(Spawn, OroRoots) and not HasCompletedQuest(Spawn, OroRoots) then
+elseif not HasQuest(Spawn, OroRoots) and not HasCompletedQuest(Spawn, OroRoots) and GetLevel(Spawn) >=5 then
      conversation = CreateConversation()
      AddConversationOption(conversation, "I'm looking for some work if you have any.", "OroStart")
     

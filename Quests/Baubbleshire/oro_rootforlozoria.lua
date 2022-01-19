@@ -31,7 +31,7 @@ end
 function step1_complete_beetles(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have gathered the Oro roots.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have enough Oro roots from the glowmyst beetles.")
-	UpdateQuestZone(Quest, "The Baubbleshire")	
+	UpdateQuestZone(Quest, "Baubbleshire")	
 
 	AddQuestStepChat(Quest, 2, "I must return to Lozoria Shinkicker.", 1, "I've received enough oro root to return to Lozoria with.", 0, 2380030)
 	AddQuestStepCompleteAction(Quest, 2, "quest_complete")
