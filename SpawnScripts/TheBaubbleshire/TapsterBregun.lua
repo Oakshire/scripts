@@ -5,9 +5,11 @@
 	Script Date	: 2022.01.09
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+local YolaPicnic = 5442
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")
+	ProvidesQuest(NPC, YolaPicnic)
 end
 
 function respawn(NPC)
@@ -15,6 +17,11 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+    if not HasCompletedQuest(Spawn, YolaPicnic) and not HasQuest(Spawn, YolaPicnic) then
+    PlayFlavor(NPC,"","","beckon",0,0,Spawn)
+    else
+    PlayFlavor(NPC,"","","hello",0,0,Spawn)
+    end
 end
 
 function LeaveRange(NPC, Spawn)
@@ -22,7 +29,23 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+if not HasCompletedQuest(Spawn, YolaPicnic) and not HasQuest(Spawn, YolaPicnic) then
+        PlayFlavor(NPC, "voiceover/english/tapster_bregun/qey_village06/100_tapster_bregun_bregun_first_1ee27a85.mp3", "", "hello", 3137139088, 2537693501, Spawn)
+        conversation = CreateConversation()
+    AddConversationOption(conversation, "I'm looking for work.", "DoorDash")
+    StartConversation(conversation, NPC, Spawn, "Greetings, traveler. Is there something I can get ya today?")
 
+elseif HasQuest(Spawn, YolaPicnic) then
+    FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    if GetQuestStep(Spawn, YolaPicnic) == 2 then
+    AddConversationOption(conversation, "I've delievered the picnic basket to Yola.", "DoorDashDone")
+    end
+    AddConversationOption(conversation, "Working on it!")
+    StartConversation(conversation, NPC, Spawn, "Did you make that delievery yet?")
+    
+    
+else
 	local choice = math.random(1,5)
 
 	if choice == 1 then
@@ -35,8 +58,37 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/tapster_bregun/qey_village06/100_tapster_bregun_bregun_first_1ee27a85.mp3", "Greetings, traveler. Is there something I can get ya today?", "hello", 3137139088, 2537693501, Spawn)
 	elseif choice == 5 then
 		PlayFlavor(NPC, "", "What can I get for ya?", "nod", 1689589577, 4560189, Spawn)
-	else
 	end
-
 end
+
+ function DoorDash(NPC, Spawn)
+  conversation = CreateConversation()
+  AddConversationOption(conversation, "Delievered where?", "DoorDash2")
+  StartConversation(conversation, NPC, Spawn, "Is that so... Well then why don't you do me a favor. Those look like some nimble feet you got. You can deliever a basket of food for me.")
+end   
+
+ function DoorDash2(NPC, Spawn)
+  conversation = CreateConversation()
+      PlayFlavor(NPC,"","","chuckle",0,0,Spawn)
+  AddConversationOption(conversation, "I can take Yola's order to her.", "DoorDashQuest")
+  StartConversation(conversation, NPC, Spawn, "I've prepared a picnic basket for Yola, and I need it delieverd to her at the little lake. You'll find her at the lunch spot. I'll spot you a few coin if you're quick on your toes.")
+end   
+
+function DoorDashQuest (NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+  OfferQuest(NPC, Spawn, YolaPicnic)
+end
+
+ function DoorDashDone(NPC, Spawn)
+  conversation = CreateConversation()
+      PlayFlavor(NPC,"","","thank",0,0,Spawn)
+  AddConversationOption(conversation, "Thanks, Bregun", "QuestComplete")
+  StartConversation(conversation, NPC, Spawn, "Well, so ya have. I hope she enjoys her lunch. I gave her my best breads and cheeses! Ooooh makes me hungry just thinking about it! Ha! Oh, as promised, here's your coin.")
+end   
+
+function QuestComplete(NPC, Spawn)
+    	SetStepComplete(Spawn, YolaPicnic, 2)
+    end
+end
+
 

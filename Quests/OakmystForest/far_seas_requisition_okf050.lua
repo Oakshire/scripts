@@ -47,6 +47,8 @@ function QuestComplete(Quest, QuestGiver, Player)
 
 	UpdateQuestDescription(Quest, "I filled the Far Seas Requisition and delivered the goods to the client in the Baubbleshire & Qeynos Province District. I have been paid in full for this work, but the order was late.")
 	GiveQuestReward(Quest, Player)
+		if HasItem(Player, 7078) then
+	RemoveItem(Player, 7078)
 end
 
 function Reload(Quest, QuestGiver, Player, Step)

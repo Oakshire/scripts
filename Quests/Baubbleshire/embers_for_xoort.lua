@@ -44,6 +44,8 @@ end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
-		quest_complete(Quest, QuestGiver, Player)
+		step1_complete_gotGoal(Quest, QuestGiver, Player)
+		elseif Step == 2 then
+		    quest_complete(Quest, QuestGiver, Player)
 	end
 end
