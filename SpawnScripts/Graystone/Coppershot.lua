@@ -5,6 +5,7 @@
 	Script Date	: 2008.09.21
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+local Delivery =5444
 
 function spawn(NPC)
 end
@@ -16,12 +17,27 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+    if GetQuestStep (Spawn, Delivery) == 1 then 
+	AddConversationOption(conversation, "I've got a delivery of lager for you.", "LagerDelivery")
+	end
 	PlayFlavor(NPC, "voiceover/english/bartender_coppershot/qey_village03/bartendercoppershot000.mp3", "", "", 2171336743, 1878294501, Spawn)
 	AddConversationOption(conversation, "I'm not looking for trouble.", "dlg_13_1")
 	AddConversationOption(conversation, "This is not my kind of place.")
 	StartConversation(conversation, NPC, Spawn, "If yer comin' in here to fight an' make trouble, the Graystone Watch will toss you out on your backside!")
 end
+
+function LagerDelivery(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+    PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
+	AddConversationOption(conversation, "I'll make sure he gets this. Thanks.", "UpdateDelivery")
+	AddConversationOption(conversation, "Actually, I must be in the wrong place. Sorry.")
+	StartConversation(conversation, NPC, Spawn, "Ye don't say! Must'a been ol' Deeppockets that sent ya. His family brew is famous here! Please, give him this antique stein. Now don't drop it! He'll be sure to find it interesting.")
+end
+
+function UpdateDelivery(NPC, Spawn)
+    SetStepComplete(Spawn, Delivery, 1)
+   end
 
 function dlg_13_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -32,6 +48,7 @@ function dlg_13_1(NPC, Spawn)
 	AddConversationOption(conversation, "I hear ya.")
 	StartConversation(conversation, NPC, Spawn, "Welcome to the Frozen Tundra Tavern where the grog flows like the Ocean of Tears.")
 end
+
 
 function dlg_13_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

@@ -8,8 +8,8 @@
 
 function obtained(Item, Spawn)
 	if not HasLanguage(Spawn,8) then
-	    AddLanguage(Spawn, 8)
-	SendMessage(Spawn, "Stout", "White")
+	AddLanguage(Spawn, 8)
+	SendMessage(Spawn, "You have learned the basics of the Stout language", "White")
 	RemoveItem(Spawn, 904)
 end
 

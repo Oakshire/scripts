@@ -38,3 +38,9 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional2/human_eco_good_2/ft/service/baker/human_baker_service_good_2_hail_gf_3d1ca473.mp3", "Tell me, do you prefer Halfling or Elven cuisine? I myself have a hard time deciding between the two.", "confused", 591848764, 941431809, Spawn)
 	end
 end
+
+--[[ -- for quest rebuilding later
+PlayFlavor(NPC, "voiceover/english/barmaid_lolla_cotgrove/qey_village01/qey_village01_barmaid_lolla_cotgrove_multhail1_ec6e0398.mp3", "Can't you see I'm busy? I've no time for small talk!", "no", 370156187, 590443744, Spawn)
+	elseif choice == 5 then
+		PlayFlavor(NPC, "voiceover/english/barmaid_lolla_cotgrove/qey_village01/qey_village01_barmaid_lolla_cotgrove_callout_a2de4d52.mp3", "...And that will go over here and the kegs go there... Yeah. Yeah. Yeah. What do you need?", "point", 2609682603, 931995827, Spawn)
+		]]--

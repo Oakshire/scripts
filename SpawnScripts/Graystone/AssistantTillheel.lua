@@ -32,7 +32,7 @@ function RandomTalk(NPC, Spawn, Option)
 		elseif choice == 2 then
 			PlayFlavor(NPC, "voiceover/english/optional2/halfling_eco_good_1/ft/service/alchemist/halfling_alchemist_service_good_1_hail_gm_ec533e4c.mp3", "Are you wounded?  I just made up a fresh batch of healing potions an hour ago.", "hello", 2688473405, 4089604259, Spawn)
 		elseif choice == 3 then
-			PlayFlavor(NPC, "", "I'm sorry, afraid I'm unable to help you now.  That dolt Mr. Clark mixed up the formulas again!  Now... Let's see...  Which one is the super corrosive acid?", "", 0, 0, Spawn)
+			PlayFlavor(NPC, "voiceover/english/assistant_tillheel/qey_village03.mp3", "I'm sorry, afraid I'm unable to help you now.  That dolt Mr. Clark mixed up the formulas again!  Now... Let's see...  Which one is the super corrosive acid?", "", 0, 0, Spawn)
 		else
 			PlayFlavor(NPC, "voiceover/english/optional2/halfling_eco_good_1/ft/service/alchemist/halfling_alchemist_service_good_1_hail_gm_efd903ba.mp3", "Hello, adventurer! Are you looking for a specific potion or ingredient?", "agree", 1413906559, 1372883990, Spawn)
 		end

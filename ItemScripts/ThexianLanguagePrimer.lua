@@ -9,7 +9,7 @@
 function obtained(Item, Spawn)
     if not HasLanguage(Spawn,2) then
 	AddLanguage(Spawn, 2)
-	SendMessage(Spawn, "Thexian", "White")
+	SendMessage(Spawn, "You have learned the basics of the Thexian language.", "White")
 	RemoveItem(Spawn, 910) 
 	    end
 	end

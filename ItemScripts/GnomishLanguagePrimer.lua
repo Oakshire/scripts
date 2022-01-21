@@ -7,10 +7,9 @@
 --]]
 
 function obtained(Item, Spawn)
-if not HasLanguage(Spawn,6) then
+	if not HasLanguage(Spawn,6) then
 	AddLanguage(Spawn, 6)
-	SendMessage(Spawn, "Gnomish", "White")
-	RemoveItem(Spawn, 903) 
-end
-
+	SendMessage(Spawn, "You have learned the basics of the Gnomish language", "White")
+	RemoveItem(Spawn, 903)
+    end
 end

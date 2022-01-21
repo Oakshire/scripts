@@ -32,7 +32,7 @@ function Delivery(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found Innkeeper Valean.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I delivered the tattered journal to Innkeeper Valean.")
 
-	AddQuestStepChat(Quest, 2, "I need to return to Ganla Dindlenod.", 1, "Ganla Dindlenod will want to know Valean now has the book.", 0, 2380028)
+	AddQuestStepChat(Quest, 2, "I need to return to Ganla Dindlenod.", 1, "Ganla Dindlenod will want to know Valean now has the book.", 0, 2380022)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 	UpdateQuestZone(Quest, "Baubbleshire")
 end

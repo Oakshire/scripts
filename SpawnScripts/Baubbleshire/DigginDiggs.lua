@@ -1,9 +1,9 @@
 --[[
 	Script Name	: SpawnScripts/Baubbleshire/DigginDiggs.lua
 	Script Purpose	: Diggin Diggs <Armor and Shields>
-	Script Author	: John Adams
-	Script Date	: 2008.09.23
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Author	: Dorbin
+	Script Date	: 2022.01.20
+	Script Notes	: Reconstructed
 --]]
 
 -- Quest ID's
@@ -89,6 +89,6 @@ function FarSeas_SixtyThree(NPC, Spawn)
 	conversation = CreateConversation()
 	
 	AddConversationOption(conversation, "I'm glad I could help.")
-	StartConversation(conversation, NPC, Spawn, "Grand work! A bit late, but grand none-the-less. These items will soon become fine garments and armor, Diggs Armor. Thank you, huntsman! Here is the payment for your labor.")
+	StartConversation(conversation, NPC, Spawn, "I thought this order was lost! These items will soon become fine garments and armor, Diggs Armor. Thank you, huntsman! Here is the payment for your labor.")
 	PlayFlavor(NPC, "","", "thank",0,0,Spawn)
 end

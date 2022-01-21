@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-    AddQuestStepChat(Quest, 1, "I need to find Coppershot.", 1, " I need to speak to Bartender Coppershot in Graystone Yard.", 35594, 2350038)
+    AddQuestStepChat(Quest, 1, "I need to find Coppershot.", 1, " I need to speak to Bartender Coppershot in Graystone Yard.", 310, 2350038)
     AddQuestStepCompleteAction(Quest, 1, "Delivery")
     	UpdateQuestZone(Quest, "Graystone Yard")
 end
@@ -32,7 +32,7 @@ function Delivery(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I spoke to Coppershot.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I gave Coppershot the jug of Lendel's Grand Lager.")
 
-	AddQuestStepChat(Quest, 2, "I need to return to Kaldin Deeppockets.", 1, "This old stein should be a nice surprise for Kaldin.", 7786, 2380028)
+	AddQuestStepChat(Quest, 2, "I need to return to Kaldin Deeppockets.", 1, "This old stein should be a nice surprise for Kaldin.", 3196, 2380031)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 	UpdateQuestZone(Quest, "Baubbleshire")
 end

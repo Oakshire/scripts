@@ -3,7 +3,7 @@
 	Script Purpose	:	Handles the quest, "Gathering Rock Samples"
 	Script Author	:	Shatou
 	Script Date		:	1/6/2020
-	Script Notes	:	
+	Script Notes	:	Updated quest accept dialog - 1/20/2022 Dorbin
 
 	Zone			:	Baubbleshire
 	Quest Giver		:	Geologist Quardifle
@@ -16,6 +16,15 @@ local GEOLOGIST_QUARDIFLE_ID = 2380036
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "Find a mine in the Caves to obtain a windspirit crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1159, 58.11, 2.93, -119.94)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+end
+
+function Accepted(Quest, QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	conversation = CreateConversation()
+	UpdateQuestZone(Quest, "The Caves")
+	PlayFlavor(QuestGiver, "voiceover/english/geologist_quardifle/qey_village06/geologistquardifle003.mp3", "", "", 3141164092, 1027825871, Player)
+	AddConversationOption(conversation, "Alright. I'll see what I can find!")
+	StartConversation(conversation, QuestGiver, Player, "Great! You'll find that these caves are largely unexplored. Seek out intricate areas of these caves and bring me back some unique rock samples and I'll be happy!")
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
@@ -35,7 +44,8 @@ end
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I found a prexus tear sample.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I gathered the three samples from the different parts of the caves.")
-
+    
+    UpdateQuestZone(Quest, "Baubbleshire")
 	AddQuestStepChat(Quest, 4, "I need to speak with Geologist Quardifle.", 1, "I need to give the samples I gathered to Geologist Quardifle.", 11, GEOLOGIST_QUARDIFLE_ID)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
@@ -61,9 +71,6 @@ function Reload(Quest, QuestGiver, Player, Step)
 	end
 end
 
-function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

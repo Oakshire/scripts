@@ -43,7 +43,7 @@ end
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 4, "I talked to Diggin Diggs.")
-	UpdateQuestTaskGroupDescription(Quest, 2, "I have delivered the goods to Diggin Diggs.")
+	UpdateQuestTaskGroupDescription(Quest, 4, "I have delivered the goods to Diggin Diggs.")
 
 	UpdateQuestDescription(Quest, "I filled the Far Seas Requisition and delivered the goods to the client in the Baubbleshire & Qeynos Province District. I have been paid in full for this work, but the order was late.")
 	GiveQuestReward(Quest, Player)
