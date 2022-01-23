@@ -18,12 +18,14 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+    if not HasQuest(Spawn, HalfPint) and not HasCompletedQuest(Spawn,HalfPint)then
     local choice = math.random(1,2)
 
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/dibble_rootweaver/varsoon/030_halfling_male_dibble_rootweaver_aoi_00_b74acb43.mp3", "Oh!?  Did I hear something?  Hello?  Anybody there!", "peer", 318278760, 343204042, Spawn)
 	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/dibble_rootweaver/varsoon/030_halfling_male_dibble_rootweaver_aoi_01_bd03e30f.mp3", "Do be careful, adventurer. It's dreadful down here.", "wave", 652077101, 2601145137, Spawn)
+	AddTimer(NPC, 100000, "InRange",1,Spawn)
 	end
 end
 
@@ -34,24 +36,28 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
+ if not HasQuest(Spawn, HalfPint) and not HasCompletedQuest(Spawn,HalfPint)then
 		PlayFlavor(NPC, "voiceover/english/dibble_rootweaver/varsoon/dibble_rootweaver/dibble_rootweaver001.mp3", "", "", 3675279916, 1794610415, Spawn)
 		AddConversationOption(conversation, "What do you need?","WhatNeed")
 		AddConversationOption(conversation, "No you may not.")
 	    StartConversation(conversation, NPC, Spawn, "Am I ever in a pickle! May I be so bold as to ask for your assistance?")
-	end
-
-
-function WhatNeed(NPC, Spawn)
+	    
+    else
         FaceTarget(NPC, Spawn)
 	    conversation = CreateConversation()
 		PlayFlavor(NPC, "voiceover/english/dibble_rootweaver/varsoon/dibble_rootweaver/dibble_rootweaver002.mp3", "", "", 4209059986, 1434611010, Spawn)
 		AddConversationOption(conversation, "Fine have it your way.", "dlg_3_1")
 		StartConversation(conversation, NPC, Spawn, "Please don't waste your time with me.  I'm sure I'll figure a way out of here.")
-	end
+    end
+    end
+end
 
+function dlg_1_5 (NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+  OfferQuest(NPC, Spawn, HalfPint)
+end
 
-
-function dlg_3_1(NPC, Spawn)
+function WhatNeed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

@@ -19,7 +19,7 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tawli_whiskwind/qey_village06/tawliwhiskwind000.mp3", "", "", 2721335951, 3874016215, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tawli_whiskwind/qey_village06/tawliwhiskwind000.mp3", "", "curtsey", 2721335951, 3874016215, Spawn)
 	if HasQuest(Spawn, QUEST_FROM_VIDA_NETTLEVILE) and GetQuestStep(Spawn, QUEST_FROM_VIDA_NETTLEVILE) == 1 then
 		AddConversationOption(conversation, "Vida Sweeps asked me to pick up a broom for her.  She wore her old one out.", "dlg_2_1")
 	end

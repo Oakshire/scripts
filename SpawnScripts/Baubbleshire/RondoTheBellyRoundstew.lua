@@ -27,6 +27,7 @@ function spawn(NPC)
 	ProvidesQuest(NPC, HELPING_SOME_FRIENDS)
 	ProvidesQuest(NPC, PAYING_OFF_A_SWEET_DEBT)
 	ProvidesQuest(NPC, A_BUDDING_PRANKSTER)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -41,6 +42,24 @@ function hailed(NPC, Spawn)
 	else
 		NotHalfling(NPC, Spawn)
 	end
+end
+
+function InRange(NPC, Spawn) 
+    if not HasCompletedQuest (Spawn, HELPING_A_FRIEND) and not HasQuest (Spawn, HELPING_A_FRIEND) then 
+             PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+        else
+        if math.random(1, 100) <= 75 then
+         choice = math.random(1,3)
+        FaceTarget(NPC, Spawn)
+            if choice ==1 then
+            PlayFlavor(NPC, "", "", "chuckle", 0, 0, Spawn)
+            elseif choice ==2 then
+            PlayFlavor(NPC, "", "", "wink", 0, 0, Spawn)
+            else
+            PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+            end
+        end
+    end
 end
 
 function NotHalfling(NPC, Spawn)

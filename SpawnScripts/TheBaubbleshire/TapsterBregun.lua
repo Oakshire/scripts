@@ -18,9 +18,9 @@ end
 
 function InRange(NPC, Spawn)
     if not HasCompletedQuest(Spawn, YolaPicnic) and not HasQuest(Spawn, YolaPicnic) then
-    PlayFlavor(NPC,"","","beckon",0,0,Spawn)
+    PlayFlavor(NPC, "voiceover/english/tapster_bregun/qey_village06/100_tapster_bregun_multhail2_ccbdd67e.mp3", "Welcome to the Deepmug Tavern!  I'm Bregun. Talk to me if you wanna lift a pint!  Now, what are ya drinkin'?", "beckon", 2461588719, 573667497, Spawn)
     else
-    PlayFlavor(NPC,"","","hello",0,0,Spawn)
+    	PlayFlavor(NPC, "voiceover/english/tapster_bregun/qey_village06/100_tapster_bregun_bregun_first_1ee27a85.mp3", "Greetings, traveler. Is there something I can get ya today?", "hello", 3137139088, 2537693501, Spawn)
     end
 end
 
