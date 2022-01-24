@@ -56,7 +56,7 @@ function ImInterested(NPC, Spawn)
 	conversation = CreateConversation()
 
 	AddConversationOption(conversation, "I will return with the bundle of badger pelts. ", "OfferQuest1")
-	StartConversation(conversation, NPC, Spawn, "Then prepare for a hunting trip in the Forest Ruins.  I'll pay you handsomely for a bundle of badger pelts.  I may even toss in a bit of Diggs' finest armor.")
+	StartConversation(conversation, NPC, Spawn, "Then prepare for a hunting trip in the Forest Ruins or the Oakmyst Forest.  I'll pay you handsomely for a bundle of badger pelts.  I may even toss in a bit of Diggs' finest armor.")
 end
 
 function OfferQuest1(NPC, Spawn)

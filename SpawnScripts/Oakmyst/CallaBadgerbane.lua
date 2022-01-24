@@ -29,7 +29,7 @@ function hailed(NPC, Spawn)
 	    SetStepComplete(Spawn, HarvestTutorial, 8)
 		conversation = CreateConversation()
 		
-	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0, Spawn)
+	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1005.mp3", "", "", 0, 0, Spawn)
 		AddConversationOption(conversation, "Thank you.")
 		StartConversation(conversation, NPC, Spawn, "Excellent work learning about harvesting!  As a reward, allow me to offer you this box for storing harvested items.  It's quite heavy, so I suggest you put it in your bank rather than carrying it, but it has plenty of storage room for harvests.")
 	else
@@ -106,7 +106,7 @@ function BaseChat(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1004.mp3", "", "", 0, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1005.mp3", "", "", 0, 0, Spawn)
 	AddConversationOption(conversation, "I'd like to learn about collections.", "collections_chat_1")
 	AddConversationOption(conversation, "I'd like to learn about harvesting.", "harvests_chat_1")
 	AddConversationOption(conversation, "Aren't you worried about the elemental attacks?", "elemental_chat_1")

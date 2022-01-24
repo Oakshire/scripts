@@ -108,6 +108,7 @@ function Reload(Quest, QuestGiver, Player, Step)
 		step5_complete_Jar(Quest, QuestGiver, Player)
 	elseif Step == 6 then
 		step6_complete_Tome(Quest, QuestGiver, Player)
-
+	elseif Step == 7 then
+		Multiple_Steps_Complete(Quest, QuestGiver, Player)
 	end
 end
