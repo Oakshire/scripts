@@ -7,19 +7,38 @@
 --]]
 
 local Delivery = 5443
+local Dinner = 238
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
+function InRange (NPC,Spawn)
+     if math.random(1, 100) <= 50 then
+	    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+    end
+end
+
+    
 function hailed(NPC, Spawn)
+    local choice = math.random(1,3)
+    if choice == 1 then
+    PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
+    elseif choice==2 then
+    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+    else
+    end
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	if GetQuestStep (Spawn, Delivery) == 1 then 
 	AddConversationOption(conversation, "Ganla Dindlenod wants you to take a look at this book.", "BookDelivery")
+	end
+	if GetQuestStep (Spawn, Dinner) == 1 then 
+	AddConversationOption(conversation, "Faeadaen says she must work late tonight and can't make it for dinner.", "NoDinner")
 	end
 	AddConversationOption(conversation, "I would like to know about a room.", "dlg_2_1")
 	AddConversationOption(conversation, "No thanks.")
@@ -35,10 +54,22 @@ function BookDelivery(NPC, Spawn)
  	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
 end
 
+function NoDinner(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "I'm sorry to have to deliver the news.", "UpdateDinner")
+    StartConversation(conversation, NPC, Spawn, "Again?! That froglok should hire more people so Faeadaen isn't worked to the bone. Thanks for letting me know. I guess I'll dine alone tonight.")
+ 	PlayFlavor(NPC, "", "", "sigh", 0,0 , Spawn)
+end
+
 function UpdateDelivery(NPC, Spawn)
     SetStepComplete(Spawn, Delivery, 1)
    end
 
+function UpdateDinner(NPC, Spawn)
+    SetStepComplete(Spawn, Dinner, 1)
+   end
+   
 function dlg_2_1(NPC, Spawn)
     	FaceTarget(NPC, Spawn)
     	conversation = CreateConversation()
