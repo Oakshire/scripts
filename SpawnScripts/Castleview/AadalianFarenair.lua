@@ -1,19 +1,124 @@
 --[[
 	Script Name	: SpawnScripts/Castleview/AadalianFarenair.lua
 	Script Purpose	: Aadalian Farenair 
-	Script Author	: Scatman
-	Script Date	: 2009.10.02
+	Script Author	: Dorbin
+	Script Date	: 2022.01.25
 	Script Notes	: 
 --]]
 
+local Sword = 5455
+
 function spawn(NPC)
+ProvidesQuest(NPC,Sword)
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
+function InRange(NPC, Spawn)
+    if not HasLanguage(Spawn, 9) then
+        	 if math.random(1, 100) <= 70 then
+            local choice = math.random(1,2)
+            
+            if choice == 1 then
+	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
+    	    elseif choice == 2 then
+	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
+    	    end
+    	end
+	elseif
+        not HasCompletedQuest (Spawn, Sword) and not HasQuest (Spawn, Sword) then 
+            if math.random(1, 100) <= 70 then
+            FaceTarget(NPC,Spawn)
+            local choice = math.random(1,3)
+                if choice == 1 then
+                 PlayFlavor(NPC, "", "Ah, a busy adventurer like you has no time to run errands. Farewell!", "", 0, 0, Spawn)
+                elseif choice == 2 then
+                PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)
+                else
+                PlayFlavor(NPC, "", "Can you spare a moment?", "hello", 0, 0, Spawn)
+                end
+        
+            elseif HasCompletedQuest (Spawn, Sword) and math.random(1, 100) <= 50 then
+            PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)   
+             end
+    end
+end
+
+function LeaveRange(NPC, Spawn)
+end
+
+
+function QuestStart(NPC, Spawn, conversation)
+    FaceTarget(NPC,Spawn)
+    if not HasQuest (Spawn, Sword) then
+         conversation = CreateConversation()
+        PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "", "brandish", 2059471651, 1229334005, Spawn)
+        AddConversationOption(conversation, "What are you waiting for?", "Waitting")
+         StartConversation(conversation, NPC, Spawn, "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.")
+       elseif HasQuest (Spawn, Sword) then
+         conversation = CreateConversation()
+        if GetQuestStep(Spawn, Sword) == 2 then
+        AddConversationOption(conversation, "Here is your sword. What do you think?", "SwordReturned")
+        end
+    AddConversationOption(conversation, "I'm heading there soon.")
+    StartConversation(conversation, NPC, Spawn, "Have you heard from Froptub about my sword?")
+    end
+end
+
+
+ function Waitting(NPC, Spawn)
+    FaceTarget(NPC,Spawn)
+  conversation = CreateConversation()
+  AddConversationOption(conversation, "What etching have you decided on?", "Decoration")
+  AddConversationOption(conversation, "Fascinating, but I must be off.")
+  StartConversation(conversation, NPC, Spawn, "I wait for my sword. You see, I've asked Froptub to etch an inscription along the blade. For generations, each elf in my family has placed a unique mark along his blade. Now, I must follow this tradition. ")
+end   
+
+ function Decoration(NPC, Spawn)
+    FaceTarget(NPC,Spawn)
+  conversation = CreateConversation()
+  AddConversationOption(conversation, "I'll go speak with Froptub.", "Froptub")
+  AddConversationOption(conversation, "Sorry, I'm busy.")
+  StartConversation(conversation, NPC, Spawn, "My design is not mere decoration, my friend. The inscription chronicals the cohabitation of our two races. Would you be kind, and see what is keeping the sword at Froptub's smithy? ")
+end   
+
+function Froptub (NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+  OfferQuest(NPC, Spawn, Sword)
+end
+
+
+function SwordReturned(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	AddConversationOption(conversation, "I'm glad I could assist.", "Payment")
+	AddConversationOption(conversation, "As long as you're happy with it. Good luck.", "Payment")
+	PlayFlavor(NPC, "","", "brandish", 0, 0, Spawn)
+	StartConversation(conversation, NPC, Spawn, "Hmm, this inscription is far more rudimentary than I expected. Though, it does fit perfectly with what I imagined. Forever more, this blade shall bare the union of our races. May the story of this sword carry on for generations.")
+end   
+
+        
+function Payment(NPC, Spawn)
+    	SetStepComplete(Spawn, Sword, 2)
+    end
+
+
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "garbled text not to be translated", "", 2766992983, 3224256482)
-end
+
+    if not HasLanguage(Spawn, 9) then -- Language Check for KoaDal (9)
+        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
+    	
+    else
+        if not HasCompletedQuest(Spawn, Sword) then 
+        QuestStart(NPC, Spawn)
+  
+        elseif HasCompletedQuest (Spawn, Sword) then
+	    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "", 2059471651, 1229334005, Spawn)
+        end
+   end
+ end
+

@@ -1,16 +1,21 @@
 --[[
 	Script Name	: SpawnScripts/Castleview/InnkeeperValean.lua
 	Script Purpose	: Innkeeper Valean <Housing>
-	Script Author	: Scatman
-	Script Date	: 2009.10.02
+	Script Author	: Dorbin
+	Script Date	: 2022.01.15
 	Script Notes	: 
 --]]
 
+local Books = 5453
 local Delivery = 5443
 local Dinner = 238
+local Reservation = 5452
+dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
 
 function spawn(NPC)
+ProvidesQuest(NPC,Books)
 SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+
 end
 
 function respawn(NPC)
@@ -25,11 +30,12 @@ end
 
     
 function hailed(NPC, Spawn)
+    GenericHail(NPC, Spawn)
     local choice = math.random(1,3)
     if choice == 1 then
-    PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1002.mp3", "", "bow", 0, 0, Spawn)
     elseif choice==2 then
-    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1002.mp3", "", "hello", 0, 0, Spawn)
     else
     end
 	FaceTarget(NPC, Spawn)
@@ -38,7 +44,16 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "Ganla Dindlenod wants you to take a look at this book.", "BookDelivery")
 	end
 	if GetQuestStep (Spawn, Dinner) == 1 then 
-	AddConversationOption(conversation, "Faeadaen says she must work late tonight and can't make it for dinner.", "NoDinner")
+	AddConversationOption(conversation, "Faeadaen says she must work late tonight and can't make it back for dinner.", "NoDinner")
+	end
+	if GetQuestStep (Spawn, Reservation) == 1 then 
+	AddConversationOption(conversation, "I need to make a room reservation for Taneran.", "KnowTaneran")
+	end
+	if not HasQuest(Spawn,Books) and not HasCompletedQuest(Spawn,Books) then
+	AddConversationOption(conversation, "You have a great number of books in your collection.", "BookCollection")
+	end
+	if GetQuestStep (Spawn, Books) == 2 then 
+	AddConversationOption(conversation, "I found your books being sold in the catacombs.", "FoundBooks")
 	end
 	AddConversationOption(conversation, "I would like to know about a room.", "dlg_2_1")
 	AddConversationOption(conversation, "No thanks.")
@@ -62,6 +77,47 @@ function NoDinner(NPC, Spawn)
  	PlayFlavor(NPC, "", "", "sigh", 0,0 , Spawn)
 end
 
+function KnowTaneran(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "I wan't aware they were to be wed.", "UpdateReservation")
+    AddConversationOption(conversation, "I don't really know either of them.", "UpdateReservation")
+    StartConversation(conversation, NPC, Spawn, "Ah! Taneran! I know him well! It seems he's in town quite often visiting Listalania. They're quite a pair, arn't they? I suppose when they wed I'll lose his loyal patronage at my inn.")
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+end
+
+function UpdateReservation(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "I will let her know.", "ReservationMade")
+    AddConversationOption(conversation, "I must congratulation them!", "ReservationMade")
+    AddConversationOption(conversation, "Perhaps don't assume next time. Thank you.", "ReservationMade")
+    StartConversation(conversation, NPC, Spawn, "Pardon my indiscretion, friend. I assumed... because you're making his reservation that... you were a close friend of Taneran's. He and I speak sometimes when he retires for the night. Please don't mention this to the Lady. I will see that his room is ready.")
+ 	PlayFlavor(NPC, "", "", "boggle", 0,0 , Spawn)
+end
+
+function BookCollection(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "If I see them down there, I'll let you know.", "BookLook")
+    AddConversationOption(conversation, "The catacombs? Ew. No.")
+    StartConversation(conversation, NPC, Spawn, "I do have many, but I use to have more before hoodlums pilfered my shelves. I heard tales of a merchant in the Down Below selling books... MY BOOKS! I must confirm this before I approach the Qeynos guard.")
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+end
+
+function BookLook (NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+  OfferQuest(NPC, Spawn, Books)
+end
+
+function FoundBooks(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "I'm glad I could help.", "BooksDone")
+    StartConversation(conversation, NPC, Spawn, "I'll report this to the Qeynos guard! Hopefully they'll lock these criminals up and throw away the key. Thank you for relaying this information. Please, take this small token of my appreciation.")
+ 	PlayFlavor(NPC, "", "", "boggle", 0,0 , Spawn)
+end
+
 function UpdateDelivery(NPC, Spawn)
     SetStepComplete(Spawn, Delivery, 1)
    end
@@ -70,6 +126,14 @@ function UpdateDinner(NPC, Spawn)
     SetStepComplete(Spawn, Dinner, 1)
    end
    
+function ReservationMade(NPC, Spawn)
+    SetStepComplete(Spawn, Reservation, 1)
+   end
+
+function BooksDone(NPC, Spawn)
+    SetStepComplete(Spawn, Books, 2)
+   end
+
 function dlg_2_1(NPC, Spawn)
     	FaceTarget(NPC, Spawn)
     	conversation = CreateConversation()
@@ -110,8 +174,7 @@ function dlg_2_4(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Many different kinds of housing are available in the city of Qeynos.  As a show of appreciation, Antonia Bayle has awarded you a one bedroom house for free at this time.")
 	end
 
-function OfferQuest1(NPC, Spawn)
-end
+
 
 --[[
 	PlayFlavor(NPC, "innkeeper_uglar_splinterthumb/qey_village04/innkeeper001.mp3", "", "", 1553251638, 3978555092)

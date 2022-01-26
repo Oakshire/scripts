@@ -9,7 +9,7 @@
 local Quest = 238
 function spawn(NPC)
     ProvidesQuest(NPC, Quest)
-    SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+    SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -42,7 +42,7 @@ function hailed(NPC, Spawn)
     if GetQuestStep(Spawn, Quest)==2 then
     AddConversationOption(con, "I told Valean you wouldn't be able to make it to dinner tonight.", "NoDinner")
     end
-    AddConversationOption(con, "I would love a performance. [ 1 Silver ]", "Perforamnce")
+    AddConversationOption(con, "I would love a performance. [ 2 Silver ]", "Perforamnce")
     AddConversationOption(con, "I'll keep my coins, thank you.")
     StartConversation(con, NPC, Spawn, "Step up and watch as I make lights dance and coins disappear into thin air!")
 end
@@ -75,7 +75,7 @@ function NoDinner(NPC,Spawn)
 end
 
 function Perforamnce(NPC,Spawn)
-    RemoveCoin(Spawn, 100)
+    RemoveCoin(Spawn, 200)
     FaceTarget(NPC, Spawn)
     		PlayFlavor(NPC, "", "With pleasure.", "nod", 0, 0, Spawn)
     	
