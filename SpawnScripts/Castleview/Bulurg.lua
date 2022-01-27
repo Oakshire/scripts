@@ -45,7 +45,7 @@ function hailed(NPC, Spawn)
 end
     function QuestStart(NPC, Spawn, conversation)
     FaceTarget(NPC,Spawn)
-    if not HasQuest (Spawn, Water) then
+    if not HasQuest (Spawn, Water) and not HasCompletedQuest(Spawn, Water) then
          conversation = CreateConversation()
         PlayFlavor(NPC, "voiceover/english/bartender_bulurg/qey_village04/100_bartender_bulurg_multhail2_756404e8.mp3", "", "hello", 1254546536, 617051761, Spawn)
         AddConversationOption(conversation, "Have anything... less swampy?", "Swampy")

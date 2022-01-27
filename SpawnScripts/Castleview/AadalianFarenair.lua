@@ -11,6 +11,7 @@ local Sword = 5455
 function spawn(NPC)
 ProvidesQuest(NPC,Sword)
 SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+waypoints(NPC)
 end
 
 function respawn(NPC)
@@ -23,7 +24,7 @@ function InRange(NPC, Spawn)
             local choice = math.random(1,2)
             
             if choice == 1 then
-	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
+	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "tap", 2766992983, 3224256482, Spawn, 9)
     	    elseif choice == 2 then
 	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
     	    end
@@ -34,7 +35,7 @@ function InRange(NPC, Spawn)
             FaceTarget(NPC,Spawn)
             local choice = math.random(1,3)
                 if choice == 1 then
-                 PlayFlavor(NPC, "", "Ah, a busy adventurer like you has no time to run errands. Farewell!", "", 0, 0, Spawn)
+                 PlayFlavor(NPC, "", "Ah, a busy adventurer like you has no time to run errands. Farewell!", "tap", 0, 0, Spawn)
                 elseif choice == 2 then
                 PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)
                 else
@@ -50,12 +51,40 @@ end
 function LeaveRange(NPC, Spawn)
 end
 
+function Action(NPC)
+    local choice = MakeRandomInt(1, 4)
+    if choice == 1 then
+        PlayFlavor(NPC, "", "", "tap", 0, 0, Spawn)
+    elseif choice == 2 then
+        PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+    elseif choice == 3 then
+        PlayFlavor(NPC, "", "", "sniff", 0, 0, Spawn)
+    elseif choice == 4 then
+        PlayFlavor(NPC, "", "", "tap", 0, 0, Spawn)
+    end
+end   
+
+function waypoints(NPC)
+    MovementLoopAddLocation(NPC, 741.68, -13.69, -111.25, 2, 2,0)
+	MovementLoopAddLocation(NPC, 741.68, -13.69, -111.25, 2, math.random(10, 15),"Action")
+	MovementLoopAddLocation(NPC, 742.24, -13.83, -116.86, 2, math.random(10, 15),0)
+	MovementLoopAddLocation(NPC, 738.53, -13.69, -123.61, 2, 2,0)
+	MovementLoopAddLocation(NPC, 738.53, -13.69, -123.61, 2, math.random(10, 15),"Action")
+	MovementLoopAddLocation(NPC, 747.38, -13.82, -123.27, 2, 2,0)
+	MovementLoopAddLocation(NPC, 747.38, -13.82, -123.27, 2, math.random(10, 15),"Action")
+	MovementLoopAddLocation(NPC, 753.18, -13.71, -121.28, 2, math.random(10, 15),0)
+	MovementLoopAddLocation(NPC, 737.73, -13.67, -122.91, 2, 2,0)
+	MovementLoopAddLocation(NPC, 737.73, -13.67, -122.91, 2, math.random(10, 15),"Action")
+	MovementLoopAddLocation(NPC, 746.87, -13.88, -117.4, 2, 2,0)
+	MovementLoopAddLocation(NPC, 746.87, -13.88, -117.4, 2, math.random(10, 15),"Action")
+end
+
 
 function QuestStart(NPC, Spawn, conversation)
     FaceTarget(NPC,Spawn)
     if not HasQuest (Spawn, Sword) then
          conversation = CreateConversation()
-        PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "", "brandish", 2059471651, 1229334005, Spawn)
+        PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "", "hello", 2059471651, 1229334005, Spawn)
         AddConversationOption(conversation, "What are you waiting for?", "Waitting")
          StartConversation(conversation, NPC, Spawn, "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.")
        elseif HasQuest (Spawn, Sword) then

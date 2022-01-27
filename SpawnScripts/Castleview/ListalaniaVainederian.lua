@@ -20,11 +20,11 @@ end
 
 function InRange(NPC, Spawn)
     if not HasLanguage(Spawn, 9) then
-        	 if math.random(1, 100) <= 70 then
+        	 if math.random(1, 100) <= 60 then
             local choice = math.random(1,2)
 
             if choice == 1 then
-		    PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_a002225a.mp3", "Castleview is beautiful this time of year.", "", 3121965781, 2073270812, Spawn, 9)
+		    PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_a002225a.mp3", "Castleview is beautiful this time of year.", "royalwave", 3121965781, 2073270812, Spawn, 9)
     	    elseif choice == 2 then
 		    PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_fde7b8f7.mp3", "The high elves have the best of life here.", "", 595061935, 2035542297, Spawn, 9)
     	    end
@@ -42,8 +42,14 @@ function InRange(NPC, Spawn)
             end
         
     elseif HasCompletedQuest (Spawn, Reservation) and math.random(1, 100) <= 50 then
+        local choice = math.random(1,2)
+         if choice == 1 then
     PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me...", "", 1634717602, 1906674926, Spawn)
-        end
+        else
+        FaceTarget(NPC,Spawn)
+        PlayFlavor(NPC, "", "", "curtsey", 0, 0, Spawn)
+        end    
+    end
 end
 
 function LeaveRange(NPC, Spawn)
