@@ -1,8 +1,8 @@
 --[[
 	Script Name	: SpawnScripts/Castleview/Cinaldar.lua
 	Script Purpose	: Cinaldar <Guard>
-	Script Author	: Scatman
-	Script Date	: 2009.09.25
+	Script Author	: Dorbin
+	Script Date	: 2022.01.26
 	Script Notes	: 
 --]]
 
@@ -43,7 +43,9 @@ function Action(NPC)
 end   
 
 function waypoints(NPC)
-	MovementLoopAddLocation(NPC, 730.44, -21.08, -128.86, 2, math.random(10, 15))
+    MovementLoopAddLocation(NPC, 730.44, -21.08, -128.86, 2, 1)
+	MovementLoopAddLocation(NPC, 730.44, -21.08, -128.86, 2, 10,"FaceGuardGarath")
+	MovementLoopAddLocation(NPC, 730.44, -21.08, -128.86, 2, 1)
 	MovementLoopAddLocation(NPC, 730.13, -21.14, -130.37, 2, 0)
 	MovementLoopAddLocation(NPC, 734.83, -21.29, -127.29, 2, 0)
 	MovementLoopAddLocation(NPC, 746.12, -21.34, -126.72, 2, 0)
@@ -72,3 +74,38 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 735.25, -21.34, -126.11, 2, 0)
 end
 
+
+function FaceGuardGarath(NPC) -- Saluting Knight-Captain Garath script
+    local Garath = GetSpawn(NPC, 2360031)
+	
+	if Garath ~= nil then 
+	    FaceTarget(NPC, Garath)
+        AddTimer(NPC, 2000, "SaluteGuardGarath") 
+    end
+end
+
+function SaluteGuardGarath(NPC)
+    local Garath = GetSpawn(NPC, 2360031)
+	
+	if Garath ~= nil then 
+        PlayAnimation(NPC, 12167)
+        AddTimer(NPC, 1000, "GarathFacesGuardCinaldar") 
+    end
+end
+
+function GarathFacesGuardCinaldar(NPC)
+    local Garath = GetSpawn(NPC, 2360031)
+	
+	if Garath ~= nil then 
+	    FaceTarget(Garath, NPC)
+        AddTimer(NPC, 500, "GarathSalutesGuardCinaldar") 
+    end
+end
+
+function GarathSalutesGuardCinaldar(NPC)
+    local Garath = GetSpawn(NPC, 2360031)
+	
+	if Garath ~= nil then 
+        PlayAnimation(Garath, 12167)
+    end
+end

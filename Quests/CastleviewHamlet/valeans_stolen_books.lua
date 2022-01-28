@@ -12,7 +12,7 @@
 
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "I must search for Valean's books.", 2, "I need to seek out the stolen books within the Down Below section of the catacombs. ", 11, -13,0.8, -5.93)
-	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
+	AddQuestStepCompleteAction(Quest, 1, "DownBelow")
 	UpdateQuestZone(Quest, "The Down Below")
 end
 
@@ -28,13 +28,13 @@ function Deleted(Quest, QuestGiver, Player)
 	-- Remove any quest specific items here when the quest is deleted
 end
 
-function QuestComplete(Quest, QuestGiver, Player)
+function DownBelow(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I discovered Valean's stolen book in the Down Below. ")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I discovered Valean's stolen book in the Down Below.")
 	
 	UpdateQuestZone(Quest, "Castleview Hamlet")
-	AddQuestStepLocation(Quest, 2, "I need to return to Valean.", 2, "I need to tell Valean that his books are being sold in the catacombs.", 11, -13,0.8, -5.93)
+	AddQuestStepChat(Quest, 2, "I need to return to Valean.", 1, "I need to tell Valean that his books are being sold in the catacombs.", 0, 2360024)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 
@@ -48,6 +48,9 @@ end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
+		DownBelow(Quest, QuestGiver, Player)
+	end
+		if Step == 2 then
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end

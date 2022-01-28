@@ -10,7 +10,7 @@ local Books = 5453
 local Delivery = 5443
 local Dinner = 238
 local Reservation = 5452
-dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
+--dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
 
 function spawn(NPC)
 ProvidesQuest(NPC,Books)
@@ -30,12 +30,12 @@ end
 
     
 function hailed(NPC, Spawn)
-    GenericHail(NPC, Spawn)
+    --GenericHail(NPC, Spawn)
     local choice = math.random(1,3)
     if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1002.mp3", "", "bow", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1012.mp3", "", "hello", 0, 0, Spawn)
     elseif choice==2 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1002.mp3", "", "hello", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1012.mp3", "", "bow", 0, 0, Spawn)
     else
     end
 	FaceTarget(NPC, Spawn)
