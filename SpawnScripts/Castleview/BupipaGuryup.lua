@@ -22,7 +22,7 @@ end
 
 function InRange(NPC, Spawn) --Quest Callout
 
-if math.random(1, 100) <= 60 then
+if math.random(1, 100) <= 50 then
     if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
         choice = math.random(1,2)
     FaceTarget(NPC, Spawn)

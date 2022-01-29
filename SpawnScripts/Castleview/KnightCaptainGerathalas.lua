@@ -20,7 +20,7 @@ end
 
 function InRange(NPC, Spawn) --Quest Callout
 if math.random(1, 100) <= 60 then
-    if not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) then 
+    if not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) and GetLevel(Spawn) >=5 then 
         choice = math.random(1,2)
     FaceTarget(NPC, Spawn)
         if choice ==1 then
@@ -84,6 +84,7 @@ function hailed(NPC, Spawn)
 	    StartConversation(conversation, NPC, Spawn, "Good day to you, adventurer.  I hope you have been keeping yourself safe.")
 	else if HasQuest(Spawn, Rats) then 
 	    if GetQuestStep(Spawn, Rats)==2 then
+	   conversation = CreateConversation()   
 	    AddConversationOption(conversation, "I've reduced the number of putrid vermin in the catacombs.", "DoneRats")
 	    end
 	    AddConversationOption(conversation, "I'm still dealing with them.")

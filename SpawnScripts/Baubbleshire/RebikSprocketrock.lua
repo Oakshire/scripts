@@ -1,8 +1,8 @@
 --[[
 	Script Name	: SpawnScripts/Baubbleshire/RebikSprocketrock.lua
 	Script Purpose	: Rebik Sprocketrock 
-	Script Author	: Scatman
-	Script Date	: 2009.09.27
+	Script Author	: Dorbin
+	Script Date	: 2022.01.15
 	Script Notes	: 
 --]]
 local Acidic = 5449
@@ -32,7 +32,7 @@ function Offer(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "I have something that may interest you", "Delivered2")
     AddConversationOption(conversation, "Well, good luck with that.")
-    StartConversation(conversation, NPC, Spawn, "As a matter of fact, I am beside myself with this lock here. It is unpickable! Blasted thing doesn't even have a keyhole!")
+    StartConversation(conversation, NPC, Spawn, "As a matter of fact, I am beside myself with this lock here. It is unpickable! I would know, because I built it!")
 end   
 
 function Delivered(NPC, Spawn)
@@ -41,7 +41,7 @@ function Delivered(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "Please be careful. It is potent.", "Delivered2")
     AddConversationOption(conversation, "Wait, nevermind.")
-    StartConversation(conversation, NPC, Spawn, "Ah! Let's see... A beaker of... mysterious fluid? Where did you... Oh, nevermind. Let me see it!")
+    StartConversation(conversation, NPC, Spawn, "Ah! Let's see... A beaker of... mysterious fluid? What is this even suppose to do? Where did you... Oh, nevermind. Let me see it!")
 end   
 
 function Delivered2(NPC, Spawn)
