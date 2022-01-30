@@ -32,7 +32,7 @@ function FaeTalked(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found Faeadaen in Castleview Hamlet.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found Faeadaen in Castleview Hamlet.")
 
-	AddQuestStepChat(Quest, 2, "I must find Innkeeper Valean.", 1, "I must search Castleview Hamlet for Valean.", 0, 2360022)
+	AddQuestStepChat(Quest, 2, "I must find Innkeeper Valean.", 1, "I must search Castleview Hamlet for Valean.", 0, 2360024)
 	AddQuestStepCompleteAction(Quest, 2, "ValeanTalked")
 end
 
@@ -41,7 +41,7 @@ function ValeanTalked(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I found Valean in Castleview Hamlet.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I found Valean in Castleview Hamlet.")
 
-	AddQuestStepProgressAction(Quest, 3, "I must check the bookshelves.", 1, "I must search the bookshelves at the inn for the lost book.", 0, 2360024)
+	AddQuestStepChat(Quest, 3, "I must check the bookshelves.", 1, "I must search the bookshelves at the inn for the lost book.", 0, 2360075)
 	AddQuestStepCompleteAction(Quest, 3, "BookshelfTalk")
 end
 
@@ -50,7 +50,7 @@ function BookshelfTalk(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I found the lost book.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I found the lost book in the inn's bookshelves.")
 
-	AddQuestStepChat(Quest, 4, "I must return to Bleemeb.", 1, "I must return this book to Bleemeb.", 718, 2360022)
+	AddQuestStepChat(Quest, 4, "I must return to Bleemeb.", 1, "I must return this book to Bleemeb.", 718, 2360055)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
 
@@ -70,9 +70,9 @@ function Reload(Quest, QuestGiver, Player, Step)
 		ValeanTalked(Quest, QuestGiver, Player)
 	end
 		if Step == 3 then
-		QuestComplete(Quest, QuestGiver, Player)
+		BookshelfTalk(Quest, QuestGiver, Player)
 	end
 		if Step == 4 then
-		BookshelfTalk(Quest, QuestGiver, Player)
+		QuestComplete(Quest, QuestGiver, Player)
 	end
 end

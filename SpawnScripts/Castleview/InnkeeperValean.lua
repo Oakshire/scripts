@@ -10,6 +10,7 @@ local Books = 5453
 local Delivery = 5443
 local Dinner = 238
 local Reservation = 5452
+local LostBook = 5468
 --dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
 
 function spawn(NPC)
@@ -55,10 +56,21 @@ function hailed(NPC, Spawn)
 	if GetQuestStep (Spawn, Books) == 2 then 
 	AddConversationOption(conversation, "I found your books being sold in the catacombs.", "FoundBooks")
 	end
+	if GetQuestStep (Spawn, LostBook) == 2 then 
+	AddConversationOption(conversation, "Faeadaen mentioned she left a book of Arbos here. Have you seen it?", "Arbos")
+	end
 	AddConversationOption(conversation, "I would like to know about a room.", "dlg_2_1")
 	AddConversationOption(conversation, "No thanks.")
 	StartConversation(conversation, NPC, Spawn, "Welcome to the Bed and Book Inn. A fine establishment for recuperating a body and expanding a mind.")
 --	StartConversation(conversation, NPC, Spawn, "Hello " .. GetName(Spawn) .. ", I am the Innkeeper for this village. We have received word of your arrival and have a room prepared for you. Would you like to know more about housing?")
+end
+
+function Arbos(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "Alright. I'll check the shelves for the book.", "ShelfUpdate")
+    StartConversation(conversation, NPC, Spawn, "Yes! I've just recently shelved the book on the great tree. Unfortunately, I don't recall where it is amongst my other books. You're welcome to look at my collections upstairs for it.")
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
 end
 
 function BookDelivery(NPC, Spawn)
@@ -117,6 +129,10 @@ function FoundBooks(NPC, Spawn)
     StartConversation(conversation, NPC, Spawn, "I'll report this to the Qeynos guard! Hopefully they'll lock these criminals up and throw away the key. Thank you for relaying this information. Please, take this small token of my appreciation.")
  	PlayFlavor(NPC, "", "", "boggle", 0,0 , Spawn)
 end
+
+function ShelfUpdate(NPC, Spawn)
+    SetStepComplete(Spawn, LostBook, 2)
+   end
 
 function UpdateDelivery(NPC, Spawn)
     SetStepComplete(Spawn, Delivery, 1)

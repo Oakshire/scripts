@@ -73,17 +73,18 @@ function hailed(NPC, Spawn)
             if not HasQuest(Spawn, Bugs) then       
                 AddConversationOption(conversation, "I don't have any flies, but how can I help?", "BugStart")
             end
-	           AddConversationOption(conversation, "I'm just browsing. Thank you.")
-                PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1016.mp3", "", "", 0, 0, Spawn)
-
-	           StartConversation(conversation, NPC, Spawn, "Verily, 'tis fine to havest thou here in Castleview! FroooOOOooaak! Fevalin and I here hath set up a nice arrangement and canst offer thou the widest variety of Qeynosian goods! Come view our wares!")
-	        if GetQuestStep(Spawn, Bugs)==2 then
+            if GetQuestStep(Spawn, Bugs)==2 then
 	           AddConversationOption(conversation, "Here are some bugs for you to munch on.", "DoneBugs")
 	        end
 	        if GetQuestStep(Spawn, Daggers)==2 then
 	           AddConversationOption(conversation, "I've returned with your bag of daggers.", "DoneDaggers")
 	        end
-        end
+	        
+	           AddConversationOption(conversation, "I'm just browsing. Thank you.")
+                PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1016.mp3", "", "", 0, 0, Spawn)
+	           StartConversation(conversation, NPC, Spawn, "Verily, 'tis fine to havest thou here in Castleview! FroooOOOooaak! Fevalin and I here hath set up a nice arrangement and canst offer thou the widest variety of Qeynosian goods! Come view our wares!")
+	     
+            end
 end
 
 
@@ -97,7 +98,7 @@ end
 
  function DoneDaggers(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "I'm glad I could be of assistance.", "Reward")
+    AddConversationOption(conversation, "I'm glad I could be of assistance.", "RewardDaggers")
     PlayFlavor(NPC, "","","thank",0,0,Spawn)
     StartConversation(conversation, NPC, Spawn, "I thank thee. Here art a few coins for thy kind deed. And let me remind'st thou that Kruuprum's Imporium is the finest place to spend thy coin. No greater deals can be found!")
 end   

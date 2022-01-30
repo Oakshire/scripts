@@ -3,11 +3,11 @@
 	Script Purpose	: Adalin Emerael
 	Script Author	: Scatman
 	Script Date	: 2009.10.02
-	Script Notes	:
+	Script Notes	: Quest " Regrowth" is missing - incorrectly applying Quest 294
 --]]
 
 local HIGH_ELF = 8
-local HIGH_ELF_MENTOR_QUEST_5 = 69
+local HIGH_ELF_MENTOR_QUEST_5 = 227
 local QUEST_1 = 294
 
 function spawn(NPC)

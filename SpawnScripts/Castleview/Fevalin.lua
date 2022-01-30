@@ -50,10 +50,7 @@ function hailed(NPC, Spawn)
             if not HasQuest(Spawn, Bats) and GetLevel(Spawn)>=7 then       
                 AddConversationOption(conversation, "You and Kruuprum have a decent selection! Need any help?", "BatsStart")
             end
-	           AddConversationOption(conversation, "I'm just browsing. Thank you.")
-               
-	           StartConversation(conversation, NPC, Spawn, "Step up. Don't be shy. I know an adventurer like you needs something. A lantern. Boots! Perhaps a sword, friend.")
-	        if GetQuestStep(Spawn, Rats)==2 then
+            if GetQuestStep(Spawn, Rats)==2 then
 	           AddConversationOption(conversation, "Here are some bugs for you to munch on.", "RatsDone")
 	        end
 	        if GetQuestStep(Spawn, Bats)==2 then
@@ -62,7 +59,10 @@ function hailed(NPC, Spawn)
 	        if GetQuestStep(Spawn, Bats)==4 then
 	           AddConversationOption(conversation, "Here are five MORE albino pelts.", "BatsDone")
 	        end
-        end
+	        
+	           AddConversationOption(conversation, "I'm just browsing. Thank you.")
+	           StartConversation(conversation, NPC, Spawn, "Step up. Don't be shy. I know an adventurer like you needs something. A lantern. Boots! Perhaps a sword, friend.")
+	          end
 
 
 

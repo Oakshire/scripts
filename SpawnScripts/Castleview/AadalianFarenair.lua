@@ -37,13 +37,13 @@ function InRange(NPC, Spawn)
                 if choice == 1 then
                  PlayFlavor(NPC, "", "Ah, a busy adventurer like you has no time to run errands. Farewell!", "tap", 0, 0, Spawn)
                 elseif choice == 2 then
-                PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)
+		PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "hello", 2059471651, 1229334005, Spawn)
                 else
                 PlayFlavor(NPC, "", "Can you spare a moment?", "hello", 0, 0, Spawn)
                 end
         
             elseif HasCompletedQuest (Spawn, Sword) and math.random(1, 100) <= 50 then
-            PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)   
+		PlayFlavor(NPC, "","", "tap", 2059471651, 1229334005, Spawn)
              end
     end
 end

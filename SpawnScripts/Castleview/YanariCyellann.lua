@@ -64,17 +64,17 @@ function hailed(NPC, Spawn)
             if not HasQuest(Spawn, Slime) then       
                 AddConversationOption(conversation, "I don't mean to bother you, but I overheard you needed something?", "SlimeStart")
             end
-	           AddConversationOption(conversation, "You seem to be a bit busy at the moment.  I'll leave you alone.")
-                PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan.mp3", "", "", 3613336528, 1736617695, Spawn)
-
-	           StartConversation(conversation, NPC, Spawn, "Do not touch anything!  You could turn yourself into a goo or destroy the entire building.  What do you need?")
-	        if GetQuestStep(Spawn, Badgers)==2 then
+            if GetQuestStep(Spawn, Badgers)==2 then
 	           AddConversationOption(conversation, "I brought the claws that you asked for.", "DoneBadger")
 	        end
 	        if GetQuestStep(Spawn, Slime)==2 then
 	           AddConversationOption(conversation, "I've returned with your bag of daggers.", "DoneSlime")
 	        end
-        end
+	        
+	           AddConversationOption(conversation, "You seem to be a bit busy at the moment.  I'll leave you alone.")
+                PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan.mp3", "", "", 3613336528, 1736617695, Spawn)
+	           StartConversation(conversation, NPC, Spawn, "Do not touch anything!  You could turn yourself into a goo or destroy the entire building.  What do you need?")
+	          end
 end
 
 

@@ -1,12 +1,14 @@
 --[[
 	Script Name	: SpawnScripts/Castleview/EntertainerFaeadaen.lua
 	Script Purpose	: Entertainer Faeadaen 
-	Script Author	: Scatman
-	Script Date	: 2009.10.03
+	Script Author	: Dorbin
+	Script Date	: 2022.01.20
 	Script Notes	: 
 --]]
 
 local Quest = 238
+local Book = 5468
+
 function spawn(NPC)
     ProvidesQuest(NPC, Quest)
     SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
@@ -42,18 +44,20 @@ function hailed(NPC, Spawn)
     if GetQuestStep(Spawn, Quest)==2 then
     AddConversationOption(con, "I told Valean you wouldn't be able to make it to dinner tonight.", "NoDinner")
     end
+    if GetQuestStep(Spawn, Book)==1 then
+    AddConversationOption(con, "Bleemeb tasked me with retrieving the book you borrowed.", "NoBook")
+    end
     AddConversationOption(con, "I would love a performance. [ 2 Silver ]", "Perforamnce")
     AddConversationOption(con, "I'll keep my coins, thank you.")
     StartConversation(con, NPC, Spawn, "Step up and watch as I make lights dance and coins disappear into thin air!")
 end
 
-function Arbos(NPC,Spawn)
+function NoBook(NPC,Spawn)
     FaceTarget(NPC, Spawn)
-    		PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
+    		PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
     local con = CreateConversation()
-    AddConversationOption(con, "You must draw quite the audiance here.", "NeedHelp")
-    AddConversationOption(con, "I'll keep my coins, thank you.")
-    StartConversation(con, NPC, Spawn, "Customers love my magic tricks! Actually, a little too much. Bulurg asked me to work late tonight. Could you ask Valean at the inn and let me know I can't dine with him tonight? I appreciate your help.")
+    AddConversationOption(con, "Alright, I'll check at the inn. Thank you.", "BookUpdate")
+    StartConversation(con, NPC, Spawn, "The book on the great tree, Arbos? I'm afraid I left the book somewhere at the local inn. You'll have to search for it there.")
 end
 
 function NeedHelp(NPC,Spawn)
@@ -72,6 +76,10 @@ function NoDinner(NPC,Spawn)
     local con = CreateConversation()
     AddConversationOption(con, "I just might.")
     StartConversation(con, NPC, Spawn, "Thank you for telling him. If you have a moment, step inside and try one of Bulurg's special brews.")
+end
+
+function BookUpdate(NPC,Spawn)
+    SetStepComplete(Spawn, Book, 1)
 end
 
 function Perforamnce(NPC,Spawn)

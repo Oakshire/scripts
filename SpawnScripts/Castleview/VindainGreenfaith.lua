@@ -19,6 +19,7 @@ function spawn(NPC)
 	ProvidesQuest(NPC, TargetingCorruption)
 	ProvidesQuest(NPC, TheCommune)
 	ProvidesQuest(NPC, SendingWord)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -31,6 +32,26 @@ function hailed(NPC, Spawn)
 	else
 		NotHighElf(NPC, Spawn)
 	end
+end
+
+function InRange(NPC, Spawn) 
+    if not HasCompletedQuest (Spawn, ComponentsOfGrowth) and not HasQuest (Spawn, ComponentsOfGrowth) then 
+            FaceTarget(NPC, Spawn)
+             PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+        else
+        if math.random(1, 100) <= 75 then
+         choice = math.random(1,3)
+
+            if choice ==1 then
+            PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+            elseif choice ==2 then
+            PlayFlavor(NPC, "", "", "smell", 0, 0, Spawn)
+            else
+            FaceTarget(NPC, Spawn)
+            PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+            end
+        end
+    end
 end
 
 function NotHighElf(NPC, Spawn)
