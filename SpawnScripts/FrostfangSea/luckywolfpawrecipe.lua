@@ -19,7 +19,7 @@ function respawn(NPC)
 end
 
 function SpawnAccess(NPC, Player)
-    if GetQuestStep(Player, HadAHammer) > 0 then
+    if GetQuestStep(Player, HadAHammer) > 0 or HasCompletedQuest(Player, HadAHammer) then
 	    AddSpawnAccess(NPC, Player)
 	end
 end
