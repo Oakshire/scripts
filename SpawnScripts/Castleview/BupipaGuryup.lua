@@ -7,16 +7,13 @@
 --]]
 
 local PickUp = 5454
+local Duet = 5471
 dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
 
 
 
 function spawn(NPC)
-    if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
-    SetPlayerProximityFunction(NPC, 20, "InRange", "LeaveRange")
-    else
-    SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-    end
+SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
 ProvidesQuest(NPC, PickUp)
 end
 
@@ -59,15 +56,24 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "Do you need something?", "Voice")
     StartConversation(conversation, NPC, Spawn, "Graciously accept my pardon for I am a quite the bit busy. Mayhaps I couldst speak with thee anon?")
     
+    elseif GetQuestStep (Spawn, Duet) == 1 then
+    PlayFlavor(NPC, "","","ponder",0,0,Spawn)
+    AddConversationOption(conversation, "Nope, you must be mistakened.")
+    AddConversationOption(conversation, "Kualdin Swoonsong would like to invite you to be apart of his upcoming performance.", "DuetOffer")
+    StartConversation(conversation, NPC, Spawn, "You appear to have something for me?")
+        
     elseif not HasCompletedQuest (Spawn, PickUp) and  HasQuest (Spawn, PickUp) then 
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
         if GetQuestStep (Spawn, PickUp) == 2 then
-        AddConversationOption(conversation, "", "PickedUp")
+        AddConversationOption(conversation, "Here is your new ", "PickedUp")
+        end
+        if GetQuestStep (Spawn, Duet) == 1 then
+        AddConversationOption(conversation, "Kualdin Swoonsong would like to invite you to be apart of his upcoming performance.", "DuetOffer")
         end
     PlayFlavor(NPC, "","","hello",0,0,Spawn)
     AddConversationOption(conversation, "I'm still heading that way.")
-    StartConversation(conversation, NPC, Spawn, "Any word on my splended new device?")
+    StartConversation(conversation, NPC, Spawn, "Any news on my device?")
     else
          choice = math.random(1,3)
          if choice ==1 then
@@ -80,6 +86,7 @@ function hailed(NPC, Spawn)
         end
         
 end
+
 
  function Voice(NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -119,6 +126,20 @@ end
   StartConversation(conversation, NPC, Spawn, "Oh rapture... but... 'Assembly Required?' There are too many parts here to set it up completely right now! It will take some time... Thank you traveler! Please, take this small token as I prepare to try out the mouth piece.")
 end   
 
+ function Duet(NPC, Spawn)
+              FaceTarget(NPC, Spawn)
+  conversation = CreateConversation()
+    PlayFlavor(NPC, "","","agree",0,0,Spawn)
+    AddConversationOption(conversation, "I can't promise he will agree, but I will relay the message.", "DuetAccept")
+    AddConversationOption(conversation, "I will let him know your offer.", "DuetAccept")
+    AddConversationOption(conversation, "He really is full of himself, isn't he... I'll let him know you agree.", "DuetAccept")
+  StartConversation(conversation, NPC, Spawn, "Ahh... I'm suprised Swoonsong would even offer! He is most...ffROOAK... self-involved. Tell him I agree as long as I can have my own solo during the performance. That will make suremy voice has its time to shine! frroAK!")
+end   
+
+function DuetAccept(NPC, Spawn)
+    	SetStepComplete(Spawn, Duet, 1)
+end
+    	
 
 function Tryout(NPC,Spawn)
  PlayFlavor(NPC, "","Ahem...","snicker",0,0,Spawn)
