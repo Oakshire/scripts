@@ -130,10 +130,9 @@ end
               FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
     PlayFlavor(NPC, "","","agree",0,0,Spawn)
-    AddConversationOption(conversation, "I can't promise he will agree, but I will relay the message.", "DuetAccept")
     AddConversationOption(conversation, "I will let him know your offer.", "DuetAccept")
     AddConversationOption(conversation, "He really is full of himself, isn't he... I'll let him know you agree.", "DuetAccept")
-  StartConversation(conversation, NPC, Spawn, "Ahh... I'm suprised Swoonsong would even offer! He is most...ffROOAK... self-involved. Tell him I agree as long as I can have my own solo during the performance. That will make suremy voice has its time to shine! frroAK!")
+  StartConversation(conversation, NPC, Spawn, "Ahh... I'm surprised Swoonsong would even offer! He is most...ffROOAK... self-involved. Tell him I agree as long as I can have my own solo during the performance. That will make suremy voice has its time to shine! frroAK!")
 end   
 
 function DuetAccept(NPC, Spawn)
