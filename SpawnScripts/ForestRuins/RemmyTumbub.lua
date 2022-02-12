@@ -7,8 +7,8 @@
 --]]
 
 local HALFLING = 7
-local HALFLING_MENTOR_QUEST_5 = 74
-local QUEST_1 = 1
+local HALFLING_MENTOR_QUEST_5 = 327
+local QUEST_1 = 533
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

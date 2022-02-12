@@ -10,8 +10,8 @@
 --]]
 
 local GNOME = 5
-local QUEST_FROM_NEEZER = 29
-local QUEST_1 = 30
+local QUEST_FROM_NEEZER = 331
+local QUEST_1 = 5474
 local QUEST_FROM_GERMAIN = 521
 
 function spawn(NPC)

@@ -11,7 +11,7 @@
 	Followed by		:	Returning to the Disturbance
 --]]
 
-local FAVORS_QUEST_ID = 521
+local FAVORS_QUEST_ID = 5476
 local POKO_ZING_ID = 1960003
 local LIEUTENAT_GERMAIN_ID = 1960005
 local A_FALLEN_BRANCH_ID = 1960178

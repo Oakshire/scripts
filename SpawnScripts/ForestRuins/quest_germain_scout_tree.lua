@@ -6,7 +6,7 @@
 	Script Notes	: <special-instructions>
 --]]
 
-local QUEST_FROM_GERMAIN = 202
+local QUEST_FROM_GERMAIN = 5475
 
 function spawn(NPC)
 	--SetRequiredQuest(NPC, QUEST_FROM_GERMAIN, 3)

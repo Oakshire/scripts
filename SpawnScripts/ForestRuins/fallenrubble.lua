@@ -6,7 +6,7 @@
                    : 
 --]]
 
-local FAVORS_QUEST_ID = 521
+local FAVORS_QUEST_ID = 5476
 
 function spawn(NPC)
 

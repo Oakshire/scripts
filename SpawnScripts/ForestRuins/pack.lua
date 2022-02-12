@@ -6,7 +6,7 @@
                    : 
 --]]
 
-local NEWS_FOR_GERMAIN_QUEST_ID = 520
+local NEWS_FOR_GERMAIN_QUEST_ID = 5475
 
 function spawn(NPC)
 

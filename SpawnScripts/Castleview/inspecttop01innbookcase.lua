@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/Castleview/inspecttop01innbookcase.lua
     Script Author  : Dorbin
     Script Date    : 2022.01.29 03:01:15
-    Script Purpose : 
+    Script Purpose : Quest Lost Book of Arbos
                    : 
 --]]
 
@@ -19,7 +19,6 @@ function casted_on(NPC, Spawn, SpellName)
 end
 	    
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)
