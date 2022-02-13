@@ -7,9 +7,9 @@
 --]]
 local QUEST_FROM_REMMY = 533
 local QUEST_FROM_POKO = 5474
-local QUEST_1 = 5475 --News for Germain (was 520)
-local QUEST_2 = 5476 --Favors (was 521)
-local QUEST_3 = 522 --Return to the Disturbance (was 522)
+local QUEST_1 = 520 --News for Germain
+local QUEST_2 = 521 --Favors
+local QUEST_3 = 522 --Return to the Disturbance
 
 
 
