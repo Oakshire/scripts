@@ -53,27 +53,27 @@ function hailed(NPC, Spawn)
 	if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
     conversation = CreateConversation()
     PlayFlavor(NPC, "","","fullcurtsey",0,0,Spawn)
-    AddConversationOption(conversation, "Do you need something?", "Voice")
-    StartConversation(conversation, NPC, Spawn, "Graciously accept my pardon for I am a quite the bit busy. Mayhaps I couldst speak with thee anon?")
+    AddConversationOption(conversation, "You sing quite beautifully.", "Voice")
+    StartConversation(conversation, NPC, Spawn, "I must continue to practice mine songs, for one day I mayhaps be invited to sing before Antonia Bayle! Froooaak! Froak! Froak! FrooOOOOooaak!")
     
     elseif GetQuestStep (Spawn, Duet) == 1 then
     PlayFlavor(NPC, "","","ponder",0,0,Spawn)
-    AddConversationOption(conversation, "Nope, you must be mistakened.")
-    AddConversationOption(conversation, "Kualdin Swoonsong would like to invite you to be apart of his upcoming performance.", "DuetOffer")
+    AddConversationOption(conversation, "I think I am going to find some place quieter than here.")
+    AddConversationOption(conversation, "Kualdin Swoonsong over in Willow Wood is planning a concert in the future.  He wanted to know if you were interested.", "DuetOffer")
     StartConversation(conversation, NPC, Spawn, "You appear to have something for me?")
         
     elseif not HasCompletedQuest (Spawn, PickUp) and  HasQuest (Spawn, PickUp) then 
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
         if GetQuestStep (Spawn, PickUp) == 2 then
-        AddConversationOption(conversation, "Here is your new ", "PickedUp")
+        AddConversationOption(conversation, "I brought you your device from Bizrinn.", "PickedUp")
         end
         if GetQuestStep (Spawn, Duet) == 1 then
         AddConversationOption(conversation, "Kualdin Swoonsong would like to invite you to be apart of his upcoming performance.", "DuetOffer")
         end
     PlayFlavor(NPC, "","","hello",0,0,Spawn)
     AddConversationOption(conversation, "I'm still heading that way.")
-    StartConversation(conversation, NPC, Spawn, "Any news on my device?")
+    StartConversation(conversation, NPC, Spawn, "I must continue to practice mine songs, for one day I mayhaps be invited to sing before Antonia Bayle! Froooaak! Froak! Froak! FrooOOOOooaak!")
     else
          choice = math.random(1,3)
          if choice ==1 then
@@ -91,19 +91,22 @@ end
  function Voice(NPC, Spawn)
     FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
-    AddConversationOption(conversation, "You can't sing the same anymore?", "Sing")
+    AddConversationOption(conversation, "I should be able to do that for you.", "Sing")
     AddConversationOption(conversation, "Your froak doesn't bring all the boys to the terrace anymore?", "Sing")
-  StartConversation(conversation, NPC, Spawn, "You see... my voice is not what it once was. I use to sing across our bog for the whole world to hear. Revelers flocked to my seranade!")
+    StartConversation(conversation, NPC, Spawn, "Why, thank you very much!  I couldst use thy help if thou art so willing.  I need an order picked up from some gnome tinkerers, but I really need to stay and practice.  Wouldst thou be so kind to get the item for me?")
+  --StartConversation(conversation, NPC, Spawn, "You see... my voice is not what it once was. I use to sing across our bog for the whole world to hear. Revelers flocked to my seranade!")
 end   
 
  function Sing(NPC, Spawn)
               FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
     PlayFlavor(NPC, "","","no",0,0,Spawn)
-  AddConversationOption(conversation, "How can I help?", "QuestAlmost")
-  StartConversation(conversation, NPC, Spawn, "Unfortunately, no... but a gnome came to me the other day and offered a new device. An Amplificator! He promised it would allow the whole city to love my music! Ahhh, how I miss the flocking adulation.")
+  AddConversationOption(conversation, "I hope it isn`t too heavy.", "QuestBegin")
+    StartConversation(conversation, NPC, Spawn, "Many thanks unto thee.  Here is the bill of sale for the order.  Just take this to Bizrinn Clamorclang in the Baubbleshire and he'll give thou the order.  I cannot wait for it to get here!")
+--  StartConversation(conversation, NPC, Spawn, "Unfortunately, no... but a gnome came to me the other day and offered a new device. An Amplificator! He promised it would allow the whole city to love my music! Ahhh, how I miss the flocking adulation.")
 end   
 
+--[[ This was Fabricated until actual dialgue was found
  function QuestAlmost(NPC, Spawn)
               FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
@@ -111,6 +114,7 @@ end
   AddConversationOption(conversation, "I'll pick it up for you.", "QuestBegin")
   StartConversation(conversation, NPC, Spawn, "Why, yes! I've already paid for the new device... would you pick it up for me from Bizrinn Clamorclang in the Baubbleshire? I have the recipt for it right here.")
 end   
+]]--
 
 function QuestBegin (NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -120,19 +124,27 @@ end
  function PickedUp(NPC, Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "Be sure to try it out!", "Reward")
-    AddConversationOption(conversation, "Please, be mindful of the neighbors...", "Reward")
+    AddConversationOption(conversation, "Good, that gives me enough time to get to a good distance away.", "Reward")
     AddConversationOption(conversation, "Oh, I'm sorry. This is the wrong device.")
-        PlayFlavor(NPC, "","","confused",0,0,Spawn)
-  StartConversation(conversation, NPC, Spawn, "Oh rapture... but... 'Assembly Required?' There are too many parts here to set it up completely right now! It will take some time... Thank you traveler! Please, take this small token as I prepare to try out the mouth piece.")
+    PlayFlavor(NPC, "","","confused",0,0,Spawn)
+  StartConversation(conversation, NPC, Spawn, "Bravo!  Here is thy payment I promised thee.  Hmm ... it lookest like it will take a while to set up.")
 end   
 
  function Duet(NPC, Spawn)
               FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
     PlayFlavor(NPC, "","","agree",0,0,Spawn)
-    AddConversationOption(conversation, "I will let him know your offer.", "DuetAccept")
+    AddConversationOption(conversation, "I think he means to have you be a duet partner at the concert where he is the featured attraction.", "Duet2")
+  StartConversation(conversation, NPC, Spawn, "Huzzah!  A concert!  Of course I am interested!  I canst not believe he wouldst want to feature me.  He must be an admirer of mine voice.  Yea, 'tis a renowned sound, you know.")
+end   
+
+ function Duet2(NPC, Spawn)
+              FaceTarget(NPC, Spawn)
+  conversation = CreateConversation()
+    PlayFlavor(NPC, "","","agree",0,0,Spawn)
+    AddConversationOption(conversation, "I'll let him know.  Thanks.", "DuetAccept")
     AddConversationOption(conversation, "He really is full of himself, isn't he... I'll let him know you agree.", "DuetAccept")
-  StartConversation(conversation, NPC, Spawn, "Ahh... I'm surprised Swoonsong would even offer! He is most...ffROOAK... self-involved. Tell him I agree as long as I can have my own solo during the performance. That will make suremy voice has its time to shine! frroAK!")
+  StartConversation(conversation, NPC, Spawn, "Oh.  Well ... I guess I am still interested... but I wisheth a solo!")
 end   
 
 function DuetAccept(NPC, Spawn)

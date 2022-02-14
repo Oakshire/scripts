@@ -45,10 +45,10 @@ function hailed(NPC, Spawn)
 end
 
 function InRange(NPC, Spawn) 
-    if not HasCompletedQuest (Spawn, HELPING_A_FRIEND) and not HasQuest (Spawn, HELPING_A_FRIEND) then 
+    if not HasCompletedQuest (Spawn, HELPING_A_FRIEND) and not HasQuest (Spawn, HELPING_A_FRIEND) and GetRace(Spawn) == 7 then 
              PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
-        else
-        if math.random(1, 100) <= 75 then
+        elseif HasCompletedQuest (Spawn, HELPING_A_FRIEND) then
+           if math.random(1, 100) <= 75 then
          choice = math.random(1,3)
         FaceTarget(NPC, Spawn)
             if choice ==1 then
@@ -58,6 +58,7 @@ function InRange(NPC, Spawn)
             else
             PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
             end
+        else
         end
     end
 end
