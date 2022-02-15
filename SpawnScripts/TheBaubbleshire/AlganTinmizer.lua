@@ -21,7 +21,7 @@ end
 function InRange(NPC, Spawn)
 if not HasQuest(Spawn, TowerOfThree) and not HasCompletedQuest(Spawn, TowerOfThree) then
     FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "","Hello adventurer! Come hither! You must help reveal the truth about wonders in the Forest Ruins.", "wave", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/100_ebik_wobblecog_callout_f7e366da.mp3","Hello adventurer! Come hither! You must help reveal the truth about wonders in the Forest Ruins.", "wave", 805265958, Spawn)
     else
     PlayFlavor(NPC, "","", "ponder", 0, 0, Spawn)
     end

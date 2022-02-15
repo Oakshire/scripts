@@ -78,7 +78,7 @@ if HasQuest (Spawn, PieThief) and GetQuestStep(Spawn, PieThief) == 4 then
         conversation = CreateConversation()
      AddConversationOption(conversation, "Ah-ha, it was you! Those pie crumbs on your tunic give you away. You took Nyla's pie!", "Guilty")
           AddConversationOption(conversation, "Nothing right now. Enjoy your pint.")
-    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", 1585254591, 550642986, Spawn)
+    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", Spawn)
 	PlayFlavor(NPC, "voiceover/english/lozoria_shinkicker/qey_village06/100_lozoria_shinkicker_multhail2_c18b6ff4.mp3", "", "", 1585254591, 550642986, Spawn)
  
  elseif  HasQuest(Spawn, OroRoots) and GetQuestStep(Spawn, OroRoots) == 2 then
@@ -86,7 +86,7 @@ if HasQuest (Spawn, PieThief) and GetQuestStep(Spawn, PieThief) == 4 then
     AddConversationOption(conversation, "I've found your Oro roots. Here you go.", "FoundRoots")
      AddConversationOption(conversation, "I'm still gathering those roots for you.")
      AddConversationOption(conversation, "Nothing right now. Enjoy your pint.")
-    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", 1585254591, 550642986, Spawn)
+    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", Spawn)
 	PlayFlavor(NPC, "voiceover/english/lozoria_shinkicker/qey_village06/100_lozoria_shinkicker_multhail2_c18b6ff4.mp3", "", "", 1585254591, 550642986, Spawn)
     
 
@@ -95,7 +95,7 @@ elseif HasQuest(Spawn, OroRoots) and not HasCompletedQuest(Spawn, OroRoots) and 
           conversation = CreateConversation()
      AddConversationOption(conversation, "I'm still gathering those roots for you.")
      AddConversationOption(conversation, "Nothing right now. Enjoy your pint.")
-    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", 1585254591, 550642986, Spawn)
+    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", Spawn)
 	PlayFlavor(NPC, "voiceover/english/lozoria_shinkicker/qey_village06/100_lozoria_shinkicker_multhail2_c18b6ff4.mp3", "", "", 1585254591, 550642986, Spawn)
 
 
@@ -104,7 +104,7 @@ elseif not HasQuest(Spawn, OroRoots) and not HasCompletedQuest(Spawn, OroRoots) 
      AddConversationOption(conversation, "I'm looking for some work if you have any.", "OroStart")
     
      AddConversationOption(conversation, "Nothing right now. Enjoy your pint.")
-    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", 1585254591, 550642986, Spawn)
+    StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  What brings you into my papa's fine establishment, friend?", "", Spawn)
 	PlayFlavor(NPC, "voiceover/english/lozoria_shinkicker/qey_village06/100_lozoria_shinkicker_multhail2_c18b6ff4.mp3", "", "", 1585254591, 550642986, Spawn)
 
 else
