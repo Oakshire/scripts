@@ -42,7 +42,7 @@ function hailed(NPC, Spawn)
 	    AddConversationOption(conversation, "I found the Tower of the Three in the Forest Ruins?", "TowerFinish")
 	  end
 	  
-	  PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog000.mp3", "", "", 1689589577, 4560189, Spawn)
+	  PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog000.mp3", "", "", '0b80eec5265d95a8', Spawn)
 	   AddConversationOption(conversation, "Wait, what? I don't want any part of this.") 
 	  StartConversation(conversation, NPC, Spawn, "Greetings!  Looking for a bashcogglinator or perhaps a metefozic thermogauge?")
     end
