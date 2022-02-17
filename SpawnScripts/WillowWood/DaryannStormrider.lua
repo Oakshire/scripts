@@ -6,7 +6,7 @@
                    : 
 --]]
 
-local TheBalanceOfLife = 5349
+local TheBalanceOfLife = 5480
 
 function spawn(NPC)
 ProvidesQuest(NPC, TheBalanceOfLife)

@@ -16,20 +16,24 @@ end
 function InRange(NPC, Spawn) --Quest Callout
 if GetLevel (Spawn) <=5 then
    if math.random(1, 100) <= 50 then
+     FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail1_7f060d18.mp3", "Hail fair, adventurer. Please be on your way. I've no time for chatting with commoners. I must warm up my voice. My fans await me...", "", 2685665398, 3421389957, Spawn)
     end
-elseif not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Player, Delivery) and GetLevel(Spawn) >=6 then 
-    if math.random(1, 100) and not HasCompletedQuest (Spawn, Delivery) <= 60 then
+elseif not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) and GetLevel(Spawn) >=6 then 
+    if math.random(1, 100) <= 60 then
     FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_callout_47db249c.mp3", "Gather around people ... gather around. I'll be warming up my voice in a few minutes.", "royalwave", 1269733907, 434806140, Spawn)
+	PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_callout_47db249c.mp3", "Gather around people ... gather around. I'll be warming up my voice in a few minutes.", "", 1269733907, 434806140, Spawn)
     end
-else
+else  
+    if math.random(1, 100) <= 50 then
     choice = math.random(1,2)
     if choice ==1 then
     FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "", "", "royalwave", 0, 0, Spawn)
-        else
-    PlayFlavor(NPC, "", "", "blowkiss", 0, 0, Spawn)
+         else
+    FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "cough", 0, 0, Spawn)
+         end
     end
     end
 end
@@ -42,15 +46,15 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	if GetLevel (Spawn) <=5 then
-	    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail1_7f060d18.mp3", "Hail fair, adventurer. Please be on your way. I've no time for chatting with commoners. I must warm up my voice. My fans await me...", "royalwave", 2685665398, 3421389957, Spawn)
-	elseif not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Player, Delivery) then 
+	    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail1_7f060d18.mp3", "Hail fair, adventurer. Please be on your way. I've no time for chatting with commoners. I must warm up my voice. My fans await me...", "", 2685665398, 3421389957, Spawn)
+	elseif not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
         conversation = CreateConversation()
 	    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail2_1c41a7b8.mp3", "", "royalwave", 2123310145, 515687997, Spawn)
         AddConversationOption(conversation, "Are you preparing for a concert?", "Book")
         AddConversationOption(conversation, "I'm not one of your devotees. Goodbye.")
         StartConversation(conversation, NPC, Spawn, "Hail, fair adventurer. If you can spare some time, my devotees are gathering to hear the latest masterpiece from yours truly.")
     
-    elseif not HasCompletedQuest (Spawn, Delivery) and  HasQuest (Player, Delivery) then 
+    elseif  HasQuest (Spawn, Delivery) then 
         FaceTarget(NPC, Spawn)
         conversation = CreateConversation()
     if GetQuestStep (Spawn, Delivery) == 2 then

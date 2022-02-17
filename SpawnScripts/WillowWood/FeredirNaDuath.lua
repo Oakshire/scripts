@@ -11,11 +11,13 @@ local WOOD_ELF = 15
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 	
-	MovementLoopAddLocation(NPC, 806.83, -21.08, -631.66, 2, 30)
+	MovementLoopAddLocation(NPC, 806.83, -21.08, -631.66, 2, 1)
+	MovementLoopAddLocation(NPC, 806.83, -21.08, -631.66, 2, math.random(10, 30),"Action")
 	MovementLoopAddLocation(NPC, 809.40, -20.58, -624.21, 2)
 	MovementLoopAddLocation(NPC, 824.93, -20.36, -621.53, 2)
 	MovementLoopAddLocation(NPC, 828.00, -20.14, -613.99, 2)
-	MovementLoopAddLocation(NPC, 834.82, -21.40, -616.09, 2, 60)
+	MovementLoopAddLocation(NPC, 834.82, -21.40, -616.09, 2, 1)
+	MovementLoopAddLocation(NPC, 834.82, -21.40, -616.09, 2, math.random(15, 40),"Action")
 	MovementLoopAddLocation(NPC, 836.63, -21.13, -607.60, 2)
 	MovementLoopAddLocation(NPC, 837.98, -20.93, -605.67, 2)
 	MovementLoopAddLocation(NPC, 840.11, -20.88, -604.95, 2)
@@ -23,19 +25,34 @@ function spawn(NPC)
 	MovementLoopAddLocation(NPC, 848.78, -20.96, -608.04, 2)
 	MovementLoopAddLocation(NPC, 856.05, -19.93, -609.18, 2)
 	MovementLoopAddLocation(NPC, 861.92, -18.97, -608.21, 2)
-	MovementLoopAddLocation(NPC, 870.01, -18.46, -604.19, 2, 120)
+	MovementLoopAddLocation(NPC, 870.01, -18.46, -604.19, 2, 1)
+	MovementLoopAddLocation(NPC, 870.01, -18.46, -604.19, 2, math.random(30, 120),"Action")
 	MovementLoopAddLocation(NPC, 870.36, -20.88, -613.71, 2)
 	MovementLoopAddLocation(NPC, 875.97, -21.14, -624.37, 2)
 	MovementLoopAddLocation(NPC, 874.31, -20.19, -629.96, 2)
 	MovementLoopAddLocation(NPC, 867.43, -20.63, -639.17, 2)
 	MovementLoopAddLocation(NPC, 855.45, -20.85, -646.91, 2)
 	MovementLoopAddLocation(NPC, 852.47, -20.56, -655.13, 2)
-	MovementLoopAddLocation(NPC, 846.62, -20.62, -662.08, 2, 90)
+	MovementLoopAddLocation(NPC, 846.62, -20.62, -662.08, 2, 1)
+	MovementLoopAddLocation(NPC, 846.62, -20.62, -662.08, 2, math.random(30, 90),"Action")
 	MovementLoopAddLocation(NPC, 834.48, -20.89, -661.77, 2)
 	MovementLoopAddLocation(NPC, 832.38, -20.31, -654.53, 2)
 	MovementLoopAddLocation(NPC, 829.19, -20.26, -651.75, 2)
 	MovementLoopAddLocation(NPC, 811.79, -21.20, -649.09, 2)
 end
+
+function Action(NPC)
+    local choice = MakeRandomInt(1, 4)
+    if choice == 1 then
+        PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+    elseif choice == 2 then
+        PlayFlavor(NPC, "", "", "tap", 0, 0, Spawn)
+    elseif choice == 3 then
+        PlayFlavor(NPC, "", "", "sniff", 0, 0, Spawn)
+    elseif choice == 4 then
+        PlayFlavor(NPC, "", "", "yawn", 0, 0, Spawn)
+    end
+end   
 
 function respawn(NPC)
 	spawn(NPC)
