@@ -13,17 +13,27 @@ local FarSeas_SixtyThree = 237
 
 function spawn(NPC)
 	ProvidesQuest(NPC, BADGER_PELTS_FOR_DIGGS)
+	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
+function InRange(NPC, Spawn)
+    if not HasCompletedQuest(Spawn, BADGER_PELTS_FOR_DIGGS) then
+        	if math.random(0, 100) <= 65 then
+            PlayFlavor(NPC, "voiceover/english/merchant_diggin_diggs/qey_village06/100_merchant_diggin_diggs_callout_5e1e6098.mp3", "Hear ye, hear ye! Digg's Trading Company seeks part-time hunters! Heavy coin handed out!", "", 2413237497, 889891316, Spawn)
+            end
+        else
+    end
+end
+    
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1006.mp3", "", "", 0, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs000.mp3", "", "", 96188472, 2463646265, Spawn)
 	Begin(NPC, Spawn, conversation)
 end
 
@@ -43,6 +53,7 @@ function Begin(NPC, Spawn, conversation)
 end
 
 function GotAnyWork(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs001.mp3", "", "", 4059634840, 1440996220, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
@@ -52,11 +63,12 @@ function GotAnyWork(NPC, Spawn)
 end
 
 function ImInterested(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs002.mp3", "", "", 2590912109, 2110560767, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	AddConversationOption(conversation, "I will return with the bundle of badger pelts. ", "OfferQuest1")
-	StartConversation(conversation, NPC, Spawn, "Then prepare for a hunting trip in the Forest Ruins or the Oakmyst Forest.  I'll pay you handsomely for a bundle of badger pelts.  I may even toss in a bit of Diggs' finest armor.")
+	StartConversation(conversation, NPC, Spawn, "Then prepare for a hunting trip in the Forest Ruins.  I'll pay you handsomely for a bundle of badger pelts.  I may even toss in a bit of Diggs' finest armor.")
 end
 
 function OfferQuest1(NPC, Spawn)
@@ -65,6 +77,7 @@ function OfferQuest1(NPC, Spawn)
 end
 
 function BundleOfPelts(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs003.mp3", "", "thank", 2263319370, 3568007530, Spawn)
 	SetStepComplete(Spawn, BADGER_PELTS_FOR_DIGGS, 2)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
@@ -80,7 +93,7 @@ function FarSeas_FiftyDone(NPC, Spawn)
 	
 	AddConversationOption(conversation, "I'm glad I could help.")
 	StartConversation(conversation, NPC, Spawn, "Grand work! A bit late, but grand none-the-less. These items will soon become fine garments and armor, Diggs Armor. Thank you, huntsman! Here is the payment for your labor.")
-	PlayFlavor(NPC, "","", "thank",0,0,Spawn)
+    PlayFlavor(NPC, "voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs004.mp3", "", "thank", 1093156454, 3294248254, Spawn)
 end
 
 function FarSeas_SixtyThree(NPC, Spawn)
@@ -89,6 +102,6 @@ function FarSeas_SixtyThree(NPC, Spawn)
 	conversation = CreateConversation()
 	
 	AddConversationOption(conversation, "I'm glad I could help.")
-	StartConversation(conversation, NPC, Spawn, "I thought this order was lost! These items will soon become fine garments and armor, Diggs Armor. Thank you, huntsman! Here is the payment for your labor.")
-	PlayFlavor(NPC, "","", "thank",0,0,Spawn)
+	StartConversation(conversation, NPC, Spawn, "Grand work! A bit late, but grand none-the-less. These items will soon become fine garments and armor, Diggs Armor. Thank you, huntsman! Here is the payment for your labor.")
+    PlayFlavor(NPC, "voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs004.mp3", "", "thank", 1093156454, 3294248254, Spawn)
 end

@@ -122,7 +122,7 @@ end
 
 function QuestStep2(NPC, Spawn)
           conversation = CreateConversation()
-	            PlayAnimation(NPC,"thank", Spawn)
+          	PlayFlavor(NPC, "voiceover/english/tinkerer_spindlecog/qey_village06/tinkererspindlecog004.mp3", "", "thank", 1204035343, 2271829644, Spawn)
 	            FaceTarget(NPC, Spawn)
 	            AddConversationOption(conversation, "I'll be back with these items.", "QuestStep3")
 	            AddConversationOption(conversation, "Try not to blow anything up.","QuestStep3")

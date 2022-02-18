@@ -28,7 +28,7 @@ end
 function Device1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/bizrinn_clamorclang/qey_village06/bizrinnclamorclang000.mp3", "", "agree", 3140666983, 3243864545, Spawn)
 	AddConversationOption(conversation, "What does the device actually do?","umm")
 	StartConversation(conversation, NPC, Spawn, "Oh! Yes! The froglok songstress! I have the Sonance Volume Amplificator ready for her!")
 end
@@ -36,7 +36,7 @@ end
 function umm(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/bizrinn_clamorclang/qey_village06/bizrinnclamorclang001.mp3", "", "happy", 1964116252, 2748280828, Spawn)
 	AddConversationOption(conversation, "Wonderful!","ugh")
 	AddConversationOption(conversation, "... I see. I'll take it to her.","ugh")
 	StartConversation(conversation, NPC, Spawn, "Why it makes her singing even LOUDER! We'll be able to hear her singing in the Baubbleshire! Isn't that great?!")

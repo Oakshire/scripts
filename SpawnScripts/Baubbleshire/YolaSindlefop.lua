@@ -29,7 +29,7 @@ function HandOver(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
     SetStepComplete(Spawn, YolaPicnic, 1)
-	PlayFlavor(NPC, "", "", "thank", 2042293032, 669099653, Spawn)
+	PlayFlavor(NPC, "voiceover/english/yola_sindlefop/qey_village06/yolasindlefop001.mp3", "", "thank", 3230142409, 154316341, Spawn)
 	AddConversationOption(conversation, "Enjoy.")
 	StartConversation(conversation, NPC, Spawn, "Oh I'm so glad he didn't forget. That Bregun, he's always doing the right thing at the right time. And thank you for delievering it! I'm starving.")
 end

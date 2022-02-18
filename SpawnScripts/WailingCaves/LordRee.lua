@@ -97,6 +97,7 @@ SpawnSet(Concubine4, "faction", "1")
 SpawnSet(NPC, "attackable", "1")
 SpawnSet(NPC, "show_level", "1")
 SpawnSet(NPC, "faction", "1")
+SendUpdateDefaultCommand(NPC,10000,"attack")
 end
    end
 

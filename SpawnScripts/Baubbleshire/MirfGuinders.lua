@@ -102,7 +102,7 @@ function EstleSearch(NPC, Spawn)
     AddConversationOption(conversation, "Listen, I will help you if you quit preaching", "DownBelow")
     AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "Ah, give praises! You have been sent by the gods! I need a hardy crusader, like you, to explore the tunnels of Bristlebane in the Down Below. Find the Shrine of Estle and confirm its existance!")
-     PlayFlavor(NPC, "", "", "cheer", 0, 0, Spawn)
+     PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders001.mp3", "", "cheer", 1245652082, 1122304682, Spawn)
 end
 
 function DownBelow(NPC, Spawn)
@@ -111,7 +111,7 @@ function DownBelow(NPC, Spawn)
         AddConversationOption(conversation, "Would that be Estle Bristlebane?", "WhoIsEstle")
     AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "Go to the Down Below! Look for the grand hall graced with three statues of Estle, the Tamer of Wild Souls. After you have found it come back to me! I will reward you with some coin.")
-    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders002.mp3", "", "nod", 1238322325, 3908688686, Spawn)
 end
 
 function WillExplore (NPC, Spawn)
@@ -122,31 +122,39 @@ end
 
 function WhoIsEstle(NPC, Spawn)
      	local conversation = CreateConversation()
+     	    FaceTarget(NPC, Spawn)
     AddConversationOption(conversation, "I will find their shrine in the Down Below.", "WillExplore")
     AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "What!  Do they teach nothing to young people today?  Estle was an apostle of Rodcet Nife, a Priest of Life.  Together with Vhalen and his bards of Bristlebane, they defended Qeynos during the War Of Plagues!")
-     PlayFlavor(NPC, "", "", "boggle", 0, 0, Spawn)
+     PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders003.mp3", "", "boggle", 706812134, 249250177, Spawn)
 end
 
 function FoundEstle(NPC, Spawn)
     SetStepComplete(Spawn, Estle, 2)
+        FaceTarget(NPC, Spawn)
      local conversation = CreateConversation()
-    AddConversationOption(conversation, "Good luck when you venture down there.")
+    AddConversationOption(conversation, "Good luck to you.")
 	StartConversation(conversation, NPC, Spawn, "Oh, thank our mirthful Bristlebane!  The Shrine of Estle has finally been revealed!  Such a place must resonate with the benevolence of the gods.  I must celebrate and venture down there myself to behold its glory with my own eyes!  Here is your coin.")
     PlayFlavor(NPC, "", "", "396", 0, 0, Spawn)
 end
 
 
 function InRange(NPC, Spawn)
+    if not HasQuest(Spawn,Estle) and not HasCompletedQuest(Spawn,Estle) and GetLevel(Spawn) >=5 then
+        if math.random(1, 100) <= 60 then
+        FaceTarget(NPC, Spawn)
+		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_callout_a5068619.mp3", "Come hither for I have much to tell you!", "beckon", 2649708751, 4092898916, Spawn)     
+		end
+    else    	     
 	 if math.random(1, 100) <= 50 then
 	    	local randomCall = MakeRandomInt(1, 2)
 	     if randomCall == 1 then
-		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!", "", 35546, 2556985953, Spawn)
+				PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!", "", 35546, 2556985953, Spawn)
         	    PlayAnimation (NPC, 11909)
-	elseif randomCall == 2 then
+	    elseif randomCall == 2 then
     	 PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_multhail1_59e52ebd.mp3", "Good adventurer, have faith and be well!  Perhaps one day you too may serve Bristlebane!", "", 300423478, 2139393363, Spawn)
 	             PlayAnimation (NPC, 11909)
 	        end
+        end
     end
 end
-

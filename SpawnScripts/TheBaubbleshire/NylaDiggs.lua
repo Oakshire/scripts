@@ -31,7 +31,7 @@ function InRange(NPC, Spawn) --Provides Language Based Callout with delay
     	end
 	elseif
     not HasCompletedQuest (Spawn, PieThief) and not HasQuest (Spawn, PieThief) then 
-     PlayFlavor(NPC, "", "Now where's that pie? I know I had it here.", "", 0, 0, Spawn, 8)
+     PlayFlavor(NPC, "voiceover/english/nyla_diggs/qey_village06/100_nyla_diggs_nyla_first_d022db59.mp3", "Now where's that pie? I know I had it here.", "", 3499289366, 4159200256, Spawn, 8)
      AddTimer(NPC, 2000, "PlayFlavor", Spawn)
     end
 end
@@ -42,12 +42,15 @@ end
 
 function QuestStart(NPC, Spawn, conversation)
     if not HasQuest (Spawn, PieThief) then
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "What happened?", "Pie1")
-    StartConversation(conversation, NPC, Spawn, "Hello dear. Sorry to make such a fuss, but I am certain it was just here!")
+    PlayFlavor(NPC, "voiceover/english/nyla_diggs/qey_village06/nyladiggs001.mp3", "", "", 919242821, 353275540, Spawn, 8)
+     conversation = CreateConversation()
+    AddConversationOption(conversation, "I could look for your missing pie.", "Pie1")
+    StartConversation(conversation, NPC, Spawn, "You see, the pie I baked earlier today, its missing! Not an uncommon event around here if you know what I mean. You'll always find a rummblin' belly around here, love.")
+
 
 elseif HasQuest (Spawn, PieThief) then
     conversation = CreateConversation()
+        PlayFlavor(NPC, "voiceover/english/nyla_diggs/qey_village06/nyladiggs003.mp3", "", "", 1047555750, 2550790552, Spawn, 8)
         if GetQuestStep(Spawn, PieThief) == 5 then
         AddConversationOption(conversation, "Lozoria Shinkicker took your pie! He seems to have eaten it though. He offered an ale on the house at the Deepmug Tavern as repayment.", "ThiefFinished")
         end
@@ -58,10 +61,12 @@ end
 
 
  function Pie1(NPC, Spawn)
-  conversation = CreateConversation()
-  AddConversationOption(conversation, "I could look for your missing pie.", "Pie2")
-  StartConversation(conversation, NPC, Spawn, "You see, the pie I baked earlier today, its missing! Not an uncommon event around here if you know what I mean. You'll always find a rummblin' belly around here, love.")
-end   
+    PlayFlavor(NPC, "voiceover/english/nyla_diggs/qey_village06/nyladiggs002.mp3", "", "", 1037348617, 3974383553, Spawn, 8)
+     conversation = CreateConversation()
+    AddConversationOption(conversation, "I could look for your missing pie.", "Pie2")
+    StartConversation(conversation, NPC, Spawn, "You'd do that? Tell you what, you search for the missing pie and when you return I'll have a fresh baked pie waiting for you. Oh, and I'll give the culprit such a scolding, he'll think twice before taking another one of my pies!")
+
+ end   
 
 function Pie2 (NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -70,6 +75,8 @@ end
 
 
 function ThiefFinished(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/nyla_diggs/qey_village06/nyladiggs004.mp3", "", "", 3185345641, 3927954754, Spawn, 8)
+
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	AddConversationOption(conversation, "Thanks, the pie smells delicous!", "PieTime")
@@ -95,7 +102,7 @@ function hailed(NPC, Spawn)
         if not HasCompletedQuest(Spawn, PieThief) then 
         QuestStart(NPC, Spawn)
         else
-        PlayFlavor(NPC, mp3, "Oh, why hello there dear. How are you today? Afraid I can't talk right now", "", 991095436, 863644706, Spawn)
+        PlayFlavor(NPC, "voiceover/english/nyla_diggs/qey_village06/nyladiggs000.mp3", "Oh, why hello there dear. How are you today? Afraid I can't talk right now", "", 2088434236, 3361269998, Spawn)
         end
    end
  end

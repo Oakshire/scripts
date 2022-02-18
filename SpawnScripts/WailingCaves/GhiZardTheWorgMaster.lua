@@ -56,7 +56,6 @@ SpawnSet(NPC, "attackable", "1")
 SpawnSet(NPC, "show_level", "1")
 SpawnSet(NPC, "faction", "1")
 
-
 SpawnSet(Worg1, "attackable", "1")
 SpawnSet(Worg1, "show_level", "1")
 SpawnSet(Worg1, "faction", "1")
@@ -73,6 +72,7 @@ SpawnSet(Worg4, "attackable", "1")
 SpawnSet(Worg4, "show_level", "1")
 SpawnSet(Worg4, "faction", "1")
 end
+
 
 
 

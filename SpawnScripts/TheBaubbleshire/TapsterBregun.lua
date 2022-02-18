@@ -30,7 +30,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 if not HasCompletedQuest(Spawn, YolaPicnic) and not HasQuest(Spawn, YolaPicnic) then
-        PlayFlavor(NPC, "voiceover/english/tapster_bregun/qey_village06/100_tapster_bregun_bregun_first_1ee27a85.mp3", "", "hello", 3137139088, 2537693501, Spawn)
+        PlayFlavor(NPC, "voiceover/english/tapster_bregun/qey_village06/tapsterbregun000.mp3", "", "hello", 3026913164, 1235641856, Spawn)
         conversation = CreateConversation()
     AddConversationOption(conversation, "I'm looking for work.", "DoorDash")
     StartConversation(conversation, NPC, Spawn, "Greetings, traveler. Is there something I can get ya today?")
@@ -63,13 +63,14 @@ end
 
  function DoorDash(NPC, Spawn)
   conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/tapster_bregun/qey_village06/tapsterbregun001.mp3", "", "", 1259014993, 3905164382, Spawn)
   AddConversationOption(conversation, "Delievered where?", "DoorDash2")
   StartConversation(conversation, NPC, Spawn, "Is that so... Well then why don't you do me a favor. Those look like some nimble feet you got. You can deliever a basket of food for me.")
 end   
 
  function DoorDash2(NPC, Spawn)
   conversation = CreateConversation()
-      PlayFlavor(NPC,"","","chuckle",0,0,Spawn)
+      PlayFlavor(NPC,"voiceover/english/tapster_bregun/qey_village06/tapsterbregun002.mp3","","chuckle",895648320,2977770410,Spawn)
   AddConversationOption(conversation, "I can take Yola's order to her.", "DoorDashQuest")
   StartConversation(conversation, NPC, Spawn, "I've prepared a picnic basket for Yola, and I need it delieverd to her at the little lake. You'll find her at the lunch spot. I'll spot you a few coin if you're quick on your toes.")
 end   
@@ -81,7 +82,7 @@ end
 
  function DoorDashDone(NPC, Spawn)
   conversation = CreateConversation()
-      PlayFlavor(NPC,"","","thank",0,0,Spawn)
+      PlayFlavor(NPC,"voiceover/english/tapster_bregun/qey_village06/tapsterbregun003.mp3","","thank",1121129450,2689540838,Spawn)
   AddConversationOption(conversation, "Thanks, Bregun", "QuestComplete")
   StartConversation(conversation, NPC, Spawn, "Well, so ya have. I hope she enjoys her lunch. I gave her my best breads and cheeses! Ooooh makes me hungry just thinking about it! Ha! Oh, as promised, here's your coin.")
 end   

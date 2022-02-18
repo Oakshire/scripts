@@ -48,12 +48,11 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
         if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
-        PlayFlavor(NPC, "", "", "frustrated", 0, 0, Spawn)
+        PlayFlavor(NPC, "voiceover/english/barkeep_kaldin_deeppockets/qey_village06/barkeepdeeppockets000.mp3", "", "frustrated", 107874926, 2254072034, Spawn)
         conversation = CreateConversation()
          AddConversationOption(conversation, "I'm actually looking for work.", "Job1")
          AddConversationOption(conversation, "Actually, I'll speak to Bregun about a drink. Thanks.")
         StartConversation(conversation, NPC, Spawn, "What's all this madness?! Are Deeppockets working for someone else? What's become of us!? Enough of my woes. What's your order? Be quick with it.")
-	    local choice = math.random(1,4)
     
         elseif not HasCompletedQuest (Spawn, Delivery) and  HasQuest (Spawn, Delivery) then 
         FaceTarget(NPC, Spawn)
@@ -86,6 +85,7 @@ function respawn(NPC)
 end
 
  function Job1(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/barkeep_kaldin_deeppockets/qey_village06/barkeepdeeppockets001.mp3", "", "agree", 635967568, 2169058204, Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "I'll take any job you have.", "Job2")
     AddConversationOption(conversation, "Actually, I'll speak to Bregun about a drink. Thanks.")
@@ -93,6 +93,7 @@ end
 end   
 
  function Job2(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/barkeep_kaldin_deeppockets/qey_village06/barkeepdeeppockets002.mp3", "", "happy", 273979806, 1884621205, Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "Sure, sounds like as good a job as any.", "QuestBegin")
     AddConversationOption(conversation, "Actually, I'll speak to Bregun about a drink. Thanks.")
@@ -105,7 +106,7 @@ function QuestBegin (NPC, Spawn)
 end
 
  function Delivered(NPC, Spawn)
-    PlayFlavor(NPC, "", "", "boggle", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/barkeep_kaldin_deeppockets/qey_village06/barkeepdeeppockets003.mp3", "", "boggle", 1808434879, 1588622317, Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "Enjoy the stein! Glad I could help.", "Reward")
   StartConversation(conversation, NPC, Spawn, "A stein from the Fool's Gold Tavern?! This is rare, indeed! That ancient tavern disappeared long ago! Oh, this cheers my heart! Here, please accept this coin I promised to you.")

@@ -21,7 +21,7 @@ end
 function InRange(NPC, Spawn)
 if not HasQuest(Spawn, TowerOfThree) and not HasCompletedQuest(Spawn, TowerOfThree) then
     FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/100_ebik_wobblecog_callout_f7e366da.mp3","Hello adventurer! Come hither! You must help reveal the truth about wonders in the Forest Ruins.", "wave", 805265958, Spawn)
+    PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/100_ebik_wobblecog_callout_f7e366da.mp3","Hello adventurer! Come hither! You must help reveal the truth about wonders in the Forest Ruins.", "wave", 3574249828,2561130909, Spawn)
     else
     PlayFlavor(NPC, "","", "ponder", 0, 0, Spawn)
     end
@@ -33,7 +33,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
---PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog000.mp3", "", "", 1689589577, 4560189, Spawn)
+    PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog000.mp3", "", "", 3320741899, 2828360998, Spawn)
    	if HasQuest(Spawn, BagoParts) and not HasCompletedQuest(Spawn, BagoParts) then
 	    AddConversationOption(conversation, "Did you drop this bag of parts I found near the dock?", "quest_complete")
 	elseif not HasQuest(Spawn, TowerOfThree) and not HasCompletedQuest(Spawn, TowerOfThree) then
@@ -50,7 +50,8 @@ function hailed(NPC, Spawn)
 function quest_complete(NPC, Spawn)
 	SetStepComplete(Spawn, BagoParts, 1)
 	conversation = CreateConversation()
-    PlayFlavor(NPC, "", "", "thank", 3964717986, 1813107488, Spawn)
+	PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog004.mp3", "", "thank", 3506700669, 47329733, Spawn)
+
    AddConversationOption(conversation, "Thanks!")
    StartConversation(conversation, NPC, Spawn, "Oh my, it does indeed!  I thought I'd lost those parts.  You've saved me a great deal of trouble, friend.  Let me compensate you for your keen eyes and good nature.")	 
 end
@@ -58,8 +59,8 @@ end
 function TowerStart(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+         PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog001.mp3", "", "orate", 1973122055, 1074636856, Spawn)
 
-	    PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
 		AddConversationOption(conversation, "Yes, yes - but what do you need?", "TowerMission")
 		AddConversationOption(conversation, "I can't help you.")
 	StartConversation(conversation, NPC, Spawn, "I see my superior intellect confuses you.  Don't worry, it perplexes many people - tis' the curse of the Tinmizer name.  However, I can use your help, for even simple minds contribute to the greatness of Qeynos.")
@@ -68,8 +69,8 @@ end
 function TowerMission(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	 PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog002.mp3", "", "ponder", 331751253, 2149638636, Spawn)
 
-	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
 	AddConversationOption(conversation, "I will find the mage tower ruins.", "QuestStart")
 	StartConversation(conversation, NPC, Spawn, "You must venture into the Forest Ruins. Tavern tales claim the remnants of the magi tower of the Order of Three exist there. You must reveal the truth of this mystery.")
 end
@@ -83,7 +84,7 @@ function TowerFinish(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "", "", "thank", 0, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog003.mp3", "", "thank", 1222490153, 3050983577, Spawn)
 	AddConversationOption(conversation, "No problem at all.","QuestEnd")
 	StartConversation(conversation, NPC, Spawn, "This is wonderful news!  Someday, I must explore the ruins but not today.  I thank you for your service, adventurer.")
 end

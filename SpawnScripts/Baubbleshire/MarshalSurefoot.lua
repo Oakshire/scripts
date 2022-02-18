@@ -37,7 +37,9 @@ function Action(NPC)
     elseif choice == 4 then
         PlayFlavor(NPC, "", "", "attention", 0, 0, Spawn)
     end
- end   
+end   
+
+
 	function InRange(NPC, Spawn)
 	  
 	    	if math.random(1, 100) <= 70 then
@@ -45,7 +47,7 @@ function Action(NPC)
 	     if randomCall == 1 then
             if not HasCompletedQuest(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS) then
           	FaceTarget(NPC, Spawn)
-               PlayFlavor(NPC, "", "Forgotten guardians are no match for a Leatherfoot, Ha! Greetings adventurer. I can tell you're a fearless warrior!", "salute", 0, 0, Spawn)
+               PlayFlavor(NPC, "voiceover/english/marshal_surefoot/qey_village06/100_marshal_shortfoot_callout_21d33319.mp3", "Forgotten guardians are no match for a Leatherfoot, Ha! Greetings adventurer. I can tell you're a fearless warrior!", "salute", 3286953341, 3627183103, Spawn)
 	elseif randomCall == 2 then	  
 	         	FaceTarget(NPC, Spawn)
 		   	PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
@@ -96,8 +98,8 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/marshal_surefoot/qey_village06/marshalsurefoot000.mp3", "", "salute", 3898086374, 2053590783, Spawn)
 
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1006.mp3", "", "", 0, 0, Spawn)
 	Begin(NPC, Spawn, conversation)
 end
 
@@ -109,14 +111,14 @@ function Begin(NPC, Spawn, conversation)
 	end
 	
 	AddConversationOption(conversation, "Sorry to hear that. I must be going.")
-	StartConversation(conversation, NPC, Spawn, "Stand stout! You'd make a fine deputy.")
-	PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
+	StartConversation(conversation, NPC, Spawn, "Stand stout! You'd make a fine deputy. Unfortunately, we can't handle new recruits. Please move along adventurer.")
+
 end
 
 function PaidWell(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
+	PlayFlavor(NPC, "voiceover/english/marshal_surefoot/qey_village06/marshalsurefoot001.mp3", "", "agree", 1754420815, 722332586, Spawn)	
 	AddConversationOption(conversation, "I can face the titans of the forest.", "CanFaceTitans")
 	AddConversationOption(conversation, "I'm not facing any titans today.")
 	StartConversation(conversation, NPC, Spawn, "Aha! A mercenary! I can use your mettle for testing the strengths of the enemy. Can you overcome the titants of the forest? What do ya say, soldier?")
@@ -125,7 +127,7 @@ end
 function CanFaceTitans(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
+	PlayFlavor(NPC, "voiceover/english/marshal_surefoot/qey_village06/marshalsurefoot002.mp3", "", "", 2844840663, 963541700, Spawn)	
 	AddConversationOption(conversation, "I will face the titans.", "OfferQuest1")
 	StartConversation(conversation, NPC, Spawn, "Then stand firm and venture to the Forest Ruins. The foes act as Forgotten Guardians. They prey upon the people ... stand tall soldier! Crush a few and return with a tale of victory!")
 end
@@ -139,8 +141,7 @@ function KilledGuardians(NPC, Spawn)
 	SetStepComplete(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS, 2)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	
+	PlayFlavor(NPC, "voiceover/english/marshal_surefoot/qey_village06/marshalsurefoot003.mp3", "", "salute", 137631615, 420589820, Spawn)	
 	AddConversationOption(conversation, "Farewell Marshal Surefoot.")
 	StartConversation(conversation, NPC, Spawn, "What bravery! You laughed in the face of death! You are a true protector of the forest realms. I shall seek you out when I recruit my force of Leatherfoot deputies. You are relieved for now.")
-		PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
 end

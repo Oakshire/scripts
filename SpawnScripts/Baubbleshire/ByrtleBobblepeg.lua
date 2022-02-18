@@ -17,7 +17,7 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-	if math.random(0, 100) <= 25 then
+	if math.random(0, 100) <= 22 then
 		FaceTarget(NPC, Spawn)
 		GenericMerchantHail(NPC, Spawn)
 	end

@@ -28,17 +28,20 @@ function InRange (NPC,Spawn)
 	    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
     end
 end
-
+        --
     
 function hailed(NPC, Spawn)
     --GenericHail(NPC, Spawn)
-    local choice = math.random(1,3)
+--[[    local choice = math.random(1,3)
     if choice == 1 then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1012.mp3", "", "hello", 0, 0, Spawn)
     elseif choice==2 then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1012.mp3", "", "bow", 0, 0, Spawn)
-    else
-    end
+    else]]--
+
+
+
+    PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean.mp3", "", "bow",3631971111,2641145010, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	if GetQuestStep (Spawn, Delivery) == 1 then 
@@ -61,7 +64,7 @@ function hailed(NPC, Spawn)
 	end
 	AddConversationOption(conversation, "I would like to know about a room.", "dlg_2_1")
 	AddConversationOption(conversation, "No thanks.")
-	StartConversation(conversation, NPC, Spawn, "Welcome to the Bed and Book Inn. A fine establishment for recuperating a body and expanding a mind.")
+	StartConversation(conversation, NPC, Spawn, "Welcome to the Bed and Book Inn. A fine establishment for recuperating a body and expanding a mind. We have many fine rooms available. Interested, traveler?")
 --	StartConversation(conversation, NPC, Spawn, "Hello " .. GetName(Spawn) .. ", I am the Innkeeper for this village. We have received word of your arrival and have a room prepared for you. Would you like to know more about housing?")
 end
 
@@ -84,9 +87,9 @@ end
 function NoDinner(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean000.mp3", "", "sigh",4169629165,2563079815, Spawn)
     AddConversationOption(conversation, "I'm sorry to have to deliver the news.", "UpdateDinner")
     StartConversation(conversation, NPC, Spawn, "Again?! That froglok should hire more people so Faeadaen isn't worked to the bone. Thanks for letting me know. I guess I'll dine alone tonight.")
- 	PlayFlavor(NPC, "", "", "sigh", 0,0 , Spawn)
 end
 
 function KnowTaneran(NPC, Spawn)

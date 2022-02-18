@@ -49,7 +49,7 @@ function Option2(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/daryann_stormrider/qey_village05/quests/daryann_stormrider/daryann002.mp3", "", "", 3412334991, 3636507740, Spawn)
 	AddConversationOption(conversation, "Sounds like that would suit me well.", "Option3")
 	AddConversationOption(conversation, "Maybe I'll come back later.")
-	StartConversation(conversation, NPC, Spawn, "Each village has someone who decides which creatures' numbers need culling and what populations are stable. I'm the representative for Windstalker Village. If you wish to help me, I will gladly assign you some tasks.")
+	StartConversation(conversation, NPC, Spawn, "Each village has someone who decides which creatures' numbers need culling and what populations are stable. I'm the representative for the Willow Wood. If you wish to help me, I will gladly assign you some tasks.")
 end
 
 
