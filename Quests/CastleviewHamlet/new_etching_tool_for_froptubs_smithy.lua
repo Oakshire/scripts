@@ -19,7 +19,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(QuestGiver, "", "", "bow", 0, 0, Spawn)
+	PlayFlavor(QuestGiver, "voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub001.mp3", "", "bow", 2191302103, 1711619713, Player)
     AddConversationOption(conversation, "I'll go look for him now.")
 	StartConversation(conversation, QuestGiver, Player, "Gramercy! I shall be able to finish up these orders and get these grumbling elves off my doorstep!")
 

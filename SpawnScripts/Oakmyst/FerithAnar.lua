@@ -122,13 +122,16 @@ function Pathway3 (NPC)
     --waypoints3(NPC)
     
     if choice == 2 then
-    MovementLoopAddLocation(NPC, 879.66, 0.31, -245.20,2,0) 
-    MovementLoopAddLocation(NPC, 867.08, 1.34, -245.34,2,2,"waypoints2") 
-    
+    MoveToLocation(NPC, 879.66, 0.31, -245.20,2) 
+    MoveToLocation(NPC, 867.08, 1.34, -245.34,2) 
+    MoveToLocation(NPC, 867.08, 1.34, -245.34,2)  
+    waypoints2(NPC)
     else 
-    MovementLoopAddLocation(NPC, 852.36, 2.65, -244.06,2,0)
-    MovementLoopAddLocation(NPC, 823.06, 6.45, -267.52,2,0)
-    MovementLoopAddLocation(NPC, 818.50, 7.36, -278.27,2,0,"waypoints1") 
+    MoveToLocation(NPC, 852.36, 2.65, -244.06,2)
+    MoveToLocation(NPC, 823.06, 6.45, -267.52,2)
+    MoveToLocation(NPC, 818.50, 7.36, -278.27,2)
+    MoveToLocation(NPC, 818.50, 7.36, -278.27,2)
+    waypoints1(NPC)
     end
 end
 
@@ -139,13 +142,16 @@ function Pathway2 (NPC)
    -- waypoints2 (NPC)
     
     if choice == 2 then
-    MovementLoopAddLocation(NPC, 835.77, 3.68, -235.72,2,0) 
-    MovementLoopAddLocation(NPC, 839.33, 3.49, -257.94,2,2,"waypoints1") 
-   
-    else   
-    MovementLoopAddLocation(NPC,856.26, 2.23, -242.68,2,0)
-     MovementLoopAddLocation(NPC,883.08, 0.24, -249.14,2,2,"waypoints3")
 
+    MoveToLocation(NPC, 835.77, 3.68, -235.72,2) 
+    MoveToLocation(NPC, 839.33, 3.49, -257.94,2) 
+    MoveToLocation(NPC, 839.33, 3.49, -257.94,2)
+    waypoints1(NPC)
+    else   
+    MoveToLocation(NPC,856.26, 2.23, -242.68,2)
+     MoveToLocation(NPC,883.08, 0.24, -249.14,2)
+     MoveToLocation(NPC,883.08, 0.24, -249.14,2)
+     waypoints3(NPC)
     end
 end
 
@@ -156,18 +162,20 @@ function Pathway1 (NPC)
    -- waypoints1(NPC)
   
    if choice == 2 then
-    MovementLoopAddLocation(NPC, 822.16, 6.54, -282.55,2,0) 
-    MovementLoopAddLocation(NPC, 844.21, 4.49, -318.7,2,0) 
-    MovementLoopAddLocation(NPC, 861.05, 2.11, -322.19,2,0) 
-    MovementLoopAddLocation(NPC, 872.81, 1.36, -320.97,0,0) 
-    MovementLoopAddLocation(NPC, 898.02, 2.14, -318.28,2,0)
-    MovementLoopAddLocation(NPC, 911.11, 2.28, -304.26,2,0,"waypoints3")
-    
+    MoveToLocation(NPC, 822.16, 6.54, -282.55,2) 
+    MoveToLocation(NPC, 844.21, 4.49, -318.7,2) 
+    MoveToLocation(NPC, 861.05, 2.11, -322.19,2) 
+    MoveToLocation(NPC, 872.81, 1.36, -320.97,0) 
+    MoveToLocation(NPC, 898.02, 2.14, -318.28,2)
+    MoveToLocation(NPC, 911.11, 2.28, -304.26,2)
+    MoveToLocation(NPC, 911.11, 2.28, -304.26,2)
+    waypoints3(NPC)
     else 
-    MovementLoopAddLocation(NPC, 783.2, 13.35, -250.47,2,0) 
-    MovementLoopAddLocation(NPC, 794.22, 18.68, -237.53,2,0)
-    MovementLoopAddLocation(NPC, 805.6, 14.40, -232.05,2,0,"waypoints2")
-        
+    MoveToLocation(NPC, 783.2, 13.35, -250.47,2) 
+    MoveToLocation(NPC, 794.22, 18.68, -237.53,2)
+    MoveToLocation(NPC, 805.6, 14.40, -232.05,2)
+    MoveToLocation(NPC, 805.6, 14.40, -232.05,2)    
+    waypoints2(NPC)
         end
     end
 

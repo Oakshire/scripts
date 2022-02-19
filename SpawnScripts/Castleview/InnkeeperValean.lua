@@ -24,8 +24,14 @@ function respawn(NPC)
 end
 
 function InRange (NPC,Spawn)
+    if not HasQuest(Spawn, LostBook) and not HasCompletedQuest(Spawn, LostBooks) then 
+        if math.random(1, 100) <= 70 then
+        PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/100_innkeeper_valean_callout_9071232c.mp3", "Welcome to the Bed and Book Inn. A fine establishment for recuperating a body and expanding a mind.", "hello", 1080804291, 518202081, Spawn)
+        end
+    else
      if math.random(1, 100) <= 50 then
 	    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+    end
     end
 end
         --
@@ -81,7 +87,7 @@ function BookDelivery(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "I'll let Ganla know. I hope it contains something good!", "UpdateDelivery")
     StartConversation(conversation, NPC, Spawn, "Ah, Yes! Ganla's treasure! I was expecting this. I shall decipher it, but it will take some time. Please inform Ganla I will return the journal as soon as possible.")
- 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+ 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean005.mp3", "", "agree", 3924782316,102930417 , Spawn)
 end
 
 function NoDinner(NPC, Spawn)
@@ -98,7 +104,7 @@ function KnowTaneran(NPC, Spawn)
     AddConversationOption(conversation, "I wan't aware they were to be wed.", "UpdateReservation")
     AddConversationOption(conversation, "I don't really know either of them.", "UpdateReservation")
     StartConversation(conversation, NPC, Spawn, "Ah! Taneran! I know him well! It seems he's in town quite often visiting Listalania. They're quite a pair, arn't they? I suppose when they wed I'll lose his loyal patronage at my inn.")
- 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+ 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean001.mp3", "", "agree", 3017286284,4228062292 , Spawn)
 end
 
 function UpdateReservation(NPC, Spawn)
@@ -108,7 +114,7 @@ function UpdateReservation(NPC, Spawn)
     AddConversationOption(conversation, "I must congratulation them!", "ReservationMade")
     AddConversationOption(conversation, "Perhaps don't assume next time. Thank you.", "ReservationMade")
     StartConversation(conversation, NPC, Spawn, "Pardon my indiscretion, friend. I assumed... because you're making his reservation that... you were a close friend of Taneran's. He and I speak sometimes when he retires for the night. Please don't mention this to the Lady. I will see that his room is ready.")
- 	PlayFlavor(NPC, "", "", "boggle", 0,0 , Spawn)
+ 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean002.mp3", "", "boggle", 1569016427,2379789272 , Spawn)
 end
 
 function BookCollection(NPC, Spawn)
@@ -117,7 +123,7 @@ function BookCollection(NPC, Spawn)
     AddConversationOption(conversation, "If I see them down there, I'll let you know.", "BookLook")
     AddConversationOption(conversation, "The catacombs? Ew. No.")
     StartConversation(conversation, NPC, Spawn, "I do have many, but I use to have more before hoodlums pilfered my shelves. I heard tales of a merchant in the Down Below selling books... MY BOOKS! I must confirm this before I approach the Qeynos guard.")
- 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+ 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean003.mp3", "", "agree", 1990579767,1971786194 , Spawn)
 end
 
 function BookLook (NPC, Spawn)
@@ -130,7 +136,7 @@ function FoundBooks(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "I'm glad I could help.", "BooksDone")
     StartConversation(conversation, NPC, Spawn, "I'll report this to the Qeynos guard! Hopefully they'll lock these criminals up and throw away the key. Thank you for relaying this information. Please, take this small token of my appreciation.")
- 	PlayFlavor(NPC, "", "", "boggle", 0,0 , Spawn)
+ 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean004.mp3", "", "boggle", 4073559800,1910490855 , Spawn)
 end
 
 function ShelfUpdate(NPC, Spawn)

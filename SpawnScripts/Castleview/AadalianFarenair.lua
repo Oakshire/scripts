@@ -10,7 +10,7 @@ local Sword = 5455
 
 function spawn(NPC)
 ProvidesQuest(NPC,Sword)
-SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
 waypoints(NPC)
 end
 
@@ -26,7 +26,7 @@ function InRange(NPC, Spawn)
             if choice == 1 then
 	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "tap", 2766992983, 3224256482, Spawn, 9)
     	    elseif choice == 2 then
-	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
+	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_d396c4fc.mp3", "Oh don't look at me that way. Speak my language!.", "", 3403333804, 3641522203, Spawn, 9)
     	    end
     	end
 	elseif
@@ -35,15 +35,15 @@ function InRange(NPC, Spawn)
             FaceTarget(NPC,Spawn)
             local choice = math.random(1,3)
                 if choice == 1 then
-                 PlayFlavor(NPC, "", "Ah, a busy adventurer like you has no time to run errands. Farewell!", "tap", 0, 0, Spawn)
+                 PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail1_489c1202.mp3", "Ah, a busy adventurer like you has no time to run errands. Farewell!", "tap", 1714607542, 3679115405, Spawn)
                 elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "hello", 2059471651, 1229334005, Spawn)
                 else
-                PlayFlavor(NPC, "", "Can you spare a moment?", "hello", 0, 0, Spawn)
+                PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_callout_357f6ef7.mp3", "Can you spare a moment?", "hello", 4143835238, 3043367579, Spawn)
                 end
         
             elseif HasCompletedQuest (Spawn, Sword) and math.random(1, 100) <= 50 then
-		PlayFlavor(NPC, "","", "tap", 2059471651, 1229334005, Spawn)
+		PlayFlavor(NPC, "","", "tap", 0, 0, Spawn)
              end
     end
 end
@@ -99,6 +99,7 @@ end
 
 
  function Waitting(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair000.mp3","", "brandish", 2830176428, 3645028717, Spawn)
     FaceTarget(NPC,Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "What etching have you decided on?", "Decoration")
@@ -107,11 +108,12 @@ end
 end   
 
  function Decoration(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair001.mp3","", "brandish", 1068773246, 2639950014, Spawn)
     FaceTarget(NPC,Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "I'll go speak with Froptub.", "Froptub")
   AddConversationOption(conversation, "Sorry, I'm busy.")
-  StartConversation(conversation, NPC, Spawn, "My design is not mere decoration, my friend. The inscription chronicals the cohabitation of our two races. Would you be kind, and see what is keeping the sword at Froptub's smithy? ")
+  StartConversation(conversation, NPC, Spawn, "My design is not mere decoration, friend. The inscription chronicals the cohabitation of our two races. Would you be kind, and see what is keeping the sword at Froptub's smithy? ")
 end   
 
 function Froptub (NPC, Spawn)
@@ -121,6 +123,7 @@ end
 
 
 function SwordReturned(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair002.mp3","", "brandish", 1199681985, 2816919734, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	AddConversationOption(conversation, "I'm glad I could assist.", "Payment")
@@ -146,7 +149,7 @@ function hailed(NPC, Spawn)
         QuestStart(NPC, Spawn)
   
         elseif HasCompletedQuest (Spawn, Sword) then
-	    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "", 2059471651, 1229334005, Spawn)
+	    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "", 2296905326, 696379844, Spawn)
         end
    end
  end

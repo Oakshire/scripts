@@ -36,7 +36,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    		PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/100_entertainer_faeadaen_multhail2_2d3351bb.mp3", "", "orate", 3189499038, 1784304503, Spawn)
+    		PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen.mp3", "", "orate", 2289708399, 1034577130, Spawn)
     local con = CreateConversation()
     if not HasQuest (Spawn, Quest) and not HasCompletedQuest (Spawn, Quest) then
     AddConversationOption(con, "You must be quite the entertainer. Need any help?", "NeedHelp")
@@ -49,12 +49,12 @@ function hailed(NPC, Spawn)
     end
     AddConversationOption(con, "I would love a performance. [ 2 Silver ]", "Perforamnce")
     AddConversationOption(con, "I'll keep my coins, thank you.")
-    StartConversation(con, NPC, Spawn, "Step up and watch as I make lights dance and coins disappear into thin air!")
+    StartConversation(con, NPC, Spawn, "Come closer and watch as I make lights dance and coins disapear into thin air! ")
 end
 
 function NoBook(NPC,Spawn)
     FaceTarget(NPC, Spawn)
-    		PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+    		PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen002.mp3", "", "ponder", 386324181, 1757469505, Spawn)
     local con = CreateConversation()
     AddConversationOption(con, "Alright, I'll check at the inn. Thank you.", "BookUpdate")
     StartConversation(con, NPC, Spawn, "The book on the great tree, Arbos? I'm afraid I left the book somewhere at the local inn. You'll have to search for it there.")
@@ -62,7 +62,7 @@ end
 
 function NeedHelp(NPC,Spawn)
     FaceTarget(NPC, Spawn)
-    		PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    		PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen000.mp3", "", "agree", 3630263809, 612433831, Spawn)
     local con = CreateConversation()
     AddConversationOption(con, "I'll deliver the message for you.", "GiveQuest")
     AddConversationOption(con, "I'm busy. Sorry.")
@@ -71,7 +71,7 @@ end
 
 function NoDinner(NPC,Spawn)
     FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "", "", "thank", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen001.mp3", "", "thank", 1133009328, 1111624722, Spawn)
     SetStepComplete(Spawn, Quest, 2)
     local con = CreateConversation()
     AddConversationOption(con, "I just might.")

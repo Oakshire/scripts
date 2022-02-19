@@ -13,23 +13,23 @@ function spawn(NPC)
 	
 	-- page 7, step 3
 	if spawn_location_id == 558487 then
-		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 3)
+		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 3, 1)
 	
 	-- page 11, step 4
 	elseif spawn_location_id == 1585293 then
-		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 4)
+		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 4, 1)
 		
 	-- page 12, step 5
 	elseif spawn_location_id == 558489 then
-		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 5)
+		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 5, 1)
 		
 	-- page 3, step 1
 	elseif spawn_location_id == 1585294 then
-		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 1)
+		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 1, 1)
 	
 	-- page 4, step 2
 	elseif spawn_location_id == 558491 then
-		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 2)
+		SetRequiredQuest(NPC, HALFELF_MENTOR_QUEST_3, 2, 1)
 	end
 end
 

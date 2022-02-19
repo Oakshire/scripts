@@ -28,7 +28,7 @@ end
 function ToolPickup(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "", "", "sit_idle", 0, 0)
+	PlayFlavor(NPC, "voiceover/english/apprentice_boggi/qey_village04/apprenticeboggi000.mp3", "", "sit_idle", 2830477410, 146534045)
 	AddConversationOption(conversation, "Sure, give it to me.","Update")
 	AddConversationOption(conversation, "You must be joking. I'm not doing your work for you.")
 	StartConversation(conversation, NPC, Spawn, "Oh! Yes, the etching tool. I have it right here. Could you deliever it for me? I don't think my leg could make it up the stairs to his smithy.")

@@ -14,15 +14,15 @@ function spawn(NPC)
 	
 	-- docks (step 5)
 	if spawn_location_id == 558481 then
-		SetRequiredQuest(NPC, HALF_ELF_MENTOR_QUEST_1, 5)
+		SetRequiredQuest(NPC, HALF_ELF_MENTOR_QUEST_1, 5, 1)
 	
 	-- inn roof (step 4)
 	elseif spawn_location_id == 1585292 then
-		SetRequiredQuest(NPC, HALF_ELF_MENTOR_QUEST_1, 4)
+		SetRequiredQuest(NPC, HALF_ELF_MENTOR_QUEST_1, 4, 1)
 		
 	-- forest ruins (step 6)
 	elseif spawn_location_id == 558483 then
-		SetRequiredQuest(NPC, HALF_ELF_MENTOR_QUEST_1, 6)
+		SetRequiredQuest(NPC, HALF_ELF_MENTOR_QUEST_1, 6, 1)
 	end
 end
 

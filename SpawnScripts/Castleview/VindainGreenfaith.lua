@@ -35,7 +35,7 @@ function hailed(NPC, Spawn)
 end
 
 function InRange(NPC, Spawn) 
-    if not HasCompletedQuest (Spawn, ComponentsOfGrowth) and not HasQuest (Spawn, ComponentsOfGrowth) then 
+    if not HasCompletedQuest (Spawn, ComponentsOfGrowth) and not HasQuest (Spawn, ComponentsOfGrowth) and GetRace(Spawn)== 8 then 
             FaceTarget(NPC, Spawn)
              PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
         else

@@ -75,6 +75,7 @@ end
 
 
  function Long(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian000.mp3", "", "", 3000457446, 1615662591, Spawn)
     FaceTarget(NPC,Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "What do you need?", "Moment")
@@ -83,6 +84,7 @@ end
 end   
 
  function Moment(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian001.mp3", "", "", 2137369666, 3214169291, Spawn)     
     FaceTarget(NPC,Spawn)
   conversation = CreateConversation()
   AddConversationOption(conversation, "I'll go speak to Valean about a reservation.", "Valean")
@@ -97,11 +99,11 @@ end
 
 
 function ReservationMade(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian002.mp3", "", "thank", 1021398410, 333389770, Spawn)      
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	AddConversationOption(conversation, "It was my pleasure.", "Payment")
 	AddConversationOption(conversation, "Congratulations on your... ", "Payment1")
-	PlayFlavor(NPC, "","", "thank", 0, 0, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Lovely! Thank you for taking care of this matter. I just couldn't make poor Taneran sleep on the floor. It would be terrible manners on my part. Please, I insit you take some coins for your kind deed.")
 end   
 
@@ -133,7 +135,7 @@ function hailed(NPC, Spawn)
         QuestStart(NPC, Spawn)
   
         elseif HasCompletedQuest (Spawn, Reservation) then
-        PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me...", "", 1634717602, 1906674926, Spawn)
+        PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  The beauty of Qeynos herself calls me though...", "", 2220724575, 2462118771, Spawn)
         end
    end
  end
