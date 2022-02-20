@@ -595,11 +595,17 @@ function GenericMerchantHail(NPC, Spawn, faction)
 				    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/service/merchant/woodelf_merchant_service_good_1_hail_gm_e4fa2bd8.mp3", "Confound it! Where did I put that ledger? It must be around here somewhere!", "confused", 2211929083, 2050297502, Spawn)
                 end
 			elseif gender == FEMALE then
-				local choice = math.random(1,2)
+				local choice = math.random(1,5)
 				if choice == 1 then
 					PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/service/merchant/woodelf_merchant_service_good_1_hail_gf_24322c5d.mp3", "Greetings, friend traveler! We have the finest supplies to fill your adventuring needs.", "smile", 2082169991, 1448634552, Spawn)
 				elseif choice == 2 then
 					PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/service/merchant/woodelf_merchant_service_good_1_hail_gf_e4fa2bd8.mp3", "Confound it! Where did I put that ledger?  It must be around here somewhere!", "confused", 3534990748, 2443561795, Spawn)
+					elseif choice == 3 then
+				    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/service/merchant/woodelf_merchant_service_good_1_hail_gf_45d92a75.mp3", "Welcome! What can I help you with?", "hello", 1267417831, 1141829156, Spawn)
+				elseif choice == 4 then
+				    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/service/merchant/woodelf_merchant_service_good_1_hail_gf_ae84abf9.mp3", "Go on, take a look at the stock. You'll never beat this price in the city. I garuntee it!", "agree", 4219958914, 147430154, Spawn)
+                else
+                    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/service/merchant/woodelf_merchant_service_good_1_aoi_gf_c5e79ff5.mp3", "Hello there! Can I interest you in some of the finest merchandise this side of Norrath?", "thank", 2198573345, 3559886028, Spawn)
 				end
 			end
 		elseif race == FAE then

@@ -27,8 +27,9 @@ function hailed(NPC, Spawn)
 		else
 			IsItDeadYet(NPC, Spawn, conversation)
 		end
-	else
-		Say(NPC, "I'm really not in the mood to chat right now, friend.", Spawn)
+        else
+    	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/taval_zane/qey_village05/quests/taval_zane/taval_zane001.mp3", "Good day. I see you've chosen the safety of indoors too!", "", 1526657502, 3373773349, Spawn)
+	--	Say(NPC, "I'm really not in the mood to chat right now, friend.", Spawn)
 	end
 end
 

@@ -6,7 +6,10 @@
 	Script Notes	: 
 --]]
 
+dofile("SpawnScripts/Generic/EcologyEmotes.lua")
+
 function spawn(NPC)
+EcologyEmotes(NPC,Spawn)
 end
 
 function respawn(NPC)

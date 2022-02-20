@@ -9,6 +9,14 @@
 dofile("SpawnScripts/Generic/GenericMerchantVoiceOvers.lua")
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 6, "InRange")    
+end
+
+function InRange(NPC,Spawn)
+	if math.random(0, 100) <= 30 then
+	FaceTarget(NPC, Spawn)
+	GenericMerchantHail(NPC, Spawn)
+	end
 end
 
 function respawn(NPC)

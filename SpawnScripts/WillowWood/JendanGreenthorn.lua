@@ -26,12 +26,20 @@ function InRange(NPC, Spawn)
                 else
                 PlayFlavor(NPC, "voiceover/english/jendan_greenthorn/qey_village05/100_jendan_greenthorn_multhail2_be6e96a1.mp3", "Hello, friend. Did you see my brother get off the boat? He looks just like me!", "hello", 4218404248, 1728712562, Spawn)
                 end
-        
-            elseif HasCompletedQuest (Spawn, Message) and math.random(1, 100) <= 50 then
-		PlayFlavor(NPC, "","", "tap", 0, 0, Spawn)
+            end
+        elseif HasCompletedQuest (Spawn, Message) and math.random(1, 100) <= 60 then
+		  local choice = math.random(1,3)
+		        if choice == 1 then
+		        PlayFlavor(NPC, "","", "tap", 0, 0, Spawn)
+		        elseif choice == 2 then
+		        PlayFlavor(NPC, "","", "sigh", 0, 0, Spawn)
+		        else
+		        FaceTarget(NPC, Spawn)    
+ 		        PlayFlavor(NPC, "","", "nod", 0, 0, Spawn)
+		        end
              end
     end
-end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

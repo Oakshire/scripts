@@ -2,20 +2,95 @@
     Script Name    : SpawnScripts/WillowWood/SaliniaBrooklily.lua
     Script Author  : Dorbin
     Script Date    : 2022.02.15 06:02:39
-    Script Purpose : 
+    Script Purpose : Quest Scavenging Rats w/ Woodelf language check
                    : 
 --]]
 
+
+local Rats = 5478
+
 function spawn(NPC)
-
-end
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-
-	PlayFlavor(NPC, "", "The amazing thing about nature is its ability to balance life with no assistance.  Unfortunately, the influx of people to this city is disrupting this balance. ", "", 1689589577, 4560189, Spawn)
+ProvidesQuest(NPC,Rats)
+SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
+
+function InRange(NPC, Spawn)
+    if not HasLanguage(Spawn, 16) then
+        	 if math.random(1, 100) <= 60 then
+            local choice = math.random(1,2)
+            
+            if choice == 1 then
+	        PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_87567d71.mp3", "Nature's balance begins with the words here.", "ponder", 2241066225, 3802156744, Spawn, 16)
+    	    elseif choice == 2 then
+	        PlayFlavor(NPC, "", "", "no", 0, 0, Spawn, 16)
+    	    end
+    	end
+	elseif not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) then 
+            if math.random(1, 100) <= 60 then
+            PlayFlavor(NPC, "", "The balance of nature is delecate, but all these newcomer...", "ponder", 0, 0, Spawn, 16)
+            elseif HasCompletedQuest (Spawn, Rats) and math.random(1, 100) <= 30 then
+            FaceTarget(NPC,Spawn)
+            PlayFlavor(NPC, "voiceover/english/salinia_brooklily/qey_village05/100_salinia_brooklily_callout_b524f5d0.mp3", "Hello friend! Please, take your time and browse at your leisure.", "hello", 996096760, 49604074, Spawn, 16)
+             end
+    end
+end
+
+
+function hailed(NPC, Spawn)
+         if not HasLanguage(Spawn, 16) then
+	        PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_87567d71.mp3", "Nature's balance begins with the words here.", "ponder", 2241066225, 3802156744, Spawn, 16)
+	    else
+	    FaceTarget(NPC, Spawn)
+	    PlayFlavor(NPC,  "voiceover/english/salinia_brooklily/qey_village05/saliniabrooklily_x000.mp3", "","hello", 1124223156, 142078310, Spawn)
+	    conversation = CreateConversation()   
+	    if not HasQuest(Spawn, Rats) and not HasCompletedQuest(Spawn,Rats) then
+	    AddConversationOption(conversation, "I am interested in the power of nature.", "WhatRats")
+	    end
+	    if GetQuestStep(Spawn, Rats)==2 then
+	    conversation = CreateConversation()   
+	    AddConversationOption(conversation, "I've reduced the number of scavengers like you asked.", "DoneRats")
+	    end
+	    AddConversationOption(conversation, "Just browsing. Thank you.")
+	    StartConversation(conversation, NPC, Spawn, "Welcome to my little scribe shop, adventurer.  Are you interested in the wondrous magic of nature per chance?  I may have something here that would be of use to you.")
+	 end
+end
+
+function WhatRats(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "What problems do you mean?", "WhatMean")
+    AddConversationOption(conversation, "Well, people have to go somewhere. I don't have time for this.")
+    StartConversation(conversation, NPC, Spawn, "The amazing thing about nature is its ability to balance life with no assistance.  Unfortunately, the influx of people to this city is disrupting this balance.")
+ 	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
+end
+
+function WhatMean(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "I suppose I could help you with this.", "Helpping")
+    AddConversationOption(conversation, "Well, people have to go somewhere. I don't have time for this.")
+    StartConversation(conversation, NPC, Spawn, "Take those scavenger rats in the Peat Bog; those vermin overpower the other creatures that live there.  Normally, hawks or cats would prey on the rats, but they shy away from the ever-growing city. I know it may take time, but would you slay some rats and help restore the balance of nature?")
+ 	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
+end
+
+function Helpping(NPC, Player)
+    FaceTarget(NPC, Spawn)
+  OfferQuest(NPC, Spawn, Rats)
+end
+
+
+function DoneRats(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "I'm glad I could help.", "QuestDone")
+    StartConversation(conversation, NPC, Spawn, "Your actions, even though small, carry great weight in helping restore the balance of nature in our beloved city. Thank you for your help.")
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+end
+
+function QuestDone(NPC, Spawn)
+    SetStepComplete(Spawn, Rats, 2)
+   end

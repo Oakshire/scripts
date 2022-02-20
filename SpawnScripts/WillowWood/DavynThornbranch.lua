@@ -15,7 +15,30 @@ local WOOD_ELF_QUEST_5 = 217 -- A Tribute for Ulinir
 function spawn(NPC)
 	ProvidesQuest(NPC, WOOD_ELF_QUEST_3)
 	ProvidesQuest(NPC, WOOD_ELF_QUEST_5)
+	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
+
+function respawn(NPC)
+	spawn(NPC)
+end
+
+function InRange(NPC, Spawn)
+    if math.random(1, 100) <= 60 then
+        choice = math.random(1,3)
+         if choice ==1 then
+         PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+         elseif choice ==3 then
+         PlayFlavor(NPC, "", "", "sniff", 0, 0, Spawn)
+        elseif choice ==4 then
+         PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+         FaceTarget(NPC, Spawn)
+        else
+        PlayFlavor(NPC, "", "", "cough", 0, 0, Spawn)
+         end
+    end
+end
+
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

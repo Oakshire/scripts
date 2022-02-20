@@ -18,6 +18,9 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if not HasLanguage(Spawn, 7) then
+	PlayFlavor(NPC, "voiceover/english/halfelf/ft/halfelf/halfelf_eco_garble_garbled_gm_2e8f1542.mp3", "Another lost wanderer clawing at the gates. What?","ponder", 1894354512, 3476177255, Spawn, 7)
+	else    
 	conversation = CreateConversation()
 	
 	if HasCompletedQuest(Spawn, QUEST_1) then
@@ -40,6 +43,7 @@ function hailed(NPC, Spawn)
 		AddConversationOption(conversation, "Not really, I am just doing a bit of exploring.  ")
 		StartConversation(conversation, NPC, Spawn, "Good day to you, friend.  So you too have an interest in keeping an eye on who comes and goes out of these gates?")
 	end
+    end
 end
 
 function dlg_1_1(NPC, Spawn)
@@ -55,25 +59,6 @@ end
 function OfferQuest1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	OfferQuest(NPC, Spawn, QUEST_1)
-end
-
-function dlg_23_1(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/hunter_vannil/qey_village05/huntervannil001.mp3", "", "", 929186001, 4080341564, Spawn)
-	AddConversationOption(conversation, "I'm up for a little snake hunting.", "dlg_23_2")
-	AddConversationOption(conversation, "I'm sorry, but I'm not up to snake hunting.")
-	StartConversation(conversation, NPC, Spawn, "That gate leads to the Elddar and the other gate leads to the Forest Ruins. Many young adventurers journey through the gates testing their mettle against the dangerous creatures that inhabit the area. Say, you seem courageous... would you help rid the area of rock adders? The creatures are a lethal threat to our people!")
-end
-
-function dlg_23_2(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/hunter_vannil/qey_village05/huntervannil002.mp3", "", "", 2784879734, 2610513967, Spawn)
-	AddConversationOption(conversation, "Thanks, this shouldn't be too difficult a hunt.", "dlg_23_3")
-	StartConversation(conversation, NPC, Spawn, "Good. Killing the deadly adders shall make our village a safer place. Good luck on your hunt. Please be careful.")
 end
 
 function AddersSlain(NPC, Spawn)

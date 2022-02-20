@@ -6,7 +6,11 @@
 	Script Notes	: 
 --]]
 
+dofile("SpawnScripts/Generic/GenericMerchantVoiceOvers.lua")
+dofile("SpawnScripts/Generic/EcologyEmotes.lua")
+
 function spawn(NPC)
+EcologyEmotes(NPC,Spawn)
 end
 
 function respawn(NPC)
@@ -15,5 +19,6 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "", "Go on, take a look at the stock.  You'll never beat this price in the city.  I guarantee it!", "wink", 1689589577, 4560189, Spawn)
+	GenericMerchantHail(NPC, Spawn)
+--	PlayFlavor(NPC, "", "Go on, take a look at the stock.  You'll never beat this price in the city.  I guarantee it!", "wink", 1689589577, 4560189, Spawn)
 end

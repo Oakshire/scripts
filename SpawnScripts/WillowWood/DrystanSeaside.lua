@@ -6,13 +6,17 @@
 	Script Notes	: 
 --]]
 
+dofile("SpawnScripts/Generic/EcologyEmotes.lua")
+
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	EcologyEmotes(NPC,Spawn)
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
+
 
 function InRange(NPC, Spawn)
 	if math.random(0, 100) <= 25 then

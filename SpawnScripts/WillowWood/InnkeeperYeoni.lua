@@ -9,10 +9,22 @@
 local Message = 5479
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+function InRange(NPC, Spawn) --Quest Callout
+if math.random(1, 100) <= 70 then
+        choice = math.random(1,2)
+         if choice ==1 then
+         PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+        else
+        PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+         end
+    end
 end
 
 function hailed(NPC, Spawn)

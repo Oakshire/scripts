@@ -17,7 +17,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(NPC, Player)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "Farewell Salinia.")
+    StartConversation(conversation, NPC, Player, "Thank you for assisting us. If you slay only a few rats it will make a difference. Good luck on your hunt, adventurer")
+ 	PlayFlavor(NPC, "", "", "thank", 0,0 , Player)
 end
 
 function Declined(Quest, QuestGiver, Player)
