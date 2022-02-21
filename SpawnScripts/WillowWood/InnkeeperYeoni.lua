@@ -96,7 +96,7 @@ end
 function dlg_2_4(NPC, Spawn)
     	FaceTarget(NPC, Spawn)
     	conversation = CreateConversation()
-	--PlayFlavor(NPC, "innkeeper_uglar_splinterthumb/qey_village06/innkeeper003.mp3", "", "", 3477497917, 3032281679, Spawn)
+PlayFlavor(NPC, "innkeeper_uglar_splinterthumb/qey_village06/innkeeper003.mp3", "", "", 3477497917, 3032281679, Spawn)
 	    AddConversationOption(conversation, "What can I use my house for?", "dlg_2_3")
 AddConversationOption(conversation, "How do I place furniture in my home?", "dlg_2_2")
 		AddConversationOption(conversation, "That's enough for now, thanks.")

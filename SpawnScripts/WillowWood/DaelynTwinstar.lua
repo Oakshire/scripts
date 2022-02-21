@@ -58,7 +58,7 @@ function NotHalfElf(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar002.mp3", "", "", 1099909668, 381545528, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar002.mp3", "", "no", 1099909668, 381545528, Spawn)
 	AddConversationOption(conversation, "I see.")
 	StartConversation(conversation, NPC, Spawn, "Oh, no, I am sorry. I thought you were half-elven.")
 end
@@ -80,7 +80,7 @@ end
 function TalkingToMe(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar003.mp3", "", "", 2934615596, 2215632312, Spawn)
 	AddConversationOption(conversation, "I am Ayr'Dal, I do not deny my heritage.", "IAmAyrDal")
 	StartConversation(conversation, NPC, Spawn, "I most certainly am. Or are you not Ayr'Dal? Do you deny your heritage?")
 end
@@ -88,7 +88,7 @@ end
 function IAmAyrDal(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar004.mp3", "", "", 4046771549, 3800929012, Spawn)
 	AddConversationOption(conversation, "My mother.", "Mother")
 	AddConversationOption(conversation, "My father.", "Father")
 	AddConversationOption(conversation, "I don't know.", "DontKnow")
@@ -98,7 +98,7 @@ end
 function Mother(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar005.mp3", "", "", 4194507196, 4125448896, Spawn)
 	AddConversationOption(conversation, "Yeah, you're right.", "Next")
 	AddConversationOption(conversation, "You're a little off base.", "Next")
 	StartConversation(conversation, NPC, Spawn, "I wager you're a sentimentalist then.")
@@ -126,7 +126,7 @@ end
 function Next(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar007.mp3", "", "", 299196178, 1976594948, Spawn)
 	AddConversationOption(conversation, "No, I am proud of who I am.", "No")
 	AddConversationOption(conversation, "Yes, sometimes.", "Sometimes")
 	AddConversationOption(conversation, "All the time.", "AllTheTime")
@@ -136,7 +136,7 @@ end
 function No(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar008.mp3", "", "", 2394224952, 3653556749, Spawn)
 	AddConversationOption(conversation, "How did you do that?", "HowDidYouDoThat")
 	StartConversation(conversation, NPC, Spawn, "That's good to hear. I used to feel shame when I thought of my heritage, but I've known to know better.")
 end
@@ -160,7 +160,7 @@ end
 function HowDidYouDoThat(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar013.mp3", "", "", 2942083626, 3145034600, Spawn)
 	AddConversationOption(conversation, "What can you teach me?", "WhatCanYouTeachMe")
 	StartConversation(conversation, NPC, Spawn, "By experiencing the world. I believed a lot of lies when I was younger. The only thing that can dispel lies you've known all your life is experience, and not even that always works. I don't know your past, but I guarantee you have room to learn, we all do.")
 end
@@ -176,7 +176,7 @@ end
 function WhatMustIDo(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/daelyn_twinstar/qey_village05/quests/daelyn_twinstar/daelyn_twinstar014b.mp3", "", "", 3344113595, 3554399741, Spawn)
 	AddConversationOption(conversation, "I will do so.", "OfferQuest1")
 	StartConversation(conversation, NPC, Spawn, "I would like you to speak with two people and help them in their day-to-day business. Please seek out Gar Smolten and Lia Serene. Pay close attention to how they treat you. Gar should be behind the inn, speak with him first. Lia should be near the entrance to the Elddar Grove.")
 end

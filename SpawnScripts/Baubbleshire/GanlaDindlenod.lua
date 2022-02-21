@@ -47,7 +47,7 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
         if GetQuestStep (Spawn, Delivery) == 2 then
-        AddConversationOption(conversation, "I gave Valean your book. He will return it when he has deciphered it.", "Delivered")
+        AddConversationOption(conversation, "I gave Valean your book. He will return it when he is finished.", "Delivered")
         end
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1005.mp3","","hello",0,0,Spawn)
     AddConversationOption(conversation, "I'm still heading that way.")

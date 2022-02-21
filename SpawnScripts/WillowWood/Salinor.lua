@@ -18,6 +18,9 @@ end
 
 function InRange(NPC, Spawn)
 	CheckFaction(NPC, Spawn, "Qeynos")
+    if math.random(1, 100) <= 30 then
+	GenericGuardHail(NPC,Spawn)
+    end
 end
 
 function LeaveRange(NPC, Spawn)

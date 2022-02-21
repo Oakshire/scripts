@@ -5,7 +5,7 @@
 	Script Date	: 2009.09.15
 	Script Notes	: 
 --]]
-
+--[[
 function spawn(NPC)
 	MovementLoopAddLocation(NPC, 847.87, -22.04, -638.03, 2, math.random(0, 30))
 	MovementLoopAddLocation(NPC, 840.68, -22.38, -629.9, 2, math.random(0, 30))
@@ -31,6 +31,10 @@ function spawn(NPC)
 	MovementLoopAddLocation(NPC, 840.55, -22.38, -631.4, 2, math.random(0, 30))
 	MovementLoopAddLocation(NPC, 839.62, -21.67, -644.1, 2, math.random(0, 30))
 	MovementLoopAddLocation(NPC, 846.86, -21.44, -646.24, 2, math.random(0, 30))
+end
+]]--
+function spawn(NPC)
+    MoveToLocation(NPC,805.35, -20.97, -636.94, 0.5)
 end
 
 function respawn(NPC)

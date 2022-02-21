@@ -60,7 +60,8 @@ function hailed(NPC, Spawn)
 		if GetRace(Spawn) == WOOD_ELF then
 			WelcomeToWW(NPC, Spawn, conversation)
 		else
-			Say(NPC, "Please do not take this the wrong way, but I am here as a service to my own kind.", Spawn)
+    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/aelis/qey_village05/quests/aelis/aelis_intro000.mp3", "Please do not take this the wrong way, but I am here as a service to my own kind.", "no", 1689156608, 834688706, Spawn)
+
 		end
 	end
 end
@@ -69,6 +70,7 @@ end
 --									QUEST 1
 ----------------------------------------------------------------------------------------------------------------
 function WelcomeToWW(NPC, Spawn, conversation)
+    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/aelis/qey_village05/quests/aelis/aelis_intro001.mp3", "", "", 1689156608, 834688706, Spawn)
 	AddConversationOption(conversation, "I was told you could teach me.", "EagerToLearn")
 	AddConversationOption(conversation, "Feir'Dal?", "FierDal")
 	StartConversation(conversation, NPC, Spawn, "Welcome to the Willow Wood. I am Aelis and you are Feir'Dal. I will do what I can to aid you.")

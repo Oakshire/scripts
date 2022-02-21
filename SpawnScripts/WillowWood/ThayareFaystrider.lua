@@ -16,7 +16,6 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare000.mp3", "", "", 1834305487, 313746184, Spawn)
 	AddConversationOption(conversation, "The cataclysms have passed. ", "dlg_8_1")
 	AddConversationOption(conversation, "I cannot speak now. Farewell.")

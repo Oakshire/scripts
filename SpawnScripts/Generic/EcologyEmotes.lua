@@ -6,7 +6,7 @@
                    : 
 --]]
 function EcologyEmotes(NPC,Spawn)
-            local choice = math.random(1,8)
+            local choice = math.random(1,10)
             
                 if choice == 1 then
 	            PlayFlavor(NPC, "", "", "tap", 0, 0, Spawn)
@@ -38,6 +38,15 @@ function EcologyEmotes(NPC,Spawn)
 	            
 	            elseif choice == 8 then
 	            PlayFlavor(NPC, "", "", "yawn", 0, 0, Spawn)
+	            AddTimer(NPC, 9000, "EcologyEmotes",1,Spawn)
+	            
+	            elseif choice == 9 then
+	            PlayFlavor(NPC, "", "", "smirk", 0, 0, Spawn)
 	            AddTimer(NPC, 8000, "EcologyEmotes",1,Spawn)
+	            
+	           elseif choice == 10 then
+	            PlayFlavor(NPC, "", "", "cough", 0, 0, Spawn)
+	            AddTimer(NPC, 8000, "EcologyEmotes",1,Spawn)
+	            
                 end
 end

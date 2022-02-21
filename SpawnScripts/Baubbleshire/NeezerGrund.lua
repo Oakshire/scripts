@@ -18,11 +18,31 @@ local GETTING_TO_KNOW_POKO = 331 -- was 29
 -- Item ID's
 local NEEZERS_QUESTIONS = 10030
 
+
+    
 function spawn(NPC)
 	ProvidesQuest(NPC, SCRAPTASTIC)
 	ProvidesQuest(NPC, NOGGINSPARK_REACTORS)
 	ProvidesQuest(NPC, NEEZERS_SURVEY)
 	ProvidesQuest(NPC, GETTING_TO_KNOW_POKO)
+	SetPlayerProximityFunction(NPC, 2, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn) 
+    if math.random(1, 100) <= 70 then
+	local choice = math.random(1,4)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/neezer_grund/fprt_hood03/qst_neezer_grund_blastingtwo_2c0e8052.mp3", "Don't be afraid... the high quality parts will certainly almost probably stop any explosions.", "", 652571017, 367300687, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/neezer_grund/fprt_hood03/qst_neezer_grund_blasting_610b5248.mp3", "Come now, place the blasting capsule in the translation device.", "", 3007812352, 3808878638, Spawn)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/neezer_grund/fprt_hood03/qst_neezer_grund_notonquest_f19aeb36.mp3", "Our proximity concerns me.", "", 1049236413, 2313040785, Spawn)
+	elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/neezer_grund/fprt_hood03/qst_neezer_grund_translating_cc4f0d5a.mp3", "I'm quite busy, I'll be free in just a moment or two!", "", 955771039, 458972401, Spawn)
+	else
+	end
+    end
 end
 
 function respawn(NPC)
