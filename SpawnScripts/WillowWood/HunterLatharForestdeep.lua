@@ -1,8 +1,8 @@
 --[[
 	Script Name	: SpawnScripts/WillowWood/HunterLatharForestdeep.lua
 	Script Purpose	: Hunter Lathar Forestdeep 
-	Script Author	: Scatman
-	Script Date	: 2009.09.15
+	Script Author	: Dorbin
+	Script Date	: 2022.02.21    
 	Script Notes	: 
 --]]
 
@@ -26,6 +26,22 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/hunter_lathar_forestdeep/qey_village05/quests/hunter_forestdeep/hunter_forestdeep.mp3", "", "", 1771449207, 2174692031, Spawn)
+	if HasQuest(Spawn, 5484) then
+	AddConversationOption(conversation, "Sorry, but I have this letter you from the Forest Ruins.", "Letter")
+	end 
 	AddConversationOption(conversation, "Sorry to have bothered you. ")
 	StartConversation(conversation, NPC, Spawn, "What do you need? I'm very busy.")
 end
+
+function Letter(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+
+	PlayFlavor(NPC, "voiceover/english/hunter_lathar_forestdeep/qey_village05/quests/hunter_forestdeep/hunter_forestdeep000.mp3", "", "", 1811746437, 2116303434, Spawn)
+		AddConversationOption(conversation, "Thanks.", "Reward")
+	StartConversation(conversation, NPC, Spawn, "Yes, yes, that's fine.  I suppose it would be rude of me not to offer you anything in return. It's not much, but it's something.")
+end
+
+function Reward(NPC, Spawn)
+    	SetStepComplete(Spawn, 5484, 1)
+    end

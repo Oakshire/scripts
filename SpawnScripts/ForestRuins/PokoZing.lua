@@ -51,7 +51,7 @@ function hailed(NPC, Spawn)
 			if GetRace(Spawn) == GNOME and GetLevel(Spawn) >= 3 then
 				WhatDoYouNeed(NPC, Spawn, conversation)
 			else
-				PlayFlavor(NPC, "voiceover/english/tutorial_revamp/poko_zing/qey_adv02_ruins_revamp/qst_gnome_poko_zing_notonquest_f698071.mp3", "I am very, very busy. Please respect that.", "", 2080673395, 1843361681, Spawn)
+				PlayFlavor(NPC, "voiceover/english/tutorial_revamp/poko_zing/qey_adv02_ruins_revamp/qst_gnome_poko_zing_notonquest_f698071.mp3", "I am very, very busy. Please respect that.", "no", 2080673395, 1843361681, Spawn)
 			end
 		end
 	end

@@ -13,6 +13,7 @@ SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 ProvidesQuest(NPC, Delivery)
 end
 
+
 function InRange(NPC, Spawn) --Quest Callout
 if math.random(1, 100) <= 75 then
     if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 

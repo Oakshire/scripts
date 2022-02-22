@@ -34,7 +34,12 @@ function spawn(NPC)
 end
 ]]--
 function spawn(NPC)
+OnGrate(NPC)
+end
+
+function OnGrate(NPC)
     MoveToLocation(NPC,805.35, -20.97, -636.94, 0.5)
+    AddTimer(NPC,2000,"OnGrate")
 end
 
 function respawn(NPC)
