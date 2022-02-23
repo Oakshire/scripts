@@ -10,6 +10,10 @@ local HALFLING = 7
 local HALFLING_MENTOR_QUEST_5 = 327
 local QUEST_1 = 533
 
+function spawn(NPC)
+    ProvidesQuest(NPC,QUEST_1)
+end
+
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
@@ -19,6 +23,12 @@ function hailed(NPC, Spawn)
 	end
 	
 	if HasCompletedQuest(Spawn, QUEST_1) then
+	    	FaceTarget(NPC, Spawn)
+	    conversation = CreateConversation()
+	    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/remmy_tumbub/qey_adv02_ruins/quests/remmy/remmy005.mp3", "", "", 487764865, 1456843536, Spawn)
+		AddConversationOption(conversation, "Why are you still hiding out here?", "dlg_4_1")
+	StartConversation(conversation, NPC, Spawn, "Hey, thanks again for your help. I still won't be allowed back in the Baubbleshire, but I'm no longer a wanted criminal in all of Qeynos!")
+
 	elseif HasQuest(Spawn, QUEST_1) then
 	else
 		if GetRace(Spawn) == HALFLING and GetLevel(Spawn) >= 3 then
@@ -47,6 +57,7 @@ end
 function dlg_4_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/remmy_tumbub/qey_adv02_ruins/quests/remmy/remmy006.mp3", "", "", 1105359147, 1841584345, Spawn)
 
 	AddConversationOption(conversation, "You're hopeless.", "dlg_4_2")
 	StartConversation(conversation, NPC, Spawn, "Shhh, keep your voice down! You know, I wonder if any of those crates in the guard shed have pies in them.")
@@ -135,5 +146,41 @@ function IsSomethingWrong(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Of course! These guards are after me. Blamming me for something I didn't even do, can you believe that?")
 end
 
+
 function SomeoneGotIntoShed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "Why don't you tell them that?", "Option8")
+	StartConversation(conversation, NPC, Spawn, "Someone got into their food shed over there. I mean, sure, I do have a reputation, but that doesn't make it okay to blame me for every little thing that happens, does it?")
 end
+
+function Option8(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "Sure, I can help.", "Option9")
+	StartConversation(conversation, NPC, Spawn, "Whenever I get close they yell at me and chase me off. Stealing--food of all things--isn't a serious offense normally. I guess they make an exception for me. But you, you can clear my honor! Will you help me?")
+end
+
+function Option9(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "I'll go check.", "Option10")
+	StartConversation(conversation, NPC, Spawn, "That's right! We stick together! Head over to that shed and search it for clues. If you find anything take it to Lieutenant Germain and you can clear my name. It'll be wonderful!")
+end
+
+function Option10(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "... all right, Remmy.","StartQuest")
+	StartConversation(conversation, NPC, Spawn, "And if you can't find anything useful to prove my innocence then see if you can find any pies!")
+end
+
+function StartQuest (NPC,Spawn)
+OfferQuest(NPC,Spawn, 533)
+end
+
+

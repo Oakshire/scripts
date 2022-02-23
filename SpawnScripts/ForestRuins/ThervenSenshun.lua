@@ -8,23 +8,42 @@
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	AddConversationOption(conversation, "Not yet.", "dlg_2_1")
-	StartConversation(conversation, NPC, Spawn, "Did you get the shells?")
-	if convo==3 then
-		AddConversationOption(conversation, "Yes, here they are.", "dlg_3_1")
-		StartConversation(conversation, NPC, Spawn, "Did you get the shells?")
-	end
-
+	local conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0)
+	AddConversationOption(conversation, "What do you need?", "Option1")
+	StartConversation(conversation, NPC, Spawn, "Hello there! Have you got time to lend a hand?")
 end
 
-function dlg_3_1(NPC, Spawn)
+function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
+	local conversation = CreateConversation()
 
-	AddConversationOption(conversation, "Glad to assist.", "dlg_3_2")
-	StartConversation(conversation, NPC, Spawn, "Thanks! I appreciate it! You've really helped me a lot.")
+	AddConversationOption(conversation, "Interesting. What did you need from me?", "Option2")
+	StartConversation(conversation, NPC, Spawn, "Well, I'm trying some new leather tanning methods and in my work I've found that some of my techniques create an amazingly soft product when used on turtle shells. Amazing, I know! I'm not sure what use it may have, but I'd like to perfect the process anyway.")
+end
+
+function Option2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "Sure, I'll do it.", "Option3")
+	StartConversation(conversation, NPC, Spawn, "Well, this process is delicate and requires a lot of time. That means that I'm unable to hunt the turtles around here. If you could hunt them for me I would be grateful.")
+end
+
+function Option3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "All right.", "Option4")
+	StartConversation(conversation, NPC, Spawn, "Excellent! If you could get me six leathershell snapper shells and six stoneshell snapper shells I think that would be enough to finalize this process. You can find them in the pond northwest of here.")
+end
+
+function Option4(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "Okay!")
+	StartConversation(conversation, NPC, Spawn, "Bring them back as soon as you get them!")
 end
 
 --[[ raw_conversations

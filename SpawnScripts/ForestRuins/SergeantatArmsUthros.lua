@@ -8,6 +8,21 @@
 
 function spawn(NPC)
 	ProvidesQuest(NPC, 1)
+	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")	
+end
+
+function InRange(NPC, Spawn) 
+   if math.random(1, 100) <= 75 then
+         choice = math.random(1,3)
+        FaceTarget(NPC, Spawn)
+            if choice ==1 then
+            PlayFlavor(NPC, "", "", "attention", 0, 0, Spawn)
+            elseif choice ==2 then
+            PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
+            else
+            PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+            end
+        end
 end
 
 function hailed(NPC, Spawn)

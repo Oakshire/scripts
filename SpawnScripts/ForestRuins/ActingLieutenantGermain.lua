@@ -18,7 +18,21 @@ function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
 	ProvidesQuest(NPC, QUEST_2)
 	ProvidesQuest(NPC, QUEST_3)
-	
+	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn) 
+   if math.random(1, 100) <= 75 then
+         choice = math.random(1,3)
+        FaceTarget(NPC, Spawn)
+            if choice ==1 then
+            PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+            elseif choice ==2 then
+            PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
+            else
+            PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+            end
+            end
 end
 
 function respawn(NPC)
@@ -30,7 +44,11 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
 	if HasQuest(Spawn, QUEST_FROM_POKO) and GetQuestStep(Spawn, QUEST_FROM_POKO) == 3 then
 		AddConversationOption(conversation, "I have news for you.", "NewsForYou")
+	elseif HasQuest(Spawn, QUEST_FROM_REMMY) and GetQuestStep(Spawn, QUEST_FROM_REMMY) == 2 then
+		AddConversationOption(conversation, "I have news for you.", "NewsForYou2")	
 	end
+	
+	
 
 --[[	choice = math.random(1, 3)
 	if choice == 1 then
@@ -40,7 +58,7 @@ function hailed(NPC, Spawn)
 	else
 		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0)
 	end]]--
-    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain000.mp3", "", "", 3884077763, 891162435, Spawn)
+    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain000.mp3", "", "hello", 3884077763, 891162435, Spawn)
 	
 	if HasCompletedQuest(Spawn, QUEST_1) then
 	    Say(NPC, "Hey! quest 1 complete")
@@ -116,6 +134,7 @@ function NewsForYou(NPC, Spawn)
 	
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "ponder", 0, 0)
 
 	AddConversationOption(conversation, "I was collecting machine parts for Poko and one of the parts I returned seems to be of Freeportian origin.", "dlg_16_2")
 	StartConversation(conversation, NPC, Spawn, "What is it, citizen?")
@@ -124,21 +143,54 @@ end
 function dlg_16_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "nod", 0, 0)
 	
 	if not HasQuest(Spawn, QUEST_1) and not HasCompletedQuest(Spawn, QUEST_1) then
-		AddConversationOption(conversation, "I can help.", "dlg_16_3")
+		AddConversationOption(conversation, "I can help.", "dlg_1_3")
 	else
 		AddConversationOption(conversation, "You're welcome.")
 	end
 	StartConversation(conversation, NPC, Spawn, "The bad news just doesn't cease. Citizen, there are obviously multiple things afoot in this place, I thank you for your help even if you're adding to my discomfort.")
 end
 
+
+----------------------------------------------------------------------------------------------------------
+--					QUEST FROM REMMY
+----------------------------------------------------------------------------------------------------------
+
+function NewsForYou2(NPC, Spawn)
+
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "ponder", 0, 0)
+
+	AddConversationOption(conversation, "Remmy Tumbum is innocent. I found this clump of fur on some of the supplies recently broken into. It smells like gnoll.", "dlg_16_2a")
+	StartConversation(conversation, NPC, Spawn, "What is it, citizen?")
+end
+
+function dlg_16_2a(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "nod", 0, 0)
+	SetStepComplete(Spawn, QUEST_FROM_REMMY, 2)
+	while HasItem(Player, 7797) do
+    RemoveItem(Player,7797)
+    end
+	if not HasQuest(Spawn, QUEST_1) and not HasCompletedQuest(Spawn, QUEST_1) then
+		AddConversationOption(conversation, "I can help.", "dlg_1_3")
+	else
+		AddConversationOption(conversation, "You're welcome.")
+	end
+	StartConversation(conversation, NPC, Spawn, "The bad news just doesn't cease. Citizen, there are obviously multiple things afoot in this place, I thank you for your help even if you're adding to my discomfort.")
+end
+
+
 ----------------------------------------------------------------------------------------------------------
 --					QUEST 1
 ----------------------------------------------------------------------------------------------------------
 
 function WelcomeCitizen(NPC, Spawn, conversation)
-    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain000.mp3", "", "", 3884077763, 891162435, Spawn)
+    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain000.mp3", "", "hello", 3884077763, 891162435, Spawn)
   
 	AddConversationOption(conversation, "Is it dangerous here?", "dlg_1_1")
 	StartConversation(conversation, NPC, Spawn, "Welcome, citizen. Please be careful around here.")
@@ -155,7 +207,7 @@ end
 function dlg_1_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain002.mp3", "", "", 2829219447, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain002.mp3", "", "nod", 2829219447, 0, Spawn)
 	AddConversationOption(conversation, "I can help.", "dlg_1_3")
 	AddConversationOption(conversation, "Sorry, I can't help right now.")
 	StartConversation(conversation, NPC, Spawn, "More than you know. With dead-end investigations, big threats, little threats, and vague orders from the Qeynos Guard AND the Concordium I'm amazed this place hasn't been put under siege by the hawks yet. I'm sorry for complaining to you. Listen, how would you like to help me out?")
@@ -181,7 +233,7 @@ function OnQuest1(NPC, Spawn, conversation)
 	else
 		AddConversationOption(conversation, "Not quite yet.")
 	end
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain004.mp3", "", "", 4174680410, 4068442606, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain004.mp3", "", "nod", 4174680410, 4068442606, Spawn)
 	
 	StartConversation(conversation, NPC, Spawn, "Any news of Del Varun?")
 end

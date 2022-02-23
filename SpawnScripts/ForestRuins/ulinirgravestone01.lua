@@ -27,9 +27,13 @@ function casted_on(NPC, Spawn, SpellName)
 	StartDialogConversation(conversation, 1, NPC, Spawn, "Ulinir\n\nOf the Pine\n\nNature's Strength")
 end
 
+
 function CheckRace(NPC, Spawn)
 	if HasCompletedQuest(Spawn, WOODELF_MENTOR_QUEST_5) then
 		MakeIlaenTalk(NPC, Spawn)
+    CloseConversation(NPC, Spawn)
+		else
+    CloseConversation(NPC, Spawn)
 	end
 end
 
