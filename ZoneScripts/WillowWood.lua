@@ -34,7 +34,7 @@ function SpawnWolfForQuest(Zone, Spawn)
 end
 
 function enter_location(zone, spawn, grid)
-	SetLocationProximityFunction(Zone, 841.22, -20.52, -618.14, 4, "SpiritOfTheFaydwer")
+	SetLocationProximityFunction(Zone, 841.22, -20.52, -618.14, 5, "SpiritOfTheFaydwer")
 	SetLocationProximityFunction(Zone, 826.18, -21.43, -662.40, 4, "WillowWoodMemorial")
 end
 

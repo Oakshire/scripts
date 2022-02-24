@@ -22,8 +22,9 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found Del Varun's pack.")
-
-	AddQuestStep(Quest, 2, "I should see what I can find in Del Varun's pack.", 1, 100, "Lieutenant Germain has asked that I search for Del Varun, a scout assigned to the Forest Ruins.", 11)
+	GiveQuestItem(Quest, Player, "You found a pack near the water's edge.", 6375)
+	
+	AddQuestStep(Quest, 2, "I should see what I can find in Del Varun's pack.", 1, 100, "Lieutenant Germain has asked that I search for Del Varun, a scout assigned to the Forest Ruins.", 399)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 

@@ -1,17 +1,28 @@
 --[[
 	Script Name	: SpawnScripts/ForestRuins/ThervenSenshun.lua
 	Script Purpose	: Therven Senshun 
-	Script Author	: John Adams
-	Script Date	: 2008.09.19
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Author	: Dorbin
+	Script Date	: 2022.02.23
+	Script Notes	: 
 --]]
+function spawn(NPC)
+    ProvidesQuest(NPC, 5487)
+end
 
 function hailed(NPC, Spawn)
+    if HasCompletedQuest(Spawn,5487) then
+ 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "This stuff is much harder to work with than I anticipated.", "", 1689589577, 4560189)
+ 	
+ 	elseif not HasCompletedQuest(Spawn,5487) then
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "hello", 0, 0)
+	if GetQuestStep (Spawn,5487)==3 then
+	AddConversationOption(conversation, "Actually, I already did. Here are your shells.", "Turnin")
+    end	    
 	AddConversationOption(conversation, "What do you need?", "Option1")
 	StartConversation(conversation, NPC, Spawn, "Hello there! Have you got time to lend a hand?")
+    end
 end
 
 function Option1(NPC, Spawn)
@@ -39,15 +50,23 @@ function Option3(NPC, Spawn)
 end
 
 function Option4(NPC, Spawn)
+    OfferQuest(NPC,Spawn,5487)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-
 	AddConversationOption(conversation, "Okay!")
 	StartConversation(conversation, NPC, Spawn, "Bring them back as soon as you get them!")
 end
 
---[[ raw_conversations
-	PlayFlavor(NPC, "", "This stuff is much harder to work with than I anticipated.", "", 1689589577, 4560189)
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1022.mp3", "", "", 0, 0)
---]]
+function Turnin(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "happy", 0, 0)
 
+
+	AddConversationOption(conversation, "Thank you.","Reward")
+	StartConversation(conversation, NPC, Spawn, "Ah, yes. These will do nicely. Please, take something for your troubles. You've saved me all the work of gathering these shells!")
+end
+
+function Reward(NPC,Spawn)
+    	SetStepComplete(Spawn, 5487, 3)
+end

@@ -18,13 +18,16 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+   if math.random(1, 100) <= 25 then   
 	hailed(NPC, Spawn)
+    end
 end
 
 function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
+ 
 	FaceTarget(NPC, Spawn)
 
 	choice = math.random(1,5)
@@ -41,5 +44,5 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/merchant/human_merchant_service_good_1_hail_gf_24322c5d.mp3", "Greetings, friend traveler! We have the finest supplies to fill your adventuring needs.", "smile", 1527285383, 3910629798, Spawn)
 	else
 	end
-
+    
 end

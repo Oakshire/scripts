@@ -9,7 +9,7 @@
 local QUEST_FROM_GERMAIN = 520
 
 function spawn(NPC)
-	--SetRequiredQuest(NPC, QUEST_FROM_GERMAIN, 3)
+	SetRequiredQuest(NPC, QUEST_FROM_GERMAIN, 3)
 end
 
 function hailed(NPC, Spawn)

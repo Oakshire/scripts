@@ -47,6 +47,14 @@ end
 function leave_location(zone, spawn, grid)
 end
 
+function callout(zone,Spawn)
+	local players = GetPlayersInZone(zone)
+	for index, player in ipairs(players) do
+		SendPopUpMessage(player, "Grinding stone can be heard as something ancient stirs in the ruins.", 255, 0, 0)
+		SendMessage(player, "Grinding stone can be heard as something ancient stirs in the ruins.")
+	end
+end
+
 function dawn(zone)
 	local players = GetPlayersInZone(zone)
 	for index, player in ipairs(players) do
