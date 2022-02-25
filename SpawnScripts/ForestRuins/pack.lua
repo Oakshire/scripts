@@ -9,7 +9,7 @@
 local NEWS_FOR_GERMAIN_QUEST_ID = 520
 
 function spawn(NPC)
-
+SetRequiredQuest(NPC, NEWS_FOR_GERMAIN_QUEST_ID, 1, 1)
 end
 
 function hailed(NPC, Spawn)

@@ -16,12 +16,12 @@ end
 
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 24, "InRange", "LeaveRange")	    
-    AddTimer(NPC,math.random(1260000, 2160000),"wakeup")        --random spawn between 12 and 24 Norrath/in-game hours
+	SetPlayerProximityFunction(NPC, 25, "InRange", "LeaveRange")	    
+    AddTimer(NPC,math.random(1260000, 2160000),"wakeup")            --random activation between 12 (~21min) and 24 (37min) Norrath/in-game hours
     end
     
-function InRange(NCP,Spawn)                 --VERY small chance to activate when players are near
-      if math.random(1, 200) == 1 then
+function InRange(NCP,Spawn)                                          --VERY small chance to activate when players are near
+      if math.random(1, 100) == 1 then
       wakeup(NPC)
       else
      end
@@ -39,15 +39,36 @@ function wakeup(NPC)
     SpawnSet(NPC, "attackable", "1")
     SpawnSet(NPC, "show_level", "1")
     SpawnSet(NPC, "faction", "1")
-    AddTimer(NPC,1800000,"sleep")       --sleep timer if not attacked after 30 min
+    AddTimer(NPC,900000,"sleep")                                   --sleep timer if not attacked after 15 min
     end
 end
 
-function sleep(NPC)                     --return to inactive state
+function sleep(NPC)                                                 --return to inactive state
     SpawnSet(NPC, "attackable", "0")
     SpawnSet(NPC, "show_level", "0")
     SpawnSet(NPC, "faction", "0")
-    AddTimer(NPC,math.random(1260000, 2160000),"wakeup")        --random spawn between 12 and 24 Norrath/in-game hours
+    AddTimer(NPC,math.random(1260000, 2160000),"wakeup")            --RE-start of 'wakeup' timer, random activation between 12 (21min) and 24 (37min) Norrath/in-game hours
 end
 
-
+function aggro(NPC, Spawn)
+    	if HasLanguage(Spawn,27) then
+    	local choice = math.random(1, 2)
+    		if choice == 1  then
+          PlayFlavor(NPC, "", "I will destroy you!", "", 0, 0, Spawn, 1)
+                else
+          PlayFlavor(NPC, "", "Kill without mercy!", "", 0, 0, Spawn, 1)
+          end
+     elseif not HasLanguage(Spawn,27) then
+                   PlayFlavor(NPC, "voiceover/english/elemental_fire_base_1/ft/elemental/elemental_fire_base_1_1_garbled_48632408.mp3", "I will destroy these intruders!", "", 1013209475, 1648696462, Spawn, 27)
+        end
+ end
+ 
+ function death(NPC, Spawn)
+         	if HasLanguage(Spawn,27) then
+    		if choice == 1  then
+          PlayFlavor(NPC, "", "I have failed!", "", 0, 0, Spawn, 1)
+          end
+     elseif not HasLanguage(Spawn,27) then
+                   PlayFlavor(NPC, "voiceover/english/elemental_fire_base_1/ft/elemental/elemental_fire_base_1_1_garbled_48632408.mp3", "I have failed!", "", 1013209475, 1648696462, Spawn, 27)
+        end
+ end
