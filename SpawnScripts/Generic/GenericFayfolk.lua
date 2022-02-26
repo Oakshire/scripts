@@ -30,12 +30,12 @@ function SpeakGarbledFayfok(NPC, Spawn)
 	local choice = math.random(1, 4)
 	if math.random(1, 4)
 	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_e858f993.mp3", "Tawaneee   follahh    dilifilongia   avee", "", 677789876, 1792673679, Spawn)
+		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_e858f993.mp3", "Tawaneee   follahh    dilifilongia   avee", "", 677789876, 1792673679, Spawn,23)
 	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_dfa9e7d9.mp3", "Amamooenoo  illysavah   leetah", "", 1070184369, 1800384485, Spawn)
+		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_dfa9e7d9.mp3", "Amamooenoo  illysavah   leetah", "", 1070184369, 1800384485, Spawn,23)
 	elseif choice == 3 then
-		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_29e4606e.mp3", "Peelahha misialloniassaa laliallasala", "", 4241242710, 1388449419, Spawn)
+		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_29e4606e.mp3", "Peelahha misialloniassaa laliallasala", "", 4241242710, 1388449419, Spawn,23)
 	elseif choice == 4 then
-		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_628bdbdb.mp3", "Meraania suvalas itresteien", "", 2333386122, 320322749, Spawn)
+		PlayFlavor(NPC, "voiceover/english/dryad_corrupted/ft/dryad/dryad_corrupted_1_garbled_628bdbdb.mp3", "Meraania suvalas itresteien", "", 2333386122, 320322749, Spawn,23)
 	end
 end
