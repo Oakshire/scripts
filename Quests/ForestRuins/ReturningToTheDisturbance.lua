@@ -13,14 +13,12 @@
 
 
 function Init(Quest)
-   Say(Player, "Hello Init")
 	AddQuestStep(Quest, 1, "I need to return to the strange plants west of the northern end of the ruins and sprinkle some of the dust that Poko made on them.", 1, 100, "I need to return to the strange plants and sprinkle Poko's powder on them to see if they're hiding something.", 11)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	
 end
 
 function Accepted(Quest, QuestGiver, Player)
-    Say(Player, "Hello Accepted")
     local zone = GetZone(Player)
     
     local NPC1 = GetTempVariable(Player,"spawn1")
@@ -86,14 +84,16 @@ function Step1Complete(Quest, QuestGiver, Player)
     Say(Player, "Hello Step1 Complete")
 	UpdateQuestStepDescription(Quest, 1, "I have sprinkled the dust on the plants and revealed a hidden camp.")
 
-	AddQuestStep(Quest, 2, "I need to search the camp for any items that would be useful for Germain's investigation.", 1, 100, "I need to return to the strange plants and sprinkle Poko's powder on them to see if they're hiding something.", 11)
+	
+	AddQuestStepSpell(Quest, 2, "I need to search the camp for any items that would be useful for Germain's investigation.", 1, 100, "I need to return to the strange plants and sprinkle Poko's powder on them to see if they're hiding something.", 11, "search book")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
     Say(Player, "Hello Step1 Complete")
 	UpdateQuestStepDescription(Quest, 2, "I have found a gnollish book within the hidden camp.")
-
+	GiveQuestItem(Quest, Player, "You found a gnolish book.", 1826)
+	
 	AddQuestStepChat(Quest, 3, "I need to bring what I found to Lieutenant Germain.", 1, "I need to return to the strange plants and sprinkle Poko's powder on them to see if they're hiding something.", 11, 1960005)
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end

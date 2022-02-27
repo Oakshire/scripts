@@ -12,7 +12,7 @@ end
 function player_entry(zone, player)
     
     
-    Say(player, "Wow! Forest Ruins is so pretty (v3)")
+   -- Say(player, "Wow! Forest Ruins is so pretty (v3)")
 	if  HasQuest(player , 522) then
         Say(player, "You have quest 522")
         newspawn1 = SpawnMob(zone, 1960182, true, 1161.29, -21.6585, -741.387, 0)
@@ -21,7 +21,7 @@ function player_entry(zone, player)
         newspawn4 = SpawnMob(zone, 1960182, true, 1172.83, -22.529, -745.2644, 0)
         treespawn = SpawnMob(zone, 1960155, true, 1169.29, -22.0886, -742.247, 0)
     else
-        Say(player, "You do not have quest 522")
+   --     Say(player, "You do not have quest 522")
         newspawn1 = SpawnMob(zone, 1960154, true, 1161.29, -21.6585, -741.387, 0)
         newspawn2 = SpawnMob(zone, 1960154, true, 1165.24, -21.7587, -738.934, 0)
         newspawn3 = SpawnMob(zone, 1960154, true, 1163.75, -21.6419, -744.377, 0)

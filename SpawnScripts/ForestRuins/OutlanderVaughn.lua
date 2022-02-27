@@ -3,7 +3,7 @@
 	Script Purpose	: Outlander Vaughn 
 	Script Author	: John Adams
 	Script Date	: 2008.09.19
-	Script Notes	: Completely rebuilt txt flow, emotes, constructed quests, and added voiceovers - 2022.02.21 Dorbin
+	Script Notes	: Completely rebuilt txt flow, emotes, constructed quests, movements, and added voiceovers - 2022.02.21 Dorbin
 --]]
 
 function spawn(NPC)
@@ -13,7 +13,7 @@ function spawn(NPC)
 end
 
 
-function waypoints(NPC)
+function waypoints(NPC) --Movements based on CLASSIC
     MovementLoopAddLocation(NPC, 1082.67, -18.71, -796.82, 2, 0)
 	MovementLoopAddLocation(NPC, 1083.38, -18.77, -797.24, 2, 1)
 	MovementLoopAddLocation(NPC, 1083.38, -18.77, -797.24, 2,math.random(10, 15),"Action")

@@ -7,8 +7,8 @@
     Modified By    : EmemJR
 --]]
 
-local NEWS_FOR_GERMAIN_QUEST_ID = 5475
-local RETURNING_TO_THE_DISTURBANCE_QUEST_ID = 5477
+local NEWS_FOR_GERMAIN_QUEST_ID = 520
+local RETURNING_TO_THE_DISTURBANCE_QUEST_ID = 522
 local BUSH_PARTS = 475035
 local BUSH_SHOVEL = 1587510
 local BUSH_FIRE = 1587511
@@ -26,7 +26,7 @@ local BUSH_MODEL_ID = 3908
 
 
 function spawn(NPC)
-	--SetRequiredQuest(NPC, 522,1)
+   SetRequiredQuest(NPC, 522,1)
 end
 
 
