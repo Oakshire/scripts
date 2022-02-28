@@ -9,7 +9,7 @@
 local Barrel = 533
 
 function spawn(NPC)
-SetRequiredQuest(NPC, QUEST_1, 1)
+SetRequiredQuest(NPC, Barrel, 1)
 end
 
 function casted_on(NPC, Player, SpellName)

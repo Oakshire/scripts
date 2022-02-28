@@ -61,13 +61,17 @@ function hailed(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain000.mp3", "", "hello", 3884077763, 891162435, Spawn)
 	
 	if HasCompletedQuest(Spawn, QUEST_1) then
-	    Say(NPC, "Hey! quest 1 complete")
+	   -- Say(NPC, "Hey! quest 1 complete")
 		if HasCompletedQuest(Spawn, QUEST_2) then
-		    Say(NPC, "Hey! quest 2 complete")
+		--    Say(NPC, "Hey! quest 2 complete")
 		    if HasCompletedQuest(Spawn, QUEST_3) then
 			    Say(NPC, "Hey! quest 3 complete")
 		    elseif HasQuest(Spawn, QUEST_3) then
-			    Say(NPC, "Hey! you are still on quest 3")
+			   -- Say(NPC, "Hey! you are still on quest 3")
+            if GetQuestStep(Spawn,QUEST_3)==3 then
+			    AddConversationOption(conversation, "Filler Text designating completion.","Step3Done")
+            end
+
 			    AddConversationOption(conversation, "I'll come back when I've performed the task.")
 		        StartConversation(conversation, NPC, Spawn, "Well?")
 		    else 

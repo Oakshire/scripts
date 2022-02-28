@@ -7,9 +7,9 @@
 --]]
 
 local FAVORS_QUEST_ID = 521
---SetRequiredQuest(NPC, NEWS_FOR_GERMAIN_QUEST_ID, 2, 0)
-function spawn(NPC)
 
+function spawn(NPC)
+    SetRequiredQuest(NPC, FAVORS_QUEST_ID, 2, 0)
 end
 
 function hailed(NPC, Spawn)

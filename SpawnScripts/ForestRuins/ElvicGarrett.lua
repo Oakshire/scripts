@@ -8,9 +8,10 @@
 
 local HALF_ELF = 6
 local HALFELF_MENTOR_QUEST_4 = 221
-local QUEST_1 = 1
+local QUEST_1 = 5491
 
 function spawn(NPC)
+ProvidesQuest(NPC, 5491)
 end
 
 function respawn(NPC)
