@@ -9,8 +9,6 @@
 
 -- spells = {Glare of Eradication, Gaze of Writhing Agony, Gaze of Oxulius, Gaze of Destruction}
 
-adds = {5560004, 5560005} -- 5560006}
-
 function spawn(NPC)
 SetTempVariable(NPC, "addSpawn", "nil")
 end
@@ -53,22 +51,20 @@ end
 
 function summonAdds(NPC, Spawn)
     local zone = GetZone(NPC) -- grab zone
-    local x = GetX(NPC) -- grab coords
-    local y = GetY(NPC)
-    local z = GetZ(NPC)
         if GetTempVariable(NPC, "addSpawn") == "1" then 
-            SetTempVariable(NPC, "addSpawn", "0") -- set to 0 to trigger termination of timer function to conserve cpu.
-                for k,v in pairs(adds) do -- I try to place all iterative actions in for loops like this. not sure if efficient.
-                    SpawnMob(zone, v, false, x, y, z)
-                end
-            AddTimer(NPC, 4000, "overlordConvo1") -- start conversation loops below
+                    local borxxSpawn = SpawnByLocationID(zone, 133772846)
+                    local braxxSpawn = SpawnByLocationID(zone, 302036)
+                    local brixxSpawn = SpawnByLocationID(zone, 302037)
         end
+    SetTempVariable(NPC, "addSpawn", "0") -- set to 0 to trigger termination of timer function to conserve cpu.
+    AddTimer(NPC, 4000, "overlordConvo1") -- start conversation loops below
+
 end
 
 function overlordConvo1(NPC, Spawn)
     local zone = GetZone(NPC)
     local borxx = GetSpawn(NPC, 5560006)
-        if borxx ~= nil and IsAlive(borxx) then
+        if borxx ~= nil then
             Say(NPC, "Borxx, you must aid me now.  Interlopers have threatened my plans, you owe me!")
             AddTimer(borxx, 3000, "borxxConvo1")
         end

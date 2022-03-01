@@ -34,7 +34,7 @@ function wakeup(NPC)
 	    end
     SpawnSet(NPC, "attackable", "1")
     SpawnSet(NPC, "show_level", "1")
-    SpawnSet(NPC, "faction", "1")
+    SpawnSet(NPC, "faction", "357")
     AddTimer(NPC,900000,"sleep")                                   --sleep timer if not attacked after 15 min
     
 end

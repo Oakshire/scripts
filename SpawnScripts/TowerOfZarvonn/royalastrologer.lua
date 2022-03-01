@@ -14,26 +14,22 @@ end
 function attacked(NPC, Spawn)
     AddTimer(NPC, 100, "spellLoop")
 end
- 
 
-function spellLoop(NPC, Spawn) -- referred from aggro. Loopback function for spellcasts.
-    AddTimer(NPC, math.random(1500, 2500), "spellChoice", Spawn) -- add timer to refer to spellchoice.
+function spellLoop(NPC, Spawn) -- Loopback function for spellcasts.
+    AddTimer(NPC, math.random(1500, 2500), "spellChoice", Spawn)
 end
 
-function spellChoice(NPC, Spawn) -- select a spell from table. Zalak is a shadowknight, so only casts on highest hate target.
-    local hated = GetMostHated(NPC) -- get pointer for whoever has threat.
-        if hated ~= nil then -- if pointer isn't blank, proceed.
-            FaceTarget(NPC, hated) -- face the NPC toward threat target if they aren't already.
-            CastSpell(hated, spells[math.random(#spells)], 3, NPC) -- get random spell from table, cast on target.
+function spellChoice(NPC, Spawn) -- select a spell from table. 
+    local hated = GetMostHated(NPC)
+        if hated ~= nil then
+            FaceTarget(NPC, hated)
+            CastSpell(hated, spells[math.random(#spells)], 3, NPC)
         end
-    AddTimer(NPC, math.random(1500, 2500), "spellLoop") -- refer to loopback
+    AddTimer(NPC, math.random(1500, 2500), "spellLoop")
 end
 
- 
 function hailed(NPC, Spawn)
 end
- 
- 
  
 function death(NPC, Spawn)
 end

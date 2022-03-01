@@ -28,7 +28,6 @@ function eleLoop(NPC, Spawn)
 end
  
 function eleSpawns(NPC, Spawn) -- spawns elementals on a timer. timer starts on aggro.
-    Shout(NPC, "eleSpawns firing.")
     AddTimer(NPC, 1000, "eleLoop")
 -- CastSpell(NPC, summon chaotic elemental, 3, NPC)
 end

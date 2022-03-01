@@ -10,7 +10,7 @@ function spawn(NPC)
 end
  
 function runtozalak(NPC, Spawn)
-    zalak = GetSpawn(NPC, 5310002)
+    local zalak = GetSpawn(NPC, 5310002)
     local x = GetX(zalak)
     local y = GetY(zalak)
     local z = GetZ(zalak)
@@ -20,9 +20,12 @@ function runtozalak(NPC, Spawn)
 end
  
 function heal(NPC, Spawn)
-    zalak = GetSpawn(NPC, 5310002)
-    ModifyHP(zalak, 2000)
-    AddTimer(NPC, 3000, "explode")
+    local zalak = GetSpawn(NPC, 5310002)
+    if GetDistance(NPC, zalak) < 4 then
+        ModifyHP(zalak, 2000)
+        AddTimer(NPC, 3000, "explode")
+    end
+    
 end
  
 function explode(NPC, Spawn)
