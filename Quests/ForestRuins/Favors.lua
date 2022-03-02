@@ -25,7 +25,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have spoken with Poko Zing.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have spoken with Poko Zing.")
 
-	AddQuestStep(Quest, 2, "I need some samples of the rubble from the ruins.", 4, 100, "Poko has agreed to help, but has asked that I do a favor for him.", 11)
+	AddQuestStep(Quest, 2, "I need some samples of the rubble from the ruins.", 4, 100, "Poko has agreed to help, but has asked that I do a favor for him.", 11729)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	
 	AddQuestStepHarvest(Quest, 3, "I need to collect a bark sample from one of the trees south of the river and outside the ruins.", 1, 100, "Poko has agreed to help, but has asked that I do a favor for him.", 834, A_FALLEN_BRANCH_ID)

@@ -19,7 +19,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "ponder", 0, 0)
+
+	AddConversationOption(conversation, "You're welcome.", "dlg_16_2")
+	StartConversation(conversation, NPC, Spawn, "We'll drive these gnolls out yet! Thanks for helping.")
+
 end
 
 function Declined(Quest, QuestGiver, Player)

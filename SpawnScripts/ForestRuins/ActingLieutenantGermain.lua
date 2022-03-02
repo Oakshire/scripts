@@ -10,6 +10,7 @@ local QUEST_FROM_POKO = 5474
 local QUEST_1 = 520 --News for Germain
 local QUEST_2 = 521 --Favors
 local QUEST_3 = 522 --Return to the Disturbance
+local QUEST_4 = 5492 --Uncovering the Caches
 
 
 
@@ -18,6 +19,7 @@ function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
 	ProvidesQuest(NPC, QUEST_2)
 	ProvidesQuest(NPC, QUEST_3)
+	ProvidesQuest(NPC, QUEST_4)
 	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
@@ -66,15 +68,17 @@ function hailed(NPC, Spawn)
 		--    Say(NPC, "Hey! quest 2 complete")
 		    if HasCompletedQuest(Spawn, QUEST_3) then
 			    Say(NPC, "Hey! quest 3 complete")
-		    elseif HasQuest(Spawn, QUEST_3) then
-			   -- Say(NPC, "Hey! you are still on quest 3")
-            if GetQuestStep(Spawn,QUEST_3)==3 then
-			    AddConversationOption(conversation, "Filler Text designating completion.","Step3Done")
+		    elseif HasQuest(Spawn, QUEST_4)  then
+			    AddConversationOption(conversation, "Not yet.")
+		        StartConversation(conversation, NPC, Spawn, "Have you destroyed the tools?")
+            if GetQuestStep(Spawn,QUEST_3)==3 or  HasCompletedQuest(Spawn, QUEST_3) then
+			    AddConversationOption(conversation, "I found this book.","Step3Done")
             end
 
 			    AddConversationOption(conversation, "I'll come back when I've performed the task.")
 		        StartConversation(conversation, NPC, Spawn, "Well?")
-		    else 
+		    elseif 	HasCompletedQuest(Spawn, QUEST_3) then
+		        
 		        
 		       	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain009.mp3", "", "", 4053457773, 134802130, Spawn)
 		        AddConversationOption(conversation, "What happened with the leaf?", "dlg_3_1")
@@ -347,4 +351,35 @@ end
 function OfferQuest3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	OfferQuest(NPC, Spawn, QUEST_3)
+end
+
+
+function Step3Done(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+
+	AddConversationOption(conversation, "It was a camp.", "Step3Done2")
+	StartConversation(conversation, NPC, Spawn, "Gnolls... was there anything else other than the book?")
+end
+
+function Step3Done2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	SetStepComplete(Spawn, QUEST_3, 3)
+	PlayFlavor(NPC, "", "", "sigh", 1917536977, 2373330590, Spawn)
+	AddConversationOption(conversation, "Does the book say what the gnolls are planning?", "Step3Done3")
+	StartConversation(conversation, NPC, Spawn, "That is quite unfortunate. This diagrams in this book look like they involve digging tools and machines. Thi- wait a minute! Accoding to these plans the gnolls have digging tools stored all over the place! They are probably under the same magical veil as the camp.")
+end
+
+function Step3Done3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "no", 1917536977, 2373330590, Spawn)
+	AddConversationOption(conversation, "All right, I'll return.", "OfferQuest4")
+	StartConversation(conversation, NPC, Spawn, "No, but we need to stop them. I need you to go back out around the ruins. Find these hidden digging tools, sprinkle some of Poko's powder on them, and destroy them.")
+end
+
+function OfferQuest4(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	OfferQuest(NPC, Spawn, QUEST_4)
 end
