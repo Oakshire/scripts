@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	ProvidesQuest(NPC, 1)
+	ProvidesQuest(NPC, 5486)
 	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")	
 end
 
@@ -30,16 +30,32 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
 
 		PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros.mp3", "", "hello", 2454266022, 3710462328)
-
-	if not HasCompletedQuest(Spawn, 1) then
-		AddConversationOption(conversation, "I'm intent on staying.", "dlg_0_1")
-		AddConversationOption(conversation, "Perhaps I should play it safe and go back to the village.")
-		StartConversation(conversation, NPC, Spawn, "Watch your step, friend. Many adventurers get injured because they don't know the dangers that lurk here. These grounds are home to the ruins of the old mage academy.  It was destroyed during the wars that raged centuries ago.  And aside from the already dangerous inhabitants of these ruins,  elemental servants of mages lurk about. Scared yet? ... If you're intent on staying in Qeynos, I suppose we can use your help.")
-	else
-	    
-PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "", 1245586444, 1008307013)
+    if GetQuestStep(Spawn,5486) ==2 then
+    SetStepComplete(Spawn, 5486, 2)
+	PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "", 1245586444, 1008307013)
 	AddConversationOption(conversation, "Sure.", "dlg_14_2")
 	AddConversationOption(conversation, "Not right now. ")
+	StartConversation(conversation, NPC, Spawn, "Hey! Great work on the vermin.  Can you spare more time to help Qeynos?")
+     
+		elseif not HasCompletedQuest(Spawn, 5486) then
+	    if not HasQuest(Spawn, 5486) then
+		AddConversationOption(conversation, "I'm intent on staying.", "dlg_0_1")
+		end
+		AddConversationOption(conversation, "Perhaps I should play it safe and go back to the village.")
+		StartConversation(conversation, NPC, Spawn, "Watch your step, friend. Many adventurers get injured because they don't know the dangers that lurk here. These grounds are home to the ruins of the old mage academy.  It was destroyed during the wars that raged centuries ago.  And aside from the already dangerous inhabitants of these ruins,  elemental servants of mages lurk about. Scared yet? ... If you're intent on staying in Qeynos, I suppose we can use your help.")
+	
+
+    else	    
+    PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "", 1245586444, 1008307013)
+    if not HasQuest(Spawn, 5486) and count <= 5 then
+	AddConversationOption(conversation, "Sure.", "dlg_14_2")
+	end
+	if not HasQuest(Spawn, 5486) then
+	AddConversationOption(conversation, "Not right now. ")
+	end
+	if HasQuest(Spawn, 5486) then
+	AddConversationOption(conversation, "I'm working on it.")
+    end
 	StartConversation(conversation, NPC, Spawn, "Hey! Great work on the vermin.  Can you spare more time to help Qeynos?")
 end
 end
@@ -64,10 +80,10 @@ end
 
 function dlg_0_2 (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, 1)
+  OfferQuest(NPC, Spawn, 5486)
 end
 
 function dlg_14_3 (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, 1)
+  OfferQuest(NPC, Spawn, 5486)
 end
