@@ -3,7 +3,7 @@
 	Script Purpose	: Sergeant at Arms Uthros 
 	Script Author	: Dorbin
 	Script Date	: 2022.02.22
-	Script Notes	: Needs Quests Applied
+	Script Notes	:
 --]]
 
 function spawn(NPC)
@@ -25,19 +25,24 @@ function InRange(NPC, Spawn)
         end
 end
 
+    local count = GetQuestCompleteCount(Spawn, 5486) 
+
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-		PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros.mp3", "", "hello", 2454266022, 3710462328)
     if GetQuestStep(Spawn,5486) ==2 then
     SetStepComplete(Spawn, 5486, 2)
-	PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "", 1245586444, 1008307013)
+	PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "hello", 1245586444, 1008307013)
+	if count <= 5 then
 	AddConversationOption(conversation, "Sure.", "dlg_14_2")
+	end
 	AddConversationOption(conversation, "Not right now. ")
 	StartConversation(conversation, NPC, Spawn, "Hey! Great work on the vermin.  Can you spare more time to help Qeynos?")
      
 		elseif not HasCompletedQuest(Spawn, 5486) then
+		PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros.mp3", "", "salute", 2454266022, 3710462328)
+    
 	    if not HasQuest(Spawn, 5486) then
 		AddConversationOption(conversation, "I'm intent on staying.", "dlg_0_1")
 		end
@@ -73,7 +78,7 @@ end
 function dlg_14_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros003.mp3", "", "salute", 827162019, 3003960469)
+    PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros003.mp3", "", "salute", 827162019, 3003960469)
 	AddConversationOption(conversation, "You bet.", "dlg_14_3")
 	StartConversation(conversation, NPC, Spawn, "Great! Then go and kill more vermin.")
 end

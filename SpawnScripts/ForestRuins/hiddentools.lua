@@ -3,7 +3,17 @@
     Script Author  : Dorbin
     Script Date    : 2022.03.01 04:03:10
     Script Purpose : 
-                   : 
+  NOTE on how script on live works. 
+  Player uses 'Sprinkle Nullification Powder' on hidden tools bush; 
+  Bush glows with purple aura for 3-5 seconds; 
+  Final glow intesnifies and appearance changes to mechanical device with same glowing aura; 
+  'a Tool Guardian' spawns and attacks player; 
+  Player can uses device and command_code 'Destroy Device'; 
+  Quest is updated, Expolsion spell animation on device occurs, and visual of the device & aura disappears; 
+  15-30 seconds later the aura returns on the invisable device (or the actual device if player didn't Destroy it); 
+  3 seconds later the appearance changes back to a visable bush with the aura; 
+  1-2 seconds later the aura fades, leaving the bush;       
+   
 --]]
 
 local zone = GetZone(NPC)
