@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepZoneLoc(Quest, 1, "I need to put the scepter in a statue.", 5, "I must return the scepter to the statue it came from.", 97, -185, 1, -17, 199)
+	AddQuestStepChat(Quest, 1, "I need to put the scepter in a statue.", 1, "I must return the scepter to the statue it came from.", 620, 0)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
