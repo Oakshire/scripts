@@ -38,7 +38,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
+	if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) and GetLevel(Spawn) >= 6 then 
     conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/ganla_dindlenod/qey_village06/ganladindlenod000.mp3", "", "hello", 3896153477, 1476133189, Spawn)
     AddConversationOption(conversation, "I'm asking around for work.", "Book")

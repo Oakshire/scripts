@@ -8,5 +8,5 @@
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "", "Greetin's, young'n. My name's Dori and this here is my bank. As a customer of the Qeynos Exchange, you can be certain your money's safe with us!", "", 1689589577, 4560189, Spawn)
+	PlayFlavor(NPC, "voiceover/english/banker_dori/qey_village03/bankerdori.mp3", "Greetin's, young'n. My name's Dori and this here is my bank. As a customer of the Qeynos Exchange, you can be certain your money's safe with us!", "", 2952818839, 2577303477, Spawn)
 end

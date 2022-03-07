@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to put the scepter in a statue.", 1, "I must return the scepter to the statue it came from.", 620, 0)
+	AddQuestStepChat(Quest, 1, "I need to put the scepter in a statue.", 1, "I must return the scepter to the statue it came from.", 620, 1990095)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
