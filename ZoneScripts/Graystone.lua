@@ -7,7 +7,7 @@
 --]]
 
 function init_zone_script(Zone)
-	SetLocationProximityFunction(Zone, 896.36, -19.95, -113.86, 6, "TheStoneofKaladim")
+	SetLocationProximityFunction(Zone, 896.36, -19.95, -113.86, 10, "TheStoneofKaladim")
 end
 
 function player_entry(Zone, Player)

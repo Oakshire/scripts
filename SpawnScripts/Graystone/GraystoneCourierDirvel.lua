@@ -65,7 +65,7 @@ function hailed(NPC, Spawn)
 	if HasQuest(Spawn, LATESHIPMENT) and GetQuestStep(Spawn, LATESHIPMENT) == 2 then
 		BusyWithQuest(NPC, Spawn)
 	else
-		Say(NPC, "Please come back later. I am very, very busy.", Spawn)
+	PlayFlavor(NPC, "voiceover/english/graystone_courier_dirvel/qey_village03/quests/graystone_courier/graystone_courier001.mp3", "Please come back later. I am very, very busy", "no", 2607292878, 3490339113, Spawn)
 	end
 end
 
@@ -119,12 +119,12 @@ function RandomSay(NPC)
    elseif choice == 4 then
       PlayFlavor(NPC, "voiceover/english/tutorial_revamp/graystone_courier_dirvel/qey_village03/quest_graystone_courier_blarg_b8328015.mp3", "Goodness, I don't think I'll ever get done with this work.", "", 1615569956, 1679588116)
    elseif choice == 5 then
-      PlayFlavor(Spawn, "voiceover/english/voice_emotes/greetings/greetings_3_1002.mp3", "", "", 0, 0)
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/graystone_courier_dirvel/qey_village03/quest_graystone_courier_guile_3ac0d6f0.mp3", "Delivery for... sigh... for Guile... the pig... I hate my job.", "", 1412857443, 3143121599, Spawn)
    elseif choice == 6 then
-      Say(NPC, "Why did I ever accept this job?")
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/graystone_courier_dirvel/qey_village03/quest_graystone_courier_blarg_c7c31a67.mp3", "Why did I ever accept this job?", "", 2739030688, 2415016119, Spawn)
    elseif choice == 7 then
-      Say(NPC, "There has to be a more efficient way of doing this.")
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/graystone_courier_dirvel/qey_village03/quest_graystone_courier_blarg_bd161ed7.mp3", "There has to be a more efficient way of doing this.", "", 3239550892, 1210876271, Spawn)
    else
-      Say(NPC, "Noob scatman did this wrong.")
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/graystone_courier_dirvel/qey_village03/quest_graystone_courier_blarg_43368900.mp3", "If I have to read one more shipment I'm going to faint!", "", 2554894210, 211258977, Spawn)
    end
 end

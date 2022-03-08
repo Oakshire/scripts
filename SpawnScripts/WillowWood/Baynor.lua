@@ -19,7 +19,7 @@ function InRange(NPC, Spawn) --Quest Callout
 if GetLevel (Spawn) <=5 then
    if math.random(1, 100) <= 60 then
      FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "Be careful, friend. I have many sharp, heavy, and scalding hot wares in my shop. Now, what is it you need?", "", 3453022457, 3858112584, Spawn)
+	    PlayFlavor(NPC, "voiceover/english/blacksmith_baynor/qey_village05/100_blacksmith_baynor_multhail2_9300848f.mp3", "Be careful, friend. There are many things in here that are sharp, heavy, and scalding hot wares in my shop. Now, what is it you need?", "", 4126996742, 4172113169, Spawn)
     end
 elseif not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) and GetLevel(Spawn) >=6 then 
     if math.random(1, 100) <= 60 then
@@ -30,7 +30,7 @@ else
     if math.random(1, 100) <= 50 then
     choice = math.random(1,2)
     if choice ==1 then
-    PlayFlavor(NPC, "Be careful, friend. I have many sharp, heavy, and scalding hot wares in my shop. Now, what is it you need?", "", 3453022457, 3858112584, Spawn)
+	    PlayFlavor(NPC, "voiceover/english/blacksmith_baynor/qey_village05/100_blacksmith_baynor_multhail2_9300848f.mp3", "Be careful, friend. There are many things in here that are sharp, heavy, and scalding hot wares in my shop. Now, what is it you need?", "", 4126996742, 4172113169, Spawn)
          else
     FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
@@ -47,7 +47,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	if GetLevel (Spawn) <=5 then
-	    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail1_7f060d18.mp3", "Hail fair, adventurer. Please be on your way. I've no time for chatting with commoners. I must warm up my voice. My fans await me...", "", 2685665398, 3421389957, Spawn)
+	    PlayFlavor(NPC, "voiceover/english/blacksmith_baynor/qey_village05/100_blacksmith_baynor_multhail2_9300848f.mp3", "Be careful, friend. There are many things in here that are sharp, heavy, and scalding hot wares in my shop. Now, what is it you need?", "", 4126996742, 4172113169, Spawn)
 	else
         conversation = CreateConversation()
 	    PlayFlavor(NPC, "voiceover/english/blacksmith_baynor/qey_village05/blacksmithbaynor000.mp3", "", "scold", 2763232852, 1393139984, Spawn)
@@ -58,7 +58,7 @@ function hailed(NPC, Spawn)
         AddConversationOption(conversation, "Here are your repaired tongs.", "TongsFinish")
         end
         AddConversationOption(conversation, "I'll be careful. Thanks.")
-        StartConversation(conversation, NPC, Spawn, "Be careful, friend. There are many things in here that are sharp, heavy, and scalding hot.")
+        StartConversation(conversation, NPC, Spawn, "Be careful there, friend. There are many things in here that are sharp, heavy, and scalding hot.")
 end
 
  function Tongs(NPC, Spawn)

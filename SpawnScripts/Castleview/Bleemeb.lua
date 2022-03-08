@@ -3,7 +3,7 @@
 	Script Purpose	: Bleemeb <Spell Scrolls>
 	Script Author	: Dorbin
 	Script Date	: 2022.01.29
-	Script Notes	: No voice overs available, but dialog rebuilt.
+	Script Notes	:
 --]]
 
     -- Fetch quest dialog needs to be built
@@ -12,6 +12,7 @@
 
 local Book = 5468
 local Leaves = 5467
+local Delivery = 5500
 
 
 function spawn(NPC)
@@ -48,6 +49,9 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     conversation = CreateConversation()   
     
+    	   if GetQuestStep(Spawn, Delivery)==1 then
+	           AddConversationOption(conversation, "I'm returning a book from Barry Viceheart.", "DeliveryReturn")
+	        end
             if not HasQuest(Spawn, Book) then       
                 AddConversationOption(conversation, "I'm not from around here. Anything I should know?", "BookStart")
             end
@@ -60,7 +64,7 @@ function hailed(NPC, Spawn)
 	       if GetQuestStep(Spawn, Leaves)==2 then
 	           AddConversationOption(conversation, "I've returned with the Eldarr leaves you asked for.", "DoneLeaves")
 	        end
-	        
+
 	  AddConversationOption(conversation, "I'm just browsing. Thank you.")
 	 StartConversation(conversation, NPC, Spawn, "If thou art interested... of items of a scholarly nature. Thou should take a look around. Just don't disturb Yanari! She is busy with her research.")
     PlayFlavor(NPC, "voiceover/english/scribe_bleemeb/qey_village04/qst_scribebleemeb000.mp3", "", "", 4182629486, 2797643210, Spawn)
@@ -107,6 +111,13 @@ end
     StartConversation(conversation, NPC, Spawn, "Many thanks unto thee! Here is a bit of coin. Spend it wisely!")
 end   
 
+ function DeliveryReturn(NPC, Spawn)
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "I will let Viceheart know.", "DeliveryDone")
+    PlayFlavor(NPC, "voiceover/english/scribe_bleemeb/qey_village04/qst_scribebleemeb004.mp3","","thank",4110253514,1354021803,Spawn)
+    StartConversation(conversation, NPC, Spawn, "Finally! 'Twould hath hated to send the Qeynos guard after him! Be sure's to tell him that his buisness is no longer allowed in this shop.")
+end   
+
 function QuestBegin1 (NPC, Spawn)
     FaceTarget(NPC, Spawn)
     OfferQuest(NPC, Spawn, Book)
@@ -115,6 +126,10 @@ end
 function QuestBegin2 (NPC, Spawn)
     FaceTarget(NPC, Spawn)
     OfferQuest(NPC, Spawn, Leaves)
+end
+
+function DeliveryDone(NPC, Spawn)
+    SetStepComplete(Spawn, Delivery, 1)
 end
 
 function RewardLeaves(NPC, Spawn)
