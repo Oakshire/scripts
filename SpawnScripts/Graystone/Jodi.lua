@@ -25,7 +25,7 @@ if math.random(1, 100) <= 60 then
      else
          choice = math.random(1,2)
             if choice ==1 then
-            PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+            PlayFlavor(NPC, "", "", "wave", 0, 0, Spawn)
             else
             PlayFlavor(NPC, "", "", "sigh", 0, 0, Spawn)
             end

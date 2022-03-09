@@ -29,7 +29,8 @@ function hailed(NPC, Spawn)
 	elseif HasQuest(Spawn, A_TIME_FOR_FIGHTING) then
 		HeyRelaxingHereWithQuest(NPC, Spawn)
 	else
-		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/marus_donoval/qey_village03/quests/marus_donoval/marus_donoval001.mp3", "Hey! I'm relaxing here.", "", 1272547244, 528166171, Spawn)
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/marus_donoval/qey_village03/quest_marus_donoval_notonquest_b531a95c.mp3", "Hey! I'm relaxing here.", "", 1804521039, 439298696, Spawn)
+--		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/marus_donoval/qey_village03/quests/marus_donoval/marus_donoval001.mp3", "Hey! I'm relaxing here.", "", 1272547244, 528166171, Spawn)
 	end
 end
 
