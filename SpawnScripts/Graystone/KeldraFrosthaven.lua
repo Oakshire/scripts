@@ -6,8 +6,11 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+dofile("SpawnScripts/Generic/EcologyEmotes.lua")
+
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "RandomTalk")
+    EcologyEmotes(NPC,Spawn)	
 end
 
 function respawn(NPC)

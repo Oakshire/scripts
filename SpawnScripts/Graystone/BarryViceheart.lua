@@ -28,8 +28,7 @@ if math.random(1, 100) <= 60 then
      else
          choice = math.random(1,2)
             if choice ==1 then
-            FaceTarget(NPC, Spawn)
-            PlayFlavor(NPC, "", "", "tap", 0, 0, Spawn)
+            PlayFlavor(NPC, "", "", "sigh", 0, 0, Spawn)
             else
             PlayFlavor(NPC, "", "", "grumble", 0, 0, Spawn)
             end

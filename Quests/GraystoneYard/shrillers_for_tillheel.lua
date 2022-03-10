@@ -15,6 +15,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill some juvenile shrillers.", 5, 100, "I must slay five juvenile shrillers to obtain their wings for Tillheel.", 140, 1990004,1990022,1990001)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+	UpdateQuestZone(Quest,"The Down Below")
 end
 
 function Step1Complete(Quest,QuestGiver,Player)
@@ -40,7 +41,7 @@ end
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have delivered the sets of shriller wings.")
-
+	UpdateQuestZone(Quest,"Graystone Yard")
 	UpdateQuestDescription(Quest, "I collected and delivered five sets of shriller wings to Tillheel. He was very grateful.")
 	GiveQuestReward(Quest, Player)
 end

@@ -16,12 +16,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(QuestGiver, Player)
+--[[	FaceTarget(QuestGiver, Player)
 	conversation = CreateConversation()
 		
 	PlayFlavor(QuestGiver, "voiceover/english/tacklemaster_moyna/qey_village03/100_tacklemaster_barbarian_female_moyna_multhail3_629de1e4.mp3", "", "", 1963777615, 3216865707, Player)
 	AddConversationOption(conversation, "Calm down! I haven't left yet!")
-	StartConversation(conversation, QuestGiver, Player, "What's taking you so long, friend? I don't have all day! Fetch me my centipedes!")
+	StartConversation(conversation, QuestGiver, Player, "What's taking you so long, friend? I don't have all day! Fetch me my centipedes!")]]--
+	
+	--Applied this VO to an InRange callout after accepted. - Dorbin 2022.03.09
 end
 
 function Declined(Quest, QuestGiver, Player)

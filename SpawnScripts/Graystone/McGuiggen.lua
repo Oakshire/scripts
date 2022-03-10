@@ -5,9 +5,11 @@
 	Script Date	: 2009.09.05
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/EcologyEmotes.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+    EcologyEmotes(NPC,Spawn)	
 end
 
 function respawn(NPC)

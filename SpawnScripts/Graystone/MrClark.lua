@@ -16,9 +16,8 @@ function hailed(NPC, Spawn)
     if choice == 1 then
     PlayFlavor(NPC, "", "", "attack", 0, 0, Spawn)
     elseif choice == 2 then
-   -- Emote(NPC, "stares at you curiously.", Spawn) 
     PlayFlavor(NPC, "", "", "cast_drake_fire_breath", 0, 0, Spawn) 
-    AddTimer(NPC,400,"Stop",Spawn)
+    AddTimer(NPC,250,"Stop",Spawn)
     else
     PlayFlavor(NPC, "", "", "", 0, 0, Spawn) 
     end

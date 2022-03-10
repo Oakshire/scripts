@@ -5,6 +5,7 @@
 	Script Date	: 2018.06.09
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 
 function spawn(NPC)
 	
@@ -15,5 +16,6 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	PlayFlavor(NPC, "voiceover/english/brice_strongmend/qey_village03/100_fisherman_barbarian_strongmend_garbled_gm_e474cb9f.mp3", "Hmmmm... I wonder, do I owe you any coin?  I sure hope not!", "", 423725313, 410589606, Spawn)
+    Garbled(NPC,Spawn)
+--	PlayFlavor(NPC, "voiceover/english/brice_strongmend/qey_village03/100_fisherman_barbarian_strongmend_garbled_gm_e474cb9f.mp3", "Hmmmm... I wonder, do I owe you any coin?  I sure hope not!", "", 423725313, 410589606, Spawn)
 end

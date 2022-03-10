@@ -10,11 +10,27 @@
 local Pickup = 5501
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")    
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
+
+function InRange(NPC, Spawn)
+if math.random(1, 100) <= 80 then
+         choice = math.random(1,3)
+            if choice ==1 then
+            PlayFlavor(NPC, "", "", "square", 0, 0, Spawn)
+            elseif choice ==2 then
+            PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)            
+            else
+            PlayFlavor(NPC, "", "", "woo", 0, 0, Spawn)
+            
+            end
+    end
+end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
