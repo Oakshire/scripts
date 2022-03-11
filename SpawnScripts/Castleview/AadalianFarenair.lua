@@ -26,7 +26,7 @@ function InRange(NPC, Spawn)
             if choice == 1 then
 	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "tap", 2766992983, 3224256482, Spawn, 9)
     	    elseif choice == 2 then
-	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_d396c4fc.mp3", "Oh don't look at me that way. Speak my language!.", "", 3403333804, 3641522203, Spawn, 9)
+	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_d396c4fc.mp3", "Oh dont look at me that way. Speak my language!.", "", 3403333804, 3641522203, Spawn, 9)
     	    end
     	end
 	elseif
