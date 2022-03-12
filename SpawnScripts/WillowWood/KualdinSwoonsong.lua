@@ -66,6 +66,7 @@ function hailed(NPC, Spawn)
     end
 
  function Book(NPC, Spawn)
+  	FaceTarget(NPC, Spawn)   
   conversation = CreateConversation()
     PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/kualdinswoonsong001.mp3", "", "no", 1787982830, 1127515675, Spawn)
     AddConversationOption(conversation, "Who do you want to ask?", "PieBook")
@@ -74,6 +75,7 @@ function hailed(NPC, Spawn)
 end   
 
  function PieBook(NPC, Spawn)
+  	FaceTarget(NPC, Spawn)   
   conversation = CreateConversation()
   PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/kualdinswoonsong002.mp3", "", "", 23545717, 1052293137, Spawn)
   AddConversationOption(conversation, "I will go ask her for you.", "QuestBegin")
@@ -86,6 +88,7 @@ function QuestBegin (NPC, Spawn)
 end
 
  function Delivered(NPC, Spawn)
+  	FaceTarget(NPC, Spawn)   
   conversation = CreateConversation()
   PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/kualdinswoonsong003.mp3", "", "thank", 2468409303, 338695465, Spawn)
   AddConversationOption(conversation, "I'll concider it. Glad I could help.", "Reward")

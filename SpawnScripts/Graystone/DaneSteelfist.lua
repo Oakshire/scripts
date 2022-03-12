@@ -10,12 +10,12 @@ dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 local DanesQuest = 5506
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
 	ProvidesQuest(NPC, DanesQuest)
 end
 
 function InRange(NPC, Spawn) --Quest Callout
-    if math.random(1, 100) <= 75 then
+    if math.random(1, 100) <= 70 then
         if not HasLanguage(Spawn,3)then
         FaceTarget(NPC, Spawn)     
         Garbled(NPC,Spawn)

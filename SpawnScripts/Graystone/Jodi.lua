@@ -64,6 +64,7 @@ function hailed(NPC, Spawn)
 	else
 	PlayFlavor(NPC, "", "", "tap", 0, 0, Spawn)
     end	    
+    end
 end
 
  function Potions(NPC, Spawn)
@@ -91,5 +92,5 @@ end
 function Reward(NPC, Spawn)
     	SetStepComplete(Spawn, Delivery, 2)
     end
-end
+
 
