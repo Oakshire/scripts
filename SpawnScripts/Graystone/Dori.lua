@@ -8,7 +8,11 @@
 
 --Bank Tally Quest Should only be available AFTER inital Citizenship quest.
 
-local Tally = 5058
+local Tally = 5508
+
+function spawn(NPC)
+ProvidesQuest(NPC,Tally)
+end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -17,7 +21,7 @@ function hailed(NPC, Spawn)
 	if not HasCompletedQuest (Spawn, Tally) and not HasQuest (Spawn, Tally) then     
     AddConversationOption(conversation, "Have any errands I can do for the bank?", "DeliveryStart")
     end
-    if GetQuestStep(Spawn,Delivery)==2 then     
+    if GetQuestStep(Spawn,Tally)==2 then     
     AddConversationOption(conversation, "Robert Newbury gave me this message for you.", "DeliveryDone")
     end
     

@@ -4,10 +4,16 @@
 	Script Author	: John Adams/Scatman/Jabantiz
 	Script Date	: route mapped 2008.09.21
 	Script Notes	: Auto-Generated Conversation from PacketParser Data 
-	                    Added Soothsayer Rayala Interaction - 2022.03.11 Dorbin
+	                    Added Soothsayer Rayala Interaction & Callout/Hail w/ dofile - 2022.03.11 Dorbin
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
+    SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")	 
+    	waypoints(NPC)
+    end
+    
+function waypoints(NPC)    
 	MovementLoopAddLocation(NPC, 897.25, -22.61, -100.86, 2, 1)
 	MovementLoopAddLocation(NPC, 897.25, -22.61, -100.86, 2, 10, "FaceSeer")	
 	MovementLoopAddLocation(NPC, 900.33, -22.36, -106.33, 2, 0)
@@ -119,6 +125,20 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)        
+    GenericEcologyHail(NPC, Spawn, faction)
+    end
+
+
+function InRange(NPC, Spawn) --Quest Callout
+    if math.random(1, 100) <= 25 then	
+	FaceTarget(NPC, Spawn)            
+     GenericEcologyHail(NPC, Spawn, faction)       
+    end   
+end
+
+--[[ OLD SCRIPT. Using Ecology VOs even though they don't match the text exactly
+function hailed(NPC, Spawn)
 	RandomTalk(NPC, Spawn, false)
 end
 
@@ -144,6 +164,8 @@ function RandomTalk(NPC, Spawn, Option)
 		end
 	end
 end
+
+--]]
 
 function FaceStone(NPC)
 	SpawnSet(NPC, "heading", "66.65")
@@ -201,7 +223,6 @@ end
 function ReturnReyala(NPC)
     local Reyala = GetSpawn(NPC, 2330137)
 	SpawnSet(Reyala, "heading", "52.65")
-
     end	
 
 

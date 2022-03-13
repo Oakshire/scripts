@@ -17,20 +17,17 @@ end
 function InRange(NPC, Spawn)
 	 if math.random(1, 100) <= 40 then
 	 local choice = MakeRandomInt(1, 5)
+	 FaceTarget(NPC, Spawn)
 	  if choice == 1 then
         	FaceTarget(NPC, Spawn)
         PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/innkeeper/halfling_innkeeper_service_good_1_aoi_gf_c2a5eef.mp3", "Welcome to the inn adventurer. Oh, you look absolutely exhausted! Here, let us take your things.", "hello", 802075416,1803478247, Spawn)
     elseif choice == 2 then
-       	FaceTarget(NPC, Spawn)
         PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/innkeeper/halfling_innkeeper_service_good_1_hail_gf_dc02003d.mp3", "Good day to you, adventurer. Can I fix you up something to eat?", "hello", 173307143, 4294697063, Spawn)
     elseif choice == 3 then
-       	FaceTarget(NPC, Spawn)
         PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/innkeeper/halfling_innkeeper_service_good_1_hail_gf_f9f93f86.mp3", "Many adventurers fresh from the road head straight in to have a hot bath.  Shall I prepare one for you?", "", 2040013753, 171634937, Spawn)
     elseif choice == 4 then
-       	FaceTarget(NPC, Spawn)
         PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/innkeeper/halfling_innkeeper_service_good_1_hail_gf_b9a44b08.mp3", "Hello there! Will you be needing a room for the evening?", "hello", 947325689, 1034329857, Spawn)
     else
-        FaceTarget(NPC, Spawn)
         PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/innkeeper/halfling_innkeeper_service_good_1_hail_gf_ff8f2e0b.mp3", "Is there something I can get for you?  Do you need extra towels or a new set of sheets?", "agree", 3981950684, 2391018901, Spawn)
     end
     end   

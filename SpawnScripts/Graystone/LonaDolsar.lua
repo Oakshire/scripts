@@ -5,13 +5,34 @@
     Script Purpose : Ecology script for Lona Dolsar
                    : 
 --]]
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")	
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    if not HasLanguage(Spawn,1)then
+    FaceTarget(NPC, Spawn)    
+    Garbled(NPC,Spawn)
+    else
+	FaceTarget(NPC, Spawn)        
+    GenericEcologyHail(NPC, Spawn, faction)
+    end
+end
+
+function InRange(NPC, Spawn) 
+    if math.random(1, 100) <= 25 then
+        if not HasLanguage(Spawn,1)then
+        Garbled(NPC,Spawn)
+        else
+	FaceTarget(NPC, Spawn)            
+     GenericEcologyHail(NPC, Spawn, faction)       
+    end   
+ end
 end
 
 function respawn(NPC)
