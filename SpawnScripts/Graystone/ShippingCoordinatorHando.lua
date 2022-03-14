@@ -236,6 +236,7 @@ end
 function dlg_22_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+                PlayFlavor(NPC, "","", "doh", 0, 0)
 
 	AddConversationOption(conversation, "It should have just arrived. It's a package from the Baubbleshire.", "dlg_22_2")
 	StartConversation(conversation, NPC, Spawn, "Arg! Her packages are backlogged already, what do you need?")
@@ -256,7 +257,7 @@ function dlg_29_1(NPC, Spawn)
 	
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+                PlayFlavor(NPC, "","", "thanks", 0, 0)
 	AddConversationOption(conversation, "That is okay, and thank you.")
 	StartConversation(conversation, NPC, Spawn, "All right, this all seems to be in order. Sorry for snapping at you, it's been a busy week.")
 end

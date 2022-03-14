@@ -119,7 +119,7 @@ function dlg_19_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip002.mp3", "", "", 898341792, 808534895, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip002.mp3", "", "sniff", 898341792, 808534895, Spawn)
 	AddConversationOption(conversation, "What do you mean?", "dlg_19_2")
 	StartConversation(conversation, NPC, Spawn, "Ah, now there's a name I can never hear too little of.")
 end
@@ -128,7 +128,7 @@ function dlg_19_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip003.mp3", "", "", 472358004, 1704786028, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip003.mp3", "", "shakefist", 472358004, 1704786028, Spawn)
 	AddConversationOption(conversation, "Retaliate?", "dlg_19_3")
 	StartConversation(conversation, NPC, Spawn, "Every time I hear about her it's about some great, new thing she's doing. Which of course means I have to retaliate.")
 end
@@ -137,7 +137,7 @@ function dlg_19_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip004.mp3", "", "", 2206438265, 2359391170, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip004.mp3", "", "glare", 2206438265, 2359391170, Spawn)
 	AddConversationOption(conversation, "She brewed some of her family's recipe.", "dlg_19_4")
 	StartConversation(conversation, NPC, Spawn, "Aye! If I don't one-up her I run the risk of getting one-upped twice in a row, can't have that. So, tell me, what great, new thing has Mav done now?")
 end
@@ -146,7 +146,7 @@ function dlg_19_4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip005.mp3", "", "", 2257066250, 240363088, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip005.mp3", "", "boggle", 2257066250, 240363088, Spawn)
 	AddConversationOption(conversation, "I have some of it right here.", "dlg_19_5")
 	StartConversation(conversation, NPC, Spawn, "She didn't! Ooh she's just looking for trouble now. Where is she? I'll pound the brew right now!")
 end
@@ -154,7 +154,6 @@ end
 function dlg_19_5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip006.mp3", "", "", 886091575, 2730616060, Spawn)
 	AddConversationOption(conversation, "Here you go. Be careful.", "dlg_19_6")
 	StartConversation(conversation, NPC, Spawn, "Ah, give it to me!")
@@ -167,6 +166,7 @@ function dlg_19_6(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/dunda_frostgrip/qey_village03/quests/dunda_frostgrip/dunda_frostgrip007.mp3", "", "", 1318899535, 405657367, Spawn)
+    PlayAnimation(NPC,11422)
 	AddConversationOption(conversation, "All right. I'll be leaving now.")
 	StartConversation(conversation, NPC, Spawn, "Ahhh... To Drunder with her, she was right. This is delicious. Do NOT tell her I said that!")
 end

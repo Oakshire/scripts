@@ -53,7 +53,7 @@ end
 function dlg_18_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+    PlayAnimation(NPC,11422)
 	AddConversationOption(conversation, "All right. I hope you're ready.", "dlg_18_4")
 	StartConversation(conversation, NPC, Spawn, "Fill me up!")
 end

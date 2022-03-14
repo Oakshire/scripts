@@ -6,7 +6,7 @@
 	Script Notes	: Added entire DustyBlueStone Dialogue 2022.3.12 - Dorbin
 --]]
 
-local BlueStone = 5059
+local BlueStone = 5509
 
 function spawn(NPC)
 end
@@ -20,8 +20,6 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
     if not HasQuest(Spawn, BlueStone) or GetQuestStep(Spawn, BlueStone)==1 then 
 	PlayFlavor(NPC, "voiceover/english/gruffin_goldtooth/qey_village03/gruffingoldtooth001.mp3", "", "hello", 997482113, 2338709603, Spawn)
- 
---	PlayFlavor(NPC, "voiceover/english/gruffin_goldtooth/qey_village03/gruffingoldtooth001.mp3", "", "hello", 997482113, 2338709603, Spawn)
 	if GetQuestStep(Spawn, BlueStone)==1 then
 	AddConversationOption(conversation, "If you don't mind, could you look over a stone I have here?","RockFound")
 	end

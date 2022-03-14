@@ -53,7 +53,7 @@ end
 function dlg_17_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+    PlayAnimation(NPC,11422)
 	AddConversationOption(conversation, "How is it?", "dlg_17_4")
 	StartConversation(conversation, NPC, Spawn, "Hold your chairs 'cause here I go!")
 end

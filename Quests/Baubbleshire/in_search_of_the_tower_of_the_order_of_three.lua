@@ -53,7 +53,8 @@ end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
-		step1beentothesmithy(Quest, QuestGiver, Player)
+		TowerRuins(Quest, QuestGiver, Player)
 	elseif Step == 2 then
+		QuestComplete(Quest, QuestGiver, Player)	    
 end
 end

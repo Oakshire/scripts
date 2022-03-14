@@ -7,6 +7,8 @@
 	Script Notes    : Re-attached Voiceovers. Created trigger for Gnomish Language Check. Applied level check.
 --]]
 
+dofile("SpawnScripts/Generic/UnknownLanguage.lua") --added 2022.03.13 Dorbin
+
 local GATHERING_ROCK_SAMPLES_QUEST_ID = 504
 
 function spawn(NPC)
@@ -20,13 +22,13 @@ end
 
 function InRange(NPC, Spawn) --Provides Language Based Callout with delay
     if not HasLanguage(Spawn, 6) then
-        local choice = math.random(1,2)
-
+            Garbled(NPC,Spawn)
+--[[    local choice = math.random(1,2)
         if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "hail hail the gnomes are here", "", 2230728991, 3389119515, Spawn, 6)
     	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "Words to not translate in language", "", 2230728991, 3389119515, Spawn, 6)
-    	end
+    	end]]--
 	elseif
     not HasCompletedQuest (Spawn, GATHERING_ROCK_SAMPLES_QUEST_ID) and not HasQuest (Spawn, GATHERING_ROCK_SAMPLES_QUEST_ID) and HasLanguage(Spawn, 6) then 
     FaceTarget(NPC,Spawn)
@@ -38,14 +40,17 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-     if not HasLanguage(Spawn, 6) then -- Hailed Language Check
-        local choice = math.random(1,2)
 
+   if not HasLanguage(Spawn, 6) then -- Hailed Language Check
+	    Garbled(NPC,Spawn)
+	    
+--[[    local choice = math.random(1,2)
         if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "garbled text not to be translated", "", 2230728991, 3389119515, Spawn, 6)
     	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "text to not translate language", "", 2230728991, 3389119515, Spawn, 6)
 	end
+	--]]
 	
 	else --Provides quest checks
 	if HasQuest(Spawn, GATHERING_ROCK_SAMPLES_QUEST_ID) and GetQuestStep(Spawn, GATHERING_ROCK_SAMPLES_QUEST_ID) == 4 then

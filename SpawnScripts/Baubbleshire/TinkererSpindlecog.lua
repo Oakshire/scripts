@@ -6,6 +6,8 @@
 	Script Notes	: Speaking Gnomish
 --]]
 
+dofile("SpawnScripts/Generic/UnknownLanguage.lua") --added 2022.03.13 Dorbin
+
 local SpindleCogQuest = 5447
 
 function spawn(NPC)
@@ -20,14 +22,15 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     if not HasLanguage(Spawn, 6) then -- Hailed Language Check
-        local choice = math.random(1,2)
+            Garbled(NPC,Spawn)
+--[[        local choice = math.random(1,2)
 
         if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "garbled text not to be translated", "", 2230728991, 3389119515, Spawn, 6)
     	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "Prepare! Here come the gnomes!", "", 2230728991, 3389119515, Spawn, 6)
 	    end
-	
+--]]	
 	else --Provides quest checks
       if not HasCompletedQuest (Spawn, SpindleCogQuest) and not HasQuest (Spawn, SpindleCogQuest) then 
 	        FaceTarget(NPC, Spawn)

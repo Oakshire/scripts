@@ -54,7 +54,7 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "Who is Holly Windstalker?","Windstalker1")  
 	end
 	AddConversationOption(conversation, "Thanks for the warning.")
-	StartConversation(conversation, NPC, Spawn, "Greetings, adventurer. Be careful travling outside the city. The nearby wilderness is as unforgiving as the fates themselves.")
+	StartConversation(conversation, NPC, Spawn, "Greetings, adventurer. Be careful traveling outside the city. The nearby wilderness is as unforgiving as the fates themselves.")
 end
 
 

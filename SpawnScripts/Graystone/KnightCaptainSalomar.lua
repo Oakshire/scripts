@@ -10,7 +10,7 @@ local OakGate = 5504
 
 function spawn(NPC)
 ProvidesQuest(NPC, 5504)
-SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn) --Quest Callout

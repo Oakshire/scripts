@@ -76,7 +76,7 @@ end
 function WellHello(NPC, Spawn, conversation)
 	AddConversationOption(conversation, "Sort of, yes.", "New")
 	AddConversationOption(conversation, "No, I'm not new here.", "NotNew")
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist001.mp3", "", "", 634247011, 356522512, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist001.mp3", "", "hello", 634247011, 356522512, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Well hello! New around here?")
 end
 
@@ -85,7 +85,7 @@ function New(NPC, Spawn)
 	conversation = CreateConversation()
 
 	AddConversationOption(conversation, "Sure, I'm willing to learn.", "WillingToLearn")
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist002.mp3", "", "", 1318415576, 1321312216, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist002.mp3", "", "nod", 1318415576, 1321312216, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Well I'm just the one to help you out, then! I can teach you all you need to know, what do you say?")
 end
 
@@ -147,7 +147,7 @@ function HaveMeDo(NPC, Spawn)
 	conversation = CreateConversation()
 
 	AddConversationOption(conversation, "All right, give me the manifest.", "OfferQuest1")
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist009.mp3", "", "", 4269745166, 1619482599, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist009.mp3", "", "happy", 4269745166, 1619482599, Spawn)
 	StartConversation(conversation, NPC, Spawn, "I need you to gather up the ingredients for me. I managed to get ahold of an overflow manifest that details where my things are in storage. All you need to do is check the manifest, find out where you need to go, and then get my deliveries for me.")
 end
 
@@ -173,7 +173,7 @@ function NeedManifest(NPC, Spawn)
 	
 	-- Overflow Manifest
 	if HasItem(Spawn, 10268, 1) then
-		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist013.mp3", "", "", 2530141598, 2756437578, Spawn)
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist013.mp3", "", "no", 2530141598, 2756437578, Spawn)
 		AddConversationOption(conversation, "All right, thanks.")
 		StartConversation(conversation, NPC, Spawn, "I'm pretty sure you already have a copy. It's probably in one of your bags somewhere. It may even be in the bank. Once you find it examine it to learn where all the shipments are.")
 	else
@@ -192,7 +192,7 @@ function dlg_13_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist015.mp3", "", "", 3252688398, 2435234536, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist015.mp3", "", "agree", 3252688398, 2435234536, Spawn)
 	AddConversationOption(conversation, "That's great!", "dlg_13_2")
 	StartConversation(conversation, NPC, Spawn, "Ah, great. Now I can get started on my next batch. The last batch came out perfectly. I won't need to change the recipe at all, finally done.")
 end
@@ -205,7 +205,7 @@ function dlg_13_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist016.mp3", "", "", 1896567087, 1236189087, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist016.mp3", "", "nod", 1896567087, 1236189087, Spawn)
 	AddConversationOption(conversation, "Sure, I can help.", "dlg_13_3")
 	StartConversation(conversation, NPC, Spawn, "Wonderfully great! I can't wait for everyone to try it. I've been telling everyone around here about my old family recipe, it's been so long since I first mentioned it that they probably think I made it up. If they do think that, it's time to prove them wrong! Listen, I still need to watch the store here, how would you like to help me?")
 end
@@ -237,7 +237,7 @@ function dlg_20_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist019.mp3", "", "", 594170508, 523076668, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist019.mp3", "", "nod", 594170508, 523076668, Spawn)
 	AddConversationOption(conversation, "Well, Gurna and Gnor both loved it. It actually knocked Gnor down.", "dlg_20_2")
 	StartConversation(conversation, NPC, Spawn, "So, tell me, what did they think?")
 end
@@ -246,7 +246,7 @@ function dlg_20_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist020.mp3", "", "", 1002724009, 2022330670, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist020.mp3", "", "chuckle", 1002724009, 2022330670, Spawn)
 	AddConversationOption(conversation, "She said it was wonderful, but asked me not to tell you that.", "dlg_20_3")
 	StartConversation(conversation, NPC, Spawn, "Hah hah! What about Dunda though, what did she think?")
 end
@@ -259,7 +259,7 @@ function dlg_20_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist021.mp3", "", "", 1410633044, 1626937024, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist021.mp3", "", "smile", 1410633044, 1626937024, Spawn)
 	AddConversationOption(conversation, "What was the other good news?", "dlg_20_4")
 	StartConversation(conversation, NPC, Spawn, "Yes! I knew she would love it. She teased me mercilessly about this recipe, she must've thought I had made the whole thing up. Ooh I'm glad she liked it. Today is just filled with good news.")
 end
@@ -272,7 +272,7 @@ function dlg_20_4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist022.mp3", "", "", 153909004, 705302189, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist022.mp3", "", "nod", 153909004, 705302189, Spawn)
 	AddConversationOption(conversation, "Sure, I can do that.", "OfferQuest3")
 	StartConversation(conversation, NPC, Spawn, "A package from my cousin arrived! It has -- Oh dear, that package will get caught up in this silly state of delivery affairs. I'd like your help again, if you could go speak to the shipping coordinator on the docks and get him to give you my package before they drop it into some overflow spot that would be great. What do you say?")
 end
@@ -304,7 +304,7 @@ function dlg_30_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist025.mp3", "", "", 2520635779, 2527828241, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist025.mp3", "", "happy", 2520635779, 2527828241, Spawn)
 	AddConversationOption(conversation, "That is impressive!", "dlg_30_2")
 	AddConversationOption(conversation, "Kaladim?", "Kaladim")
 	StartConversation(conversation, NPC, Spawn, "Ah, let me open it. I hope it's--yes! This is the rock I've been waiting to get for a few months now. My cousin sent it to me, she said it's actual stone from Kaladim, can you imagine?")
@@ -385,7 +385,7 @@ function dlg_37_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist031.mp3", "", "", 276770020, 3522074989, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist031.mp3", "", "ponder", 276770020, 3522074989, Spawn)
 	AddConversationOption(conversation, "Just sounds and visions.", "dlg_37_2")
 	StartConversation(conversation, NPC, Spawn, "Oh? What does that mean?")
 end
@@ -398,7 +398,7 @@ function dlg_37_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist032.mp3", "", "", 4251668081, 2689030734, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/mav_boilfist/qey_village03/quests/mav_boilfist/mav_boilfist032.mp3", "", "happy", 4251668081, 2689030734, Spawn)
 	AddConversationOption(conversation, "I would be interested in that.", "dlg_37_3")
 	StartConversation(conversation, NPC, Spawn, "Oh, the spirit of Kaladim is strong in you. You know, my husband would love to meet you. Would you like to meet him?")
 end
