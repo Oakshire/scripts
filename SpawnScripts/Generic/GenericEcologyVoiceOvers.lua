@@ -2,8 +2,19 @@
     Script Name    : SpawnScripts/Generic/GenericEcologyVoiceOvers.lua
     Script Author  : Dorbin
     Script Date    : 2022.03.12 04:03:04
-    Script Purpose : For City Based/Race Based Voiceover Callouts - Improves Zone ecology/atmosphere
-                   : GenericEcologyHail(NPC, Spawn, faction) for basic hails,  GenericDrunkHail(NPC, Spawn, faction) for bar/drunk hails - Only Dwarves/Humans.
+    Script Purpose : For City Based/Race Based Voiceover Callouts - Improves Zone ecology/atmosphere. File facilitates ALL generic hails/callouts if they exist. 
+               Note: VERIFY YOUR DESIRED RACE/GENDER/FACTION HAS VOs (We are missing many here)
+
+         Functions: GenericEcologyHail(NPC, Spawn, faction)         for basic hails  
+                    GenericEcologyCallout(NPC, Spawn, faction)      basic hails for nearby players  
+                     
+                    GenericRaceCheckHail(NPC, Spawn, faction)       racial-hails      
+                    GenericRaceCheckCallout(NPC, Spawn, faction)    racial-hails for nearby players 
+                    
+                    GenericDrunkHail(NPC, Spawn, faction)           bar/drunk hails - Only Dwarves/Humans
+                    GenericDrunkCallout(NPC, Spawn, faction)        bar drunk callout - Only Dwarves/Humans
+                    
+                    For Racial Language, consult dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 --]]
 
 local BARBARIAN = 0
@@ -110,7 +121,12 @@ function GenericEcologyHail(NPC, Spawn, faction)
                             elseif spawnRace == WOOD_ELF then
 					        PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_woodelf_gm_8dff8cc4.mp3", "Eat more heartily to stand firm, even in the strongest winds!", "happy", 810996081, 628715345, Spawn)
 			          	    else
-					        PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+                                    local check = math.random(1,2) 
+	                           	    if check == 1 then
+                                     PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_d571c130.mp3", "I'm not used to this weather, but my people can adapt to any change in order to survive.", "no", 3421348121, 1004876500, Spawn)
+                                    elseif choice == 2 then	
+                                    PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_5a6b643f.mp3", "Treasures from the past can be found throughout the lands for those who care to look.", "nod", 3614931515, 1601871948, Spawn)
+				       		        end                   
 		                    end
                         elseif choice == 2 then	
                         PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_d571c130.mp3", "I'm not used to this weather, but my people can adapt to any change in order to survive.", "no", 3421348121, 1004876500, Spawn)
