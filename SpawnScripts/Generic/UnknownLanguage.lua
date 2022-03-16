@@ -52,7 +52,7 @@ function Garbled(NPC, Spawn, Faction)
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gm_a1fa2fc8.mp3", "Could really go for a tall pint... and you dont have one.", "", 133865330, 3138674565, Spawn,1)
                     end
 				elseif gender == FEMALE then
-				local choice = math.random(1, 4)  
+				local choice = math.random(1, 5)  
 	                if choice == 1 then				
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_19afe4c1.mp3", "I wonder, do I owe you any coin?  I sure hope not!", "", 2899758174, 1767429074, Spawn,1)
 				    elseif choice ==2 then
@@ -61,7 +61,10 @@ function Garbled(NPC, Spawn, Faction)
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_8d42a684.mp3", "Giving you the cold shoulder this way is great.", "", 3994584076, 1013655548, Spawn,1)
 	                elseif choice ==4 then
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_f8c9923f.mp3", "Try not to screw up my fist with your face.", "", 653161975, 3035939203, Spawn,1)
-				    end
+	                elseif choice ==5 then
+                    PlayFlavor(NPC, "voiceover/english/barbarian/ft/barbarian/barbarian_eco_garble_garbled_gf_befe5c31.mp3", "you dont want to know what its like to wash three dozen kilts in a day", "", 1408939577, 3083827178, Spawn)
+			  
+			         end
 				end
 			elseif race == DARK_ELF then
 				if gender == MALE then
@@ -74,6 +77,13 @@ function Garbled(NPC, Spawn, Faction)
 					PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_garbled_gm_810a3ce3.mp3", "Senseless is what you are. Staring at me this way.", "", 1130393437, 2011449714, Spawn,2)
 	               	end					    
 				elseif gender == FEMALE then
+	            local choice = math.random(1, 2)  
+	                if choice == 1 then				
+		            PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_garbled_gf_36e875b.mp3", "Atzeen   fahrseh", "", 761026681, 962675039, Spawn)
+	                elseif choice == 2 then
+	            	PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_garbled_gf_fab027b8.mp3", "Hach bahr neh jadh osh agh", "", 3272896968, 3465123316, Spawn)
+					   
+				    end				    
 				end
 			elseif race == DWARF then
 				if gender == MALE then
@@ -181,6 +191,14 @@ function Garbled(NPC, Spawn, Faction)
 ]]--	               	            
 	            end	
 				elseif gender == FEMALE then
+                	local choice = math.random(1,3)
+	                   if choice == 1 then
+	                    PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_2/ft/halfelf/halfelf_base_2_1_garbled_gf_84555678.mp3", "half is better than nothing", "", 1222734846, 1658567854, Spawn)
+                    	elseif choice == 2 then
+                		PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_2/ft/halfelf/halfelf_base_2_1_garbled_gf_c175ec10.mp3", "people call me a half elf im really a three quarter elf", "", 1655768806, 1430035197, Spawn)
+                    	elseif choice == 3 then
+                		PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_2/ft/halfelf/halfelf_base_2_1_garbled_gf_feb1d2e4.mp3", "i am a half helf and im rude", "", 1628841617, 2548194304, Spawn)
+				        end
 				end
 			elseif race == HALFLING then
 				if gender == MALE then
@@ -265,7 +283,31 @@ function Garbled(NPC, Spawn, Faction)
 				end
 			elseif race == RATONGA then
 				if gender == MALE then
+                	local choice = math.random(1,6)
+
+                	if choice == 1 then
+	            	PlayFlavor(NPC, "voiceover/english/optional3/ratonga_bloodsabers/ft/ratonga/ratonga_bloodsabers_2_garbled_gm_5a81ec49.mp3", "Hekveten plava SU klina", "", 3536439879, 1109691272, Spawn)
+                	elseif choice == 2 then
+            		PlayFlavor(NPC, "voiceover/english/optional3/ratonga_bloodsabers/ft/ratonga/ratonga_bloodsabers_2_garbled_gm_bc265d9b.mp3", "EeeSIP   qweek  MEEerallow  neep", "", 148555474, 1278831922, Spawn)
+                	elseif choice == 3 then
+            		PlayFlavor(NPC, "voiceover/english/optional3/ratonga_bloodsabers/ft/ratonga/ratonga_bloodsabers_2_garbled_gm_5c77ba46.mp3", "Chee   ava   kirAH   tay!", "", 1940215504, 447502824, Spawn)
+                	elseif choice == 4 then
+            		PlayFlavor(NPC, "voiceover/english/optional3/ratonga_bloodsabers/ft/ratonga/ratonga_bloodsabers_1_garbled_gm_5a81ec49.mp3", "Hekveten plava SU klina", "", 2175556278, 29227183, Spawn)
+                	elseif choice == 5 then
+	            	PlayFlavor(NPC, "voiceover/english/optional3/ratonga_bloodsabers/ft/ratonga/ratonga_bloodsabers_1_garbled_gm_5c77ba46.mp3", "Chee   ava   kirAH   tay!", "", 806743894, 496586204, Spawn)
+	                elseif choice == 6 then
+	            	PlayFlavor(NPC, "voiceover/english/optional3/ratonga_bloodsabers/ft/ratonga/ratonga_bloodsabers_1_garbled_gm_21432a6a.mp3", "TravaHAS merallund kBORrten illanya", "", 1269733907, 434806140, Spawn)
+		            end				    
 				elseif gender == FEMALE then
+	                local choice = math.random(1,2)
+                    if choice == 1 then
+		            PlayFlavor(NPC, "voiceover/english/ratonga_darkblades/ft/ratonga/ratonga_darkblades_1_garbled_gf_5a81ec49.mp3", "Hekveten plava SU klina", "", 4282746773, 1025120966, Spawn)
+                	elseif choice == 2 then
+            		PlayFlavor(NPC, "voiceover/english/ratonga_black_magi/ft/ratonga/ratonga_black_magi_1_garbled_gf_21432a6a.mp3", "EeeSIP   qweek  MEEerallow  neep", "", 3484386885, 1475086391, Spawn)
+                	elseif choice == 3 then
+            		PlayFlavor(NPC, "voiceover/english/ratonga_black_magi/ft/ratonga/ratonga_black_magi_1_garbled_gf_5a81ec49.mp3", "Chee   ava   kirAH   tay!", "", 3639926873, 1002267878, Spawn)
+                						
+					end    
 				end
 			elseif race == TROLL then
 				if gender == MALE then
