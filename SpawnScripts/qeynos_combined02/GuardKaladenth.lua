@@ -10,9 +10,9 @@ local Tolar = 0
 local GuardKaladenthRound = 0
 
 function spawn(NPC)
-    waypoints05(NPC, Spawn)
+    waypoints01(NPC, Spawn)
 end
---[[
+
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 end
@@ -30,7 +30,7 @@ function waypoints01(NPC, Spawn)
 	MoveToLocation(NPC, 551.11, -20.07, -278.67, 2)
 	MoveToLocation(NPC, 535.17, -20.19, -281.03, 2, "WalkTowardsTolar")
 end
-
+--[[
 function waypoints02(NPC, Spawn)
 	MoveToLocation(NPC, 532.86, -20.72, -295.55, 2)
 	MoveToLocation(NPC, 546.85, -21.18, -306.05, 2)
@@ -63,7 +63,7 @@ end
 function DelayBeforeWaypoints05(NPC, Spawn)
     AddTimer(NPC, MakeRandomInt(3000,10000), "waypoints05")
 end
---]]
+
 function waypoints05(NPC, Spawn)
     GuardKaladenthRound = 2
     
@@ -93,7 +93,7 @@ function waypoints07(NPC, Spawn)
 	MoveToLocation(NPC, 520.84, -20.7, -288.93, 2)
 end
 
-
+--]]
 
 
 function WalkTowardsTolar(NPC)
@@ -103,10 +103,11 @@ function WalkTowardsTolar(NPC)
 	    if Tolar ~= nil then 
             if GetSpawnLocationID(Tolar) == 133772661 then
     	        MoveToLocation(NPC, 520.53, -20.48, -284.46, 2)	    
+    	        AddTimer(NPC, 6500, "FaceGuardTolar")
     	    else
 	            MoveToLocation(NPC, 519.5, -20.75, -289.63, 2)
+	            AddTimer(NPC, 8000, "FaceGuardTolar")
             end
-            AddTimer(NPC, 8000, "FaceGuardTolar")
         else
 	        MoveToLocation(NPC, 519.5, -20.75, -289.63, 2) -- If Tolar is not up
         end
