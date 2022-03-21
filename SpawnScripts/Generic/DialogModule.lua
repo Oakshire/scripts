@@ -174,6 +174,16 @@ function Dialog.AddVoiceover(file, key1, key2)
 	dlg.VOKey2 = key2
 end
 
+--PLACEHOLDER - NON FUNCTIONAL FOR NOW
+--Sets a specific language to be used for this dialog
+function Dialog.AddLanguage(languageID)
+end
+
+--PLACEHOLDER - NON FUNCTIONAL FOR NOW
+--Marks this as a "Signature" dialog which changes the background/text color in game
+function Dialog.SetIsSignature(bSig)
+end
+
 -- Adds an emote to the last added dialog
 function Dialog.AddEmote(emote)
 	local dlg = Dialog.Dialog[#Dialog.Dialog]
