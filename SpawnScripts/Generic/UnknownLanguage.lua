@@ -56,13 +56,13 @@ function Garbled(NPC, Spawn, Faction)
 	                if choice == 1 then				
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_19afe4c1.mp3", "I wonder, do I owe you any coin?  I sure hope not!", "", 2899758174, 1767429074, Spawn,1)
 				    elseif choice ==2 then
-					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_645e1c12.mp3", "I dont like the look of your face! Off with you!", "", 4007621363, 2577915200, Spawn,1)
+					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_645e1c12.mp3", "Your face offends! Off with you!", "", 4007621363, 2577915200, Spawn,1)
     				elseif choice ==3 then
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_8d42a684.mp3", "Giving you the cold shoulder this way is great.", "", 3994584076, 1013655548, Spawn,1)
 	                elseif choice ==4 then
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gf_f8c9923f.mp3", "Try not to screw up my fist with your face.", "", 653161975, 3035939203, Spawn,1)
 	                elseif choice ==5 then
-                    PlayFlavor(NPC, "voiceover/english/barbarian/ft/barbarian/barbarian_eco_garble_garbled_gf_befe5c31.mp3", "you dont want to know what its like to wash three dozen kilts in a day", "", 1408939577, 3083827178, Spawn)
+                    PlayFlavor(NPC, "voiceover/english/barbarian/ft/barbarian/barbarian_eco_garble_garbled_gf_befe5c31.mp3", "Washing three dozen kilts is murder", "", 1408939577, 3083827178, Spawn)
 			  
 			         end
 				end
@@ -70,9 +70,9 @@ function Garbled(NPC, Spawn, Faction)
 				if gender == MALE then
 				local choice = math.random(1, 3)  
 	                if choice == 1 then				
-					PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_garbled_gm_8dd636c1.mp3", "Read a book. My power of the tongue is mighter than any of your weapons.", "", 983323899, 3112871522, Spawn,2)
+					PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_garbled_gm_8dd636c1.mp3", "Power of the tongue is mighter than any of your weapons.", "", 983323899, 3112871522, Spawn,2)
 				    elseif choice ==2 then
-					PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_garbled_gm_fab027b8.mp3","Your mind is far too small to comprehend my intellect.", "", 1055587810, 93253246, Spawn,2)
+					PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_garbled_gm_fab027b8.mp3","Small minds unable to comprehend my intellect.", "", 1055587810, 93253246, Spawn,2)
     				elseif choice ==3 then
 					PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_garbled_gm_810a3ce3.mp3", "Senseless is what you are. Staring at me this way.", "", 1130393437, 2011449714, Spawn,2)
 	               	end					    
@@ -97,9 +97,9 @@ function Garbled(NPC, Spawn, Faction)
         			elseif choice ==4 then
 					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gm_6f177dfe.mp3", "Try not to screw up my fist with your face.", "", 355102266, 2393608111, Spawn,3)
         			elseif choice ==5 then
-					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gm_a1fa2fc8.mp3", "Could really go for a tall pint... and you dont have one.", "", 133865330, 3138674565, Spawn,3)
+					PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_garbled_gm_a1fa2fc8.mp3", "Could really go for a tall pint.", "", 133865330, 3138674565, Spawn,3)
         			elseif choice ==6 then
-					PlayFlavor(NPC, "voiceover/english/dwarf_qeynos_agitators/ft/dwarf/dwarf_qeynos_agitators_1_garbled_gm_b129f218.mp3", "Let me clear my throat and see if you can understand.", "", 1491391518, 212658016, Spawn,3)
+					PlayFlavor(NPC, "voiceover/english/dwarf_qeynos_agitators/ft/dwarf/dwarf_qeynos_agitators_1_garbled_gm_b129f218.mp3", "Let me clear my throat so you can understand.", "", 1491391518, 212658016, Spawn,3)
                     end				    
 				elseif gender == FEMALE then
 					local choice = math.random(1, 4)  
@@ -117,7 +117,7 @@ function Garbled(NPC, Spawn, Faction)
 				if gender == MALE then
 					local choice = math.random(1, 3)  
 	                if choice == 1 then				
-					PlayFlavor(NPC, "voiceover/english/erudite/ft/erudite/erudite_eco_garble_garbled_gm_7ea96683.mp3", "Read a book. My power of the tongue is mighter than any of your weapons.", "", 1242543565, 322796390, Spawn,4)
+					PlayFlavor(NPC, "voiceover/english/erudite/ft/erudite/erudite_eco_garble_garbled_gm_7ea96683.mp3", "Power of the tongue is mighter than any of your weapons.", "", 1242543565, 322796390, Spawn,4)
 				    elseif choice ==2 then
 					PlayFlavor(NPC, "voiceover/english/erudite/ft/erudite/erudite_eco_garble_garbled_gm_db22bac2.mp3","Your mind is far too small to comprehend my intellect.", "nod", 1934819035, 1442456634, Spawn,4)
     				elseif choice ==3 then
@@ -126,22 +126,22 @@ function Garbled(NPC, Spawn, Faction)
 				elseif gender == FEMALE then
 					local choice = math.random(1, 1)  
 	                if choice == 1 then				
-					PlayFlavor(NPC, "voiceover/english/erudite_base_1/ft/erudite/erudite_base_1_1_garbled_gf_20ee9ec8.mp3", "Read a book. My power of the tongue is mighter than any of your weapons.", "", 1414494311, 909104232, Spawn,4)
+					PlayFlavor(NPC, "voiceover/english/erudite_base_1/ft/erudite/erudite_base_1_1_garbled_gf_20ee9ec8.mp3", "Power of the tongue is mighter than any of your weapons.", "", 1414494311, 909104232, Spawn,4)
 				    elseif choice ==2 then
-					PlayFlavor(NPC, "voiceover/english/erudite_base_1/ft/erudite/erudite_base_1_1_garbled_gf_8c788b45.mp3","Your mind is far too small to comprehend my intellect.", "nod", 159075636, 2590624879, Spawn,4)
+					PlayFlavor(NPC, "voiceover/english/erudite_base_1/ft/erudite/erudite_base_1_1_garbled_gf_8c788b45.mp3","Small minded fool. Read more books!", "nod", 159075636, 2590624879, Spawn,4)
 					end				    
 				end
 			elseif race == FROGLOK then
 				if gender == MALE then
 					local choice = math.random(1, 4)  				    
                     if choice == 1 then
-                    PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_313c0376.mp3", "Valor of Marr is more than an attitude. Its a lifestyle.", "", 1459589175, 20349875, Spawn, 5)
+                    PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_313c0376.mp3", "Valor of Marr is more than an attitude.", "", 1459589175, 20349875, Spawn, 5)
     	            elseif choice == 2 then
-		            PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_d88025cf.mp3", "Have you any flies in your pocket? Starving has my stomach been of late.", "", 2553064065, 3197021914, Spawn, 5)
+		            PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_d88025cf.mp3", "Have you any flies in your pocket?", "", 2553064065, 3197021914, Spawn, 5)
     				elseif choice == 3 then
-					PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_d8caf6d7.mp3", "Excuse me. Bounding is my means of getting about this place.", "", 2816022720, 105938521, Spawn,5)
+					PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_d8caf6d7.mp3", "Bounding is my means of getting about this place.", "", 2816022720, 105938521, Spawn,5)
     	            elseif choice == 4 then
-		            PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_e15e6e2.mp3", "We are not murlocks. We are frogloks! Speakth not of our relatives.", "", 3107143047, 4119333315, Spawn, 5)
+		            PlayFlavor(NPC, "voiceover/english/froglok/ft/froglok/froglok_eco_garble_garbled_gm_e15e6e2.mp3", "We are not murlocks. We are frogloks!", "", 3107143047, 4119333315, Spawn, 5)
     			    end                				    
 				elseif gender == FEMALE then
 				end
@@ -149,22 +149,22 @@ function Garbled(NPC, Spawn, Faction)
 				if gender == MALE then
 					local choice = math.random(1, 5)  
 	                if choice == 1 then				
-					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_4209685a.mp3", "Never fear! I will not punt you regardless of what you do to me.", "", 754274427, 2826976580, Spawn,6)
+					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_4209685a.mp3", "Punting will not happen today.", "", 754274427, 2826976580, Spawn,6)
 				    elseif choice ==2 then
-					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_8be4cc54.mp3", "Dont move! My sprockets just fell from my pocket!", "", 3538910205, 3203956650, Spawn,6)
+					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_8be4cc54.mp3", "My sprockets just fell from my pocket!", "", 3538910205, 3203956650, Spawn,6)
     				elseif choice ==3 then
 					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_dbff9c5a.mp3", "Gnomekind deserves all the praise for their innovation.", "", 2680872805, 2962768580, Spawn,6)
 	                elseif choice ==4 then
-					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_e05cbaf3.mp3", "Have you any spare foozlebits? Im one away from a fwinger.", "", 1818849573, 715200280, Spawn,6)
+					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_e05cbaf3.mp3", "Foozlebits and fwingers. Gimmy!", "", 1818849573, 715200280, Spawn,6)
 			   	    elseif choice ==5 then
-					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "Have you any spare foozlebits? Im one away from a fwinger.", "", 2230728991, 3389119515, Spawn,6)
+					PlayFlavor(NPC, "voiceover/english/gnome/ft/gnome/gnome_eco_garble_garbled_gm_cd85a24f.mp3", "Have you any spare foozlebits?.", "", 2230728991, 3389119515, Spawn,6)
 			        end  				    
 				elseif gender == FEMALE then
 					local choice = math.random(1, 2)  
 	                if choice == 1 then				
-					PlayFlavor(NPC, "voiceover/english/gnome_sewer_rats/ft/gnome/gnome_sewer_rats_1_garbled_gf_9833761f.mp3", "Never fear! I will not punt you regardless of what you do to me.", "", 3347501993, 118609776, Spawn,6)
+					PlayFlavor(NPC, "voiceover/english/gnome_sewer_rats/ft/gnome/gnome_sewer_rats_1_garbled_gf_9833761f.mp3", "Never fear! Inventions will provide.", "", 3347501993, 118609776, Spawn,6)
 				    elseif choice ==2 then
-					PlayFlavor(NPC, "voiceover/english/gnome_sewer_rats/ft/gnome/gnome_sewer_rats_1_victory_gm_3f8221f0.mp3", "Dont move! My sprockets just fell from my pocket!", "", 2760547670, 4241194541, Spawn,6)
+					PlayFlavor(NPC, "voiceover/english/gnome_sewer_rats/ft/gnome/gnome_sewer_rats_1_victory_gm_3f8221f0.mp3", "My sprockets just fell from my pocket!", "", 2760547670, 4241194541, Spawn,6)
     			    end				    
 				end
 			elseif race == HALF_ELF then
@@ -318,6 +318,11 @@ function Garbled(NPC, Spawn, Faction)
 		            PlayFlavor(NPC, "voiceover/english/troll/ft/troll/troll_eco_garble_garbled_gm_a1a1512f.mp3", "Yekeshan lifestyle requires constant grooming of your earholes.", "", 2161634002, 3014201694, Spawn, 15)
     	           	elseif choice == 3 then
 		            PlayFlavor(NPC, "voiceover/english/troll/ft/troll/troll_eco_garble_garbled_gm_c4c81df1.mp3", "Never argue with someone that has nails in their head.", "", 3890142976, 1854948933, Spawn, 15)
+	                elseif choice == 4 then
+		            PlayFlavor(NPC, "voiceover/english/troll/ft/troll/troll_eco_garble_garbled_gm_43bed989.mp3", "Tasty meats make tasty treats!", "", 2701453259, 3347954170, Spawn, 15)
+    	           	elseif choice == 5 then
+		            PlayFlavor(NPC, "voiceover/english/troll/ft/troll/troll_eco_garble_garbled_gm_318f674b.mp3", "Really need to improve my vocabulary.", "", 2846330309, 4155347396, Spawn, 15)
+	                        
 	            end				    
 				elseif gender == FEMALE then
 				end
