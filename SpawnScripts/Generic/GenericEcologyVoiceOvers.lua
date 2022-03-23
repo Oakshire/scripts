@@ -4,8 +4,9 @@
     Script Date    : 2022.03.12 04:03:04
     Script Purpose : For City Based/Race Based Voiceover Callouts - Improves Zone ecology/atmosphere. File facilitates ALL generic hails/callouts if they exist. 
                Note: VERIFY YOUR DESIRED RACE/GENDER/FACTION HAS VOs (We are missing many here)
-          
-          Reference: dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+                     THIS FILE IS A LIBRARY OF ALL KNOWN ECOLOGY VOICEOVERS  
+                     
+        Reference: dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
          Functions: GenericEcologyHail(NPC, Spawn, faction)         for basic hails  
                     GenericEcologyCallout(NPC, Spawn, faction)      basic hails for nearby players  
@@ -48,12 +49,12 @@ local FEMALE = 2
 local TimeCheck = false                                                       -- used to delay between hail uses
 local CalloutTimeCheck = false                                                -- used to delay between callout uses
 local FactionCalloutTimeCheck = false                                         -- used to delay between non-citizen callout uses
-
+--[[
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
+    FaceTarget(NPC, Spawn)                                                    --MUTED HAIL SINCE THIS FILE IS MEANT TO BE A LIBRARY, NOT A DIRECT FILE CONNECTION TO A SPAWN
     GenericEcologyHail(NPC, Spawn, faction)
 end
-
+--]]
 function ResetTimer(NPC)                                                      -- resets hail timer afer initial use
    TimeCheck = false 
 end
@@ -99,25 +100,25 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	end
 	
 	if TimeCheck == false then                                              -- checks timer
-	TimeCheck = true                                                        -- sets timer
+	TimeCheck = true                                                        -- turns on timer to stop player spamming
 	AddTimer(NPC,2500,"ResetTimer")                                         -- starts reset clock
-	if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verify's NPC race/gender
+	if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verifies NPC race/gender fits expected
 
 		if race == BARBARIAN then                                           -- begins NPC race check
 			if gender == MALE then                                          -- begins NPC gender check
 			    if EVIL then                                                -- begins NPC faction/location check
-			    elseif GOOD then                                        --SEE SPAWN RACE HAIL FOR MALE BARBARIAN & 2Hail FOR EVIL
+			    elseif GOOD then                                        --SEE GenericRaceCheckHail FOR MALE BARBARIAN & GenericEcology2Hail FOR EVIL
 				end   
 			elseif gender == FEMALE then                                
 			    if GOOD then                                                
-			        if Qfaction <0 then
+			        if Qfaction <0 then                                     -- checks if player is a citizen
 			            local choice = math.random(1,2)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
-				    else
+				    else                                                    -- player is citizen and is hailed
 				    local choice = math.random(1,11)
 				    if choice == 1 then
 				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_aoi_gf_2e85d8db.mp3", "Good day, love.  Enjoy yourself, ya hear?", "hello", 3358539218, 1293822221, Spawn)
@@ -374,7 +375,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			    	if FPfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "cutthroat", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "shame", 0, 0, Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
@@ -556,7 +557,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 				    if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "threaten", 0, 0, Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
 				        end
@@ -1776,7 +1777,7 @@ function GenericEcology2Hail(NPC, Spawn, faction)
 			if gender == MALE then
 			    if EVIL then
 				elseif GOOD then
-			end	
+			    end	
 			elseif gender == FEMALE then
 			    if EVIL then
 			    	if FPfaction <0 then
@@ -1787,7 +1788,7 @@ function GenericEcology2Hail(NPC, Spawn, faction)
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)				        
 				        end
 				    else  			        
-	                local choice = math.random(1,11)
+	                local choice = math.random(1,12)
 	                    if choice == 1 then
 	                   	PlayFlavor(NPC, "voiceover/english/optional2/human_eco_evil_2/ft/human/human_eco_evil_2_aoi_gf_603e4394.mp3", "Was it just me, or did I hear something jingling in your coin purse?", "listen", 2502377022, 3322258847, Spawn)
 	                    elseif choice == 2 then
@@ -1810,14 +1811,16 @@ function GenericEcology2Hail(NPC, Spawn, faction)
 	                   	PlayFlavor(NPC, "voiceover/english/optional2/human_eco_evil_2/ft/human/human_eco_evil_2_aoi_gf_5dbd05d1.mp3", "Does anyone in this city bathe?", "stinky", 3778681255, 1495535273, Spawn)
                     	elseif choice == 11 then
 	                   	PlayFlavor(NPC, "voiceover/english/optional2/human_eco_evil_2/ft/human/human_eco_evil_2_hail_gf_d2844e25.mp3", "You can avoid trouble around here as long as you don't make eye contact with anyone.", "stare", 1255908565, 2073931972, Spawn)
-	                    	                    
+	                	elseif choice == 12 then
+	                   	PlayFlavor(NPC, "voiceover/english/optional2/human_eco_evil_2/ft/human/human_eco_evil_2_hail_gf_2a5ed43.mp3", "Only the strong survive around here.  Nice knowing you!", "bye", 2636161808, 2711680191, Spawn)
+	                                 	                    
 	                    end
 	                 end   
  
 				elseif GOOD then
                 end
             end
-		end
+		
 		elseif race == IKSAR then
 			if gender == MALE then
 		    elseif gender == FEMALE then
@@ -1883,8 +1886,29 @@ function GenericEcology2Hail(NPC, Spawn, faction)
                         end	
                     end  
 				elseif GOOD then
+			    	if Qfaction <0 then
+			            local choice = math.random(1,2)
+				        if choice == 1 then
+				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+				        elseif choice == 2 then
+				        PlayFlavor(NPC, "", "", "squeal", 0, 0, Spawn)
+				        end
+				    else  			        
+                	local choice = math.random(1,7)
+
+                    	if choice == 1 then
+                    	PlayFlavor(NPC, "voiceover/english/optional2/kerran_eco_good_2/ft/kerran/kerran_eco_good_2_hail_gf_b155e999.mp3", "You won't see me near any of those fountains!", "heckno", 1123179326, 271243686, Spawn)
+                    	elseif choice == 2 then
+                    	PlayFlavor(NPC, "voiceover/english/optional2/kerran_eco_good_2/ft/kerran/kerran_eco_good_2_hail_gf_eabd8556.mp3", "I heard the ratonga play for fun!", "giggle", 1138200584, 1711242450, Spawn)
+                    	elseif choice == 3 then
+                    	PlayFlavor(NPC, "voiceover/english/optional2/kerran_eco_good_2/ft/kerran/kerran_eco_good_2_hail_gf_28445ab7.mp3", "I don't spend as much time grooming as the others say I do.", "sigh", 1571714850, 824504933, Spawn)
+                    	elseif choice == 4 then
+                    	PlayFlavor(NPC, "voiceover/english/optional2/kerran_eco_good_2/ft/kerran/kerran_eco_good_2_hail_gf_4424ae28.mp3", "How sweet my tom is to leave such a gift at my door step.", "happy", 2235953436, 2446050201, Spawn)
+                    	elseif choice == 5 then
+                    	PlayFlavor(NPC, "voiceover/english/optional2/kerran_eco_good_2/ft/kerran/kerran_eco_good_2_hail_gf_63881722.mp3", "I'm trying to find a new seasoning for my dried fish.", "ponder", 3322224010, 1564701262, Spawn)
+                    end					    
 		        end
-		
+		    end
 		elseif race == OGRE then
 			    if gender == MALE then
 			    elseif gender == FEMALE then
@@ -1922,11 +1946,26 @@ function GenericEcology2Hail(NPC, Spawn, faction)
 			
 		elseif race == RATONGA then
 		        if gender == MALE then
+	    	    if FPfaction <0 then
+			            local choice = math.random(1,2)
+				        if choice == 1 then
+				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+				        elseif choice == 2 then
+				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        end
+				    else  			    
+                	local choice = math.random(1,9)
+                        if choice == 1 then
+                    	PlayFlavor(NPC, "voiceover/english/optional2/ratonga_eco_evil_2/ft/ratonga/ratonga_eco_evil_2_hail_gm_6983d4f4.mp3", "Do you ever get the feeling someone's watching you?", "doubletake", 1443012999, 225264564, Spawn)
+                        elseif choice == 2 then
+                    	PlayFlavor(NPC, "voiceover/english/optional2/ratonga_eco_evil_2/ft/ratonga/ratonga_eco_evil_2_aoi_gm_77ec588f.mp3", "Shutup!  And tell me what the other idiot is doing!", "swear", 1839404420, 417472111, Spawn)
+                        elseif choice == 3 then
+                		PlayFlavor(NPC, "voiceover/english/optional2/ratonga_eco_evil_2/ft/ratonga/ratonga_eco_evil_2_aoi_gm_a07a0e21.mp3", "Well, why didn't you say so!  That changes everything.", "doh", 392770009, 1670445170, Spawn)
+                        end
+                    end
 	            elseif gender == FEMALE then
 	    	    end
-
-		
-		
+            
 		elseif race == TROLL then
 			    if gender == MALE then
 			    	if FPfaction <0 then
@@ -1983,11 +2022,11 @@ function GenericEcology2Hail(NPC, Spawn, faction)
 
 -------------------------------------------------------------------------------------------
 
---                                  GenericSpawnRaceHail
+--                                  GenericRaceCheckHail
 
 -------------------------------------------------------------------------------------------
 
-function GenericSpawnRaceHail(NPC, Spawn, faction)
+function GenericRaceCheckHail(NPC, Spawn, faction)
     race = GetRace(NPC)
     spawnRace = GetRace(Spawn)
 	gender = GetGender(NPC)
@@ -2024,8 +2063,9 @@ function GenericSpawnRaceHail(NPC, Spawn, faction)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end			        
+				        PlayFlavor(NPC, "", "", "stare", 0, 0, Spawn)
+				        end
+				    else    
 				    local choice = math.random(1,3)                         -- player passes faction check, procedes to dialogue
                         if choice == 1 then	
 		                PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_evil/ft/eco/evil/barbarian_eco_race_evil_hail_gm_431b37d1.mp3", "Watch yerself, this city can be rough.", "wink", 1560541305, 226492698, Spawn)
@@ -2061,7 +2101,10 @@ function GenericSpawnRaceHail(NPC, Spawn, faction)
 				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end			        
+				        end			  
+				    if Qfaction>= 40000 then
+				    local choice = math.random(1,5)
+				    else
 			    	local choice = math.random(1,3)
 	                    if choice == 1 then --racial check
 	                        if spawnRace == BARBARIAN then
@@ -2112,315 +2155,205 @@ function GenericSpawnRaceHail(NPC, Spawn, faction)
                         PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_d571c130.mp3", "I'm not used to this weather, but my people can adapt to any change in order to survive.", "no", 3421348121, 1004876500, Spawn)
                         elseif choice == 3 then	
                         PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_hail_gm_5a6b643f.mp3", "Treasures from the past can be found throughout the lands for those who care to look.", "nod", 3614931515, 1601871948, Spawn)
-				        end
+                        elseif choice == 4 then	
+                        PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_status_gm_7eecc9cb.mp3", "I can only hope my young cubs would grow to have some measure of your bravery.", "cheer", 168452918, 1251241094, Spawn)
+                        end                        				    
 				    end 
-				 end   
+			    end 
+			 end
 			elseif gender == FEMALE then
 			    if GOOD then
-			        if Qfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
-				    else
-				    local choice = math.random(1,11)
-				    if choice == 1 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_aoi_gf_2e85d8db.mp3", "Good day, love.  Enjoy yourself, ya hear?", "hello", 3358539218, 1293822221, Spawn)
-				    elseif choice == 2 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_aoi_gf_9fd46bc0.mp3", "You enjoying this weather?  I sure hope so!", "sniff", 4073398098, 738882758, Spawn)
-				    elseif choice == 3 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_2a467de4.mp3", "I fear no man or beast!", "flex", 2128441275, 1043815687, Spawn)
-				    elseif choice == 4 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_2dfeaa0a.mp3", "Many times I face death with no one to know.", "shrug", 2744180681, 630277713, Spawn)
-				    elseif choice == 5 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_65c7cb8c.mp3", "There is always a way, if desire is coupled with courage.", "nod", 1919974860, 3511707276, Spawn)
-				    elseif choice == 6 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_294af22b.mp3", "Breath that free air.  Its all the sweeter when you've earned it.", "sniff", 224238865, 4224982307, Spawn)
-				    elseif choice == 7 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_a3621b3b.mp3", "An ale a day keeps the blues away.", "smile", 3906908244, 1910427566, Spawn)
-				    elseif choice == 8 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_f6a79cd4.mp3", "Helping others keeps the soul pure.", "nod", 795123123, 1574455490, Spawn)
-				    elseif choice == 9 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_ec4612.mp3", "Always be vigil.  You never know when evil will strike!", "threaten", 1096415868, 4151719434, Spawn)
-				    elseif choice == 10 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_fad03256.mp3", "I'm as nervious as a karren in a room full of rocking chairs!", "squeal", 4225695611, 2945190068, Spawn)
-				    elseif choice == 11 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_hail_gf_28155374.mp3", "I'm not into politics.  I'm into survival!", "no", 4282239803, 2774251573, Spawn)
-				    end
-				end
+			       
 			    elseif EVIL then
-			    	if FPfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
-				    else    
-				    local choice = math.random(1,7)				    
-				    if choice == 1 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_evil_1/ft/barbarian/barbarian_eco_evil_1_hail_gf_56e1abc5.mp3", "Don't worry, the last time I killed someone was a few months ago.  I've almost forgotten how its done.", "nod", 4284816178, 1371321884, Spawn)
-				    elseif choice == 2 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_evil_1/ft/barbarian/barbarian_eco_evil_1_hail_gf_6b05425a.mp3", "Don't try to make a lady out of me, and I won't try to make a lady out of you!", "hello", 3198450351, 218140189, Spawn)
-				    elseif choice == 3 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_evil_1/ft/barbarian/barbarian_eco_evil_1_hail_gf_7c898040.mp3", "If I wanted to speak with riffraff like you, you'd know it!", "glare", 655386949, 2487090829, Spawn)
-				    elseif choice == 4 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_evil_1/ft/barbarian/barbarian_eco_evil_1_hail_gf_7cbbffe9.mp3", "I wonder how fast you can run with one leg?", "threaten", 466422573, 1844554045, Spawn)
-				    elseif choice == 5 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_evil_1/ft/barbarian/barbarian_eco_evil_1_hail_gf_7d00f821.mp3", "All those rumors about the people I decapitated are false.  Trust me, I've decapitated many more by my count.", "cutthroat", 3428354992, 3197307307, Spawn)
-				    elseif choice == 6 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_evil_1/ft/barbarian/barbarian_eco_evil_1_hail_gf_af792eb2.mp3", "Did you just speak to me?  You're braver than most.", "boggle", 2586690724, 2745188740, Spawn)
-				    elseif choice == 7 then
-				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_evil_1/ft/barbarian/barbarian_eco_evil_1_hail_gf_c76c11b.mp3", "No, I didn't say you could look at me or talk to me for that matter.", "no", 1570018463, 964886476, Spawn)
-				    end
 	    	    end
 		    end
-		end    
+		    
 		
 		
 		elseif race == DARK_ELF then
-			if gender == MALE then
-			    	if FPfaction <0 then
+                if gender == MALE then			    	
+			    	if FPfaction <0 then                                  
 			            local choice = math.random(1,2)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
-				    else    
-			    local choice = math.random(1,6)
-	               if choice == 1 then
-		           PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_10f790b8.mp3", "I refuse to be told what to do by simple-minded buffoons!", "no", 2790459232, 1613438336, Spawn)
-	               elseif choice == 2 then
-		           PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_aoi_gm_23e14704.mp3", "Show your enemies the mercy they deserve: none.", "cutthroat", 2402174307, 2763960224, Spawn)
-	               elseif choice == 3 then
-		           PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_beeaa42c.mp3", "I would never raise a hand to one below my station.  That's what servants are for.", "wink", 3973342937, 4016890574, Spawn)
-	               elseif choice == 4 then
-	               PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_ad69e774.mp3", "I despise low-born scum such as you.  Leave me be.", "bye", 917481981, 3977919007, Spawn)
-	               elseif choice == 5 then
-	               PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_dbd2dbd4.mp3", "Once there was a time when we Teir'Dal were the true masters of Norrath.", "shakefist", 1359499264, 3477163471, Spawn)
-	               elseif choice == 6 then
-	               PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_ca32ae36.mp3", "I'm sorry.  I haven't any coins for beggers and vagabonds.", "chuckle", 2407101866, 844577329, Spawn)
-	               elseif choice == 7 then
-		           PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_aoi_gm_308706a0.mp3", "Avert your eyes as I pass, commoner.", "stare", 1301519959, 1375374312, Spawn)
-	               elseif choice == 8 then
-		           PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_4b8a95bb.mp3", "Things would be much different around here if the Tier'Dal were in power.", "threaten", 3258431623, 3729254237, Spawn)
-	               elseif choice == 9 then
-		           PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_6d109e97.mp3", "Why do you insist fouling the air with your presence?", "stinky", 2438932566, 2309988451, Spawn)
-	               elseif choice == 10 then
-		           PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gm_331c223b.mp3", "Pardon me, but you have mistaken me for someone who cares.", "glare", 385905158, 3095457959, Spawn)
-	              		              		              	              		         
-		          end
-	            end
-
-		elseif gender == FEMALE then
-			    	if FPfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "shame", 0, 0, Spawn)
 				        end
 				    else
-	           local choice = math.random(1,5)
-
-	                if choice == 1 then
-                    PlayFlavor(NPC, "voiceover/english/optional2/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_aoi_gf_e557f427.mp3", "Anyone who dares to disagree with me will feel the taste of my steel.", "threaten", 1814321919, 1558985390, Spawn)
-                	elseif choice == 2 then
-                	PlayFlavor(NPC, "voiceover/english/optional2/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gf_8a6fa526.mp3", "Who do those Iksar think they are?  There will be a reckoning one day, I swear.", "shakefist", 604625870, 159976278, Spawn)
-                	elseif choice == 3 then
-                	PlayFlavor(NPC, "voiceover/english/optional2/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_hail_gf_269d3910.mp3", "How dare you speak to me as if I was nothing more than a dirty troll!", "glare", 708249483, 3464421673, Spawn)
-                	elseif choice == 4 then
-                	PlayFlavor(NPC, "voiceover/english/optional2/darkelf_eco_evil_1/ft/darkelf/darkelf_eco_evil_1_aoi_gf_eb029bed.mp3", "I am sickened by the lack of amenities within this city.", "flustered", 2205842657, 1362436730, Spawn)
-                    end
-	                end
-			    end
+                    if FPfaction>=40000 then
+                    local choice = math.random(1,5)
+                    else
+				    local choice = math.random(1,3)                         
+                        if choice == 1 then	
+		                PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_hail_gm_eb5fa2b6.mp3", "One day, our lot will improve here!", "nod", 1462094560, 868024293, Spawn)
+		                elseif choice == 2 then	
+                        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_hail_gm_8656f5c7.mp3", "Its a fine day for evil to flourish!", "scheme", 2232955380, 3080497078, Spawn)
+                        elseif choice == 3 then				        
+				            if spawnRace == BARBARIAN then
+                            PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_barbarian_gm_46b8ab28.mp3", "Get away from me, brute!", "threaten", 1806259132, 4035381096, Spawn)
+                            elseif spawnRace == DARK_ELF then
+                         	    local check = math.random(1,2)
+                                if check == 1 then	
+                                PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_darkelf_gm_2fb22326.mp3", "We'll rise again, and then nothing can stop us.", "agree", 1301346574, 4276784701, Spawn)
+                                elseif check == 2 then	
+                                PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_darkelf_gm_54a02968.mp3", "What a foul dirty place this is compared to Neriak!", "stinky", 3252919562, 342739868, Spawn)
+                                end                           
+                            elseif spawnRace == ERUDITE then
+					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_erudite_gm_592ca86a.mp3", "Where has all of your vaunted intelligence gotten you?", "chuckle", 2330017595, 3612340219, Spawn)
+                            elseif spawnRace == GNOME then
+					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_gnome_gm_8081d786.mp3", "I've no use for a toy soldier.", "no", 2452036802, 1703948999, Spawn)
+                            elseif spawnRace == HALFELF then
+					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_halfelf_gm_8677807d.mp3", "Half perfect, half diseased.  Still disgusting!", "sniff", 512466716, 4175253448, Spawn)
+                            elseif spawnRace == HUMAN then
+					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_human_gm_3694a5ae.mp3", "Were your overlord not around, we Tier'Dal would have crushed Freeport.", "sarcasm", 3436507932, 1702035959, Spawn)
+                            elseif spawnRace == IKSAR then
+					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_iksar_gm_4bb5d364.mp3", "Back off scaley!  No antcient civilization saves you from the same fate I share!", "boggle", 3246025874, 2970292992, Spawn)
+                            elseif spawnRace == OGRE then
+					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_ogre_gm_8cf93c6a.mp3", "The Greenmist missed a few spots.  Its a shame the gods were too weak to finish what they started.", "shrug", 181661249, 784055085, Spawn)
+                            elseif spawnRace == RATONGA then
+	                    	PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_ratonga_gm_ac7f4092.mp3", "A talking rat?  Ugh, go play with a kerra.", "confused", 396338587, 547395314, Spawn)
+                            elseif spawnRace == TROLL then
+	                    	PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_troll_gm_95179ecf.mp3", "Its a shame the Thexian rulers were weak and allowed you trolls to live in Neriak.", "ponder", 2126071785, 4235896141, Spawn)
+                            else
+                           	    local check = math.random(1,2)
+                                if check == 1 then	
+                                PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_hail_gm_eb5fa2b6.mp3", "One day, our lot will improve here!", "nod", 1462094560, 868024293, Spawn)
+		                        elseif choice == 2 then	
+                                PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_hail_gm_8656f5c7.mp3", "Its a fine day for evil to flourish!", "scheme", 2232955380, 3080497078, Spawn)
+                                end
+				            end
+		                elseif choice == 4 then	
+                        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_status_gm_3139de2e.mp3", "Innoruk's blood you're powerful!", "boggle", 4048173225, 4136711044, Spawn)
+		                elseif choice == 5 then	
+                        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_status_gm_b86ec55f.mp3", "You'll do nicely when we make our play!", "agree", 234032343, 1835792122, Spawn)
+                          				            
+				        end
+			        end
+			    end 
+		elseif gender == FEMALE then
+	    end
 
 
 		elseif race == DWARF then
 			if gender == MALE then
-			        if Qfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
-				    else			    
-			    local choice = math.random(1,9)
-			        if choice == 1 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_aoi_gm_b4ff8ace.mp3", "I'm itch'n for a good fight!  Are those goblins back yet?", "shakefist", 478033729, 3488014331, Spawn)
-			        elseif choice == 2 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_18f9b118.mp3", "Oh, ho!  You snuck up on me.  Good to see ya.", "doubletake", 2049370386, 4131204607, Spawn)
-				    elseif choice == 3 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_1f07ffb4.mp3", "Its good to always have a sharp axe and a full belly!", "wink", 2265630972, 3685791755, Spawn)
-                    elseif choice == 4 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_4a5e53d4.mp3", "Sure. I'm sure sometimes it seems like I'm sober, but trust me, I'm not.", "no", 2723897486, 2019496108, Spawn)
-			        elseif choice == 5 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_82c80dc0.mp3", "I've got a good mind to go in the tavern and never come out.", "nod", 927450741, 2295220361, Spawn)
-				    elseif choice == 6 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_8e3bb3e0.mp3", "I've seen it all!  Now I just want to relax in the comfort of the city.", "orate", 1484754695, 1754363723, Spawn)
-                    elseif choice == 7 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_f593b7f4.mp3", "I prefer the dark freshly dug tunnels underground, but I guess this city will do.", "shrug", 2336463438, 545977097, Spawn)
-                    elseif choice == 8 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_5f40e3c4.mp3", "How can you refuse a woman with ale and whiskers?", "confused", 3537795037, 2047005583, Spawn)
-			        elseif choice == 9 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gm_bd8ccf81.mp3", "Ale may be the life's blood, but fighting is the soul my existence!", "nod", 4220338619, 1417901850, Spawn)
-				    end
-				end    
 		    elseif gender == FEMALE then
 		    			if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "scold", 0, 0, Spawn)
 				        end
 				    else
-			    local choice = math.random(1,10)
+			    local choice = math.random(1,3)
 			        if choice == 1 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_aoi_gf_5475f635.mp3", "If you haven't done ten times your weight in dirt, you haven't done a lick of work.", "no", 221273044, 4217910335, Spawn)
+				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_bce06b4a.mp3", "A long day of adventure'n makes one long for home, don't it?", "smile", 2210732036, 3144200859, Spawn)
 			        elseif choice == 2 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_aoi_gf_5615016.mp3", "Where are ya goin?  It's impolite to go off and fight without invite'n me!", "ponder", 115051805, 1662538455, Spawn)
+				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_c221a26e.mp3", "Ah, what I wouldn't give to be cradle'n a mug of good dwarven ale.", "ponder", 409704670, 4015848226, Spawn)
 				    elseif choice == 3 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_6bb475f8.mp3", "Oh, I love baked cakes.  Straight from the oven!", "chuckle", 857774146, 1935419474, Spawn)
-                    elseif choice == 4 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_a1f97cb0.mp3", "Only real dwarven men can handle a dwarven woman.", "nod", 2568025342, 2377695865, Spawn)
-			        elseif choice == 5 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_b02d9ccd.mp3", "Good friends and good food is all I ask.", "nod", 1880629444, 3748722817, Spawn)
-				    elseif choice == 6 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_dd68828f.mp3", "The city is nice, but it feels a bit chilly up here.", "shiver", 3508028135, 2362399902, Spawn)
-                    elseif choice == 7 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_147a85da.mp3", "I love a good adventure. 'Specially any that involve bake'n!  Pies are a real challenge!", "happy", 981410795, 126534529, Spawn)
-                    elseif choice == 8 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_14a2c689.mp3", "I only dream of short days and long nights in the tavern.", "nod", 3089133697, 1701815749, Spawn)
-			        elseif choice == 9 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_10269245.mp3", "Stout, hairy, and round! What more could you ask for in a man?", "woo", 941422359, 868281087, Spawn)
-	                elseif choice == 10 then
-				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/dwarf/dwarf_eco_good_1_hail_gf_13e943bf.mp3", "I still dream of the good ol' days.  Digging up gems and gold.", "ponder", 2352081128, 819343353, Spawn)
-                    end
+                            if spawnRace == HIGH_ELF then
+					        PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_good/ft/eco/good/barbarian_eco_race_good_highelf_gm_310c09cb.mp3", "Elves have been neighbors with us for so long and you still can't handle a couple of dwarven ales.  Don't give me your excuse for elven wine.  That's not real alchohol!", "scold", 2416513387, 2396192573, Spawn)
+                            end
+                        else
+			        local choice = math.random(1,2)
+			        if choice == 1 then
+				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_bce06b4a.mp3", "If you haven't done ten times your weight in dirt, you haven't done a lick of work.", "no", 2210732036, 3144200859, Spawn)
+			        elseif choice == 2 then
+				    PlayFlavor(NPC, "voiceover/english/dwarf_eco_race_good/ft/eco/good/dwarf_eco_race_good_hail_gf_c221a26e.mp3", "Where are ya goin?  It's impolite to go off and fight without invite'n me!", "ponder", 409704670, 4015848226, Spawn)
+				    end
 				end
 		    end
-	    	
+	    end	
 		
 	    elseif race== ERUDITE then
 			if gender == MALE then
 			    if EVIL then
-			    	if FPfaction <0 then
+			      	if FPfaction <0 then                                  
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "cutthroat", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
-				    else  			        
-	                local choice = math.random(1,11)
-	                    if choice == 1 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_aoi_gm_e90ac60e.mp3", "Looking at you makes me feel so much better about myself.", "snicker", 2865201602, 274049333, Spawn)
-                    	elseif choice == 2 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_d4015769.mp3", "Have you ever thought the purpose of your life is just to serve as a warning to others?  ", "point", 3095314028, 1070295625, Spawn)
-                    	elseif choice == 3 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_aoi_gm_f05af274.mp3", "Amazing!  It CAN actually walk and talk at the same time.", "stare", 1912497577, 4274560045, Spawn)
-                    	elseif choice == 4 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_d2856502.mp3", "The way you imitate someone who actually has a brain is quite impressive.", "applaude", 664526339, 2273636799, Spawn)
-                    	elseif choice == 5 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_30b068d9.mp3", "Idiots should speak only when spoken to.", "chuckle", 2652051067, 1412719109, Spawn)
-                    	elseif choice == 6 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_a059271d.mp3", "If at first you don't succeed, then you should finally accept the truth that you are a failure.", "scold", 3175955235, 2053347238, Spawn)
-                    	elseif choice == 7 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_2b280a78.mp3", "The mind is a terrible thing to waste.  Feeling guilty, are we?", "glare", 1190376151, 1209115227, Spawn)
-                    	elseif choice == 8 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_3fda1d89.mp3.mp3", "I can never understand why stupid people don't choke on their tongues.", "confused", 258155375, 1323085568, Spawn)
-                     	elseif choice == 9 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_8af5b859.mp3.mp3", "The disadvantage of being better than everyone else is that people assume you're pretentious.", "shrug", 3243127514, 1853886391, Spawn)
-                      	elseif choice == 10 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_bb83989b.mp3.mp3", "I do not speak with animals.  Please try to understand.", "no", 1164489214, 2167310923, Spawn)
-                      	elseif choice == 11 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_e7bd0c59.mp3.mp3", "Count yourself lucky that the Overlord has not yet outlawed stupidity.  Therefore, you're free to go!", "nod", 1164489214, 2167310923, Spawn)
-                    	end
-                   end 	
---[[            	local choice = math.random(1,4)
-
-	                    if choice == 1 then
-	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_ratonga_gm_4d3aaca.mp3", "One day, I may have use for your services, sneaky.", "nod", 1373077305, 3004061362, Spawn)
-	                    elseif choice == 2 then
-	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gm_43bd22f2.mp3", "Greetings.  One day I hope everyone bows before my intellect.", "hello", 3316681960, 3617003101, Spawn)
-	                    elseif choice == 3 then
-	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gm_9bc2cf77.mp3", "My time is too valuable to be spent chatting.", "bye", 788162420, 1166698384, Spawn)
-	                    elseif choice == 4 then
-	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_iksar_gm_2cdba125.mp3", "It's a shame Cabalis isn't around, it would have made an interesting study.", "sigh", 3903013371, 226829195, Spawn)
-                    	end]]--		                    	
-                    	
-				elseif GOOD then
-				    if Qfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "cutthroat", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "shame", 0, 0, Spawn)
 				        end
 				    else
-                	local choice = math.random(1,10)
-
-                    	if choice == 1 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_681bd632.mp3", "As with all conflict, the correct resolution is to not become involved.", "no", 1961295370, 3396676212, Spawn)
-                    	elseif choice == 2 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_f2332236.mp3", "It is easy to disperse hateful attitudes with an act of kindness.", "thanks", 2716159461, 2493983068, Spawn)
-    	            	elseif choice == 3 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_aoi_gm_500eba11.mp3", "We must preserve Qeynos.  If we do, then a great victory will be upon us all!", "agree", 1282142717, 279173246, Spawn)
-	                    elseif choice == 4 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_aoi_gm_bfe41325.mp3", "When darkness reign across the face of Norrath, find solace in your inner light.", "orate", 1747616765, 2317450348, Spawn)
-	                    elseif choice == 5 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_87ee0892.mp3", "It is impossible to defeat an ignorant man in an argument.", "no", 1688439631, 2741592842, Spawn)
-                    	elseif choice == 6 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_92543d16.mp3", "There is one way to every argument to your advantage.  Always be crrect!", "nod", 3847243276, 420228124, Spawn)
-	                    elseif choice == 7 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_466700a5.mp3", "You must completely devout yourself to the notions of truth and goodness.", "scold", 4256416895, 410466169, Spawn)
-	                    elseif choice == 8 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_4131077.mp3", "Happiness is achieved by those who are kind within and respectful of others.", "happy", 3493831365, 2273149590, Spawn)
-	                    elseif choice == 9 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_bf4a6828.mp3", "We all must return to our origins.  Answering our questions of the past arms us to confront a certain future.", "sniff", 2168273293, 2294601502, Spawn)
-	                    elseif choice == 10 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_cd2c38ae.mp3", "Truth will always be true, regardless of the lack of understanding.", "ponder", 1482635271, 2842583444, Spawn)
-	                   end                          	                    	
-                    end
+				    local choice = math.random(1,3)                         
+                        if choice == 1 then	
+                        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gm_43bd22f2.mp3", "Greetings.  One day I hope everyone bows before my intellect.", "hello", 3316681960, 3617003101, Spawn)		                elseif choice == 2 then	
+                        elseif choice == 2 then	                        
+	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gm_9bc2cf77.mp3", "My time is too valuable to be spent chatting.", "bye", 788162420, 1166698384, Spawn)
+                        elseif choice == 3 then				        
+				            if spawnRace == BARBARIAN then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_ogre_gm_963391fd.mp3", "Brute you were, and always shall be.", "scold", 181661249, 784055085, Spawn)
+                            elseif spawnRace == DWARF then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_dwarf_gm_62e8be6f.mp3", "Oh dear, its rather like a small barbarian.", "sneer", 803690924, 2650545024, Spawn)
+                            elseif spawnRace == ERUDITE then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_erudite_gm_c5bc0931.mp3", "Can you imagine why we're not ruling?", "nod", 1050007971, 1742690856, Spawn)
+                            elseif spawnRace == IKSAR then
+	                	    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_iksar_gm_2cdba125.mp3", "It's a shame Cabalis isn't around, it would have made an interesting study.", "sigh", 3903013371, 226829195, Spawn)
+                            elseif spawnRace == OGRE then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_ogre_gm_963391fd.mp3", "Brute you were, and always shall be.", "scold", 181661249, 784055085, Spawn)
+                            elseif spawnRace == RATONGA then
+	                	    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_ratonga_gm_4d3aaca.mp3", "One day, I may have use for your services, sneaky.", "nod", 1373077305, 3004061362, Spawn)
+                            else
+                           	    local check = math.random(1,2)
+                                if choice == 1 then	
+                                PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gm_43bd22f2.mp3", "Greetings.  One day I hope everyone bows before my intellect.", "hello", 3316681960, 3617003101, Spawn)		                elseif choice == 2 then	
+                                elseif choice == 2 then	                        
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gm_9bc2cf77.mp3", "My time is too valuable to be spent chatting.", "bye", 788162420, 1166698384, Spawn)
+                                end
+				            end
+				        end
+			        end
+			     
+                    	
+				elseif GOOD then
                 end
 				
 			elseif gender == FEMALE then
 			    if EVIL then
-			    	if FPfaction <0 then
+			      	if FPfaction <0 then                                  
 			            local choice = math.random(1,2)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "cutthroat", 0, 0, Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "stare", 0, 0, Spawn)
 				        end
-				    else  			        
-	                local choice = math.random(1,10)
-                	if choice == 1 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_22870e86.mp3", "I have no patience for someone with such a limited mind.", "no", 506026711, 3133038239, Spawn)
-                	elseif choice == 2 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_a4ceea7d.mp3", "Hello.  By the way, I don't care.  Thanks.", "hello", 3118425564, 2914161028, Spawn)
-                	elseif choice == 3 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_aoi_gf_3b47e8b4.mp3", "I will incinerate anyone who doesn't acknowledge my superiority.", "threaten", 1985606353, 3418018124, Spawn)
-                	elseif choice == 4 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_22f6bb5b.mp3", "I doubt there is anyone in this city more intelligent than myself.", "sniff", 1968386351, 1062373550, Spawn)
-                	elseif choice == 5 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_3a1d92f9.mp3", "The mindless babble of a simpleton delights me to no end.", "sarcasm", 866230564, 1449447935, Spawn)
-                	elseif choice == 6 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_22f6bb5b.mp3", "You disgusting little creature.  Be gone!", "point", 1968386351, 1062373550, Spawn)
-                	elseif choice == 7 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_30a32e42.mp3", "I am unable to grasp the concept of humility.  Perhaps I can watch you for a while.", "shrug", 2312176575, 2681309062, Spawn)
-                	elseif choice == 8 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_71a543b.mp3", "I am deep in throught.  Please deprive me of your company.", "ponder", 1770011628, 3708308885, Spawn)
-                	elseif choice == 9 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_251836f2.mp3", "The harder you try, the dumber you look!  Please, don't let me be the one to stop you.", "chuckle", 120588620, 2055866671, Spawn)
-                	elseif choice == 10 then
-	                PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gf_d021c931.mp3", "If I pretended you weren't here, would you go away?", "wince", 3960906270, 232532094, Spawn)
-                    end	               		               		               		               		               		               		               		               	                
-	           end
+				    else
+				    local choice = math.random(1,3)                         
+                        if choice == 1 then	
+                        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_43bd22f2.mp3", "Greetings.  One day I hope everyone bows before my intellect.", "hello", 833705169, 3091207712, Spawn)		                	
+                        elseif choice == 2 then	                        
+	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_9bc2cf77.mp3", "My time is too valuable to be spent chatting.", "bye", 3939605048, 2460746424, Spawn)
+                        elseif choice == 3 then				        
+                            if spawnRace == DARKELF then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_darkelf_gf_233d5f4f.mp3", "Salutations, dark one.", "hello", 2890047865, 1995916608, Spawn)
+                            elseif spawnRace == ERUDITE then
+                                local check = math.random(1,2)
+                                if choice == 1 then
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_2b43ed1a.mp3", "This lost has no appreciation for our suprerior intellect.", "no", 1152387164, 36321725, Spawn)
+                                elseif choice == 2 then	                        
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_c5bc0931.mp3", "Can you imagine why we're not ruling?", "ponder", 1050007971, 1742690856, Spawn)
+                                end					        
+                            elseif spawnRace == KERRA then
+	                	    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_kerra_gf_85f0b7d.mp3", "Disgusting that the overlord even considers your race.", "sniff", 3422662472, 3860203232, Spawn)
+                            elseif spawnRace == OGRE then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_ogre_gf_ee6a8ad4.mp3", "Brutes you were, and brutes you shall always be.", "nod", 1608330065, 1921728202, Spawn)
+                            elseif spawnRace == RATONGA then
+	                	    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_ratonga_gf_4d3aaca.mp3", "One day, I may have use for your services, sneaky.", "nod", 3454516876, 1362938661, Spawn)
+                            elseif spawnRace == TROLL then
+	                	    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_troll_gf_e93b7941.mp3", "If you stopped thinking about your stomach, you might be able to form a sentence.", "scold", 3553520221, 3928709815, Spawn)
+                                                    
+                            else
+                           	    local check = math.random(1,2)
+                                if choice == 1 then	
+                                PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_43bd22f2.mp3", "Greetings.  One day I hope everyone bows before my intellect.", "hello", 833705169, 3091207712, Spawn)		                	
+                                elseif choice == 2 then	                        
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_9bc2cf77.mp3", "My time is too valuable to be spent chatting.", "bye", 3939605048, 2460746424, Spawn)
+                                end
+				            end
+				        end
+			        end
+			    end 
 				elseif GOOD then
 				    if Qfaction <0 then
 			            local choice = math.random(1,2)
@@ -2430,88 +2363,64 @@ function GenericSpawnRaceHail(NPC, Spawn, faction)
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
 				    else
-                	local choice = math.random(1,12)
-
-    	            	if choice == 1 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_aoi_gf_7fcbca60.mp3", "An era of darkness has finally come to a close. Now we must see what future Norrath has in store.", "confused", 2437621868, 2071976840, Spawn)
-	                    elseif choice == 2 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_5453f96d.mp3", "Paradise has always been here on Norrath for those who are thoughtful and responsible for their actions.", "thanks", 3529954798, 1064012556, Spawn)
-	                    elseif choice == 3 then
-                    	PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_e0bc946.mp3", "I have felt the stirrings of a strong magical influence.  Good fortune will follow to those with the will to persevere!", "ponder", 4152344209, 239250643, Spawn)
-                    	elseif choice == 4 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_84882e21.mp3", "You must not be afraid to trust others.  Openness is the key to finding a correct solution.", "sigh", 1792907516, 2786700542, Spawn)
-	                    elseif choice == 5 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_7895591c.mp3", "If we focus on the higher truths that govern our actions, we fathom the underlying power within them.", "curtsey", 2416988832, 3319542974, Spawn)
-	                    elseif choice == 6 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_aoi_gf_ff7f6e34.mp3", "You must be cautious of the draws of evil.  We must master our temptations to preserve our city.", "nod", 4169564254, 3711533067, Spawn)
-	                    elseif choice == 7 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_5d08d354.mp3", "It is good to understand your progress.  Voluntary limitations can enhance your personal growth.", "agree", 1896069258, 2274589764, Spawn)
-	                    elseif choice == 8 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_9aa6730d.mp3", "To defeat the forces of chaos, you must master your true inner calm.", "orate", 3386290119, 1807725087, Spawn)
-	                    elseif choice == 9 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_93a14dae.mp3", "Your master of the Isle was a breakthrough.  Use caution and do not fall into old habbits.", "scold", 3304205084, 3463450420, Spawn)
-	                    elseif choice == 10 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_2434ad34.mp3", "The time for ego must be set aside.  Your faith in a higher power will preserve you in the times ahead.", "orate", 2861437371, 3398791867, Spawn)
-	                    elseif choice == 11 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_64055b3d.mp3", "All good things will come to the innocent.", "curstey", 3780206991, 3751425250, Spawn)
-	                    elseif choice == 12 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gf_fe6e4528.mp3", "If power is what you seek, you must master the difference between right and wrong.", "nod", 3802952369, 586104398, Spawn)
-                        end   
+			    	local choice = math.random(1,3)
+	                    if choice == 1 then --racial check
+	                        if spawnRace == BARBARIAN then
+	                        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_barbarian_gf_f1057cd0.mp3", "I find it refreshing to speak to someone of your physical stature.", "ponder", 36526703, 389726822, Spawn)
+                            elseif spawnRace == DARK_ELF then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_darkelf_gf_67b4b065.mp3", "The Tier'Dal corrupted my ancestors with the dark arts.  If your intention is the same, I will show you what I do to those who craft in the dark arts.", "stare", 3269037986, 3583430591, Spawn)
+	                        elseif spawnRace == DWARF then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_dwarf_gf_d09b3368.mp3", "Fascinating!  I thought your kind could not adapt to life after The Shattering.  Interesting to see I was mistakened.", "ponder", 619552095, 1406216651, Spawn)
+                            elseif spawnRace == ERUDITE then
+                                    local check = math.random(1,2) 
+	                           	    if check == 1 then
+	                	            PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_erudite_gf_ab1bd57b.mp3", "May Quellious's blessings be upon you and yours.", "curstey", 1402855828, 3071800181, Spawn)
+                                    elseif choice == 2 then	
+	                	            PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_erudite_gf_9e9d6cce.mp3", "I'm sure whatever you seek, Quellious will help you find it.", "agree", 1152387164, 36321725, Spawn)
+				       		        end					        
+                            elseif spawnRace == GNOME then
+                		    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_gnome_gf_885ee58d.mp3", "The machinations of the average gnome's mind are really best left untouched.", "nod", 499883228, 2559247313, Spawn)
+                            elseif spawnRace == HALF_ELF then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_halfelf_gf_aff989b.mp3", "There are many that wouldn't speak with your kind, but I find your history intriguing.", "nod", 1855380777, 1709969199, Spawn)
+                            elseif spawnRace == HALFLING then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_halfling_gf_1524469a.mp3", "Take care to speak loudly when announcing your presence, less a larger being crush you beneath its toes.", "agree", 1007871270, 3421630084, Spawn)
+                            elseif spawnRace == HIGH_ELF then
+	                	    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_highelf_gf_cfbdf659.mp3", "That ensemble is quite becoming to you.  Almost as good as my own.", "hello", 2314937497, 2446209028, Spawn)
+                            elseif spawnRace == HUMAN then
+	                	    PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_human_gf_3942f6cc", "Nothing's more fruitful than spending your time among the learned.", "agree", 2072395332, 2149802738, Spawn)
+                            elseif spawnRace == IKSAR then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_iksar_gf_92ff3ed3.mp3", "The reptilian brain lacks higher cognitive processing.  Such a lowly creature has no place walking amongst us in the city.", "no", 945836085, 772000445, Spawn)
+                            elseif spawnRace == KERRA then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_kerra_gf_f236b75e.mp3", "I'm sorry my ancestors treated your kind so poorly.  The kerra were less civilized back then.  At least now they're making some measurable progress.", "apologize", 4058186530, 3584703264, Spawn)
+                            elseif spawnRace == OGRE then
+					        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_ogre_gf_88c97da6.mp3", "Away from me you wraith-brained brute.  Even with the curse lifted your race hasn't aquired any intelligence!","no", 2627346232, 1243123055, Spawn)
+                            elseif spawnRace == WOOD_ELF then
+                            local check = math.random(1,2) 
+	                           	if check == 1 then
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_woodelf_gf_a25cc08a.mp3", "If a tree falls in the woods but no one is there to hear it, does it make a sound?", "ponder", 1447042742, 1128515123, Spawn)
+                                elseif choice == 2 then	
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_woodelf_gf_b60ad90f.mp3", "Nothing's' more discouraging than to be a woodsman in the midst of grander civilizations, is there?  Well, there might be hope for you yet.", "hello", 84164724, 4245634186, Spawn)
+				       		    end
+				       		else
+                            local check = math.random(1,2) 
+	                            if check == 1 then
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_24e3a5aa.mp3", "I have learned that it is best to trust to your own wisdom rather than the weaponry of your acquaintances.", "nod", 2387566735, 2940828519, Spawn)
+                                elseif choice == 2 then	
+	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_8f458045.mp3", "Please, I am in the midst of solving a very complex problem and must not be interrupted.", "no", 971990033, 2178584483, Spawn)
+				       		    end                   
+		                    end
+                        elseif choice == 2 then	
+	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_24e3a5aa.mp3", "I have learned that it is best to trust to your own wisdom rather than the weaponry of your acquaintances.", "nod", 2387566735, 2940828519, Spawn)
+                        elseif choice == 3 then	
+	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_8f458045.mp3", "Please, I am in the midst of solving a very complex problem and must not be interrupted.", "no", 971990033, 2178584483, Spawn)
+                        end                        				    
 				    end 
-			    end
-			end	
---[[	            local choice = math.random(1,4)
-
-	                    if choice == 1 then
-	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_24e3a5aa.mp3", "I have learned that it is best to trust to your own wisdom rather than the weaponry of your acquaintances.", "", 2387566735, 2940828519, Spawn)
-                    	elseif choice == 2 then
-                		PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_gnome_gf_885ee58d.mp3", "The machinations of the average gnome's mind are really best left untouched.", "", 499883228, 2559247313, Spawn)
-	                    elseif choice == 3 then
-	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_8f458045.mp3", "Please, I am in the midst of solving a very complex problem and must not be interrupted.", "", 971990033, 2178584483, Spawn)
-	                    elseif choice == 4 then
-	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_highelf_gf_cfbdf659.mp3", "That ensemble is quite becoming to you.  Almost as good as my own.", "", 2314937497, 2446209028, Spawn)
-	
-	                    end]]--				
+			    end 
+				
 			
 		elseif race == FROGLOK then
 			if gender == MALE then
-			    	if Qfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
-            	        PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_aoi_gm_9106b8f.mp3", "Dost thou bite thy thumb at me, sir?  Thou are't rank idle-headed dismel dreaming rat's bane!", "swear", 3764619066, 2005097866, Spawn)
-				        end
-				    else
-            	local choice = math.random(1,12)
-
-                	if choice == 1 then
-	                PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_f357bdfe.mp3", "Anon stranger!  If thou has any news of my kin, return to Castleview!", "nod", 1789254366, 4068928413, Spawn)
-                	elseif choice == 2 then
-                	PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_109feb61.mp3", "Hast thou any news of our lost kin?", "ponder", 2372213836, 4116685779, Spawn)
-                	elseif choice == 3 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_3f899525.mp3", "Alack!  Dost yon adventurers think to aid in the search for the Sons of Marr?", "boggle", 8384978, 3425989342, Spawn)
-                	elseif choice == 4 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_aoi_gm_5c47b7fa.mp3", "Of course I noticed him!  He was nothing more than a braggart and a cad.", "frustrated", 432869819, 4218797807, Spawn)
-                	elseif choice == 5 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_aoi_gm_9106b8f.mp3", "Dost thou bite thy thumb at me, sir?  Thou are't rank idle-headed dismel dreaming rat's bane!", "swear", 3764619066, 2005097866, Spawn)
-                	elseif choice == 6 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_5300e94.mp3", "Hark!  Another refugee has arrived in the city!  Good show defeating those goblins on the isle.", "hello", 2512274162, 1153168327, Spawn)
-                	elseif choice == 7 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_9573db0a.mp3", "I say!  Dost though seek to stand with us against the evils and tyranny of the land?", "nod", 1132043246, 1126159291, Spawn)
-                	elseif choice == 8 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_54051a92.mp3", "Well met, my astute traveler.  The evil rogues of Freeport would never trifle with so dashing an adventurer.", "agree", 2925268962, 3643630927, Spawn)
-                	elseif choice == 9 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_79306651.mp3", "Aye!  I crave your pardon.  Goodmorrow to you stranger.", "bye", 723971409, 21144837, Spawn)
-                	elseif choice == 10 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_a446c215.mp3", "Nay traveler.  I have no desire to exchange pleasantries with thou.", "no", 4046949141, 791911027, Spawn)
-                	elseif choice == 11 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_aeef4870.mp3", "Here, here!  Wonderful to have you with us in the city.", "happy", 1351314175, 2941555770, Spawn)
-                	elseif choice == 12 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_aeef4870.mp3", "I pray on you, stranger.  Dost thou any news on friends of Gukta?", "bow", 2960870988, 3925790084, Spawn)
-                    end
-	           end
-             elseif gender == FEMALE then
+            elseif gender == FEMALE then
             		if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
@@ -2520,39 +2429,52 @@ function GenericSpawnRaceHail(NPC, Spawn, faction)
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
 				    else
-                local choice = math.random(1,9)
-                    if choice == 1 then
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_aoi_gf_8d30932a.mp3", "May the gods keep thee.  'Tis a bessing to have Castleview Hamlet as our home in Qeynos.", "bow", 3522764394, 2182159483, Spawn)
-                 	elseif choice == 2 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_aoi_gf_bdbdb78e.mp3", "Curse the ill timed luck of it all!  I had hoped thou had'th bring news of our missing families.", "shrug", 1153289100, 392994268, Spawn)
-   	                elseif choice == 3 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_3c0848a6.mp3", "I thank thee for the kind hail.  Goodmorrow to you, traveler.", "bye", 4059931003, 1290457989, Spawn)
-   	                elseif choice == 4 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_9ff4f18c.mp3", "Fare thee well, my brave adventurer!  If thou hath any news of our kin, return to Castleview!", "curstey", 2304123366, 1172967267, Spawn)
-   	                elseif choice == 5 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_a64f6eec.mp3", "What hast thou done?  When one greets a daughter of Marr, a small bow is in order!", "boggle", 2304123366, 1172967267, Spawn)
-   	                elseif choice == 6 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_aaa0d7f3.mp3", "Marr ye good den.  How are't thou on this fine afternoond?", "hello", 725320917, 2360930144, Spawn)
-   	                elseif choice == 7 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_c0864f03.mp3", "Now ye shall'th rejoyce within the taverns by night, but we shall not rest until the truth of our kin hath been discovered.", "happy", 1638938881, 2182528216, Spawn)
-   	                elseif choice == 8 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_e4cf5b64.mp3", "How now, friend adventurer?  Has't thou seen other daughters of Marr in the wilds?", "ponder", 2966512768, 1279748767, Spawn)
-   	                elseif choice == 9 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_f56ada2a.mp3", "The queen calls all of us to service.  We shall find our kin to serve her majesty.", "agree", 484194272, 1279748767, Spawn)
-                    end                                                                                                                           
-                end
-			end
---[[            	local choice = math.random(1,4)
---RACE CHECK
-                	if choice == 1 then
-                	PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_gnome_gf_42177c87.mp3", "What's that? All thy mutterings about whizzlegigs and furbelows is quite unintelligible.", "", 3856971048, 2722248899, Spawn)
-                	elseif choice == 2 then
-                	PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_hail_gf_cd3d026e.mp3", "Always step carefully within the city limits -- and even more carefully when outside of the city.", "", 2864618200, 434416947, Spawn)
-                	elseif choice == 3 then
-                	PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_hail_gf_eae44fad.mp3", "May the blessings of Mithaniel Marr be upon you.", "", 2437408909, 3055505253, Spawn)
-                	elseif choice== 4 then
-                	PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_highelf_gf_d3687a91.mp3", "It is good to see elven-kind here in Qeynos who can help us defend the laws of the land. ", "", 3596392273, 2126265241, Spawn)
--]]      			
+			    	local choice = math.random(1,3)
+	                    if choice == 1 then --racial check
+	                        if spawnRace == BARBARIAN then
+	                        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_barbarian_gf_2a05cb73.mp3", "Good to see you watching thy footsteps in the crowd.", "hello", 1081508285, 2427213760, Spawn)
+                            elseif spawnRace == DARK_ELF then
+					        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_darkelf_gf_9a525d02.mp3", "The twisted children of Innoruk have no place amongst the good.  I hope you are here looking for redemption.", "no", 2651815149, 74368302, Spawn)
+	                        elseif spawnRace == DWARF then
+					        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_dwarf_gf_744e2b79.mp3", "Hail to you master of mining and earthen treasure.", "hello", 2566521966, 1120118768, Spawn)
+                            elseif spawnRace == ERUDITE then
+	                	    PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_erudite_gf_6fc36186.mp3", "Intelligence goes not only to the tall, but to the honorable!", "agree", 723944093, 746238174, Spawn)
+                            elseif spawnRace == GNOME then
+                	        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_gnome_gf_42177c87.mp3", "What's that? All thy mutterings about whizzlegigs and furbelows is quite unintelligible.", "confused", 3856971048, 2722248899, Spawn)
+                            elseif spawnRace == HALF_ELF then
+					        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_halfelf_gf_17b16261.mp3", "The other races of Qeynos might give you some resepect if you didn't pierce yourselfs like a.. smelly troll!", "scold", 533543002, 2702833807, Spawn)
+                            elseif spawnRace == HALFLING then
+					        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_halfling_gf_c99e35d6.mp3", "May the fur upon thy feet never recede!", "curtsey", 2739268859, 2588639054, Spawn)
+                            elseif spawnRace == HIGH_ELF then
+                           	    local check = math.random(1,2)	                           
+	                           	if check == 1 then
+                	            PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_highelf_gf_d3687a91.mp3", "It is good to see elven-kind here in Qeynos who can help us defend the laws of the land.", "hello", 3596392273, 2126265241, Spawn)
+                                elseif choice == 2 then	
+	                	        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_highelf_gf_47192d0e.mp3", "Justice, honor and valor above all!", "nod", 1395300363, 1594049807, Spawn)
+				       		    end
+				       		elseif spawnRace == HUMAN then
+	                	    PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_human_gf_a6365ebc.mp3", "Always remember that hard work may be the key to some success, honor is the key to valor.", "agree", 1978493922, 2041068107, Spawn)
+                             elseif spawnRace == KERRA then
+					        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_kerra_gf_3517943f.mp3", "Its unfortunate that the gift of speech was bestowed upon so many different thoughts and beings.", "sigh", 3288858464, 183825498, Spawn)
+                            elseif spawnRace == WOOD_ELF then
+					        PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_woodelf_gf_7e2b8462.mp3", "You must miss thyn old woodland home as much as I miss mine.","sad", 387192699, 182364074, Spawn)
+
+				       		else
+                            local check = math.random(1,2) 
+	                            if check == 1 then
+                	            PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_hail_gf_cd3d026e.mp3", "Always step carefully within the city limits -- and even more carefully when outside of the city.", "nod", 2864618200, 434416947, Spawn)
+                                elseif choice == 2 then	
+                	            PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_hail_gf_eae44fad.mp3", "May the blessings of Mithaniel Marr be upon you.", "hello", 2437408909, 3055505253, Spawn)
+				       		    end                   
+		                    end
+                        elseif choice == 2 then	
+                	    PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_hail_gf_cd3d026e.mp3", "Always step carefully within the city limits -- and even more carefully when outside of the city.", "nod", 2864618200, 434416947, Spawn)
+                        elseif choice == 3 then	
+                    	PlayFlavor(NPC, "voiceover/english/froglok_eco_race_good/ft/eco/good/froglok_eco_race_good_hail_gf_eae44fad.mp3", "May the blessings of Mithaniel Marr be upon you.", "hello", 2437408909, 3055505253, Spawn)
+                        end                        				    
+				    end 
+			    end 
+		
 			
 		elseif race == GNOME then
 			if gender == MALE then
@@ -2560,37 +2482,46 @@ function GenericSpawnRaceHail(NPC, Spawn, faction)
 			    	if FPfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "scheme", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "swear", 0, 0, Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "threaten", 0, 0, Spawn)
 				        end
 				    else  			        
-	            local choice = math.random(1,11)
-
-    	            if choice == 1 then
-    	        	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_3b50e81d.mp3", "For the last time, gnomes didn't make Luclin explode!  We would have gone with disintegration.", "grumble", 269246846, 1507536385, Spawn)
-    	            elseif choice == 2 then
-    	        	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_3c96722f.mp3", "It is said there is more than one way to skin a cat.  My research proves that saying correct.", "wink", 270865755, 3814599267, Spawn)
-    	            elseif choice == 3 then
-    	         	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_a0ec45ef.mp3", "Through the advances in modern magic, anything is possible.", "scheme", 2871018676, 2157629655, Spawn)
-                	elseif choice == 4 then
-    	        	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_87cefc8f.mp3", "I will prove to them that I'm not mad!  If I have to kill everyone of them to prove it, I will!", "dance", 3561903619, 1901803882, Spawn)
-    	            elseif choice == 5 then
-    	        	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_34756811.mp3", "How many times must I say it?  Acid first, then the eyeballs, not the other way around!", "scold", 3381670490, 1272629802, Spawn)
-    	            elseif choice == 6 then
-    	        	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_b7905eb1.mp3", "No, no, no!!!  That will never work!  The person still needs to breathe, don't they?  Don't they?", "shrug", 3693935176, 3848510180, Spawn)
-            	    elseif choice == 7 then
-    	        	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_b0ae4c2e.mp3", "I really dislike the word \"conscience\" don't you?", "glare", 125996156, 1415506360, Spawn)
-             	    elseif choice == 8 then
-               	   	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_3f3e760a.mp3", "So far, I have found kerrans to have only one life, not nine.  I insist on finding the other eight!", "ponder", 4225274276, 2202716414, Spawn)
-               	    elseif choice == 9 then
-               		PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_aoi_gm_c6354fcc.mp3", "Oh no, not another failed experiement!  Oh, its just a person.", "facepalm", 4280227325, 2173466505, Spawn)
-             	    elseif choice == 10 then
-    	        	PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_4d2d14ae.mp3", "So many test subjects, so little time!", "scheme", 2502077, 3261378172, Spawn)
-                    elseif choice == 11 then
-                    PlayFlavor(NPC, "voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_9db76689.mp3", "I must find a wall before I lose this thought!", "frustrated", 1979069834, 1194484208, Spawn)
-	                end
-	            end		        
+				        local choice = math.random(1,3)                         
+                        if choice == 1 then	
+                        PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_hail_gm_dd38c0ae.mp3", "Now what did I do with that gear?", "confused", 4176417694, 571824368, Spawn)		                
+                        elseif choice == 2 then	                        
+	                	PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_hail_gm_66cbf9a8.mp3", "No time for chatting.  Sorry!", "no", 3060036576, 2175661958, Spawn)
+                        elseif choice == 3 then				        
+                            if spawnRace == DARKELF then
+					        PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_darkelf_gm_d6a4426d.mp3", "Oops!  Pardon me!  Watch the gnome!", "appologize", 57227224, 2068197977, Spawn)
+                            elseif spawnRace == ERUDITE then
+	                	    PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_erudite_gm_fda5eb48.mp3", "We'll see who's smarter when I finish my ... thingamabob!", "agree", 856975110, 1693275305, Spawn)
+                            elseif spawnRace == GNOME then
+					        PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_gnome_gm_91c8c95a.mp3", "Sprockets and cogs!  Where's the one I need now?", "doh", 2107565689, 1695469863, Spawn)
+                            elseif spawnRace == OGRE then
+	                	    PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_troll_gm_fec5e2a0.mp3", "Nooo no no no no!  Get away from me with those feet!  I will NOT let you punt me!", "cringe", 893602615, 1336608806, Spawn)
+                            elseif spawnRace == RATONGA then
+                           	    local check = math.random(1,2)                                
+                                if choice == 1 then	
+                                PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_ratonga_gm_c4fe5091.mp3", "Its a.. rat race out here!", "chuckle", 3414267492, 3932300678, Spawn)		                
+                                elseif choice == 2 then	                        
+	                	        PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_ratonga_gm_f5bdc8a9.mp3", "Good thing you ratonga have such nimble fingers!", "nod", 3939605048, 2460746424, Spawn)
+                                end
+                            elseif spawnRace == TROLL then
+	                	    PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_troll_gm_fec5e2a0.mp3", "Nooo no no no no!  Get away from me with those feet!  I will NOT let you punt me!", "cringe", 893602615, 1336608806, Spawn)
+                                                    
+                            else
+                           	    local check = math.random(1,2)
+                                if choice == 1 then	
+                                PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_hail_gm_dd38c0ae.mp3", "Now what did I do with that gear?", "confused", 4176417694, 571824368, Spawn)		                
+                                elseif choice == 2 then	                        
+	                	        PlayFlavor(NPC, "voiceover/english/gnome_eco_race_evil/ft/eco/evil/gnome_eco_race_evil_hail_gm_66cbf9a8.mp3", "No time for chatting.  Sorry!", "no", 3060036576, 2175661958, Spawn)
+                                end
+				            end
+				        end
+			        end
+			    end 	        
 			        
 				elseif GOOD then
 				    if Qfaction <0 then
@@ -6546,11 +6477,11 @@ end
 
 -------------------------------------------------------------------------------------------
 
---                                  GenericSpawnRaceCallout
+--                                  GenericRaceCheckCallout
 
 -------------------------------------------------------------------------------------------
 
-function GenericSpawnRaceCallout(NPC, Spawn, faction)
+function GenericRaceCheckCallout(NPC, Spawn, faction)
     race = GetRace(NPC)
     spawnRace = GetRace(Spawn)
 	gender = GetGender(NPC)

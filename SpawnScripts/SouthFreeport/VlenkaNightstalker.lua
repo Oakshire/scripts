@@ -1,18 +1,19 @@
 --[[
-    Script Name    : SpawnScripts/SouthFreeport/GlyconDuronius.lua
+    Script Name    : SpawnScripts/SouthFreeport/VlenkaNightstalker.lua
     Script Author  : Dorbin
-    Script Date    : 2022.03.21 11:03:13
+    Script Date    : 2022.03.22 01:03:18
     Script Purpose : 
                    : 
 --]]
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
 function spawn(NPC)
 
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-GenericEcology2Hail(NPC, Spawn, faction) 
+	GenericEcology2Hail(NPC, Spawn, faction) 
 end
 
 function respawn(NPC)
