@@ -1,67 +1,71 @@
 --[[
-	Script Name		:	rifter_bleeder19.lua
-	Script Purpose	:	Waypoint Path for rifter_bleeder19.lua
-	Script Author	:	Devn00b
-	Script Date		:	05/14/2020 01:39:35 AM
-	Script Notes	:	Locations collected from Live
+	Script Name     : SpawnScripts/Generic/tiny_movement_loop.lua 
+	Script Purpose  : a tiny movement loop
+	Script Author   : theFoof
+	Script Date     : 2013.5.22
+	Script Notes    :
 --]]
-
-function spawn(NPC)
-	waypoints(NPC)
+function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+function spawn(NPC)
+    ChooseMovement(NPC)
+end
+
+function ChooseMovement(NPC)
+	local choice = math.random(1, 4)
+	if choice == 1 then
+		clockwise1(NPC)
+	elseif choice == 2 then
+		clockwise2(NPC)
+	elseif choice == 3 then
+		counter_clockwise1(NPC)
+	elseif choice == 4 then
+		counter_clockwise2(NPC)
+	end
 end
 
 function respawn(NPC)
- waypoints(NPC)
+	ChooseMovement(NPC)
 end
 
-function waypoints(NPC)
-	MovementLoopAddLocation(NPC, -197.92, -0.39, -124.34, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -190.68, -0.16, -134.28, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -189.18, -0.05, -131.02, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -188.38, 0, -135.62, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -183.15, 0, -130.33, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -183.7, 0, -135.74, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -180.66, 0, -130.47, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -175.52, 0, -135.65, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -176.34, 0.57, -130.38, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -173.18, 0, -135.5, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -168.19, 0, -135.75, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -167.63, 0, -130.49, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -172.76, 0, -130.37, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -175.62, -0.39, -132.69, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -182.08, 0.44, -130.63, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -190.16, 0, -134.99, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -191.8, -0.21, -131.25, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -191.67, 0, -126.22, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -197.15, -0.39, -127.43, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -204.45, -0.39, -126.97, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -203.88, -0.39, -122.69, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -199.61, -0.39, -122.78, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -203.88, -0.39, -122.69, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -204.45, -0.39, -126.97, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -197.15, -0.39, -127.43, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -191.67, 0, -126.22, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -191.8, -0.21, -131.25, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -190.16, 0, -134.99, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -182.08, 0.44, -130.63, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -175.62, -0.39, -132.69, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -172.76, 0, -130.37, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -167.63, 0, -130.49, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -168.19, 0, -135.75, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -173.18, 0, -135.5, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -176.34, 0.57, -130.38, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -175.52, 0, -135.65, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -180.66, 0, -130.47, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -183.7, 0, -135.74, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -183.15, 0, -130.33, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -188.38, 0, -135.62, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -189.18, -0.05, -131.02, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -190.68, -0.16, -134.28, 2, math.random(0,5))
-	MovementLoopAddLocation(NPC, -197.92, -0.39, -124.34, 2, math.random(0,5))
+function clockwise1(NPC)
+	local x = GetX(NPC)
+	local y = GetY(NPC)
+	local z = GetZ(NPC)
+	MovementLoopAddLocation(NPC, x + 3 , y, z - 4 , 1, math.random(2, 5))
+	MovementLoopAddLocation(NPC, x - 1 , y, z - 6, 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x - 6, y, z + 5 , 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x + 1 , y, z + 4 , 1, math.random(2, 5))
 end
 
+function clockwise2(NPC)
+	local x = GetX(NPC)
+ 	local y = GetY(NPC)
+	local z = GetZ(NPC)
+	MovementLoopAddLocation(NPC, x + 2 , y, z - 4 , 1, math.random(2, 5))
+	MovementLoopAddLocation(NPC, x - 7 , y, z - 1 , 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x     , y, z + 2 , 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x + 5 , y, z + 1 , 1, math.random(2, 5))
+end
 
+function counter_clockwise1(NPC)
+	local x = GetX(NPC)
+	local y = GetY(NPC)
+	local z = GetZ(NPC)
+	MovementLoopAddLocation(NPC, x - 3 , y, z + 4 , 1, math.random(2, 5))
+	MovementLoopAddLocation(NPC, x + 1 , y, z + 6, 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x + 4, y, z - 5 , 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x - 1 , y, z - 4 , 1, math.random(2, 5))
+end
+
+function counter_clockwise2(NPC)
+	local x = GetX(NPC)
+	local y = GetY(NPC)
+	local z = GetZ(NPC)
+	MovementLoopAddLocation(NPC, x - 2 , y, z + 4 , 1, math.random(2, 5))
+	MovementLoopAddLocation(NPC, x + 3 , y, z + 1 , 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x     , y, z - 2 , 1, math.random(2, 5))
+	--MovementLoopAddLocation(NPC, x - 5 , y, z - 1 , 1, math.random(2, 5))
+end
