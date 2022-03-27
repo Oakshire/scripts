@@ -16,7 +16,7 @@
 
 function spawn(NPC)
 	AddTransportSpawn(NPC)
-	AddTimer(NPC, 25000, "UseLift")
+	--AddTimer(NPC, 25000, "UseLift")
 end
 
 function respawn(NPC)
