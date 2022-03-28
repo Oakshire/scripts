@@ -76,25 +76,18 @@ function Sleep(NPC)
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    if not HasQuest(Spawn, Rats) and not HasCompletedQuest(Spawn, Rats) then
+
         PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas.mp3", "", "", 3830137539, 3865597694, Spawn)
-        conversation = CreateConversation()   
+        conversation = CreateConversation()  
+	    if GetQuestStep(Spawn, Rats)==2 then
+	    AddConversationOption(conversation, "I've reduced the number of putrid vermin in the catacombs.", "DoneRats")
+	    end 
+        if not HasQuest(Spawn, Rats) and not HasCompletedQuest(Spawn, Rats) then	    
         AddConversationOption(conversation, "I can provide assistance if needed.", "ICan")
+        end
 	    AddConversationOption(conversation, "Good day to you too!")
 	    StartConversation(conversation, NPC, Spawn, "Good day to you, adventurer.  I hope you have been keeping yourself safe.")
-	else if HasQuest(Spawn, Rats) then 
-	    if GetQuestStep(Spawn, Rats)==2 then
-	   conversation = CreateConversation()   
-	    AddConversationOption(conversation, "I've reduced the number of putrid vermin in the catacombs.", "DoneRats")
-	    end
-	    AddConversationOption(conversation, "I'm still dealing with them.")
-	    StartConversation(conversation, NPC, Spawn, "So? Were you able to take care of those rats? Our food stores can't deal with more problems!")
-	    
-    else
-        PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas.mp3", "", "attention", 3830137539, 3865597694, Spawn)
-	    Say(NPC, "Good day to you, adventurer.  I hope you have been keeping yourself safe.", Spawn)
-        end
-    end
+    
 end
 
 function ICan(NPC, Spawn)
@@ -127,7 +120,7 @@ function DoneRats(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "Thank you.", "QuestDone")
     StartConversation(conversation, NPC, Spawn, "Ah, you did. These look like they came off some big vermin. No easy pray for you, I see. Here is the piece of armor I promised you. May it protect you against a more dangerous foe.")
- 	PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas001.mp3", "", "agree", 2969029986,2406700241 , Spawn)
+ 	PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas002.mp3", "", "agree", 2969029986,2406700241 , Spawn)
 end
 
 function QuestDone(NPC, Spawn)

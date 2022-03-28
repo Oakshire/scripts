@@ -8,6 +8,7 @@
 
 local Quest = 238
 local Book = 5468
+local Timer = false
 
 function spawn(NPC)
     ProvidesQuest(NPC, Quest)
@@ -35,9 +36,14 @@ end
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-    		PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen.mp3", "", "orate", 2289708399, 1034577130, Spawn)
     local con = CreateConversation()
+    if Timer == false then
+    FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen.mp3", "", "orate", 2289708399, 1034577130, Spawn)
+    AddConversationOption(con, "I would love a performance. [ 2 Silver ]", "Perforamnce")    
+    else
+    PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen.mp3", "", "", 2289708399, 1034577130, Spawn)
+    end    
     if not HasQuest (Spawn, Quest) and not HasCompletedQuest (Spawn, Quest) then
     AddConversationOption(con, "You must be quite the entertainer. Need any help?", "NeedHelp")
     end
@@ -47,7 +53,6 @@ function hailed(NPC, Spawn)
     if GetQuestStep(Spawn, Book)==1 then
     AddConversationOption(con, "Bleemeb tasked me with retrieving the book you borrowed.", "NoBook")
     end
-    AddConversationOption(con, "I would love a performance. [ 2 Silver ]", "Perforamnce")
     AddConversationOption(con, "I'll keep my coins, thank you.")
     StartConversation(con, NPC, Spawn, "Come closer and watch as I make lights dance and coins disapear into thin air! ")
 end
@@ -82,17 +87,24 @@ function BookUpdate(NPC,Spawn)
     SetStepComplete(Spawn, Book, 1)
 end
 
+function ResetTimer(NPC,Spawn)
+Timer = false
+end
+
 function Perforamnce(NPC,Spawn)
+        if Timer == false then 
+            Timer = true
     RemoveCoin(Spawn, 200)
     FaceTarget(NPC, Spawn)
     		PlayFlavor(NPC, "", "With pleasure.", "nod", 0, 0, Spawn)
     	
-    		AddTimer(NPC, 900, "Shine",1, Spawn) 
-    		AddTimer(NPC, 1100, "Flourish",1, Spawn)   
-    	  --AddTimer(NPC, 9800, "Glow",1, Spawn) --a bit much, but timing is right
-    		AddTimer(NPC, 10000, "Shimmy",1, Spawn)
-    		AddTimer(NPC, 12000,"Kiss",1, Spawn)
-    		AddTimer(NPC, 15500,"Finale",1, Spawn)
+    		AddTimer(NPC, 900, "Shine",1) 
+    		AddTimer(NPC, 1100, "Flourish",1)   
+    		AddTimer(NPC, 10000, "Shimmy",1)
+    		AddTimer(NPC, 12000,"Kiss",1)
+    		AddTimer(NPC, 15500,"Finale",1)
+            AddTimer(NPC, 16000,"ResetTimer",1)
+        end    
 end
 
 function Flourish(NPC,Spawn)
