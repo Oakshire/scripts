@@ -2994,30 +2994,6 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 
 		elseif race == IKSAR then
 			if gender == MALE then
-			        if FPfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "cutthroath", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
-				    else  
-	                local choice = math.random(1,6)
-
-	                    if choice == 1 then
-	                    PlayFlavor(NPC, "voiceover/english/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gm_e197e226.mp3", "Get the facts first, then use them to your advantage.", "nod", 2108412157, 569290229, Spawn)
-                	    elseif choice == 2 then
-                	    PlayFlavor(NPC, "voiceover/english/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gm_6e77e856.mp3", "Hard work has never killed anyone, but I have.", "nod", 1624540059, 2182897376, Spawn)
-                	    elseif choice == 3 then
-                	    PlayFlavor(NPC, "voiceover/english/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gm_b2520f1f.mp3", "The dark elves are inferior creatures led by delusions of grandeur.  How sad.", "sarcasm", 4070116108, 3546866585, Spawn)
-                    	elseif choice == 4 then
-                	    PlayFlavor(NPC, "voiceover/english/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gm_e1fe7edd.mp3", "The Sebilisian empire will rise again!", "yeah", 1001389400, 2353755387, Spawn)
-                 	    elseif choice == 5 then
-                    	PlayFlavor(NPC, "voiceover/english/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gm_1c7c97cc.mp3", "Were all the barbarians to be slaughtered, I would call it a mercy killing.", "glare", 3861422265, 4210225893, Spawn)
-	                    elseif choice == 6 then
-	                    PlayFlavor(NPC, "voiceover/english/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gm_75d6942e.mp3", "Of course we have feelings.  We're just not as attached to them as others.", "glare", 959861962, 664441611, Spawn)
-                	end
-				end
 		    elseif gender == FEMALE then
 			    	if FPfaction <0 then
 			            local choice = math.random(1,2)
@@ -3027,36 +3003,33 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
 				    else  		    
-	               local choice = math.random(1,7)
-
-	                    if choice == 1 then
-	                    PlayFlavor(NPC, "voiceover/english/optional2/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gf_f69ccf4.mp3", "Now that Cazic is gone, we are all that's left to fear.", "glare", 201991256, 2703372070, Spawn)
-	                    elseif choice == 2 then
-                	    PlayFlavor(NPC, "voiceover/english/optional2/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gf_1d6c587a.mp3", "Consequences are insignificant compared to how much power one can grasp.", "swear", 725277130, 442283069, Spawn)
-                	    elseif choice == 3 then
-                	    PlayFlavor(NPC, "voiceover/english/optional2/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gf_f01f193d.mp3", "Forgiveness is the first sign of weakness.", "wince", 1541815345, 3425736193, Spawn)
-                	    elseif choice == 4 then
-                	    PlayFlavor(NPC, "voiceover/english/optional2/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gf_aee44902.mp3", "The slash of a whip is a good way to get one's attention.", "scold", 1454622396, 2157938475, Spawn)
-                	    elseif choice == 5 then
-                	    PlayFlavor(NPC, "voiceover/english/optional2/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gf_31190c6b.mp3", "Many things can happen.  Pray that I'm not one of them.", "tapfoot", 719531656, 2014590208, Spawn)
-  	                    elseif choice == 6 then
-                	    PlayFlavor(NPC, "voiceover/english/optional2/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gf_f69ccf4.mp3", "Now that Cazic is gone, we are all that's left to fear.", "glare", 201991256, 2703372070, Spawn)
-                	    elseif choice == 7 then
-                	    PlayFlavor(NPC, "voiceover/english/optional2/iksar_eco_evil_1/ft/iksar/iksar_eco_evil_1_hail_gf_9f30f326.mp3", "I have found fear is always a good motivator.", "nod", 968054609, 542822567, Spawn)
-                	    end 
-            	end
-            end	
---[[	            local choice = math.random(1,4)
-	                if choice == 1 then
-	            	PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_darkelf_gf_41fe94ed.mp3", "We share a similar fate -- cast from our homes by the destruction of our world.", "hello", 735434566, 2925685625, Spawn)
-            	    elseif choice == 2 then
-            		PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_hail_gf_5cacd110.mp3", "If you need help, please find someone who'll provide it.", "shrug", 529474944, 2390194258, Spawn)
-            	    elseif choice == 3 then
-            		PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_hail_gf_c15f0740.mp3", "Welcome. We greet you.", "yawn", 3949639532, 268039246, Spawn)
-            	    elseif choice == 4 then
-            		PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_ratonga_gf_d01ccae8.mp3", "I wonder where you have come from... so little history to draw on.", "ponder", 3355738899, 1187010903, Spawn)
-        	        end	]]--    			
-			
+                        if choice == 1 then	
+            		    PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_hail_gf_5cacd110.mp3", "If you need help, please find someone who'll provide it.", "shrug", 529474944, 2390194258, Spawn)
+                        elseif choice == 2 then	                        
+            		    PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_hail_gf_c15f0740.mp3", "Welcome. We greet you.", "yawn", 3949639532, 268039246, Spawn)
+                        elseif choice == 3 then				        
+				            if spawnRace == BARBARIAN then
+					        PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_barbarian_gf_1b2797ab.mp3", "The cold has stunted the growth of your brain!", "sneer", 3424128666, 3850388487, Spawn)
+                            elseif spawnRace == DARK_ELF then
+	            	        PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_darkelf_gf_41fe94ed.mp3", "We share a similar fate -- cast from our homes by the destruction of our world.", "hello", 735434566, 2925685625, Spawn)
+                            elseif spawnRace == ERUDITE then
+					        PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_erudite_gf_323e7792.mp3", "Did Erud take the name because of its meaning, or were his parents full of themselves?", "ponder", 3710722032, 2229599390, Spawn)
+                            elseif spawnRace == HALF_ELF then
+					        PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_halfelf_gf_e12939e8.mp3", "Half a man is a cripple.  What does that make half an elf?", "leer", 1091603440, 2898728412, Spawn)
+                            elseif spawnRace == OGRE then
+					        PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_ogre_gf_59b86284.mp3", "The will of Thule was too great for the armies of Zek to overcome.", "agree", 2467592637, 1333596797, Spawn)
+                            elseif spawnRace == RATONGA then
+            		        PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_ratonga_gf_d01ccae8.mp3", "I wonder where you have come from... so little history to draw on.", "ponder", 3355738899, 1187010903, Spawn)
+                            else
+                           	    local check = math.random(1,2)
+                                if choice == 1 then	
+            		            PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_hail_gf_5cacd110.mp3", "If you need help, please find someone who'll provide it.", "shrug", 529474944, 2390194258, Spawn)
+                                elseif choice == 2 then	                        
+            		            PlayFlavor(NPC, "voiceover/english/iksar_eco_race_evil/ft/eco/evil/iksar_eco_race_evil_hail_gf_c15f0740.mp3", "Welcome. We greet you.", "yawn", 3949639532, 268039246, Spawn)
+                                end
+				            end
+				        end
+			        end
 			
 		elseif race == KERRA then
 			if gender == MALE then

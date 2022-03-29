@@ -23,10 +23,10 @@ spawn(NPC)
 end
 
 function aggro(NPC, Spawn)
-    	local chance = MakeRandomInt(0, 100)
-	if chance <= 25 then
+    	--local chance = MakeRandomInt(0, 100)
+	--if chance <= 25 then
 generic_aggro(NPC, Spawn)
-end
+--end
    end
 
 function healthchanged(NPC, Spawn)
