@@ -25,15 +25,15 @@ function hailed(NPC, Spawn)
 end
 
 function InRange(NPC, Spawn) 
-    if math.random(1, 100) <= 25 then
         if not HasLanguage(Spawn,1)then
+        if math.random(1, 100) <= 25 then            
         Garbled(NPC,Spawn)
+        end
         else
-	FaceTarget(NPC, Spawn)            
-     GenericEcologyHail(NPC, Spawn, faction)       
-    end   
- end
+    GenericEcologyCallout(NPC, Spawn, faction)                  
+    end
 end
+
 
 function respawn(NPC)
 end

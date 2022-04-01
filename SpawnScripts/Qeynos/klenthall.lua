@@ -6,15 +6,21 @@
 	Script Notes	:	Locations collected from Live
 --]]
 
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "", "I am not at all interested in fish, so please, do not mention them to me.", "", 1689589577, 4560189, Spawn)
-	end
+    GenericRaceCheckHail(NPC, Spawn, faction)
+end
 
+function InRange(NPC,Spawn)
+    GenericRaceCheckCallout(NPC, Spawn, faction)
+    end
 function respawn(NPC)
 		spawn(NPC)
 	end

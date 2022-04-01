@@ -5,23 +5,22 @@
 	Script Date		:	04/11/2020 06:17:43 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
 
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	
-	local choice = math.random(1,2)
+GenericEcologyHail(NPC, Spawn, faction)
+end
 
-	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gm_cd9164d6.mp3", "You're a stranger. And I don't like strangers, no sir I don't!", "sulk", 785726454, 3155500140, Spawn)
-	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gm_75c0e97c.mp3", "Welcome to the city, adventurer. Be mindful of the peace and quiet.  Here in Qeynos, we value our privacy.", "bow", 1955296899, 2249687997, Spawn)
-	else
-	end
-	end
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
 
 function respawn(NPC)
 	spawn(NPC)

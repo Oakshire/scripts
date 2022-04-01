@@ -130,14 +130,11 @@ function hailed(NPC, Spawn)
     end
 
 
-function InRange(NPC, Spawn) --Quest Callout
-    if math.random(1, 100) <= 25 then	
-	FaceTarget(NPC, Spawn)            
-     GenericEcologyHail(NPC, Spawn, faction)       
-    end   
+function InRange(NPC, Spawn) 
+    GenericEcologyCallout(NPC, Spawn, faction)                  
 end
 
---[[ OLD SCRIPT. Using Ecology VOs even though they don't match the text exactly
+--[[ OLD SCRIPT. Using Ecology VOs even though they don't match the text exactly (THESE TEXT ARE A RACE BASED RESPONSE WE DONT HAVE 3/31)
 function hailed(NPC, Spawn)
 	RandomTalk(NPC, Spawn, false)
 end

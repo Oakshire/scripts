@@ -5,15 +5,22 @@
 	Script Date		:	04/10/2020 01:16:00 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
 
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_3f899525.mp3", "Alack!  Dost yon adventurers think to aid in the search for the Sons of Marr?", "", 8384978, 3425989342, Spawn)
+GenericEcologyHail(NPC, Spawn, faction)
 end
+
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
 
 function respawn(NPC)
 	spawn(NPC)

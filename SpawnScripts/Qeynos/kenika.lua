@@ -5,22 +5,22 @@
 	Script Date		:	04/10/2020 02:29:10 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 	waypoints(NPC)
+    SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
-function respawn(NPC)
-	spawn(NPC)
+function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    GenericEcologyHail(NPC, Spawn, faction)
 end
 
-function InRange(NPC, Spawn)
-end
-
-function LeaveRange(NPC, Spawn)
-end
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 469.88, -11.53, 130.15, 2, 0)

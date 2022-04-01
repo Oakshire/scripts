@@ -5,15 +5,22 @@
 	Script Date		:	04/11/2020 06:01:50 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    GenericRaceCheckHail(NPC, Spawn, faction)
 end
 
+function InRange(NPC,Spawn)
+    GenericRaceCheckCallout(NPC, Spawn, faction)
+    end
+    
 function respawn(NPC)
 	spawn(NPC)
 end
