@@ -39,7 +39,7 @@ function hailed(NPC, Spawn)
 	elseif not HasQuest(Spawn, TowerOfThree) and not HasCompletedQuest(Spawn, TowerOfThree) then
 	  AddConversationOption(conversation, "No, no. Do you need something?", "TowerStart")
 	 elseif HasQuest(Spawn, TowerOfThree) and GetQuestStep (Spawn, TowerOfThree) == 2 then
-	    AddConversationOption(conversation, "I found the Tower of the Three in the Forest Ruins?", "TowerFinish")
+	    AddConversationOption(conversation, "I found the Tower of the Three in the Forest Ruins.  It has certainly seen better days.", "TowerFinish")
 	  end
 	  
 	  PlayFlavor(NPC, "voiceover/english/algan_tinmizer/qey_village06/ebikwobblecog000.mp3", "", "", '0b80eec5265d95a8', Spawn)

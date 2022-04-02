@@ -406,7 +406,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 				    if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "threaten", 0, 0, Spawn)
+				        PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_notcitizen_gf_1a98f879.mp3", "How did you get past the city gates?!", "shakefist", 3576460278,1912242189,Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
@@ -508,7 +508,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
    	                elseif choice == 8 then 
                     PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_e4cf5b64.mp3", "How now, friend adventurer?  Has't thou seen other daughters of Marr in the wilds?", "ponder", 2966512768, 1279748767, Spawn)
    	                elseif choice == 9 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_f56ada2a.mp3", "The queen calls all of us to service.  We shall find our kin to serve her majesty.", "agree", 484194272, 1279748767, Spawn)
+                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_f56ada2a.mp3", "The queen calls all of us to service.  We shall find our kin to serve her majesty.", "agree", 484194272, 4099511252, Spawn)
                     end                                                                                                                           
                 end
 			end
@@ -558,7 +558,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "threaten", 0, 0, Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
+				        PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_notcitizen_gm_7e3f7ca.mp3", "I refuse to contaminate myself by conversing with trash!", "heckno", 502315126, 4131741270,Spawn)
 				        end
 				    else
 				    local choice = math.random(1,4)
@@ -586,7 +586,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			        if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
+				        PlayFlavor(NPC, "voiceover/english/optional2/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_notcitizen_gf_e0dfed5b.mp3", "P-please!  Don't hurt me!", "wince", 3863103914, 4266619341,Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
@@ -816,7 +816,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			        if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+				        PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_notcitizen_gm_48350e59.mp3", "You're not allowed in here!", "shakefist", 237358955, 1041617020, Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
@@ -1010,7 +1010,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 				    if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+				        PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_notcitizen_gf_48350e59.mp3", "You're not allowed in here!", "shakefist", 3258959596, 3448333109,Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 				        end
@@ -1230,9 +1230,9 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			        if Qfaction <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+				        PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_notcitizen_gf_1a98f879.mp3", "How did you get past the city gates?!", "threaten", 3551306274, 3348662900,Spawn)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+				        PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_notcitizen_gf_7e3f7ca.mp3", "I refuse to contaminate myself by conversing with trash!", "glare", 3013505918,3175061897, Spawn)
 				        end
 				    else				    
                 	local choice = math.random(1,10)
@@ -3830,7 +3830,7 @@ function GenericEcologyCallout(NPC, Spawn, faction)
 			            AddTimer(NPC,8000,"ResetFactionCalloutTimer")				        
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "threaten", 0, 0)
+				        PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_notcitizen_gf_1a98f879.mp3", "How did you get past the city gates?!", "shakefist", 3576460278,1912242189)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0)
 				        end
@@ -3959,7 +3959,7 @@ function GenericEcologyCallout(NPC, Spawn, faction)
    	                elseif choice == 8 then 
                     PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_e4cf5b64.mp3", "How now, friend adventurer?  Has't thou seen other daughters of Marr in the wilds?", "ponder", 2966512768, 1279748767)
    	                elseif choice == 9 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_f56ada2a.mp3", "The queen calls all of us to service.  We shall find our kin to serve her majesty.", "agree", 484194272, 1279748767)
+                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_f56ada2a.mp3", "The queen calls all of us to service.  We shall find our kin to serve her majesty.", "agree", 484194272, 4099511252)
                     end                                                                                                                           
                 end
 			end
@@ -4021,9 +4021,9 @@ function GenericEcologyCallout(NPC, Spawn, faction)
 			            AddTimer(NPC,8000,"ResetFactionCalloutTimer")  				        
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "threaten", 0, 0)
+				        PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_notcitizen_gm_7e3f7ca.mp3", "I refuse to contaminate myself by conversing with trash!", "heckno", 502315126, 4131741270)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "heckno", 0, 0)
+				        PlayFlavor(NPC, "", "", "threaten", 0, 0)
 				        end
 				        end
 				    else
@@ -4061,7 +4061,7 @@ function GenericEcologyCallout(NPC, Spawn, faction)
 			            AddTimer(NPC,8000,"ResetFactionCalloutTimer")			            
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "heckno", 0, 0)
+				        PlayFlavor(NPC, "voiceover/english/optional2/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_notcitizen_gf_e0dfed5b.mp3", "P-please!  Don't hurt me!", "wince", 3863103914, 4266619341)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0)
 				        end
@@ -4361,7 +4361,7 @@ function GenericEcologyCallout(NPC, Spawn, faction)
 			            AddTimer(NPC,8000,"ResetFactionCalloutTimer")			            
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0)
+				        PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_notcitizen_gm_48350e59.mp3", "You're not allowed in here!", "shakefist", 237358955, 1041617020, Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0)
 				        end
@@ -4609,7 +4609,7 @@ function GenericEcologyCallout(NPC, Spawn, faction)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "shakefist", 0, 0)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0)
+				        PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_notcitizen_gf_48350e59.mp3", "You're not allowed in here!", "heckno", 3258959596, 3448333109)
 				        end
 				        end
 				    else
@@ -4889,9 +4889,9 @@ function GenericEcologyCallout(NPC, Spawn, faction)
 			            AddTimer(NPC,8000,"ResetFactionCalloutTimer")			            
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0)
+				        PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_notcitizen_gf_1a98f879.mp3", "How did you get past the city gates?!", "threaten", 3551306274, 3348662900)
 				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0)
+				        PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_notcitizen_gf_7e3f7ca.mp3", "I refuse to contaminate myself by conversing with trash!", "glare", 3013505918,3175061897)
 				        end
 				        end
 				    else
