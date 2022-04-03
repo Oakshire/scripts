@@ -80,7 +80,7 @@ function FaceGuardGarath(NPC) -- Saluting Knight-Captain Garath script
 	
 	if Garath ~= nil then 
 	    FaceTarget(NPC, Garath)
-        AddTimer(NPC, 2000, "SaluteGuardGarath") 
+        AddTimer(NPC, 1000, "SaluteGuardGarath") 
     end
 end
 

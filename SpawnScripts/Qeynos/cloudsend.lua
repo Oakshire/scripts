@@ -5,16 +5,23 @@
 	Script Date		:	04/10/2020 01:50:27 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
 
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "voiceover/english/optional2/woodelf_eco_good_2/ft/woodelf/woodelf_eco_good_2_aoi_gf_e67f1023.mp3", "Such a beautiful day!  All I need now is a nice vintage of elven mulberry and my relaxation will be complete.", "stretch", 3245673411, 1934163553, Spawn)
+GenericEcologyHail(NPC, Spawn, faction)
 end
 
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
+    
 function respawn(NPC)
 		spawn(NPC)
 	end

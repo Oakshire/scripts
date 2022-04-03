@@ -5,6 +5,7 @@
 	Script Date		:	04/11/2020 04:12:39 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
@@ -19,6 +20,8 @@ function respawn(NPC)
 		spawn(NPC)
 	end
 function InRange(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    
 		local choice = math.random(1,5)
 
 	if choice == 1 then
@@ -72,7 +75,8 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 461.95, -21.96, 232.57, 2, 0)
 	MovementLoopAddLocation(NPC, 449.24, -20.76, 213.14, 2, 0)
 	MovementLoopAddLocation(NPC, 449.13, -19.36, 195.78, 2, 0)
-	MovementLoopAddLocation(NPC, 449.24, -20.76, 213.14, 2, 0)
+	MovementLoopAddLocation(NPC, 449.24, -20.76, 213.14, 2, 2)
+	MovementLoopAddLocation(NPC, 449.24, -20.76, 213.14, 2, 8,"EcologyEmotes")	
 	MovementLoopAddLocation(NPC, 461.95, -21.96, 232.57, 2, 0)
 	MovementLoopAddLocation(NPC, 483.4, -20.64, 240.69, 2, 0)
 	MovementLoopAddLocation(NPC, 559.17, -17.69, 243.04, 2, 0)

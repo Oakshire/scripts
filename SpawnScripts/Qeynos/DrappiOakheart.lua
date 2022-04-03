@@ -22,7 +22,12 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-
+	local choice = MakeRandomInt(1,2)	
+	if choice == 1 then
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1006.mp3","","hello", 0, 0, Spawn)
+	elseif choice == 2 then
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1006.mp3","","hello", 0, 0, Spawn)
+	end
 	PlayFlavor(NPC, "", "Hello there!  If you have any of that old armor from my sweetheart here, I'd be more than happy to offer you some newer stuff!", "", 1689589577, 4560189, Spawn)
 end
 

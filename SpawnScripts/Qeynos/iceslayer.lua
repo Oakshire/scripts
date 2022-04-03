@@ -36,36 +36,35 @@ function hailed(NPC, Spawn)
 	end
 	AddConversationOption(conversation, "No problem.  I'll just leave him be.")
 	StartConversation(conversation, NPC, Spawn, "Pay no attention to Warley down there he just probably didn't sleep last night and is a little grumpy. Isn't that right Warley?")
-	AddConversationOption(conversation, "Why didn't he get any sleep last night?", "dlg_7_1")
 end
 
 function dlg_2_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-		AddConversationOption(conversation, "What is so scary about the Tomb of Varsoon?", "dlg_2_2")
-		AddConversationOption(conversation, "Sounds like a place I don't want to go to myself.  ")
+	AddConversationOption(conversation, "What is so scary about the Tomb of Varsoon?", "dlg_2_2")
+	AddConversationOption(conversation, "Sounds like a place I don't want to go to myself.  ")
 	StartConversation(conversation, NPC, Spawn, "Warley went to the Tomb of Varsoon to prove he wasn't afraid of walking around on those islands. Sure enough, he didn't get to the first bridge before turning tail and running back home. Poor thing ... all grumpy ... no sleep.")
 end
 
 function dlg_2_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-		AddConversationOption(conversation, "It sounds like a place I'd like to explore.", "dlg_2_3")
-		AddConversationOption(conversation, "I'll be sure to steer clear from it.  ")
+	AddConversationOption(conversation, "It sounds like a place I'd like to explore.", "dlg_2_3")
+	AddConversationOption(conversation, "I'll be sure to steer clear from it.  ")
 	StartConversation(conversation, NPC, Spawn, "The tomb once held an evil mage - Varsoon the Undying. He was involved in the War of the Plagues centuries ago.  The Cataclysm must have weakened the mage's spells on that place, because he didn't stick around.  The Concordium says that Varsoon is long gone, but you wouldn't catch me dead there!")
 end
 
 function dlg_2_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-		AddConversationOption(conversation, "I'll be careful.  Thank you for the directions.")
+	AddConversationOption(conversation, "I'll be careful.  Thank you for the directions.")
 	StartConversation(conversation, NPC, Spawn, "Heck, I'll tell you where it is! Turn left as you leave the city gates; go through Klicnik Fields. You'll see the islands the tomb rests on.  You go any further ... well, that's your decision, not mine.")
 end
 
 function dlg_8_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-		AddConversationOption(conversation, "Ready, willing and able!", "offer")
+	AddConversationOption(conversation, "Ready, willing and able!", "offer")
 	StartConversation(conversation, NPC, Spawn, "Chores you ask? I planned on heading out to the caves to gather some spider venom sacs, but if you're willing and able, I'll let you handle this task. I'll need at least five of the sacs.")
 end
 

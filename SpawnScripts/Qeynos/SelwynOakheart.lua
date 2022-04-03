@@ -23,8 +23,8 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
-		PlayFlavor(NPC, "voiceover/english/selwyn_oakheart/qey_south/quests/selwyn_oakheart/selwyn017.mp3", "", "", 3697608701, 2678534832, Spawn)
+    AddConversationOption(conversation,"Alright.")
+	PlayFlavor(NPC, "voiceover/english/selwyn_oakheart/qey_south/quests/selwyn_oakheart/selwyn017.mp3", "", "", 3697608701, 2678534832, Spawn)
 	StartConversation(conversation, NPC, Spawn, "I'm sorry, dear. I don't think I'd be able to help you with anything right now. I'm very busy.")
 end
 

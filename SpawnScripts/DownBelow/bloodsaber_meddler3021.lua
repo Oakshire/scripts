@@ -1,9 +1,9 @@
 --[[
-	Script Name		:	bloodsaber_meddler.lua
-	Script Purpose	:	Waypoint Path for bloodsaber_meddler.lua
-	Script Author	:	Devn00b
-	Script Date		:	04/28/2020 05:46:55 PM
-	Script Notes	:	Locations collected from Live
+    Script Name    : SpawnScripts/DownBelow/bloodsaber_meddler3021.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.04.03 07:04:49
+    Script Purpose : 
+                   : 
 --]]
 
 function spawn(NPC)
@@ -26,6 +26,3 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 11.95, 0.07, -135.76, 2, 5)
 	MovementLoopAddLocation(NPC, 27.85, -4, -139.55, 2, 5)
 end
-
-
-
