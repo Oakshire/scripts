@@ -60,7 +60,9 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 704.05, -19.53, 192.48, 2, 0)
 	MovementLoopAddLocation(NPC, 705.64, -19.45, 178.15, 2, 0)
 	MovementLoopAddLocation(NPC, 668.74, -21.28, 142.24, 2, 0)
-	MovementLoopAddLocation(NPC, 664.3, -21.16, 100.37, 2, 0)
+	MovementLoopAddLocation(NPC, 664.3, -21.16, 100.37, 2, 1)
+	MovementLoopAddLocation(NPC, 664.3, -21.16, 100.37, 2, 8,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 664.3, -21.16, 100.37, 2, 1)
 end
 
 

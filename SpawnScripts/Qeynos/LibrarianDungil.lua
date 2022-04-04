@@ -26,12 +26,9 @@ function hailed(NPC, Spawn)
 
 		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1060.mp3", "", "", 0, 0, Spawn)
 		AddConversationOption(conversation, "Nevermind.", "dlg_0_1")
-	StartConversation(conversation, NPC, Spawn, "Please be quick, I am very busy.")
-	if convo==13 then
-		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "Nevermind.", "dlg_13_1")
-		StartConversation(conversation, NPC, Spawn, "Please be quick, I am very busy.")
-	end
+    	StartConversation(conversation, NPC, Spawn, "Please be quick, I am very busy.")
+
+	
 
 end
 

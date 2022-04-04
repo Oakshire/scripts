@@ -5,6 +5,7 @@
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
@@ -14,15 +15,17 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function InRange(NPC, Spawn)
-end
 
-function LeaveRange(NPC, Spawn)
-end
+function InRange(NPC, Spawn)
+		CheckFaction(NPC, Spawn, "Qeynos")
+		if math.random(1, 100) <= 20 and GetFactionAmount(Spawn,11) >0 then
+		GenericGuardHail(NPC, Spawn)
+	end
+end	
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-
-	PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/service/guard/barbarian_guard_service_good_1_hail_gm_ee473c11.mp3", "Good day to you, citizen. All preserve Queen Antonia.", "salute", 2268064933, 2349331472, Spawn)
-end
+		GenericGuardHail(NPC, Spawn)
+	end
+	
 

@@ -22,7 +22,6 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-
-	PlayFlavor(NPC, "", "The dead open the eyes of the living.", "", 1689589577, 4560189, Spawn)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", "The dead open the eyes of the living.", "", 0, 0, Spawn)
 end
 
