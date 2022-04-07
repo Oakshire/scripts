@@ -10,10 +10,22 @@ function spawn(NPC)
 	waypoints(NPC)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 
+function hailed(NPC, Spawn)
+    FaceTarget(NPC,Spawn)
+	RandomGreeting(NPC, Spawn)
 end
+
+function RandomGreeting(NPC, Spawn)
+	local choice = MakeRandomInt(1,2)
+
+	if choice == 1 then
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1002.mp3", 0, 0, Spawn)
+	elseif choice == 2 then
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1002.mp3", 0, 0, Spawn)
+	end
+end
+
 
 function respawn(NPC)
 		spawn(NPC)

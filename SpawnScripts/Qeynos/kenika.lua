@@ -7,10 +7,6 @@
 --]]
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
-local TimeCheck = false
-local CalloutTimeCheck = false
-local FactionCalloutTimeCheck = false
-
 function spawn(NPC)
 	waypoints(NPC)
     SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
