@@ -8262,10 +8262,9 @@ function GenericDrunkCallout(NPC, Spawn, faction)
 	end
 	
     if TimeCheck== false then
-           TimeCheck = true	
     if  math.random(1,100) <= 20 then
-       
-      	AddTimer(NPC,20000,"ResetTimer")     
+        TimeCheck = true
+      	AddTimer(NPC,20000,"ResetTimer")         
 	if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then	
     if race == DWARF then
     	if gender == MALE then

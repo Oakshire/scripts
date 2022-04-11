@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 4, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -24,6 +24,6 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-GenericDrunkHail(NPC, Spawn, faction)  
+GenericDrunkHail(NPC, Spawn, faction)
 end
 
