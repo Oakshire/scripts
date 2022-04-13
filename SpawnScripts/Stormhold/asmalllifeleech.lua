@@ -24,7 +24,7 @@ function hailed(NPC, Spawn)
 end
 
 
-function prespawn(NPC)
+function spawn(NPC)
 local Level = GetLevel(NPC)
 if Level == 14 then
 SpawnSet(NPC, "hp", 2427)
