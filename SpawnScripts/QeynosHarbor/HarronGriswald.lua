@@ -4,6 +4,8 @@
 	Script Author	: Cynnar
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	
+	NOTE: Part of the Sarnak introduction quest LU 37.
 --]]
 
 function spawn(NPC)

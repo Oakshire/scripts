@@ -20,6 +20,8 @@ function InRange(NPC, Spawn)
 	if math.random(0, 100) <= 25 then
 		FaceTarget(NPC, Spawn)
 		GenericGuardHail(NPC, Spawn)
+		CheckFaction(NPC, Spawn, "Qeynos")
+		
 	else
 		CheckFaction(NPC, Spawn, "Qeynos")
 	end

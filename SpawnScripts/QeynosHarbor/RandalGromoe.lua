@@ -4,6 +4,7 @@
 	Script Author	: Cynnar
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Associated with Qeynos to Kelethin citizenship 'https://eq2.fandom.com/wiki/Her_People'
 --]]
 
 function spawn(NPC)

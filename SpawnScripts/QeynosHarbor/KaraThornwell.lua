@@ -1,9 +1,9 @@
 --[[
-	Script Name	: SpawnScripts/QeynosHarbor/JohneMandell.lua
-	Script Purpose	: Johne Mandell 
-	Script Author	: Cynnar
-	Script Date	: 2020.04.12
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+    Script Name    : SpawnScripts/QeynosHarbor/KaraThornwell.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.04.15 03:04:25
+    Script Purpose : 
+                   : 
 --]]
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 

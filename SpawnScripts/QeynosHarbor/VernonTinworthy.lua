@@ -4,6 +4,7 @@
 	Script Author	: Cynnar
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Part of the betrayal quest https://eq2.fandom.com/wiki/Dissatisfied_with_Qeynos
 --]]
 
 function spawn(NPC)
@@ -27,20 +28,16 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1052.mp3", "", "", 0, 0, Spawn)
 		AddConversationOption(conversation, "Nothing.", "dlg_12_1")
 	StartConversation(conversation, NPC, Spawn, "What do you want?")
-	if convo==20 then
-		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1052.mp3", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "Nothing.", "dlg_20_1")
-		StartConversation(conversation, NPC, Spawn, "What do you want?")
 	end
 
-end
 
-function dlg_20_1(NPC, Spawn)
+
+function dlg_12_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1052.mp3", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "Nothing.", "dlg_20_2")
-	StartConversation(conversation, NPC, Spawn, "What do you want?")
+	PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+		AddConversationOption(conversation, "I'll be leaving.")
+	StartConversation(conversation, NPC, Spawn, "Then get out of my sight.  I'm drinking my woes away.")
 end
 

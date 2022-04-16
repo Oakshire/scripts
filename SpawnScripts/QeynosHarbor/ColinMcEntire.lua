@@ -4,6 +4,8 @@
 	Script Author	: Cynnar
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	
+	NOTE: Associated with the sarnak introduction LU37. Removed https://eq2.fandom.com/wiki/Colin_McEntire
 --]]
 
 function spawn(NPC)
