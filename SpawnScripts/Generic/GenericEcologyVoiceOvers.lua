@@ -2987,12 +2987,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 			if gender == MALE then
 	    elseif gender == FEMALE then
 	            if FPfaction <0 then
-                    local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "neener", 0, 0, Spawn)
-				        elseif choice == 2 then	                
-	                    PlayFlavor(NPC, "voiceover/english/ratonga_eco_evil_1/ft/ratonga/ratonga_eco_evil_1_notcitizen_gf_8d2a0876.mp3", "I heard you screaming from all the way over there.", "point", 3634348917, 2158238801, Spawn)
-                        end
+                FactionChecking(NPC, Spawn, faction)
                 else
 				        local choice = math.random(1,3)                         
                         if choice == 1 then	
@@ -3034,12 +3029,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 			if gender == MALE then
 			elseif gender == FEMALE then
 			    	if FPfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
+                    FactionChecking(NPC, Spawn, faction)
 				    else  			    
 				        local choice = math.random(1,3)                         
                         if choice == 1 then	
@@ -3079,12 +3069,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 			if gender == MALE then
 			elseif gender == FEMALE then
 			        if Qfaction <0 then
-			            local choice = math.random(1,2)
-				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "wince", 0, 0, Spawn)
-				        elseif choice == 2 then
-				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
-				        end
+                    FactionChecking(NPC, Spawn, faction)
 				    else			    
 			    	local choice = math.random(1,3)
 	                    if choice == 1 then --racial check

@@ -5,30 +5,24 @@
     Script Purpose : 
                    : 
 --]]
+
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
-
 function spawn(NPC)
-
+SetPlayerProximityFunction(NPC, 4, "InRange", "LeaveRange")		
 end
-
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    GenericEcologyHail(NPC, Spawn, faction)
+    GenericRaceCheckHail(NPC, Spawn)
+end
+
+function InRange(NPC,Spawn)
+    GenericRaceCheckCallout(NPC, Spawn)
     end
+    
+function respawn(NPC)
+		spawn(NPC)
+	end
 
-
-
-function InRange(NPC, Spawn) 
-    if math.random(1, 100) <= 20 then
-	FaceTarget(NPC, Spawn)        
-        GenericEcologyHail(NPC, Spawn, faction)
-    end   
- end
 

@@ -12,9 +12,9 @@
 
 
 function Init(Quest)
-	AddQuestStepKillByRace(Quest, 1, "I need to find a skeleton essence.", 1, 100, "I must locate several skeleton body parts.", 2516, 340)
-	AddQuestStepKillByRace(Quest, 2, "I need to find a skeleton skull.", 1, 100, "I must locate several skeleton body parts.", 2516, 340)
-	AddQuestStepKillByRace(Quest, 3, "I need to find a skeleton ribcage.", 1, 100, "I must locate several skeleton body parts.", 2516, 340)
+	AddQuestStepKillByRace(Quest, 1, "I need to find a skeleton essence.", 1, 30, "I must locate several skeleton body parts.", 2516, 340)
+	AddQuestStepKillByRace(Quest, 2, "I need to find a skeleton skull.", 1, 40, "I must locate several skeleton body parts.", 91, 340)
+	AddQuestStepKillByRace(Quest, 3, "I need to find a skeleton ribcage.", 1, 55, "I must locate several skeleton body parts.", 90, 340)
 	AddQuestStep(Quest, 4, "I need to find and study a skeleton arm.", 1, 100, "I must locate several skeleton body parts.", 11)
 	AddQuestStep(Quest, 5, "I need to find and study a skeleton leg.", 1, 100, "I must locate several skeleton body parts.", 11)
 	AddQuestStep(Quest, 6, "I need to find and study a skeleton objurgatory hunger.", 1, 100, "I must locate several skeleton body parts.", 11)
@@ -59,12 +59,14 @@ function Reload(Quest, QuestGiver, Player, Step)
 		Step7Complete(Quest, QuestGiver, Player)
 	elseif Step == 8 then
 		Step8Complete(Quest, QuestGiver, Player)
+	elseif Step == 9 then
+		QuestIsComplete(Quest, QuestGiver, Player)		
 	end
 end
 
 function CheckProgress(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player, 5396, 1) and QuestStepIsComplete(Player, 5396, 2) and QuestStepIsComplete(Player, 5396, 3) and QuestStepIsComplete(Player, 5396, 4) and QuestStepIsComplete(Player, 5396, 5) and QuestStepIsComplete(Player, 5396, 6) and QuestStepIsComplete(Player, 5396, 7) and QuestStepIsComplete(Player, 5396, 8) then
-        QuestIsComplete(Quest, QuestGiver, Player)
+        Step9Complete(Quest, QuestGiver, Player)
     end
 end
 
@@ -114,7 +116,7 @@ function Step8Complete(Quest, QuestGiver, Player)
    CheckProgress(Quest, QuestGiver, Player)
 end
 
-function QuestIsComplete(Quest, QuestGiver, Player)
+function Step9Complete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have located all of the necessary skeleton body parts.")
 	UpdateQuestDescription(Quest, "I have learned the secrets of the skeleton.")
 	GiveQuestReward(Quest, Player)
