@@ -22,7 +22,7 @@ function InRange(NPC, Spawn) --Quest Callout
 if math.random(1, 100) <= 60 then
     if GetLevel(Spawn) <5 then
             FaceTarget(NPC, Spawn)
-            PlayFlavor(NPC, "", "Good day adventurer! I hope you are staying safe on your arduous journey. Please move on. I must'nt bother you with the unpleasant mission at hand.", "attention", 0, 0, Spawn)
+            PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/100_guard_captain_gerathalas_multhail1_a85f56d8.mp3", "Good day adventurer! I hope you are staying safe on your arduous journey. Please move on. I must'nt bother you with the unpleasant mission at hand.", "attention", 4040681686, 1885342319, Spawn)
     elseif not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) and GetLevel(Spawn) >=5 then 
         FaceTarget(NPC, Spawn)
         PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/100_guard_captain_gerathalas_callout_dc14d674.mp3", "Keep an eye out soldiers! The rats are getting into the food stores again! You adventurer. Would you help rid the city of these putrid vermin?","attention", 379444664, 154385468, Spawn)
@@ -31,7 +31,7 @@ if math.random(1, 100) <= 60 then
          choice = math.random(1,3)
          if choice ==1 then
          FaceTarget(NPC, Spawn)
-	    PlayFlavor(NPC, "", "Good day to you, adventurer.  I hope you have been keeping yourself safe.", "salute", 0, 0, Spawn)
+	    PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas.mp3", "Good day to you, adventurer.  I hope you have been keeping yourself safe.", "salute", 3830137539, 3865597694, Spawn)
          elseif choice ==2 then
         FaceTarget(NPC, Spawn)
 		PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
@@ -75,7 +75,11 @@ function Sleep(NPC)
 
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+    if GetLevel(Spawn) <5 then
+            FaceTarget(NPC, Spawn)
+            PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/100_guard_captain_gerathalas_multhail1_a85f56d8.mp3", "Good day adventurer! I hope you are staying safe on your arduous journey. Please move on. I must'nt bother you with the unpleasant mission at hand.", "attention", 4040681686, 1885342319, Spawn)
+    else
+    	FaceTarget(NPC, Spawn)
 
         PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas.mp3", "", "", 3830137539, 3865597694, Spawn)
         conversation = CreateConversation()  
@@ -87,7 +91,7 @@ function hailed(NPC, Spawn)
         end
 	    AddConversationOption(conversation, "Good day to you too!")
 	    StartConversation(conversation, NPC, Spawn, "Good day to you, adventurer.  I hope you have been keeping yourself safe.")
-    
+    end   
 end
 
 function ICan(NPC, Spawn)
