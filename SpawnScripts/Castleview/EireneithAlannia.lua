@@ -5,7 +5,7 @@
 	Script Date	: 2022.01.29
 	Script Notes	: 
 --]]
-
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
 
 --	PlayFlavor(NPC, "", "One of my responsibilities is controlling the population of creatures in the area, and I'm barely keeping up! The glade deer population has grown out of control. Once their numbers rise, those deer are hard to manage!", "", 1689589577, 4560189)
@@ -23,12 +23,19 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn) --Quest Callout
+        if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  
     if math.random(1, 100) <= 60 and GetLevel(Spawn) >=10 then
     PlayFlavor(NPC, "", "So much evil ... I don't know which way to turn first.", "ponder", 0, 0, Spawn)
     end
 end
+end
 
 function hailed(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else      
     GenericHail(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     if not HasQuest(Spawn, Deer) and not HasCompletedQuest(Spawn, Deer) then
@@ -55,7 +62,7 @@ function hailed(NPC, Spawn)
 	    Say(NPC, "Hopefully nature's balance can be restored through our small actions.", Spawn)
         end
     end
-
+end
 
 function ICan(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

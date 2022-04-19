@@ -5,7 +5,7 @@
 	Script Date	: 2022.01.25
 	Script Notes	: Speak Koada'Dal
 --]]
-
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Reservation = 5452
 
@@ -19,10 +19,12 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else
     if not HasLanguage(Spawn, 9) then
         	 if math.random(1, 100) <= 60 then
             local choice = math.random(1,2)
-
             if choice == 1 then
 		    PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_a002225a.mp3", "Castleview is beautiful this time of year.", "royalwave", 3121965781, 2073270812, Spawn, 9)
     	    elseif choice == 2 then
@@ -32,23 +34,28 @@ function InRange(NPC, Spawn)
 	elseif
         not HasCompletedQuest (Spawn, Reservation) and not HasQuest (Spawn, Reservation) then 
             if math.random(1, 100) <= 70 then
-            local choice = math.random(1,2)
+            local choice = math.random(1,3)
                 if choice == 1 then
                 FaceTarget(NPC,Spawn)
-                 PlayFlavor(NPC, "", "Sorry friend, I have no time for chatting. I must get to the inn.", "", 0, 0, Spawn)
-            elseif choice == 2 then
-            FaceTarget(NPC,Spawn)
-            PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)    end
-            end
+                PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail1_b993e1.mp3", "Sorry friend, I have no time for chatting. I must get to the inn.", "", 2101590645, 2348500153, Spawn)
+                elseif choice == 2 then
+                FaceTarget(NPC,Spawn)
+                PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)    end
+                elseif choice ==3 then
+                PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me...", "", 1634717602, 1906674926, Spawn)
+                FaceTarget(NPC,Spawn)
+                end
         
     elseif HasCompletedQuest (Spawn, Reservation) and math.random(1, 100) <= 50 then
         local choice = math.random(1,2)
-         if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me...", "", 1634717602, 1906674926, Spawn)
+        if choice == 1 then
+        FaceTarget(NPC,Spawn)
+        PlayFlavor(NPC, "", "", "royalwave", 0, 0, Spawn)
         else
         FaceTarget(NPC,Spawn)
         PlayFlavor(NPC, "", "", "curtsey", 0, 0, Spawn)
         end    
+    end
     end
 end
 
@@ -59,7 +66,7 @@ end
 function QuestStart(NPC, Spawn, conversation)
     FaceTarget(NPC,Spawn)
     if not HasQuest (Spawn, Reservation) then
-         conversation = CreateConversation()
+        conversation = CreateConversation()
         AddConversationOption(conversation, "Have you been in Qeynos long?", "Long")
         PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "", "", 1634717602, 1906674926, Spawn)
        StartConversation(conversation, NPC, Spawn, "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me..")
@@ -122,7 +129,14 @@ function Payment(NPC, Spawn)
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-
+if GetFactionAmount(Spawn, 11) <0 then
+    FactionChecking(NPC, Spawn, faction)
+    else
+local Taner = GetSpawn(NPC,2360012)    
+	FaceTarget(NPC, Spawn)
+	if Taner ~=nil then
+    FaceTarget(Taner,Spawn)
+    end	
     if not HasLanguage(Spawn, 9) then -- Language Check for KoaDal (9)
 	local choice = math.random(1,2)
          if choice == 1 then
@@ -135,8 +149,14 @@ function hailed(NPC, Spawn)
         QuestStart(NPC, Spawn)
   
         elseif HasCompletedQuest (Spawn, Reservation) then
-        PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  The beauty of Qeynos herself calls me though...", "", 2220724575, 2462118771, Spawn)
+	    local choice = math.random(1,2)
+            if choice == 1 then
+            PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  The beauty of Qeynos herself calls me though...", "", 2220724575, 2462118771, Spawn)
+            elseif choice == 2 then
+            FaceTarget(NPC,Spawn)
+            PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)    end
+            end                        
         end
    end
- end
+end 
 

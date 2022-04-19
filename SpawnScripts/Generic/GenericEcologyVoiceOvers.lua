@@ -7762,9 +7762,9 @@ function FactionChecking(NPC, Spawn, faction)
  				        elseif choice == 3 then
                  		PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_notcitizen_gm_48350e59.mp3", "You're not allowed in here!", "point", 237358955, 1041617020, Spawn, 0)
 				        elseif choice == 4 then
-		                PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gf_8236a789.mp3", "Remove yourself from my presence, outsider.", "glare", 3495512299, 2613529491, Spawn, 0)
+		                PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_notcitizen_gm_8236a789.mp3", "Remove yourself from my presence, outsider.", "glare", 3302310786, 2767017909, Spawn, 0)
                         elseif choice == 5 then
-   				        PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gf_5afcbd03.mp3", "The streets aren't safe with your kind upon them!", "point", 3071247604, 671588271)
+   				        PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_notcitizen_gm_5afcbd03.mp3", "The streets aren't safe with your kind upon them!", "point", 24123463,  2639101341)
 				        end 			    
 			elseif gender == FEMALE then
 			            local choice = math.random(1,9)

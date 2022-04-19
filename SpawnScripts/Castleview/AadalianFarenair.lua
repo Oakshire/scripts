@@ -5,6 +5,8 @@
 	Script Date	: 2022.01.25
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 
 local Sword = 5455
 
@@ -19,15 +21,18 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  
     if not HasLanguage(Spawn, 9) then
         	 if math.random(1, 100) <= 70 then
-            local choice = math.random(1,2)
-            
+                Garbled(NPC, Spawn, Faction)
+           --[[ local choice = math.random(1,2)
             if choice == 1 then
 	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "tap", 2766992983, 3224256482, Spawn, 9)
     	    elseif choice == 2 then
 	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_d396c4fc.mp3", "Oh dont look at me that way. Speak my language!.", "", 3403333804, 3641522203, Spawn, 9)
-    	    end
+    	    end]]--
     	end
 	elseif
         not HasCompletedQuest (Spawn, Sword) and not HasQuest (Spawn, Sword) then 
@@ -46,6 +51,7 @@ function InRange(NPC, Spawn)
 		PlayFlavor(NPC, "","", "tap", 0, 0, Spawn)
              end
     end
+end
 end
 
 function LeaveRange(NPC, Spawn)
@@ -140,11 +146,14 @@ function Payment(NPC, Spawn)
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-
-    if not HasLanguage(Spawn, 9) then -- Language Check for KoaDal (9)
-        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  
+        if not HasLanguage(Spawn, 9) then -- Language Check for KoaDal (9)
+        Garbled(NPC, Spawn, Faction)        
+        --PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "", 2766992983, 3224256482, Spawn, 9)
     	
-    else
+        else
         if not HasCompletedQuest(Spawn, Sword) then 
         QuestStart(NPC, Spawn)
   
@@ -152,5 +161,6 @@ function hailed(NPC, Spawn)
 	    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "", 2296905326, 696379844, Spawn)
         end
    end
- end
+end
+end
 

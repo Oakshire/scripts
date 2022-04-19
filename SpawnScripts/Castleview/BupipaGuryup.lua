@@ -18,29 +18,22 @@ ProvidesQuest(NPC, PickUp)
 end
 
 function InRange(NPC, Spawn) --Quest Callout
-
-if math.random(1, 100) <= 50 then
-    if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
-        choice = math.random(1,2)
+if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
+if math.random(1, 100) <= 70 then
+ 
+        choice = math.random(1,3)
     FaceTarget(NPC, Spawn)
         if choice ==1 then
         		PlayFlavor(NPC, "", "Ahem... FROAK!  FROAK FROOOOAAAAKKK!", "cackle", 0, 0, Spawn)
+        elseif choice ==2 then
+	    PlayFlavor(NPC, "", "The sounds of the swamp are sweet to hear! FROAK!  FROAK FROAK! ", "orate", 0, 0, Spawn)
     	else
     	PlayFlavor(NPC, "", "The bugs so sweet it brings a tear! FROAK!  FROAK FROOOOAAAAKKK!", "orate", 0, 0, Spawn)
-    	 end
-     else
-         choice = math.random(1,3)
-         if choice ==1 then
-         FaceTarget(NPC, Spawn)
-	    PlayFlavor(NPC, "", "The sounds of the swamp are sweet to hear! FROAK!  FROAK FROAK! ", "orate", 0, 0, Spawn)
-        elseif choice ==2 then
-		PlayFlavor(NPC, "", "Ahem... FROAK!  FROAK FROOOOAAAAKKK!", "orate", 0, 0, Spawn)
-		else
-		PlayFlavor(NPC, "", "The bugs so sweet it brings a tear! FROAK!  FROAK FROOOOAAAAKKK!", "orate", 0, 0, Spawn)
-        end
-    end
+	    end
+	 end
     end
 end
+
 
 
 function respawn(NPC)
@@ -53,13 +46,17 @@ function hailed(NPC, Spawn)
 	if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
     conversation = CreateConversation()
     PlayFlavor(NPC, "","","fullcurtsey",0,0,Spawn)
+    if GetQuestStep (Spawn, Duet) == 1 then
+    AddConversationOption(conversation, "Kualdin Swoonsong over in Willow Wood is planning a concert in the future.  He wanted to know if you were interested.", "DuetOffer")
+    end        
     AddConversationOption(conversation, "You sing quite beautifully.", "Voice")
     StartConversation(conversation, NPC, Spawn, "I must continue to practice mine songs, for one day I mayhaps be invited to sing before Antonia Bayle! Froooaak! Froak! Froak! FrooOOOOooaak!")
     
     elseif GetQuestStep (Spawn, Duet) == 1 then
+    conversation = CreateConversation()
     PlayFlavor(NPC, "","","ponder",0,0,Spawn)
-    AddConversationOption(conversation, "I think I am going to find some place quieter than here.")
     AddConversationOption(conversation, "Kualdin Swoonsong over in Willow Wood is planning a concert in the future.  He wanted to know if you were interested.", "DuetOffer")
+    AddConversationOption(conversation, "I think I am going to find some place quieter than here.")
     StartConversation(conversation, NPC, Spawn, "You appear to have something for me?")
         
     elseif not HasCompletedQuest (Spawn, PickUp) and  HasQuest (Spawn, PickUp) then 
@@ -130,7 +127,7 @@ end
   StartConversation(conversation, NPC, Spawn, "Bravo!  Here is thy payment I promised thee.  Hmm ... it lookest like it will take a while to set up.")
 end   
 
- function Duet(NPC, Spawn)
+ function DuetOffer(NPC, Spawn)
               FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
     PlayFlavor(NPC, "","","agree",0,0,Spawn)

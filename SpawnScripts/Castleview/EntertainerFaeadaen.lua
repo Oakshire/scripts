@@ -5,6 +5,7 @@
 	Script Date	: 2022.01.20
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Quest = 238
 local Book = 5468
@@ -20,6 +21,9 @@ function respawn(NPC)
 end
 
 function InRange (NPC,Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else      
     if math.random(1, 100) <= 66 then
     local choice = math.random(1,4)
 
@@ -34,8 +38,12 @@ PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/100_entert
     end
 end
 end
+end
 
 function hailed(NPC, Spawn)
+        if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  
     local con = CreateConversation()
     if Timer == false then
     FaceTarget(NPC, Spawn)
@@ -55,6 +63,7 @@ function hailed(NPC, Spawn)
     end
     AddConversationOption(con, "I'll keep my coins, thank you.")
     StartConversation(con, NPC, Spawn, "Come closer and watch as I make lights dance and coins disapear into thin air! ")
+end
 end
 
 function NoBook(NPC,Spawn)

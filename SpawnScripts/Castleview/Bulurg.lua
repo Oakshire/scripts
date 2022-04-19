@@ -5,14 +5,14 @@
 	Script Date	: 2022.01.25
 	Script Notes	: 
 --]]
-
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 --dofile("SpawnScripts/Generic/GenericBartenderVoiceOvers.lua")
 
 local Water = 5456
 
 function spawn(NPC)
 ProvidesQuest(NPC,Water)
-SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -20,17 +20,24 @@ function respawn(NPC)
 end
 
 function InRange (NPC,Spawn)
+        if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else     
      if math.random(1, 100) <= 70 then
          if not HasCompletedQuest(Spawn, Water) then 
         PlayFlavor(NPC, "voiceover/english/bartender_bulurg/qey_village04/100_bartender_bulurg_callout_a4a7c4a8.mp3", "Oh dear. Oh dear! The elven libation is dry! Only if all the locals would drink my bog-spirits.", "frustrated", 731296695, 1004786482, Spawn)
         end
         else
 	    PlayFlavor(NPC, "voiceover/english/bartender_bulurg/qey_village04/100_bartender_bulurg_multhail2_756404e8.mp3", "I spy that thou'st might enjoy a taste of my brews with real swamp water! Would'st this be the case?", "hello", 1254546536, 617051761, Spawn)
+        end
     end
 end
 
 
 function hailed(NPC, Spawn)
+        if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else        
     if not HasCompletedQuest(Spawn, Water) then
             QuestStart(NPC, Spawn,conversation)
     else
@@ -47,6 +54,8 @@ function hailed(NPC, Spawn)
         end
     end
 end
+end
+
     function QuestStart(NPC, Spawn, conversation)
     FaceTarget(NPC,Spawn)
     if not HasQuest (Spawn, Water) and not HasCompletedQuest(Spawn, Water) then
