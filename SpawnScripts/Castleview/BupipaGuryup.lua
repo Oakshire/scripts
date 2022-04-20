@@ -18,6 +18,14 @@ ProvidesQuest(NPC, PickUp)
 end
 
 function InRange(NPC, Spawn) --Quest Callout
+    if GetFactionAmount(Spawn,11) <0 then
+         choice = math.random(1,2)
+         if choice == 1 then
+        		PlayFlavor(NPC, "", "", "noway", 0, 0, Spawn)
+        elseif choice == 2 then
+         		PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+        end
+    else    
 if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
 if math.random(1, 100) <= 70 then
  
@@ -33,7 +41,7 @@ if math.random(1, 100) <= 70 then
 	 end
     end
 end
-
+end
 
 
 function respawn(NPC)
@@ -41,6 +49,14 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+     if GetFactionAmount(Spawn,11) <0 then
+         choice = math.random(1,2)
+         if choice == 1 then
+        		PlayFlavor(NPC, "", "", "noway", 0, 0, Spawn)
+        elseif choice == 2 then
+         		PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+        end  
+        else
     GenericHail(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	if not HasCompletedQuest (Spawn, PickUp) and not HasQuest (Spawn, PickUp) then 
@@ -81,7 +97,7 @@ function hailed(NPC, Spawn)
 		else
 		PlayFlavor(NPC, "", "Come to enjoy my moving ballads, have you?", "orate", 0, 0, Spawn)
         end
-        
+    end       
 end
 
 

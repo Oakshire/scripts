@@ -5,6 +5,7 @@
 	Script Date	: 2022.01.26
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Bog = 5458
 
@@ -15,6 +16,9 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  	
 	conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/grommluk_oognee/qey_village04/grommlukoognee.mp3", "", "sigh", 1671306238, 1249436621, Spawn)
 	if not HasCompletedQuest (Spawn, Bog) and not HasQuest (Spawn, Bog) then 
@@ -25,7 +29,7 @@ function hailed(NPC, Spawn)
     end
 	AddConversationOption(conversation, "Enjoy your soak. Good day.")
 	StartConversation(conversation, NPC, Spawn,     "Ahhh... It feels good to get into the water and relax, but too bad this isn't a swamp, though. The water is too clean the stone doesn't squish...")
-
+    end
 end
 
 function respawn(NPC)
@@ -33,6 +37,9 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  	    
     if math.random(1, 100) <= 60 then
         if not HasCompletedQuest (Spawn, Bog) then 
             FaceTarget(NPC,Spawn)
@@ -52,6 +59,7 @@ function InRange(NPC, Spawn)
                 PlayFlavor(NPC, "", "", "dance", 0, 0)
             end
          end
+    end
     end
 end
 

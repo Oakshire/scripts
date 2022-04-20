@@ -22,7 +22,9 @@ function InRange (NPC,Spawn)
     if GetFactionAmount(Spawn,11) <0 then
         FactionChecking(NPC, Spawn, faction)
         else    
-     if math.random(1, 100) <= 50 then
+     if math.random(1, 100) <= 60 then
+        if not HasQuest (Spawn, Jewel) and not HasCompletedQuest(Spawn, Jewel) then
+        local Lista = GetSpawn(NPC,2360011)    
         local choice = math.random(1, 3)
         if choice == 1 then
             FaceTarget(NPC,Spawn)
@@ -34,7 +36,14 @@ function InRange (NPC,Spawn)
             FaceTarget(NPC,Spawn)
             PlayFlavor(NPC, "voiceover/english/taneranthalis_nedaiveren/qey_village04/100_park_taneranthalis_multhail2_c2e4d5a7.mp3", "It seems like just yesterday I was a small child brought to Qeynos from Felwithe. Though its white towers are but a distant memory, the Koada'dal in Castleview keep the elven spirit alive", "", 2103458666, 2948247370, Spawn)
         end
+        else 
+            FaceTarget(NPC,Spawn)
+	        PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
+        	if Lista ~=nil then
+            FaceTarget(Lista,Spawn)
+            end	        
         end
+      end
     end
 end
 

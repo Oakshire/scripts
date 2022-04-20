@@ -14,6 +14,9 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+if GetFactionAmount(Spawn,11) <0 then
+	PlayFlavor(NPC, "", "", "threaten", 0, 0)
+    else
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
@@ -22,6 +25,7 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "Thanks for your words, but I must go now.")
 	StartConversation(conversation, NPC, Spawn, "Another beautiful day in the city of Qeynos!  As the Priests of Life would say, 'The light of life shines bright upon Qeynos.'  ")
 
+    end
 end
 
 function dlg_4_1(NPC, Spawn)

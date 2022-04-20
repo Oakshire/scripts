@@ -5,7 +5,7 @@
 	Script Date	: 2022.01.28
 	Script Notes	: 
 --]]
-
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Badgers = 5465
 local Slime = 5466
@@ -29,6 +29,9 @@ end
 
 
 function InRange(NPC, Spawn) --Quest Callout
+    if GetFactionAmount(Spawn,11) <0 then
+		PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/100_researcher_yanari_multhail1_ba125732.mp3", "I'm very busy and don't want you getting hurt. Please leave me to my work.", "shakefist", 2153034813, 3927600348, Spawn)
+        else      
 if math.random(1, 100) <= 70 then
     if not HasCompletedQuest (Spawn, Badgers) and not HasCompletedQuest (Spawn, Slime) then 
         choice = math.random(1,3)
@@ -54,13 +57,16 @@ if math.random(1, 100) <= 70 then
     	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
         end
     end
+    end
 end
-
 
 
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  	
             if not HasCompletedQuest (Spawn, Badgers) and not HasCompletedQuest (Spawn, Slime) then
             FaceTarget(NPC, Spawn)
                 conversation = CreateConversation()   
@@ -81,8 +87,8 @@ function hailed(NPC, Spawn)
                 PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan.mp3", "", "", 3613336528, 1736617695, Spawn)
 	           StartConversation(conversation, NPC, Spawn, "Do not touch anything!  You could turn yourself into a goo or destroy the entire building.  What do you need?")
 	          end
+    end
 end
-
 
  function BadgerStart(NPC, Spawn)
     conversation = CreateConversation()

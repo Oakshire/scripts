@@ -5,7 +5,7 @@
 	Script Date	: 2009.10.03
 	Script Notes	: Edited calling with Daylena Telanthis - Dorbin 4/18/2022
 --]]
-dofile("SpawnScripts/Castleview/DaylenaTelanthis.lua")
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
@@ -16,27 +16,30 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-	if math.random(0, 100) <= 30 then
+	if GetFactionAmount(Spawn,11) <0 then
+     	FaceTarget(NPC, Spawn)
+        FactionChecking(NPC, Spawn, faction)
+        else       
+	if math.random(0, 100) <= 22 then
 		TalkCheck(NPC, Spawn)
 	end
+end
 end
 
 function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
+	if GetFactionAmount(Spawn,11) <0 then
+     	FaceTarget(NPC, Spawn)
+        FactionChecking(NPC, Spawn, faction)
+        else       
 	FaceTarget(NPC, Spawn)
 	TalkHail(NPC, Spawn)
 end
+end
 
 function TalkCheck(NPC, Spawn)
-    local Dayl = GetSpawn(NPC,2360006)
-	local check = math.random(1, 2)
-	if check == 1 then
-    if Dayl ~=nil then	    
-    Talk(Dayl, Spawn)
-    end
-	    else
 	local choice = math.random(1, 4)
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/highelf_eco_good_celestialwatch/ft/eco/good/highelf_eco_good_celestialwatch_hail_gm_1a077d47.mp3", "The Qeynos Guard blindly strikes at the darkness rather than see the opportunity for redemption that lies within even the most lost of us.", "", 970013852, 575367438, Spawn)
@@ -48,7 +51,7 @@ function TalkCheck(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/highelf_eco_good_celestialwatch/ft/eco/good/highelf_eco_good_celestialwatch_hail_gm_d1a0f4da.mp3", "The Celestial Watch preserves the rituals of servitude to the gods so that all might experience through worship the return of the ancient deities.", "", 3161458185, 1498528167, Spawn)
 	end
     end
-end
+
 
 function TalkHail(NPC, Spawn)
 

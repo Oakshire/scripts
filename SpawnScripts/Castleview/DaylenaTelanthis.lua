@@ -3,25 +3,41 @@
 	Script Purpose	: Daylena Telanthis 
 	Script Author	: Scatman
 	Script Date	: 2009.10.03
-	Script Notes	: Added faction check & See SpawnScripts/Castleview/KethelinShadowcross.lua for callout - 2022.04.18 Dorbin
+	Script Notes	: Added faction check  - 2022.04.18 Dorbin
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Talk(NPC, Spawn)
+function InRange(NPC, Spawn)
+	if GetFactionAmount(Spawn,11) <0 then
+     	FaceTarget(NPC, Spawn)
+        FactionChecking(NPC, Spawn, faction)
+        else       
+	if math.random(0, 100) <= 25 then
+		Talk(NPC, Spawn)
+	end
+end
 end
 
-local ConcFac = GetFactionAmount(Spawn, 136)
+function hailed(NPC, Spawn)
+	if GetFactionAmount(Spawn,11) <0 then
+     	FaceTarget(NPC, Spawn)
+        FactionChecking(NPC, Spawn, faction)
+        else    
+	FaceTarget(NPC, Spawn)
+	Talk(NPC, Spawn)
+    end
+end
 
 function Talk(NPC, Spawn)
-
+local ConcFac = GetFactionAmount(Spawn, 136)
     if ConcFac >=30000 then
 	local choice = math.random(1, 7)
 	elseif ConcFac >=10000 then
@@ -47,3 +63,4 @@ function Talk(NPC, Spawn)
 	    end
     end
 end
+

@@ -5,6 +5,8 @@
 	Script Date	: 2009.10.03
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
 local Tool = 5457
 
 function spawn(NPC)
@@ -15,6 +17,9 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else     
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	if GetQuestStep(Spawn, Tool) ==1 then
@@ -23,6 +28,7 @@ function hailed(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/apprentice_boggi/qey_village04/apprenticeboggi.mp3", "", "", 1068299089, 2686342617)
 	AddConversationOption(conversation, "I think I'll let you get back to resting your \"injury.\" Good bye.")
 	StartConversation(conversation, NPC, Spawn, "Oh! Hello! I wasn't... um... napping. I was just resting my injured leg. That's it!")
+end
 end
 
 function ToolPickup(NPC, Spawn)
