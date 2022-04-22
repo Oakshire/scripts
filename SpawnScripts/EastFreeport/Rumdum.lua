@@ -175,8 +175,145 @@ function Dialog1(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/rumdum/fprt_east/quest_rumdum001.mp3", 531525914, 2611919563)
 	Dialog.AddOption("Well, I suppose you are getting some of it in your mouth.  I'll leave you to your \"drinking.\"")
 	Dialog.AddOption("Yes, I can see that... and smell it.", "Dialog2")
+	if  GetQuestStep(Spawn, TheSteinOfMoggok) == 5 then
+	Dialog.AddOption("Hey, Rumdum. Remember me?", "Dialog12") 
+	elseif GetQuestStep(Spawn, TheSteinOfMoggok) == 7 then
+	Dialog.AddOption("Rumdum, I'm back.", "Dialog22")
+	end
 	Dialog.Start()
 end
+
+function Dialog12(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Hey!  It's the nice kid!  Uh ... you the nice kid, right?")    
+	Dialog.AddOption("Right.  Say... if someone were to get the pieces of the stein... how would they fix it?", "Dialog13")
+	Dialog.Start()
+end
+
+function Dialog13(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Well... they should give it to me!  It's supposed to be mine.") 
+	Dialog.AddOption("Oh... what if they wanted to fix it up as a surprise for you?  Yeah, a surprise.", "Dialog14")
+	Dialog.Start()
+end
+
+function Dialog14(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("First, they'd need to get a new Oggokian Blood Ruby for it.  The old one was shattered in the Bouncer fight.  Ya can't have a good stein without a good jewel or two in it, right?")
+	Dialog.AddOption("Where would I... I mean \"they\"... get a Blood Ruby?", "Dialog15")
+	Dialog.Start()
+end
+
+function Dialog15(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Oh ... hmmm ... I know!  Clurg always has an extra one around--in case he has to fix the stein.  You should ask him for the ruby.")
+	Dialog.AddOption("Isn't Clurg... dead?", "Dialog16")
+	Dialog.Start()
+end
+
+
+function Dialog16(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Oh, yeah.... When I have a little too much to drink I forget some stuff.  Like, once I was drinkin' this troll stuff that tasted like tinker grease, but it sure did the job... I couldn't remember my name for a week... or was it a month?")
+	Dialog.AddOption("You were saying something about the Blood Ruby?", "Dialog17")
+	Dialog.Start()
+end
+
+function Dialog17(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Wha?  Hmm...  oh yeah, the Oggokian Blood Ruby.  Momma said that Clurg must have been buried with it or something.  All his stuff was put into a bag and thrown in on top of him.  It was a pretty small bag...")
+	Dialog.AddOption("So where is the grave?", "Dialog18")
+	Dialog.Start()
+end
+
+
+function Dialog18(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("He was buried under a lake... 'cause he was a bartender...")
+	Dialog.AddOption("Uh... why bury a bartender under a lake?", "Dialog19")
+	Dialog.Start()
+end
+
+function Dialog19(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("So he won't get thirsty, duh!")
+	Dialog.AddOption("Right... so where is this lake?", "Dialog20")
+	Dialog.Start()
+end
+
+function Dialog19(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("So he won't get thirsty, duh!")
+	Dialog.AddOption("Right... so where is this lake?", "Dialog20")
+	Dialog.Start()
+end
+
+function Dialog20(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Oh, from what I've heard it's called Spilt Ale Lake and it's in the Feerrott")
+		Dialog.AddOption("You mean I have to go back to the Feerrott?!", "Dialog21")
+		Dialog.Start()
+end
+
+
+function Dialog21(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    SetStepComplete(Spawn, TheSteinOfMoggok, 5)
+	Dialog.AddDialog("Back?  You been there before?")
+	Dialog.AddOption("Uh... never mind.  Enjoy your tenth ale of the morning.")
+	Dialog.Start()
+end
+
+
+function Dialog22(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Heya kid!  You gonna buy me more ale?")
+	Dialog.AddOption("Maybe later.  Okay... if someone was able to get a Blood Ruby and the stein pieces how would they fix the stein?", "Dialog23")
+	Dialog.Start()
+end
+
+function Dialog23(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("I know this... I know I do...  You would use ... the family recipe!  That's right! The family stein fixin' recipe!  It's been past down from poppa to son ever since Clurg died.")
+	Dialog.AddOption("Do you have this recipe?", "Dialog24")
+	Dialog.Start()
+end
+
+function Dialog24(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Of course I do! I have it right here!")
+	Dialog.AddOption("You mean that soaked piece of parchment you've been setting your tankard on?!", "Dialog25")
+	Dialog.Start()
+end
+
+function Dialog25(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Uh, yeah...  the bartender don't like the rings, ya know.")
+	Dialog.AddOption("Can I borrow the recipe?", "Dialog26")
+	Dialog.Start()
+end
+
+function Dialog26(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("This is a very precious recipe that's been in my family for generee... jenera... a long time.")
+	if HasCoin(Spawn, 400) then
+	Dialog.AddOption("I'll give you four silver so you can buy more ale.", "Dialog27")
+	end
+	Dialog.AddOption("Looks like I can't talk you out of it.")
+	Dialog.Start()
+end
+
+
+function Dialog27(NPC, Spawn)
+    RemoveCoin(Spawn, 400)
+    SetStepComplete(Spawn, TheSteinOfMoggok, 7)
+    FaceTarget(NPC, Spawn)
+	Dialog.AddDialog("Sold!")
+	Dialog.AddOption("Thanks Rumdum!")
+	Dialog.Start()
+end
+
+
 
 function offer(NPC, Spawn)
 OfferQuest(NPC, Spawn, TheSteinOfMoggok)

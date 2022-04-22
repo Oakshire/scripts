@@ -3,7 +3,7 @@
 	Script Purpose	:	Handles the quest, "The Stein of Moggok:  It Can Be Rebuilt..."
 	Script Author	:	premierio015
 	Script Date		:	02.04.2022
-	Script Notes	:	Auto generated with QuestParser.
+	Script Notes	:	
 
 	Zone			:	Freeport
 	Quest Giver		:	Rumdum
@@ -15,6 +15,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to recover the left half of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210139)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+	SetQuestRewardStatus(Quest, 44800)
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -61,8 +62,8 @@ end
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I spoke with Rumdum.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I spoke with Rumdum.")
-
-	AddQuestStepObtainItem(Quest, 6, "I need to get the Blood Ruby.", 1, 100, "I need to find the resting place of Clurg in the Feerrott and find a Blood Ruby.", 1194,  13961)
+    
+	AddQuestStepKill(Quest, 6, "I need to get the Blood Ruby.", 1, 100, "I need to find the resting place of Clurg in the Feerrott and find a Blood Ruby.", 1194,  1210294)
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")
 end
 
@@ -77,7 +78,7 @@ end
 function Step7Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "I spoke with Rumdum.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "I spoke with Rumdum.")
-
+    GiveQuestItem(Quest, Player, "I spoke with Rumdum." ,  13961, 14072, 31562)
 	AddQuestStepCraft(Quest, 8, "I need to remake the Stein of Moggok.", 1, 100, "I need to remake the Stein of Moggok using Rumdum's family Recipe.", 11, 54775)
 	AddQuestStepCompleteAction(Quest, 8, "QuestComplete")
 end
@@ -86,7 +87,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 8, "I remade the Stein of Moggok!")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I remade the Stein of Moggok!")
-
+   
 	UpdateQuestDescription(Quest, "I was able to rebuild the Stein of Moggok!  I'll be sure not to mention this to Rumdum...")
 	GiveQuestReward(Quest, Player)
 end
