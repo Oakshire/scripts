@@ -5,17 +5,30 @@
 	Script Date		:	04/12/2020 11:44:25 AM
 	Script Notes	:	Locations collected from Live
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
 	waypoints(NPC)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
 
 function respawn(NPC)
+	spawn(NPC)
 end
+
+function hailed(NPC, Spawn)
+ Dialog1(NPC, Spawn)
+end
+
+function Dialog1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Sorry, I can't visit right now.  Too much work to do around the Ironforge estate.")
+	Dialog.AddVoiceover("voiceover/english/maid_patricia/qey_north/maidpatricia.mp3", 604188416, 2120509442)
+	Dialog.AddOption("I understand.")
+	Dialog.Start()
+end
+
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 424.07, -20.43, -326.34, 2, 30)

@@ -36,7 +36,8 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/armorsmith/human_armorsmith_service_good_1_hail_gf_db7232a3.mp3", "Well, that suit is looking a mite worn.  Can I interest you in a new suit of fine armor? ", "ponder", 2349039589, 2731635835, Spawn)
 	else
 	end
-
+end	
+--[[ Wtf is this?
 		PlayFlavor(NPC, "voiceover/english/optional4/wesaelan_brookshadow/brookshadow_01.mp3", "", "", 2834600234, 1504715618, Spawn)
 		AddConversationOption(conversation, "Thank you, and good day to you.")
 	StartConversation(conversation, NPC, Spawn, "Hail traveler!  All friends of the Elddar are welcome.")
@@ -45,6 +46,7 @@ function hailed(NPC, Spawn)
 		AddConversationOption(conversation, "Thank you, and good day to you.")
 		StartConversation(conversation, NPC, Spawn, "Hail traveler!  All friends of the Elddar are welcome.")
 	end
+
 
 end
 
@@ -83,7 +85,7 @@ function dlg_8_3(NPC, Spawn)
 		AddConversationOption(conversation, "I will return with the tome.", "dlg_8_4")
 	StartConversation(conversation, NPC, Spawn, "Please, you must recover the tome! Qeynos depends on you!")
 end
-
+]]--
 --[[ raw_conversations
 	PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/armorsmith/human_armorsmith_service_good_1_hail_gf_af50709c.mp3", "I have some nice new suits of chain that have stood up very well.  Would you like to see them?", "shrug", 1001561402, 2745612534, Spawn)
 	PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/armorsmith/human_armorsmith_service_good_1_hail_gf_db7232a3.mp3", "Well, that suit is looking a mite worn.  Can I interest you in a new suit of fine armor? ", "ponder", 2349039589, 2731635835, Spawn)

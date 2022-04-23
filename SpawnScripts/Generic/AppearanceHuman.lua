@@ -6,9 +6,26 @@
                    : 
 --]]
 
-local HumanAppearance_Type = 0
+-- local BeardChance = 0
+-- local HumanAppearance_Type = 0
 
 function humanAppearance(NPC)
+    humanData(NPC)
+    humanHairandBeardStyle(NPC)
+end
+
+function humanHairandBeardStyle(NPC)
+    local BeardChance = MakeRandomInt(1,100)
+    local Beard = {'1167', '1168', '1171', '1184', '1185', '1187', '1188', '1190'}
+    Say(NPC, "My beard type is ".. Beard .."")
+    
+--    if BeardChance <= 50 then
+--        SpawnSet(NPC, "facial_hair_type", Beard)
+--    end
+end
+
+
+function humanData(NPC)
     local HumanAppearance_Type = MakeRandomInt(1,40)
 
     if HumanAppearance_Type == 1 then

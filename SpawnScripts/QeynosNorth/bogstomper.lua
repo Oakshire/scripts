@@ -6,16 +6,25 @@
 	Script Notes	:	Locations collected from Live
 --]]
 
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    GenericRaceCheckHail(NPC, Spawn)
 end
 
+function InRange(NPC,Spawn)
+    GenericRaceCheckCallout(NPC, Spawn)
+    end
+    
 function respawn(NPC)
-end
+		spawn(NPC)
+	end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 411.34, -18.69, -283.36, 2, 0)

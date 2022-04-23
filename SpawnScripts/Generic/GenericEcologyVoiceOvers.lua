@@ -2166,7 +2166,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 				            end
 				        end
 			        end
-			    end 
+			     
 				elseif GOOD then
 				    if Qfaction <0 then
                     FactionChecking(NPC, Spawn, faction)
@@ -2224,7 +2224,8 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
                         end                        				    
 				    end 
 			    end 
-				
+	    end
+	    
 		elseif race == FROGLOK then
 			if gender == MALE then
             elseif gender == FEMALE then
@@ -2903,6 +2904,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
                     FactionChecking(NPC, Spawn, faction)
 				    else		            
 			    	local choice = math.random(1,3)
+                         if choice == 1 then	
                             if spawnRace == BARBARIAN then
 					        PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_barbarian_gf_8290c6e8.mp3", "You have come a long way from your ancestral home too.  A long way indeed.", "agree", 4018981440, 1643885933, Spawn)
                             elseif spawnRace == DARK_ELF then
@@ -2937,10 +2939,17 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
                                     local check = math.random(1,2) 
 	                           	    if check == 1 then
 		                            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "", 3093126564, 1574100386, Spawn)
-                                    elseif choice == 2 then	
+                                    elseif check == 2 then	
                     	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_4ae9178a.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 261206360, 3555440428, Spawn)
-				       		        end                   
-		                    end			    	
+	                           	    end
+	                       end    	    
+	                    elseif choice == 2 then
+		                PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "", 3093126564, 1574100386, Spawn)
+                        elseif choice == 3 then	
+                        PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_4ae9178a.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 261206360, 3555440428, Spawn)
+				       		      				       		        
+				       	end                   
+		              end			    	
 				    end 
 	    	    end
             end
@@ -3146,7 +3155,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 		end
 	end
 end
-end
+
 
 -------------------------------------------------------------------------------------------
 
@@ -6112,7 +6121,7 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
                                 PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_43bd22f2.mp3", "Greetings.  One day I hope everyone bows before my intellect.", "hello", 833705169, 3091207712)		                	
                                 elseif choice == 2 then	                        
 	                	        PlayFlavor(NPC, "voiceover/english/erudite_eco_race_evil/ft/eco/evil/erudite_eco_race_evil_hail_gf_9bc2cf77.mp3", "My time is too valuable to be spent chatting.", "bye", 3939605048, 2460746424)
-                                end
+                                
 				            end
 				        end
 			        end
@@ -6187,7 +6196,8 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_24e3a5aa.mp3", "I have learned that it is best to trust to your own wisdom rather than the weaponry of your acquaintances.", "nod", 2387566735, 2940828519)
                         elseif choice == 3 then	
 	                	PlayFlavor(NPC, "voiceover/english/erudite_eco_race_good/ft/eco/good/erudite_eco_race_good_hail_gf_8f458045.mp3", "Please, I am in the midst of solving a very complex problem and must not be interrupted.", "no", 971990033, 2178584483)
-                        end                        				    
+                        end
+                    end                        				    
 				    end 
 			    end 
 			end end
@@ -7095,6 +7105,7 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 			            FaceTarget(NPC,Spawn)
 			            AddTimer(NPC,30000,"ResetCalloutTimer")  		            
 			    	local choice = math.random(1,3)
+                         if choice == 1 then	
                             if spawnRace == BARBARIAN then
 					        PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_barbarian_gf_8290c6e8.mp3", "You have come a long way from your ancestral home too.  A long way indeed.", "agree", 4018981440, 1643885933)
                             elseif spawnRace == DARK_ELF then
@@ -7131,8 +7142,13 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 		                            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "", 3093126564, 1574100386)
                                     elseif choice == 2 then	
                     	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_4ae9178a.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 261206360, 3555440428)
-				       		        end                   
-		                    end	
+				       		        end 
+				       		        end
+		              elseif check == 2 then
+		              PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "", 3093126564, 1574100386)
+                      elseif choice == 3 then	
+                      PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gf_4ae9178a.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 261206360, 3555440428)
+				       end	
 	    	            end
                     end 
                 end 
@@ -7926,7 +7942,7 @@ function FactionChecking(NPC, Spawn, faction)
 		    elseif gender == FEMALE then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+				        PlayFlavor(NPC, "", "", "cutthroat", 0, 0, Spawn)
 				        elseif choice == 2 then
 				        PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)				        
 				        end		        

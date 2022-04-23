@@ -23,6 +23,6 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 
-	PlayFlavor(NPC, "", "This city is beautiful, even in ill weather.", "", 1689589577, 4560189, Spawn)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1011.mp3", "This city is beautiful, even in ill weather.", "", 0, 0, Spawn)
 end
 

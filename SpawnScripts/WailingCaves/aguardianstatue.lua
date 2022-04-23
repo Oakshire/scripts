@@ -9,6 +9,7 @@
 
 
 function spawn(NPC)
+    SetInvulnerable(NPC)
 		SetLuaBrain(NPC)
 	SetBrainTick(NPC, 500)
 	Think(NPC)

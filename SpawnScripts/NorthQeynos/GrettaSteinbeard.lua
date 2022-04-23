@@ -12,7 +12,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-				        PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_notcitizen_gf_7e3f7ca.mp3", "How did you get past the city gates?!", "shakefist", 3013505918,3175061897)
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1061.mp3", "Greetings, traveler!  My tavern's warm, and the company's good.", "", 0, 0, Spawn, 0)
 	
 end
 

@@ -1,6 +1,6 @@
 --[[
-	Script Name		: SpawnScripts/NorthQeynos/HaroldDunstan.lua
-	Script Purpose	: Harold Dunstan
+	Script Name		: SpawnScripts/NorthQeynos/NoelleDering.lua
+	Script Purpose	: Noelle Dering
 	Script Author	: Dorbin
 	Script Date		: 2022.04.22
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
@@ -22,10 +22,8 @@ end
 function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Hail traveler.  Can I offer you a drink to quench your thirst?")
-	Dialog.AddVoiceover("voiceover/english/harold_dunstan/qey_north/harolddunstan000.mp3", 1944438004, 3707588738)
-	Dialog.AddOption("I am not very thirsty right now. ")
+	Dialog.AddDialog("Greetings! I welcome you to Irontoes East! Please speak with Harold or Gretta if you need help!")
+	Dialog.AddVoiceover("voiceover/english/noelle_dering/qey_north/noelledering.mp3", 2170111717, 1186191258)
+	Dialog.AddOption("Thanks, I'll keep that in mind")
 	Dialog.Start()
 end
-
-
