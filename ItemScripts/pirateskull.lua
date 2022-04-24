@@ -59,7 +59,7 @@ elseif GetTempVariable(Guurok, "Feeded") == "5" then
    SetTempVariable(Guurok, "Feeded", 6)
    SpawnSet(Guurok, "size", 125)
 elseif GetTempVariable(Guurok, "Feeded") == "6" then
-   SetTempVariable(Guurok, "Feeded", 0)
+   SetTempVariable(Guurok, "Feeded", 666)
    SpawnSet(Guurok, "size", 130)
    SpawnSet(Guurok, "visual_state", 3632)
     SpawnSet(Guurok, "show_level", 1)

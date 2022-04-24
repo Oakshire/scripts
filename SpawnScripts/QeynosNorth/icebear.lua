@@ -5,17 +5,31 @@
 	Script Date		:	04/15/2020 02:45:21 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 	waypoints(NPC)
+end
+
+function respawn(NPC)
+	spawn(NPC)
+end
+
+
+function InRange(NPC, Spawn)
+		CheckFaction(NPC, Spawn, "Qeynos")
+	end
+
+
+function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-end
+		GenericGuardHail(NPC, Spawn)
+	end
 
-function respawn(NPC)
-end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 337.5, -21.62, -17.84, 2, 0)

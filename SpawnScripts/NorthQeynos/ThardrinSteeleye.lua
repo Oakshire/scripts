@@ -23,6 +23,6 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 
-	PlayFlavor(NPC, "", "Harrumph.  Can't ye see I'm busy?  Go pester someone else!", "", 1689589577, 4560189, Spawn)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1060.mp3", "Harrumph.  Can't ye see I'm busy?  Go pester someone else!", "", 0, 0, Spawn)
 end
 

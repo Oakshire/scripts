@@ -87,7 +87,7 @@ function QuestBegin (NPC, Spawn)
   OfferQuest(NPC, Spawn, Delivery)
 end
 
- function Delivered(NPC, Spawn)
+ function DeliveryDone(NPC, Spawn)
   conversation = CreateConversation()
   PlayFlavor(NPC, "voiceover/english/barry_viceheart/qey_village03/barryviceheart004.mp3","","facepalm",1668909106,3942142974,Spawn)
   AddConversationOption(conversation, "Thanks for the coin, and good luck with the line.", "Reward")
