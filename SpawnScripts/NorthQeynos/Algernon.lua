@@ -20,6 +20,12 @@ end
 function LeaveRange(NPC, Spawn)
 end
 
+function casted_on(NPC, Spawn, SpellName)
+  if SpellName == "Find Items" then
+      hailed(NPC,Spawn)
+      end
+end
+
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 
@@ -36,7 +42,7 @@ function hailed(NPC, Spawn)
 	elseif choice == 5 then
 		PlayFlavor(NPC, "voiceover/english/broker_algernon/qey_harbor/034_con_merchant_algernon_human_1_hail_dc2ee3d4.mp3", "Well, I can see what sort of goods we have available now.  You do have the proper scrollwork for all of this merchandise, correct?", "glare", 2913572299, 447386063, Spawn)
 	elseif choice == 6 then
-		PlayFlavor(NPC, "voiceover/english/broker_algernon/qey_harbor/034_con_merchant_algernon_human_1_aoi_37c49f80.mp3", "Yes, another customer to waste my time!  Just what I was looking forward to!", "cheer", 2215565149, 649773409, Spawn)
+		PlayFlavor(NPC, "voiceover/english/broker_algernon/qey_harbor/034_con_merchant_algernon_human_1_aoi_37c49f80.mp3", "Yes, another customer to waste my time!  Just what I was looking forward to!", "shrug", 2215565149, 649773409, Spawn)
 	elseif choice == 7 then
 		PlayFlavor(NPC, "voiceover/english/broker_algernon/qey_harbor/034_con_merchant_algernon_human_1_hail_9e5cc344.mp3", "Alright, all right.  I'll see what we have on the market now.  Just hold your horses and I'll be with you in a minute!", "no", 3449764772, 3628353391, Spawn)
 	else
