@@ -34,7 +34,7 @@ function Talk(NPC,Spawn)
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/housing/human_housing_service_good_1_aoi_gm_1fa85d79.mp3", "Tired of coming home to a dull empty room?  Step inside! Even commoners can afford our low no hanggle prices!", "agree", 557767774, 2281784064, Spawn)
 	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/housing/human_housing_service_good_1_hail_gm_519527d8.mp3", "Please look at our wonderful selection!  We carry everything a discerning adventurer needs.", "hello", 469990134, 2264633052, Spawn)
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/housing/human_housing_service_good_1_hail_gm_519527d8.mp3", "Please look at our wonderful selection!  We carry everything that a discerning adventurer needs.", "hello", 469990134, 2264633052, Spawn)
 	elseif choice == 3 then
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/housing/human_housing_service_good_1_hail_gm_8bb00dfb.mp3", "Greetings traveler.  If you need home furnishings, you came to the right place!", "bow", 3382559797, 2499208775, Spawn)
 	elseif choice == 4 then

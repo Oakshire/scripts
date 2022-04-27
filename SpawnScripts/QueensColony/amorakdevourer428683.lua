@@ -8,7 +8,8 @@
 
 function spawn(NPC)
         SpawnSet(NPC, "level", "3")  
-        SpawnSet(NPC, "difficulty", "2")        
+        SpawnSet(NPC, "difficulty", "2") 
+      
 	waypoints(NPC)
 end
 
@@ -83,3 +84,5 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 235.44, -1.04, -79.07, 2, 0)
 	MovementLoopAddLocation(NPC, 229.64, -1.02, -89.81, 2, 0)
 end
+
+

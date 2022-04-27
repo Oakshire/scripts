@@ -7,6 +7,7 @@
 --]]
 
 function spawn(NPC)
+   
 	waypoints(NPC)
 end
 

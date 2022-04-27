@@ -3,7 +3,7 @@
 	Script Purpose	: Queen Antonia Bayle 
 	Script Author	: Cynnar
 	Script Date	: 2020.04.12
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Notes	: Auto-Generated Conversation from PacketParser Data -- Refer to North Qeynos Script for Antonia
 --]]
 
 function spawn(NPC)

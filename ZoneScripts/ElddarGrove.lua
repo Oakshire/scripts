@@ -1,7 +1,7 @@
 --[[
-    Script Name    : ZoneScripts/NorthQeynos.lua
+    Script Name    : ZoneScripts/ElddarGrove.lua
     Script Author  : Dorbin
-    Script Date    : 2022.04.25 03:04:09
+    Script Date    : 2022.04.27 04:04:32
     Script Purpose : 
                    : 
 --]]
@@ -18,7 +18,7 @@ end
 
 
 function dawn(Zone)
-local Antonia = GetSpawnByLocationID(Zone,379658)
+local Antonia = GetSpawnByLocationID(Zone,412938)
 if Antonia ~=nil then
 local choice = MakeRandomInt(1,4)  -- #4 represents a skipped speech
     if choice == 1 then
@@ -53,7 +53,7 @@ end
 end
 
 function dusk(Zone)
-local Antonia = GetSpawnByLocationID(Zone,379658)
+local Antonia = GetSpawnByLocationID(Zone,412938)
 if Antonia ~=nil then
 RandomGreeting(Antonia)
 end

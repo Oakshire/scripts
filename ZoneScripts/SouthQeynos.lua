@@ -1,11 +1,10 @@
 --[[
-    Script Name    : ZoneScripts/NorthQeynos.lua
+    Script Name    : ZoneScripts/SouthQeynos.lua
     Script Author  : Dorbin
-    Script Date    : 2022.04.25 03:04:09
+    Script Date    : 2022.04.27 03:04:26
     Script Purpose : 
                    : 
 --]]
-
 dofile("SpawnScripts/NorthQeynos/QueenAntoniaBayle.lua")
 
 function init_zone_script(Zone)
@@ -18,7 +17,7 @@ end
 
 
 function dawn(Zone)
-local Antonia = GetSpawnByLocationID(Zone,379658)
+local Antonia = GetSpawnByLocationID(Zone,414908)
 if Antonia ~=nil then
 local choice = MakeRandomInt(1,4)  -- #4 represents a skipped speech
     if choice == 1 then
@@ -43,7 +42,7 @@ local choice = MakeRandomInt(1,4)  -- #4 represents a skipped speech
         AddTimer(Antonia, 86000, "FreeportC",1)
         AddTimer(Antonia, 120000, "RandomGreeting",1)
         elseif check ==2 then
-        FreeportA2(Antonia) 
+        FreeportA2(Antonia)  -- NEEDS HEX CODE TRANSLATE TO LITTLE ENDIAN for VO keys (517592f9e4b0fb51)
         AddTimer(Antonia, 36000, "FreeportB",1) 
         AddTimer(Antonia, 83000, "FreeportC",1)
         AddTimer(Antonia, 117000, "RandomGreeting",1)            
@@ -53,7 +52,7 @@ end
 end
 
 function dusk(Zone)
-local Antonia = GetSpawnByLocationID(Zone,379658)
+local Antonia = GetSpawnByLocationID(Zone,414908)
 if Antonia ~=nil then
 RandomGreeting(Antonia)
 end
