@@ -21,20 +21,28 @@ local Antonia = GetSpawnByLocationID(Zone,414908)
 if Antonia ~=nil then
 local choice = MakeRandomInt(1,4)  -- #4 represents a skipped speech
     if choice == 1 then
+    PlayAnimation(Antonia, 10756) 
+    AddTimer(Antonia, 2000, "visage01")	
     ProbA(Antonia)
     AddTimer(Antonia, 55000, "PropB",1) 
     AddTimer(Antonia, 85000, "PropC",1)   
     AddTimer(Antonia, 147000, "PropD",1)
     AddTimer(Antonia, 196000,"PropE",1)
     AddTimer(Antonia, 233000, "RandomGreeting",1)
+    AddTimer(Antonia, 233000, "EndLoop",1)            
     
     elseif choice == 2 then 
+    PlayAnimation(Antonia, 10756) 
+    AddTimer(Antonia, 2000, "visage01")	
     NewDawnA(Antonia)        
     AddTimer(Antonia, 47000, "NewDawnB",1) 
     AddTimer(Antonia, 97000, "NewDawnC",1)   
+    AddTimer(Antonia, 134000, "EndLoop",1)            
     --AddTimer(Antonia, 135000, "RandomGreeting",1)
     
     elseif choice ==3 then
+    PlayAnimation(Antonia, 10756) 
+    AddTimer(Antonia, 2000, "visage01")	
     local check = MakeRandomInt(1,2)
         if check ==1 then
         FreeportA(Antonia)
@@ -42,10 +50,11 @@ local choice = MakeRandomInt(1,4)  -- #4 represents a skipped speech
         AddTimer(Antonia, 86000, "FreeportC",1)
         AddTimer(Antonia, 120000, "RandomGreeting",1)
         elseif check ==2 then
-        FreeportA2(Antonia)  -- NEEDS HEX CODE TRANSLATE TO LITTLE ENDIAN for VO keys (517592f9e4b0fb51)
+        FreeportA2(Antonia) 
         AddTimer(Antonia, 36000, "FreeportB",1) 
         AddTimer(Antonia, 83000, "FreeportC",1)
         AddTimer(Antonia, 117000, "RandomGreeting",1)            
+        AddTimer(Antonia, 117000, "EndLoop",1)             
         end
     end
 end

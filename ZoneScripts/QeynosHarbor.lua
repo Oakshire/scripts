@@ -26,20 +26,28 @@ local Antonia = GetSpawnByLocationID(Zone,379022)
 if Antonia ~=nil then
 local choice = MakeRandomInt(1,4)  -- #4 represents a skipped speech
     if choice == 1 then
+    PlayAnimation(Antonia, 10756) 
+    AddTimer(Antonia, 2000, "visage01")	
     ProbA(Antonia)
     AddTimer(Antonia, 55000, "PropB",1) 
     AddTimer(Antonia, 85000, "PropC",1)   
     AddTimer(Antonia, 147000, "PropD",1)
     AddTimer(Antonia, 196000,"PropE",1)
     AddTimer(Antonia, 233000, "RandomGreeting",1)
+    AddTimer(Antonia, 233000, "EndLoop",1)            
     
     elseif choice == 2 then 
+    PlayAnimation(Antonia, 10756) 
+    AddTimer(Antonia, 2000, "visage01")	
     NewDawnA(Antonia)        
     AddTimer(Antonia, 47000, "NewDawnB",1) 
     AddTimer(Antonia, 97000, "NewDawnC",1)   
+    AddTimer(Antonia, 134000, "EndLoop",1)            
     --AddTimer(Antonia, 135000, "RandomGreeting",1)
     
     elseif choice ==3 then
+    PlayAnimation(Antonia, 10756) 
+    AddTimer(Antonia, 2000, "visage01")	
     local check = MakeRandomInt(1,2)
         if check ==1 then
         FreeportA(Antonia)
@@ -47,11 +55,12 @@ local choice = MakeRandomInt(1,4)  -- #4 represents a skipped speech
         AddTimer(Antonia, 86000, "FreeportC",1)
         AddTimer(Antonia, 120000, "RandomGreeting",1)
         elseif check ==2 then
-        FreeportA2(Antonia)  -- NEEDS HEX CODE TRANSLATE TO LITTLE ENDIAN for VO keys (517592f9e4b0fb51)
+        FreeportA2(Antonia) 
         AddTimer(Antonia, 36000, "FreeportB",1) 
         AddTimer(Antonia, 83000, "FreeportC",1)
         AddTimer(Antonia, 117000, "RandomGreeting",1)            
-        end
+        AddTimer(Antonia, 117000, "EndLoop",1)            
+       end
     end
 end
 end
@@ -78,3 +87,4 @@ end
     function FreeportA2(Antonia)
 	PlayFlavor(Antonia, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_denouncement_freeport_2_a_70f7471b.mp3", "Good people of Qeynos, hear me!  There is more you must know about our enemy, Freeport.  Our trusted Qeynosian agents have observed the enemy closely keeping a vigilant watch they have brought us news so we may arm and fortify ourselves.  If we are to stand up for our city and protect her virture from the forces of evil, we must be wise to the ways of evil.  We must have knowledge of Freeport's true nature, lest anyone here be lead astray by its propoganda.  Listen carefully fellow citizens!", "", 4187125073, 1375449316)
     end
+
