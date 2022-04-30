@@ -57,9 +57,13 @@ if Antonia ~=nil then
         AddTimer(Antonia, 83000, "FreeportC",1)
         AddTimer(Antonia, 117000, "RandomGreeting",1)            
         AddTimer(Antonia, 117000, "EndLoop",1)            
+       
        end
+    else 
+        RandomGreeting(Antonia)       
     end
 end
+
 if Antonia2 ~=nil then
     if choice == 1 then
     PlayAnimation(Antonia2, 10756) 
@@ -97,7 +101,10 @@ if Antonia2 ~=nil then
         AddTimer(Antonia2, 117000, "RandomGreeting",1)            
         AddTimer(Antonia2, 117000, "EndLoop",1)            
        end
-    end
+    else 
+        RandomGreeting(Antonia2)
+
+end
 end
 end
 

@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Stormhold/QstKeychest7.lua
-    Script Author  : neatz09
-    Script Date    : 2022.03.14 
+    Script Name    : SpawnScripts/Stormhold/QstKeychest8.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.04.30 03:04:29
     Script Purpose : 
                    : 
 --]]
@@ -13,6 +13,7 @@ end
 
 function casted_on(NPC, Spawn, Message)
     if Message == "Open" then
+Say(NPC, "Need to add a delay")
     SendMessage(Spawn, "The lock holds strong after all these years.", "white")
 end
 end

@@ -20,35 +20,41 @@ function PropB(NPC)
 end   
 
 function PropC(NPC)
+    EndSpeech = true
 	PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_propaganda_1_c_1aa755c8.mp3", "In this Age of Destiny, Qeynos blossoms with abundance in both arts and commerce.  Our children are nourished in body, mind, and spirit.  Scholars, merchants, artisans, soldiers- all of us are welcome here; all of us find ample means and opportunity to share our unique gifts.  Our city is a lamp in the darkness, and a clarion call to awaken Norrath from its long nightmare of discord.  Let us remember that people in other lands look to us for hope and guidance.  We are Norrath's shining example of what civilization really and truly means.   But we mustn't fall into complacency and self-satisfaction.  There is yet much to be done.  There are refugees beyond our gates who do not enjoy the freedoms and rights we take for granted.  They scratch out their meager lives in hunger and ignorance.  Some flee persecution and violence; others are tormented by the merciless ravages of want.  We Qeynosians who live in abundance are called to reach out to these refugees, to open our hearts and hands.", " converse_female02", 3038020523, 1696768651)
 end   
 
 function PropD(NPC)
+    EndSpeech = true
 	PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_propaganda_1_d_54e171d.mp3", "Yes, I am proud to call myself a Qeynosian.  And I am certain that every one of us here is just as proud, just as grateful, and just as eager to share the light of civilization until it shines in every corner of Norrath.   We must be extra vigilant to protect our way of life from the corruption of Freeport, which threatens us night and day.  In Freeport, they mock the ideals we hold dear.  They would make slaves of each and every one of us if they could.  We have all seen examples of their ruthlessness and cruelty, of their total disregard for righteousness, of their deceptive and treacherous ways.  We know of their unabated greed, and their appetite for territory.  How they snap up lands and goods with no thought for the rights of needs of their victims.", "converse_female03", 2019122145, 3355586847)
 end   
 
 function PropE(NPC)
+    EndSpeech = true
     PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_propaganda_1_e_8dd02ef3.mp3", "But Freeport shall not prevail!  We Qeynosians know that the destiny of Norrath is like the sun at dawn, like a great light which begins with a spark and illuminates the land.  Qeynos is that spark!  Qeynos will spread its light of civilization until nothing and no one remains in darkness!  And we are the ones called to carry this light.  And so ... everyone ... I beseech thee all to remember that this is indeed the Age Of Destiny.  And we Qeynosians are its children, and its acolytes ... and its greatest hope!", " converse_female04", 4080984009, 3907237860)
 end  
 
 function NewDawnB(NPC)
+    EndSpeech = true
 		PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_speech_newdawn_b_694279fc.mp3", "And we are all a part of that light, that shining beacon that illuminates Norrath and awakens her from her dark slumber.  As Norrath gently turns on her axis and revolves around the sun, each of us becomes a living light that guides all peoples into the Age of Destiny.  We are like the stars in the night sky.     For Qeynos must lead the way.  The ideals which we have championed are the one true hope for peace and prosperity in this world.  It is up to Qeynos to show all of Norrath what is possible when truth and justice, equality and mercy are enthroned.  I am merely a handmaid to the real rulers: our ideals.  These are what we look to for guidance.", "", 982014123, 829335521)
 end
 
 function NewDawnC(NPC)
+    EndSpeech = true
 		PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_speech_newdawn_c_4465cb71.mp3", "And words cannot express the gratitude I feel ... to be entrusted with this august responsibility.  To stand here before you and before all of Qeynos fills me with great pride.  I know that we will seize every opportunity, this new year, to advance our cause and spread liberty throughout the land! We shall not dwell on failures of times past.  Instead we will live for the future.  Each of us will strive for the common good, and for the highest ambitions to which we can aspire!  This is the meaning of New Dawn Day!", "", 3866349527, 2161431192)
 end
 
 function FreeportB(NPC)
+    EndSpeech = true
 		PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_denouncement_freeport_3_b_f1948507.mp3", "As you know, Lucan has misled his subjects to see him as their savior.  No ... their god.  He has enthroned himself in the gods' place.  He has corrupted the history of Freeport, claiming every victory as his own.  His subjects praise him for the rising and setting of the sun.  They think he alone holds back the remains of the moon!  The truth, however, is too horrible to behold.  Lucan ... Lucan D'Lere ... does not even belong among the living.  His mortal life was forfeit hundreds of years ago.  The monster we see is a corpse, a skeleton with a few shreds of flesh that long for the grave-unnaturally sustained by dark magic.  ", "", 2587904628, 1366269418)
 end
 
 function FreeportC(NPC)
+    EndSpeech = true
 		PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_denouncement_freeport_3_c_6283e942.mp3", "This is why Lucan hides in that floating sarcophagus called the Twilight Citadel.  His battle armor is really a burial shroud.  Any humanity he once possessed has long since passed over into the land of shades.   So be on your guard, but take heart.  We Qeynosians have more courage than the beaten and terrified subjects of Freeport.  We are not afraid of the dead, and will never cower before a sack of bones.  Life will triumph in Qeynos, and the burial grounds of Norrath will one day claim their own.", "", 1432372035, 3833716814)
 end
 
 function RandomGreeting(NPC, Spawn)
-    EndLoop(NPC)    
 	local choice = MakeRandomInt(1,9)
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/queen_antonia_bayle/qey_north/eco_200_statue_queen_antonia_bayle_generic_578f5fd1.mp3", "We must remain united.", "", 2546826310, 3168168943)

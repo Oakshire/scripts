@@ -5,7 +5,6 @@
     Script Purpose : 
                    : 
 --]]
-
 function spawn(NPC)
 
 end
@@ -13,8 +12,7 @@ end
 
 function casted_on(NPC, Spawn, Message)
     if Message == "Open" then
-Say(NPC, "Need to add a delay")
-    SendMessage(Spawn, "The Lock holds strong after all these years.", "white")
+	SendMessage(Spawn, "The lock holds strong after all these years.", "white")
 end
 
 end

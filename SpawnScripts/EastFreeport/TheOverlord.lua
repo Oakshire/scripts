@@ -11,7 +11,6 @@ visage01(NPC,Spawn)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)
@@ -27,8 +26,8 @@ function visage01(NPC, Spawn)
 end
 
 function EmoteLoop(NPC)
-    math.randomseed(os.time())
-    local choice = math.random(1,12)
+   math.randomseed(os.time())
+ local choice = math.random(1,12)
 
     if choice == 1 then
         PlayAnimation(NPC, 13042)
