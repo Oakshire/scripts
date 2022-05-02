@@ -3,20 +3,27 @@
 	Script Purpose	:	Waypoint Path for varna.lua
 	Script Author	:	Devn00b
 	Script Date		:	07/31/2020 07:33:58 PM
-	Script Notes	:	Locations collected from Live
+	Script Notes	:	Dialogue updated 5.1.2022 Dorbin
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+GenericEcologyHail(NPC, Spawn, faction)
 end
+
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
 
 function respawn(NPC)
+	spawn(NPC)
 end
-
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 576.58, -18.16, -412.9, 2, math.random(0,8))
 	MovementLoopAddLocation(NPC, 584.56, -18.17, -411.61, 2, math.random(0,8))

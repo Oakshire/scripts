@@ -1,13 +1,26 @@
 --[[
-	Script Name	: SpawnScripts/ElddarGrove/NalonMesspie.lua
-	Script Purpose	: Nalon Messpie 
-	Script Author	: John Adams
-	Script Date	: 2008.09.28
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Name		: SpawnScripts/TheElddarGrove/NalonMesspie.lua
+	Script Purpose	: Nalon Messpie
+	Script Author	: Dorbin
+	Script Date		: 2022.05.01
+	Script Notes	: 
 --]]
+
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+
+function spawn(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
+end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "voiceover/english/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_woodelf_gm_b160d4db.mp3", "You must miss home, too, huh?  I've never seen it myself, but I wish I could return to Rivervale.", "", 3826858900, 561795809, Spawn)
+    GenericRaceCheckHail(NPC, Spawn)
 end
 
+function InRange(NPC,Spawn)
+    GenericRaceCheckCallout(NPC, Spawn)
+    end
+    
+function respawn(NPC)
+		spawn(NPC)
+	end

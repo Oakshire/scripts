@@ -20,8 +20,8 @@ end
 
 function InRange (NPC,Spawn)
     if GetFactionAmount(Spawn,11) <0 then
-        FactionChecking(NPC, Spawn, faction)
-        else    
+    GoodFactionEmotes(NPC, Spawn, faction)
+    else    
      if math.random(1, 100) <= 60 then
         if not HasQuest (Spawn, Jewel) and not HasCompletedQuest(Spawn, Jewel) then
         local Lista = GetSpawn(NPC,2360011)    

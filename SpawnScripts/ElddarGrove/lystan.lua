@@ -3,18 +3,26 @@
 	Script Purpose	:	Waypoint Path for lystan.lua
 	Script Author	:	Devn00b
 	Script Date		:	08/04/2020 01:42:54 PM
-	Script Notes	:	Locations collected from Live
+	Script Notes	:	Dialogue updated 5.1.2022 Dorbin
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+GenericEcologyHail(NPC, Spawn, faction)
 end
 
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
+
 function respawn(NPC)
+	spawn(NPC)
 end
 
 function waypoints(NPC)

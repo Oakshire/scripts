@@ -3,19 +3,24 @@
 	Script Purpose	:	Waypoint Path for dawnsinger.lua
 	Script Author	:	Devn00b
 	Script Date		:	07/31/2020 09:03:35 PM
-	Script Notes	:	Locations collected from Live
+	Script Notes	:	Locations collected from Live -  Updated Dialogue 05/01/2022 Dorbin
 --]]
+
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+    SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    GenericEcologyHail(NPC, Spawn, faction)
 end
 
-function respawn(NPC)
-end
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 513.51, -20.71, -284.46, 2, math.random(0,5))

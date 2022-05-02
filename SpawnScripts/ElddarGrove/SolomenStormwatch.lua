@@ -3,33 +3,44 @@
 	Script Purpose	: Solomen Stormwatch 
 	Script Author	: John Adams
 	Script Date	: 2008.09.28
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Notes	: Updated dialogue 5.1.2022 Dorbin (Should be race check dialogue, but missing woodelf male)
 --]]
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	choice = math.random(1,3)
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
-	if choice == 1 then
-		PlayFlavor(NPC, "", "To be among the highest leaves and branches of a tree is to feel free.", "", 1689589577, 4560189, Spawn)
-	elseif choice == 2 then
-		PlayFlavor(NPC, "", "I too long for my home in Faydark.  Someday I am sure Tunare will answer us.", "", 1689589577, 4560189, Spawn)
-	elseif choice == 3 then
-		PlayFlavor(NPC, "", "The city is not the most beautiful place in Norrath, but it is at least familiar.", "", 1689589577, 4560189, Spawn)
-	else
-	end
-
-end
 function spawn(NPC)
 	waypoints(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+GenericEcologyHail(NPC, Spawn, faction)
 end
 
+function InRange(NPC,Spawn)
+    GenericEcologyCallout(NPC, Spawn, faction)
+    end
+
 function respawn(NPC)
+	spawn(NPC)
 end
+
+function LeaveRange(NPC, Spawn)
+end
+
+
+--[[function RandomGreeting(NPC, Spawn)
+	local choice = MakeRandomInt(1,3)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "", "I too long for my home in Faydark.  Someday I am sure Tunare will answer us.", "", 0, 0, Spawn, 0)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "", "The city is not the most beautiful place in Norrath, but it is at least familiar.", "", 0, 0, Spawn, 0)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "", "To be among the highest leaves and branches of a tree is to feel free.", "", 0, 0, Spawn, 0)
+	end
+end]]--
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 777.54, -21.87, -343.22, 2, math.random(0,20))

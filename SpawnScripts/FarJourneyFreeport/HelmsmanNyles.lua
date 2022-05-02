@@ -14,10 +14,13 @@ function hailed(NPC, Spawn)
     local conversation = CreateConversation()
         AddConversationOption(conversation, "Yes", "leave")
            AddConversationOption(conversation, "No")
-                  StartConversation(conversation, NPC, Spawn, "[Leave the Far Journey]")
+                  StartConversation(conversation, NPC, Spawn, "Head for land? [Skip Tutorial & Leave The Far Journey?]")
 end
 
 function leave(NPC, Spawn)
+if HasQuest(Spawn, 524)then
+    QuestIsComplete(Spawn, 524)
+    end
 if GetDeity(Spawn) == 1 then 
         ZoneRef = GetZone("QueensColony")
         Zone(ZoneRef,Spawn)
