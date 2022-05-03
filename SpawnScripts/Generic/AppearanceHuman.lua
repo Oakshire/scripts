@@ -6,24 +6,36 @@
                    : 
 --]]
 
+    local hairTable = 0
 -- local BeardChance = 0
 -- local HumanAppearance_Type = 0
 
 function humanAppearance(NPC)
     humanData(NPC)
-    humanHairandBeardStyle(NPC)
+    humanHairStyle(NPC)
+    humanBeardStyle(NPC)
 end
 
-function humanHairandBeardStyle(NPC)
-    local BeardChance = MakeRandomInt(1,100)
-    local Beard = {'1167', '1168', '1171', '1184', '1185', '1187', '1188', '1190'}
-    Say(NPC, "My beard type is ".. Beard .."")
-    
---    if BeardChance <= 50 then
---        SpawnSet(NPC, "facial_hair_type", Beard)
---    end
+function humanHairStyle(NPC)
+    if GetGender(NPC) == 1 then
+        local hairTable = {'1123', '1125', '1126', '1127', '1129', '1130', '1133', '1134', '1135', '1136'}
+    else
+        local hairTable = {'1115', '1116', '1123', '1125', '1126', '1129', '1130', '1133', '1134', '1135', '1136', '1140'}
+    end
+
+    SpawnSet(NPC, "hair_type", hairTable[MakeRandomInt(#hairTable)])
+    SpawnSet(NPC, "soga_hair_type", hairTable[MakeRandomInt(#hairTable)])
 end
 
+function humanBeardStyle(NPC)
+    local beardChance = MakeRandomInt(1,100)
+    local beardTable = {'1167', '1168', '1171', '1184', '1185', '1187', '1188', '1190'}
+
+    if beardChance <= 50 then
+        SpawnSet(NPC, "facial_hair_type", beardTable[MakeRandomInt(#beardTable)])
+        SpawnSet(NPC, "soga_facial_hair_type", beardTable[MakeRandomInt(#beardTable)])
+    end
+end
 
 function humanData(NPC)
     local HumanAppearance_Type = MakeRandomInt(1,40)

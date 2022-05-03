@@ -12,7 +12,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    Emote(NPC, "groans when he looks at you and goes back to his ale")
+    Emote(NPC, "groans when he looks at you and goes back to his ale.")
 end
 
 function respawn(NPC)

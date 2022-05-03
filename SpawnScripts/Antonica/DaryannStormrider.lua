@@ -14,6 +14,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if GetDeity(Spawn) == 1 then
 	if not HasQuest(Spawn, TheBalanceOfLife) and not HasCompletedQuest(Spawn, TheBalanceOfLife) then
 	Option1(NPC, Spawn)
 	elseif GetQuestStep(Spawn, TheBalanceOfLife) == 1 then
@@ -22,6 +23,10 @@ function hailed(NPC, Spawn)
 	Option4(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, TheBalanceOfLife) then
 	Quest_Finished(NPC, Spawn)
+end
+elseif GetDeity(Spawn) ~= 1 then
+PlayFlavor(NPC, "", "...", "", 0, 0, Spawn)
+Emote(NPC, "doesn't wish to speak with you.")
 end
 end
 

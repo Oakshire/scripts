@@ -14,7 +14,13 @@
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to recover the left half of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210139)
+		AddQuestStepKill(Quest, 2, "I need to recover the right half of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210156)
+	AddQuestStepKill(Quest, 3, "I need to recover the handle of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210148)
+		AddQuestStepKill(Quest, 4, "I need to recover the lid of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210098)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+		AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 	SetQuestRewardStatus(Quest, 44800)
 end
 
@@ -32,29 +38,31 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I got the left half of the Stein from Bouncer Flerb.")
-
-	AddQuestStepKill(Quest, 2, "I need to recover the right half of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210156)
-	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I got the right half of the Stein from Bouncer Fug.")
-
-	AddQuestStepKill(Quest, 3, "I need to recover the handle of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210148)
-	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+    CheckProgress(Quest, QuestGiver, Player)
 end
+
+
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I got the handle of the Stein from Bouncer Hurd.")
-
-	AddQuestStepKill(Quest, 4, "I need to recover the lid of the Stein from the Feerrott Bouncers.", 1, 100, "I need to collect the four pieces of the Stein of Moggok from the Bouncers in the Feerrott.", 11, 1210098)
-	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
+CheckProgress(Quest, QuestGiver, Player)
 end
+
+function CheckProgress(Quest, QuestGiver, Player)
+    if QuestStepIsComplete(Player, 5511, 1) and QuestStepIsComplete(Player, 5511, 2) and QuestStepIsComplete(Player, 5511, 3) and QuestStepIsComplete(Player, 5511, 4)  then
+	        Step4Complete(Quest, QuestGiver, Player)
+end	
+   end
+
 
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I got the lid of the Stein from Bouncer Prud.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I collected all four pieces of the Stein of Moggok.")
-
+   UpdateQuestTaskGroupDescription(Quest, 1, "I collected all four pieces of the Stein of Moggok.")
 	AddQuestStepChat(Quest, 5, "I should speak with Rumdum.", 1, "I should speak with Rumdum.", 11, 1280030, 5590392)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
