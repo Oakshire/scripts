@@ -77,12 +77,13 @@ function Garbled(NPC, Spawn, Faction)
 					PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_garbled_gm_810a3ce3.mp3", "Senseless is what you are. Staring at me this way.", "", 1130393437, 2011449714, Spawn,2)
 	               	end					    
 				elseif gender == FEMALE then
-	            local choice = math.random(1, 2)  
+	            local choice = math.random(1, 3)  
 	                if choice == 1 then				
-		            PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_garbled_gf_36e875b.mp3", "Atzeen   fahrseh", "", 761026681, 962675039, Spawn)
+		            PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_garbled_gf_36e875b.mp3", "Atzeen   fahrseh", "", 761026681, 962675039, Spawn, 2)
 	                elseif choice == 2 then
-	            	PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_garbled_gf_fab027b8.mp3", "Hach bahr neh jadh osh agh", "", 3272896968, 3465123316, Spawn)
-					   
+	            	PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_garbled_gf_fab027b8.mp3", "Hach bahr neh jadh osh agh", "", 3272896968, 3465123316, Spawn, 2)
+	                elseif choice == 3 then
+	            	PlayFlavor(NPC, "voiceover/english/optional3/darkelf_base_2/ft/darkelf/darkelf_base_2_1_garbled_gf_810a3ce3.mp3", "Dark in body and soul! Hah!", "", 1604363761, 647045676, Spawn, 2)
 				    end				    
 				end
 			elseif race == DWARF then
@@ -189,7 +190,7 @@ function Garbled(NPC, Spawn, Faction)
     				elseif choice ==3 then
 					PlayFlavor(NPC, "voiceover/english/halfelf_dervish/ft/halfelf/halfelf_dervish_1_garbled_gm_c175ec10.mp3", "So much angst against the system I can hardly contain it.", "", 1192114494, 883220862, Spawn,7)
 ]]--	               	            
-	            end	
+	            	
 				elseif gender == FEMALE then
                 	local choice = math.random(1,3)
 	                   if choice == 1 then
@@ -243,6 +244,8 @@ function Garbled(NPC, Spawn, Faction)
 				end
 			elseif race == IKSAR then
 				if gender == MALE then
+				    
+				    
 				elseif gender == FEMALE then
 					local choice = math.random(1, 4)  				    
                     if choice == 1 then
@@ -357,3 +360,4 @@ function Garbled(NPC, Spawn, Faction)
 			end
 		end
 	end
+end

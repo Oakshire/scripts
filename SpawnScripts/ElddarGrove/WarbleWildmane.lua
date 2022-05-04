@@ -15,20 +15,51 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1006.mp3", "", "", 0, 0, Spawn)
-	AddConversationOption(conversation, "Sorry to interrupt.  Goodbye.", "dlg_7_1")
+	local conversation = CreateConversation()
+    PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_3_1026.mp3","","listen",0,0,Spawn)
+	AddConversationOption(conversation, "What?  I don't see anyone talking.", "Option1")
+	AddConversationOption(conversation, "Sorry, I must go.", "Option2")
 	StartConversation(conversation, NPC, Spawn, "Shh!  Old Treebark's talking!")
-
+--	StartConversation(conversation, NPC, Spawn, "Hello.  Have you spoken to the Heartwood tree yet?")
 end
 
-function dlg_7_1(NPC, Spawn)
+function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
+	local conversation = CreateConversation()
+    PlayFlavor(NPC,"","","shrug",0,0,Spawn)
+	AddConversationOption(conversation, "You talk to trees?", "Option3")
+	StartConversation(conversation, NPC, Spawn, "Oh, sorry I forget most people can't talk to trees.  Treebark and I were discussing the merits of various soils.  I favor a rich Rivervale loam while tree bark here thinks New Antonican sod can't be beat.")
+end
 
-	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
-	AddConversationOption(conversation, "Goodbye.", "dlg_7_2")
+function Option3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    PlayFlavor(NPC,"","","nod",0,0,Spawn)
+	AddConversationOption(conversation, "Sure, what do I need to do?", "Option4")
+	StartConversation(conversation, NPC, Spawn, "Yea, I spent most of my time with the Heartwood tree until the Heartwood matron forbade it.  It needs help and I can't even approach it.  Could you try?")
+end
+
+function Option4(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    PlayFlavor(NPC,"","","agree",0,0,Spawn)
+	AddConversationOption(conversation, "I can do this.", "Option5")
+	StartConversation(conversation, NPC, Spawn, "Take this pendant and find the Heartwood tree.  It's located in the center of this grove.  Once there clasp the pendant in one hand and touch the tree with the other.")
+end
+
+function Option5(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "You're welcome.")
+	StartConversation(conversation, NPC, Spawn, "Thank you!")
+end
+
+function Option2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+
+	AddConversationOption(conversation, "Goodbye.")
 	StartConversation(conversation, NPC, Spawn, "Goodbye!")
 end
 

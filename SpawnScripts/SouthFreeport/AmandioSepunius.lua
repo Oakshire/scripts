@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/SouthFreeport/ElonaShawnasy.lua
+    Script Name    : SpawnScripts/SouthFreeport/AmandioSepunius.lua
     Script Author  : Dorbin
-    Script Date    : 2022.03.20 05:03:05
+    Script Date    : 2022.05.04 04:05:36
     Script Purpose : 
                    : 
 --]]
@@ -14,11 +14,11 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-GenericEcology2Hail(NPC, Spawn, faction)
+GenericEcologyHail(NPC, Spawn, faction)
 end
 
 function InRange(NPC,Spawn)
-    GenericEcology2Callout(NPC, Spawn, faction)
+    GenericEcologyCallout(NPC, Spawn, faction)
     end
 
 function respawn(NPC)

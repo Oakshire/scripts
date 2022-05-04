@@ -7,6 +7,7 @@
 --]]
 
 function spawn(NPC)
+    SetInfoStructSInt(NPC, "hp_regen", 0)
 	waypoints(NPC)
 end
 

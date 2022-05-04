@@ -1,14 +1,15 @@
 --[[
-    Script Name    : SpawnScripts/SouthFreeport/ElonaShawnasy.lua
+    Script Name    : SpawnScripts/SouthFreeport/UrakEyegouge.lua
     Script Author  : Dorbin
-    Script Date    : 2022.03.20 05:03:05
+    Script Date    : 2022.05.04 03:05:46
     Script Purpose : 
                    : 
 --]]
+
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
---	waypoints(NPC)
+	waypoints(NPC)
 SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 

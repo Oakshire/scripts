@@ -14,6 +14,8 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/optional1/weaponsmith_lucilla_quietus/fprt_south/100_questlucillaquietus_callout1_3d9a231a.mp3", "Either buy something or get out of the way!", "", 3790442270, 2463491720, Spawn, 0)
+
 	if HasQuest(Spawn, RewardForAMissingMusicBox) then
 	SetStepComplete(Spawn, RewardForAMissingMusicBox, 1)
 	end

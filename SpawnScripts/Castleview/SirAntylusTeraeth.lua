@@ -16,6 +16,7 @@ end
 function hailed(NPC, Spawn)
 if GetFactionAmount(Spawn,11) <0 then
 	PlayFlavor(NPC, "", "", "threaten", 0, 0)
+	FaceTarget(NPC, Spawn)
     else
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()

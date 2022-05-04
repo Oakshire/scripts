@@ -15,7 +15,8 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-			if FPfaction <0 then
+	FaceTarget(NPC,Spawn)	
+			if GetFactionAmount(Spawn, 12) <0 then
 			            local choice = math.random(1,2)
 				        if choice == 1 then
 				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
@@ -26,6 +27,7 @@ function hailed(NPC, Spawn)
 	RandomGreeting(NPC, Spawn)
     end
 end
+
 function RandomGreeting(NPC, Spawn)
 	local choice = MakeRandomInt(1,7)
 

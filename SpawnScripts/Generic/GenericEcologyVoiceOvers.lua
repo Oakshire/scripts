@@ -1803,7 +1803,7 @@ function GenericEcology2Hail(NPC, Spawn, faction)
 	    	    if FPfaction <0 then
                     FactionChecking(NPC, Spawn, faction)
 				    else  			    
-                	local choice = math.random(1,9)
+                	local choice = math.random(1,3)
                         if choice == 1 then
                     	PlayFlavor(NPC, "voiceover/english/optional2/ratonga_eco_evil_2/ft/ratonga/ratonga_eco_evil_2_hail_gm_6983d4f4.mp3", "Do you ever get the feeling someone's watching you?", "doubletake", 1443012999, 225264564, Spawn)
                         elseif choice == 2 then
@@ -5431,7 +5431,7 @@ function GenericEcology2Callout(NPC, Spawn, faction)
                         CalloutTimeCheck = true
 			            FaceTarget(NPC,Spawn)
 			            AddTimer(NPC,30000,"ResetCalloutTimer")    				        
-                	local choice = math.random(1,9)
+                	local choice = math.random(1,3)
                         if choice == 1 then
                     	PlayFlavor(NPC, "voiceover/english/optional2/ratonga_eco_evil_2/ft/ratonga/ratonga_eco_evil_2_hail_gm_6983d4f4.mp3", "Do you ever get the feeling someone's watching you?", "doubletake", 1443012999, 225264564)
                         elseif choice == 2 then

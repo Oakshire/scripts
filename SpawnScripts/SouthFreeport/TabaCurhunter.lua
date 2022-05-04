@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/SouthFreeport/ElonaShawnasy.lua
+    Script Name    : SpawnScripts/SouthFreeport/TabaCurhunter.lua
     Script Author  : Dorbin
-    Script Date    : 2022.03.20 05:03:05
+    Script Date    : 2022.05.04 03:05:37
     Script Purpose : 
                    : 
 --]]
