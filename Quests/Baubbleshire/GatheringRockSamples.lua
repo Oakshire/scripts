@@ -3,7 +3,7 @@
 	Script Purpose	:	Handles the quest, "Gathering Rock Samples"
 	Script Author	:	Shatou
 	Script Date		:	1/6/2020
-	Script Notes	:	Updated quest accept dialog - 1/20/2022 Dorbin
+	Script Notes	:	Updated quest accept dialog - 1/20/2022 Dorbin --  NEEDS Updated to interactions with stones in the Caves.
 
 	Zone			:	Baubbleshire
 	Quest Giver		:	Geologist Quardifle

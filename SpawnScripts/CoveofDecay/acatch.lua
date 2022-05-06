@@ -12,10 +12,10 @@ function spawn(NPC)
 
 end
 
-function group_dead(NPC, Spawn)
+function death(NPC, Spawn)
 local zone = GetZone(NPC)
 local rognogx2 = GetSpawn(NPC, 3110002)
-    Attack(rognogx2, Spawn)
+    AddTimer(rognogx2, 1000, "fishcheck")
     for k,v in pairs(crabIDs) do
         local crab = GetSpawnByLocationID(zone, v)
         Attack(crab, Spawn)

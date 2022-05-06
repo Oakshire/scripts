@@ -472,7 +472,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
    	                elseif choice == 5 then 
                     PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_a64f6eec.mp3", "What hast thou done?  When one greets a daughter of Marr, a small bow is in order!", "boggle", 2184035287, 59673464, Spawn)
    	                elseif choice == 6 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_aaa0d7f3.mp3", "Marr ye good den.  How are't thou on this fine afternoond?", "hello", 725320917, 2360930144, Spawn)
+                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_aaa0d7f3.mp3", "Mighty good then.  How are't thou on this fine afternoond?", "hello", 725320917, 2360930144, Spawn)
    	                elseif choice == 7 then 
                     PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_c0864f03.mp3", "Now ye shall rejoyce'th within the taverns by night, but we shall not rest until the truth of our kin hath been discovered.", "happy", 1638938881, 2182528216, Spawn)
    	                elseif choice == 8 then 
@@ -3686,7 +3686,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
    	                elseif choice == 5 then 
                     PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_a64f6eec.mp3", "What hast thou done?  When one greets a daughter of Marr, a small bow is in order!", "boggle", 2184035287, 59673464)
    	                elseif choice == 6 then 
-                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_aaa0d7f3.mp3", "Marr ye good den.  How are't thou on this fine afternoond?", "hello", 725320917, 2360930144)
+                    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_aaa0d7f3.mp3", "Mighty good then.  How are't thou on this fine afternoond?", "hello", 725320917, 2360930144)
    	                elseif choice == 7 then 
                     PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gf_c0864f03.mp3", "Now ye shall'th rejoyce within the taverns by night, but we shall not rest until the truth of our kin hath been discovered.", "happy", 1638938881, 2182528216)
    	                elseif choice == 8 then 

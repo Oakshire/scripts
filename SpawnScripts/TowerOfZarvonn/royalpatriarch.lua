@@ -29,8 +29,8 @@ function heal(NPC, Spawn)
 end
  
 function explode(NPC, Spawn)
-    Shout(NPC, "My life is for you King Zalak")
-    -- CastSpell(NPC, Soul Tide, 1, NPC)
+    Shout(NPC, "My life is for you, King Zalak!")
+    CastSpell(NPC, 5474, 1, NPC)
     Despawn(NPC)
 end
  

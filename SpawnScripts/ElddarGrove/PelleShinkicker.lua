@@ -9,8 +9,16 @@ local BookDelivery = 5514
 
 function spawn(NPC)
 ProvidesQuest(NPC,BookDelivery)    
+SetPlayerProximityFunction(NPC, 9, "InRange", "LeaveRange")
 end
 
+function InRange(NPC, Spawn)
+        if not HasCompletedQuest (Spawn, 5514) and not HasQuest (Spawn, 5514) then 
+	    	if math.random(1, 100) <= 80 then
+               PlayFlavor(NPC, "voiceover/english/pelle_shinkicker/qey_elddar/100_quest_pelle_shinkicker_hail_f015f9a0.mp3", "Shoo shoo!  I am much too busy to speak with you now.", "frustrated", 1998455291, 633133163, Spawn)
+            end
+        end    
+end
 
 
 function hailed(NPC, Spawn)

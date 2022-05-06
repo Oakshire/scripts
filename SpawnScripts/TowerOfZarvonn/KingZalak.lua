@@ -10,7 +10,7 @@
 
 --Declare variables for iterative use later. These are all Location IDs.
 patriarchlocs = {365525, 365526, 133772501, 133772502, 133772503, 133772504, 133772505, 133772506, 133772507}
-spells = {90047, 90128, 90168, 90088, 90106} -- Regal Arc}
+spells = {90047, 90128, 90168, 90088, 90106, 5473} 
  
 function spawn(NPC)
 end

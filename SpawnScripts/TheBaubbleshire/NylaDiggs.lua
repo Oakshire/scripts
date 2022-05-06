@@ -29,8 +29,7 @@ function InRange(NPC, Spawn) --Provides Language Based Callout with delay
     	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/halfling_base_1/ft/halfling/halfling_base_1_1_garbled_gf_823f1021.mp3", "garbled text not to be translated", "", 3051197299, 2401133915, Spawn, 8)
     	end
-	elseif
-    not HasCompletedQuest (Spawn, PieThief) and not HasQuest (Spawn, PieThief) then 
+	elseif not HasCompletedQuest (Spawn, PieThief) and not HasQuest (Spawn, PieThief) then 
      PlayFlavor(NPC, "voiceover/english/nyla_diggs/qey_village06/100_nyla_diggs_nyla_first_d022db59.mp3", "Now where's that pie? I know I had it here.", "", 3499289366, 4159200256, Spawn, 8)
      AddTimer(NPC, 2000, "PlayFlavor", Spawn)
     end

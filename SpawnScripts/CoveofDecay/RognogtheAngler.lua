@@ -10,11 +10,12 @@ spells = {1, 2, 3, 4, 5} -- need to get spell IDs/names
 catchIDs = {347235, 347236, 347237, 347238, 347239,
             347240, 347241, 347242, 347423, 347424,
             347425, 347426} -- location IDs of "a catch". Rognog attacks when these are all dead.
+crabIDs = {347223, 347225, 347228, 247231}
 
 function spawn(NPC)
 end
 
-function attacked (NPC, Spawn) -- this function receives Spawn as a second param from "a catch"
+function aggro(NPC, Spawn)
     AddTimer(NPC, 1000, "spellLoop")
 end
 
@@ -33,6 +34,17 @@ function spellChoice(NPC, Spawn) -- select a spell from table.
             -- CastSpell(hated, spells[math.random(#spells)], 3, NPC)
         end
     AddTimer(NPC, math.random(1500, 2500), "spellLoop")
+end
+
+function fishcheck(NPC, Spawn)
+    for k,v in ipairs(catchIDs) do
+        local fish = GetSpawnByLocationID(zone, v)
+        if isAlive(fish) == true then
+            break
+        else
+        aggro(NPC, Spawn)    
+        end
+    end
 end
 
 function healthchanged(NPC, Spawn)
