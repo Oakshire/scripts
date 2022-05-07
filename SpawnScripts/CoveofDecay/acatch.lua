@@ -6,8 +6,6 @@
                    : 
 --]]
 
-crabIDs = {347223, 347225, 347228, 247231}
-
 function spawn(NPC)
 
 end
@@ -15,11 +13,7 @@ end
 function death(NPC, Spawn)
 local zone = GetZone(NPC)
 local rognogx2 = GetSpawn(NPC, 3110002)
-    AddTimer(rognogx2, 1000, "fishcheck")
-    for k,v in pairs(crabIDs) do
-        local crab = GetSpawnByLocationID(zone, v)
-        Attack(crab, Spawn)
-    end
+    AddTimer(rognogx2, 1000, "fishcheck", 1, Spawn)
 end
 
 function respawn(NPC)

@@ -6,41 +6,42 @@
 	Script Notes	:	Locations collected from Live
 --]]
 
-function spawn(NPC, Spawn)
-    function spawn(NPC)
+function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 16
-    local level2 = 15
-    local difficulty1 = 7
-    local hp1 = 2176
-    local power1 = 789
-    local difficulty2 = 7
-    local hp2 = 3484
-    local power2 = 1439
+    local level1 = 1
+    local level2 = 2
+    local difficulty1 = 6
+    local hp1 = 30
+    local power1 = 25
+    local difficulty2 = 6
+    local hp2 = 45
+    local power2 = 35
     if Level == level1 then
-   SetMaxHP(NPC, hp1)
-   SetMaxPower(NPC, power1)
-   SetHP(NPC, hp1)
-   SetPower(NPC, power1)
-   SpawnSet(NPC, "difficulty", difficulty1)
+    SpawnSet(NPC, "difficulty", difficulty1)
+    SpawnSet(NPC, "hp", hp1)
+    SpawnSet(NPC, "power", power1)
     elseif Level == level2
         then
-    SetMaxHP(NPC, hp2)
-   SetMaxPower(NPC, power2)
-    SetHP(NPC, hp2)
-    SetPower(NPC, power2)
     SpawnSet(NPC, "difficulty", difficulty2)
+    SpawnSet(NPC, "hp", hp2)
+    SpawnSet(NPC, "power", power2)
     end
-    waypoints(NPC)
+	waypoints(NPC)
 end
 
-function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
+function hailed(NPC)
+	FaceTarget(NPC)
+end
+
+function respawn(NPC)
+        spawn(NPC)
+end
+function hailed(NPC)
+    FaceTarget(NPC)
 end
 
 function respawn(NPC)
     spawn(NPC)
-end
 end
 
 function waypoints(NPC)

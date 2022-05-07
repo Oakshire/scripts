@@ -8,6 +8,8 @@
 
 function spawn(NPC)
         SpawnSet(NPC, "level", "3")
+        SpawnSet(NPC, "hp", 75)
+        SpawnSet(NPC, "power", 45)
 	waypoints(NPC)
 end
 

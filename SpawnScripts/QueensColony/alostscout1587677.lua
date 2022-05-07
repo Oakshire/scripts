@@ -67,9 +67,9 @@ function aggro(NPC, Spawn)
        elseif HasLanguage(Spawn, 1) then
                local choice = math.random(1, 2)
                if choice == 1  then
-            PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_aggro_gf_5cbe779b.mp3", "Enemies approach!", "", 991095436, 863644706, Spawn)
+            PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_aggro_gf_5cbe779b.mp3", "Enemies approach!", "", 991095436, 863644706, Spawn,1)
               else
-            PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_aggro_gf_9ed7a064.mp3", "This is what we were trained for!  Do not fail in your duty!", "", 3130720919, 1154579014, Spawn)      
+            PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_aggro_gf_9ed7a064.mp3", "This is what we were trained for!  Do not fail in your duty!", "", 3130720919, 1154579014, Spawn,1)      
  end
     end
        end

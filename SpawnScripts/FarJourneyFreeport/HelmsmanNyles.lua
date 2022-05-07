@@ -14,7 +14,7 @@ function hailed(NPC, Spawn)
     local conversation = CreateConversation()
         AddConversationOption(conversation, "Yes", "leave")
            AddConversationOption(conversation, "No")
-                  StartConversation(conversation, NPC, Spawn, "Head for land? [Skip Tutorial & Leave The Far Journey?]")
+                  StartConversation(conversation, NPC, Spawn, "          Head for land?          [Leave The Far Journey?]")
 end
 
 function leave(NPC, Spawn)

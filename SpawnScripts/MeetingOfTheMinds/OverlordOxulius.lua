@@ -32,19 +32,19 @@ function spellChoice(NPC, Spawn) -- select a spell from table.
 end
 
 function tzkrLoop(NPC, Spawn)
-    if GetTempVariable(NPC, "addSpawn") == "nil" then -- if we haven't spawned mobs yet, check if tzkr is alive.
+    if GetTempVariable(NPC, "addSpawn") == "nil" then 
     AddTimer(NPC, 3000, "tzkrCheck")
-    elseif GetTempVariable(NPC, "addSpawn") == "0" then -- this is only set if we spawned mobs. stop checking to conserve cpu.
+    elseif GetTempVariable(NPC, "addSpawn") == "0" then 
 end
 end
 
 function tzkrCheck(NPC, Spawn)
-    tkzr = GetSpawn(NPC, 5560002) -- grab spawn pointer
-    AddTimer(NPC, 1500, "tzkrLoop") -- start loopback
-    if GetTempVariable(NPC, "addSpawn") == "nil" then -- this is set on spawn, so it should check the below conditions.
-            if not IsAlive(tkzr) then -- this should only be true if tzkr is killed first and oxulius is still alive.
-                SetTempVariable(NPC, "addSpawn", "1") -- set flag to summon adds for below function.
-                AddTimer(NPC, 1000, "summonAdds") -- add timer.
+    tkzr = GetSpawn(NPC, 5560002) 
+    AddTimer(NPC, 1500, "tzkrLoop") 
+    if GetTempVariable(NPC, "addSpawn") == "nil" then 
+            if not IsAlive(tkzr) then 
+                SetTempVariable(NPC, "addSpawn", "1") 
+                AddTimer(NPC, 1000, "summonAdds") 
             end
     end
 end
@@ -56,8 +56,8 @@ function summonAdds(NPC, Spawn)
                     local braxxSpawn = SpawnByLocationID(zone, 302036)
                     local brixxSpawn = SpawnByLocationID(zone, 302037)
         end
-    SetTempVariable(NPC, "addSpawn", "0") -- set to 0 to trigger termination of timer function to conserve cpu.
-    AddTimer(NPC, 4000, "overlordConvo1") -- start conversation loops below
+    SetTempVariable(NPC, "addSpawn", "0") 
+    AddTimer(NPC, 4000, "overlordConvo1") 
 
 end
 

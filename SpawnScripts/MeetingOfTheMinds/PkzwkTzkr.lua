@@ -22,10 +22,10 @@ function spellLoop(NPC, Spawn) -- referred from aggro. Loopback function for spe
 end
 
 function spellChoice(NPC, Spawn) -- select a spell from table. 
-    local hated = GetMostHated(NPC) -- get pointer for whoever has threat.
-        if hated ~= nil then -- if pointer isn't blank, proceed.
-            FaceTarget(NPC, hated) -- face the NPC toward threat target if they aren't already.
-            CastSpell(hated, spells[math.random(#spells)], 3, NPC) -- get random spell from table, cast on target.
+    local hated = GetMostHated(NPC) 
+        if hated ~= nil then 
+            FaceTarget(NPC, hated) 
+            CastSpell(hated, spells[math.random(#spells)], 3, NPC) 
         end
     AddTimer(NPC, math.random(1500, 2500), "spellLoop") -- refer to loopback
 end

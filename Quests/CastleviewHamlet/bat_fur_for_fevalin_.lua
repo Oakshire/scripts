@@ -3,7 +3,9 @@
     Script Author  : Dorbin
     Script Date    : 2022.01.28 04:01:14
     Script Purpose : 
-
+        
+        original copper value: 67c
+        
         Zone       : CastleviewHamlet
         Quest Giver: Fevalin
         Preceded by: None

@@ -5,9 +5,8 @@
     Script Purpose : 
                    : 
 --]]
-
-function spawn(NPC, Spawn)
-    function spawn(NPC)
+    
+    
     local Level = GetLevel(NPC)
     local level1 = 16
     local level2 = 15
@@ -17,6 +16,9 @@ function spawn(NPC, Spawn)
     local difficulty2 = 7
     local hp2 = 3484
     local power2 = 1439
+
+function spawn(NPC, Spawn)
+  
     if Level == level1 then
    SetMaxHP(NPC, hp1)
    SetMaxPower(NPC, power1)
@@ -39,6 +41,4 @@ end
 
 function respawn(NPC)
     spawn(NPC)
-end
-end
 end
