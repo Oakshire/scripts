@@ -8,7 +8,9 @@
 
 function spawn(NPC)
         SpawnSet(NPC, "level", "3")
-        SpawnSet(NPC, "difficulty", "2")        
+        SpawnSet(NPC, "difficulty", "2")
+        SpawnSet(NPC, "hp", 30)
+        SpawnSet(NPC, "power", 15)
         AddTimer(NPC, 2000, "FollowMorak")
 end
 

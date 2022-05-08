@@ -10,6 +10,8 @@ function spawn(NPC)
         SpawnSet(NPC, "level", "4") 
         SpawnSet(NPC, "difficulty", "5")  
         SpawnSet(NPC, "size", "28.8")
+        SpawnSet(NPC, "hp", 55)
+        SpawnSet(NPC, "power", 35)
 end
 
 function hailed(NPC, Spawn)

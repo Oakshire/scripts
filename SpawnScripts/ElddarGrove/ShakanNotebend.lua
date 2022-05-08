@@ -1,10 +1,11 @@
 --[[
 	Script Name	: SpawnScripts/ElddarGrove/ShakanNotebend.lua
 	Script Purpose	: Shakan Notebend <Dirge Trainer>
-	Script Author	: John Adams
-	Script Date	: 2008.09.28
+	Script Author	: Dorbin
+	Script Date	: 2022.05.07
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
 end
@@ -14,17 +15,19 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+ Dialog2(NPC, Spawn)   
+end  
+
+function Dialog2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-		PlayFlavor(NPC, "lieoonlioo_croosinian/qey_elddar/trainer_dirge001.mp3", "", "", 3023305177, 4288429789, Spawn)
-	AddConversationOption(conversation, "Just looking around.", "dlg_17_1")
-	StartConversation(conversation, NPC, Spawn, "Well met, .. GetName(Spawn) .. .  What brings you to the Elddar Grove this fine day?")
-	if convo==18 then
-		PlayFlavor(NPC, "lieoonlioo_croosinian/qey_elddar/trainer_dirge001.mp3", "", "", 3023305177, 4288429789, Spawn)
-		AddConversationOption(conversation, "Just looking around.", "dlg_18_1")
-		StartConversation(conversation, NPC, Spawn, "Well met, .. GetName(Spawn) .. .  What brings you to the Elddar Grove this fine day?")
-	end
-
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Well met.  What brings you to the Elddar Grove this fine day?")
+	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_2_1004.mp3", 0, 0, Spawn)
+	Dialog.AddOption("Just looking around.")
+	Dialog.Start()
 end
+
+
+--		PlayVoice(NPC, "lieoonlioo_croosinian/qey_elddar/trainer_troubador001.mp3", 484417616, 3729027420)
+
 

@@ -10,6 +10,8 @@ function spawn(NPC)
         local level = GetLevel(NPC)
         if level == 4 then
             SpawnSet(NPC, "size", "28.8")
+            SpawnSet(NPC, "hp", 110)
+            SpawnSet(NPC, "power", 55)
         end
 	waypoints(NPC)
 end

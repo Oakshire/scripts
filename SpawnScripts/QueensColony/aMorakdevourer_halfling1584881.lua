@@ -9,6 +9,8 @@
 function spawn(NPC)
         SpawnSet(NPC, "level", "3") 
         SpawnSet(NPC, "difficulty", "2")
+        SpawnSet(NPC, "hp", 30)
+        SpawnSet(NPC, "power", 15)
         EmoteLoop(NPC)
 
 	if GetSpawnLocationID(NPC) == 1584881 then

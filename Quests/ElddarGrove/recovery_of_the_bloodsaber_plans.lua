@@ -47,7 +47,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I spoke with Wesaelan Brookshadow.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I spoke with Wesaelan about the plans.")
 
-	UpdateQuestDescription(Quest, "I managed to recover a set of the plans from the Bloodsabers in the Vermins' Snye.  When I returned to Wesaelan with the letter I'd found, he told me to seek out Captain Eitoa, and give her the information that I have so far. <br>")
+	UpdateQuestDescription(Quest, "I managed to recover a set of the plans from the Bloodsabers in the Vermins' Snye.  When I returned to Wesaelan with the letter I'd found, he told me to seek out Captain Eitoa, and give her the information that I have so far.")
 	GiveQuestReward(Quest, Player)
 end
 

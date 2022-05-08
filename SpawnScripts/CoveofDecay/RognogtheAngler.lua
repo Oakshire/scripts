@@ -9,10 +9,6 @@
 --]]
 
 spells = {1, 2, 3, 4, 5} -- need to get spell IDs/names
-catchIDs = {347235, 347236, 347237, 347238, 347239,
-            347240, 347241, 347242, 347423, 347424,
-            347425, 347426} -- location IDs of "a catch". Rognog attacks when these are all dead.
-crabIDs = {347223, 347225, 347228, 247231}
 
 -- basic inclusions for mob behavior here
 function spawn(NPC)
@@ -33,30 +29,6 @@ end
 
 function spellLoop(NPC, Spawn) -- Loopback function for spellcasts. casts spells on an interval.
     AddTimer(NPC, math.random(1500,2500), "spellChoice")
-end
-
--- encounter-specific stuff here
-function fishcheck(NPC, Spawn) -- this function receives its secondary parameter, Spawn, from the death function of "a catch". When isAlive returns false for all fish, the encounter starts.
-local zone = GetZone(NPC)
-    for k,v in pairs(catchIDs) do
-    local fish = GetSpawnByLocationID(zone, v)
-        if isAlive(fish) == true then
-            break
-        else
-            SpawnSet(NPC, "attackable", true)
-            Attack(NPC, Spawn)
-            AddTimer(NPC, 1000, "crabAttack")
-            AddTimer(NPC, 1000, "spellLoop")
-
-        end
-    end
-end
-
-function crabattack(NPC, Spawn) -- crabs attack player who activated encounter when fishcheck returns all false.
-        for k,v in pairs(crabIDs) do
-        local crab = GetSpawnByLocationID(zone, v)
-            Attack(crab, Spawn)
-    end
 end
 
 function healthchanged(NPC, Spawn) -- at 50%, begin spawning the x4 version of this mob.
