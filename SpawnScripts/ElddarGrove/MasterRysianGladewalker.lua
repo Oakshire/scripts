@@ -16,9 +16,11 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+if GetFactionAmount(Spawn, 11) <0 then
+    PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+    else
 		PlayFlavor(NPC, "voiceover/english/optional1/master_rysian_gladewalker/qey_elddar/masterrysiangladewalker.mp3", "", "", 1008244051, 2607567948, Spawn)
 	AddConversationOption(conversation, "No, I'm sorry you must have me confused with someone else.", "dlg_16_1")
 	StartConversation(conversation, NPC, Spawn, "Well met, friend!  Do you have business with our guild?")
 end
-
+end

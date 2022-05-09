@@ -7,6 +7,7 @@
 --]]
 
 local ThereMite = 458
+local TheHalfEatenOrderSlip = 5520
 
 function spawn(NPC)
 	ProvidesQuest(NPC, ThereMite)
@@ -31,6 +32,10 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/farmer_walcott/antonica/farmerwalcott000.mp3", "", "", 1905672247, 2052203858, Spawn)
 		if HasQuest(Spawn, ThereMite) == false and HasCompletedQuest(Spawn, ThereMite) == false then
 		    AddConversationOption(conversation, "Sounds like you need a beetle charmer. ", "dlg_1_1")
+		elseif GetQuestStep(Spawn, TheHalfEatenOrderSlip) == 1  then
+		    AddConversationOption(conversation, "I found this slip with your name on it.", "slip")
+		elseif GetQuestStep(Spawn, TheHalfEatenOrderSlip) == 3  then
+		    	AddConversationOption(conversation, "You have two less scarecrows.", "slip3")
 		end
 		AddConversationOption(conversation, "I found this map on a gnoll. ")
 		AddConversationOption(conversation, "I am sorry I cannot help you. Farewell.")
@@ -195,3 +200,30 @@ function dlg_26_1(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Fantastic! Now I can bring to life a good scarecrow, one who I can place in the fields and who will destroy the evil ones! ")
 end
 
+function slip(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+PlayFlavor(NPC, "voiceover/english/farmer_walcott/antonica/farmerwalcott004.mp3", "", "",  1213446973, 2066498477, Spawn)
+AddConversationOption(conversation, "It's all in a day's work for us adventurers.  ", "slip2")
+AddConversationOption(conversation, "I don't have time to chat with you.")
+StartConversation(conversation, NPC, Spawn, "I saw a moat rat chewing that slip this morning. I thought I would never get it back! You must be an amazing hero to face moat rats with such ease!")
+end
+
+function slip2(NPC, Spawn)
+    SetStepComplete(Spawn, TheHalfEatenOrderSlip, 1)
+FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/farmer_walcott/antonica/farmerwalcott005.mp3", "", "",  3107851027, 3585937746, Spawn)
+	AddConversationOption(conversation, "I will hack a couple down for you.")
+	StartConversation(conversation, NPC, Spawn, "I can use a person with your strength and bravado. See those evil looking scarecrows in my fields? I sure would appreciate it if you would get rid of 'em for me.")
+end
+
+
+function slip3(NPC, Spawn)
+    SetStepComplete(Spawn, TheHalfEatenOrderSlip, 3)
+FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+		PlayFlavor(NPC, "voiceover/english/farmer_walcott/antonica/farmerwalcott006.mp3", "", "",  3891109775, 3345154753, Spawn)
+			AddConversationOption(conversation, "Farewell, farmer. ")
+				StartConversation(conversation, NPC, Spawn, "Thank you for your help, adventurer. There was no way a simple farmer could face such creatures and live. Now maybe I can get some work done around here.  ")
+end

@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-
+    SpawnSet(NPC, "attackable", "0")
 end
 
 function respawn(NPC)

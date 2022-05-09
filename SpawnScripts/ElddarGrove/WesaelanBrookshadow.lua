@@ -23,7 +23,9 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+if GetFactionAmount(Spawn, 11) <0 then
+    PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+    else
 	PlayFlavor(NPC, "voiceover/english/optional4/wesaelan_brookshadow/brookshadow_01.mp3", "", "hello", 2834600234, 1504715618, Spawn)
         if not HasQuest(Spawn, JournalOfElkare) and not HasCompletedQuest(Spawn, JournalOfElkare) then
         AddConversationOption(conversation, "Is there anything I can assist the order with?", "dlg_01")
@@ -42,8 +44,8 @@ function hailed(NPC, Spawn)
         end    
 	    AddConversationOption(conversation, "Thank you, and good day to you.")
     	StartConversation(conversation, NPC, Spawn, "Hail traveler!  All friends of the Elddar are welcome.")
+    end
 end
-
 -- JOURNAL OF ELKARE (QUEST 1)
 
 function dlg_01(NPC, Spawn)

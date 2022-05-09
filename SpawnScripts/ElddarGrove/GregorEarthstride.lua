@@ -67,7 +67,7 @@ function FeathersDone1(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "That's wonderful!  I'll be happy to pull the feathers off myself, that's not a problem!  You've saved me quite a bit of coin!  Speaking of coin, here's some for your effort.")
 end   
 
-function DangerDone(NPC, Spawn)
+function FeathersDone2(NPC, Spawn)
     SetStepComplete(Spawn,Hawks,2)
 	FaceTarget(NPC, Spawn)
 end

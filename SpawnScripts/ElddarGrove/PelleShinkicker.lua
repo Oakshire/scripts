@@ -24,7 +24,8 @@ end
 function hailed(NPC, Spawn)
 if GetFactionAmount(Spawn, 11) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-    else
+ 	FaceTarget(NPC, Spawn)
+   else
 	FaceTarget(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/pelle_shinkicker/qey_elddar/pelleshinkicker000.mp3", "", "", 4147340962, 3983315910, Spawn)
 	local conversation = CreateConversation()

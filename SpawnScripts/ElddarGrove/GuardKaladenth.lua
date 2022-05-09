@@ -12,7 +12,10 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	choice = math.random(1,2)
+if GetFactionAmount(Spawn, 11) <0 then
+    PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+    else
+        choice = math.random(1,2)
 
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/service/guard/highelf_guard_service_good_1_hail_gm_ebfceda5.mp3", "Greetings, citizen. I am on guard duty.  Should you get into trouble, seek me out.", "attention", 3027655540, 4120709915, Spawn)
@@ -20,7 +23,7 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/service/guard/highelf_guard_service_good_1_hail_gm_c865a827.mp3", "Duty above all else, citizen, except honor!", "scold", 739074204, 2925833259, Spawn)
 	else
 	end
-
+end
 end
 
 function waypoints(NPC)
