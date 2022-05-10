@@ -17,6 +17,7 @@ end
 function InRange(NPC,Spawn)
 --    if not HasCompletedQuest (Spawn, deposit) and not HasQuest (Spawn, deposit) then 
  	if math.random(1, 100) <= 60 then
+    	FaceTarget(NPC, Spawn)
 	    choice = math.random(1,2)
 	    if choice == 1 then
 	    PlayFlavor(NPC, "voiceover/english/master_archer_nightbow/qey_elddar/100_merchant_halfelf_nightbow_callout1_f29bf504.mp3", "Welcome to In-Range. How can I oblige you, traveler?", "", 514837561, 1511494370, Spawn)

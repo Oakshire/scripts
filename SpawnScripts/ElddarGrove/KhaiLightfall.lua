@@ -8,13 +8,11 @@
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	choice = math.random(1,2)
+    if GetFactionAmount(Spawn,11) <0 then
+		PlayFlavor(NPC, "", "You best remove yourself or I will be forced to.", "shakefist", 0, 0, Spawn)
+     else  
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1036.mp3", "May yourr life be uneventful frriend.", "bow", 1689589577, 4560189, Spawn)
 
-	if choice == 1 then
-		PlayFlavor(NPC, "", "May yourr life be uneventful frriend.", "", 1689589577, 4560189, Spawn)
-	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1036.mp3", "", "", 0, 0, Spawn)
-	else
 	end
 
 end

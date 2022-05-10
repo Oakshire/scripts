@@ -7526,7 +7526,7 @@ function FactionChecking(NPC, Spawn, faction)
                 		PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/human/human_eco_evil_1_notcitizen_gm_55c7abb4.mp3", "I can't be seen associating with you, worm.", "glare", 2976359403, 2815519675, Spawn, 0)
                     end				        
 				elseif GOOD then
-                 	local choice = math.random(1,7)
+                 	local choice = math.random(1,9)
 	                    if choice == 1 then
  	                    PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_notcitizen_gm_1a98f879.mp3", "How did you get past the city gates?!", "doubletake", 2984037816, 3824691347, Spawn)
                        	elseif choice == 2 then
@@ -8306,7 +8306,7 @@ function FactionCheckingCallout(NPC, Spawn, faction)
                 		PlayFlavor(NPC, "voiceover/english/optional2/human_eco_evil_2/ft/human/human_eco_evil_2_notcitizen_gm_e5838bd0.mp3", "Fool! The Overlord is watching you as we speak.", "lookaway", 2642325989, 4260235172)
 				        end				        
 				elseif GOOD then
-                 	local choice = math.random(1,7)
+                 	local choice = math.random(1,9)
 	                    if choice == 1 then
  	                    PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_notcitizen_gm_1a98f879.mp3", "How did you get past the city gates?!", "doubletake", 2984037816, 3824691347)
                        	elseif choice == 2 then

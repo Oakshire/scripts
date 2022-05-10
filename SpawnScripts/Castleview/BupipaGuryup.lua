@@ -50,7 +50,7 @@ end
 
 function hailed(NPC, Spawn)
      if GetFactionAmount(Spawn,11) <0 then
-         choice = math.random(1,2)
+        local  choice = math.random(1,2)
          if choice == 1 then
         		PlayFlavor(NPC, "", "", "noway", 0, 0, Spawn)
         elseif choice == 2 then

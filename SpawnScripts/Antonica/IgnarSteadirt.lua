@@ -24,8 +24,16 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     if not HasQuest(Spawn, LordGrimrotsScythe) and not HasCompletedQuest(Spawn, LordGrimrotsScythe) then
     Option0(NPC, Spawn)
-    elseif GetQuestStep(Spawn, LordGrimrotsScythe) == 1 or  GetQuestStep(Spawn, LordGrimrotsScythe) == 2 or  GetQuestStep(Spawn, LordGrimrotsScythe) == 3 then
+    elseif GetQuestStep(Spawn, LordGrimrotsScythe) == 1  or  GetQuestStep(Spawn, LordGrimrotsScythe) == 2 or  GetQuestStep(Spawn, LordGrimrotsScythe) == 3 or GetQuestStep(Spawn, LordGrimrotsScythe) == 4  then
     Reports_Progress(NPC, Spawn)
+    elseif GetQuestStep(Spawn, LordGrimrotsScythe) == 6 then
+    Reports_Progress2(NPC, Spawn)
+    elseif GetQuestStep(Spawn, LordGrimrotsScythe) == 7 and GetQuestStep(Spawn, LordGrimrotsScythe) == 8  then
+    Reports_Progress3(NPC, Spawn)
+    elseif GetQuestStep(Spawn, LordGrimrotsScythe) == 9 then
+    PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quest/045_dwarf_ignar_steadirt_g1_onstage7_68f3d9e4.mp3", "Well? Have you spoken with the dwarven centurion yet?  His name's Grimbold Steadirt -- you can't miss him, he's near the gates to Firemyst.", "", 1513486151, 2077778983, Spawn)
+    elseif HasCompletedQuest(Spawn, LordGrimrotsScythe) then
+    Quest_Completed(NPC, Spawn)
     end
 end
 
@@ -40,11 +48,27 @@ end
 function Reports_Progress(NPC, Spawn)
     PlayFlavor(NPC, greetingsTable[math.random(#greetingsTable)], "", "", 0, 0, Spawn)
     local conversation = CreateConversation()
-    if GetQuestStep(Spawn, LordGrimrotsScythe) == 4 then
+    if GetQuestStep(Spawn, LordGrimrotsScythe) == 4 or GetQuestStep(Spawn, LordGrimrotsScythe) == 5  then
 	AddConversationOption(conversation, "Yes, I've spoken with your three knights.", "Option5")
 	end
 	AddConversationOption(conversation, "Not yet,  I'll be back when I've spoken to all three knights.")
 	StartConversation(conversation, NPC, Spawn, "Got all three reports for me, eh?")
+end
+
+function Reports_Progress2(NPC, Spawn)
+       local conversation = CreateConversation()
+	AddConversationOption(conversation, "I fought the Sabertooth rune casters, but found only part of Lord Grimrot's war scythe.", "Option10")
+	AddConversationOption(conversation, "Not yet.  I will return when I've done as you asked.")
+	StartConversation(conversation, NPC, Spawn, "What news do you have?  And speak up, will you?  I can barely hear you with all the noise around this monument!")
+end
+
+function Reports_Progress3(NPC, Spawn)
+       local conversation = CreateConversation()
+       if GetQuestStep(Spawn, LordGrimrotsScythe) == 8 then 
+	AddConversationOption(conversation, "I found the remaining piece of Lord Grimrot's scythe.", "Option13")
+	end
+	AddConversationOption(conversation, "Not yet.  I will continue the fight!")
+	StartConversation(conversation, NPC, Spawn, "Yes?  Oh, it's you again! Have you gotten the final piece of the scythe?")
 end
 
 function Option1(NPC, Spawn)
@@ -84,9 +108,11 @@ end
 function Option5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+	if GetQuestStep(Spawn, LordGrimrotsScythe) == 4 then
 	AddConversationOption(conversation, "The gnolls have Lord Grimrot's war scythe and are using it to resurrect him for a new undead battle against Qeynos.", "Option7")
-		AddConversationOption(conversation, "Morte's a human! You didn't tell me that!", "Option6")
-		AddConversationOption(conversation, "I'll be right back.")
+	AddConversationOption(conversation, "Morte's a human! You didn't tell me that!", "Option6")
+	end
+	AddConversationOption(conversation, "I'll be right back.")
 	StartConversation(conversation, NPC, Spawn, "Anything interesting?  The last reports were hardly worth waiting for, but a good soldier never lets his guard down -- ever!")
 end
 
@@ -117,23 +143,61 @@ end
 function Option9(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	
+	SetStepComplete(Spawn, LordGrimrotsScythe, 4)
 	PlayAnimation(NPC, 121)
 	AddConversationOption(conversation, "Don't worry -- I will be back.")
 	StartConversation(conversation, NPC, Spawn, "You might want to bring along some trusted companions, for I'm sure the gnolls will have this thing hidden -- from each other, as well as from outsiders like us!  If they're trying to do some fancy spellwork, their rune casters will be involved.  Watch for their guards too.")
 end
 
+function Option10(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "So I need to find the other part with the Darkpaws?", "Option11")
+	StartConversation(conversation, NPC, Spawn, "I wonder whether each group has a piece of the scythe ... that might explain their sudden cooperation:An uneasy truce until they unleash Lord Grimrot.  I'll bet they need each other to get this to work.  And you know this actually ties in with the last reports, of those Darkpaws and Sabertooth gnolls suddenly getting friendly toward each other.")
+end
+
+function Option11(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "And then...?", "Option12")
+	StartConversation(conversation, NPC, Spawn, "It looks that way, my friend.  Just as the Sabertooth gnolls protect their rune casters, so do the Darkpaws.  A small group is the best way to achieve success.  And then...")
+end
+
+function Option12(NPC, Spawn)
+    SetStepComplete(Spawn, LordGrimrotsScythe, 6)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "...haunt us.  Yes, I know.  I'll take care of the scythe.")
+	StartConversation(conversation, NPC, Spawn, "And then, well, we'll have stopped them, won't we?  Anyway, it's best to take things one step at a time.  We'll deal with what comes after we destroy the entire scythe -- if there is anything, mind you. The undead have a way of coming back to ... well, you know...")
+end
+
+function Option13(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+		AddConversationOption(conversation, "Well...no, I'm not sure.", "Option14")
+	StartConversation(conversation, NPC, Spawn, "That's one less thing for me to worry about. Thank you!  The undead continue to stir, though, which disturbs me.  You're sure you destroyed all pieces of Pestilence?")
+end
+
+function Option14(NPC, Spawn)
+    SetStepComplete(Spawn, LordGrimrotsScythe, 8)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	AddConversationOption(conversation, "I'll take a look.")
+	StartConversation(conversation, NPC, Spawn, "Either way, there's no denying that the undead are restless over in Firemyst Gully -- that's where untold numbers of 'em were buried in the War of Plagues.  In fact, maybe you could go over and see if the dwarven centurion at the Firemyst gate needs anything.  I'm afraid my lot is to stay here.  Go find glory in battle, farewell.")
+end
 
 
 
-	--[[	Say() from this NPC
+function Quest_Completed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+	PlayAnimation(NPC, 121)
+	AddConversationOption(conversation, "Farewell.")
+	StartConversation(conversation, NPC, Spawn, "I keep telling myself this is an important part of the battle -- to stay here and gather data.  Ah, well.  I appreciate your visits.")
+end
 
 
 
-			Orphaned PlayFlavors
-				PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quest/045_dwarf_ignar_steadirt_g1_onstage7_68f3d9e4.mp3", "Well? Have you spoken with the dwarven centurion yet?  His name's Grimbold Steadirt -- you can't miss him, he's near the gates to Firemyst.", "", 1513486151, 2077778983, Spawn)
-
-	--]]
 
 
 function refuse1(NPC, Spawn)

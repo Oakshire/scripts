@@ -12,7 +12,12 @@
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "Grel Stoneshearer overlooks the Keep of the Ardent Needle from a nearby hilltop.", 1, "I need to speak with the dwarven knights in Antonica.", 11, 120204)
+		AddQuestStepChat(Quest, 2, "Grelda Stoneshearer is near the Keep of the Gnollslayers.", 1, "I need to speak with the dwarven knights in Antonica.", 11, 120314)
+			AddQuestStepChat(Quest, 3, "Morte Winghammer is near a covered bridge.", 1, "I need to speak with the dwarven knights in Antonica.", 11, 120308)
+			
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+			AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -32,24 +37,17 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I spoke with Grel.")
-
-	AddQuestStepChat(Quest, 2, "Grelda Stoneshearer is near the Keep of the Gnollslayers.", 1, "I need to speak with the dwarven knights in Antonica.", 11, 120314)
-	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+   CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I've spoken with Grelda.")
-
-	AddQuestStepChat(Quest, 3, "Morte Winghammer is near a covered bridge.", 1, "I need to speak with the dwarven knights in Antonica.", 11, 120308)
-	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+    CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "No one told me Morte was a human!")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I've spoken with three dwarven knights.  Well, two dwarves and one human dwarven knight, anyway.")
-
-	AddQuestStepChat(Quest, 4, "Ignar Steadirt is near the Qeynos' Claymore memorial.", 1, "I need to report back to Ignar Steadirt.", 11, 120414)
-	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
+  CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step4Complete(Quest, QuestGiver, Player)
@@ -99,6 +97,14 @@ function QuestComplete(Quest, QuestGiver, Player)
 
 	UpdateQuestDescription(Quest, "Ignar Steadirt is still frustrated that he has to remain at the Claymore monument, but he was very grateful for living the battles vicariously through my reports.  It has been my pleasure.")
 	GiveQuestReward(Quest, Player)
+end
+
+function CheckProgress(Quest, QuestGiver, Player)
+    if QuestStepIsComplete(Player, 5522, 1) and QuestStepIsComplete(Player, 5522, 2) and QuestStepIsComplete(Player, 5522, 3) then
+      	UpdateQuestTaskGroupDescription(Quest, 1, "I've spoken with three dwarven knights.  Well, two dwarves and one human dwarven knight, anyway.")
+        	AddQuestStepChat(Quest, 4, "Ignar Steadirt is near the Qeynos' Claymore memorial.", 1, "I need to report back to Ignar Steadirt.", 11, 120414)
+	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
+	end
 end
 
 function Reload(Quest, QuestGiver, Player, Step)

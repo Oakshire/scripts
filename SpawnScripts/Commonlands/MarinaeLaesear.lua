@@ -28,18 +28,13 @@ end
 
 
 function jump(NPC, Spawn)
-PlayAnimation(NPC, 11758)
-AddTimer(NPC, 100, "move2", 1, Spawn)
-end
-
-function hailed(NPC, Spawn)
-
-end
-
-
-function move2(NPC, Spawn)
 Despawn(NPC)
 end
+
+
+
+
+
 
 
 function respawn(NPC)

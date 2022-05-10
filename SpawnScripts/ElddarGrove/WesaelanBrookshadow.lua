@@ -13,7 +13,7 @@ function spawn(NPC)
     AddTimer(NPC, 5000, "EmoteLoop")    
 ProvidesQuest(NPC,JournalOfElkare)
 ProvidesQuest(NPC,RecoveryOfTheBloodsaberPlans)
-    AddTimer(NPC, 5000, "EmoteLoop")    
+--    AddTimer(NPC, 5000, "EmoteLoop")    
 end
 
 function respawn(NPC)

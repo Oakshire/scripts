@@ -10,6 +10,7 @@ local Hawks = 5517
 
 function spawn(NPC)
     ProvidesQuest(NPC, Hawks)
+    AddTimer(NPC, 5000, "EmoteLoop")    
 end
 
 function respawn(NPC)
@@ -70,4 +71,22 @@ end
 function FeathersDone2(NPC, Spawn)
     SetStepComplete(Spawn,Hawks,2)
 	FaceTarget(NPC, Spawn)
+end
+
+function EmoteLoop(NPC)
+    local emoteChoice = MakeRandomInt(1,3)
+
+    if emoteChoice == 1 then
+-- ponder
+        PlayAnimation(NPC, 12030)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    elseif emoteChoice == 2 then
+-- sniff
+        PlayAnimation(NPC, 12329)
+        AddTimer(NPC, MakeRandomInt(6000,9000), "EmoteLoop")	
+    else
+-- tapfoot
+        PlayAnimation(NPC, 13056)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    end
 end
