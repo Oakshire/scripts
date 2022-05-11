@@ -28,22 +28,29 @@ if GetFactionAmount(Spawn,11) <0 then
 		                PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_notcitizen_gm_7e3f7ca.mp3", "I refuse to contaminate myself by conversing with you.", "sulk", 2165609155, 3535416550)
                	        end				    
 			    end	   
-    end
+        end
     
     
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	choice = math.random(1,3)
+    if GetFactionAmount(Spawn,11) <0 then
+    InRange(NPC,Spawn)
+    else
+	    FaceTarget(NPC, Spawn)
+        GenericRaceCheckHail(NPC, Spawn, faction)			
+        RandomGreeting(NPC, Spawn)
+    end 
+end
+
+function RandomGreeting(NPC, Spawn)
+	local choice = MakeRandomInt(1,3)
 
 	if choice == 1 then
-		PlayFlavor(NPC, "", "I wish I had the ability to keep the plants in my home happy.", "", 1689589577, 4560189, Spawn)
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", 0, 0, Spawn)
 	elseif choice == 2 then
-		PlayFlavor(NPC, "", "Almost time to stop and have an ale, isn't it?", "wink", 1689589577, 4560189, Spawn)
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1004.mp3", 0, 0, Spawn)
 	elseif choice == 3 then
-		PlayFlavor(NPC, "", "Oh, my aching back!  As good a time to stop and chat as any, I say.", "yawn", 1689589577, 4560189, Spawn)
-	else
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1004.mp3", 0, 0, Spawn)
 	end
-
 end
 
 function waypoints(NPC)

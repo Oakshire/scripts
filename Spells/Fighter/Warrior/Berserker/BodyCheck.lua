@@ -26,6 +26,6 @@ end
 
 
 function remove(Caster, Target)
-    RemoveKnockback(Caster, Target)
+    --RemoveKnockback(Caster, Target)
     RemoveControlEffect(Target, 4)
 end

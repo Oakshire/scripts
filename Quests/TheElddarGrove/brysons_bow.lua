@@ -33,7 +33,7 @@ function Step1Compelte(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've got Bryson's bow.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've picked up the bow Bryson had on ordered.")
     UpdateQuestZone(Quest,"The Elddar Grove")
-	AddQuestStepChat(Quest, 2, "I need to deliver Bryson's bow.", 1, "I need to return to In-Range and deliver Bryson the bow from Carpenter Paddock.", 630, 2210153)
+	AddQuestStepChat(Quest, 2, "I need to deliver Bryson's bow.", 1, "I need to return to In-Range and deliver Bryson the bow from Carpenter Paddock.", 630, 2070013)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

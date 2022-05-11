@@ -18,6 +18,7 @@
     local power2 = 1439
 
 function spawn(NPC, Spawn)
+    
   
     if Level == level1 then
    SetMaxHP(NPC, hp1)

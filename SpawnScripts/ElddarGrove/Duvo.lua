@@ -23,7 +23,7 @@ function InRange(NPC,Spawn)
 		PlayFlavor(NPC, "", "", "heckno", 1584866727, 581589457, Spawn)
         end
    else     
-        if not HasCompletedQuest (Spawn, deposit) and not HasQuest (Spawn, muffins) then 
+        if not HasCompletedQuest (Spawn, muffins) and not HasQuest (Spawn, muffins) then 
  	    if math.random(1, 100) <= 70 then
 	    choice = math.random(1,2)
 	    if choice == 1 then

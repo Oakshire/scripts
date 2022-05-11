@@ -13,7 +13,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Gather a cave serpent venom sac.", 1, 30, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 1161, 1970008)
 		AddQuestStepKill(Quest, 2, "Gather white spider venom sacs.", 4, 30, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 413, 1970012)
-
+    UpdateQuestZone(Quest,"The Caves")
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 
@@ -60,7 +60,9 @@ function CheckProgress(Quest, QuestGiver, Player)
      	UpdateQuestTaskGroupDescription(Quest, 1, "The components for Medic Brendan's anti-venom potions have been gathered.")
   		AddQuestStepChat(Quest, 3, "I must return to Medic Brendan in North Qeynos.", 1, "I still need to return to Medic Brendan in North Qeynos with the poison sacs.", 11, 2220143)
        	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
-end
+    UpdateQuestZone(Quest,"North Qeynos")
+
+    end
    end
 
 function Reload(Quest, QuestGiver, Player, Step)

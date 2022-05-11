@@ -63,7 +63,7 @@ end
 function FeathersDone1(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "", "", "thank", 0, 0, Spawn)
+	PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
 	AddConversationOption(conversation, "Thank you, and safe journeys to you.","FeathersDone2")
 	StartConversation(conversation, NPC, Spawn, "That's wonderful!  I'll be happy to pull the feathers off myself, that's not a problem!  You've saved me quite a bit of coin!  Speaking of coin, here's some for your effort.")
 end   

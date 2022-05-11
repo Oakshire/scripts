@@ -36,9 +36,10 @@ if GetFactionAmount(Spawn, 11) <0 then
 
 
 function InRange(NPC,Spawn)
-if GetFactionAmount(Spawn, 11) >=0 then
+if GetFactionAmount(Spawn, 11) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-    if not HasCompletedQuest (Spawn, arrows) and not HasQuest (Spawn, arrows) then 
+ else
+     if not HasCompletedQuest (Spawn, arrows) and not HasQuest (Spawn, arrows) then 
 	    	if math.random(1, 100) <= 80 then
                PlayFlavor(NPC, "voiceover/english/patrolman_fanthis/qey_elddar/100_patrolman_halfelf_fanthis_callout1_9ff23be1.mp3", "Greetings!  I am Patrolman Fanthis.  I wish I had time to chat, but duty calls.", "attention", 2986438322, 1619790403, Spawn)
             end    

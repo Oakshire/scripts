@@ -6,7 +6,10 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+local Tree = 5533
+
 function spawn(NPC)
+OfferQuest(NPC,Tree)
 end
 
 function respawn(NPC)
@@ -34,8 +37,11 @@ end
 function Option3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-    PlayFlavor(NPC,"","","nod",0,0,Spawn)
-	AddConversationOption(conversation, "Sure, what do I need to do?", "Option4")
+    PlayFlavor(NPC,"","","sigh",0,0,Spawn)
+    if GetLevel(Spawn)>=30 and not HasCompletedQuest(Spawn,Tree) and not HasQuest(Spawn, Tree) then
+        AddConversationOption(conversation, "Sure, what do I need to do?", "Option4")
+    end
+    AddConversationOption(conversation, "Interesting.  Afraid I haven't got the time.")
 	StartConversation(conversation, NPC, Spawn, "Yea, I spent most of my time with the Heartwood tree until the Heartwood matron forbade it.  It needs help and I can't even approach it.  Could you try?")
 end
 
@@ -50,7 +56,7 @@ end
 function Option5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-
+    OfferQuest(NPC,Spawn,Tree)
 	AddConversationOption(conversation, "You're welcome.")
 	StartConversation(conversation, NPC, Spawn, "Thank you!")
 end
