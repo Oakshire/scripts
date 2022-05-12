@@ -24,10 +24,10 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	 if not HasQuest(Spawn, Killing) or HasCompletedQuest(Spawn, Killing) then
 		local choice = MakeRandomInt(1,4)
 	if choice == 1 then
+    FaceTarget(NPC,Spawn)
 		PlayFlavor(NPC, "", "What? Where?", "confused", 1689589577, 4560189, Spawn)
 	elseif choice == 2 then
 		PlayFlavor(NPC, "", "Hic...", "", 1689589577, 4560189, Spawn)

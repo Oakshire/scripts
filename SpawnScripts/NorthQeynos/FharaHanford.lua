@@ -6,8 +6,10 @@
                    : 
 --]]
 local delivery = 5534
-function spawn(NPC)
+local Fhara = 5540
 
+function spawn(NPC)
+ProvidesQuest(NPC, delivery)
 end
 
 function hailed(NPC, Spawn)
@@ -20,6 +22,9 @@ function hailed(NPC, Spawn)
     if not HasQuest(Spawn,delivery) and not HasCompletedQuest (Spawn,delivery) then
 	AddConversationOption(conversation, "Have any odd jobs?  I'm available if you do.","Jobs")
 	end
+    if GetQuestStep (Spawn,Fhara)==1 then
+	AddConversationOption(conversation, "I have a pastry delivery for you from Voleen.","Delivery")
+    end
 	AddConversationOption(conversation, "I'll look around.  Thank you.")
 	StartConversation(conversation, NPC, Spawn, "Good day! Please take a look around my shop. My fine furniture spruces up any home.")
 end
@@ -43,3 +48,24 @@ function QuestStart(NPC, Spawn)
     FaceTarget(NPC, Spawn)
  	PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn, 0)
 end
+
+
+function Delivery(NPC, Spawn)
+ 	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
+	AddConversationOption(conversation, "Enjoy!","Delivered")
+	AddConversationOption(conversation, "Try not to eat them all in one sitting.","Delivered2")
+	StartConversation(conversation, NPC, Spawn, "Oh, praise the gods!  I've been craving these delectible treats all day.  Tell Voleen thank you for me.")
+end  
+
+function Delivered(NPC, Spawn)
+    SetStepComplete(Spawn,Fhara, 1)
+    FaceTarget(NPC, Spawn)
+end	
+
+function Delivered2(NPC, Spawn)
+    SetStepComplete(Spawn,Fhara, 1)
+    FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+end	

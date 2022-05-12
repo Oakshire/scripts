@@ -28,8 +28,8 @@ function hailed(NPC, Spawn)
  if GetFactionAmount(Spawn,11) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
     else
-	PlayFlavor(NPC, "voiceover/english/merchant_tabby_copperpot/qey_south/tabbycopperpot000.mp3", "", "", 3975328823, 1035271851, Spawn)
-	if GetQuestStep(Spawn,letter)==2 then
+	PlayFlavor(NPC, "voiceover/english/merchant_tabby_copperpot/qey_south/tabbycopperpot000.mp3", "", "happy", 3975328823, 1035271851, Spawn)
+	if GetQuestStep(Spawn,letter)==1 then
 	AddConversationOption(conversation, "Here is a letter from Tara.  She asked me to deliver it to you.","LetterDone")
 	end
 	AddConversationOption(conversation, "I am just browsing.", "dlg_3_1")
@@ -40,7 +40,7 @@ end
 function LetterDone(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/merchant_tabby_copperpot/qey_south/tabbycopperpot001.mp3", "", "happy", 3156824996,1043582729, Spawn)
+	PlayFlavor(NPC, "voiceover/english/merchant_tabby_copperpot/qey_south/tabbycopperpot001.mp3", "", "heelclick", 3156824996,1043582729, Spawn)
 	AddConversationOption(conversation, "I'm glad I could help.","Delivered")
 	StartConversation(conversation, NPC, Spawn, "Oh goody!  I've been waiting for a letter from her for some time now.  Since she started her training she never has time to visit!")
 end   

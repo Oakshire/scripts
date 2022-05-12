@@ -33,7 +33,7 @@ function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/medic_brendan/qey_north/medicbrendan000.mp3", "", "ponder", 869579765, 1262448220, Spawn)
-	AddConversationOption(conversation, "Great!  Sign me up!", "Option3")
+	AddConversationOption(conversation, "Great!  Sign me up!", "Option2")
 		AddConversationOption(conversation, "No thanks.  Sounds too mundane for me.")
 	StartConversation(conversation, NPC, Spawn, "Another capacity?  Well, we do need help gathering components for our potions. We supply the guards with an antidote in case something poisonous attacks them on their rounds.")
 end

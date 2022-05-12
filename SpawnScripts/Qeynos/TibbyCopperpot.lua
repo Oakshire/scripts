@@ -22,7 +22,18 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-
-	PlayFlavor(NPC, "", "I sure do love to cook.  Yummy baked goods and cakes.  I make my sister do all the selling.  To tell you the truth I think she likes it.", "", 1689589577, 4560189, Spawn)
+    RandomGreeting(NPC, Spawn)
+	PlayFlavor(NPC, "", "I sure do love to cook.  Yummy baked goods and cakes.  I make my sister do all the selling.  To tell you the truth I think she likes it.", "hello", 1689589577, 4560189, Spawn)
 end
 
+function RandomGreeting(NPC, Spawn)
+	local choice = MakeRandomInt(1,3)
+
+	if choice == 1 then
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1005.mp3", 0, 0, Spawn)
+	elseif choice == 2 then
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1005.mp3", 0, 0, Spawn)
+	elseif choice == 3 then
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1005.mp3", 0, 0, Spawn)
+	end
+end

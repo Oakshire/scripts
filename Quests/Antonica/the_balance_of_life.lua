@@ -61,8 +61,8 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I spoke with Daryann.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I returned and spoke with Daryann.")
+	UpdateQuestStepDescription(Quest, 4, "I spoke with Daryann.")
+	UpdateQuestTaskGroupDescription(Quest, 4, "I returned and spoke with Daryann.")
 
 	UpdateQuestDescription(Quest, "I've done what's necessary as a good steward of the lands. I've learned that every animal must have its numbers managed or life's balance is upset.  Daryann appreciated my help.")
 	GiveQuestReward(Quest, Player)

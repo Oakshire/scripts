@@ -26,7 +26,7 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/merchant_trevor_minturn/qey_south/trevorminturn000.mp3", "", "hello", 2006919025, 2800091409, Spawn)
-	if GetQuestStep(Spawn,Hawks)==2 then
+	if GetQuestStep(Spawn,delivery)==1 then
 	AddConversationOption(conversation, "I'm here with a delivery for you from Fhara.","Delivered")
 	end
 	AddConversationOption(conversation, "I don't need anything, thank you. ", "dlg_0_1")
