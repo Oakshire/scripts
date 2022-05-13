@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Skin four bears in Antonica for the Clothspinner shop.", 4, 75, "I must try and obtain four preserved bear hides in Antonica for Danielle. Some of the great bears there may have the right quality of coats.", 93, 121370,120257,120011)
+	AddQuestStepKill(Quest, 1, "Skin four bears in Antonica for the Clothspinner shop.", 4, 60, "I must try and obtain four preserved bear hides in Antonica for Danielle. Some of the great bears there may have the right quality of coats.", 93, 121370,120257,120011)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

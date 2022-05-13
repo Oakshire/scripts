@@ -8,7 +8,9 @@
 
 function spawn(NPC)
         SpawnSet(NPC, "level", "4") 
-        SpawnSet(NPC, "difficulty", "2")  
+        SpawnSet(NPC, "difficulty", "2") 
+        SpawnSet(NPC, "hp", 35)
+        SpawnSet(NPC, "power", 20)
 end
 
 function hailed(NPC, Spawn)

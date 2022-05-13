@@ -17,7 +17,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "voiceover/english/gavin_ironforge/qey_north/gavinironforge002.mp3", "", "smile", 2486535171, 583526887, Player)
+	AddConversationOption(conversation, "I'll make sure Rowena receives this.")
+	StartConversation(conversation, QuestGiver, Player, "Wonderful!  Take this small box to Medic Rowena in the temple.  Tell her the Jewel Box sent you.  She'll be very pleased as she is not expecting it until tomorrow!  You will have some coin upon your return.")
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -32,7 +36,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I delivered the box of jewelry to Medic Rowena.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Medic Rowena sends her thanks to Gavin Ironforge for the speedy delivery.")
 
-	AddQuestStepChat(Quest, 2, "I need to return to Gavin.", 1, "I need to let Gavin know the box was delivered and tell him about Rowena's reaction.", 11, 2220127)
+	AddQuestStepChat(Quest, 2, "I need to return to Gavin.", 1, "I need to let Gavin know the box was delivered and tell him about Rowena's reaction.", 11, 2220475)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

@@ -14,6 +14,7 @@ local dyes = 5538
 function spawn(NPC)
 ProvidesQuest(NPC,pelts)
 ProvidesQuest(NPC,dyes)
+AddTimer(NPC, 5000, "EmoteLoop")    
 end
 
 function respawn(NPC)
@@ -69,6 +70,7 @@ end
 function Dialog3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC,"","","nod",0,0,Spawn)
 	Dialog.AddDialog("Well, I am always having a problem getting bear pelts of a quality that I can work with and truly make shine.  If you could bring me four preserved bear hides, I can reward you for your efforts.")
 	Dialog.AddVoiceover("voiceover/english/danielle_clothspinner/qey_north/danielleclothspinner003.mp3", 3729469841, 921407790)
 	Dialog.AddOption("I would be happy to gather those for you.", "Dialog4")
@@ -129,4 +131,23 @@ function DyeDone(NPC, Spawn)
 	elseif choice == 2 then
 		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1021.mp3", 0, 0, Spawn)
 	end
+end
+
+
+function EmoteLoop(NPC)
+    local emoteChoice = MakeRandomInt(1,3)
+
+    if emoteChoice == 1 then
+-- ponder
+        PlayAnimation(NPC, 12030)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    elseif emoteChoice == 2 then
+-- sniff
+        PlayAnimation(NPC, 12329)
+        AddTimer(NPC, MakeRandomInt(6000,9000), "EmoteLoop")	
+    else
+-- tapfoot
+        PlayAnimation(NPC, 13056)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    end
 end

@@ -17,7 +17,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "voiceover/english/merchant_gretta_steinbeard/qey_north/grettasteinbeard_x002.mp3", "", "chuckle", 2938647056, 1980096242, Player)
+	AddConversationOption(conversation, "I hope I don't regret this.")
+	AddConversationOption(conversation, "I'll be back soon... hopefully.")
+	StartConversation(conversation, QuestGiver, Player, "Ah, thank Brell I don't have to go!.. Uh, that you're going to that mudglub Umli.  You'll find him at the harbor down by the docks.  Can't miss him.  He's uglier than a troll woman in a wedding dress! Hah!  And you can tell him I said so!")
 end
 
 function Declined(Quest, QuestGiver, Player)

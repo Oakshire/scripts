@@ -11,12 +11,16 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to deliver a sword to Noelle Dering.", 1, "Noelle Dering in North Qeynos awaits delivery of her sword from Walter Channing.", 612, 2220053)
+	AddQuestStepChat(Quest, 1, "I need to deliver a sword to Noelle Dering.", 1, "Noelle Dering in North Qeynos awaits delivery of her sword from Walter Channing.", 612, 2220091)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Compelte")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "voiceover/english/walter_channing/qey_north/walterchanning002.mp3", "", "happy", 1928822872, 914298154, Player)
+	AddConversationOption(conversation, "I'll be sure to handle it with care.  I'll return soon.")
+	StartConversation(conversation, QuestGiver, Player, "Ha ha!  That's the spirit!  I appreciate your kindness.  Return to me after you've delivered the longsword to Noelle Dering. She's giving this specially created sword as a gift to her husband.  He'll need to test out the sword to see if the balance needs to be changed.  You can find Noelle in Irontoes East.")
 end
 
 function Declined(Quest, QuestGiver, Player)

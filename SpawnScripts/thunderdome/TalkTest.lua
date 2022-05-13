@@ -1,9 +1,9 @@
 --[[
-	Script Name	: SpawnScripts/EnchantedLands/GubboChaley.lua
-	Script Purpose	: Gubbo Chaley 
-	Script Author	: Dorbin
-	Script Date	: 2022.05.12
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+    Script Name    : SpawnScripts/thunderdome/TalkTest.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.05.12 12:05:27
+    Script Purpose : Testing Dialogue module for making conversations.  Dialogue Pulled from Gubbo in Enchanted Lands.
+                   : 
 --]]
 
 require "SpawnScripts/Generic/DialogModule"     -- Required at the start of any dialogue using this setup
@@ -67,8 +67,19 @@ function Dialog1(NPC, Spawn)
 end
 
 function Dialog2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Right over there, along the coast ... those blasted, smug fairies!")
+	Dialog.AddVoiceover("voiceover/english/gubbo_chaley/enchanted/gubbo_chaley/gubbo_chaley002.mp3", 1079858941, 3307355952)
+	Dialog.AddOption("Alright.[STARTS QUEST]","QuestStart")
+	Dialog.Start()
+end
+
+function QuestStart(NPC, Spawn)
 	OfferQuest(NPC, Spawn, LousyFairies)
 end
+
+
 
 
 
@@ -81,7 +92,7 @@ function Dialog3(NPC, Spawn)
 	Dialog.AddDialog("Uh ... so you killed them fairies, yeah?")
 	Dialog.AddVoiceover("voiceover/english/gubbo_chaley/enchanted/gubbo_chaley/gubbo_chaley004.mp3", 2878548247, 952555633)
         if GetQuestStep(Spawn, LousyFairies)==2 then 
-        Dialog.AddOption("Yes.", "Dialog4")             --  if player is on the 2nd step of quest - will direct to Dialog4 function and allow finishing the quest.
+        Dialog.AddOption("[STEP 2]Yes.", "Dialog4")             --  if player is on the 2nd step of quest - will direct to Dialog4 function and allow finishing the quest.
         end
     Dialog.AddOption("Working on it.")
     Dialog.Start()
@@ -93,7 +104,7 @@ function Dialog4(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("I'm really sorry about that. Turns out, Fritz was just passed out under the docks.  Umm ... why don't you take this, and we'll just pretend we never had this little discussion. ")
 	Dialog.AddVoiceover("voiceover/english/gubbo_chaley/enchanted/gubbo_chaley/gubbo_chaley005.mp3", 2881662034, 1373874040)
-	Dialog.AddOption("Right.","QuestDone")
+	Dialog.AddOption("Right.[FINISHES QUEST]","QuestDone")
 	Dialog.Start()
 end
 
@@ -112,7 +123,7 @@ end
 function Dialog5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("If you see Fritz, would you tell him I'm looking for him?")
+	Dialog.AddDialog("[POST QUEST] If you see Fritz, would you tell him I'm looking for him?")
 	Dialog.AddVoiceover("voiceover/english/gubbo_chaley/enchanted/gubbo_chaley/gubbo_chaley006.mp3", 4082962413, 3474255449)
 	Dialog.AddOption("Sure.")
 	Dialog.Start()
