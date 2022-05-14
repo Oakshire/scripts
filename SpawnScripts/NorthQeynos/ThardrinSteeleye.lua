@@ -5,9 +5,11 @@
 	Script Date	: 2022.01.11
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+local Delivery = 5541
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+ProvidesQuest(NPC,Delivery)
 end
 
 function respawn(NPC)

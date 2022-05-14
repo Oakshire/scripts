@@ -6,6 +6,7 @@
 	Script Notes	: 
 --]]
 local muffins = 5524
+local papers = 5536
 
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")		
@@ -51,9 +52,9 @@ function hailed(NPC, Spawn)
     	    if not HasQuest(Spawn,muffins) and not HasCompletedQuest(Spawn, muffins) then
         	AddConversationOption(conversation, "You appear preoccupied.  Need any help?", "Delivery")
             end
-           --[[ if GetQuestStep(Spawn,paper)==1 then
-        	AddConversationOption(conversation, "I'm here to pick up arrows for Patrolman Fanthis.", "Pickup")
-        	end	]]--
+            if GetQuestStep(Spawn,papers)==1 then
+        	AddConversationOption(conversation, "Andrea Dovesong sent me to pick up some parchment.", "Pickup")
+        	end
             if GetQuestStep(Spawn,muffins)==2 then
         	AddConversationOption(conversation, "Penny gave me her recipie you requested.  Here you go.", "Delivered")
         	end
@@ -78,9 +79,9 @@ function Delivery2(NPC, Spawn)
     OfferQuest(NPC,  Spawn,muffins)
     end
     
-      function Delivered(NPC, Spawn)
+function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/scribe_duvo/qey_elddar/scribeduvo002.mp3", "", "thank", 3093182397, 3807334296, Spawn)
+    PlayFlavor(NPC, "voiceover/english/scribe_duvo/qey_elddar/scribeduvo002.mp3", "", "thanks", 3093182397, 3807334296, Spawn)
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Well, I hope it was worth the trouble.", "FinishQuest")
 	StartConversation(conversation, NPC, Spawn, "Fantastic!  Let me see the recipie... Yes... I see now...*mumbling*... That... is the ingredient I was missing!  You're a life saver!  These muffins make a fine mid-morning meal.  I know the paper will publish the paper as soon as I rewrite it in fine script.")
@@ -89,4 +90,17 @@ end
 function FinishQuest(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
     SetStepComplete(Spawn,muffins, 2)
+    end
+
+ function Pickup(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/scribe_duvo/qey_elddar/scribeduvo006.mp3", "", "thanks", 4243768654, 3960378090, Spawn)
+    local conversation = CreateConversation()
+	AddConversationOption(conversation, "I will.  Thanks.", "Papers1")
+	StartConversation(conversation, NPC, Spawn, "I have pleanty of parchment to spare.  Here.  Take these to her.  If she needs more tell her to come by.")
+end	   
+
+function Papers1(NPC, Spawn)
+ 	FaceTarget(NPC, Spawn)
+    SetStepComplete(Spawn,papers, 1)
     end

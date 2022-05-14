@@ -42,7 +42,7 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player, 463, 1) and QuestStepIsComplete(Player, 463, 2) and QuestStepIsComplete(Player, 463, 3) then
  	UpdateQuestTaskGroupDescription(Quest, 1, "I've killed the vermin that Sir Alesso tasked me with.")
-	AddQuestStepChat(Quest, 4, "I need to speak with Knight-Lieutenant Alesso.", 1, "I've killed a great many vermin that once infested Antonica.  I should return to Knight-Lieutenant Alesso.", 11, 120083)
+	AddQuestStepChat(Quest, 4, "I need to speak with Knight-Lieutenant Alesso.", 1, "I've killed a great many vermin that once infested Antonica.  I should return to Knight-Lieutenant Alesso.", 11, 120083,121828)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end	
    end

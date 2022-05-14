@@ -15,10 +15,12 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     GenericEcologyHail(NPC, Spawn, faction)
+      SetTarget(NPC,Spawn)
 end
 
 function InRange(NPC,Spawn)
     GenericEcologyCallout(NPC, Spawn, faction)
+    SetTarget(NPC,Spawn)
 end
 
 function respawn(NPC)

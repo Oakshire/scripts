@@ -5,8 +5,10 @@
 	Script Date		: 2022.04.22
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+local Message = 5546
 
 function spawn(NPC)
+ProvidesQuest(NPC,Message)
 end
 
 function respawn(NPC)

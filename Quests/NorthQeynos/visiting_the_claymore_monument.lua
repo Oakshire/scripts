@@ -11,11 +11,10 @@
 --]]
 
 
-
-
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "I need to find the location of the second monument.", 6, "I would like to find the location of the second Qeynos Claymore Monument.", 11, -442.51, 2.14, 553.02)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
+    UpdateQuestZone(Quest, "Antonica")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -35,7 +34,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the location of the second monument.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the location of the second monument.")
 
-	UpdateQuestDescription(Quest, "I found the second Qeynos Claymore Monument not too far from the city of Qeynos itself.  There were gnolls along the way, but not more than I could handle. <br> <br>")
+	UpdateQuestDescription(Quest, "I found the second Qeynos Claymore Monument not too far from the city of Qeynos itself.  There were gnolls along the way, but not more than I could handle.")
 	GiveQuestReward(Quest, Player)
 end
 
