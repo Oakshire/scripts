@@ -16,7 +16,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "", "", "thanks", 0, 0, Player)
+	AddConversationOption(conversation, "I'll be on my way then.")
+	StartConversation(conversation, QuestGiver, Player, "Return to me after you've spoken with Inn Keeper Galsway, and I'll see that you'll have a few more coins to rub together.")
 end
 
 function Declined(Quest, QuestGiver, Player)

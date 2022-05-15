@@ -10,8 +10,7 @@
 
 --Declare variables for iterative use later. These are all Location IDs.
 patriarchlocs = {365525, 365526, 133772501, 133772502, 133772503, 133772504, 133772505, 133772506, 133772507}
-spells = {90047, 90128, 90168, 90088, 90106, 5473} 
- 
+
 function spawn(NPC)
 end
  
@@ -20,11 +19,6 @@ function aggro(NPC, Spawn) -- on aggro, refer to pat spawn loop. also start time
 	AddTimer(NPC, math.random(21000, 30000), "patriarchLoop")
 	AddTimer(NPC, math.random(1000), "spellLoop")
 end
- 
-function spellLoop(NPC, Spawn) -- Loopback function for spellcasts.
-    AddTimer(NPC, math.random(1500,2500), "spellChoice")
-end
-
  
 function patriarchLoop(NPC, Spawn)
     if GetTempVariable(NPC, "first") == "1" then
@@ -48,17 +42,6 @@ function patriarchSpawns(NPC, Spawn) -- spawns patriarchs on a timer. timer star
 		
         end
 end
- 
-
-function spellChoice(NPC, Spawn) -- select a spell from table.
-    local hated = GetMostHated(NPC) 
-        if hated ~= nil then 
-            FaceTarget(NPC, hated) 
-            CastSpell(hated, spells[math.random(#spells)], 3, NPC)
-        end
-    AddTimer(NPC, math.random(1500, 2500), "spellLoop") 
-end
-
  
 function respawn(NPC)
 spawn(NPC)

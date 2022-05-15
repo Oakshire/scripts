@@ -8,7 +8,9 @@
 
 require "SpawnScripts/Generic/DialogModule"
 
+
 function spawn(NPC)
+ProvidesQuest(NPC,5550)
 end
 
 function respawn(NPC)
@@ -25,7 +27,9 @@ function Dialog1(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Yes, you must be one of those adventurers, all right.  If the stories about you folks are true, then I'm sure you're willing to undertake a dangerous task just for the thrill of it. Am I right?")
 	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_1_1034.mp3", 0, 0)
+	if not HasQuest(Spawn,5550) and not HasCompletedQuest(Spawn,5550) then
 	Dialog.AddOption("That's not exactly how it works, friend.  You're forgetting the 'goal' part.", "Dialog3")
+    end
 	Dialog.AddOption("Not right now, friend.")
 	Dialog.Start()
 end
@@ -35,8 +39,13 @@ function Dialog2(NPC, Spawn)
 	PlayFlavor(NPC,"","","agree",0,0,Spawn)
     Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Oh, oh, yes.  Well, you see, I've been researching the Sage of Ages, and I purchased a book written by one of his attendants.  The problem is that the book is missing some pages.  According to the traveler I purchased it from, the book was found in Antonica.")
-	Dialog.AddOption("I'll go find it for you, then.")
+	Dialog.AddOption("I'll go find it for you, then.","StartQuest")
 	Dialog.Start()
+end
+
+function StartQuest(NPC,Spawn)
+FaceTarget(NPC, Spawn)
+OfferQuest(NPC,Spawn,5550)
 end
 
 function Dialog3(NPC, Spawn)

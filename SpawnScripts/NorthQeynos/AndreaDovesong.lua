@@ -31,7 +31,7 @@ function InRange(NPC,Spawn)
    FaceTarget(NPC,Spawn)
         choice = math.random(1,2)
 	    if choice == 1 then
-		PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
+		PlayFlavor(NPC, "", "", "curstey", 0, 0, Spawn)
 	    elseif choice == 2 then
 		PlayFlavor(NPC, "", "", "royalwave", 0, 0, Spawn)
         end    
@@ -162,7 +162,7 @@ function Delivered(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/andrea_dovesong/qey_north/andreadovesong005.mp3", "", "thanks", 3610265582, 997287857, Spawn)
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Thank you.", "FinishPapers")
-	StartConversation(conversation, NPC, Spawn, "How sweet and swift you are!  Please, take these coins as a token of my appreciation.")
+	StartConversation(conversation, NPC, Spawn, "How sweet and swift you are!  Take these coins as a token of my appreciation.")
 end	 
 
 function FinishPapers(NPC,Spawn)

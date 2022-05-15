@@ -16,10 +16,10 @@ function Init(Quest)
 	SetQuestFeatherColor(Quest, 3)
 	SetQuestRepeatable(Quest)
 	AddQuestStepKill(Quest, 1, "I need to kill ten rats.", 10, 100, "I need to head out into Antonica and kill the vermin that infest the land; rats, snakes and beetles. Knight-Lieutenant Alesso said I should kill about ten of each.", 99, 120066, 121224)
-		AddQuestStepKill(Quest, 2, "I need to kill ten snakes.", 10, 100, "I need to head out into Antonica and kill the vermin that infest the land; rats, snakes and beetles. Knight-Lieutenant Alesso said I should kill about ten of each.", 1908, 120068, 121226, 121347)
+	AddQuestStepKill(Quest, 2, "I need to kill ten snakes.", 10, 100, "I need to head out into Antonica and kill the vermin that infest the land; rats, snakes and beetles. Knight-Lieutenant Alesso said I should kill about ten of each.", 1908, 120068, 121226, 121347)
 	AddQuestStepKill(Quest, 3, "I need to kill ten beetles.", 10, 100, "I need to head out into Antonica and kill the vermin that infest the land; rats, snakes and beetles. Knight-Lieutenant Alesso said I should kill about ten of each.", 162, 120067, 121225, 120253, 120373, 120367, 121443, 120371, 121369)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 
 end

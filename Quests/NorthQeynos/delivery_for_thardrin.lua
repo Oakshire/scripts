@@ -5,7 +5,7 @@
     Script Purpose : 
 
         Zone       : NorthQeynos
-        Quest Giver: 
+        Quest Giver: Thardrin Steeleye
         Preceded by: None
         Followed by: 
 --]]
@@ -17,7 +17,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "", "", "point", 0, 0, Player)
+	AddConversationOption(conversation, "Ugh, that looks heavy.  Guess I'm stuck with it for a bit now though.")
+	StartConversation(conversation, QuestGiver, Player, "Of course there is something in it for you! A tip from Sneed Galliway, if you're hasty. Sneed ordered supplies from a trading company last week, and they just arrived. I need them delivered to his trading post down the road.")
 end
 
 function Declined(Quest, QuestGiver, Player)
