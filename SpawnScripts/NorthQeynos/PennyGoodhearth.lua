@@ -35,7 +35,7 @@ function hailed(NPC, Spawn)
    else
 		PlayFlavor(NPC, "voiceover/english/penny_goodhearth/qey_north/pennygoodhearth.mp3", "", "", 3200414666, 3603496424, Spawn)
         if GetQuestStep(Spawn,muffins)==1 then
-		AddConversationOption(conversation, "Scribe Duvo sent me to pick up a recipie.", "Pickup")
+		AddConversationOption(conversation, "Wait!  Duvo sent me to talk with you!", "Pickup")
         end
         AddConversationOption(conversation, "I'm sorry, I'll just get out of your way then.")
 	    StartConversation(conversation, NPC, Spawn, "Shoo ... Shoo ... Out of my way. I'm so very late! If you keep pestering me, I'll never finish preparing Lord and Lady Ironforge's supper.")
@@ -48,7 +48,7 @@ end
     PlayFlavor(NPC, "voiceover/english/penny_goodhearth/qey_north/pennygoodhearth000.mp3", "", "swear", 2560859604, 248794504, Spawn)
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Thanks.  I'll just be going", "FinishQuest")
-	StartConversation(conversation, NPC, Spawn, "Duvo?!  Blast that rascal.  He was suppose to pick up my muffin recipie this morning!  Here it is.  Now begone!  I don't have time for idle chatter.")
+	StartConversation(conversation, NPC, Spawn, "Duvo? Blast that rascal! He was supposed to pick up my muffin recipe this morning! Here it is ... Now, be gone ... I don't have time for idle chatter.")
 end	
 
 function FinishQuest(NPC, Spawn)

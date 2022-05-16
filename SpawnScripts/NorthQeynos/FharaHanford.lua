@@ -20,7 +20,7 @@ function hailed(NPC, Spawn)
     else   
 	PlayFlavor(NPC, "voiceover/english/merchant_fhara_hanford/qey_north/mer_fharahanford.mp3", "", "hello", 1749623871, 3714750870, Spawn, 0)
     if not HasQuest(Spawn,delivery) and not HasCompletedQuest (Spawn,delivery) then
-	AddConversationOption(conversation, "Have any odd jobs?  I'm available if you do.","Jobs")
+	AddConversationOption(conversation, "I was wondering if you had any odd tasks that needed to be done.","Jobs")
 	end
     if GetQuestStep (Spawn,Fhara)==1 then
 	AddConversationOption(conversation, "I have a pastry delivery for you from Voleen.","Delivery")
@@ -38,7 +38,7 @@ function Jobs(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/merchant_fhara_hanford/qey_north/mer_fharahanford000.mp3", "", "agree", 1624229583, 959691088, Spawn)
-	AddConversationOption(conversation, "I'll make sure he gets his package.","QuestStart")
+	AddConversationOption(conversation, "That is right up my alley.","QuestStart")
 	AddConversationOption(conversation, "Hmm, that job doesn't sound odd enough for me.  Sorry.")
 	StartConversation(conversation, NPC, Spawn, "I do need to make a delivery to one of my buisness partners.  Here.  Take this stack of papers to Trevor Minturn.  You'll find him in the southern part of Qeynos.")
 end  

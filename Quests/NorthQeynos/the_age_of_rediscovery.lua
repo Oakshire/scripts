@@ -7,13 +7,13 @@
         Zone       : NorthQeynos
         Quest Giver: Demini
         Preceded by: None
-        Followed by: 
+        Followed by: The Scholar's Search
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill the glade deer to see if they have any of the journal's pages.", 12, 70, "I need to see if any of the animals in the wilds of Antonica might still have the pages of Demini's book.", 103, 121374,120265)
-	AddQuestStepKill(Quest, 2, "I need to kill the young brown bears to see if they have any of the journal's pages.", 12, 70, "I need to see if any of the animals in the wilds of Antonica might still have the pages of Demini's book.", 93, 120011,121191)
-	AddQuestStepKill(Quest, 3, "I need to kill the timber wolves to see if they have any of the journal's pages.", 12, 70, "I need to see if any of the animals in the wilds of Antonica might still have the pages of Demini's book.", 104, 121188,121375,120293,120266,120008)
+	AddQuestStepKill(Quest, 1, "I need to kill the glade deer to see if they have any of the journal's pages.", 12, 100, "I need to see if any of the animals in the wilds of Antonica might still have the pages of Demini's book.", 103, 121374,120265)
+	AddQuestStepKill(Quest, 2, "I need to kill the young brown bears to see if they have any of the journal's pages.", 12, 100, "I need to see if any of the animals in the wilds of Antonica might still have the pages of Demini's book.", 93, 120011,121191)
+	AddQuestStepKill(Quest, 3, "I need to kill the timber wolves to see if they have any of the journal's pages.", 12, 100, "I need to see if any of the animals in the wilds of Antonica might still have the pages of Demini's book.", 104, 121188,121375,120293,120266,120008)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
@@ -51,7 +51,7 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player, 5550, 1) and QuestStepIsComplete(Player, 5550, 2) and QuestStepIsComplete(Player, 5550, 3) then
 	UpdateQuestTaskGroupDescription(Quest, 1, "After much searching, I wasn't able to find any pages on any of these wild animals.")
-	AddQuestStepKill(Quest, 4, "I need to kill the cruel forest wardens in Archer Woods until I find a clue where the pages might be.", 1, 70, "I should check with the unfriendly wardens of the forest to see if anyone of them found the pages of the book already.  I doubt they'll be willing to just hand them over.", 75, 120408)
+	AddQuestStepKill(Quest, 4, "I need to kill the cruel forest wardens in Archer Woods until I find a clue where the pages might be.", 1, 33, "I should check with the unfriendly wardens of the forest to see if anyone of them found the pages of the book already.  I doubt they'll be willing to just hand them over.", 75, 120408)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 end

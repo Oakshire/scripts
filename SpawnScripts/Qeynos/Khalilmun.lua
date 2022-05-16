@@ -7,12 +7,14 @@
 --]]
 
 local dyes = 5538
-
+local fairies = 5555
+local wings = 5556
 
 dofile("SpawnScripts/Generic/GenericMerchantVoiceOvers.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+    ProvidesQuest(NPC,fairies)
 end
 
 function respawn(NPC)
@@ -37,7 +39,7 @@ function hailed(NPC, Spawn)
     else
         	PlayFlavor(NPC, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun.mp3", "", "beckon", 4229538394, 3475168559, Spawn)
 	        local conversation = CreateConversation()
-  --  	    if not HasQuest(Spawn,muffins) and not HasCompletedQuest(Spawn, muffins) then
+  --  	    if not HasQuest(Spawn,fairies) and not HasCompletedQuest(Spawn, fairies) then
   --      	AddConversationOption(conversation, "You appear preoccupied.  Need any help?", "Delivery")
   --        end
             if GetQuestStep(Spawn,dyes)==1 then
