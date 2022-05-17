@@ -20,7 +20,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun002.mp3", "", "no",1469692776, 2022256144, Player)
+    AddConversationOption(conversation, "Alright.  Here is my journal.  I'll return once I've found everything on the list.")
+	StartConversation(conversation, QuestGiver, Player, "No, but you'll keep the knowledge and perhaps a bit of coin.  You must learn how to gather your ingredients before you can truely understand how to use them.  I'll scribe in your journal the components you're looking for.  You should be able to gather everything you need in the local yard.")
 end
 
 function Declined(Quest, QuestGiver, Player)

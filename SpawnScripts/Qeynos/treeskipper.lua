@@ -3,7 +3,7 @@
 	Script Purpose	:	Waypoint Path for treeskipper.lua
 	Script Author	:	Devn00b
 	Script Date		:	04/11/2020 04:12:39 PM
-	Script Notes	:	Locations collected from Live
+	Script Notes	:	Locations collected from Live - Dialog modified 2022.04.22 Dorbin
 --]]
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
@@ -56,7 +56,8 @@ end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 448.85, -20.75, 212.18, 2, 0)
-	MovementLoopAddLocation(NPC, 448.56, -19.39, 195.8, 2, 0)
+	MovementLoopAddLocation(NPC, 448.56, -19.39, 195.8, 2, 1)
+	MovementLoopAddLocation(NPC, 448.56, -19.39, 195.8, 2, 8,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 462.67, -20.87, 199.08, 2, 0)
 	MovementLoopAddLocation(NPC, 495.29, -11.85, 144.64, 2, 0)
 	MovementLoopAddLocation(NPC, 527.8, -10.55, 150.67, 2, 0)

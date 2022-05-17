@@ -23,13 +23,14 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 
-	local choice = math.random(1,2)
+	local choice = math.random(1,3)
 
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/petretailer/human_petretailer_service_good_1_hail_gm_2485b1ad.mp3", "Down, boy! Down, boy!", "no", 2681431264, 151889846, Spawn)
 	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/petretailer/human_petretailer_service_good_1_hail_gm_4560dd95.mp3", "Buy today and you'll receive a free litter box!", "thumbsup", 2933047019, 374610986, Spawn)
 	else
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/petretailer/human_petretailer_service_good_1_hail_gm_beb4ee69.mp3", "Pets fuuuur sale! Pets fuuuur sale!", "wave", 2013207914, 3957118556, Spawn, 0)
 	end
 
 end

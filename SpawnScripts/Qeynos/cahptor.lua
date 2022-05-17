@@ -5,13 +5,16 @@
 	Script Date		:	04/11/2020 06:29:07 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+		GenericGuardHail(NPC, Spawn)
 end
 
 function respawn(NPC)

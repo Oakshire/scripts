@@ -5,13 +5,25 @@
 	Script Date		:	04/11/2020 02:39:02 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+	if math.random(0, 100) <= 25 then
+		FaceTarget(NPC, Spawn)
+		GenericGuardHail(NPC, Spawn)
+	else
+		CheckFaction(NPC, Spawn, "Qeynos")
+	end
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	GenericGuardHail(NPC, Spawn)
 end
 
 function respawn(NPC)
