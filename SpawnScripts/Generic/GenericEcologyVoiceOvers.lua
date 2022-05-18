@@ -8917,20 +8917,16 @@ function GenericDrunkCallout(NPC, Spawn, faction)
     	    end 
     elseif race == HUMAN then
         if gender == MALE then
-            if EVIL then
-	            local choice = math.random(1,4)
+	            local choice = math.random(1,3)
 
 	            if choice == 1 then
         		PlayFlavor(NPC, "voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_bartender_gm_e4fde966.mp3", "I haven't that much to drink yet, I got here when... bah I forgot.", "no", 612325975, 4257910058, Spawn)
             	elseif choice == 2 then
         		PlayFlavor(NPC, "voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_barmaid_gm_a1d96f41.mp3", "My stein hasn't any legs to walk over and fill itself up.", "glare", 2656968471, 1396939792, Spawn)
             	elseif choice == 3 then
-        		PlayFlavor(NPC, "voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_bartender_gm_2b255210.mp3", "Ahhh ... quit your whinin'! I paid ya with my jokes and fine company.", "boggle", 2971571763, 3318817519, Spawn)
-            	elseif choice == 4 then
         		PlayFlavor(NPC, "voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_barmaid_gm_7f76ecc6.mp3", "Hurry up! My stomach's near dry thanks to ya.", "frustrated", 2014105974, 2128019974, Spawn)
-	            end            
-            elseif GOOD then
-            end
+ 	            end            
+            
     	elseif gender == FEMALE then
     	 end   
     	end 

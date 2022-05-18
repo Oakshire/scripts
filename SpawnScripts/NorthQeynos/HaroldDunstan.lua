@@ -17,6 +17,7 @@ end
 
 function hailed(NPC, Spawn)
 Dialog1(NPC, Spawn)    
+SetTarget(NPC,Spawn)
 end
 
 function Dialog1(NPC, Spawn)
