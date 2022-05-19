@@ -20,18 +20,14 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	
-	if HasCompletedQuest(Spawn, QUEST_1) then
-	elseif HasQuest(Spawn, QUEST_1) then
-	else
-		if GetRace(Spawn) == KERRA then
-		else
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/botanist_lith/qey_adv04_bog/quests/nareh/nareh000.mp3", "The plant life here is absolutely astounding.", "", 1130721210, 2119698425, Spawn)
-		end
-	end
-
-		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/botanist_lith/qey_adv04_bog/quests/nareh/nareh_lakosha000.mp3", "", "", 1585352530, 1011819212, Spawn)
+    if GetQuestStep(Spawn, QUEST_1)==1 then
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/botanist_lith/qey_adv04_bog/quests/nareh/nareh_lakosha000.mp3", "", "", 1585352530, 1011819212, Spawn)
 	AddConversationOption(conversation, "Lakosha Maera sent me.", "dlg_0_1")
 	StartConversation(conversation, NPC, Spawn, "The plant life here is absolutely astounding.")
+	
+	else
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/botanist_lith/qey_adv04_bog/quests/nareh/nareh_lakosha000.mp3", "The plant life here is absolutely astounding.", "", 1585352530, 1011819212, Spawn)
+    end
 end
 
 function dlg_0_1(NPC, Spawn)
