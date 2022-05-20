@@ -8,11 +8,13 @@
 
 local QUEST_4 = 218
 local QUEST_5 = 219
+local SunDog = 5559
 
 function init_zone_script(Zone)
 	SetLocationProximityFunction(Zone, 688.815, -34.2423, 600.400, 30, "InRange1")
 	SetLocationProximityFunction(Zone, 753.824, -32.7236, 604.844, 30, "InRange2")
 	SetLocationProximityFunction(Zone, 797.389, -32.9127, 580.472, 30, "InRange3")
+	SetLocationProximityFunction(Zone, 765.07, -32.71, 483.12, 9, "InRange4")
 	SetLocationProximityFunction(Zone, 772.80, -33.68, 489.37, 30, "SpawnDentfang")
 end
 
@@ -38,6 +40,17 @@ function InRange3(Zone, Spawn)
 		SpawnGnolls(Zone, Spawn)
 		Despawn(Box, 120000)
 	end
+end
+
+
+function InRange4(Zone, Spawn)
+	if HasQuest(Spawn, SunDog) and GetQuestStep(Spawn, SunDog) == 5  then
+		local Dog = GetSpawn(Zone, 1980115)
+    if Dog == nil then
+        SpawnByLocationID(Zone,133773176)	
+  	    AddHate(Spawn, Dog, 100)
+    end      
+    end
 end
 
 function GetRandomGnollID()

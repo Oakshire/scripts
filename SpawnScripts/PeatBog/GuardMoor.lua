@@ -68,8 +68,18 @@ function hailed(NPC, Spawn)
 end
 
 function aggro(NPC,Spawn)
-        math.randomseed(os.time())
-        PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_583690dc.mp3", "Summon help!  We have invaders!", "", 3340212225, 279643307)
+if math.random(1,100) <70 then
+ 	local choice = MakeRandomInt(1,3)
+       math.randomseed(os.time())
+ 	if choice == 1 then
+       PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_583690dc.mp3", "Summon help!  We have invaders!", "", 3340212225, 279643307)
+  	elseif choice == 2 then
+       PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a203c9ec.mp3", "Prepare to face your doom, meddler!", "", 31496819882, 365167432)
+ 	elseif choice == 3 then
+       PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a30c4f9d.mp3", "To arms!", "", 1238020980, 748146443)
+
+   end
+end
 end
 
 function death(NPC, Spawn)
@@ -77,13 +87,32 @@ function death(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_death_gm_7612214f.mp3", "All hands retreat!", "", 3033325782, 1103449586)
 end
 
+function halfhealth(NPC,Spawn)
+ if math.random(1,100) <60 then
+ 	local choice = MakeRandomInt(1,3)
+       math.randomseed(os.time())
+ 	if choice == 1 then
+       PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_halfhealth_gm_1babf022.mp3", "Is that all you have?", "", 170267964, 1158805306)
+  	elseif choice == 2 then
+       PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_halfhealth_gm_8529e507.mp3", "I can't hold'm forever!", "", 644448824, 755050547)
+ 	elseif choice == 3 then
+       PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_battle_gm_3b9f3e78.mp3", "[OPTION 3 HALFHEALTH TXT]", "", 3446258592, 1927510326)
+
+   end
+end
+end   
+
 function victory(NPC,Spawn)
-	local choice = MakeRandomInt(1,2)
+ if math.random(1,100) <60 then
+	local choice = MakeRandomInt(1,3)
         math.randomseed(os.time())
 
 	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_victory_gm_4553e1e0.mp3", "Flee now or meet this one's fate.", "", 3032162747, 1359206304)
+		    PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_victory_gm_4553e1e0.mp3", "Flee now or meet this one's fate.", "", 3032162747, 1359206304)
  	elseif choice == 2 then
 	    	PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_victory_gm_153f12ff.mp3", "One down!", "", 3009518664, 4140389760)
-    end
+ 	elseif choice == 3 then
+ 	    	PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_victory_gm_ec0cd85a.mp3", "I hope they're all this easy!", "", 2687289628, 2303639320)
+   end
+end
 end

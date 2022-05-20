@@ -12,7 +12,7 @@ local TheSourceOfEvil = 164
 function spawn(NPC)
 	SetLuaBrain(NPC)
 	SetBrainTick(NPC, 500)
-	Think(NPC, Spawn)
+	--Think(NPC, Spawn)
 	ProvidesQuest(NPC, TheSourceOfEvil)
 end
 
@@ -22,10 +22,11 @@ end
 
 -- Brain override
 function Think(NPC)
-	local mostHated = GetMostHated(NPC)
+	--local mostHated = GetMostHated(NPC)
 	if mostHated ~= nil then
 --[[ Say(NPC, "Has most hated") --]]
 		aggro(NPC, mostHated)
+		--Attack(NPC, mostHated)
 	end
 end
 
@@ -37,8 +38,10 @@ function aggro(NPC, Spawn)
 		SetTempVariable(NPC, "CASTING", "True")
 		CastSpell(Spawn, 130027, 1, NPC)
 		AddTimer(NPC, 1610, "FinishedCasting")
+
 	end
 end
+
 
 -- Timer callback to allow casting again
 function FinishedCasting(NPC)

@@ -24,7 +24,8 @@ function Declined(Quest, QuestGiver, Player)
 end
 
 function step1_complete(Quest, QuestGiver, Player)
-    UpdateQuestDescription(Quest, "I have spoken with Murrar Shar.")
+    UpdateQuestDescription(Quest, 1, "I have spoken with Murrar Shar.")
+	UpdateQuestTaskGroupDescription(quest, 1, "I have spoken with Murrar Shar.")
     GiveQuestReward(Quest, Player)
 end
 
