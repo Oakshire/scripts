@@ -33,7 +33,7 @@ function Step1_Complete_KilledRotweed(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found and defeated Rotweed .")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain the many creatures that made up Rotweed the plant fiend.")
 
-	AddQuestStepChat(Quest, 2, "Speak to Empress Anassa.", 1, "I must return to speak to Empress Anassa in Oakmyst Forest.", 0, 1950078) 
+	AddQuestStepChat(Quest, 2, "Speak to Empress Anassa.", 1, "I must return to speak to Empress Anassa in Oakmyst Forest.", 0, 1950050) 
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

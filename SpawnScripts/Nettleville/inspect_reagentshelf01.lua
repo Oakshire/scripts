@@ -7,7 +7,7 @@
 --]]
 
 local QUEST_1 = 312
-local QUEST_FROM_OAKMYST = 999
+local QUEST_FROM_OAKMYST = 228
 
 function spawn(NPC)
 end

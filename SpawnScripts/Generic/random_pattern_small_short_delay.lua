@@ -1,33 +1,12 @@
 --[[
-    Script Name    : SpawnScripts/PeatBog/PunyScavenger.lua
-    Script Author  : LordPazuzu
-    Script Date    : 2022.05.18 04:05:17
-    Script Purpose : 
-                   : 
+	Script Name	: SpawnScripts/Generic/random_pattern_small_short_delay.lua
+	Script Purpose	: chooses a random route of a particular pattern
+	Script Author	: theFoof with delay modifications by LordPazuzu
+	Script Date	: 2013.5.16
+	Script Notes	: If the coords are out of bounds then the spawn will still go there.
 --]]
-
 function spawn(NPC)
-    local Level = GetLevel(NPC)
-    local level1 = 4
-    local level2 = 5
-    local difficulty1 = 5
-    local hp1 = 55
-    local power1 = 35
-    local difficulty2 = 5
-    local hp2 = 65
-    local power2 = 40
-    if Level == level1 then
-    SpawnSet(NPC, "difficulty", difficulty1)
-    SpawnSet(NPC, "hp", hp1)
-    SpawnSet(NPC, "power", power1)
-    elseif Level == level2
-        then
-    SpawnSet(NPC, "difficulty", difficulty2)
-    SpawnSet(NPC, "hp", hp2)
-    SpawnSet(NPC, "power", power2)
-    end
-    
-ChooseMovement(NPC)
+    ChooseMovement(NPC)
 end
 
 function ChooseMovement(NPC)
@@ -91,11 +70,10 @@ function RouteFour(NPC, Spawn)
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10))
 end
 
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+function respawn(NPC, Spawn)
+    spawn(NPC)
 end
 
-function respawn(NPC)
-	spawn(NPC)
+function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
 end

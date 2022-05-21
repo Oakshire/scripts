@@ -56,7 +56,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "Went to the Lone Stump.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "Visited the ancient wood ring called the Lone Stump Ring and investigate the stump.")
 
-	AddQuestStepLocation(Quest, 5, "Go to the Deadend Niche.", 7, "Travel north a short distance from the Lone Stump Ring to find Deadend Niche.", 11, 765.07, -32.71, 483.12)
+	AddQuestStepLocation(Quest, 5, "Go to the Deadend Niche.", 7, "Travel north a short distance from the Lone Stump Ring to find Deadend Niche.", 11, 757.73, -32.70, 489.06)
 	AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
 end
 

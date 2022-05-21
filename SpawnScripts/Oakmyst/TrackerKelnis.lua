@@ -6,7 +6,7 @@
 	Script Notes	: Added Delivery Quest Dialogue & VO - 2022.03.11 Dorbin
 --]]
 
-local Delivery = 5010
+local Delivery = 5510
 
 function spawn(NPC)
 end
@@ -32,7 +32,7 @@ function Holly(NPC, Spawn)
 
 	PlayFlavor(NPC, "voiceover/english/tracker_kelnis/qey_adv01_oakmyst/trackerkelnis001.mp3", "", "boggle", 1572302880, 579510228, Spawn)
 	AddConversationOption(conversation, "I will let her know. Thank you.","Holly2")
-	StartConversation(conversation, NPC, Spawn, "Holly Windstalker's grave!  Amazing!  I shall speak with Silentstrider about this matter soon. Thank you adventurer.  Let Silentstrider I will relay word to The Greenhoods.")
+	StartConversation(conversation, NPC, Spawn, "Holly Windstalker's grave!  Amazing!  I shall speak with Silentstrider about this matter soon. Thank you adventurer.  Let Silentstrider know I will relay word to The Greenhoods.")
 end
 
 function Holly2(NPC, Spawn)

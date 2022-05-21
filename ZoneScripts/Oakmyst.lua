@@ -18,8 +18,8 @@ function init_zone_script(Zone)
 	SetLocationProximityFunction(Zone, 906.62, 3.33, -209.46, 50, "InRangeAdalinTree1")
 	SetLocationProximityFunction(Zone, 934.61, 8.11, -195.52, 50, "InRangeAdalinTree2")
 	SetLocationProximityFunction(Zone, 921.71, 3.93, -357.12, 50, "InRangeAdalinTree3")
-	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 20, "InRangeRotweed")
-	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 20, "InRangeRotweed2")
+	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 6, "InRangeRotweed")
+--	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 20, "InRangeRotweed2")
 --	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 20, "InRangeRotweed3")
 end
 
@@ -55,40 +55,29 @@ function InRangeAdalinTree3(Zone, Spawn)
 end
 
 function InRangeRotweed(Zone, Spawn) --Appears to trigger only once.
-	if HasQuest(Spawn, QUEST_FROM_EMPRESS) and GetQuestStep(Spawn, QUEST_FROM_EMPRESS) == 1 and ThistleCount == 0 then
+	if HasQuest(Spawn, QUEST_FROM_EMPRESS) and GetQuestStep(Spawn, QUEST_FROM_EMPRESS) == 1 and ThistleSpawn == 0 then
 		local rotweed_thistle = GetSpawn(Zone, 1950028)
-		local rotweed = GetSpawn(Zone, 1950029)
+--		local rotweed = GetSpawn(Zone, 1950029)
 	if rotweed_thistle == nil and rotweed == nil then
+        ThistleSpawn = 1
         SpawnByLocationID(Zone, 422456)
         SpawnByLocationID(Zone, 422457)
         SpawnByLocationID(Zone, 422458)
-        Attack(Zone, Spawn)
-        ThistleCount = 2
-        ThistleSpawn = 1
+        Attack(rotweed_thistle, Spawn)
+		AddTimer(NPC, 10000, "ThistleReset", 1, Spawn)
 		end
     end
 end
 
-function InRangeRotweed2(Zone,Spawn)
-        if ThistleCount ==2 and ThistleSpawn ==1 then
-        local rotweed_thistle = GetSpawn(Zone, 1950028)
-		local rotweed = GetSpawn(Zone, 1950029)
-        if rotweed_thistle == nil then
-    --GetSpawnByLocationID(Zone, 422456) == nil  and GetSpawnByLocationID(Zone, 422457) == nil  and GetSpawnByLocationID(Zone, 422458)  == nil then
-     ThistleCount = 1
-     ThistleSpawn = 0
-    SpawnByLocationID(Zone,422459,"InRangeRotweed3")
-     end
-    end
+function ThistleReset(Zone,Spawn)
+    ThistleSpawn = 0
 end
 
-function InRangeRotweed3(Zone, Spawn)
-         if ThistleCount == 1 and rotweed == nil then
-    local rotweed = GetSpawnLocationPlacementID(Zone, 422459)
-    ThistleCount = 0 
-    AddTimer(Zone, 300)
-     end
-end
+
+
+
+
+
 
 			--RotweedSpawn (Zone, Spawn) --Trigger needs assistance.
 

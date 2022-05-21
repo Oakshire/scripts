@@ -19,19 +19,6 @@ function respawn(NPC)
 spawn(NPC)
 end
 
-function spellChoice(NPC, Spawn) -- select a spell from table.
-    local hated = GetMostHated(NPC) 
-        if hated ~= nil then 
-            FaceTarget(NPC, hated) 
-            -- CastSpell(hated, spells[math.random(#spells)], 3, NPC)
-        end
-    AddTimer(NPC, math.random(1500, 2500), "spellLoop")
-end
-
-function spellLoop(NPC, Spawn) -- Loopback function for spellcasts. casts spells on an interval.
-    AddTimer(NPC, math.random(1500,2500), "spellChoice")
-end
-
 function healthchanged(NPC, Spawn) -- at 50%, begin spawning the x4 version of this mob.
     if GetHP(NPC) <= GetMaxHP(NPC) * 0.5 then
         SpawnSet(NPC, "attackable", "0")

@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local QUEST_FROM_NEOLA = 211
+local QUEST_FROM_NEOLA = 228
 
 function spawn(NPC)
 end

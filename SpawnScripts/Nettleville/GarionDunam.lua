@@ -53,10 +53,10 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
  	PlayFlavor(NPC, "voiceover/english/alchemist_garion_dunam/qey_village01/alchemistgarion000.mp3", "", "", 3929426518, 2943920843, Spawn)
 		conversation = CreateConversation()
-	if  GetQuestStep(Spawn, FAR_SEAS_DIRECT_REQUISITION_CVS0276_QUEST_ID) ~= 3 then
+	if  GetQuestStep(Spawn, FAR_SEAS_DIRECT_REQUISITION_CVS0276_QUEST_ID) == 3 then
 		AddConversationOption(conversation, "I have a direct delivery from the Far Seas Trading Co.", "dlg_0_1")
 	end
-	if  GetQuestStep(Spawn, FAR_SEAS_DIRECT_REQUISITION_CVS0431_QUEST_ID) ~= 2 then
+	if  GetQuestStep(Spawn, FAR_SEAS_DIRECT_REQUISITION_CVS0431_QUEST_ID) == 2 then
 		AddConversationOption(conversation, "I have a direct delivery from the Far Seas Trading Co.", "dlg_0_1")
 	end
 	if  not HasQuest(Spawn, Delivery) and not HasCompletedQuest(Spawn, Delivery) and GetLevel(Spawn) >= 6 then
