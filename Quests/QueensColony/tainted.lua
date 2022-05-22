@@ -13,37 +13,37 @@
 	Modified : 11/12/2020 added additional spawn id for toxic crawlers EmemJR
 --]]
 
-function Init(quest)
+function Init(Quest)
 	
 	-- spider fang ring
-	AddQuestStepKill(quest, 1, "I need to clear the Tainted Forest of these toxic crawlers!", 4, 100, "I need to clear out the toxic crawlers to keep their poison from spreading throughout the Colony.", 1857, 2530084,2530202,2530201)
-	AddQuestStepCompleteAction(quest, 1, "step1_toxicCrawlers")
+	AddQuestStepKill(Quest, 1, "I need to clear the Tainted Forest of these toxic crawlers!", 4, 100, "I need to clear out the toxic crawlers to keep their poison from spreading throughout the Colony.", 1857, 2530084,2530202,2530201)
+	AddQuestStepCompleteAction(Quest, 1, "step1_toxicCrawlers")
 
 end
 
-function Accepted(quest, questGiver, player)
-	if questGiver ~= nil then
-	   if GetDistance(player, questGiver) < 30 then
-	 FaceTarget(questGiver, player)
+function Accepted(Quest, QuestGiver, Player)
+	if QuestGiver ~= nil then
+	   if GetDistance(Player, QuestGiver) < 30 then
+	 FaceTarget(QuestGiver, Player)
 	 
 	 conversation = CreateConversation()
-	 PlayFlavor(questGiver, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_111dc711.mp3", "", "thanks", 796380527, 3559718915, player)
+	 PlayFlavor(QuestGiver, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quest/qst_deianeira_complete_111dc711.mp3", "", "thanks", 796380527, 3559718915, Player)
 	 AddConversationOption(conversation, "I'll be back when I'm done with the spiders.")
-	 StartConversation(conversation, questGiver, player, "It's up to us to find the answers; they're never handed to us.")
+	 StartConversation(conversation, QuestGiver, Player, "It's up to us to find the answers; they're never handed to us.")
 	    end
 	end
 end
 
-function Declined(quest, questGiver, player)
+function Declined(Quest, QuestGiver, Player)
 end
 
-function step1_toxicCrawlers(quest, questGiver, player)
-	if player ~= nil then
-		GiveQuestItem(quest, player, "I've cleared out many spiders and as a result found an unusual item.", 10317)
+function step1_toxicCrawlers(Quest, QuestGiver, Player)
+	if Player ~= nil then
+		GiveQuestItem(Quest, Player, "I've cleared out many spiders and as a result found an unusual item.", 10317)
 	end
 
-	UpdateQuestStepDescription(quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
-	UpdateQuestTaskGroupDescription(quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
+	UpdateQuestStepDescription(Quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
 	-- SPAWN Parchment Scrap (right-click this item to Examine it), spawn this in the Quest Reward window
 	-- Description = I've cleared out many spiders and as a result found an unusual item.
 	
@@ -56,20 +56,20 @@ function step1_toxicCrawlers(quest, questGiver, player)
 	-- be more pieces of this parchment amongst the toxic crawlers.
 	--    Put the parchment away.
 	
-	AddQuestStepChat(quest, 2, "I need to examine the parchment scrap to see if I can decipher anything.", 1, "There is more to be learned in the Tainted Forest.", 0, 2530092)
-	AddQuestStepCompleteAction(quest, 2, "step2_complete_examinedParchment")
+	AddQuestStepChat(Quest, 2, "I need to examine the parchment scrap to see if I can decipher anything.", 1, "There is more to be learned in the Tainted Forest.", 0, 2530092)
+	AddQuestStepCompleteAction(Quest, 2, "step2_complete_examinedParchment")
 end
 
-function step2_complete_examinedParchment(quest, questGiver, player)
-	UpdateQuestStepDescription(quest, 2, "I've examined the scrap.")
-		UpdateQuestTaskGroupDescription(quest, 2, "I've examined the scrap.")
-	AddQuestStepKill(quest, 3, "While hard to decipher, the writings indicate that there is a problem with the toxic crawlers. I'll try to find another piece of parchment on one of these spiders though it may take me a while to find one with more of this parchment.", 1, 25, "There is more to be learned in the Tainted Forest.", 2180, 2530084,2530202,2530201)
-	AddQuestStepCompleteAction(quest, 3, "step3_complete_toxicCrawlers")
+function step2_complete_examinedParchment(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 2, "I've examined the scrap.")
+		UpdateQuestTaskGroupDescription(Quest, 2, "I've examined the scrap.")
+	AddQuestStepKill(Quest, 3, "While hard to decipher, the writings indicate that there is a problem with the toxic crawlers. I'll try to find another piece of parchment on one of these spiders though it may take me a while to find one with more of this parchment.", 1, 25, "There is more to be learned in the Tainted Forest.", 2180, 2530084,2530202,2530201)
+	AddQuestStepCompleteAction(Quest, 3, "step3_complete_toxicCrawlers")
 end
 
-function step3_complete_toxicCrawlers(quest, questGiver, player)
-     	UpdateQuestStepDescription(quest, 3, "I've found another piece of parchment.")
-     		UpdateQuestTaskGroupDescription(quest, 3, "I've found another piece of parchment.")
+function step3_complete_toxicCrawlers(Quest, QuestGiver, Player)
+     	UpdateQuestStepDescription(Quest, 3, "I've found another piece of parchment.")
+     		UpdateQuestTaskGroupDescription(Quest, 3, "I've found another piece of parchment.")
 	-- The edges of the parchment are torn and jagged as though ripped from a much larger document.
 	--    Put together the parchment pieces. ().
 	--    Put the parchment away.
@@ -81,13 +81,13 @@ function step3_complete_toxicCrawlers(quest, questGiver, player)
 	-- update quest
 	-- You carefully roll the parchment and stow it away.
 	--    Put the parchment away.
-	AddQuestStepChat(quest, 4, "I need to put the parchment pieces together to learn more about the toxic crawlers.", 1, "There is more to be learned in the Tainted Forest.", 0, 2530092)
-	AddQuestStepCompleteAction(quest, 4, "step4_complete_putParchmentTogether")
+	AddQuestStepChat(Quest, 4, "I need to put the parchment pieces together to learn more about the toxic crawlers.", 1, "There is more to be learned in the Tainted Forest.", 0, 2530092)
+	AddQuestStepCompleteAction(Quest, 4, "step4_complete_putParchmentTogether")
 end
 
 function step4_complete_putParchmentTogether(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(quest, 4, "I've put the parchment together.")
-	UpdateQuestTaskGroupDescription(quest, 4, "I've put the parchment together.")
+	UpdateQuestStepDescription(Quest, 4, "I've put the parchment together.")
+	UpdateQuestTaskGroupDescription(Quest, 4, "I've put the parchment together.")
 	AddQuestStepLocation(Quest, 5, "According to the parchment, there is something hidden in the rockpile at the eastern end of the Tainted Forest. I'll need to take a closer look.", 15, "There is more to be learned in the Tainted Forest.", 0, 92, 1, 122) 
 	AddQuestStepCompleteAction(Quest, 5, "step5_complete_foundParchment")
 	
@@ -143,11 +143,11 @@ function step8_complete_killedDireSpike(Quest, QuestGiver, Player)
 	AddQuestStepCompleteAction(Quest, 9, "completed")
 end
 
-function completed(quest, questGiver, player)
-    UpdateQuestStepDescription(quest, 9, "I've spoken with Deianeira.")
-    	UpdateQuestTaskGroupDescription(quest, 9, "I've spoken with Deianeira.")
-	UpdateQuestDescription(quest, "While killing toxic crawlers to test Deianeira's theory on poison, I found a piece of parchment hinting that someone had influenced the toxic crawlers by hiding some kind of totem in their main nest. After I removed Direspike from the lair, the totem shattered on its own. The poison theory seems shattered as well.")
-	GiveQuestReward(quest, player)
+function completed(Quest, QuestGiver, Player)
+    UpdateQuestStepDescription(Quest, 9, "I've spoken with Deianeira.")
+    	UpdateQuestTaskGroupDescription(Quest, 9, "I've spoken with Deianeira.")
+	UpdateQuestDescription(Quest, "While killing toxic crawlers to test Deianeira's theory on poison, I found a piece of parchment hinting that someone had influenced the toxic crawlers by hiding some kind of totem in their main nest. After I removed Direspike from the lair, the totem shattered on its own. The poison theory seems shattered as well.")
+	GiveQuestReward(Quest, Player)
 end
 
 function Reload(Quest, QuestGiver, Player, Step)

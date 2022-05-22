@@ -12,7 +12,10 @@
 
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I need to visit the western of the gnoll islands south of Tyllia's location.", 10, "I need to check the island for supplies.", 11, 161, -25, 882, 12)
+		AddQuestStepKill(Quest, 2, "I need to kill 12 gnolls on the island south of where Tyllia is.", 12, 100, "I need to check the island for supplies.", 1222, 120340, 120420, 121433, 121481)
+
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -32,17 +35,22 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have visited the island.")
+  ProgressCheck(Quest, Player)
+end
 
-	AddQuestStepKill(Quest, 2, "I need to kill 12 gnolls on the island south of where Tyllia is.", 12, 100, "I need to check the island for supplies.", 1222, 120340, 120420, 121433, 121481)
-	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+function ProgressCheck(Quest, Player)
+	if QuestStepIsComplete(Player, 5560, 1) and QuestStepIsComplete(Player, 5560, 2)  then
+		UpdateQuestTaskGroupDescription(Quest, 1, "I have done what Tyllia asked of me.")
+	AddQuestStepChat(Quest, 3, "I need to return to Tyllia.", 1, "I need to return to Tyllia now that I've done as she asked.", 11, 121435)
+	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have done as Tyllia asked.")
+	end
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have killed 12 dankfur gnolls.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have done as Tyllia asked.")
+ProgressCheck(Quest, Player)
 
-	AddQuestStepChat(Quest, 3, "I need to return to Tyllia.", 1, "I need to return to Tyllia now that I've done as she asked.", 11, 121435)
-	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end
 
 function QuestComplete(Quest, QuestGiver, Player)

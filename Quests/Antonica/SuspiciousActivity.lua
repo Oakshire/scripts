@@ -14,7 +14,6 @@
 local QuestID = 3000
 
 function Init(Quest)
-	SetQuestFeatherColor(Quest, 3)
 	AddQuestStepKill(Quest, 1, "I need to kill five Sabertooth runts.", 5, 100, "I need to do what Tyllia has asked of me.", 1221, 121248,120092)
 	AddQuestStepKill(Quest, 2, "I need to kill two Sabertooth neophytes.", 2, 100, "I need to do what Tyllia has asked of me.", 1220, 121269,120123)
 	AddQuestStep(Quest, 3, "I need to inspect the boat on the south shore south west of where Tyllia is.", 1, 100, "I need to do what Tyllia has asked of me.", 830)
@@ -44,7 +43,7 @@ end
 function CompleteStage1Check(Quest, Player)
 	if QuestStepIsComplete(Player, QuestID, 1) and QuestStepIsComplete(Player, QuestID, 2) and QuestStepIsComplete(Player, QuestID, 3) then
 		UpdateQuestTaskGroupDescription(Quest, 1, "I have done what Tyllia asked of me.")
-		AddQuestStep(Quest, 4, "I need to return to Tyllia now that I have done all that she asked.", 1, 100, "I have done what Tyllia asked of me.", 11)
+		AddQuestStepChat(Quest, 4, "I need to return to Tyllia now that I have done all that she asked.", 1, 100, "I have done what Tyllia asked of me.", 11, 121435)
 		AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 	end
 end

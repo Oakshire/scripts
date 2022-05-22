@@ -44,7 +44,7 @@ end
 
 
 function SunWolfSpawn(Zone, Spawn)
-	if HasQuest(Spawn, SunDog) and GetQuestStep(Spawn, SunDog) == 4  then
+	if HasQuest(Spawn, SunDog) and GetQuestStep(Spawn, SunDog) == 5  then
 		local Dog = GetSpawn(Zone, 1980115)
        if Dog == nil then 
         SpawnByLocationID(Zone, 133773176)

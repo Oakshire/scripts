@@ -53,7 +53,7 @@ end
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I've searched the Qeynos Highway, but found no trace of the pair")
 
-	AddQuestStepLocation(Quest, 5, "I need to search the area around the Northern Farmlands", 10, "I should check the surrounding region to see if I can find both the scholar and the Sage of Ages.  I hope it's not too late to find them.", 11, (-1902, -14, 42)
+	AddQuestStepLocation(Quest, 5, "I need to search the area around the Northern Farmlands", 10, "I should check the surrounding region to see if I can find both the scholar and the Sage of Ages.  I hope it's not too late to find them.", 11, -1902, -14, 42)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 

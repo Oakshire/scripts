@@ -10,7 +10,6 @@
 local QUEST_FROM_CHARLIN_4 = 207
 local QUEST_FROM_ADALIN = 294
 local QUEST_FROM_EMPRESS = 230
-local ThistleCount = 0 --Stage of Rotweed spawn. 0 = not active, 2 = Rotweed Thistles up, 1 = Rotweed Thistles dead and Rotweed up. Killing Rotweed should return to 0.
 local ThistleSpawn = 0 --Indicates if Rotweed Thistles are active. 0 = inactive. 1 = active.
 
 function init_zone_script(Zone)
@@ -19,8 +18,6 @@ function init_zone_script(Zone)
 	SetLocationProximityFunction(Zone, 934.61, 8.11, -195.52, 50, "InRangeAdalinTree2")
 	SetLocationProximityFunction(Zone, 921.71, 3.93, -357.12, 50, "InRangeAdalinTree3")
 	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 6, "InRangeRotweed")
---	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 20, "InRangeRotweed2")
---	SetLocationProximityFunction(Zone, 934.09, 12.28, -171.64, 20, "InRangeRotweed3")
 end
 
 function LeaveRange(Zone)

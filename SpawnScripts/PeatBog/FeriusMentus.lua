@@ -14,7 +14,27 @@ end
 
 function respawn(NPC)
 	spawn(NPC)
+AddTimer(NPC, 5000, "EmoteLoop")    
 end
+ 
+function EmoteLoop(NPC)
+    local emoteChoice = MakeRandomInt(1,3)
+
+    if emoteChoice == 1 then
+-- frustrated
+        PlayAnimation(NPC, 11628)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    elseif emoteChoice == 2 then
+-- sniff
+        PlayAnimation(NPC, 12329)
+        AddTimer(NPC, MakeRandomInt(8000,10000), "EmoteLoop")	
+    else
+-- tapfoot
+        PlayAnimation(NPC, 13056)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    end
+end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -34,7 +54,7 @@ end
 -------------------------------------------------------------------------------------------------------------------------
 
 function YesYoureHere(NPC, Spawn, conversation)
-	AddConversationOption(conversation, "Why are you so grump?", "SoGrumpy")
+	AddConversationOption(conversation, "Why are you so grumpy?", "SoGrumpy")
 	AddConversationOption(conversation, "Fine, I'll leave.")
 	StartConversation(conversation, NPC, Spawn, "Yes, yes, you're here, I'm here, why don't we talk eh? No thanks.")
 end

@@ -57,7 +57,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "Spoke to Captain Eitoa.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "I returned to Captain Eitoa with the decoded message.")
 
-	AddQuestStepKill(Quest, 5, "Slay a Bloodsaber courier.", 1, 100, "I must stop the courier from meeting with the Dark Coven along the southern road in Antonica.", 611, --[[ ID's --]])
+	AddQuestStepKill(Quest, 5, "Slay a Bloodsaber courier.", 1, 100, "I must stop the courier from meeting with the Dark Coven along the southern road in Antonica.", 611, 1) -- NEED CORRECT ID
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
