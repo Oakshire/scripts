@@ -54,6 +54,15 @@ function aggro(NPC, Spawn)
 end
 
 function death(NPC, Spawn)
+             	if IsPlayer(Spawn) then
+		local chance = math.random(1, 100)
+		if chance <= 35 then
+			local skull = SpawnMob(GetZone(Spawn), 2530192, false, GetX(NPC), GetY(NPC), GetZ(NPC))
+			if skull ~= nil then
+				SpawnSet(skull, "expire", "1000")
+			end
+	    end
+	end
         math.randomseed(os.time())
         local choice = math.random(1,2)
 

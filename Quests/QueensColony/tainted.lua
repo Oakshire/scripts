@@ -38,12 +38,12 @@ function Declined(Quest, QuestGiver, Player)
 end
 
 function step1_toxicCrawlers(Quest, QuestGiver, Player)
-	if Player ~= nil then
-		GiveQuestItem(Quest, Player, "I've cleared out many spiders and as a result found an unusual item.", 10317)
-	end
-
 	UpdateQuestStepDescription(Quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
+	
+    if Player ~= nil then
+	GiveQuestItem(Quest, Player, "I've cleared out many spiders and as a result found an unusual item.", 10317)
+	end	
 	-- SPAWN Parchment Scrap (right-click this item to Examine it), spawn this in the Quest Reward window
 	-- Description = I've cleared out many spiders and as a result found an unusual item.
 	

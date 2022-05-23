@@ -12,9 +12,9 @@
 
 function examined(Item, Player)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "Place skull on ground", "PlaceSkull")
-    AddConversationOption(conversation, "exit", "CloseItemConversation")
-   StartDialogConversation(conversation, 2, Item, Player, "pirate skull test") 
+    AddConversationOption(conversation, "Place the skull on ground.", "PlaceSkull")
+    AddConversationOption(conversation, "Place it back in your bag.", "CloseItemConversation")
+   StartDialogConversation(conversation, 2, Item, Player, "This skull must have some use.") 
   end
   
 
@@ -27,11 +27,13 @@ function PlaceSkull(Item, Player)
   local distancecheck = GetDistance(Guurok, Player)
   if distancecheck > 8  then
    RemoveItem(Player, 10399)
-   SendMessage(Player, "the skull is breaking on the ground", "yellow")
+   SendMessage(Player, "The skull is breaks on the ground", "yellow")
    CloseItemConversation(Item, Player)
   elseif distancecheck < 8 then
    FeedGuurok(Item, Player)
-   CloseItemConversation(Item, Player)
+   SendMessage(Player, "The Guurok snatches the skull as you place it on the ground.", "yellow")
+    PlayFlavor(Guurok, "", "", "attack", 0, 0)
+    CloseItemConversation(Item, Player)
    RemoveItem(Player, 10399)
    end
   end

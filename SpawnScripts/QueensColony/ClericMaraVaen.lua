@@ -6,25 +6,32 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+
 local JoiningTheForwardRanks = 163
 local TheSourceOfEvil = 164
+           --Temp Fix for Cleric.  
 
 function spawn(NPC)
 	SetLuaBrain(NPC)
 	SetBrainTick(NPC, 500)
-	--Think(NPC, Spawn)
+	Think(NPC, Spawn)
 	ProvidesQuest(NPC, TheSourceOfEvil)
+    ResetTimer = 1
+    AddTimer(NPC,10000,"TimerClear")         --Temp Fix for Cleric. Allows reset after 10 seconds. 
 end
 
 function respawn(NPC)
    spawn(NPC)
 end
 
+function TimerClear(NPC)
+    ResetTimer = 0
+end
+
 -- Brain override
 function Think(NPC)
-	--local mostHated = GetMostHated(NPC)
+	local mostHated = GetMostHated(NPC)
 	if mostHated ~= nil then
---[[ Say(NPC, "Has most hated") --]]
 		aggro(NPC, mostHated)
 		--Attack(NPC, mostHated)
 	end
@@ -79,6 +86,11 @@ function hailed(NPC, Spawn)
 	end
 end
 
+function ClericReset(NPC)
+	PlayFlavor(NPC, "", "Hold on! Getting ready!", "", 0, 0, Spawn)
+    Despawn(NPC)
+    SpawnByLocationID(Zone,1584884)
+end
 function DoNotFret(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
@@ -115,7 +127,10 @@ function KeepTrying(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cleric_mara_vaen/tutorial_island02_revamp/quests/citizenship/clericmaravaen/clericmaravaen004.mp3", "", "beckon", 873884307, 3834280576, Spawn)
-	AddConversationOption(conversation, "I'll keep trying.")
+    if ResetTimer == 0 then     --Temp Fix for Cleric.
+	AddConversationOption(conversation, "Get ready!","ClericReset")
+    end
+    AddConversationOption(conversation, "I'll keep trying.")
 	StartConversation(conversation, NPC, Spawn, "Keep trying, I believe we can save more scouts if you get them close to me.")
 end
 

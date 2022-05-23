@@ -19,9 +19,11 @@ function InRange(NPC)
         local Puppeteer = GetSpawnByLocationID(zone, 430289)
 
         if Puppeteer ~= nil then
+            if IsAlive(Puppeteer)== true then
             PlayAnimation(NPC, 4012)
             AddTimer(NPC, 7000, "InRange")
         end
+end
 end
 
 function LeaveRange(NPC)

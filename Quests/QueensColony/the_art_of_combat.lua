@@ -3,7 +3,6 @@
     Script Author  : Zcoretri
     Script Date    : 2015.07.30
     Script Purpose : Handles the quest, "The Art of Combat"
-
         Zone       : The Queens Colony
         Quest Giver: Murrar Shar
         Preceded by: None
@@ -74,4 +73,3 @@ function Reload(Quest, QuestGiver, Player, Step)
 	step3_complete_talkToHayl(Quest, QuestGiver, Player)
     end
 end
-

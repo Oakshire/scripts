@@ -36,7 +36,7 @@ end
 function step1_completed_talkedToPredator(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found Predator Sha'dur. He was distraught about losing his bow and arrows.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found Predator Sha'dur. He was distraught about losing his bow and arrows.")
-	AddQuestStepKill(Quest, 2, "One of the nearby Sapswill tappers should have Sha'dur's bow.", 1, 25, "Predator Sha'dur is down on his luck and has lost his bow and arrows. I am to find the goblins that took his bow and get it back through any means necessary.", 629, 2530021,2530203) 
+	AddQuestStepKill(Quest, 2, "One of the nearby Sapswill tappers should have Sha'dur's bow.", 1, 33, "Predator Sha'dur is down on his luck and has lost his bow and arrows. I am to find the goblins that took his bow and get it back through any means necessary.", 629, 2530021,2530203) 
 	AddQuestStepCompleteAction(Quest, 2, "step2_complete_killedTapper")
 end
 

@@ -6,12 +6,17 @@
 	Script Notes	:	
 --]]
 
+
 function spawn(NPC)
 SetTempVariable(NPC, "Feeded", 0) 
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")		
+end
+
+function InRange(NPC,Spawn)
+   SendMessage(Spawn, "The Guurok hisses loudly, almost like it can sense you.", "white")
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)

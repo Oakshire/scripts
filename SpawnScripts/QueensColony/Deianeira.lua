@@ -52,39 +52,46 @@ function listenToTheSilence(NPC, Spawn, option)
     elseif option == 2 then
        AddConversationOption(conversation, "I found a parchment that hinted Direspike was under the influence of something else.", "FoundParchment")
     end
-
+    if not HasItem(Spawn,10317) and GetQuestStep(Spawn,Tainted) ==2 then
+    AddConversationOption(conversation, "I can't find the parchment.","Parchment")
+    end
     AddConversationOption(conversation, "Then I'll leave you in peace.")
     StartConversation(conversation, NPC, Spawn, "Shhh...I'm trying to listen to the silence. Whisper please.")
 end
 
-function quest1_before1(NPC, spawn)
+function Parchment(NPC, Spawn)
+	SummonItem(Spawn, 10317, 1)
+    PlayFlavor(NPC, "", "I think you dropped this.", "", 0, 0, Spawn)
+end
+
+function quest1_before1(NPC, Spawn)
    conversation = CreateConversation()
 
    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quests/deianeira/deianeira002.mp3", "", "nod", 1920565588, 3425134667, Spawn)
    AddConversationOption(conversation, "The view's not so clear from here.", "quest1_before2")
-   StartConversation(conversation, NPC, spawn, "Away from the noise over in the camp. I like standing here. You can see where you've been and where you can go. You know what awaits you if you go further in. If only everything were as simple as that, where all your choices are clear and you can see what awaits.")
+   StartConversation(conversation, NPC, Spawn, "Away from the noise over in the camp. I like standing here. You can see where you've been and where you can go. You know what awaits you if you go further in. If only everything were as simple as that, where all your choices are clear and you can see what awaits.")
 end
 
-function quest1_before2(NPC, spawn)
+function quest1_before2(NPC, Spawn)
    conversation = CreateConversation()
 
    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quests/deianeira/deianeira003.mp3", "", "shrug", 3746790389, 1573998689, Spawn)
    AddConversationOption(conversation, "What evil do you sense?", "quest1_before3")
    AddConversationOption(conversation, "Then I'll have no more dealings with you.")
-   StartConversation(conversation, NPC, spawn, "True, but it's clearer than, say, the difference between good and evil. All those around here who are ''good'' avoid me because I was born ''evil''. I grew up in Freeport. Does that make them better than me somehow, that I chose to leave Freeport to work on behalf of the Queen only recently? Who knows? Yet I must be evil; I can sense the evil in others.")
+   StartConversation(conversation, NPC, Spawn, "True, but it's clearer than, say, the difference between good and evil. All those around here who are ''good'' avoid me because I was born ''evil''. I grew up in Freeport. Does that make them better than me somehow, that I chose to leave Freeport to work on behalf of the Queen only recently? Who knows? Yet I must be evil; I can sense the evil in others.")
 end
 
-function quest1_before3(NPC, spawn)
+function quest1_before3(NPC, Spawn)
    conversation = CreateConversation()
 
    PlayFlavor(NPC, "voiceover/english/tutorial_revamp/deianeira/tutorial_island02_revamp/quests/deianeira/deianeira004.mp3", "", "nod", 428169630, 2788724653, Spawn)
    AddConversationOption(conversation, "I'll do what I can.", "quest1_offerQuest")
    AddConversationOption(conversation, "Perhaps some other time.")
-   StartConversation(conversation, NPC, spawn, "They say that there is a taint rising from an unknown source, polluting this place and corrupting the inhabitants. I feel it is much simpler than that. There are spiders in the Tainted Forest, poisonous ones. With their venom, they can cause untold suffering. The search for ''evil'' sometimes has a mundane cause. We must rid the Colony of these spiders.", spawn)
+   StartConversation(conversation, NPC, Spawn, "They say that there is a taint rising from an unknown source, polluting this place and corrupting the inhabitants. I feel it is much simpler than that. There are spiders in the Tainted Forest, poisonous ones. With their venom, they can cause untold suffering. The search for ''evil'' sometimes has a mundane cause. We must rid the Colony of these spiders.", Spawn)
 end
 
-function quest1_offerQuest(NPC, spawn)
-   OfferQuest(NPC, spawn, Tainted)
+function quest1_offerQuest(NPC, Spawn)
+   OfferQuest(NPC, Spawn, Tainted)
 end
 
 function FoundParchment(NPC, Spawn)
