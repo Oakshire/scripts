@@ -12,7 +12,7 @@ function spawn(NPC)
 end
 
 function death(NPC, Spawn)
-    AddTimer(NPC, 1000, "fishCheck1", 1, Spawn) -- Send Spawn to next function
+    AddTimer(NPC, 250, "fishCheck1", 1, Spawn) -- Send Spawn to next function
 end
 
 function fishCheck1(NPC, Spawn) -- this sucks. someone please help me fix it.
@@ -25,7 +25,7 @@ local fish3 = GetSpawnByLocationID(zone, 347238)
     elseif IsAlive(fish3) == true then
     else
         SetTempVariable(NPC, "fishcheck1", "1")
-        AddTimer(NPC, 1000, "fishCheck2", 1, Spawn)
+        AddTimer(NPC, 250, "fishCheck2", 1, Spawn)
     end
 end
 
@@ -41,7 +41,7 @@ local fish4 = GetSpawnByLocationID(zone, 347240)
     elseif IsAlive(fish4) == true then
     else
         SetTempVariable(NPC, "fishcheck2", "1")
-        AddTimer(NPC, 1000, "fishCheck3", 1, Spawn)
+        AddTimer(NPC, 250, "fishCheck3", 1, Spawn)
     end
 end
 
@@ -53,7 +53,7 @@ local fish2 = GetSpawnByLocationID(zone, 347246)
     elseif IsAlive(fish2) == true then
     else
         SetTempVariable(NPC, "fishcheck3", "1")
-        AddTimer(NPC, 1000, "rognogCheck", 1, Spawn)
+        AddTimer(NPC, 250, "rognogCheck", 1, Spawn)
     end
 end
 
@@ -62,7 +62,7 @@ function rognogCheck(NPC, Spawn)
     elseif GetTempVariable(NPC, "fishcheck2") == nil then
     elseif GetTempVariable(NPC, "fishcheck3") == nil then
     else
-        AddTimer(NPC, 1000, "rognogStart", 1, Spawn)
+        AddTimer(NPC, 250, "rognogStart", 1, Spawn)
     end
 end
 

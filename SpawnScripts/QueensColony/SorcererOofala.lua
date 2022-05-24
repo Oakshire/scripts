@@ -5,7 +5,7 @@
 	Script Date	: 2020.04.11
 	Script Notes	: 
         Modified Date   : 2020.04.10
-	Modiefied by    : premierio015
+	Modiefied by    : premierio015 & Dorbin
 	Modified Notes  : Added missing VoiceOvers and Anims
 	
 	These are just suggested functions to get you started. Edit as needed.
@@ -56,7 +56,7 @@ end
 function NoAssignments(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/sorcerer_oofala/tutorial_island02_revamp/quests/citizenship/sorcereroofala/sorcereroofala012.mp3", "", "no", 643282183, 3968003647, Spawn)
 	AddConversationOption(conversation, "Very well.")
 	StartConversation(conversation, NPC, Spawn, "I do not have any assignments for you right now. Speak with Murrar Shar outside of Myrrin's Tower at the center of the colony. He should have some work for you.")
 end

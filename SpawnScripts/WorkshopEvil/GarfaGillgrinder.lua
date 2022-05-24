@@ -1,10 +1,11 @@
 --[[
-	Script Name		: SpawnScripts/TradeskillersWorkshop/NewmanHines.lua
-	Script Purpose	: Newman Hines
-	Script Author	: Dorbin
-	Script Date		: 2022.05.23
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+    Script Name    : SpawnScripts/WorkshopEvil/GarfaGillgrinder.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.05.23 02:05:18
+    Script Purpose : 
+                   : 
 --]]
+
 
 require "SpawnScripts/Generic/DialogModule"
 local ARTISAN_ESSENTIALS_VOLUME_2 = 31373
@@ -24,8 +25,8 @@ function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	voice = math.random (1,3)
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1052.mp3", "", "hello", 0, 0, Spawn)	
-    Dialog.AddDialog("You show interest in the crafting trade, good.  We can always use talented artisans within our great city.  I can help you get started and offer you some of the basic recipes at no charge.  Would you be interested?")
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1055.mp3", "", "hello", 0, 0, Spawn)	
+	Dialog.AddDialog("You show interest in the crafting trade, good.  Freeport can always use talented artisans within the walls of our great city.  I can help you get started and offer you some of the basic recipes at no charge.  Would you be interested?")
 	if not HasItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1) then
 	Dialog.AddOption("Yes, please teach me.", "Dialog2")
     elseif HasItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1) then
