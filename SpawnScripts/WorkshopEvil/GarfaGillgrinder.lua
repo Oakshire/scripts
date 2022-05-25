@@ -27,9 +27,9 @@ function Dialog1(NPC, Spawn)
 	voice = math.random (1,3)
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1055.mp3", "", "hello", 0, 0, Spawn)	
 	Dialog.AddDialog("You show interest in the crafting trade, good.  Freeport can always use talented artisans within the walls of our great city.  I can help you get started and offer you some of the basic recipes at no charge.  Would you be interested?")
-	if not HasItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1) then
+	if not HasItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1) or not HasRecipeBook(Spawn,ARTISAN_ESSENTIALS_VOLUME_2) then
 	Dialog.AddOption("Yes, please teach me.", "Dialog2")
-    elseif HasItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1) then
+    elseif HasItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1) or HasRecipeBook(Spawn,ARTISAN_ESSENTIALS_VOLUME_2) then
 	Dialog.AddOption("I've already got the basics down.  Thanks.","Basics")
     end
 	Dialog.AddOption("I actually want to learn more about crafting professions.","Professions")
@@ -42,7 +42,8 @@ function Dialog2(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	SummonItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1)
 	Dialog.AddDialog("There, you now have the basic recipes and the knowledge to begin crafting.  Everything else you need to get yourself started can be found right here.")
-	Dialog.AddOption("I will start on that now.")
+	Dialog.AddOption("I actually want to learn more about crafting professions.","Professions")
+    Dialog.AddOption("I will start on that now.")
 	Dialog.Start()
 end
 
@@ -51,7 +52,8 @@ function Basics(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("In that case, if you're looking for more training you'll need to head to the mainland.  They can teach you more advanced techniques and refine your craft.")
-	Dialog.AddOption("Good to know.  I'll look into it.")
+	Dialog.AddOption("I actually want to learn more about crafting professions.","Professions")
+    Dialog.AddOption("Good to know.  I'll look into it.")
 	Dialog.Start()
 end
 

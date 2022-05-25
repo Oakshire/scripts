@@ -24,7 +24,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
    
-	if HasCompletedQuest(Spawn, GhostsAndGoblins) then
+	if HasCompletedQuest(Spawn, GhostsAndGoblins) and HasCompletedQuest(Spawn, ADiplomaticMission) then
 
         text = math.random(1,6)
 

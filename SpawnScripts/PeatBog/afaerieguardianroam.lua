@@ -1,22 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/PeatBog/MarshHatchling.lua
+    Script Name    : SpawnScripts/PeatBog/afaerieguardianroam.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.05.18 04:05:38
+    Script Date    : 2022.05.24 11:05:16
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-    
     local Level = GetLevel(NPC)
-    local level1 = 7
-    local level2 = 8
-    local difficulty1 = 3
-    local hp1 = 70
-    local power1 = 30
-    local difficulty2 = 3
-    local hp2 = 80
-    local power2 = 35
+    local level1 =11
+    local level2 = 12
+    local difficulty1 = 6
+    local hp1 = 430
+    local power1 = 160
+    local difficulty2 = 6
+    local hp2 = 450
+    local power2 = 190
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -28,7 +27,6 @@ function spawn(NPC)
     SpawnSet(NPC, "power", power2)
     end
     
-
 ChooseMovement(NPC)
 end
 

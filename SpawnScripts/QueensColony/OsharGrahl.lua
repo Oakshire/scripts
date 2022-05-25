@@ -36,11 +36,10 @@ function Text(NPC)
         local choice = MakeRandomInt(1,3)
 
         if choice == 1 then
-                Say(NPC, "Night or day, I'll prrrotect you friend.")
-                Emote(NPC, "flexes.") 
+	    	    PlayFlavor(NPC, "", "Night or day, I'll prrrotect you friend.", "flex", 0, 0 )
         elseif choice == 2 then
-                Say(NPC, "All this sand in my fur, bah!")
-                Emote(NPC, "shakes.") 
+                Say(NPC, "")
+       	    	PlayFlavor(NPC, "", "All this sand in my fur, bah!", "scratch", 0, 0 )
         else
                 Say(NPC, "Our poor home... lost.")
         end
