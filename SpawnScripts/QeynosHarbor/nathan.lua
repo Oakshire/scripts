@@ -7,34 +7,46 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 9, "InRange", "LeaveRange")
 	waypoints(NPC)
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	local choice = math.random(1,3)
+	if choice == 1 then
+	    FaceTarget(NPC,Spawn)
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_dc9519d6.mp3", "I want to join the Qeynos Guard when I grow up!", "salute", 3878579501, 1793000405, Spawn)
+		elseif choice == 2 then
+	    FaceTarget(NPC,Spawn)
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_5674cc18.mp3", "Have you seen a Gnoll before?", "stare", 3064755312, 374536170, Spawn)
+		elseif choice == 3 then
+	    FaceTarget(NPC,Spawn)
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_110eef44.mp3", "Have you been inside the castle? I want to go there someday!", "smile", 2372987392, 3554768792, Spawn)
+    end			
 end
 
 function InRange(NPC, Spawn)
-		local choice = math.random(1,3)
+	if math.random(1,100)<66 then	
+		local choice = math.random(1,5)
 
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_cat_gm_fdc32a9.mp3", "Come back here kitty!", "wave", 204283170, 334524744, Spawn)
 	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/human_eco_evil_badkid/ft/eco/evil/human_eco_evil_badkid_pig_gm_9fa4475d.mp3", "Run ya swine. Run!", "wave", 1654188343, 2070658176, Spawn)
 	elseif choice == 3 then
+	    FaceTarget(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_dc9519d6.mp3", "I want to join the Qeynos Guard when I grow up!", "salute", 3878579501, 1793000405, Spawn)
-	else
-		local choice = math.random(1,2)
-
-		if choice == 1 then
-			PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_5674cc18.mp3", "Have you seen a Gnoll before?", "", 3064755312, 374536170, Spawn)
-		elseif choice == 2 then
-			PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_110eef44.mp3", "Have you been inside the castle? I want to go there someday!", "smile", 2372987392, 3554768792, Spawn)
-		else
+		elseif choice == 4 then
+	    FaceTarget(NPC,Spawn)
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_5674cc18.mp3", "Have you seen a Gnoll before?", "stare", 3064755312, 374536170, Spawn)
+		elseif choice == 5 then
+	    FaceTarget(NPC,Spawn)
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_110eef44.mp3", "Have you been inside the castle? I want to go there someday!", "smile", 2372987392, 3554768792, Spawn)
+		end
 		end
 	end
-	end
+	
 
 function LeaveRange(NPC, Spawn)
 end

@@ -53,6 +53,7 @@ end
 
 function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5564, 1) and QuestStepIsComplete(Player, 5564, 2)  and QuestStepIsComplete(Player, 5564, 3) and  QuestStepIsComplete(Player, 5564, 4) then
+    UpdateQuestStepDescription(Quest, "I've spoken to all of the merchants only one offered a discount.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've spoken to all of the merchants only one offered a discount.")
 	AddQuestStepChat(Quest, 5, "I need to return to Innkeeper Galsway at the Fish's Alehouse and Inn.", 1, "Innkeeper Galsway is waiting for me at the inn at Qeynos Harbor.  He would be interested in my findings on the fish prices offered from the market.", 11, 2210022)
     AddQuestStepCompleteAction(Quest, 5, "QuestComplete")

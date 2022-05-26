@@ -42,7 +42,10 @@ function Dialog1(NPC, Spawn)
     if GetQuestStep(Spawn,message) ==1 then
 	Dialog.AddOption("Dawson Magnificent wanted to let you know that he and his troupe will be late this evening.", "MessageDelivered")
 	end
-    if not HasQuest(Spawn,fishy) and not HasCompletedQuest(Spawn, fishy) then
+    if GetQuestStep(Spawn,fishy) ==5 then
+	Dialog.AddOption("I asked the fish mongers around the market for their best price.  Only Umli was willing to wiggle some on the price as long as word doesn't get out on his deal.", "FishDelivered")
+	end
+	if not HasQuest(Spawn,fishy) and not HasCompletedQuest(Spawn, fishy) then
 	Dialog.AddOption("I am actually looking around for work.  Have anything I can do to help?", "Dialog3")
 	end
 	Dialog.AddOption("Great.  I plan to enjoy myself.")
@@ -55,7 +58,7 @@ function Dialog3(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Looking for work, eh?  Well, alright.  Let's see what you can do.  Go to the fisherman's market and find me the best price on three baskets of fresh fish.  Here, let me write down the merchant's names for you.  Let's just call this a test of your abiities!")
 	Dialog.AddVoiceover("voiceover/english/innkeeper_galsway/qey_harbor/qst_innkeepergalsway000.mp3", 2510257560, 588326201)
-	Dialog.AddOption("Alright.  I'll ask around the harbor for you.", "QuestStart")
+	Dialog.AddOption("Alright.  I'll ask around the harbor market for you.", "QuestStart")
 	Dialog.AddOption("Not sure what I expected coming from a place called 'Fish's Alehouse and Inn', but I'm not interested in this sorty of fishy business.")
 	Dialog.Start()
 end
@@ -65,14 +68,21 @@ function QuestStart(NPC, Spawn)
     OfferQuest(NPC,Spawn,fishy)
     end
 
-function Dialog4(NPC, Spawn)
+function FishDelivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Thank you!")
-	Dialog.AddOption("You're welcome.")
+	PlayFlavor(NPC,"","","smile",0,0,Spawn)
+    Dialog.AddDialog("Well done!  That's the kind of entrepreneurial spirit and clever deal making that rebuilt this city.  I'll have proper work with proper pay sometime in the future.  For now, you have my gratitude.")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_galsway/qey_harbor/qst_innkeepergalsway002.mp3", 2911692262, 1585415232)
+	Dialog.AddOption("Glad to have been of assistance.", "FishyFinished")
 	Dialog.Start()
 end
 
+function FishyFinished(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    SetStepComplete(Spawn,fishy, 5)
+    end
+    
 function MessageDelivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)

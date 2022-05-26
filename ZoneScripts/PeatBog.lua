@@ -16,6 +16,7 @@ function init_zone_script(Zone)
 	SetLocationProximityFunction(Zone, 797.389, -32.9127, 580.472, 30, "InRange3")
 	SetLocationProximityFunction(Zone, 757.73, -32.70, 489.06, 9, "SunWolfSpawn")
 	SetLocationProximityFunction(Zone, 772.80, -33.68, 489.37, 30, "SpawnDentfang")
+	PlagueBringers(Zone)
 end
 
 function InRange1(Zone, Spawn)
@@ -100,3 +101,6 @@ function SpawnDentfang(Zone, Spawn)
 		end
 	end
 end
+
+--function 	PlagueBringers(Zone,Spawn)
+    
