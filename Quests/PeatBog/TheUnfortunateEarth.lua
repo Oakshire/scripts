@@ -12,7 +12,7 @@
 --]]
 
 local UNFORTUNATE_EARTH_QUEST_ID = 518
-local BOG_MUD_ID = 1980110
+local BOG_MUD_ID = 4457
 local BOG_SLUG_ID = 1980018
 local BOG_SLUDGE_ID = 1980002
 local BOTANIST_LITH_ID = 1980001
@@ -27,6 +27,15 @@ function Init(Quest)
 	
 	AddQuestStepKill(Quest, 3, "I need to collect the stomach contents of bog sludges.", 4, 75, "I need to collect the stomach contents of some of the creatures within the Peat Bog along with some mud samples.", 170, BOG_SLUDGE_ID)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+end
+
+
+function Accepted(Quest, QuestGiver, Player)
+	FaceTarget(NPC, Spawn)
+	local conversation = CreateConversation()
+    PlayFlavor(NPC,"voiceover/english/tutorial_revamp/botanist_lith/qey_adv04_bog/quests/nareh/nareh004a.mp3","","nod",599099993, 3790757088,Spawn)
+	AddConversationOption(conversation, "Ok.")
+	StartConversation(conversation, NPC, Spawn, "Try not to smash them up too much, please.")
 end
 
 function CheckProgress(Quest, QuestGiver, Player)

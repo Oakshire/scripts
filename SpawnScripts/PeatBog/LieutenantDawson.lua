@@ -14,6 +14,7 @@ local QUEST_3 = 509
 local QUEST_4 = 510
 local QUEST_5 = 511
 local QUEST_6 = 512
+local Earth = 518
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
@@ -31,11 +32,21 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+ if GetFactionAmount(Spawn,11) <0 then
+    choice = math.random(1,2)
+	    if choice == 1 then
+		PlayFlavor(NPC, "", "", "shakefist", 2088886924, 3736631596, Spawn)
+	    elseif choice == 2 then
+		PlayFlavor(NPC, "", "", "glare", 1584866727, 581589457, Spawn)
+        end
+    else
 	
 	if HasQuest(Spawn, QUEST_FROM_JOHFRIT) then
 		SetStepComplete(Spawn, QUEST_FROM_JOHFRIT, 1)
 	end
-
+	if GetQuestStep(Spawn,Earth)==5 then
+        EarthTurnin(NPC,Spawn, conversation)
+    else
 	if HasCompletedQuest(Spawn, QUEST_1) then
 		if HasCompletedQuest(Spawn, QUEST_2) then
 			if HasCompletedQuest(Spawn, QUEST_3) then
@@ -73,10 +84,37 @@ function hailed(NPC, Spawn)
 	else
 		if GetLevel(Spawn) < MIN_LEVEL then
 			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lieutenant_dawson/qey_adv04_bog/qst_dawson_toolow_bd47ca5c.mp3", "Return to me when you're a bit more experienced, I think I could use your help.", "", 664604870, 1946809996, Spawn)
-		else
+        else
 			DoYouHaveAQuestion(NPC, Spawn, conversation)
 		end
-	end
+end
+end
+end
+end
+
+function EarthTurnin(NPC, Spawn, conversation)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lieutenant_dawson/qey_adv04_bog/quests/dawson/dawson_nareh000.mp3", "", "", 1085611278, 2612100192, Spawn)
+	AddConversationOption(conversation, "Nareh Lith has found minerals in the soil here in the Peat Bog that he believes originated from The Caves.", "Dialog2")
+	StartConversation(conversation, NPC, Spawn, "Yes?")
+end
+
+function Dialog2(NPC, Spawn, conversation)
+	FaceTarget(NPC, Spawn)
+	SetStepComplete(Spawn, Earth, 5)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lieutenant_dawson/qey_adv04_bog/quests/dawson/dawson_nareh001.mp3", "", "nod", 1785452386, 1737246304, Spawn)
+	AddConversationOption(conversation, "What else has been going on around here?", "Dialog3")
+	StartConversation(conversation, NPC, Spawn, "Hmm, really? That alone isn't huge news, or especially concerning, but considering everything else that has been going on around here it may mean something in the grand scheme of things.")
+end
+
+function Dialog3(NPC, Spawn, conversation)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lieutenant_dawson/qey_adv04_bog/quests/dawson/dawson_nareh002.mp3", "", "shrug", 2033137558, 2216899075, Spawn)
+	AddConversationOption(conversation, "What can I do to help?", "dlg_0_3")
+	StartConversation(conversation, NPC, Spawn, "I wish I knew. The ecological changes don't have anyone in Qeynos concerned, but it worries me. I am worried at what has caused this drastic change. Beyond that, I am wondering who this drastic change may interest and attract.")
 end
 
 -----------------------------------------------------------------------------------------------------------------------------------
@@ -84,6 +122,7 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------
 
 function DoYouHaveAQuestion(NPC, Spawn, conversation)
+	conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lieutenant_dawson/qey_adv04_bog/quests/dawson/dawson000.mp3", "", "", 2113696179, 3288237924, Spawn)
 	AddConversationOption(conversation, "What is your mind occupied with?", "dlg_0_1")
 	StartConversation(conversation, NPC, Spawn, "Do you have a question? Please be brief, my mind is occupied at the moment.")

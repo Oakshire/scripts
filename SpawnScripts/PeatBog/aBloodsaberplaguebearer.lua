@@ -8,6 +8,8 @@
 
 function spawn(NPC)
 waypoints(NPC)
+SpawnCheck(NPC, Spawn)
+Appearance(NPC,Spawn)
 end
 
 function hailed(NPC, Spawn)
@@ -64,7 +66,66 @@ function Action2(NPC,Spawn)
     AddTimer(NPC,2300,"Action3",1)
     end	    
     
-function Action3(NPC)
+function Action3(NPC,Spawn)
+    PlayFlavor(NPC,"","","result_poison_cloud_aoe",0,0)
+    SpawnSet(NPC,"visual_state",0)
+    AddTimer(NPC,2300,"Action4")
+    AddTimer(NPC,2200,"despawn",1,Spawn)
+    end	     
+    
+function Action4(NPC)
     Despawn(NPC)
 end
     
+function SpawnCheck(NPC, Spawn)
+    if GetSpawnLocationID(NPC) == 133773314 then
+    AddTimer(NPC,60000,"spawn2")
+    AddTimer(NPC,120000,"spawn3")
+    end
+end
+
+function spawn2(NPC,Spawn)
+ zone = GetZone(NPC)
+    SpawnByLocationID(zone,133773315)
+end
+
+function spawn3(NPC,Spawn)
+    zone = GetZone(NPC)
+    SpawnByLocationID(zone,133773316)
+end
+
+function Appearance(NPC,Spawn)
+    local choice = math.random (1,2)
+        if choice == 1 then
+        SpawnSet(NPC,"gender",2)
+        SpawnSet(NPC,"model_type",105)
+        else
+        end
+    end
+    
+ function aggro(NPC,Spawn)   
+        if GetGender(NPC)==1 then
+ 	local choice = MakeRandomInt(1,2)
+ 	    if choice == 1 then
+      PlayFlavor(NPC,"voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_gm_ee1e1a8.mp3","Attack!","",3180104139, 2926558993)
+        else
+      PlayFlavor(NPC,"voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_cm_bbd7a8ed.mp3","Too many shiney things!  Can't concentrate!","",445162395, 3277644756)
+      end  
+    else
+    PlayFlavor(NPC,"voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_aggro_gf_b7e0b3a.mp3","Me's gonna eat kidney first!","",750980753, 3740010516)
+    end
+end    
+    
+function death(NPC,Spawn)
+    if GetGender(NPC)==1 then
+	local choice = MakeRandomInt(1,2)
+
+	    if choice == 1 then
+	    PlayFlavor(NPC,"voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_death_gm_e1755f3f.mp3","Come at me coward.  I'm not dead yet!...","result_poison_cloud_aoe",86111608, 3954832486)
+        elseif choice == 2 then
+    	PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_death_gm_e8c02d1e.mp3", "Feel kinda sleepy. Whacha do to me?", "result_poison_cloud_aoe", 3298938103, 1410551282, Spawn, 0)
+        end
+    else
+    PlayFlavor(NPC,"voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_death_gf_e8c02d1e.mp3","Feel kinda sleepy.  What'chyou do ta me?!","result_poison_cloud_aoe",3447489483, 4136415601)
+    end
+end
