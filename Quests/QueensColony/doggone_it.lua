@@ -113,5 +113,7 @@ function Reload(Quest, QuestGiver, Player, Step)
 		step5_complete_killedMoraks(Quest, QuestGiver, Player)
 	elseif Step == 6 then
 		step6_complete_talkedToScout(Quest, QuestGiver, Player)
-	end
+	elseif Step == 7 then
+		quest_complete(Quest, QuestGiver, Player)
+		end
 end

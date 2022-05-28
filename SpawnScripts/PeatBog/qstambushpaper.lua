@@ -1,0 +1,19 @@
+--[[
+    Script Name    : SpawnScripts/PeatBog/qstambushpaper.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.05.27 08:05:29
+    Script Purpose : 
+                   : 
+--]]
+local AMBUSHED_QUEST_ID = 509
+
+function spawn(NPC)
+SetRequiredQuest(NPC, AMBUSHED_QUEST_ID, 3, 1,0,0)
+end
+
+function hailed(NPC, Spawn)
+end
+
+function respawn(NPC)
+	spawn(NPC)
+end

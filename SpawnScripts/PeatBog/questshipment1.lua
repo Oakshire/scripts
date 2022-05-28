@@ -12,7 +12,13 @@ local A_GNOLL_GUARD_ID = 1980064
 local A_MACHINIST_ASSISTANT_ID = 1980066
 
 function spawn(NPC)
-
+if GetSpawnLocationID(NPC)== 456189 then    
+SetRequiredQuest(NPC, ON_THE_MOVE_QUEST_ID, 1, 1,0,0)
+elseif GetSpawnLocationID(NPC)== 456191 then
+SetRequiredQuest(NPC, ON_THE_MOVE_QUEST_ID, 2, 1,0,0)
+elseif GetSpawnLocationID(NPC)== 1587455 then
+SetRequiredQuest(NPC, ON_THE_MOVE_QUEST_ID, 3, 1,0,0)
+end
 end
 
 function hailed(NPC, Spawn)

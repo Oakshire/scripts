@@ -10,6 +10,7 @@ local MYSTERIOUS_MACHINE_QUEST_ID = 508
 local A_GNOLL_MACHINIST_ID = 1980062
 
 function spawn(NPC)
+SetRequiredQuest(NPC, MYSTERIOUS_MACHINE_QUEST_ID, 1, 1,0,0)
 
 end
 
