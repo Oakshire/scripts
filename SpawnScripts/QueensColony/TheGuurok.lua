@@ -8,19 +8,18 @@
 
 
 function spawn(NPC)
-SetTempVariable(NPC, "Feeded", 0) 
-SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")		
+    SetTempVariable(NPC, "FeedCounter", "0")
+    SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")		
 end
 
 function InRange(NPC,Spawn)
-   SendMessage(Spawn, "The Guurok hisses loudly, almost like it can sense you.", "white")
-end
-
-function hailed(NPC, Spawn)
+    if HasItem(Spawn, 10399, 0) then
+        SendMessage(Spawn, "The Guurok hisses loudly, almost like it can sense you.", "white")
+    end
 end
 
 function respawn(NPC)
-         spawn(NPC)
+    spawn(NPC)
 end
 
 

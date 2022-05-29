@@ -102,7 +102,10 @@ function step5_complete_foundParchment(Quest, QuestGiver, Player)
 	--spawn "a piece of parchment harvestable"
 	--only let Player see it
 	--set harvestable to "Parchment Scrap" the one that looks like it was unrolled.
-	SpawnMob(GetZone(Player), 2530194, true, 92.6042, 1.6355, 123.73, 290)
+	    local zone = GetZone(Player)
+		local Direspike = GetSpawnByLocationID(zone, 133770663, false)
+        SpawnByLocationID(zone, 133770663,false)
+	--SpawnMob(GetZone(Player), 2530194, true, 92.6042, 1.6355, 123.73, 290) OLD SPAWN METHOD DID NOT ALLOW LOOT DROP
 	AddQuestStepObtainItem(Quest, 6,  "Now I need to gather the parchment pieces from the spider's nest. Hopefully they are from the parchment I'm trying to put together!", 1, 100,  "There is more to be learned in the Tainted Forest.", 75,  10315)
 	AddQuestStepCompleteAction(Quest, 6, "step6_complete_harvestedParchment")
 end

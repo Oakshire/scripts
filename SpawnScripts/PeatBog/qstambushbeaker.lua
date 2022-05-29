@@ -8,7 +8,7 @@
 local AMBUSHED_QUEST_ID = 509
 
 function spawn(NPC)
-SetRequiredQuest(NPC, AMBUSHED_QUEST_ID, 0, 1,0,1)
+SetRequiredQuest(NPC, AMBUSHED_QUEST_ID, 1, 1,0,1)
 end
 
 function hailed(NPC, Spawn)

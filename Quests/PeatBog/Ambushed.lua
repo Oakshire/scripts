@@ -30,7 +30,7 @@ function CheckProgress(Quest, QuestGiver, Player)
 	if QuestStepIsComplete(Player, AMBUSHED_QUEST_ID, 1) and QuestStepIsComplete(Player, AMBUSHED_QUEST_ID, 2) and QuestStepIsComplete(Player, AMBUSHED_QUEST_ID, 3) then
 		UpdateQuestTaskGroupDescription(Quest, 1, "I have investigated all three ambush sites.")
 		
-		AddQuestStepChat(Quest, 4, "I need to return to Lieutenant Dawson.", 1, "I need to tell Lieutenant Dawson of what I found at one of the ambush sites.", 11, ENTITY_COMMAND_INSPECT)
+		AddQuestStepChat(Quest, 4, "I need to return to Lieutenant Dawson.", 1, "I need to tell Lieutenant Dawson of what I found at one of the ambush sites.", 11, LIEUTENANT_DAWSON_ID)
 		AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 	end
 end
@@ -42,7 +42,10 @@ end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have investigated the ambush site in the area east of Two Logs Pond.")
-	CheckProgress(Quest, QuestGiver, Player)
+    if not HasItem(Player,1820 )then
+    GiveQuestItem(Quest, Player,"You found a severed gnoll paw amongst the equipment on the ground.",1820)				
+    end
+    CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step3Complete(Quest, QuestGiver, Player)

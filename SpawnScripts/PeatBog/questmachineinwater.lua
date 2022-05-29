@@ -10,7 +10,7 @@ local MYSTERIOUS_MACHINE_QUEST_ID = 508
 local A_GNOLL_MACHINIST_ID = 1980062
 
 function spawn(NPC)
-SetRequiredQuest(NPC, MYSTERIOUS_MACHINE_QUEST_ID, 1, 1,0,0)
+SetRequiredQuest(NPC, MYSTERIOUS_MACHINE_QUEST_ID, 1, 1,0,1)
 
 end
 
@@ -27,7 +27,7 @@ function casted_on(NPC, Spawn, Message)
 		if GetQuestStep(Spawn, MYSTERIOUS_MACHINE_QUEST_ID) == 1 then
 			if Message == "inspect" then
 				SetStepComplete(Spawn, MYSTERIOUS_MACHINE_QUEST_ID, 1)
-				local new_spawn = SpawnMob(GetZone(Spawn), A_GNOLL_MACHINIST_ID, false, GetX(Spawn), GetY(Spawn), GetZ(Spawn), 0)
+				local new_spawn = SpawnMob(GetZone(Spawn), A_GNOLL_MACHINIST_ID, false,GetX(NPC) + 2.5, GetY(NPC), GetZ(NPC) + 2.5, 0)
 				
 				AddHate(Spawn, NPC, 100)
 			end

@@ -64,7 +64,10 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 5, "Went to the Deadend Niche.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I found the Deadend Niche outside of the Lone Stump Ring in the Peat Bog.")
-
+        local zone = GetZone(Player)
+		local Dog = GetSpawnByLocationID(zone, 133773176, false)
+        local SpawnDog = SpawnByLocationID(zone, 133773176,false)
+        AddHate(Player, SpawnDog, 100)    
 	UpdateQuestDescription(Quest, "I followed the path of the mythical Sun Wolf in the Peat Bog. At the end of my search the beast appeared, giving me an opportunity to face the creature in combat and emerge victorious.")
 	GiveQuestReward(Quest, Player)
 end

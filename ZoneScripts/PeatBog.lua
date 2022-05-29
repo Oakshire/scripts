@@ -6,22 +6,21 @@
 	Script Notes	: 
 --]]
 
-local QUEST_4 = 218
-local QUEST_5 = 219
+local QUEST_4 = 510
+local QUEST_5 = 511
 local SunDog = 5559
 
 function init_zone_script(Zone)
-	SetLocationProximityFunction(Zone, 688.815, -34.2423, 600.400, 30, "InRange1")
-	SetLocationProximityFunction(Zone, 753.824, -32.7236, 604.844, 30, "InRange2")
-	SetLocationProximityFunction(Zone, 797.389, -32.9127, 580.472, 30, "InRange3")
-	SetLocationProximityFunction(Zone, 757.73, -32.70, 489.06, 9, "SunWolfSpawn")
-	SetLocationProximityFunction(Zone, 772.80, -33.68, 489.37, 30, "SpawnDentfang")
+--	SetLocationProximityFunction(Zone, 688.815, -34.2423, 600.400, 30, "InRange1")  DISABLED SINCE OBJECT ACTION REPLACED THE NEED FOR THESE.
+--	SetLocationProximityFunction(Zone, 753.824, -32.7236, 604.844, 30, "InRange2")
+--	SetLocationProximityFunction(Zone, 797.389, -32.9127, 580.472, 30, "InRange3")
+	SetLocationProximityFunction(Zone, 772.80, -33.68, 489.37, 17, "SpawnDentfang")
 --	PlagueBringers(Zone,Spawn)
 end
 
 function InRange1(Zone, Spawn)
 	if HasQuest(Spawn, QUEST_4) and not QuestStepIsComplete(Spawn, QUEST_4, 1) then
-		local Box = SpawnMob(Zone, 1980131, false, 688.815, -34.2423, 600.400)
+		local Box = SpawnMob(Zone, 1980091, false, 688.815, -34.2423, 600.400)
 		SpawnGnolls(Zone, Spawn)
 		Despawn(Box, 120000)
 	end
@@ -29,7 +28,7 @@ end
 
 function InRange2(Zone, Spawn)
 	if HasQuest(Spawn, QUEST_4) and not QuestStepIsComplete(Spawn, QUEST_4, 2) then
-		local Box = SpawnMob(Zone, 1980131, false, 753.824, -32.7236, 604.844)
+		local Box = SpawnMob(Zone, 1980091, false, 753.824, -32.7236, 604.844)
 		SpawnGnolls(Zone, Spawn)
 		Despawn(Box, 120000)
 	end
@@ -37,38 +36,27 @@ end
 
 function InRange3(Zone, Spawn)
 	if HasQuest(Spawn, QUEST_4) and not QuestStepIsComplete(Spawn, QUEST_4, 3) then
-		local Box = SpawnMob(Zone, 1980131, false, 797.389, -32.9127, 580.472)
+		local Box = SpawnMob(Zone, 1980091, false, 797.389, -32.9127, 580.472)
 		SpawnGnolls(Zone, Spawn)
 		Despawn(Box, 120000)
 	end
 end
 
 
-function SunWolfSpawn(Zone, Spawn)
-	if HasQuest(Spawn, SunDog) and GetQuestStep(Spawn, SunDog) == 5  then
-		local Dog = GetSpawn(Zone, 1980115)
-       if Dog == nil then 
-        SpawnByLocationID(Zone, 133773176)
-  	    Attack(Dog,Spawn)
-        end      
-    end
-end
-
 function GetRandomGnollID()
-	-- a gnoll guard: 1980111, 1980118
-	-- a gnoll machinist: 1980112
-	-- a machinist assistant: 1980113, 1980120
-	choice = math.random(1, 5)
+	-- a gnoll guard: 1980064
+	-- a gnoll machinist: 1980065, 1980062
+	-- a machinist assistant: 1980066
+	choice = math.random(1, 4)
 	if choice == 1 then
-		return 1980111
+		return 1980064
 	elseif choice == 2 then
-		return 1980118
+		return 1980065
 	elseif choice == 3 then
-		return 1980112
+		return 1980062
 	elseif choice == 4 then
-		return 1980113
-	elseif choice == 5 then
-		return 1980120
+		return 1980066
+
 	end
 end
 
@@ -83,26 +71,27 @@ end
 
 function SpawnDentfang(Zone, Spawn)
 	if HasQuest(Spawn, QUEST_5) and GetQuestStep(Spawn, QUEST_5) == 1 then
-		-- Overseer Dentfang: 1980127
-		-- a gnoll conspirator: 1980126
-		-- a gnoll conspirator: 1980124
-		-- a gnoll conspirator: 1980125
-		if GetSpawn(Spawn, 1980127) == nil then
-			SpawnMob(Zone, 1980127, false, 785.003, -33.8173, 486.281, 339.984)
+		-- Overseer Dentfang: 1980127   --1980070 actual
+		-- a gnoll conspirator: 1980126 --1980068 actual
+		-- a gnoll conspirator: 1980124 --1980067 actual
+		-- a gnoll conspirator: 1980125 --1980069 actual
+		if SpawnByLocationID(Zone, 329637) == nil then
+		        SpawnByLocationID(Zone,329637)
+		--	SpawnMob(Zone, 1980070, false, 785.003, -33.8173, 486.281, 339.984)
 		end
-		if GetSpawn(Spawn, 1980126) == nil then
-			SpawnMob(Zone, 1980126, false, 786.260, -33.7061, 482.401, 160)
+		if SpawnByLocationID(Zone, 329633) == nil then
+			--SpawnMob(Zone, 1980068, false, 786.260, -33.7061, 482.401, 160)
+			SpawnByLocationID(Zone,329633)
 		end
-		if GetSpawn(Spawn, 1980124) == nil then
-			SpawnMob(Zone, 1980124, false, 782.728, -33.6797, 483.157, 219.984)
+		if GetSpawnLocationID(Zone, 329632) == nil then
+		--	SpawnMob(Zone, 1980067, false, 782.728, -33.6797, 483.157, 219.984)
+			SpawnByLocationID(Zone,329632)
 		end
-		if GetSpawn(Spawn, 1980125) == nil then
-			SpawnMob(Zone, 1980125, false, 789.354, -33.5120, 484.623, 110.016)
+		if GetSpawnLocationID(Zone, 329636) == nil then
+		--	SpawnMob(Zone, 1980069, false, 789.354, -33.5120, 484.623, 110.016)
+			SpawnByLocationID(Zone,329636)
 		end
 	end
 end
-
-function PlagueBringers(Zone,Spawn)
-    SpawnByLocationID(Zone,133773314)
-    end   
+ 
     

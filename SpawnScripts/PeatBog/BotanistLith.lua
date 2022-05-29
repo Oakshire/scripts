@@ -13,11 +13,27 @@ local Earth = 518
 
 function spawn(NPC)
 ProvidesQuest(NPC,Earth)
+waypoints(NPC)
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 585.41, -32.69, 451.28, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 591.6, -32.89, 450.66, 2, 0)
+	MovementLoopAddLocation(NPC, 596.91, -32.9, 451.12, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 601.87, -33.14, 458.38, 2, 0)
+	MovementLoopAddLocation(NPC, 601.2, -33.16, 458.64, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 597.68, -33.28, 465.53, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 589.82, -33.3, 461.79, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 596.72, -33.25, 456.47, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 588.61, -33.35, 455.78, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 588.92, -33.33, 455.19, 2, math.random(6,10))
+	MovementLoopAddLocation(NPC, 584.94, -32.68, 452.84, 2, 0)
+end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

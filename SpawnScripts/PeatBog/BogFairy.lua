@@ -7,7 +7,7 @@
 --]]
 
  function aggro(NPC,Spawn)   
-if math.random(1,100)<45 then
+if math.random(1,100)<60 then
         if not HasLanguage(Spawn,23 )then
         Garbled(NPC,Spawn)
     else
@@ -36,23 +36,25 @@ function Garbled(NPC,Spawn)
     end 
  end 
   
-function halfhealth(NPC,Spawn)  
-if math.random(1,100)<45  then
-        if not HasLanguage(Spawn,23 )then
+function healthchanged(NPC, Spawn)  
+    if GetHP(NPC) < GetMaxHP(NPC) * 0.55 then
+     if GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
+    if not HasLanguage(Spawn,23 )then
         Garbled(NPC,Spawn)
     else    
- 	local choice = MakeRandomInt(1,3)
+ 	local choice = MakeRandomInt(1,2)
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/fairy_darkflight/ft/fairy/fairy_darkflight_1_halfhealth_9cf4a8d0.mp3", "Ouch! Not in the wing!", "", 1202960009, 480268964, Spawn, 23)
 	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/optional3/fairy_darkflight/ft/fairy/fairy_darkflight_1_halfhealth_270ee5ed.mp3", "Great. I just had that wing mended!", "", 2029868249, 730589290, Spawn, 23)
-	elseif choice== 3 then
-	    
 	end
+    end
+    end
 end
 end
-end
-  
+
+
+
 function death(NPC,Spawn)
  if math.random(1,100)<60  then
          if not HasLanguage(Spawn,23 )then
@@ -70,9 +72,3 @@ function death(NPC,Spawn)
     end
 end
 end
-
---[[function victory(NPC,Spawn)
-        if  HasLanguage(Spawn,23 )then
- --   		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_victory_e4520926.mp3", "Packmate not happy with scrawny catch.", "", 1321865956, 173648139, Spawn, 18)
-    end
-end]]--

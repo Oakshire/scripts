@@ -115,7 +115,29 @@ function Appearance(NPC,Spawn)
     PlayFlavor(NPC,"voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_aggro_gf_b7e0b3a.mp3","Me's gonna eat kidney first!","",750980753, 3740010516)
     end
 end    
-    
+
+function healthchanged(NPC, Spawn)
+    if GetHP(NPC) < GetMaxHP(NPC) * 0.55 then
+     if GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
+   if GetGender(NPC)==1 then
+	local choice = MakeRandomInt(1,2)
+	    if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_halfhealth_gm_f462f6ff.mp3", "Is this supposed to hurt?", "", 4202180867, 1393988988, Spawn, 0)
+        elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_halfhealth_gm_aa145f4d.mp3", "Neat, that'll leave a pretty scar", "", 675684950, 4088135432, Spawn, 0)
+        end
+    else
+	local choice = MakeRandomInt(1,2)
+	    if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_halfhealth_gf_aa145f4d.mp3", "Neat, that'll leave a pretty scar", "", 70455099, 2953679351, Spawn, 0)
+        elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_halfhealth_gf_f462f6ff.mp3", "Is this supposed to hurt?", "", 216769747, 692696120, Spawn, 0)
+        end
+    end
+    end
+end
+end    
+
 function death(NPC,Spawn)
     if GetGender(NPC)==1 then
 	local choice = MakeRandomInt(1,2)

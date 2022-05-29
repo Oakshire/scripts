@@ -32,7 +32,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
- if GetFactionAmount(Spawn,11) <0 then
+    if GetFactionAmount(Spawn,11) <0 then
     choice = math.random(1,2)
 	    if choice == 1 then
 		PlayFlavor(NPC, "", "", "shakefist", 2088886924, 3736631596, Spawn)
@@ -40,7 +40,6 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "", "", "glare", 1584866727, 581589457, Spawn)
         end
     else
-	
 	if HasQuest(Spawn, QUEST_FROM_JOHFRIT) then
 		SetStepComplete(Spawn, QUEST_FROM_JOHFRIT, 1)
 	end
@@ -285,7 +284,9 @@ function dlg_12_1(NPC, Spawn)
 	
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+    if HasItem(Spawn,1820) then
+        RemoveItem(Spawn,1820)
+    end
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lieutenant_dawson/qey_adv04_bog/quests/dawson/dawson013.mp3", "", "", 459920710, 2550974214, Spawn)
 	AddConversationOption(conversation, "Yes, I can help.", "dlg_12_2")
 	AddConversationOption(conversation, "Not right now.")

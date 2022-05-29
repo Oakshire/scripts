@@ -30,6 +30,7 @@ function respawn(NPC)
 end
 
 function casted_on(NPC, Spawn, Message)
+    PlayFlavor(NPC,"","","big_explosion",0,0,Spawn)
 	if HasQuest(Spawn, ON_THE_MOVE_QUEST_ID) then
 		if GetQuestStep(Spawn, ON_THE_MOVE_QUEST_ID) == 1 then
 			if Message == "inspect" then
