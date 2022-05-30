@@ -11,6 +11,7 @@
 --]]
 
 function Init(Quest)
+    ClassCheckReward(Quest,Player)
 	AddQuestStepChat(Quest, 1, "Seek Sorcerer Oofala. His camp is set up north past Dead Canyon and then east down the wall of the Abandoned Village.", 1, "Head into and around the Abandoned Village in search of Sorcerer Oofala, protector of the scout camp set up there.", 0, 2530026)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_talkedToSorcerer")
 end
@@ -96,6 +97,84 @@ function questComplete(Quest, QuestGiver, Player)
 	GiveQuestReward(Quest, Player)
 end
 
+function ClassCheckReward(Quest,Player)
+local FIGHTER = 1
+local WARRIOR =2
+local GUARDIAN= 3 
+local BERSERKER = 4 
+local BRAWLER = 5 
+local MONK = 6 
+local BRUISER= 7 
+local CRUSADER = 8 
+local SHADOWKNIGHT = 9 
+local PALADIN = 10 
+
+local PRIEST = 11 
+local CLERIC = 12 
+local TEMPLAR = 13 
+local INQUISITOR = 14 
+local DRUID = 15 
+local WARDEN = 16 
+local FURY = 17 
+local SHAMAN = 18 
+local MYSTIC = 19 
+local DEFILER = 20 
+
+local MAGE = 21 
+local SORCERER = 22 
+local WIZARD = 23 
+local WARLOCK = 24 
+local ENCHANTER = 25 
+local ILLUSIONIST = 26 
+local COERCER = 27 
+local SUMMONER = 28 
+local CONJUROR = 29 
+local NECROMANCER = 30 
+
+local SCOUT = 31 
+local ROGUE = 32 
+local SWASHBUCKLER = 33 
+local BRIGAND = 34 
+local BARD = 35 
+local TROUBADOR = 36 
+local DIRGE = 37 
+local PREDATOR = 38 
+local RANGER = 39 
+local ASSASSIN = 40 
+local ANIMALIST = 41 
+local BEASTLORD = 42 
+local SHAPER = 43 
+local CHANNELER = 44 
+
+if GetClass(Player)==FIGHTER or GetClass(Player)==WARRIOR or GetClass(Player)==GUARDIAN or GetClass(Player)==BERSERKER then
+    AddQuestRewardItem(Quest,85495)
+elseif GetClass(Player)==BRAWLER or GetClass(Player)==MONK  or GetClass(Player)==BRUISER or GetClass(Player)==ANIMALIST or GetClass(Player)==BEASTLORD then
+    AddQuestRewardItem(Quest,85483)
+elseif GetClass(Player)==CRUSADER or (Player)==SHADOWKNIGHT  or GetClass(Player)==PALADIN then
+    AddQuestRewardItem(Quest,85485)
+elseif GetClass(Player)==PRIEST or (Player)==CLERIC  or GetClass(Player)==TEMPLAR or GetClass(Player)==INQUISITOR or GetClass(Player)==SHAPER or GetClass(Player)==CHANNELER then
+    AddQuestRewardItem(Quest,85484)    
+elseif GetClass(Player)==DRUID or GetClass(Player)==WARDEN  or GetClass(Player)==FURY then
+    AddQuestRewardItem(Quest,85486)
+elseif GetClass(Player)==SHAMAN or (Player)==MYSTIC  or GetClass(Player)==DEFILER then
+    AddQuestRewardItem(Quest,85492)
+    
+ elseif GetClass(Player)==MAGE or (Player)==SORCERER  or GetClass(Player)==WIZARD or GetClass(Player)==WARLOCK then
+    AddQuestRewardItem(Quest,85493)    
+elseif GetClass(Player)==ENCHANTER or GetClass(Player)==ILLUSIONIST  or GetClass(Player)==COERCER then
+    AddQuestRewardItem(Quest,85487)
+elseif GetClass(Player)==SUMMONER or (Player)==CONJUROR  or GetClass(Player)==NECROMANCER then
+    AddQuestRewardItem(Quest,85494)   
+    
+ elseif GetClass(Player)==SCOUT or (Player)==ROGUE  or GetClass(Player)==SWASHBUCKLER or GetClass(Player)==BRIGAND  then
+    AddQuestRewardItem(Quest,85491)    
+elseif GetClass(Player)==BARD or GetClass(Player)==TROUBADOR  or GetClass(Player)==DIRGE then
+    AddQuestRewardItem(Quest,85482)
+elseif GetClass(Player)==RANGER or (Player)==ASSASSIN  or GetClass(Player)==PREDATOR then
+    AddQuestRewardItem(Quest,85489)
+    end
+end
+    
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		step1_complete_talkedToSorcerer(Quest, QuestGiver, Player)

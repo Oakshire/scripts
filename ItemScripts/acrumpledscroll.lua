@@ -27,13 +27,16 @@ end
 
 
 function Mages(Item, Player)
+CloseItemConversation(Item,Player)
 OfferQuest(nil, Player, ACrumpledNoteMages)
 end
 
 function Warriors(Item, Player)
+CloseItemConversation(Item,Player)
 OfferQuest(nil, Player, ACrumpledNoteWarriors)
 end
 
 function Priests(Item, Player)
+CloseItemConversation(Item,Player)
 OfferQuest(nil, Player, ACrumpledNotePriests)
 end

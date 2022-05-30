@@ -1,24 +1,26 @@
 --[[
-	Script Name		:	Quests/MultipleZones/an_order_of_orc_tongue_.lua
-	Script Purpose	:	Handles the quest, "An Order of Orc Tongue", Allows to speak Orcish Language
-	Script Author	:	premierio015
-	Script Date		:	29.05.2021
-	Script Notes	:	Newer version of quest.
+    Script Name    : Quests/MultipleZones/claiming_the_goblish_tongue.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.05.29 02:05:36
+    Script Purpose : 
+	Script Notes	:	CLASSIC Version of quest.  Gives Studied version of item that actually counts for update.
 
-	Zone			:	Multiple Zones
-	Quest Giver		:	Orc Smuggler Requisition(10202)
+	Zone			:	Language
+	Quest Giver		:	
 	Preceded by		:	None
 	Followed by		:	None
 --]]
 
 
 function Init(Quest)
-	AddQuestStep(Quest, 1, "Hunt orcs for smuggler requisitions to study.", 5, 100, "I must collect and study more smuggler requisitions from the orcs of Norrath to learn the orc language.", 75)
+	AddQuestStepObtainItem(Quest, 1, "Hunt orcs for smuggler requisitions to study.", 5, 100, "I must collect and study more smuggler requisitions from the orcs of Norrath to learn the orc language.",75, 13529)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+		if HasItem(Player, 10202) then
+			RemoveItem(Player, 10202,1)
+		end
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -34,9 +36,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have studied a smuggler requisition.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have learned Orcish, language of the orc race.")
 
-	UpdateQuestDescription(Quest, "I have studied a great amount of orc smuggler requisitions written in both Norrathian and orc. I now understand the language, Orcish. <br> <br>")
+if not HasLanguage(Player,17) then
+	AddLanguage(Player, 17)
+	SendMessage(Player, "You have learned the basics of the Orcish language.", "White")
+end
+
+	UpdateQuestDescription(Quest, "I have studied a great amount of orc smuggler requisitions written in both Norrathian and orc. I now understand the language, Orcish.")
 	GiveQuestReward(Quest, Player)
-	AddLanguage(Player, 17) -- GRANTS PLAYER ABILITY TO SPEAK ORCISH LANGUAGE
 end
 
 function Reload(Quest, QuestGiver, Player, Step)
@@ -44,3 +50,5 @@ function Reload(Quest, QuestGiver, Player, Step)
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end
+
+
