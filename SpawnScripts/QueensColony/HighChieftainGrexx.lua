@@ -85,7 +85,7 @@ function Prophecy(NPC, Spawn)
 	SetStepComplete(Spawn, TheSourceOfEvil, 8)
 	FaceTarget(NPC, Spawn)
 	
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/high_chieftain_grexx/tutorial_island02_revamp/quests/citizenship/highchieftaingrexx/highchieftaingrexx005.mp3", "", "", 4263574455, 1760884911, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/high_chieftain_grexx/tutorial_island02_revamp/quests/citizenship/highchieftaingrexx/highchieftaingrexx005.mp3", "Ahhh! Truth the Prophecy speaks. The Great Balancing is complete. Evil our hero has conquered. The sapswill shall always remember and rebuild we will in your name, " .. GetName(Spawn) .. ". Take the hero's gift.", "thanks", 4263574455, 1760884911, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Ahhh!  Truth the Prophecy speaks.  The Great Balancing is complete.  Evil our hero has conquered.  The Sapswill shall always remember and rebuild we will in your name,  ".. GetName(Spawn) .. ". Take the hero's gift.")
 	--Say(NPC, "Ahhh! Truth the Prophecy speaks. The Great Balancing is complete. Evil our hero has conquered. The sapswill shall always remember and rebuild we will in your name, " .. GetName(Spawn) .. ". Take the hero's gift.")
 end

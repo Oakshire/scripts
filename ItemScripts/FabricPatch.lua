@@ -24,7 +24,7 @@ function Study(Item,Player)
 		OfferQuest(nil, Player, LANGUAGE_QUEST)
     else
   	    CloseItemConversation(Item,Player)
-          RemoveItem(Player,7003,1) --fabric patch
+        RemoveItem(Player,7003,1) --fabric patch
         SummonItem(Player,13526)-- studied fabric patch
 	end
 end

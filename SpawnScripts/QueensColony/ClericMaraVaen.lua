@@ -225,7 +225,6 @@ end
 function OfferQuest5(NPC, Spawn)
 	OfferQuest(NPC, Spawn, TheSourceOfEvil)
 end
-
 --[[ raw_conversations
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1011.mp3", "", "", 0, 0)
 --]]

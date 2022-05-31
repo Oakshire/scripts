@@ -35,12 +35,8 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I have a studied a fay fabric patch.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have learned Fayfolk, language of the fairies.")
-
-if not HasLanguage(Player,23) then
 	AddLanguage(Player, 23)
 	SendMessage(Player, "You have learned the basics of the Fay language.", "White")
-end
-
 	UpdateQuestDescription(Quest, "I pieced together patches of fay fabric to discover the foundation of two languages, Norrathian and Fay. I have used the fabric patches to learn the language of the fairies, Fayfolk.")
 	GiveQuestReward(Quest, Player)
 end
