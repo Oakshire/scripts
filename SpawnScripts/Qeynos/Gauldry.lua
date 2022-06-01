@@ -11,6 +11,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+    ProvidesQuest(NPC,snakes)
 end
 
 function respawn(NPC)
@@ -83,6 +84,7 @@ function Dialog3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Indeed you have.  I'm pleased with your work!  Very pleased, indeed.  Take this coin as a token of my appreciation.")
+ 	Dialog.AddVoiceover("voiceover/english/merchant_gauldry/qey_south/100_mer_appraisor_gauldry_finish_b562a34d.mp3", 3870377435, 2109541208)
     PlayFlavor(NPC,"","","agree",0,0,Spawn)
 	Dialog.AddOption("Gladly.","JobDone")
 	Dialog.Start()
