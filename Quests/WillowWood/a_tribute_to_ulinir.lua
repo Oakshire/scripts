@@ -13,6 +13,7 @@
 function Init(Quest)
 	AddQuestStep(Quest, 1, "I need to place Ulinir's tribute on his grave in the northeastern edge of the Forest Ruins.", 1, 100, "Davyn has asked me to deliver Ulinir's tribute to his grave in the Forest Ruins.", 0) 
 	AddQuestStepCompleteAction(Quest, 1, "Quest_Complete")
+    UpdateQuestZone(Quest,"Forest Ruins")
 end
 
 function Accepted(Quest, QuestGiver, Player)

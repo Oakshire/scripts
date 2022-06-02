@@ -37,7 +37,7 @@ function TheOffer(Quest, QuestGiver, Player)
 
 	AddQuestStepChat(Quest, 2, "I need to return to Kualdin Swoonsong.", 1, " Kualdin Swoonsong needs to know about Bupipa's agreement.", 0, 2370015)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
-	UpdateQuestZone(Quest, "The Willow Wood")
+	UpdateQuestZone(Quest, "Willow Wood")
 end
 
 function QuestComplete(Quest, QuestGiver, Player)

@@ -22,7 +22,7 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "I am here to pick up daggers for Kruuprum.","Pickup")
     end
     if GetQuestStep(Spawn, Tongs)==1 then
-    AddConversationOption(conversation, "I am here have Baynor's tongs repaired.","Pickup")
+    AddConversationOption(conversation, "I am here have Baynor's tongs repaired.","PickupTongs")
     end
 	PlayFlavor(NPC, "voiceover/english/mender_ironmallet/qey_village03/menderironmallet000.mp3", "", "", 296833708, 2408095573, Spawn)
 	AddConversationOption(conversation, "I am sure you will get that name someday.")
@@ -38,7 +38,7 @@ function Pickup(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Wha?...Eh?... Here ya go. Here is another sack of rusted daggers. These things aren't worth reselling or refurbishing. What Kruuprum wants with this refuse is beyond this dwarf! If I were you, I would steer clear of his wares.")
 end
 
-function Pickup(NPC, Spawn)
+function PickupTong(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
     AddConversationOption(conversation, "Great. I'll make sure he gets them.","PickupTongs")

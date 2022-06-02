@@ -15,6 +15,7 @@
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to take the tongs to Mender Ironmallet.", 1, "I should take these bent tongs to Mender Ironmallet in Graystone Yard to fix.", 32, 2350012)
 	AddQuestStepCompleteAction(Quest, 1, Step1Complete)
+    UpdateQuestZone(Quest,"Graystone Yard")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -33,7 +34,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I gave the tongs to Mender Ironmallet.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I gave the tongs to Mender Ironmallet to fix.")
-
+    UpdateQuestZone(Quest,"Willow Wood")
 	AddQuestStepChat(Quest, 2, "I need to return these tongs to Baynor.", 1, "I should take these reparied tongs to Baynor in the Willow Wood", 32, 2370021)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end

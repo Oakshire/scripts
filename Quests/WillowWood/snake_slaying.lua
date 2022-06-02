@@ -14,6 +14,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1,  "I must kill some rock adders.", 8, 100,  "I need to kill eight rock adders in the Forest Ruins.", 611, 1960018)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledSnakes")
+    UpdateQuestZone(Quest,"Forest Ruins")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -30,7 +31,7 @@ end
 
 function Step1_Complete_KilledSnakes(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed some rock adders.")
-	UpdateQuestZone(Quest, "The Willow Wood")
+	UpdateQuestZone(Quest, "Willow Wood")
 
 	AddQuestStepChat(Quest, 2, "I should return to Hunter Vannil.", 1, "I need to kill eight rock adders in the Forest Ruins.", 0, 2370032)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")

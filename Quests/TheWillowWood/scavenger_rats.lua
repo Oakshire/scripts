@@ -14,6 +14,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill eight of any type of scavengers in the Peat Bog.", 8, 100, "I need to kill eight scavenger rats in the Peat Bog.", 93, 1980003, 1980017)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Peat Bog")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -36,6 +37,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I have killed all eight of the scavengers in the Bog.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I killed eight scavenger rats.")
+    UpdateQuestZone(Quest,"Willow Wood")
 	
 	AddQuestStepChat(Quest, 2, "I need to return to Salinia Brooklily.", 1, "I need to return to Salinia Brooklily in The Willow Wood.", 93, 2370043)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

@@ -17,8 +17,10 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+		if HasItem(Player, 7671) then
+			RemoveItem(Player, 7671,1)
+		end
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined
