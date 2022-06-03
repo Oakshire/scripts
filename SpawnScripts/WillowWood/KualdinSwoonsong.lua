@@ -5,6 +5,7 @@
 	Script Date	: 2022.02.13
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Delivery = 5471
 
@@ -14,19 +15,19 @@ ProvidesQuest(NPC, Delivery)
 end
 
 function InRange(NPC, Spawn) --Quest Callout
-if GetLevel (Spawn) <=5 then
-   if math.random(1, 100) <= 60 then
-     FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail1_7f060d18.mp3", "Hail fair, adventurer. Please be on your way. I've no time for chatting with commoners. I must warm up my voice. My fans await me...", "smirk", 2685665398, 3421389957, Spawn)
-    end
-elseif not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) and GetLevel(Spawn) >=6 then 
-    if math.random(1, 100) <= 60 then
-            choice = math.random(1,2)
+if GetFactionAmount(Spawn,11)<0 then
+        FactionChecking(NPC, Spawn, faction)
+else
+if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) and GetLevel(Spawn) >=6 then 
+    if math.random(1, 100) <= 70 then
+            choice = math.random(1,3)
     FaceTarget(NPC, Spawn)
     if choice ==1 then
 	PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_callout_47db249c.mp3", "Gather around people ... gather around. I'll be warming up my voice in a few minutes.", "orate", 1269733907, 434806140, Spawn)
-    else
+    elseif choice ==2 then
 	PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail2_1c41a7b8.mp3", "Hail, fair adventurer. If you can spare some time, my devotees are gathering to hear the latest masterpiece by yours truely.", "royalwave", 2123310145, 515687997, Spawn)
+    elseif choice ==3 then
+    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail1_7f060d18.mp3", "Hail fair, adventurer. Please be on your way. I've no time for chatting with commoners. I must warm up my voice. My fans await me...", "smirk", 2685665398, 3421389957, Spawn)
     end
     end
 else  
@@ -42,17 +43,18 @@ else
     end
     end
 end
-
+end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	if GetLevel (Spawn) <=5 then
-	    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail1_7f060d18.mp3", "Hail fair, adventurer. Please be on your way. I've no time for chatting with commoners. I must warm up my voice. My fans await me...", "", 2685665398, 3421389957, Spawn)
-	elseif not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
+if GetFactionAmount(Spawn,11)<0 then
+        FaceTarget(NPC, Spawn)
+        FactionChecking(NPC, Spawn, faction)
+else
+        FaceTarget(NPC, Spawn)
         conversation = CreateConversation()
 	    PlayFlavor(NPC, "voiceover/english/kualdin_swoonsong/qey_village05/100_kualdin_swoonsong_multhail2_1c41a7b8.mp3", "", "royalwave", 2123310145, 515687997, Spawn)
         if not HasQuest(Spawn, Delivery) and not HasCompletedQuest(Spawn, Delivery) then
@@ -64,6 +66,7 @@ function hailed(NPC, Spawn)
         AddConversationOption(conversation, "Not right now. Goodbye.")
         StartConversation(conversation, NPC, Spawn, "Hail to you, fair adventurer. If you want to wait around a bit my devotees will be gathering soon to hear my ... latest... masterpiece sung by yours truely.")
     end
+end
 
  function Book(NPC, Spawn)
   	FaceTarget(NPC, Spawn)   
@@ -99,6 +102,6 @@ function Reward(NPC, Spawn)
     	SetStepComplete(Spawn, Delivery, 2)
     end
 
-end
+
 
 

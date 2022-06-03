@@ -109,7 +109,7 @@ function Dialog7(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("I know not why he has done this thing and it greatly worries me.  Maybe he believes I know too much, or he detests the truths I write.  I wish to know what has caused him this distress, but I fear for my own existence if I were to come any closer to his lair.")
 	Dialog.AddVoiceover("the_sage_of_ages/draconic/sage_of_ages005.mp3", 4078633044, 89702173)
-    if not HasQuest(Spawn,Drag) and not HasCompletedQuest(Spawn,Drag)then
+    if not HasQuest(Spawn,Drag) and not HasCompletedQuest(Spawn,Drag) and GetLevel(Spawn)>=45 then
 	Dialog.AddOption("We can approach him for you.", "Dialog6")
     end
 	Dialog.AddOption("Good luck talking to him. ")

@@ -74,12 +74,12 @@ function WhatMean(NPC, Spawn)
     AddConversationOption(conversation, "I suppose I could help you with this.", "Helpping")
     AddConversationOption(conversation, "Well, people have to go somewhere. I don't have time for this.")
     StartConversation(conversation, NPC, Spawn, "Take those scavenger rats in the Peat Bog; those vermin overpower the other creatures that live there.  Normally, hawks or cats would prey on the rats, but they shy away from the ever-growing city. I know it may take time, but would you slay some rats and help restore the balance of nature?")
- 	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
+ 	PlayFlavor(NPC, "", "", "nod", 0,0 , Spawn)
 end
 
-function Helpping(NPC, Player)
+function Helpping(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, Rats)
+    OfferQuest(NPC, Spawn, Rats)
 end
 
 

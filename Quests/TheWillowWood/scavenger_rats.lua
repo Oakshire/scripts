@@ -21,7 +21,7 @@ function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(NPC, Player)
     conversation = CreateConversation()
     AddConversationOption(conversation, "Farewell Salinia.")
-    StartConversation(conversation, NPC, Player, "Thank you for assisting us. If you slay only a few rats it will make a difference. Good luck on your hunt, adventurer")
+    StartConversation(conversation, QuestGiver, Player, "Thank you for assisting us. If you slay only a few rats it will make a difference. Good luck on your hunt, adventurer")
  	PlayFlavor(NPC, "", "", "thank", 0,0 , Player)
 end
 
