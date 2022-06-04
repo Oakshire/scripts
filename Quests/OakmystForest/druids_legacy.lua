@@ -15,7 +15,9 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-
+		if HasItem(Player, 3776) then
+			RemoveItem(Player, 3776)
+		end
 end
 
 function Declined(Quest, QuestGiver, Player)

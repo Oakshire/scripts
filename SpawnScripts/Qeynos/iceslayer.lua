@@ -7,17 +7,24 @@
 	Modified by     :   premierio015
 	Modified Date   :   26/09/2021 1:34 PM
 	Modified Notes  :   fixed dialogues for quest "Barbaric Chores".
+    Modified Datex2 :	Added Varsoon quest dialog and faction check. - Dorbin 2022.06.03
 --]]
+dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local BarbaricChores = 5363
+local Varsoon = 5581
 
 function spawn(NPC)
 	waypoints(NPC)
 	ProvidesQuest(NPC, BarbaricChores)
+	ProvidesQuest(NPC, Varsoon)
 end
 
 
 function hailed(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else    
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	local choice = MakeRandomInt(1, 3)
@@ -41,7 +48,10 @@ end
 function dlg_2_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	AddConversationOption(conversation, "What is so scary about the Tomb of Varsoon?", "dlg_2_2")
+	if HasCompletedQuest(Spawn,Varsoon) then
+	AddConversationOption(conversation, "I've actually been there.  The crypt has burst open!", "dlg_2_4")
+    end
+    AddConversationOption(conversation, "What is so scary about the Tomb of Varsoon?", "dlg_2_2")
 	AddConversationOption(conversation, "Sounds like a place I don't want to go to myself.  ")
 	StartConversation(conversation, NPC, Spawn, "Warley went to the Tomb of Varsoon to prove he wasn't afraid of walking around on those islands. Sure enough, he didn't get to the first bridge before turning tail and running back home. Poor thing ... all grumpy ... no sleep.")
 end
@@ -49,16 +59,27 @@ end
 function dlg_2_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	if not HasQuest(Spawn,Varsoon) and not HasCompletedQuest(Spawn,Varsoon) and GetLevel(Spawn)>=10 then
 	AddConversationOption(conversation, "It sounds like a place I'd like to explore.", "dlg_2_3")
-	AddConversationOption(conversation, "I'll be sure to steer clear from it.  ")
+    end
+	if HasCompletedQuest(Spawn,Varsoon) then
+	AddConversationOption(conversation, "I've actually been there.  The crypt has burst open!", "dlg_2_4")
+    end
+    AddConversationOption(conversation, "I'll be sure to steer clear from it.  ")
 	StartConversation(conversation, NPC, Spawn, "The tomb once held an evil mage - Varsoon the Undying. He was involved in the War of the Plagues centuries ago.  The Cataclysm must have weakened the mage's spells on that place, because he didn't stick around.  The Concordium says that Varsoon is long gone, but you wouldn't catch me dead there!")
 end
 
 function dlg_2_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn, Varsoon)
+end
+
+function dlg_2_4(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC,"","","boggle",0,0,Spawn)
 	conversation = CreateConversation()
-	AddConversationOption(conversation, "I'll be careful.  Thank you for the directions.")
-	StartConversation(conversation, NPC, Spawn, "Heck, I'll tell you where it is! Turn left as you leave the city gates; go through Klicnik Fields. You'll see the islands the tomb rests on.  You go any further ... well, that's your decision, not mine.")
+	AddConversationOption(conversation, "Let's hope the city is protected from such magic.")
+	StartConversation(conversation, NPC, Spawn, "You don't say!  Well, I certainly will be steering clear now more than ever.  May the spirits protect us if this is a bad omen of things to come...")
 end
 
 function dlg_8_1(NPC, Spawn)

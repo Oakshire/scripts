@@ -38,24 +38,16 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) and GetLevel(Spawn) >= 6 then 
     conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/ganla_dindlenod/qey_village06/ganladindlenod000.mp3", "", "hello", 3896153477, 1476133189, Spawn)
-    AddConversationOption(conversation, "I'm asking around for work.", "Book")
+ 	if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
+    AddConversationOption(conversation, "I'm actually asking around for work.", "Book")
+    end
+    if GetQuestStep (Spawn, Delivery) == 2 then
+    AddConversationOption(conversation, "I gave Valean your book. He will return it when he is finished.", "Delivered")
+    end
+    AddConversationOption(conversation, "Looking around, mostly. Perhaps for some of that merriment you spoke of.")
     StartConversation(conversation, NPC, Spawn, "What brings you to the fair vale of Baubbleshire? Seeking a bit of merriment among the stouts?")
-    
-    elseif not HasCompletedQuest (Spawn, Delivery) and  HasQuest (Spawn, Delivery) then 
-    FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-        if GetQuestStep (Spawn, Delivery) == 2 then
-        AddConversationOption(conversation, "I gave Valean your book. He will return it when he is finished.", "Delivered")
-        end
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1005.mp3","","hello",0,0,Spawn)
-    AddConversationOption(conversation, "I'm still heading that way.")
-    StartConversation(conversation, NPC, Spawn, "Any news from Valean on my book?")
-    
-    else
-	PlayFlavor(NPC, "voiceover/english/ganla_dindlenod/qey_village06/ganladindlenod000.mp3", "What brings you to the fair vale of Baubbleshire? Seeking a bit of merriment among the stouts?", "hello", 3896153477, 1476133189, Spawn)
 end
 
  function Book(NPC, Spawn)
@@ -68,7 +60,8 @@ end
  function PieBook(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/ganla_dindlenod/qey_village06/ganladindlenod002.mp3", "", "", 3973037194, 3834426438, Spawn)
   conversation = CreateConversation()
-  AddConversationOption(conversation, "I could look for your missing pie.", "QuestBegin")
+  AddConversationOption(conversation, "I would be happy to deliver your book.  I'll take it to Castleview.", "QuestBegin")
+AddConversationOption(conversation, "That is a bit out of the way, and I'm enjoying it here so much already.  Sorry!")
   StartConversation(conversation, NPC, Spawn, "It appears the tattered journal is written in some form of elven-gibberish. You must deliver the book to Innkeeper Valean in Castleview Hamlet. He may be able to decipher the writing.")
 end   
 
@@ -88,5 +81,5 @@ function Reward(NPC, Spawn)
     	SetStepComplete(Spawn, Delivery, 2)
     end
 
-end
+
 

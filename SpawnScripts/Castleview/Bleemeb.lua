@@ -77,7 +77,7 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "That sounds impressive!", "LeavesStart2")
     AddConversationOption(conversation, "I'm busy. Sorry.")
     PlayFlavor(NPC, "voiceover/english/scribe_bleemeb/qey_village04/qst_scribebleemeb001.mp3","","happy",813139380,2873385292,Spawn)
-    StartConversation(conversation, NPC, Spawn, "Currently, she is trying to make her spells more potent. But soon, she will't be working on a spell to help the druids of the Eldarr Grove help grow their precious trees.")
+    StartConversation(conversation, NPC, Spawn, "Currently, she is trying to make her spells more potent. But soon, she will't be working on a spell to help the druids of the Elddar Grove help grow their precious trees.")
 end   
 
  function LeavesStart2(NPC, Spawn)
