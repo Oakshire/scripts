@@ -28,44 +28,28 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 
-	if GetQuestStep(Spawn, InSearchoftheSepulcherofJahnda) == 1 then
+
 	local conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "", "", 35546, 2556985953, Spawn)
+	if GetQuestStep(Spawn, InSearchoftheSepulcherofJahnda) == 1 then
 	AddConversationOption(conversation, "Do you know anything about a Sepulcher? ", "Option1")
-	AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
+	end
+    if GetQuestStep(Spawn, InSearchoftheSepulcherofJahnda) == 3 then
+    AddConversationOption(conversation, "I have brought your crystals. Where are my directions?", "Option3")
+	end
+    if not HasCompletedQuest (Spawn, Estle) and not HasQuest(Spawn, Estle) then 
+    AddConversationOption(conversation, "I don't need faith, I need work", "EstleSearch")
+    end
+    if
+    GetQuestStep(Spawn,Estle) == 2 then
+     AddConversationOption(conversation, "I have found the Shrine of Estle in the Downbelow.  It is quite the sight!", "FoundEstle")
+    end    
+    if HasCompletedQuest (Spawn, Estle) or HasQuest(Spawn, Estle) then 
+    AddConversationOption(conversation, "Remind me.  Who is Estle?")
+    end
+    AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!")
 
-    elseif GetQuestStep(Spawn, InSearchoftheSepulcherofJahnda) == 3 then
-    local conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "", "", 35546, 2556985953, Spawn)
-    AddConversationOption(conversation, "I have brought your crystals. Where are my directions?", "Option3")
-   	AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
-	StartConversation(conversation, NPC, Spawn, "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!")
-	
-	elseif not HasCompletedQuest (Spawn, Estle) and not HasQuest(Spawn, Estle) then
-	  	local conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_multhail1_59e52ebd.mp3", "", "11909", 300423478, 2139393363, Spawn)
-    AddConversationOption(conversation, "I don't need faith, I need work", "EstleSearch")
-    AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
-	StartConversation(conversation, NPC, Spawn, "Good adventurer, have faith and be well!  Perhaps one day you too may serve Bristlebane!")
-	
-	elseif HasQuest(Spawn, Estle) and GetQuestStep(Spawn,Estle) == 2 then
-	local conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "", "orate", 35546, 2556985953, Spawn)
-    AddConversationOption(conversation, "I have found the Shrine of Estle.", "FoundEstle")
-   	AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
-	StartConversation(conversation, NPC, Spawn, "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!")
-	
-	else
-	local choice = MakeRandomInt(1, 2)
-	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!", "", 35546, 2556985953, Spawn)
-		PlayAnimation (NPC, 11909)
-	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_multhail1_59e52ebd.mp3", "Good adventurer, have faith and be well!  Perhaps one day you too may serve Bristlebane!", "", 300423478, 2139393363, Spawn)
-	    PlayAnimation (NPC, 11909)
-	end
- end
 end
 
 
@@ -73,7 +57,7 @@ end
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders006.mp3", "", "", 303473158, 262617160, Spawn)
+    PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders006.mp3", "", "nod", 303473158, 262617160, Spawn)
 	AddConversationOption(conversation, "Where can I find this Sepulcher?", "Option2")
 	AddConversationOption(conversation, "I am not interested in the Sepulcher. Farewell. ")
 	StartConversation(conversation, NPC, Spawn, "The Sepulcher of Jahnda? I know of it. I happened to discover its location when I was in a part of the catacombs the locals call Vermin's Snye.  ")
@@ -107,8 +91,10 @@ end
 
 function DownBelow(NPC, Spawn)
      	local conversation = CreateConversation()
-    AddConversationOption(conversation, "I will find their shrine in the Down Below.", "WillExplore")
-        AddConversationOption(conversation, "Would that be Estle Bristlebane?", "WhoIsEstle")
+    if not HasCompletedQuest (Spawn, Estle) and not HasQuest(Spawn, Estle) then 
+    AddConversationOption(conversation, "I will find the shrine in the Down Below.", "WillExplore")
+    end
+    AddConversationOption(conversation, "Would that be Estle Bristlebane?", "WhoIsEstle")
     AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "Go to the Down Below! Look for the grand hall graced with three statues of Estle, the Tamer of Wild Souls. After you have found it come back to me! I will reward you with some coin.")
     PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders002.mp3", "", "nod", 1238322325, 3908688686, Spawn)
@@ -121,9 +107,15 @@ function WillExplore (NPC, Spawn)
 end
 
 function WhoIsEstle(NPC, Spawn)
-     	local conversation = CreateConversation()
-     	    FaceTarget(NPC, Spawn)
-    AddConversationOption(conversation, "I will find their shrine in the Down Below.", "WillExplore")
+    local conversation = CreateConversation()
+    FaceTarget(NPC, Spawn)
+    
+    if not HasCompletedQuest (Spawn, Estle) and not HasQuest(Spawn, Estle) then 
+    AddConversationOption(conversation, "I will find the shrine in the Down Below.", "WillExplore")
+    end
+    if HasCompletedQuest (Spawn, Estle) or HasQuest(Spawn, Estle) then 
+    AddConversationOption(conversation, "Oh, that's right.  Thank you for the reminder.")
+    end
     AddConversationOption(conversation, "I don't want to hear your lunacy. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "What!  Do they teach nothing to young people today?  Estle was an apostle of Rodcet Nife, a Priest of Life.  Together with Vhalen and his bards of Bristlebane, they defended Qeynos during the War Of Plagues!")
      PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders003.mp3", "", "boggle", 706812134, 249250177, Spawn)
@@ -141,20 +133,14 @@ end
 
 function InRange(NPC, Spawn)
     if not HasQuest(Spawn,Estle) and not HasCompletedQuest(Spawn,Estle) and GetLevel(Spawn) >=5 then
-        if math.random(1, 100) <= 60 then
+        if math.random(1, 100) <= 80 then
         FaceTarget(NPC, Spawn)
-		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_callout_a5068619.mp3", "Come hither for I have much to tell you!", "beckon", 2649708751, 4092898916, Spawn)     
-		end
-    else    	     
-	 if math.random(1, 100) <= 50 then
-	    	local randomCall = MakeRandomInt(1, 2)
-	     if randomCall == 1 then
-				PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!", "", 35546, 2556985953, Spawn)
-        	    PlayAnimation (NPC, 11909)
+	    local randomCall = MakeRandomInt(1, 2)
+	    if randomCall == 1 then
+		PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/mirfguinders000.mp3", "Search within your soul! Reclaim your faith! Bristlebane lives within us. Do not abandon his mirth! We are not forsaken!", "orate", 35546, 2556985953, Spawn)
 	    elseif randomCall == 2 then
-    	 PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_multhail1_59e52ebd.mp3", "Good adventurer, have faith and be well!  Perhaps one day you too may serve Bristlebane!", "", 300423478, 2139393363, Spawn)
-	             PlayAnimation (NPC, 11909)
-	        end
+    	PlayFlavor(NPC, "voiceover/english/mirf_guinders/qey_village06/100_mirf_guinders_multhail1_59e52ebd.mp3", "Good adventurer, have faith and be well!  Perhaps one day you too may serve Bristlebane!", "orate", 300423478, 2139393363, Spawn)
+	    end
         end
     end
 end

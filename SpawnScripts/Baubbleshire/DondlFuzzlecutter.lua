@@ -1,7 +1,7 @@
 --[[
 	Script Name	: SpawnScripts/Baubbleshire/DondlFuzzlecutter.lua
 	Script Purpose	: Dondl Fuzzlecutter <Provisioner>
-	Script Author	: Scatman
+	Script Author	: Dorbin
 	Script Date	: 2022.01.20
 	Script Notes	: 
 --]]
@@ -19,7 +19,7 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
      if GetQuestStep (Spawn, Delivery) == 1 then 
-	AddConversationOption(conversation, "Sorry to interrupt, but Jodi..", "PotionPickup")
+	AddConversationOption(conversation, "Sorry to interrupt, but Jodi from Graystone sen-", "PotionPickup")
 	end
 	PlayFlavor(NPC, "voiceover/english/dondl_fuzzlecutter/qey_village06/dondlfuzzlecutter000.mp3", "", "confused", 605011151, 3443405792, Spawn)
 	AddConversationOption(conversation, "I am not a tinkerer. I don't know. ", "dlg_36_1")
