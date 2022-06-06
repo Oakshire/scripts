@@ -7,7 +7,7 @@
 --]]
 
 local Shadow = 5409
-local ShadowBook = 21253
+local ShadowBook = 10159
 
 
 function spawn(NPC)
@@ -34,6 +34,9 @@ if HasItem(Spawn,ShadowBook,1) or HasCompletedQuest(Spawn,Shadow) then
     SpawnSet(NPC, "display_hand_icon", 0)    
     SetAccessToEntityCommand(Spawn,NPC,"Take Book", 0)
 else
+    SetAccessToEntityCommand(Spawn,NPC,"Take Book", 1)
+    SpawnSet(NPC, "show_command_icon", 1)
+    SpawnSet(NPC, "display_hand_icon", 1)
     end
 end
 

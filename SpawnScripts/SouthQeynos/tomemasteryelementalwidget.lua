@@ -32,6 +32,9 @@ if HasItem(Spawn,13581,1) or HasCompletedQuest(Spawn,Elemental) then
     SpawnSet(NPC, "display_hand_icon", 0)    
     SetAccessToEntityCommand(Spawn,NPC,"Take Book", 0)
 else
+    SetAccessToEntityCommand(Spawn,NPC,"Take Book", 1)
+    SpawnSet(NPC, "show_command_icon", 1)
+    SpawnSet(NPC, "display_hand_icon", 1)
     end
 end
 

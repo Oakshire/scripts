@@ -1,13 +1,14 @@
 --[[
-    Script Name    : SpawnScripts/SouthQeynos/questtomefroglokwartome01.lua
+    Script Name    : SpawnScripts/SouthQeynos/TheWordsofZebuxoruk.lua
     Script Author  : Dorbin
-    Script Date    : 2022.06.05 12:06:54
+    Script Date    : 2022.06.05 04:06:56
     Script Purpose : 
                    : 
 --]]
 
-local FrogBook = 6340
-local FrogQuest = 5582
+
+local ZebBook = 21491
+
 
 
 function spawn(NPC)
@@ -20,28 +21,29 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-if HasItem(Spawn,FrogBook,1) or HasCompletedQuest(Spawn,FrogQuest) then
-      SetAccessToEntityCommand(Spawn,NPC,"Search Books", 0)
+if HasItem(Spawn,ZebBook,1)  then
+      SetAccessToEntityCommand(Spawn,NPC,"Take Book", 0)
     SpawnSet(NPC, "show_command_icon", 0)
     SpawnSet(NPC, "display_hand_icon", 0)
 end
 end
 
 function Check(NPC,Spawn)
-if HasItem(Spawn,FrogBook,1) or HasCompletedQuest(Spawn,FrogQuest) then
+if HasItem(Spawn,ZebBook,1)  then
     SpawnSet(NPC, "show_command_icon", 0)
     SpawnSet(NPC, "display_hand_icon", 0)    
-    SetAccessToEntityCommand(Spawn,NPC,"Search Books", 0)
+    SetAccessToEntityCommand(Spawn,NPC,"Take Book", 0)
 else
-    SetAccessToEntityCommand(Spawn,NPC,"Search Books", 1)
+    SetAccessToEntityCommand(Spawn,NPC,"Take Book", 1)
     SpawnSet(NPC, "show_command_icon", 1)
     SpawnSet(NPC, "display_hand_icon", 1)
     end
 end
 
+
 function casted_on(NPC, Spawn, SpellName)
-  if SpellName == 'Search Books' then
-  SummonItem(Spawn,FrogBook,1)
+  if SpellName == 'Take Book' then
+  SummonItem(Spawn,ZebBook,1)
 Check(NPC,Spawn)
 end
 end

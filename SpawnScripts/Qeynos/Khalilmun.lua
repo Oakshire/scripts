@@ -5,6 +5,7 @@
 	Script Date	: 2022.05.12
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 local dyes = 5538
 local potion = 5555
@@ -38,8 +39,8 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "", "", "heckno", 1584866727, 581589457, Spawn)
         end
     else
-        	PlayFlavor(NPC, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun.mp3", "", "beckon", 4229538394, 3475168559, Spawn)
-	        local conversation = CreateConversation()
+        	PlayFlavor(NPC, "", "", "beckon", 0, 0, Spawn)
+	--[[        local conversation = CreateConversation()
       	    if not HasQuest(Spawn,potion) and not HasCompletedQuest(Spawn, potion) then
           	AddConversationOption(conversation, "I would like to know if you have any insights on potion making.", "Potion1")
             end
@@ -57,47 +58,76 @@ function hailed(NPC, Spawn)
         	end
         	AddConversationOption(conversation, "Actually, I'm just browsing.")
     	    StartConversation(conversation, NPC, Spawn, "Come in!  Come in.  A mages greeting to you my friend!  Now, what can I mix for you?  A potion?  A salve perhaps?  Ah, I know you need alchemical supplies don't you?")
-   
+   	]]--
+   	
+   	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Come in!  Come in.  A mages greeting to you my friend!  Now, what can I mix for you?  A potion?  A salve perhaps?  Ah, I know you need alchemical supplies don't you?")
+	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun.mp3", 4229538394, 3475168559)
+      	    if not HasQuest(Spawn,potion) and not HasCompletedQuest(Spawn, potion) then
+          	Dialog.AddOption("I would like to know if you have any insights on potion making.", "Potion1")
+            end
+            if GetQuestStep(Spawn,potion)==2 then
+          	Dialog.AddOption("I've gathered all the ingredients you requested from the Peat Bog.", "PotionDone")
+            end
+            if not HasQuest(Spawn,wings) and not HasCompletedQuest(Spawn, wings) then
+          	Dialog.AddOption("Have any work I can do for your shop?", "Wings1")
+            end
+            if GetQuestStep(Spawn,wings)==2 then
+          	Dialog.AddOption( "Take a look at these shriller wings. Do they work for what you need?", "WingsDone")
+            end
+            if GetQuestStep(Spawn,dyes)==1 then
+        	Dialog.AddOption("Daniell Clothspinner said you had an order she needed picked up?", "Pickup")
+        	end
+    Dialog.AddOption("Actually, I'm just browsing.")
+	Dialog.Start()
     end
 end 
 
-      function Pickup(NPC, Spawn)
+
+
+function Pickup(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun000.mp3", "", "agree", 938827221, 1172248850, Spawn)
-    local conversation = CreateConversation()
-	AddConversationOption(conversation, "This will do just fine.  Thanks.", "DyeUpdate")
-	StartConversation(conversation, NPC, Spawn, "Ah, yes.  Dyes.  Always dyes.  Well, she is one of my best customers!  Here.  Take these two tubs.  That looks like Daniell's coin pouch- I'll empty that.  Are you sure you can't use an alembic or two?  They're on sale!")
-end	
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddDialog("Ah, yes.  Dyes.  Always dyes.  Well, she is one of my best customers!  Here.  Take these two tubs.  That looks like Daniell's coin pouch- I'll empty that.  Are you sure you can't use an alembic or two?  They're on sale!")
+	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun000.mp3", 938827221, 1172248850)
+	Dialog.AddOption( "This will do just fine.  Thanks.", "DyeUpdate")
+	Dialog.Start()
+end
+
 
 function DyeUpdate(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
     SetStepComplete(Spawn,dyes, 1)
     end   
 
-
-
-function Potion1(NPC,Spawn)
+function Potion1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun001.mp3", "", "",1469692776, 2022256144, Spawn)
-    local conversation = CreateConversation()
-    AddConversationOption(conversation, "Sounds easy enough. Will I get to use the ingredients once I get them?", "Potion2")
-	AddConversationOption(conversation, "I really don't feel like slogging through the muck today.  Sorry.")
-	StartConversation(conversation, NPC, Spawn, "Excellent!  I shall explain.  At its most basic level, potion is about combining specific reagents to produce specific effects.  Take this cloudly looking potion for example.  All it requires is a few simple ingredients I gather from the near by Peat Bog.  Perhaps you could begin to understand the rudimentary elements of the process if you gather the components for this potion.")
-end	
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Excellent!  I shall explain.  At its most basic level, potion is about combining specific reagents to produce specific effects.  Take this cloudly looking potion for example.  All it requires is a few simple ingredients I gather from the near by Peat Bog.  Perhaps you could begin to understand the rudimentary elements of the process if you gather the components for this potion.")
+	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun001.mp3", 1469692776, 2022256144)
+	Dialog.AddOption("Sounds easy enough. Will I get to use the ingredients once I get them?", "Potion2")
+	Dialog.AddOption("I really don't feel like slogging through the muck today.  Sorry.")
+	Dialog.Start()
+end
+
 
 function Potion2(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
     OfferQuest(NPC,  Spawn,potion)
     end
     
-function PotionDone(NPC,Spawn)
+ function PotionDone(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun003.mp3", "", "", 865923909, 1629870869, Spawn)
-    local conversation = CreateConversation()
-    AddConversationOption(conversation, "Alright.  Thank you.", "FinishQuest1")
-	AddConversationOption(conversation, "Run along?!  I need a bath after slogging through that mess.","FinishQuest2")
-	StartConversation(conversation, NPC, Spawn, "My, you've done well!  These are very acceptable specimines, especially for your first time.  Perhaps in the future I could teach you more about gathering reagents.  Here are a few coins for your pay.  Back to studies now.  Run along.")
-end	
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("My, you've done well!  These are very acceptable specimines, especially for your first time.  Perhaps in the future I could teach you more about gathering reagents.  Here are a few coins for your pay.  Back to studies now.  Run along.")
+	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun003.mp3", 865923909, 1629870869)
+	Dialog.AddOption("Alright.  Thank you.", "FinishQuest1")
+	Dialog.AddOption("Run along?!  I need a bath after slogging through that mess.","FinishQuest2")
+	Dialog.Start()
+end
+
 
 function FinishQuest1(NPC,Spawn)
  	FaceTarget(NPC, Spawn)
@@ -109,27 +139,32 @@ function FinishQuest2(NPC,Spawn)
     SetStepComplete(Spawn,Potion, 2)
 end 
 
-function Wings1(NPC,Spawn)
+
+function Wings1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun005.mp3", "", "", 1992360074, 1666083068, Spawn)
-    local conversation = CreateConversation()
-    AddConversationOption(conversation, "Easy enough.  I'll return once I have them.", "Wings2")
-	AddConversationOption(conversation, "Catacombs? Rabid? Sounds a combination I should avoid.")
-	StartConversation(conversation, NPC, Spawn, "I've pleanty of work that needs to be done.  I need rabid shriller wings, several of them.  Go to the catacombs and there you'll find pleanty of the wings.  Of course, you'll be rewarded for your efforts. ")
-end	
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I've pleanty of work that needs to be done.  I need rabid shriller wings, several of them.  Go to the catacombs and there you'll find pleanty of the wings.  Of course, you'll be rewarded for your efforts.")
+	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun005.mp3", 1992360074, 1666083068)
+	Dialog.AddOption("Easy enough.  I'll return once I have them.", "Wings2")
+	Dialog.AddOption("Catacombs? Rabid? Sounds a combination I should avoid.")
+	Dialog.Start()
+end
 
 function Wings2(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
     OfferQuest(NPC,  Spawn,wings)
     end
-    
- function WingsDone(NPC,Spawn)
+ 
+ function Pickup(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/merchant_khalil_mun/qey_south/khalilmun006.mp3", "", "", 1833727078, 1985595256, Spawn)
-    local conversation = CreateConversation()
-    AddConversationOption(conversation, "Glad to help.  Thank you.", "FinishWings")
-	StartConversation(conversation, NPC, Spawn, "This is excellent! You've done a fantastic job.  Take this coin and my thanks.")
-end	   
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
+    Dialog.AddDialog("This is excellent! You've done a fantastic job.  Take this coin and my thanks.")
+	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun006.mp3", 1833727078, 1985595256)
+	Dialog.AddOption( "Glad to help.  Thank you.", "FinishWings")
+	Dialog.Start()
+end
+
 
 function FinishWings(NPC,Spawn)
  	FaceTarget(NPC, Spawn)
