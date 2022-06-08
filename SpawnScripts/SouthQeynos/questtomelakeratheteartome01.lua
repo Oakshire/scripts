@@ -6,8 +6,8 @@
                    : 
 --]]
 
-local LakeBook = 6340
-local LakeQuest = 14137
+local LakeBook = 14137
+local LakeQuest = 5583
 
 
 function spawn(NPC)
@@ -21,11 +21,16 @@ end
 
 function InRange(NPC, Spawn)
 if HasItem(Spawn,LakeBook,1) or HasCompletedQuest(Spawn,LakeQuest) then
-      SetAccessToEntityCommand(Spawn,NPC,"Search Books", 0)
+    SetAccessToEntityCommand(Spawn,NPC,"Search Books", 0)
     SpawnSet(NPC, "show_command_icon", 0)
     SpawnSet(NPC, "display_hand_icon", 0)
+else
+    SetAccessToEntityCommand(Spawn,NPC,"Search Books", 1)
+    SpawnSet(NPC, "show_command_icon", 1)
+    SpawnSet(NPC, "display_hand_icon", 1)
+    end
 end
-end
+
 
 function Check(NPC,Spawn)
 if HasItem(Spawn,LakeBook,1) or HasCompletedQuest(Spawn,LakeQuest) then

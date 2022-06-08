@@ -25,7 +25,11 @@ if HasItem(Spawn,ZebBook,1)  then
       SetAccessToEntityCommand(Spawn,NPC,"Take Book", 0)
     SpawnSet(NPC, "show_command_icon", 0)
     SpawnSet(NPC, "display_hand_icon", 0)
-end
+    else
+    SetAccessToEntityCommand(Spawn,NPC,"Take Book", 1)
+    SpawnSet(NPC, "show_command_icon", 1)
+    SpawnSet(NPC, "display_hand_icon", 1)
+    end
 end
 
 function Check(NPC,Spawn)

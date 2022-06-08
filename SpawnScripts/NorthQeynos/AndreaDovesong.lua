@@ -119,7 +119,7 @@ function Claymore2(NPC,Spawn)
     AddConversationOption(conversation, "I think I will.  Thank you for sharing the story.", "Claymore3")
     end	
 	if HasCompletedQuest(Spawn, claymore) then
-    AddConversationOption(conversation, "I've been to the one in Antonica since we last spoke.  It is quite the sight overlooking the hills and coast.", "agree")
+    AddConversationOption(conversation, "I've been to the one in Antonica since we last spoke.  It is quite the sight overlooking the hills and coastline.", "agree")
     end
 	if not HasQuest(Spawn,papers) and not HasCompletedQuest(Spawn, papers) then
     AddConversationOption(conversation, "You seem quite busy here.  Can I help you with anything while you perform?", "Work2")
