@@ -35,7 +35,7 @@ function hailed(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "I'll take care of your coin and goods if they need safekeeping.")
 end
 
- function DeliveryStart(NPC, Spawn)
+ function DeliveryDone(NPC, Spawn)
   conversation = CreateConversation()
   PlayFlavor(NPC, "voiceover/english/banker_robert_newbury/qey_harbor/bankerrobertnewbury000.mp3","","ponder",3741382425,2971176435,Spawn)
   AddConversationOption(conversation, "Alright. I'll take the letter to her.", "QuestBegin1")

@@ -102,7 +102,7 @@ function Step3_3Complete(Quest, QuestGiver, Player)
 end	
 
 
-function CheckProgress(Quest, QuestGiver, Player)
+function Progress(Quest, QuestGiver, Player)
 if QuestStepIsComplete(Player, 5365, 1)  and QuestStepIsComplete(Player, 5365, 2) and QuestStepIsComplete(Player, 5365, 3) then
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've got all of the items merchant Barnes asked me to obtain.  I should get them back to her as soon as possible.")
 	AddQuestStepChat(Quest, 4, "I need to get this stuff to merchant Barnes.", 1, "I need to get these items back to merchant Barnes, here in the Down Below.", 11, 1990011)

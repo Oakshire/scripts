@@ -33,7 +33,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've given the tally to Robert Newbury in the Qeynos Exchange.")
 	UpdateQuestZone(Quest, "Graystone Yard")
 	AddQuestStepChat(Quest, 2, "I need to return to Dorin in Graystone.", 1, "I must deliver this message back to Banker Dori in Graystone Yard.", 1223, 2350026)
-	AddQuestStepCompleteAction(Quest, 2, "Step1Complete")
+	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 
 function QuestComplete(Quest, QuestGiver, Player)

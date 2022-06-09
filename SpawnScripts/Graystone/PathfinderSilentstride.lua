@@ -51,7 +51,7 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "I delievered your message to Tracker Kelnis.","Delivered")  
 	end	
     if HasCompletedQuest(Spawn,Delivery) or HasQuest(Spawn,Delivery) then
-	AddConversationOption(conversation, "Who is Holly Windstalker?","Windstalker1")  
+	AddConversationOption(conversation, "Remind me, who is Holly Windstalker?","Windstalker1")  
 	end
 	AddConversationOption(conversation, "Thanks for the warning.")
 	StartConversation(conversation, NPC, Spawn, "Greetings, adventurer. Be careful traveling outside the city. The nearby wilderness is as unforgiving as the fates themselves.")

@@ -22,8 +22,7 @@ end
 function rotweedSpawn(NPC, Spawn)
   local zone = GetZone(NPC)
   local thistle1 = GetSpawnByLocationID(zone, 422456)
-  local x, y, z = GetX(thistle1),GetY(thistle1),GetZ(thistle1)
-  local rotweed = SpawnMob(zone, 1950029, true, x, y, z)
+  local rotweed=SpawnByLocationID(zone, 422459)
   if rotweed ~= nil then
       FaceTarget(rotweed, Spawn)
       Attack(rotweed, Spawn)

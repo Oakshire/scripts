@@ -6,7 +6,6 @@
 	Script Notes	:
 --]]
 
---Bank Tally Quest Should only be available AFTER inital Citizenship quest.
 
 local Tally = 5508
 
@@ -50,9 +49,9 @@ function QuestBegin (NPC, Spawn)
   OfferQuest(NPC, Spawn, Tally)
 end
 
- function Delivered(NPC, Spawn)
+ function DeliveryDone(NPC, Spawn)
   conversation = CreateConversation()
-  PlayFlavor(NPC, "voiceover/english/banker_dori/qey_village03/bankerdori002.mp3","","facepalm",2001766624,322751976,Spawn)
+  PlayFlavor(NPC, "voiceover/english/banker_dori/qey_village03/bankerdori002.mp3","","doh",2001766624,322751976,Spawn)
   AddConversationOption(conversation, "I'm glad to help.", "Reward")
   StartConversation(conversation, NPC, Spawn, "Oh dear. I hope its not a bank audit! I do hate those tedious things! Poor Jalan will never get to leave if its an audit! No time for chatt'n. Its time to buckle down and get to work. At any rate, thanks for all your help.")
 end 
