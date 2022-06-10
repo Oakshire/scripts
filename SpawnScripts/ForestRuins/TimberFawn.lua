@@ -1,22 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/ForestRuins/forgottenguardian.lua
-    Script Author  : Dorbin
-    Script Date    : 2022.02.26 05:02:19
+    Script Name    : SpawnScripts/ForestRuins/TimberFawn.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.06.09 11:06:26
     Script Purpose : 
                    : 
 --]]
 
-
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 =9
-    local level2 = 10
-    local difficulty1 = 6
-    local hp1 = 275
-    local power1 = 110
-    local difficulty2 = 6
-    local hp2 = 370
-    local power2 = 130
+    local level1 =5
+    local level2 = 6
+    local difficulty1 = 2
+    local hp1 = 50
+    local power1 = 25
+    local difficulty2 = 2
+    local hp2 = 65
+    local power2 = 30
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -27,11 +26,11 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
+    
     ChooseMovement(NPC)
 end
 
 function ChooseMovement(NPC)
- -- if not GetSpawnLocationID(NPC,423685)  and  not GetSpawnLocationID(NPC,133772746) and  not GetSpawnLocationID (NPC,133772747) and not GetSpawnLocationID (NP, 133772748) then
 	local route = math.random(1,4)
 	if route == 1 then
 	    RouteOne(NPC, Spawn)
@@ -42,8 +41,7 @@ function ChooseMovement(NPC)
 	elseif route == 4 then
 	    RouteFour(NPC, Spawn)
 	end
-    end
---end 
+end
 
 function RouteOne(NPC, Spawn)
     local X = GetX(NPC)
@@ -98,4 +96,5 @@ function respawn(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
 end
