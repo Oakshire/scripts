@@ -9,6 +9,7 @@
 local TheMotleyMerchantManifest = 5368
 
 function spawn(NPC)
+AddTimer(NPC, 5000, "EmoteLoop")    
 end
 
 function respawn(NPC)
@@ -38,3 +39,20 @@ function Option1(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "It's one of you! If it wasn't for the Captain's love of this froth, we woulda' run you out of this city just like it was the Age of Turmoil!")
 end
 
+function EmoteLoop(NPC)
+    local emoteChoice = MakeRandomInt(1,3)
+
+    if emoteChoice == 1 then
+-- ponder
+        PlayAnimation(NPC, 12030)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    elseif emoteChoice == 2 then
+-- sniff
+        PlayAnimation(NPC, 12329)
+        AddTimer(NPC, MakeRandomInt(6000,9000), "EmoteLoop")	
+    else
+-- tapfoot
+        PlayAnimation(NPC, 13056)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    end
+end

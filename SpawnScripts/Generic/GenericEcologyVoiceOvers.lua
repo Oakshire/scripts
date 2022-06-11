@@ -2882,7 +2882,8 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 			    if EVIL then
 				elseif GOOD then
 			        if Qfaction <0 then
-				    else				    
+	                    FactionChecking(NPC, Spawn, faction)
+    			    else				    
 			    	local choice = math.random(1,3)
 	                    if choice == 1 then
                             if spawnRace == BARBARIAN then
@@ -2920,13 +2921,13 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 	                           	    if check == 1 then
                     	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "agree", 1811725102, 1170705631, Spawn)
                                     elseif choice == 2 then	
-                    	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 2727630899, 2583820258, Spawn)
+                    	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my tride, away from the bustle of any town.", "sigh", 2727630899, 2583820258, Spawn)
 				       		        end                   
 		                    end
                         elseif choice == 2 then	
                     	PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "agree", 1811725102, 1170705631, Spawn)
                         elseif choice == 3 then
-                    	PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 2727630899, 2583820258, Spawn)
+                    	PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my tride, away from the bustle of any town.", "sigh", 2727630899, 2583820258, Spawn)
                         end                        				    
 				    end 
 	    	    end				    

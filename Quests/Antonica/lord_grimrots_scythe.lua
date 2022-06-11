@@ -23,6 +23,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 		FaceTarget(QuestGiver, Player)
 	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_006.mp3", "", "", 3647805338, 2173571937, Player)
 	AddConversationOption(conversation, "I can do that.")
 	StartConversation(conversation, QuestGiver, Player, "I need those darned dispatches brought back to me! You'd think that folks who get to run around looking for danger would realize how important it is to send word back to ... well, me.  Since they haven't, I need someone to knock them upside their heads and get the information, then bring it back to me.")
 end

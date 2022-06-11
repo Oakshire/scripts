@@ -3,7 +3,7 @@
 	Script Purpose	:	Ignar Steadirt
 	Script Author	:	Jabantiz
 	Script Date		:	08/29/2019
-	Script Notes	:	Auto-Generated from a chat log using SpawnScriptDesigner
+	Script Notes	:	Voiceovers added - 6/10/2022 Dorbin
 --]]
 
 local LordGrimrotsScythe = 5522
@@ -39,6 +39,7 @@ end
 
 function Option0(NPC, Spawn)
     local conversation = CreateConversation()    
+    PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_001.mp3", "", "", 3940456845, 1439505698, Spawn)
 	AddConversationOption(conversation, "Is that why you are here?", "Option1")
 	AddConversationOption(conversation, "Well, not me.  At least, not right now.", "refuse")
 	StartConversation(conversation, NPC, Spawn, "The great Qeynos Claymore -- folks come from all over to pray here.")    
@@ -46,8 +47,8 @@ end
 
 
 function Reports_Progress(NPC, Spawn)
-    PlayFlavor(NPC, greetingsTable[math.random(#greetingsTable)], "", "", 0, 0, Spawn)
-    local conversation = CreateConversation()
+ 	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_020.mp3", "", "", 3807663927, 1877102207, Spawn)
+   local conversation = CreateConversation()
     if GetQuestStep(Spawn, LordGrimrotsScythe) == 4 or GetQuestStep(Spawn, LordGrimrotsScythe) == 5  then
 	AddConversationOption(conversation, "Yes, I've spoken with your three knights.", "Option5")
 	end
@@ -57,6 +58,7 @@ end
 
 function Reports_Progress2(NPC, Spawn)
        local conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_018.mp3", "", "", 831646540, 4011481449, Spawn)
 	AddConversationOption(conversation, "I fought the Sabertooth rune casters, but found only part of Lord Grimrot's war scythe.", "Option10")
 	AddConversationOption(conversation, "Not yet.  I will return when I've done as you asked.")
 	StartConversation(conversation, NPC, Spawn, "What news do you have?  And speak up, will you?  I can barely hear you with all the noise around this monument!")
@@ -64,6 +66,7 @@ end
 
 function Reports_Progress3(NPC, Spawn)
        local conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_019.mp3", "", "", 4267108172, 3030270970, Spawn)
        if GetQuestStep(Spawn, LordGrimrotsScythe) == 8 then 
 	AddConversationOption(conversation, "I found the remaining piece of Lord Grimrot's scythe.", "Option13")
 	end
@@ -74,6 +77,7 @@ end
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_002.mp3", "", "", 2644345501, 1145343451, Spawn)
 	AddConversationOption(conversation, "Who are your enemies?", "Option2")
 	StartConversation(conversation, NPC, Spawn, "I came here seeking strength to defeat my enemies.")
 end
@@ -82,6 +86,7 @@ end
 function Option2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_003.mp3", "", "", 714312882, 209965713, Spawn)
 	AddConversationOption(conversation, "Do you need help?", "Option3")
 		AddConversationOption(conversation, "Wish I had time to help.  Perhaps later.", "refuse2")
 	StartConversation(conversation, NPC, Spawn, "I pray for the strength to conquer the undead, but they are not just my enemies; the undead are the enemies of us all.  Several days ago, patrols were sent to see how our battle against the undead was faring.  And I -- I have the most disagreeable task of all.  I have to stand here and wait for the reports to return.  Me! Standing around waiting when there's undead to cleave! Pah!")
@@ -90,6 +95,7 @@ end
 function Option3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_004.mp3", "", "", 1571069760, 2691480931, Spawn)
 	AddConversationOption(conversation, "I could be persuaded.", "Option4")
 	AddConversationOption(conversation, "No, I'd rather not.")
 	StartConversation(conversation, NPC, Spawn, "That's why I'm praying. Perhaps my prayers have been answered.  Are you here to help me?")
@@ -99,6 +105,7 @@ end
 function Option4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+    PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_005.mp3", "", "", 346565467, 222391193, Spawn)
 	AddConversationOption(conversation, "Start what?", "offer")
 	AddConversationOption(conversation, "No, not right now.", "refuse3")
 	StartConversation(conversation, NPC, Spawn, "Excellent. Are you ready to start?")
@@ -108,7 +115,8 @@ end
 function Option5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-	if GetQuestStep(Spawn, LordGrimrotsScythe) == 4 then
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_007.mp3", "", "", 2410599990, 3294676277, Spawn)
+    if GetQuestStep(Spawn, LordGrimrotsScythe) == 4 then
 	AddConversationOption(conversation, "The gnolls have Lord Grimrot's war scythe and are using it to resurrect him for a new undead battle against Qeynos.", "Option7")
 	AddConversationOption(conversation, "Morte's a human! You didn't tell me that!", "Option6")
 	end
@@ -126,6 +134,7 @@ end
 
 function Option7(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_008.mp3", "", "boggle", 4075114721, 1890413048, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "What can I do to help you?", "Option8")
 	AddConversationOption(conversation, "I'll have to continue this later.")
@@ -134,6 +143,7 @@ end
 
 function Option8(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_009.mp3", "", "shakefist", 1966007191, 2165025805, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "I'll destroy the scythe.", "Option9")
 	StartConversation(conversation, NPC, Spawn, "We must get that scythe at any cost.  A large-scale invasion won't do us any good; they might just try to hurry up whatever it is they're doing.  No, we've got to get a small force to find Pestilence and destroy it. ")
@@ -143,6 +153,7 @@ end
 function Option9(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_011.mp3", "", "", 2337997349, 1621243577, Spawn)
 	SetStepComplete(Spawn, LordGrimrotsScythe, 4)
 	PlayAnimation(NPC, 121)
 	AddConversationOption(conversation, "Don't worry -- I will be back.")
@@ -151,6 +162,7 @@ end
 
 function Option10(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_012.mp3", "", "", 3015059264, 2600919408, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "So I need to find the other part with the Darkpaws?", "Option11")
 	StartConversation(conversation, NPC, Spawn, "I wonder whether each group has a piece of the scythe ... that might explain their sudden cooperation:An uneasy truce until they unleash Lord Grimrot.  I'll bet they need each other to get this to work.  And you know this actually ties in with the last reports, of those Darkpaws and Sabertooth gnolls suddenly getting friendly toward each other.")
@@ -159,6 +171,7 @@ end
 function Option11(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_013.mp3", "", "", 57458037, 1125197577, Spawn)
 	AddConversationOption(conversation, "And then...?", "Option12")
 	StartConversation(conversation, NPC, Spawn, "It looks that way, my friend.  Just as the Sabertooth gnolls protect their rune casters, so do the Darkpaws.  A small group is the best way to achieve success.  And then...")
 end
@@ -166,6 +179,7 @@ end
 function Option12(NPC, Spawn)
     SetStepComplete(Spawn, LordGrimrotsScythe, 6)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_014.mp3", "", "", 466957863, 1448898790, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "...haunt us.  Yes, I know.  I'll take care of the scythe.")
 	StartConversation(conversation, NPC, Spawn, "And then, well, we'll have stopped them, won't we?  Anyway, it's best to take things one step at a time.  We'll deal with what comes after we destroy the entire scythe -- if there is anything, mind you. The undead have a way of coming back to ... well, you know...")
@@ -174,6 +188,7 @@ end
 function Option13(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_015.mp3", "", "", 2386335568, 649326615, Spawn)
 		AddConversationOption(conversation, "Well...no, I'm not sure.", "Option14")
 	StartConversation(conversation, NPC, Spawn, "That's one less thing for me to worry about. Thank you!  The undead continue to stir, though, which disturbs me.  You're sure you destroyed all pieces of Pestilence?")
 end
@@ -181,6 +196,7 @@ end
 function Option14(NPC, Spawn)
     SetStepComplete(Spawn, LordGrimrotsScythe, 8)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_016.mp3", "", "", 2368455288, 1132389514, Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "I'll take a look.")
 	StartConversation(conversation, NPC, Spawn, "Either way, there's no denying that the undead are restless over in Firemyst Gully -- that's where untold numbers of 'em were buried in the War of Plagues.  In fact, maybe you could go over and see if the dwarven centurion at the Firemyst gate needs anything.  I'm afraid my lot is to stay here.  Go find glory in battle, farewell.")
