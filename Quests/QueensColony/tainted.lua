@@ -102,10 +102,8 @@ function step5_complete_foundParchment(Quest, QuestGiver, Player)
 	--spawn "a piece of parchment harvestable"
 	--only let Player see it
 	--set harvestable to "Parchment Scrap" the one that looks like it was unrolled.
-	    local zone = GetZone(Player)
-		local Direspike = GetSpawnByLocationID(zone, 133770663, false)
-        SpawnByLocationID(zone, 133770663,false)
-	--SpawnMob(GetZone(Player), 2530194, true, 92.6042, 1.6355, 123.73, 290) OLD SPAWN METHOD DID NOT ALLOW LOOT DROP
+
+	SpawnMob(GetZone(Player), 2530194, true, 92.6042, 1.6355, 123.73, 290) 
 	AddQuestStepObtainItem(Quest, 6,  "Now I need to gather the parchment pieces from the spider's nest. Hopefully they are from the parchment I'm trying to put together!", 1, 100,  "There is more to be learned in the Tainted Forest.", 75,  10315)
 	AddQuestStepCompleteAction(Quest, 6, "step6_complete_harvestedParchment")
 end
@@ -124,6 +122,7 @@ function step6_complete_harvestedParchment(Quest, QuestGiver, Player)
 	-- update quest
 	-- You carefully roll the parchment and stow it away.
 	--    Put the parchment away.
+
 	AddQuestStepChat(Quest, 7, "I need to put together all the pieces of the parchment.", 1, "There is more to be learned in the Tainted Forest.", 0, 2530092)
 	AddQuestStepCompleteAction(Quest, 7, "step7_complete_putParchmentTogether")
 end
@@ -134,7 +133,12 @@ function step7_complete_putParchmentTogether(Quest, QuestGiver, Player)
 	 
 	 -- remove old parchment
 	 -- spawn direspike when player gets close to his loc
-	SpawnMob(GetZone(Player), 2530106, false, 89.7797, 4.85852, 124.289, 300) 
+		local zone = GetZone(Player)
+		local Direspike = GetSpawnByLocationID(zone, 133770663, false)
+        if Direspike == nil then
+        SpawnByLocationID(zone, 133770663,false)
+        end
+     --SpawnByLocationID(zone, 133770663,false)SpawnMob(GetZone(Player), 2530106, false, 89.7797, 4.85852, 124.289, 300) 
 	AddQuestStepKill(Quest, 8, "The parchment refers to Direspike. I must slay Direspike, the spider that must be at the root of this problem.", 1, 100, "There is more to be learned in the Tainted Forest.", 1859, 2530106)
 	AddQuestStepCompleteAction(Quest, 8, "step8_complete_killedDireSpike")
 end
@@ -170,5 +174,7 @@ function Reload(Quest, QuestGiver, Player, Step)
 	   step7_complete_putParchmentTogether(Quest, QuestGiver, Player)
 	elseif Step == 8 then
 	   step8_complete_killedDireSpike(Quest, QuestGiver, Player)
-	end
+	elseif Step == 9 then
+	   completed(Quest, QuestGiver, Player)
+		end
 end

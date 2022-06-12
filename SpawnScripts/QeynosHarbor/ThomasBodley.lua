@@ -6,15 +6,23 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+
+dofile("SpawnScripts/Generic/EcologyEmotes.lua")
+
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
+	EcologyEmotes(NPC,Spawn)
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
+
 function InRange(NPC, Spawn)
+	if math.random(0, 100) <= 25 then
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/service/merchant/halfelf_merchant_service_good_1_aoi_gm_c5e79ff5.mp3", "Hello there! Can I interest you in some of the finest merchandise this side of Norrath?", "wave", 1293853317, 115757857, Spawn)
+	end
 end
 
 function LeaveRange(NPC, Spawn)
@@ -22,19 +30,14 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-
-	local choice = math.random(1,4)
-
+	local choice = math.random(1, 4)
 	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/optional2/human_eco_good_1/ft/service/armorsmith/human_armorsmith_service_good_1_hail_gm_bb02310.mp3", "Coin is no object when gaining protection from your enemies.  What price can be put on your safety? ", "glare", 4001145540, 1700499989, Spawn)
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/service/merchant/halfelf_merchant_service_good_1_hail_gm_24322c5d.mp3", "Greetings, friend traveler! We have the finest supplies to fill your adventuring needs.", "smile", 397083190, 607860501, Spawn)
 	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/optional2/human_eco_good_1/ft/service/armorsmith/human_armorsmith_service_good_1_hail_gm_af50709c.mp3", "I have some nice new suits of chain that have stood up very well.  Would you like to see them?", "shrug", 1083420797, 1187364205, Spawn)
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/service/merchant/halfelf_merchant_service_good_1_hail_gm_45d92a75.mp3", "Welcome! What can I help you with?", "bow", 3839095688, 1767190740, Spawn)
 	elseif choice == 3 then
-		PlayFlavor(NPC, "voiceover/english/optional2/human_eco_good_1/ft/service/armorsmith/human_armorsmith_service_good_1_hail_gm_58a92b79.mp3", "You can never be too careful when it comes to protection.  Here, try on one of these.", "agree", 1065665881, 1563994341, Spawn)
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/service/merchant/halfelf_merchant_service_good_1_hail_gm_ae84abf9.mp3", "Go on, take a look at the stock. You'll never beat this price in the city. I guarantee it!", "wink", 1745995078, 3389510546, Spawn)
 	elseif choice == 4 then
-		PlayFlavor(NPC, "voiceover/english/optional2/human_eco_good_1/ft/service/armorsmith/human_armorsmith_service_good_1_hail_gm_db7232a3.mp3", "Well, that suit is looking a mite worn.  Can I interest you in a new suit of fine armor? ", "ponder", 3836224141, 450395477, Spawn)
-	else
+		PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/service/merchant/halfelf_merchant_service_good_1_hail_gm_e4fa2bd8.mp3", "Confound it! Where did I put that ledger? It must be around here somewhere!", "confused", 2835834469, 3534853920, Spawn)
 	end
-
 end
-

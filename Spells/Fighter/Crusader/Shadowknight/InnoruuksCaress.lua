@@ -12,7 +12,7 @@ function cast(Caster, Target, BonusAmt, HateAmt, DmgType, DmgAmt)
     AddSpellBonus(Target, 202, BonusAmt)
     AddSpellBonus(Target, 203, BonusAmt)
 
-    AddProc(Target, 4, 100)
+    AddProc(Caster, 4, 100)
 end
 
 function proc(Caster, Target, Type, BonusAmt, HateAmt, DmgType, DmgAmt)

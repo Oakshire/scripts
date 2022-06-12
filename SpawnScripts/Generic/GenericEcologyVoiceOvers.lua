@@ -835,9 +835,9 @@ function GenericEcologyHail(NPC, Spawn, faction)
                     	elseif choice == 9 then
                     	PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/human/human_eco_evil_1_hail_gm_10e0ca86.mp3", "Just do what the guards say and the beatings won't be so severe.", "lookaway", 1079804543, 441510900, Spawn)
                     	elseif choice == 10 then
-	                    PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/human/human_eco_evil_1_aoi_gm_a2d138b9.mp3", "If you know what's good for ya, you didn't see anything!", "scold", 3989425659, 2701948732, Spawn)
+	                    PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/human/human_eco_evil_1_aoi_gm_a2d138b9.mp3", "Where the heck is that horrible stench coming from?   Oh.  You.", "stinky", 3989425659, 2701948732, Spawn)
                     	elseif choice == 11 then
-                    	PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/human/human_eco_evil_1_aoi_gm_20171f6b.mp3", "Where the heck is that horrible stench coming from?   Oh.  You.", "stinky", 369052520, 3267063374, Spawn)
+                    	PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/human/human_eco_evil_1_aoi_gm_20171f6b.mp3", "If you know what's good for ya, you didn't see anything!", "scold", 369052520, 3267063374, Spawn)
                     	elseif choice == 12 then
 	                    PlayFlavor(NPC, "voiceover/english/human_eco_evil_1/ft/human/human_eco_evil_1_hail_gm_34b6867c.mp3", "Get out of my face, loser!", "stare", 1398343887, 3015762585, Spawn)
                     	elseif choice == 13 then
