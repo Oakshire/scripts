@@ -9,9 +9,9 @@ local bow = 5529
 local beetles = 5532
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-    AddTimer(NPC, 5000, "EmoteLoop")    
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")   
     ProvidesQuest(NPC, beetles)
+    waypoints(NPC)
 end
 
 function respawn(NPC)
@@ -104,20 +104,40 @@ function FinishQuest(NPC, Spawn)
     SetStepComplete(Spawn,beetles, 2)
     end       
 
-function EmoteLoop(NPC)
+function Emotes(NPC)
     local emoteChoice = MakeRandomInt(1,3)
 
     if emoteChoice == 1 then
 -- ponder
         PlayAnimation(NPC, 12030)
-        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
     elseif emoteChoice == 2 then
 -- sniff
         PlayAnimation(NPC, 12329)
-        AddTimer(NPC, MakeRandomInt(6000,9000), "EmoteLoop")	
     else
 -- tapfoot
         PlayAnimation(NPC, 13056)
-        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
     end
 end
+
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 937.68, -25.27, 98.76, 2, 0)
+	MovementLoopAddLocation(NPC, 937.68, -25.27, 98.76, 2, 14,"Emotes")
+	MovementLoopAddLocation(NPC, 940.06, -25.27, 103.64, 2, 1)
+	MovementLoopAddLocation(NPC, 940.06, -25.27, 103.64, 2, 14,"Emotes")
+	MovementLoopAddLocation(NPC, 947.46, -25.27, 103.79, 2, 1)
+	MovementLoopAddLocation(NPC, 947.46, -25.27, 103.79, 2, 14,"Emotes")
+	MovementLoopAddLocation(NPC, 953.35, -25.27, 102.16, 2, 0)
+	MovementLoopAddLocation(NPC, 961.61, -25.27, 106.84, 2, 1)
+	MovementLoopAddLocation(NPC, 961.61, -25.27, 106.84, 2, 14,"Emotes")
+	MovementLoopAddLocation(NPC, 957.28, -25.27, 107.64, 2, 1)
+	MovementLoopAddLocation(NPC, 957.28, -25.27, 107.64, 2, 14,"Emotes")
+	MovementLoopAddLocation(NPC, 958.11, -25.27, 103.57, 2, 0)
+	MovementLoopAddLocation(NPC, 947.08, -25.27, 99.1, 2, 1)
+	MovementLoopAddLocation(NPC, 947.08, -25.27, 99.1, 2, 14,"Emotes")
+	MovementLoopAddLocation(NPC, 940.16, -25.27, 97.93, 2, 0)
+	MovementLoopAddLocation(NPC, 933.77, -25.27, 106.09, 2, 1)
+	MovementLoopAddLocation(NPC, 933.77, -25.27, 106.09, 2, 14,"Emotes")
+end
+
+

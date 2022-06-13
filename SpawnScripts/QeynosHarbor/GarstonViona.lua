@@ -22,7 +22,8 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "", "As much as I'd like to help you design a new cloak, the Queen has deemed that only members of more prestigious guilds have access to my services.", "", 0, 0, Spawn, 0)
 
-	PlayFlavor(NPC, "", "Would you like to design a new look for your guild's cloaks?  This is something that I can help you with, all I require is that you cover cost of my supplies.", "", 1689589577, 4560189, Spawn)
+--	PlayFlavor(NPC, "", "Would you like to design a new look for your guild's cloaks?  This is something that I can help you with, all I require is that you cover cost of my supplies.", "", 1689589577, 4560189, Spawn)
 end
 

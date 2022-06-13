@@ -9,8 +9,7 @@
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
-    SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
+    SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")		
     AddTimer(NPC, 5000, "EmoteLoop")    
 end
 
@@ -28,15 +27,18 @@ function InRange(NPC,Spawn)
 
     if emoteChoice == 1 then
 -- ponder
-        PlayAnimation(NPC, 12030)
+ --       PlayAnimation(NPC, 12030)
+    PlayFlavor(NPC,"","","ponder",0,0)
         AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
     elseif emoteChoice == 2 then
 -- sniff
-        PlayAnimation(NPC, 12329)
+        PlayFlavor(NPC,"","","agree",0,0)
+        --PlayAnimation(NPC, 12329)
         AddTimer(NPC, MakeRandomInt(6000,9000), "EmoteLoop")	
     else
 -- tapfoot
-        PlayAnimation(NPC, 13056)
+     PlayFlavor(NPC,"","","peer",0,0)
+     -- PlayAnimation(NPC, 13056)
         AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
     end
 end   

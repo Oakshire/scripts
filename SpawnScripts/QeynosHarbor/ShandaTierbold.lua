@@ -8,7 +8,7 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 1, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -16,6 +16,8 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+FaceTarget(NPC, Spawn)
+PlayFlavor(NPC, "voiceover/english/shanda_tierbold/qey_harbor/shandatierbold000.mp3", "Stop right there! No one goes through this door without explicit permission.", "shakefist",3116352069, 1617706288, Spawn)
 end
 
 function LeaveRange(NPC, Spawn)
@@ -24,6 +26,6 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1041.mp3", "Stop right there! No one goes through this door without explicit permission.", "no", 0, 0, Spawn)
+PlayFlavor(NPC, "voiceover/english/shanda_tierbold/qey_harbor/shandatierbold000.mp3", "Stop right there! No one goes through this door without explicit permission.", "shakefist",3116352069, 1617706288, Spawn)
 end
 

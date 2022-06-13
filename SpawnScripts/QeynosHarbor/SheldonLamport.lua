@@ -1,6 +1,6 @@
 --[[
 	Script Name	: SpawnScripts/QeynosHarbor/SheldonLamport.lua
-	Script Purpose	: Sheldon Lamport <Jeweler>
+	Script Purpose	: Sheldon Lamport <Scribe>
 	Script Author	: Cynnar
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data

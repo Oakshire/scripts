@@ -4,10 +4,14 @@
 	Script Author	: Cynnar
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Notes: Added flavor emotes via dofile script - 2022.06.12 Dorbin
 --]]
+dofile("SpawnScripts/Generic/EcologyEmotes.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	EcologyEmotes(NPC,Spawn)
+
 end
 
 function respawn(NPC)

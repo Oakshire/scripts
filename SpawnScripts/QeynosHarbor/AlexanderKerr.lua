@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -15,6 +15,25 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+   if GetFactionAmount(Spawn,11) <0 then
+    choice = math.random(1,2)
+	FaceTarget(NPC, Spawn)
+	    if choice == 1 then
+		PlayFlavor(NPC, "", "", "shakefist", 2088886924, 3736631596, Spawn)
+	    elseif choice == 2 then
+		PlayFlavor(NPC, "", "", "glare", 1584866727, 581589457, Spawn)
+        end
+    else
+    if math.random(1,100)<60 then
+    choice = math.random(1,2)
+	FaceTarget(NPC, Spawn)
+	    if choice == 1 then
+		PlayFlavor(NPC, "", "", "beckon", 2088886924, 3736631596, Spawn)
+	    elseif choice == 2 then
+		PlayFlavor(NPC, "", "", "hello", 1584866727, 581589457, Spawn)
+        end
+        end
+    end
 end
 
 function LeaveRange(NPC, Spawn)

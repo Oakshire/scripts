@@ -6,33 +6,17 @@
 	Script Notes	: 
 --]]
 
-function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-end
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
-function InRange(NPC, Spawn)
-end
-
-function LeaveRange(NPC, Spawn)
-end
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-
-	PlayFlavor(NPC, "voiceover/english/sean_wellfayer/qey_harbor/100_qst_sean_wellfayer_multhail2_e78a363.mp3", "If fishing doesn't interest you, perhaps bait does!", "", 3207653573, 2859825628, Spawn)
-end
 
 local bait = 5571
+
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
     ProvidesQuest(NPC,bait)
 end
+
+
 
 function respawn(NPC)
 	spawn(NPC)
@@ -77,10 +61,10 @@ function Dialog1(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Please try your luck!  I've been fishing here since I was a small boy, and I still have great luck hooking fish!")
 	Dialog.AddVoiceover("voiceover/english/sean_wellfayer/qey_harbor/seanwellfayer000.mp3", 2006211281, 54196600)
-    if not HasQuest(Spawn,snakes) then
+    if not HasQuest(Spawn,bait) and not HasCompletedQuest(Spawn,bait) then
 	Dialog.AddOption("How are the fish biting today?", "Dialog2")
     end
-    if GetQuestStep(Spawn,snakes)==2 then
+    if GetQuestStep(Spawn,bait)==2 then
 	Dialog.AddOption("I've brought the fairy wings and slug meat you were looking for.", "Dialog3")
     end
     Dialog.AddOption("Not interested right now.  Good luck on your next catch.")

@@ -22,10 +22,87 @@ function InRange(NPC, Spawn)
 	end
 
 function hailed(NPC, Spawn)
+    if GetFactionAmount(Spawn,11)<0 then
+        else
+    FaceTarget(NPC, Spawn)
+    local Warland = GetSpawn(NPC,2210266)    
+	if Warland ~=nil then
+    FaceTarget(Warland,Spawn)
+	PlayFlavor(Warland, "", "", "attention", 0, 0, Spawn)
+    end	
+    local Groban = GetSpawn(NPC,2210088)    
 	FaceTarget(NPC, Spawn)
+	if Groban ~=nil then
+    FaceTarget(Groban,Spawn)
+ 	PlayFlavor(Groban, "", "", "attention", 0, 0, Spawn)
+   end	    
+    	FaceTarget(NPC, Spawn)
 		GenericGuardHail(NPC, Spawn)
 	end
+end
 
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 794.25, -21, -60.3, 2, 0)
+	MovementLoopAddLocation(NPC, 772.27, -21.61, -59.66, 2, 0)
+	MovementLoopAddLocation(NPC, 760.59, -21.7, -58.92, 2, 0)
+	MovementLoopAddLocation(NPC, 739.71, -21.37, -57.96, 2, 0)
+	MovementLoopAddLocation(NPC, 727.83, -21.35, -59.01, 2, 0)
+	MovementLoopAddLocation(NPC, 713.7, -20.97, -78.42, 2, 0)
+	MovementLoopAddLocation(NPC, 691.67, -21.46, -108.83, 2, 0)
+	MovementLoopAddLocation(NPC, 687.81, -21.1, -115.14, 2, 0)
+	MovementLoopAddLocation(NPC, 681.96, -21.03, -115.62, 2, 0)
+	MovementLoopAddLocation(NPC, 679.39, -21.14, -112.78, 2, 0)
+	MovementLoopAddLocation(NPC, 689.87, -21.54, -99.94, 2, 0)
+	MovementLoopAddLocation(NPC, 705.26, -21.11, -81.33, 2, 0)
+	MovementLoopAddLocation(NPC, 717.69, -21.08, -66.29, 2, 0)
+	MovementLoopAddLocation(NPC, 716.74, -20.84, -25.46, 2, 0)
+	MovementLoopAddLocation(NPC, 716.53, -20.65, -16.01, 2, 0)
+	MovementLoopAddLocation(NPC, 709.19, -20.64, -13.58, 2, 0)
+	MovementLoopAddLocation(NPC, 701.63, -20.64, -13.85, 2, 0)
+	MovementLoopAddLocation(NPC, 698.89, -20.64, -17.24, 2, 0)
+	MovementLoopAddLocation(NPC, 699.08, -20.64, -21.61, 2, 0)
+	MovementLoopAddLocation(NPC, 699.75, -20.64, -23.81, 2, 0)
+	MovementLoopAddLocation(NPC, 755.76, -20.89, -21.87, 2, 0)
+	MovementLoopAddLocation(NPC, 760.66, -20.72, -25, 2, 0)
+	MovementLoopAddLocation(NPC, 756.84, -21.5, -47.79, 2, 0)
+	MovementLoopAddLocation(NPC, 715.26, -21.4, -50.18, 2, 0)
+	MovementLoopAddLocation(NPC, 714.68, -21.06, -64.63, 2, 0)
+	MovementLoopAddLocation(NPC, 754.6, -21.56, -59.25, 2, 0)
+	MovementLoopAddLocation(NPC, 789.89, -21.15, -55.73, 2, 0)
+	MovementLoopAddLocation(NPC, 796.71, -20.97, -56.55, 2, 0)
+	MovementLoopAddLocation(NPC, 789.89, -21.15, -55.73, 2, 0)
+	MovementLoopAddLocation(NPC, 754.6, -21.56, -59.25, 2, 0)
+	MovementLoopAddLocation(NPC, 714.68, -21.06, -64.63, 2, 0)
+	MovementLoopAddLocation(NPC, 715.26, -21.4, -50.18, 2, 0)
+	MovementLoopAddLocation(NPC, 756.84, -21.5, -47.79, 2, 0)
+	MovementLoopAddLocation(NPC, 760.66, -20.72, -25, 2, 0)
+	MovementLoopAddLocation(NPC, 755.76, -20.89, -21.87, 2, 0)
+	MovementLoopAddLocation(NPC, 699.75, -20.64, -23.81, 2, 0)
+	MovementLoopAddLocation(NPC, 699.08, -20.64, -21.61, 2, 0)
+	MovementLoopAddLocation(NPC, 698.89, -20.64, -17.24, 2, 0)
+	MovementLoopAddLocation(NPC, 701.63, -20.64, -13.85, 2, 0)
+	MovementLoopAddLocation(NPC, 709.19, -20.64, -13.58, 2, 0)
+	MovementLoopAddLocation(NPC, 716.53, -20.65, -16.01, 2, 0)
+	MovementLoopAddLocation(NPC, 716.74, -20.84, -25.46, 2, 0)
+	MovementLoopAddLocation(NPC, 717.69, -21.08, -66.29, 2, 0)
+	MovementLoopAddLocation(NPC, 705.26, -21.11, -81.33, 2, 0)
+	MovementLoopAddLocation(NPC, 689.87, -21.54, -99.94, 2, 0)
+	MovementLoopAddLocation(NPC, 679.39, -21.14, -112.78, 2, 0)
+	MovementLoopAddLocation(NPC, 681.96, -21.03, -115.62, 2, 0)
+	MovementLoopAddLocation(NPC, 687.81, -21.1, -115.14, 2, 0)
+	MovementLoopAddLocation(NPC, 691.67, -21.46, -108.83, 2, 0)
+	MovementLoopAddLocation(NPC, 713.7, -20.97, -78.42, 2, 0)
+	MovementLoopAddLocation(NPC, 727.83, -21.35, -59.01, 2, 0)
+	MovementLoopAddLocation(NPC, 739.71, -21.37, -57.96, 2, 0)
+	MovementLoopAddLocation(NPC, 760.59, -21.7, -58.92, 2, 0)
+	MovementLoopAddLocation(NPC, 772.27, -21.61, -59.66, 2, 0)
+	MovementLoopAddLocation(NPC, 794.25, -21, -60.3, 2, 0)
+end
+
+
+
+
+--[[ Old Path by Devnoob
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 679.82, -21.04, -115.09, 2, 0)
 	MovementLoopAddLocation(NPC, 708.6, -20.89, -66.2, 2, 2)
@@ -49,5 +126,5 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 710.6, -20.89, -66.2, 2, 0)
 	MovementLoopAddLocation(NPC, 679.82, -21.04, -115.09, 2, 0)
 end
-
+--]]
 
