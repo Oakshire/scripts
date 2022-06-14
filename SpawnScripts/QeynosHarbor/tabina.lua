@@ -77,7 +77,7 @@ function InRange(NPC, Spawn) --Quest Callout
         CalloutTimeCheck = true
 	    FaceTarget(NPC, Spawn)        
         SeerShout(NPC, Spawn)    
-		AddTimer(NPC,30000,"ResetCalloutTimer")                        
+		AddTimer(NPC,50000,"ResetCalloutTimer")                        
     end
 end
 end

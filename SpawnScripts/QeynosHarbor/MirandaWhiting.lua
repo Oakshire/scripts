@@ -15,5 +15,5 @@ end
 
 function hailed(NPC, Spawn)
 FaceTarget(NPC,Spawn)
-GenericRaceCheckHail(NPC, Spawn, faction)
+GenericEcologyHail(NPC, Spawn, faction)
 end

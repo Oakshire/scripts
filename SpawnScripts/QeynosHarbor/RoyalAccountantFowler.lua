@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -15,6 +15,9 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "voiceover/english/royal_accountant_fowler/qey_harbor/100_soc_human_guild_registrar_fowler_hail_2f5a416.mp3", "Hello fellow citizen!  I'm the royal accountant for the city of Qeynos!  When you wish to form a guild within the city, you simply need to bring six members here and pay a nominal fee.", "bye", 852945802, 1195224665, Spawn)
+
 end
 
 function LeaveRange(NPC, Spawn)
