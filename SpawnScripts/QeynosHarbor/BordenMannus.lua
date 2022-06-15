@@ -21,12 +21,13 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-		PlayFlavor(NPC, "voiceover/english/optional5/bartender_borden_mannus/qey_harbor/bartenderbordenmannus000.mp3", "", "", 2826547781, 426489100, Spawn)
+--		PlayFlavor(NPC, "voiceover/english/optional5/bartender_borden_mannus/qey_harbor/bartenderbordenmannus000.mp3", "", "no", 2826547781, 426489100, Spawn)
+		PlayVoice(NPC, "voiceover/english/optional5/bartender_borden_mannus/qey_harbor/bartenderbordenmannus000.mp3", 2826547781, 426489100, Spawn)
 		if GetQuestStep(Spawn, TheMotleyMerchantManifest) == 6 then
-			AddConversationOption(conversation, "I believe you need to sign this manifest. ", "Option1")
-			end
+		AddConversationOption(conversation, "I believe you need to sign this manifest. ", "Option1")
+		end
 		AddConversationOption(conversation, "I'm sorry. I took a wrong turn. Farewell.")
-	StartConversation(conversation, NPC, Spawn, "Listen here,  this ain't no public brew hall! The Mermaid's Lure is for Marauders only. ")
+	    StartConversation(conversation, NPC, Spawn, "Listen here,  this ain't no public brew hall! The Mermaid's Lure is for Marauders only. ")
 end
 
 

@@ -56,13 +56,25 @@ local SHAPER = 43
 local CHANNELER = 44 
 --]]
 
+local armor1 = 5588
+local armor2 = 5589
+local armor3 = 5590
+local armor4 = 5591
+local armor5 = 5592
+local armor6 = 5593
+
+function spawn(NPC)
+    ProvidesQuest(NPC,armor1)
+    ProvidesQuest(NPC,armor2)
+    ProvidesQuest(NPC,armor3)
+    ProvidesQuest(NPC,armor4)
+    ProvidesQuest(NPC,armor5)
+    ProvidesQuest(NPC,armor6)
+end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I'm sorry. I don't know who ye are.  If ye'd be so kind as ta leave me to my business, I'd appreciate it.  Good day ta ye.")
-	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan017.mp3", 3568187069, 1024390098)
-	Dialog.Start()
+    PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan017.mp3","I'm sorry. I don't know who ye are.  If ye'd be so kind as ta leave me to my business, I'd appreciate it.  Good day ta ye.","glare", 3568187069, 1024390098, Spawn)
 end
 
 --[[

@@ -3280,10 +3280,10 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 				    end    
 				    else                                                    -- player is citizen and is hailed
 				    if CalloutTimeCheck == false then
-                        if math.random(1, 100) <= 20 then
+                        if math.random(1, 100) <= 18 then
                         CalloutTimeCheck = true
                         FaceTarget(NPC, Spawn)			            
-			            AddTimer(NPC,30000,"ResetCalloutTimer")                        
+			            AddTimer(NPC,50000,"ResetCalloutTimer")                        
 				    local choice = math.random(1,11)
 				    if choice == 1 then
 				    PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/barbarian/barbarian_eco_good_1_aoi_gf_2e85d8db.mp3", "Good day, love.  Enjoy yourself, ya hear?", "hello", 3358539218, 1293822221)
@@ -4929,10 +4929,10 @@ function GenericEcology2Callout(NPC, Spawn, faction)
 				        end
 				    else 
 				    if CalloutTimeCheck == false then
-                        if math.random(1, 100) <= 20 then
+                        if math.random(1, 100) <= 18 then
                         CalloutTimeCheck = true
 			            FaceTarget(NPC,Spawn)
-			            AddTimer(NPC,30000,"ResetCalloutTimer")    				        
+			            AddTimer(NPC,50000,"ResetCalloutTimer")    				        
 	            local choice = math.random(1,4)
 
 	                if choice == 1 then
@@ -5604,10 +5604,10 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 				        end
 				    else
 				    if CalloutTimeCheck == false then
-                        if math.random(1, 100) <= 20 then
+                        if math.random(1, 100) <= 18 then
                         CalloutTimeCheck = true
 			            FaceTarget(NPC,Spawn)
-			            AddTimer(NPC,30000,"ResetCalloutTimer")    				        
+			            AddTimer(NPC,50000,"ResetCalloutTimer")    				        
 				    local choice = math.random(1,3)                         -- player passes faction check, procedes to dialogue
                         if choice == 1 then	
 		                PlayFlavor(NPC, "voiceover/english/barbarian_eco_race_evil/ft/eco/evil/barbarian_eco_race_evil_hail_gm_431b37d1.mp3", "Watch yerself, this city can be rough.", "wink", 1560541305, 226492698)

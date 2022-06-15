@@ -14,13 +14,20 @@ SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn) 
+    if GetFactionAmount(Spawn,11)<0 then
+        FactionCheckingCallout(NPC, Spawn, faction)
+        else
     GenericDrunkCallout(NPC, Spawn, faction)    
     end
-
+end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-GenericDrunkHail(NPC, Spawn, faction)
+    if GetFactionAmount(Spawn,11)<0 then
+        FactionChecking(NPC, Spawn, faction)
+    else
+    GenericDrunkHail(NPC, Spawn, faction)
+end
 end
 
 function Drink(NPC)

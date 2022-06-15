@@ -21,8 +21,13 @@ end
 
 
 function InRange(NPC, Spawn)
-		CheckFaction(NPC, Spawn, "Qeynos")
-	end
+    if GetFactionAmount(Spawn,11) >0 then
+	if math.random(1,100)<25 then
+		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_ee473c11.mp3", "Good day to you, citizen. All preserve Queen Antonia.", "salute", 2997871263, 2912813719, Spawn, 0)
+	    
+    end
+end
+end
 
 
 function LeaveRange(NPC, Spawn)

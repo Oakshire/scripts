@@ -17,7 +17,10 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "innkeeper_uglar_splinterthumb/qey_village01/innkeeper001.mp3", "", "", 3113863761, 2642679335, Spawn)
+	PlayFlavor(NPC, "innkeeper_uglar_splinterthumb/qey_village01/innkeeper001.mp3", "", "hello", 3113863761, 2642679335, Spawn)
+    if GetQuestStep(Spawn,5586)==1 then
+	AddConversationOption(conversation, "I've got a letter for you from Shanda.  She wanted to make sure you got it right away.", "Delivered")
+    end
 	AddConversationOption(conversation, "How can I place an item in my house?", "dlg_26_1")
 	AddConversationOption(conversation, "What kind of housing is available to me?", "dlg_26_7")
 	AddConversationOption(conversation, "What is the marketboard for?", "dlg_26_2")
@@ -82,4 +85,25 @@ function dlg_26_7(NPC, Spawn)
 	AddConversationOption(conversation, "What is my house for?", "dlg_26_4")
 	AddConversationOption(conversation, "That's enough for now, thanks.")
 	StartConversation(conversation, NPC, Spawn, "Many different kinds of housing are available in the city of Qeynos.  As a show of appreciation, Antonia Bayle has awarded you a one bedroom house for free at this time.")
+end
+
+function Delivered(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+
+	AddConversationOption(conversation, "[This dialog is fabricated.  Let EmemJR on the EMU Discord know we need this NPC's Dialog]")
+	AddConversationOption(conversation, "Are you... the boss?","Boss")
+	AddConversationOption(conversation, "Thanks, I guess.")
+    QuestStepIsComplete(Spawn,5586,1)
+	StartConversation(conversation, NPC, Spawn, "Is that so?  Let's see it.  Hmm... Yes... this is what I was waiting for, and I can tell you resisted the temptation to open it.  Here, take these coins and a cold ale for your legwork and keep your eyes from prying where they don't belong.")
+end
+
+function Boss(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+
+	AddConversationOption(conversation, "[This dialog is fabricated.  Let EmemJR on the EMU Discord know we need this NPC's Dialog]")
+	AddConversationOption(conversation, "Thanks, I guess.")
+    QuestStepIsComplete(Spawn,5586,1)
+	StartConversation(conversation, NPC, Spawn, "Boss?! Me?  Heavens no!  I try to keep my hands clean as it is of these sort of dealings.  You just delivered a letter 'from' the boss.  You may have just been played if you were told otherwise.")
 end

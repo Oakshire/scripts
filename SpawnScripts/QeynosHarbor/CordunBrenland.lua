@@ -24,7 +24,7 @@ function Dialog1(NPC, Spawn)
  FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("I can't take much more of this place.  All this 'goody' talk about gold in the streets is enough to drive me mad.  Bah!  I know there is more coin to be had out there if we weren't lining the pockets of the 'Queen'.")
-	PlayFlavor(NPC, "", "", "frustrated", 0, 0, Spawn)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1048.mp3", "", "frustrated", 0, 0, Spawn)
     if  GetQuestStep(Spawn,5585)== 2 then 
     Dialog.AddOption("Here are the ingredients you asked for.  Fresh from Antonica.", "FishDelivery")
     end
