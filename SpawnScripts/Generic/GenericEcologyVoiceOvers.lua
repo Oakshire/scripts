@@ -448,7 +448,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
                 	elseif choice == 11 then            	    
             	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_aeef4870.mp3", "Here, here!  Wonderful to have you with us in the city.", "happy", 1351314175, 2941555770, Spawn)
                 	elseif choice == 12 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_aeef4870.mp3", "I pray on you, stranger.  Dost thou any news on friends of Gukta?", "bow", 1351314175, 2941555770, Spawn)
+            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_afdc1a22.mp3", "I pray on you, stranger.  Dost thou any news on friends of Gukta?", "bow", 2960870988, 3925790084, Spawn)
                     end
 	           end
              elseif gender == FEMALE then
@@ -3701,7 +3701,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
                 	elseif choice == 11 then            	    
             	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_aeef4870.mp3", "Here, here!  Wonderful to have you with us in the city.", "happy", 1351314175, 2941555770)
                 	elseif choice == 12 then            	    
-            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_aeef4870.mp3", "I pray on you, stranger.  Dost thou any news on friends of Gukta?", "bow", 1351314175, 2941555770)
+            	    PlayFlavor(NPC, "voiceover/english/froglok_eco_good_1/ft/froglok/froglok_eco_good_1_hail_gm_afdc1a22.mp3", "I pray on you, stranger.  Dost thou any news on friends of Gukta?", "bow", 2960870988, 3925790084)
                     end
 	           end
 	       end end

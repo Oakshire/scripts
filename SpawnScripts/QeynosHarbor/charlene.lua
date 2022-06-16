@@ -5,29 +5,49 @@
 	Script Date		:	04/09/2020 04:14:49 PM
 	Script Notes	:	Locations collected from Live
 --]]
+local AttackTimer = false
 
 function spawn(NPC)
 	waypoints(NPC)
+    SetPlayerProximityFunction(NPC,4, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)
 	spawn(NPC)
-	end
-	
-	
+end
+
+function InRange(NPC,Spawn)
+if AttackTimer == false then
+if math.random(1,100) <=20 then
+    AttackTimer = true    
+    FaceTarget(NPC,Spawn)
+    PlayFlavor(NPC, "", "", "attack", 0, 0)
+    AddTimer(NPC,25000,"AttackTimerReset")
+    end
+end
+end
+
+function AttackTimerReset(NPC,Spawn)
+AttackTimer = false
+end
+
 function Sleep(NPC)
 local choice = math.random(1,2)
 if choice == 1 then
     SpawnSet(NPC, "action_state", 540)
     AddTimer(NPC, 22000, "Wake")
+    AttackTimer = true
 elseif choice ==2 then
 end
 end
+
 function Wake(NPC)    
     SpawnSet(NPC, "action_state", 0)
+AttackTimer = false
 end
 
 

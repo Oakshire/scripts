@@ -1,20 +1,54 @@
 --[[
-    Script Name        :    QeynosHarbor Zonescript
-    Script Purpose    :    Facilitate Qeynos Harbor
+    Script Name      :    QeynosHarbor Zonescript
+    Script Purpose   :    Facilitate Qeynos Harbor
     Script Author    :    Dorbin
-    Script Date        :    10/9/2019
+    Script Date      :    10/9/2019
     Script Notes    :    
 --]]
 dofile("SpawnScripts/NorthQeynos/QueenAntoniaBayle.lua")
 
+-- for AQ mail until we devise a better system
+local WARRIOR =2
+local GUARDIAN= 3 
+local BERSERKER = 4 
+
+local CRUSADER = 8 
+local SHADOWKNIGHT = 9 
+local PALADIN = 10 
+
+local CLERIC = 12 
+local TEMPLAR = 13 
+local INQUISITOR = 14 
+
+local SHAMAN = 18 
+local MYSTIC = 19 
+local DEFILER = 20 
+
+local ROGUE = 32 
+local SWASHBUCKLER = 33 
+local BRIGAND = 34 
+local BARD = 35 
+local TROUBADOR = 36 
+local DIRGE = 37 
+local PREDATOR = 38 
+local RANGER = 39 
+local ASSASSIN = 40 
+
+
 function init_zone_script(zone)
 end
 
-function player_entry(zone, player)
-SendPopUpMessage(Player, "Qeynos Harbor", 230, 230, 230)   
+function player_entry(Zone, Spawn)
+SendPopUpMessage(Spawn, "Qeynos Harbor", 230, 230, 230)   
+   if GetFactionAmount(Spawn, 11) >0 and not HasQuest (Spawn,5588) and not HasCompletedQuest(Spawn,5588) and GetLevel(Spawn)>=20 then
+    if GetClass(Spawn)== WARRIOR or GetClass(Spawn)== GUARDIAN or GetClass(Spawn)== BERSERKER or GetClass(Spawn)== CRUSADER or GetClass(Spawn)== SHADOWKNIGHT or GetClass(Spawn)== PALADIN or GetClass(Spawn)== CLERIC or GetClass(Spawn)== TEMPLAR or GetClass(Spawn)== INQUISITOR or GetClass(Spawn)== SHAMAN or GetClass(Spawn)== MYSTIC or GetClass(Spawn)== DEFILER or  GetClass(Spawn)==ROGUE or GetClass(Spawn)==SWASHBUCKLER or GetClass(Spawn)==BRIGAND or GetClass(Spawn)==BARD or GetClass(Spawn)==TROUBADOR or GetClass(Spawn)==DIRGE or GetClass(Spawn)==PREDATOR or GetClass(Spawn)==RANGER or GetClass(Spawn)==ASSASSIN then
+    AddPlayerMail(Spawn, "Ian Cathlan", "HELP WANTED: Finding Family Heirlooms", "Looking for adventurous folks to find some lost family heirlooms.  My family can't seem to hold onto any of their valuables and have left me barely the clothes on my back!  Can exchange services provided with various knicknacks or old armor pieces I've got stashed in storage.  If interested, please find me in near the Ak'anon Clock Square in Qeynos Harbor.  I await assistance!  -Ian Cathlan", 0)
+    end
+   end
 end
 
 function enter_location(zone, spawn, grid)
+
 end
 
 function leave_location(zone, spawn, grid)

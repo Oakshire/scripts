@@ -5,9 +5,11 @@
     Script Purpose : 
                    : 
 --]]
+local  AttackTimer = false -- determines if the cat will hiss at players.  Disabled when 'sleeping'.
 
 function spawn(NPC)
 waypoints(NPC)
+    SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
@@ -18,18 +20,35 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
+function InRange(NPC,Spawn)
+if AttackTimer == false then
+if math.random(1,100) <=33 then
+    AttackTimer = true    
+    FaceTarget(NPC,Spawn)
+    PlayFlavor(NPC, "", "", "attack", 0, 0)
+    AddTimer(NPC,25000,"AttackTimerReset")
+    end
+end
+end
+
+function AttackTimerReset(NPC,Spawn)
+AttackTimer = false
+end
+
 function Sleep(NPC)
 local choice = math.random(1,2)
 if choice == 1 then
+    AttackTimer = true
     SpawnSet(NPC, "action_state", 540)
     AddTimer(NPC, 22000, "Wake")
 elseif choice ==2 then
 end
 end
+
 function Wake(NPC)    
     SpawnSet(NPC, "action_state", 0)
+AttackTimer = false
 end
-
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 768.72, -20.77, -17.33, 6, 0)
