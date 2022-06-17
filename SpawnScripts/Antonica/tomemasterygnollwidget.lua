@@ -45,6 +45,7 @@ end
 
 function casted_on(NPC, Spawn, SpellName)
   if SpellName == 'Open Chest' then
+    SendMessage(Spawn, "You find a slightly tattered book.")
     SummonItem(Spawn,Book,1)
     AddTimer(NPC, 100, "Check", 1, Spawn)
     end

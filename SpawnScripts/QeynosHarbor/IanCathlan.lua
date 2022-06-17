@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/QeynosHarbor/IanCathlan.lua
     Script Author  : Dorbin
     Script Date    : 2022.06.11
-    Script Purpose : Work in Progress.  Need Dialog.
+    Script Purpose : Ian Cathlan Scout/Plate Fighter Armor Quests.   Needs Voiceovers!!!
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
@@ -73,34 +73,62 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-if GetLevel(Spawn)>=20 then
+if GetFactionAmount(Spawn,11)<0 then --QEYNOS FACTION CHECK
+    PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan017.mp3","I'm sorry. I don't know who ye are.  If ye'd be so kind as ta leave me to my business, I'd appreciate it.  Good day ta ye.","noway", 3568187069, 1024390098, Spawn)
+else
+if GetLevel(Spawn)>=20 then --LEVEL CHECK
 if  GetClass(Spawn)== WARRIOR or GetClass(Spawn)== GUARDIAN or GetClass(Spawn)== BERSERKER or GetClass(Spawn)== CRUSADER or GetClass(Spawn)== SHADOWKNIGHT or GetClass(Spawn)== PALADIN or GetClass(Spawn)== CLERIC or GetClass(Spawn)== TEMPLAR or GetClass(Spawn)== INQUISITOR or GetClass(Spawn)== SHAMAN or GetClass(Spawn)== MYSTIC or GetClass(Spawn)== DEFILER or  GetClass(Spawn)==ROGUE or GetClass(Spawn)==SWASHBUCKLER or GetClass(Spawn)==BRIGAND or GetClass(Spawn)==BARD or GetClass(Spawn)==TROUBADOR or GetClass(Spawn)==DIRGE or GetClass(Spawn)==PREDATOR or GetClass(Spawn)==RANGER or GetClass(Spawn)==ASSASSIN then
-    
+    FaceTarget(NPC, Spawn)
+
     if not HasQuest(Spawn,armor1) and not HasCompletedQuest(Spawn,armor1) then 
-    Dialog1(NPC,Spawn)
-    elseif HasQuest(Spawn,armor1) and GetQuestStep(Spawn,armor1)~=3 then
-   	FaceTarget(NPC, Spawn)
+    Dialog1(NPC,Spawn) -- INITIAL HAIL
+    
+    elseif HasQuest(Spawn,armor1) and GetQuestStep(Spawn,armor1)~=3 then --INBETWEEN QUESTS (no ready to turn in)
     PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan005.mp3","Did you find anything else?  I'm afraid my leads have come up dry as well.  Do you mind looking for these one more time?","ponder", 4113276061, 3432810128, Spawn)
-    elseif GetQuestStep(Spawn,armor1)==3 or GetQuestStep(Spawn,armor2)==4 then
-    Dialog2(NPC,Spawn)
+    
+    elseif GetQuestStep(Spawn,armor1)==3 or GetQuestStep(Spawn,armor2)==4 or GetQuestStep(Spawn,armor3)==4 or GetQuestStep(Spawn,armor4)==4 or  GetQuestStep(Spawn,armor5)==5 then
+    Dialog2(NPC,Spawn) -- DEFAULT QUEST TURN-IN AQ1-5
+    elseif GetQuestStep(Spawn,armor6)==4 then      
+    Dialog4(NPC,Spawn) -- AQ6 TURN-IN   
         
     elseif HasCompletedQuest(Spawn,armor1) and not HasQuest(Spawn,armor2) then
-    Dialog3(NPC,Spawn)
+    Dialog3(NPC,Spawn)  
     elseif HasQuest(Spawn,armor2) and GetQuestStep(Spawn,armor2)~=4 then
     PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan005.mp3","Did you find anything else?  I'm afraid my leads have come up dry as well.  Do you mind looking for these one more time?","ponder", 4113276061, 3432810128, Spawn) 
 
+    elseif HasCompletedQuest(Spawn,armor2) and not HasQuest(Spawn,armor3) then
+    Dialog3(NPC,Spawn)  
+    elseif HasQuest(Spawn,armor3) and GetQuestStep(Spawn,armor3)~=4 then
+    PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan005.mp3","Did you find anything else?  I'm afraid my leads have come up dry as well.  Do you mind looking for these one more time?","ponder", 4113276061, 3432810128, Spawn) 
+ 
+    elseif HasCompletedQuest(Spawn,armor3) and not HasQuest(Spawn,armor4) then
+    Dialog3(NPC,Spawn)  
+    elseif HasQuest(Spawn,armor4) and GetQuestStep(Spawn,armor4)~=4 then
+    PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan005.mp3","Did you find anything else?  I'm afraid my leads have come up dry as well.  Do you mind looking for these one more time?","ponder", 4113276061, 3432810128, Spawn) 
 
-    else 
-	FaceTarget(NPC, Spawn)
+    elseif HasCompletedQuest(Spawn,armor4) and not HasQuest(Spawn,armor5) then
+    Dialog3(NPC,Spawn)  
+    elseif HasQuest(Spawn,armor5) and GetQuestStep(Spawn,armor5)~=5 then
+    PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan005.mp3","Did you find anything else?  I'm afraid my leads have come up dry as well.  Do you mind looking for these one more time?","ponder", 4113276061, 3432810128, Spawn) 
+ 
+    elseif HasCompletedQuest(Spawn,armor5) and not HasQuest(Spawn,armor6) then
+    Dialog3(NPC,Spawn)  
+    elseif HasQuest(Spawn,armor6) and GetQuestStep(Spawn,armor6)~=4 then
+    PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan005.mp3","Did you find anything else?  I'm afraid my leads have come up dry as well.  Do you mind looking for these one more time?","ponder", 4113276061, 3432810128, Spawn) 
+    
+    elseif HasCompletedQuest(Spawn,armor6) then --FINISHED RESPONSE                         
+    PlayFlavor(NPC,"","Hail to ye as well.  Ahh, it's you! Good ta see ya again.  We finally got everything that was missing. Thanks again for your help! I don't know how I'd have done it without you!","hello", 0, 0, Spawn) 
+else 
+	FaceTarget(NPC, Spawn) --NOT RIGHT CLASS
     PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan017.mp3","I'm sorry. I don't know who ye are.  If ye'd be so kind as ta leave me to my business, I'd appreciate it.  Good day ta ye.","glare", 3568187069, 1024390098, Spawn)
     end
     end
 else
-FaceTarget(NPC, Spawn)
+FaceTarget(NPC, Spawn)  --NOT RIGHT LEVEL
 PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan017.mp3","I'm sorry. I don't know who ye are.  If ye'd be so kind as ta leave me to my business, I'd appreciate it.  Good day ta ye.","glare", 3568187069, 1024390098, Spawn)
 end
 end
-
+end
 
 --AQ1
 
@@ -139,7 +167,7 @@ function Option3(NPC, Spawn)
 end
 
 
-function Dialog2(NPC, Spawn)
+function Dialog2(NPC, Spawn) -- Primary turn-in response.
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "What did you find?  Did you get them all?")
@@ -148,7 +176,7 @@ function Dialog2(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Option4(NPC, Spawn)
+function Option4(NPC, Spawn)  
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
     PlayFlavor(NPC,"","","happy", 0, 0, Spawn)
@@ -158,17 +186,37 @@ function Option4(NPC, Spawn)
 if GetQuestStep(Spawn,armor1)==3 then
 	QuestStepIsComplete(NPC,Spawn,armor1,3)
 elseif GetQuestStep(Spawn,armor2)==4 then
-	QuestStepIsComplete(NPC,Spawn,armor1,4)
+	QuestStepIsComplete(NPC,Spawn,armor2,4)
+elseif GetQuestStep(Spawn,armor3)==4 then
+	QuestStepIsComplete(NPC,Spawn,armor3,4)
+elseif GetQuestStep(Spawn,armor4)==4 then
+	QuestStepIsComplete(NPC,Spawn,armor4,4)
+elseif GetQuestStep(Spawn,armor5)==5 then
+	QuestStepIsComplete(NPC,Spawn,armor5,5)
 end
 end
 
---AQ2
+--AQ2-6
 
 function Dialog3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "Judging from where you found the last stuff, I know where we should look next. Will you help me track down some more things?")
-	Dialog.AddOption( "I have the time.  Where should I go next?", "Option5")
+    if HasCompletedQuest(Spawn,armor1) and not HasQuest(Spawn,armor2) then
+        Dialog.AddOption( "I have the time.  Where should I go next?", "Option5")
+	end
+    if HasCompletedQuest(Spawn,armor2) and not HasQuest(Spawn,armor3) then
+        Dialog.AddOption( "I'm not sure how you figure these things out but where do you suggest?", "Option6")
+	end
+    if HasCompletedQuest(Spawn,armor3) and not HasQuest(Spawn,armor4) then
+        Dialog.AddOption( "How did you... nevermind... where next?", "Option7")
+	end
+    if HasCompletedQuest(Spawn,armor4) and not HasQuest(Spawn,armor5) then
+        Dialog.AddOption( "I'm not even going to ask how you know that.  Where to?", "Option8")
+	end
+    if HasCompletedQuest(Spawn,armor5) and not HasQuest(Spawn,armor6) then
+        Dialog.AddOption( "You're a diviner aren't you?  What's the next stop?", "Option9")
+	end
 	Dialog.AddOption("I'm not sure.  I'll get back to you.")
 	Dialog.Start()
 end
@@ -176,4 +224,34 @@ end
 function Option5(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     OfferQuest(NPC,Spawn,armor2)
+end
+
+
+function Option6(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,armor3)
+end
+
+function Option7(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,armor4)
+end
+
+function Option8(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,armor5)
+end
+
+function Option9(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,armor6)
+end
+
+function Dialog4(NPC, Spawn) --AQ6 turnin
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddOption( "Those were like that when I found them.")
+	Dialog.AddOption("Hrmm ... I see.  At least most of it is still in good shape ... except for these...")
+	QuestStepIsComplete(NPC,Spawn,armor6,4)
+	Dialog.Start()
 end

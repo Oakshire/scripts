@@ -5,9 +5,9 @@
     Script Purpose : 
 
         Zone       : QeynosHarbor
-        Quest Giver: 
-        Preceded by: None
-        Followed by: 
+        Quest Giver: Ian Cathlan
+        Preceded by:  Ian's Forgetful Family - Part I
+        Followed by:  Ian's Forgetful Family - Part III
 --]]
 
 function Init(Quest)

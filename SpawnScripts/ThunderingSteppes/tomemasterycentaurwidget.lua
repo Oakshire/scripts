@@ -45,6 +45,7 @@ end
 function casted_on(NPC, Spawn, SpellName)
   if SpellName == 'Search Beds' then
     SummonItem(Spawn,Book,1)
+    SendMessage(Spawn, "You find a well-worn book.")
     AddTimer(NPC, 100, "Check", 1, Spawn)
     end
 end

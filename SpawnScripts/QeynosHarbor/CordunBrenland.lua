@@ -13,25 +13,18 @@ end
 
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("[The following is fabricated.  Let EmemJR know on EMU Discord that this NPC needs dialog]")
-	Dialog.AddOption("[Proceed]","Dialog1")
-	Dialog.Start()
-end
-
-function Dialog1(NPC, Spawn)
  FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I can't take much more of this place.  All this 'goody' talk about gold in the streets is enough to drive me mad.  Bah!  I know there is more coin to be had out there if we weren't lining the pockets of the 'Queen'.")
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1048.mp3", "", "frustrated", 0, 0, Spawn)
+	Dialog.AddDialog("No one in this world can you trust.  Not men, not women, not beasts.  But steel ... Steel, now steel you can trust.")
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1002.mp3", "", "frustrated", 0, 0, Spawn)
     if  GetQuestStep(Spawn,5585)== 2 then 
-    Dialog.AddOption("Here are the ingredients you asked for.  Fresh from Antonica.", "FishDelivery")
+    Dialog.AddOption("I've returned with the catch.", "FishDelivery")
     end
     if not HasCompletedQuest(Spawn,5585) and not HasQuest(Spawn,5585) then
-    Dialog.AddOption("...Are you heading to Freeport, then?", "Coin")
+    Dialog.AddOption("You can trust me.", "Fish1")
     end
-	Dialog.AddOption("I'll leave you to it then.")
+    Dialog.AddOption("Don't you think the city of Qeynos can be trusted?", "Coin1")
+    Dialog.AddOption("I'll leave you to it then.")
 	Dialog.Start()
 end
 
@@ -39,30 +32,57 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function Coin(NPC, Spawn)
+function Coin1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
+	Dialog.AddDialog("I don't trust anything other than steel.  The Circle of Five may claim to look out for the best interests of the people, but I have my doubts.  If we can trust them, why do they only let you work for one of them?")
+    Dialog.AddOption( "They have their good reasons for doing so.  Good luck with your steel.", "")
+    Dialog.AddOption( "Have you considered Freeport?  I've heard its people only report to the Overlord.", "Coin2")
+	Dialog.Start()
+end
+
+
+function Coin2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
 	Dialog.AddDialog("No, but me and my partner are sailing there soon.  We're sick of this pathetic city.  All we have to do is pull off one last job, then we're off to Freeport, the land of opportunity! What kind of person are you, eh?  Do you want to join us and leave this stupid city behind?  Think of it ...  all the gold you want...")
-    Dialog.AddOption( "Freeport is a corrupt city of oppression and pain!  I will never betray Qeynos!", "FishQuest")
+    Dialog.AddOption( "Freeport is a corrupt city of oppression and pain!  I will never betray Qeynos!", "Bah")
     Dialog.AddOption( "I want what I deserve.  I will gladly be evil to gain that.  I'll join you and go to Freeport!", "Betray")
 	Dialog.Start()
+end
+
+function Bah(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "", "Bah!  Off with you then or you'll find how much I trust my steel.", "shakefist", 0, 0, Spawn)
 end
 
 function Betray(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Now that's the spirit!  Say... give me some time and I may have something for you to do in the future!")
-    Dialog.AddOption( "I'll let EmemJR know on Discord that you need the dialog.")
-    Dialog.AddOption( "I await patiently.")
+	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+	Dialog.AddDialog("Well now, perhaps you could be of use to us.  I'm putting together a job, but it isn't quite ready yet.  Return to me later and we'll see what we can accomplish together.")
+    Dialog.AddOption( "[Classic Betrayal Quest a Work in Progress]", "")
+    Dialog.AddOption( "I await patiently", "")
+	Dialog.Start()
+end
+
+function Fish1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+	Dialog.AddDialog("And just what have you done for me, huh? Nothing!  If you want me to trust you, then do something for me.")
+    Dialog.AddOption( "What would you like me to do?", "FishQuest")
+    Dialog.AddOption( "Fine.  I don't have time for this anyways.")
 	Dialog.Start()
 end
 
 function FishQuest(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Eh, I hear ya then...  Hmm, if you're looking for a few coins- it has been ages since I've been able to have one of my favorite dishes they don't serve in the city.  Perhaps you could do some good and fetch some sea creatures out of the waters in Antonica for me.  I'll give you a few coins to rub together if that works for ya.")
-    Dialog.AddOption( "That sounds reasonable. Sure.", "QuestStart")
+	Dialog.AddDialog("All right then!  Go to Antonica and fetch me two barracuda, one manta ray, and two sea turtles.  Once you've done me a bit of good, then perhaps I can trust you.")
+    Dialog.AddOption( "I'm ok with that.", "QuestStart")
     Dialog.AddOption( "I don't like how any of this conversation smells.  Goodbye.")
 	Dialog.Start()
 end
@@ -75,12 +95,19 @@ end
 function FishDelivery(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Oh, that's right.  I gave you a task.  Took your sweet time, didn' chya?  These still look fresh enough... Certainly enough for me!  You didn't think you'd be getting any of this stew, did ya?  Afraid you're out of luck, take these coins and leave me.  I've got a stew to cook up.")
-    Dialog.AddOption( "Well, fine then.", "QuestDone")
+	Dialog.AddDialog("That you have!  And it will make for a fine stew, a fine stew indeed.")
+    Dialog.AddOption( "So when do we eat?", "FishDelivery2")
 	Dialog.Start()
 end
 
-function QuestDone(NPC, Spawn)
- 	FaceTarget(NPC, Spawn)
+function FishDelivery2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "chuckle", 0, 0, Spawn)
+	Dialog.AddDialog("HA!  You thought I was going to share this feast with you?  HA!  I've dinner plans that don't include you.  Don't feel bad though ... you did a great deed.  Why don't you stop by another day, and we'll speak then.  For now, take this coin.")
+    Dialog.AddOption( "Thanks for the coin.", "QuestDone")
+	Dialog.Start()
     SetStepComplete(Spawn,5585, 4)
     end  
+
+ 

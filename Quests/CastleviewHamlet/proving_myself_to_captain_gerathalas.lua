@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill some putrid vermin.", 6, 75, "I need to collect six putrid vermin tails for Captain Gerathalas from the Catacombs.", 99, 1990008, 1990010)
+	AddQuestStepKill(Quest, 1, "I must kill some putrid vermin.", 6, 100, "I need to collect six putrid vermin tails for Captain Gerathalas from the Catacombs.", 99, 1990008, 1990010)
 	AddQuestStepCompleteAction(Quest, 1, "RatHunted")
 	UpdateQuestZone(Quest, "The Down Below")
 end

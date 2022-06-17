@@ -23,7 +23,7 @@ function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Okay!  Okay, I'm going.")
-	StartConversation(conversation, QuestGiver, Player, "About time some 'Savior of the City' helped me with this.  I need a few things for a fish stew- a family recipie.  Go out into the waters in Antonica and bring back some baraccuda, a couple sea turtles, and a mantaray.  That should about cover what I need to put this together.  Now, off with you!")
+	StartConversation(conversation, QuestGiver, Player, "Off with you then!  I'm busy here planning my next move.")
 end
 
 function Declined(Quest, QuestGiver, Player)
