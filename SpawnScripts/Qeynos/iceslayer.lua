@@ -44,6 +44,7 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "No problem.  I'll just leave him be.")
 	StartConversation(conversation, NPC, Spawn, "Pay no attention to Warley down there he just probably didn't sleep last night and is a little grumpy. Isn't that right Warley?")
 end
+end
 
 function dlg_2_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

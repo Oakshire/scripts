@@ -35,19 +35,22 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 620.14, -16.54, 199.73, 2, 0)
 	MovementLoopAddLocation(NPC, 616.91, -12.11, 142.62, 2, 0)
 	MovementLoopAddLocation(NPC, 587.17, -10.44, 147.91, 2, 0)
-	MovementLoopAddLocation(NPC, 548.05, -10.55, 150.62, 2, 0)
+	MovementLoopAddLocation(NPC, 548.05, -10.55, 150.62, 2, 2,"Door1")
 	MovementLoopAddLocation(NPC, 548.55, -9.56, 135.51, 2, 0)
 	MovementLoopAddLocation(NPC, 538.43, -9.56, 133.71, 2, 0)
 	MovementLoopAddLocation(NPC, 536.8, -9.56, 131.87, 2, 0)
 	MovementLoopAddLocation(NPC, 530.82, -9.56, 133.29, 2, 0)
-	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 0)
+	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 1)
+	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 30,"Drink")
+	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 1)
 	MovementLoopAddLocation(NPC, 524.31, -9.56, 132.51, 2, 0)
-	MovementLoopAddLocation(NPC, 546.59, -9.56, 134.99, 2, 0)
+	MovementLoopAddLocation(NPC, 546.59, -9.56, 134.99, 2, 2,"Door")
 	MovementLoopAddLocation(NPC, 546.66, -10.56, 150.83, 2, 0)
 	MovementLoopAddLocation(NPC, 503.39, -11.43, 143.13, 2, 0)
 	MovementLoopAddLocation(NPC, 507.44, -10.22, 117.68, 2, 0)
 	MovementLoopAddLocation(NPC, 489.85, -11.47, 134.57, 2, 0)
-	MovementLoopAddLocation(NPC, 490.98, -12.08, 147.47, 2, 7)
+	MovementLoopAddLocation(NPC, 490.98, -12.08, 147.47, 2, 1)
+	MovementLoopAddLocation(NPC, 490.98, -12.08, 147.47, 2, 8,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 456.49, -22.12, 234.19, 2, 0)
 	MovementLoopAddLocation(NPC, 501.47, -19.69, 242.25, 2, 0)
 	MovementLoopAddLocation(NPC, 540.32, -18.02, 242.34, 2, 0)
@@ -93,14 +96,16 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 489.85, -11.47, 134.57, 2, 0)
 	MovementLoopAddLocation(NPC, 507.44, -10.22, 117.68, 2, 0)
 	MovementLoopAddLocation(NPC, 503.39, -11.43, 143.13, 2, 0)
-	MovementLoopAddLocation(NPC, 546.66, -10.56, 150.83, 2, 0)
+	MovementLoopAddLocation(NPC, 546.66, -10.56, 150.83, 2, 2,"Door")
 	MovementLoopAddLocation(NPC, 546.59, -9.56, 134.99, 2, 0)
 	MovementLoopAddLocation(NPC, 524.31, -9.56, 132.51, 2, 0)
-	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 0)
+	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 1)
+	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 28,"Drink")
+	MovementLoopAddLocation(NPC, 517.32, -9.57, 131.67, 2, 1)
 	MovementLoopAddLocation(NPC, 530.82, -9.56, 133.29, 2, 0)
 	MovementLoopAddLocation(NPC, 536.8, -9.56, 131.87, 2, 0)
 	MovementLoopAddLocation(NPC, 538.43, -9.56, 133.71, 2, 0)
-	MovementLoopAddLocation(NPC, 548.55, -9.56, 135.51, 2, 0)
+	MovementLoopAddLocation(NPC, 548.55, -9.56, 135.51, 2, 0,"Door1")
 	MovementLoopAddLocation(NPC, 548.05, -10.55, 150.62, 2, 0)
 	MovementLoopAddLocation(NPC, 587.17, -10.44, 147.91, 2, 0)
 	MovementLoopAddLocation(NPC, 616.91, -12.11, 142.62, 2, 0)
@@ -111,3 +116,33 @@ function waypoints(NPC)
 end
 
 
+function Door(NPC,Spawn)
+    local door = GetSpawn(NPC, 2310200)
+    UseWidget(door)
+end
+
+function Door1(NPC,Spawn)
+    local door = GetSpawn(NPC, 2310203)
+    UseWidget(door)
+end
+
+function Drink(NPC)
+    PlayAnimation(NPC,11422)
+    AddTimer(NPC,8000, "Drink2")
+end
+
+function Drink2(NPC)
+  choice = math.random(1,3)   
+        if choice == 1 then    
+        PlayAnimation(NPC,891)
+        elseif choice == 2 then    
+        PlayAnimation(NPC,11422)
+        else
+        PlayAnimation(NPC,11668)
+        end            
+    AddTimer(NPC,6000, "Drink3")
+end
+
+function Drink3(NPC)
+    PlayAnimation(NPC,11422)
+end

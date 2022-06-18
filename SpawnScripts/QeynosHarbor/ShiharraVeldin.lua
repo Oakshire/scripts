@@ -1,9 +1,9 @@
 --[[
 	Script Name	: SpawnScripts/QeynosHarbor/ShiharraVeldin.lua
 	Script Purpose	: Shiharra Veldin <Chronomagi Tasker>
-	Script Author	: Cynnar
-	Script Date	: 2020.04.12
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Author	: Dorbin
+	Script Date	: 2022.06.12
+	Script Notes	: TEMPORARY TEXT until mentor system setup.
 --]]
 
 function spawn(NPC)
@@ -23,14 +23,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 
-	local choice = math.random(1,2)
-
-	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1007.mp3", "", "", 0, 0, Spawn)
-	elseif choice == 2 then
-		PlayFlavor(NPC, "", "The magic of time is powerful.  To master it takes a lifetime.", "salute", 1689589577, 4560189, Spawn)
-	else
-	end
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1007.mp3", "The timelines are in flux.  Until things stablize, you'll need to wait for our Chronomagics to realign.", "no", 0, 0, Spawn, 0)
 
 end
 
