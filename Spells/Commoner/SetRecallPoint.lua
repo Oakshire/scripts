@@ -13,13 +13,13 @@ function cast(Caster, Target)
 	
 	if ( incombat == true)
 	then
-		Say(Caster, "You cannot use Set Recall Point while in combat.")
+		SendMessage(Caster, "You cannot use Set Recall Point while in combat.", "red")
 	    goto exit;
 	end
 	
 	if( canbind == 0 )
 	then
-		Say(Caster, "You cannot use Set Recall Point at this location. Please try in a city or suburb.")
+		SendMessage(Caster, "You cannot use Set Recall Point at this location. Please try in a city or suburb.", "red")
 	else
 		Bind(Caster)
     end

@@ -5,19 +5,20 @@
     Script Purpose : 
                    : 
 --]]
-
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
-    SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")		
+    SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")		
     waypoints(NPC)
 end
 
 function hailed(NPC, Spawn)
-FaceTarget(NPC,Spawn)
 GenericRaceCheckHail(NPC, Spawn, faction)
 end
 
+function InRange(NPC,Spawn)
+GenericRaceCheckCallout(NPC, Spawn, faction)
+end
 
  function Door1(NPC,Spawn)
     local door = GetSpawn(NPC, 2210349)

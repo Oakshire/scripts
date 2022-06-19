@@ -9,7 +9,7 @@ QUEST = 572
 
 
 function spawn(NPC)
-
+ProvidesQuest(NPC,QUEST)
 end
 
 function hailed(NPC, Spawn)

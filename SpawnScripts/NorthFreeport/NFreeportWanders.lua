@@ -8,18 +8,6 @@
 
 local path
 
-function spawn(NPC)
-	waypoints(NPC)
-end
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, -223.06, -57.78, -150.9, 2, math.random(0, 6))
 	MovementLoopAddLocation(NPC, -220.03, -58.83, -159.56, 2, 0)

@@ -22,6 +22,9 @@ function InRange(NPC,Spawn)
     GenericEcologyCallout(NPC, Spawn, faction)
     end
     
+function respawn(NPC)
+	spawn(NPC)
+end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 796.45, -23.26, 103.49, 2, 1)
