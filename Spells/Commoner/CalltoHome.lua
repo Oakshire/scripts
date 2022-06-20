@@ -5,13 +5,13 @@
     Script Purpose : 
     Updated by     : Devn00b 6/18/2022
 --]]
-
 -- Teleports you to your recall point.
 function precast(Caster, Target)
     if GetBoundZoneID(Caster) == 0 then
         return false
     end
-    if(IsGateAllowed(Caster))
+
+    if(GetCanGate(Caster) == 1)
     then
         return true   
     else
@@ -21,6 +21,7 @@ function precast(Caster, Target)
 
  return true
 end
+
 
 function cast(Caster, Target)
     Gate(Caster)    

@@ -94,7 +94,7 @@ function Delivered(NPC, Spawn)
 	AddConversationOption(conversation, "[This dialog is fabricated.  Let EmemJR on the EMU Discord know we need this NPC's Dialog]")
 	AddConversationOption(conversation, "Are you... the boss?","Boss")
 	AddConversationOption(conversation, "Thanks, I guess.")
-    QuestStepIsComplete(Spawn,5586,1)
+    SetStepComplete(Spawn,5586,1)
 	StartConversation(conversation, NPC, Spawn, "Is that so?  Let's see it.  Hmm... Yes... this is what I was waiting for, and I can tell you resisted the temptation to open it.  Here, take these coins and a cold ale for your legwork and keep your eyes from prying where they don't belong.")
 end
 
