@@ -74,8 +74,8 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 671.21, -20.52, 328.9, 6, 0)
 	MovementLoopAddLocation(NPC, 668.27, -20.46, 330.07, 6, 1)
 	MovementLoopAddLocation(NPC, 668.27, -20.46, 330.07, 6, 2,"AttackRat")
-	MovementLoopAddLocation(NPC, 668.27, -20.46, 330.07, 6, 1,"DespawnRat")
-	MovementLoopAddLocation(NPC, 668.27, -20.46, 330.07, 6, 15)
+	MovementLoopAddLocation(NPC, 668.27, -20.46, 330.07, 6, 2,"DespawnRat")
+	MovementLoopAddLocation(NPC, 667.05, -20.46, 331.19, 6, 16)
 	MovementLoopAddLocation(NPC, 668.95, -20.47, 328.88, 1, 0)
 	MovementLoopAddLocation(NPC, 671.65, -20.52, 329.14, 1, 0)
 	MovementLoopAddLocation(NPC, 675.08, -20.52, 336.21, 1, 2)
@@ -149,7 +149,7 @@ function AttackRat(NPC,Spawn)
     end
 
 function Rat(NPC,Spawn)
-    local rat = GetSpawn(NPC,2330001)
+    local rat = GetSpawn(NPC,2330138)
     if rat ~=nil then
     SetTarget(NPC,rat)
     PlayFlavor(rat,"","","attack",0,0)
@@ -159,12 +159,13 @@ function Rat(NPC,Spawn)
 	MovementLoopAddLocation(rat, 684.33, -20.42, 335.94, 6, 0)
 	MovementLoopAddLocation(rat, 671.21, -20.52, 328.9, 6, 0)
 	MovementLoopAddLocation(rat, 668.27, -20.46, 330.07, 6, 4)
-	MovementLoopAddLocation(rat, 668.27, -20.46, 330.07, 6, 15)
+	MovementLoopAddLocation(rat, 667.57, -20.46, 330.85, 6, 15)
 end
 end
 
 function DespawnRat(NPC,Spawn)
-    local rat = GetSpawn(NPC,2330001)
+local rat = GetSpawn(NPC,2330138)
+
     if rat ~=nil then
     KillSpawn(rat,NPC)
 end

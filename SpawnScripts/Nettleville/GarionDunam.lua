@@ -75,7 +75,7 @@ function DeliveryJob(NPC, Spawn)
 		conversation = CreateConversation()
 		AddConversationOption(conversation, "Sure. I'll deliver this for you.","QuestOffer")
 		AddConversationOption(conversation, "On second thought, nevermind.")		
-		StartConversation(conversation, NPC, Spawn, "Garion is my name, potions my game.  What can I get for you?")
+		StartConversation(conversation, NPC, Spawn, "I always need a good courier.  Take this elixer to the sage house in the Graystone Yard.  You'll find my assistant Tillheel there. He'll be expecting you.  Be sure to bring my payment!")
 	end
 
 function QuestOffer(NPC,Spawn,Quest)
