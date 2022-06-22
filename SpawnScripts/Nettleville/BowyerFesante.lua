@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)

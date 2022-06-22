@@ -11,6 +11,7 @@ function spawn(NPC, Spawn)
 	--AddVisualStateLoop(NPC, 2000, 10000, 11150)
 	--AddVisualStateLoop(NPC, 2000, 10000, 11557)
 	--AddVisualStateLoop(NPC, 2000, 10000, 13064)
+Target(NPC)
 end
 
 function respawn(NPC, Spawn)
@@ -46,3 +47,11 @@ function hailed(NPC, Spawn)
 	end
 
 end
+
+
+    function Target(NPC)
+    local Karrie = GetSpawn(NPC,2330021)
+    if Karrie ~=nil then
+    SetTarget(NPC,Karrie)
+    end
+    end

@@ -11,12 +11,13 @@ local Delivery = 5446
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 ProvidesQuest(NPC, Delivery)
+waypoints(NPC)
 end
 
 function InRange(NPC, Spawn) --Quest Callout
 if math.random(1, 100) <= 30 then
     if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
-   		PlayFlavor(NPC, "voiceover/english/barmaid_lolla_cotgrove/qey_village01/qey_village01_barmaid_lolla_cotgrove_callout_a2de4d52.mp3", "...And that will go over here and the kegs go there... Yeah. Yeah. Yeah. What do you need?", "point", 2609682603, 931995827, Spawn)
+   		PlayFlavor(NPC, "voiceover/english/barmaid_lolla_cotgrove/qey_village01/qey_village01_barmaid_lolla_cotgrove_callout_a2de4d52.mp3", "...and that will go over here and the kegs go there... Yeah. Yeah. Yeah. What do you need?", "point", 2609682603, 931995827, Spawn)
      else
          choice = math.random(1,2)
          if choice ==1 then
@@ -27,6 +28,21 @@ if math.random(1, 100) <= 30 then
     end
     end
 end
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 673.24, -24.7, 365.85, 2, 1)
+	MovementLoopAddLocation(NPC, 673.24, -24.7, 365.85, 2, 18,"Action")
+	MovementLoopAddLocation(NPC, 673.24, -24.7, 365.85, 2, 18,"Action")
+	MovementLoopAddLocation(NPC, 672.02, -24.67, 366.48, 2, 0)
+	MovementLoopAddLocation(NPC, 674.01, -24.73, 363.75, 2, 0)
+	MovementLoopAddLocation(NPC, 676.9, -24.82, 363.13, 2, 1)
+	MovementLoopAddLocation(NPC, 676.9, -24.82, 363.13, 2, 18,"Action")
+	MovementLoopAddLocation(NPC, 676.9, -24.82, 363.13, 2, 18,"Action")
+	MovementLoopAddLocation(NPC, 677.91, -24.83, 362.92, 2, 0)
+	MovementLoopAddLocation(NPC, 674.72, -24.75, 363.89, 2, 0)
+end
+
+
 
 
 function respawn(NPC)
@@ -92,4 +108,16 @@ function Reward(NPC, Spawn)
     	SetStepComplete(Spawn, Delivery, 2)
     end
 end
+
+function Action(NPC)
+    local choice = MakeRandomInt(1, 3)
+    if choice == 1 then
+        PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+    elseif choice == 2 then
+        PlayFlavor(NPC, "", "", "confused", 0, 0, Spawn)
+    elseif choice == 3 then
+        PlayFlavor(NPC, "", "", "doh", 0, 0, Spawn)
+
+    end
+end   
 

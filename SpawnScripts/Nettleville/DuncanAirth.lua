@@ -11,6 +11,7 @@ dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 function spawn(NPC)
 	waypoints(NPC)
     SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")		
+    Target(NPC)
 end
 
 function hailed(NPC, Spawn)
@@ -20,4 +21,11 @@ end
 
 function InRange(NPC,Spawn)
     GenericEcologyCallout(NPC, Spawn, faction)
+    end
+    
+    function Target(NPC)
+    local Karrie = GetSpawn(NPC,2330021)
+    if Karrie ~=nil then
+    SetTarget(NPC,Karrie)
+    end
     end

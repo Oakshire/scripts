@@ -15,7 +15,12 @@ waypoints(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+if Pigchase == true then
+     PlayFlavor(NPC, "voiceover/english/human_eco_evil_badkid/ft/eco/evil/human_eco_evil_badkid_pig_gm_9fa4475d.mp3", "Run ya swine. Run!", "", 1654188343, 2070658176, Spawn)
+elseif Catchase == true then 
+     PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_cat_gm_fdc32a9.mp3", "Come back here kitty!", "", 204283170, 334524744, Spawn)
+else    
+    FaceTarget(NPC, Spawn)
 	local choice = math.random(1,3)
 	if choice == 1 then
 	    FaceTarget(NPC,Spawn)
@@ -27,6 +32,7 @@ function hailed(NPC, Spawn)
 	    FaceTarget(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_hail_gm_110eef44.mp3", "Have you been inside the castle? I want to go there someday!", "happy", 2372987392, 3554768792, Spawn)
     end
+end
 end
 
 function InRange(NPC, Spawn)
@@ -74,9 +80,9 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 668.91, -24.43, 346.75, 2, 0)
 	MovementLoopAddLocation(NPC, 662.86, -24.84, 356.93, 2, 0)
 	MovementLoopAddLocation(NPC, 658.4, -24.8, 361.98, 2, 0)
-	MovementLoopAddLocation(NPC, 655.41, -24.83, 361.81, 2, 1)
-	MovementLoopAddLocation(NPC, 655.41, -24.83, 361.81, 2, 1,"neener")
-	MovementLoopAddLocation(NPC, 655.21, -24.82, 361.93, 2, 1,"PigSqueal")
+	MovementLoopAddLocation(NPC, 655.21, -24.82, 361.93, 2, 1)
+	MovementLoopAddLocation(NPC, 655.21, -24.82, 361.93, 2, 2,"neener")
+	MovementLoopAddLocation(NPC, 655.21, -24.82, 361.93, 2, 2,"PigSqueal")
 	MovementLoopAddLocation(NPC, 655.21, -24.82, 361.93, 2, 1,"Pig")
 	MovementLoopAddLocation(NPC, 655.21, -24.82, 361.93, 2, 1)
 	MovementLoopAddLocation(NPC, 649.77, -24.71, 366.83, 6, 0)
@@ -106,6 +112,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 654.5, -20.42, 297, 6, 0)
 	MovementLoopAddLocation(NPC, 659.34, -20.42, 297.46, 6, 0)
 	MovementLoopAddLocation(NPC, 660.54, -20.42, 299.88, 6, 2,"PigReset")
+	MovementLoopAddLocation(NPC, 660.54, -20.42, 299.88, 6, 1,"TargetReset")
 	MovementLoopAddLocation(NPC, 670.98, -20.25, 306.57, 2, 15)
 	MovementLoopAddLocation(NPC, 671.71, -20.25, 307.77, 2, 0)
 	MovementLoopAddLocation(NPC, 671.22, -20.32, 309.29, 2, 0)
@@ -141,7 +148,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 613.39, -26.39, 376.53, 2, 0)
 	MovementLoopAddLocation(NPC, 604.15, -26.45, 375.29, 2, 0)
 	MovementLoopAddLocation(NPC, 592.82, -26.08, 376.21, 2, 0)
-	MovementLoopAddLocation(NPC, 581.35, -26.82, 377.72, 2, 15,"PigMove1")
+	MovementLoopAddLocation(NPC, 581.35, -26.82, 377.72, 2, 35,"PigMove1")
 	MovementLoopAddLocation(NPC, 579.81, -26.67, 379.43, 2, 0)
 	MovementLoopAddLocation(NPC, 585.48, -26.87, 379.46, 2, 0)
 	MovementLoopAddLocation(NPC, 591.96, -26.3, 377.77, 2, 0)
@@ -214,12 +221,17 @@ end
 
 function PigReset(NPC)
     Pigchase = false
-    SetTarget(NPC,nil)
 end
 
+function TargetReset(NPC)
+    SetTarget(NPC,nil)
+end 
+
 function PigSqueal(NPC)
-    PlayFlavor(pig,"","","attack",0,0)
---    PlayFlavor(NPC,"","","neener",0,0)
+ local pig = GetSpawn(NPC,2330002)
+    if pig ~=nil then    
+        PlayFlavor(pig,"","","attack",0,0)
+    end        
 end
 
 function neener(NPC)
@@ -279,7 +291,6 @@ AddTimer(NPC,45000,"PigMove1")
 end
 
 function PigMove1(NPC)
-    Pigchase = true
         local pig = GetSpawn(NPC,2330002)
     if pig ~=nil then
     MoveToLocation(pig, 671.29, -19.94, 292.2, 1)
@@ -303,7 +314,6 @@ AddTimer(NPC,65000,"PigMove2")
 end
 
 function PigMove2(NPC)
-     Pigchase = true
         local pig = GetSpawn(NPC,2330002)
     if pig ~=nil then
     MoveToLocation(pig, 666.27, -22.32, 336.64, 1)
