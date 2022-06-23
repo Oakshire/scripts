@@ -15,35 +15,58 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	            if GetFactionAmount(Spawn,11) < 0 then  
-                FactionChecking(NPC, Spawn, faction)
-                else
-				local choice = math.random(1,9)
-	                if choice == 1 then
-		            PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_aeb1a20f.mp3", "It is with honor that I welcome you to our community.", "thanks", 157565536, 4238836509, Spawn)
-	                elseif choice == 2 then
-	            	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_a6a7e923.mp3", "Hail to you, it is indeed a pleasure.", "bye", 224557122, 3782103568, Spawn)
-	                elseif choice == 3 then
-	               	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_869cb34a.mp3", "Hello, young adventurer. It is with the utmost delight that I greet you.", "curtsey", 1236739692, 2465236460, Spawn)
-	                elseif choice == 4 then
-	            	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_aoi_gf_4d69aa69.mp3", "Confound those infernal gnomes and their diabolical gadgets!", "frustrated", 683761969, 2806224893, Spawn)
-	                elseif choice == 5 then
-	               	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_e35fd511.mp3", "Wonderful to make your acquaintance!  Do you find this scenery as whimsical as I?  The day is truely blessed.", "curtsey", 3515560120, 1635596676, Spawn)
-	                elseif choice == 6 then
-	               	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_42dc41ff.mp3", "Well met.  I find great solace in our meetings.", "bow", 1972105344, 498797338, Spawn)
-	                elseif choice == 7 then
-	               	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_e70b6b86.mp3", "Hello!  It is always good to meet someone new in our peaceful village.", "bye", 2113607646, 1301209736, Spawn)
-	                elseif choice == 8 then
-	               	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_17bda578.mp3", "Hail!  It is ecouraging to see bright faces, such as yours, arrive in the everlasting city of Qeynos.", "hello", 1027180785, 1173518799, Spawn)
-	                elseif choice == 9 then
-	               	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_837db26f.mp3", "Hail to you, friend!  I hope you have many happy returns to quaint town.", "nod", 4187653090, 1385095205, Spawn)
-
-                end
-                end
+GenericEcologyHail(NPC,Spawn,faction)
 end
 
 function InRange(NPC,Spawn)
-	if GetFactionAmount(Spawn,11) < 0 then  
-    FactionCheckingCallout(NPC, Spawn, faction)
-    end
- end   
+GenericEcologyHail(NPC,Spawn,faction)
+end
+
+function FaceStreet(NPC)
+	SpawnSet(NPC, "heading", "250")
+end	
+	
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 609.64, -19.42, 317.61, 2, 1)
+	MovementLoopAddLocation(NPC, 609.64, -19.42, 317.61, 2, 1,"FaceStreet")
+	MovementLoopAddLocation(NPC, 609.64, -19.42, 317.61, 2, 35,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 609.64, -19.42, 317.61, 2, 35,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 609.64, -19.42, 317.61, 2, 35,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 610.55, -19.42, 317.87, 2, 0)
+	MovementLoopAddLocation(NPC, 618.32, -20.42, 325.41, 2, 1)
+	MovementLoopAddLocation(NPC, 618.32, -20.42, 325.41, 2, 95,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 617, -20.51, 324.62, 2, 0)
+	MovementLoopAddLocation(NPC, 610.24, -20.55, 335.25, 2, 0)
+	MovementLoopAddLocation(NPC, 608.78, -20.72, 341.48, 2, 0)
+	MovementLoopAddLocation(NPC, 606.94, -20.61, 349.35, 2, 0)
+	MovementLoopAddLocation(NPC, 606.62, -20.73, 356.02, 2, 0)
+	MovementLoopAddLocation(NPC, 607.44, -23.68, 365.68, 2, 0)
+	MovementLoopAddLocation(NPC, 610.09, -25.72, 370.01, 2, 0)
+	MovementLoopAddLocation(NPC, 610.71, -26.51, 380.34, 2, 0)
+	MovementLoopAddLocation(NPC, 611.62, -26.5, 380.21, 2, 1)
+	MovementLoopAddLocation(NPC, 611.62, -26.5, 380.21, 2, 65)
+	MovementLoopAddLocation(NPC, 613.31, -26.47, 380.64, 2, 0)
+	MovementLoopAddLocation(NPC, 612.65, -26.5, 381.87, 2, 0)
+	MovementLoopAddLocation(NPC, 609.95, -26.52, 381.37, 2, 0)
+	MovementLoopAddLocation(NPC, 604.65, -26.54, 382.26, 2, 1)
+	MovementLoopAddLocation(NPC, 604.65, -26.54, 382.26, 2, 65,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 603.3, -26.54, 382.61, 2, 0)
+	MovementLoopAddLocation(NPC, 605.1, -26.53, 381.55, 2, 0)
+	MovementLoopAddLocation(NPC, 605.07, -26.52, 380.15, 2, 0)
+	MovementLoopAddLocation(NPC, 602.42, -26.38, 373.37, 2, 0)
+	MovementLoopAddLocation(NPC, 604.8, -20.78, 358.33, 2, 0)
+	MovementLoopAddLocation(NPC, 606.88, -20.72, 345.55, 2, 0)
+	MovementLoopAddLocation(NPC, 609.85, -20.62, 336.13, 2, 0)
+	MovementLoopAddLocation(NPC, 610.16, -20.56, 335.15, 2, 0)
+	MovementLoopAddLocation(NPC, 605.24, -20.4, 326.1, 2, 1)
+	MovementLoopAddLocation(NPC, 605.24, -20.4, 326.1, 2, 65,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 606.82, -20.57, 327.48, 2, 0)
+	MovementLoopAddLocation(NPC, 614.57, -20.49, 328.11, 2, 0)
+	MovementLoopAddLocation(NPC, 617.03, -20.44, 326.41, 2, 0)
+	MovementLoopAddLocation(NPC, 618.12, -20.41, 325.82, 2, 1)
+	MovementLoopAddLocation(NPC, 618.12, -20.41, 325.82, 2, 18,"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 618.12, -20.41, 325.82, 2, 0)
+	MovementLoopAddLocation(NPC, 617.51, -20.47, 324.99, 2, 0)
+end
+
+

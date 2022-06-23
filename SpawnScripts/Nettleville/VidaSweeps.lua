@@ -13,6 +13,7 @@ local QUEST_1 = 310
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+AddTimer(NPC, 5000, "EmoteLoop")    
 end
 
 function respawn(NPC)
@@ -104,4 +105,23 @@ function dlg_13_2(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/vida_sweeps/qey_village01/vidasweeps004.mp3", "", "", 2095544938, 2706458688, Spawn)
 	AddConversationOption(conversation, "Hmm... I'll keep that in mind.")
 	StartConversation(conversation, NPC, Spawn, "I suppose that is up to you.  Maybe you can take it to a mineral expert somewhere in the city.")
+end
+
+    
+function EmoteLoop(NPC)
+    local emoteChoice = MakeRandomInt(1,3)
+
+    if emoteChoice == 1 then
+-- ponder
+        PlayAnimation(NPC, 12030)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    elseif emoteChoice == 2 then
+-- sniff
+        PlayAnimation(NPC, 12329)
+        AddTimer(NPC, MakeRandomInt(6000,9000), "EmoteLoop")	
+    else
+-- tapfoot
+        PlayAnimation(NPC, 13056)
+        AddTimer(NPC, MakeRandomInt(15000,18000), "EmoteLoop")	
+    end
 end

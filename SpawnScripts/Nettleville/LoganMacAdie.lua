@@ -20,7 +20,7 @@ end
 
 function InRange(NPC, Spawn)
 	local chance = math.random(1, 100)
-	if chance <= 25 then
+	if chance <= 20 then
 		FaceTarget(NPC, Spawn)
 		Say(NPC, "I'm sure you'll find whatever you need if you just keep around.", Spawn)
 	end

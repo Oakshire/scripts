@@ -13,11 +13,21 @@ function init_zone_script(zone)
 end
 
 function player_entry(zone, player)
+SendPopUpMessage(Spawn, "Nettleville", 230, 230, 230)   
 end
 
 function enter_location(zone, spawn, grid)
+	SetLocationProximityFunction(Zone, 638.00, -24.86, 379.26, 28, "MarketRow")
+	if GridID == 342305820 then
+		SendPopUpMessage(Player, "Nettleville Market Row", 255, 255, 0)
+	end
+
 end
 
+function MarketRow(Zone,Player)
+      SendPopUpMessage(Player, "Nettleville Market Row", 255, 255, 0)
+    end
+    
 function leave_location(zone, spawn, grid)
 end
 

@@ -272,7 +272,18 @@ function Garbled(NPC, Spawn, Faction)
 	            
 	            end					    
 				elseif gender == FEMALE then
-				end
+                local choice = math.random(1,4)
+                    if choice == 1 then
+                    PlayFlavor(NPC, "voiceover/english/kerran/ft/kerran/kerran_eco_garble_garbled_gm_2686291e.mp3", "Mind if give my claws a good workout?", "", 3043468628, 38902721, Spawn, 13)
+    	            elseif choice == 2 then
+		            PlayFlavor(NPC, "voiceover/english/kerran/ft/kerran/kerran_eco_garble_garbled_gm_9d6a5ad3.mp3", "Nevermind the litterbox. I need facilities that suit my fancies.", "", 2529038460, 1283968454, Spawn, 13)
+                    elseif choice == 3 then
+	                PlayFlavor(NPC, "voiceover/english/kerran/ft/kerran/kerran_eco_garble_garbled_gm_d598de6c.mp3", "Roll your R sounds. Move your tongue like this. Rurlubplr", "", 2406034521, 1600126995, Spawn, 13)
+                    elseif choice == 4 then
+	                PlayFlavor(NPC, "voiceover/english/kerran/ft/kerran/kerran_eco_garble_garbled_gm_87e38c0a.mp3", "Rurlubplr. Move your tongue like this. ", "", 2983711710, 88301434, Spawn, 13)
+	   				end
+   		    end
+   		    
 			elseif race == OGRE then
 				if gender == MALE then
                 local choice = math.random(1,4)

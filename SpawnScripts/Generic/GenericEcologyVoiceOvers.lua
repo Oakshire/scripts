@@ -286,7 +286,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			    if EVIL then
 			    	if FPfaction <0 then
                      FactionChecking(NPC, Spawn, faction)
-				        end
+				    
 				    else  			        
 	                local choice = math.random(1,11)
 	                    if choice == 1 then
@@ -312,7 +312,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
                       	elseif choice == 11 then
                     	PlayFlavor(NPC, "voiceover/english/erudite_eco_evil_1/ft/erudite/erudite_eco_evil_1_hail_gm_e7bd0c59.mp3.mp3", "Count yourself lucky that the Overlord has not yet outlawed stupidity.  Therefore, you're free to go!", "nod", 1164489214, 2167310923, Spawn)
                     	end
-                   end 	
+                    end	
                     	
 				elseif GOOD then
 				    if Qfaction <0 then
@@ -332,7 +332,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	                    elseif choice == 5 then
                     	PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_87ee0892.mp3", "It is impossible to defeat an ignorant man in an argument.", "no", 1688439631, 2741592842, Spawn)
                     	elseif choice == 6 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_92543d16.mp3", "There is one way to every argument to your advantage.  Always be crrect!", "nod", 3847243276, 420228124, Spawn)
+	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_92543d16.mp3", "There is one way to every argument to your advantage.  Always be correct!", "nod", 3847243276, 420228124, Spawn)
 	                    elseif choice == 7 then
 	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_466700a5.mp3", "You must completely devout yourself to the notions of truth and goodness.", "scold", 4256416895, 410466169, Spawn)
 	                    elseif choice == 8 then
@@ -343,7 +343,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_cd2c38ae.mp3", "Truth will always be true, regardless of the lack of understanding.", "ponder", 1482635271, 2842583444, Spawn)
 	                   end                          	                    	
                     end
-                
+                end
 				
 			elseif gender == FEMALE then
 			    if EVIL then
@@ -1011,7 +1011,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			        if FPfaction < 0 then
                     FactionChecking(NPC, Spawn, faction)
 			        else   
-	            local choice = math.random(1,12)
+	            local choice = math.random(1,11)
 
 	                if choice == 1 then
 		            PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_hail_gm_9c3a5e62.mp3", "I don't know why we are here, but I'm sure that it's not to enjoy ourselves. ", "sad", 186474664, 794000823, Spawn)
@@ -1028,15 +1028,13 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	                elseif choice == 7 then
 		            PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_hail_gm_a61b7e7b.mp3", "Ratonga are nothing more than overgrown rats. ", "grumble", 3521570309, 987431086, Spawn)
 	            	elseif choice == 8 then
-	                PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_hail_gf_164ffd98.mp3", "I can purr my way out of anything.", "wink", 4263608089, 504552247, Spawn)
-	                elseif choice == 9 then
+	                PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_hail_gm_faa98b82.mp3", "The Ratonga are here to teach us that not everything in nature has a purpose.", "sarcasm", 1619896826, 2577563009, Spawn)
+                    elseif choice == 9 then
 	                PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_aoi_gf_c9f2b4f1.mp3", "Friendship is too costly around here.", "sigh", 1983387905, 3075550393, Spawn)
 	                elseif choice == 10 then
 	                PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_aoi_gm_38301159.mp3", "We can't help that!  We're all mad here!", "crazy", 1508409788, 219596858, Spawn)
 	                elseif choice == 11 then
 	                PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_hail_gm_7299ccb7.mp3", "There is no such thing as an unfair advantage.", "no", 927318225, 800142407, Spawn)
-					elseif choice == 12 then
-					PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_evil_1_hail_gm_faa98b82.mp3", "The Ratonga are here to teach us that not everything in nature has a purpose.", "sarcasm", 1619896826, 2577563009, Spawn)
 	                end
                 end
 				elseif GOOD then
@@ -1048,7 +1046,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 					if choice == 1 then
 					PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_good_1_hail_gm_ac88207.mp3", "The goal isn't always catching the pray, rather, its the chase.", "scheme", 152508601, 1517122703, Spawn)
 					elseif choice == 2 then
-					PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_good_1_hail_gm_1f19f9ef.mp3", "Tact is the nack of making a point without making an enemy.", "agree", 216091278, 201326460, Spawn)
+					PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_1f19f9ef.mp3", "Tact is the nack of making a point without making an enemy.", "agree", 216091278, 201326460, Spawn)
 					elseif choice == 3 then
 					PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_44b38e8c.mp3", "Was it me, or did I just see something move over there?", "doubletake", 3599874332, 7461740, Spawn)
 					elseif choice == 4 then
@@ -3686,7 +3684,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 	                    elseif choice == 5 then
                     	PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_87ee0892.mp3", "It is impossible to defeat an ignorant man in an argument.", "no", 1688439631, 2741592842)
                     	elseif choice == 6 then
-	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_92543d16.mp3", "There is one way to every argument to your advantage.  Always be crrect!", "nod", 3847243276, 420228124)
+	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_92543d16.mp3", "There is one way to every argument to your advantage.  Always be correct!", "nod", 3847243276, 420228124)
 	                    elseif choice == 7 then
 	                    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_hail_gm_466700a5.mp3", "You must completely devout yourself to the notions of truth and goodness.", "scold", 4256416895, 410466169)
 	                    elseif choice == 8 then
@@ -4619,7 +4617,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 					if choice == 1 then
 					PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_good_1_hail_gm_ac88207.mp3", "The goal isn't always catching the pray, rather, its the chase.", "scheme", 152508601, 1517122703)
 					elseif choice == 2 then
-					PlayFlavor(NPC, "voiceover/english/kerran_eco_evil_1/ft/kerran/kerran_eco_good_1_hail_gm_1f19f9ef.mp3", "Tact is the nack of making a point without making an enemy.", "agree", 216091278, 201326460)
+					PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_1f19f9ef.mp3", "Tact is the nack of making a point without making an enemy.", "agree", 216091278, 201326460)
 					elseif choice == 3 then
 					PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gm_44b38e8c.mp3", "Was it me, or did I just see something move over there?", "doubletake", 3599874332, 7461740)
 					elseif choice == 4 then
@@ -7063,13 +7061,13 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 	                           	    if check == 1 then
                     	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "agree", 1811725102, 1170705631)
                                     elseif choice == 2 then	
-                    	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 2727630899, 2583820258)
+                    	            PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my tride, away from the bustle of any town.", "sigh", 2727630899, 2583820258)
 				       		        end                   
 		                    end
                         elseif choice == 2 then	
                     	PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_925a7b74.mp3", "Give me the simplicity of life as the kerra once knew it, and I'll be satisfied.", "agree", 1811725102, 1170705631)
                         elseif choice == 3 then
-                    	PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my pride, away from the bustle of any town.", "sigh", 2727630899, 2583820258)
+                    	PlayFlavor(NPC, "voiceover/english/kerra_eco_race_good/ft/eco/good/kerra_eco_race_good_hail_gm_ca779c92.mp3", "I would like nothing better than to be with my tride, away from the bustle of any town.", "sigh", 2727630899, 2583820258)
                         end                        				    
 				    end 
 	    	    end
