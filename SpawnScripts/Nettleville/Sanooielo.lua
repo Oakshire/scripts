@@ -30,8 +30,12 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
+function FaceStreet(NPC)
+	SpawnSet(NPC, "heading", "289")
+end	
+
 function waypoints(NPC)
-	MovementLoopAddLocation(NPC, 655.09, -20.42, 304.56, 2, 1)
+	MovementLoopAddLocation(NPC, 655.09, -20.42, 304.56, 2, 1,"FaceStreet")
 	MovementLoopAddLocation(NPC, 655.09, -20.42, 304.56, 2, 25,"Action")
 	MovementLoopAddLocation(NPC, 655.09, -20.42, 304.56, 2, 25,"Action")
 	MovementLoopAddLocation(NPC, 657.15, -20.42, 301.78, 2, 0)

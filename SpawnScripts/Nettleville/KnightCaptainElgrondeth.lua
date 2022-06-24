@@ -10,6 +10,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
+ProvidesQuest(NPC,305)
 end
 
 function respawn(NPC)
@@ -17,8 +18,10 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-if not HasCompletedQuest(Spawn,1)then
+if not HasCompletedQuest(Spawn,305) and not HasQuest(Spawn,305) then
 Dialog4(NPC, Spawn)
+elseif HasQuest(Spawn,305) and GetQuestStep(Spawn,305)==2 then
+Dialog5(NPC,Spawn)    
 else
 PlayFlavor(NPC, "voiceover/english/knight-captain_elgrondeth/qey_village01/100_quest_captain_elgrondeth_questcomplete_55592dd4.mp3", "I appreciate your help.  If I can return the favor someday, I shall.", "thanks", 1398230613, 3767711690, Spawn, 0)
 end
@@ -43,14 +46,20 @@ function Dialog2(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Dialog3(NPC, Spawn)
+function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Thank the gods you came along! Just when I need an extra set of hands!")
-	Dialog.AddVoiceover("voiceover/english/captain_elgrondeth/qey_village01/captainelgrondeth000.mp3", 3582894338, 2709560661)
-	Dialog.AddOption("I am a little preoccupied just now.")
+	Dialog.AddDialog("First, I need you to investigate the sudden increase of vermin in Antonica. The beasts are eating away at our food stores and must be destroyed. I would send a guard, but we have more reports than my guards can handle. Are you ready to help?")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_elgrondeth/qey_village01/captainelgrondeth002.mp3", 4148519234, 3732616918)
+	Dialog.AddOption("I am ready!","StartQuest")
 	Dialog.Start()
+end	
+	
+function StartQuest(NPC,Spawn)
+    OfferQuest(NPC,Spawn,305)
+    FaceTarget(NPC,Spawn)
 end
+
 
 function Dialog4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -58,8 +67,34 @@ function Dialog4(NPC, Spawn)
     PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn, 0)
 	Dialog.AddDialog("Thank the gods you came along! Just when I need an extra set of hands!")
 	Dialog.AddVoiceover("voiceover/english/captain_elgrondeth/qey_village01/captainelgrondeth000.mp3", 3582894338, 2709560661)
+    if GetLevel(Spawn)>=7 then	
 	Dialog.AddOption("What do you mean?", "Dialog2")
+	end
+    if GetLevel(Spawn)<7 then	
+	Dialog.AddOption("Err, perhaps when I've seen a bit more action I'll be ready to lend a hand.")
+	end
 	Dialog.AddOption("I am a little preoccupied just now.")
 	Dialog.Start()
 end
 
+function Dialog5(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "smile", 0, 0, Spawn, 0)
+	Dialog.AddDialog("Well done I must say!  You handled that last task nearly as quickly as one of my own guards.  Next report is a bit tricky.  It's a bit tricky.  Are you ready?")
+	Dialog.AddVoiceover("voiceover/english/captain_elgrondeth/qey_village01/captainelgrondeth004.mp3", 32799599, 1218371432)
+	Dialog.AddOption("I'm ready!  What's next?", "Dialog6")
+	Dialog.AddOption("I am a little preoccupied just now.")
+	Dialog.Start()
+end
+
+function Dialog6(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    SetStepComplete(Spawn,305, 2)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("More and more people are exploring the local yards.  We must protect them from the vicious beasts infesting the area.  Brown bear populations have become a particular problem.  You must cull the beast's numbers!  Again, once you complete this task return to me and I'll see if I need more help.")
+	Dialog.AddVoiceover("voiceover/english/captain_elgrondeth/qey_village01/captainelgrondeth005.mp3", 2352434236, 2881365274)
+	Dialog.AddOption("I'll report back once I've taken care of them")
+	Dialog.AddOption("Bears?  Well, alright then.")
+	Dialog.Start()
+end

@@ -10,6 +10,7 @@
 	Preceded by		:	None
 	Followed by		:	None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill ten sonic shriekers in Antonica.", 10, 100, "I must seek out and slay the sonic shriekers, young brown bears and timber wolves in Antonica as required by Captain Elgrondeth.", 611, 120297, 121406)
@@ -17,6 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player, 0)
+    Dialog.AddDialog("Let me write down in your journal a description of the beasts and where you can find them.  There.  According to the reports, a new type of vermin called sonic shriekers infests Antonica.  Return to me after you exterminate some of the pests, and perhaps I'll have another task for you.")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_elgrondeth/qey_village01/captainelgrondeth003.mp3", 3138428654, 3549139096)
+	Dialog.AddOption("Alright.  I'll return once I've dealt with the shriekers.")
+	Dialog.Start()
 end
 
 function Deleted(Quest, QuestGiver, Player)

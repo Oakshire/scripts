@@ -29,7 +29,7 @@ end
 
 function InRange(NPC, Spawn) 
         if not HasLanguage(Spawn,13)then
-        if math.random(1, 100) <= 25 then            
+        if math.random(1, 100) <= 15 then            
             FaceTarget(NPC, Spawn)    
           Garbled(NPC,Spawn)
         end
@@ -58,6 +58,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 656.14, -24.93, 346.42, 2, 0)
 	MovementLoopAddLocation(NPC, 657.1, -24.93, 350.36, 2, 2,"Door")
 	MovementLoopAddLocation(NPC, 662.05, -24.84, 354.16, 2, 0)
+	MovementLoopAddLocation(NPC, 667.65, -24.77, 349.94, 2, 0)
 	MovementLoopAddLocation(NPC, 668.03, -24.16, 344.69, 2, 0)
 	MovementLoopAddLocation(NPC, 668.39, -24.01, 344.07, 2, 0)
 	MovementLoopAddLocation(NPC, 667.77, -23.63, 342.84, 2, 0)

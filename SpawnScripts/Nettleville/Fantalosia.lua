@@ -21,7 +21,10 @@ end
 function InRange(NPC,Spawn)
     GenericEcologyCallout(NPC, Spawn, faction)
     end
-
+    
+function FaceStreet(NPC)
+	SpawnSet(NPC, "heading", "250")
+end	
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 617.37, -26.26, 378.15, 2, 5)
@@ -45,7 +48,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 601.02, -26.49, 379.26, 2, 0)
 	MovementLoopAddLocation(NPC, 591.49, -26.49, 380.54, 2, 0)
 	MovementLoopAddLocation(NPC, 576.28, -26.63, 380.71, 2, 0)
-	MovementLoopAddLocation(NPC, 572.38, -26.52, 379.81, 2, 1)
+	MovementLoopAddLocation(NPC, 572.38, -26.52, 379.81, 2, 1,"FaceStreet")
 	MovementLoopAddLocation(NPC, 572.38, -26.52, 379.81, 2, 35,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 572.38, -26.52, 379.81, 2, 45,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 573.08, -26.52, 379.27, 2, 0)

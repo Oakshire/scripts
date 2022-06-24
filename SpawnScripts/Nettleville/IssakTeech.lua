@@ -22,6 +22,9 @@ function InRange(NPC,Spawn)
 GenericRaceCheckCallout(NPC, Spawn, faction)
 end
 
+function FaceStreet(NPC)
+	SpawnSet(NPC, "heading", "250")
+end	
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 627.34, -22.48, 363.65, 2, 1)
@@ -32,7 +35,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 637.9, -22.33, 348.51, 2, 0)
 	MovementLoopAddLocation(NPC, 640.59, -22.32, 345.05, 2, 0)
 	MovementLoopAddLocation(NPC, 642.37, -22.32, 342.3, 2, 0)
-	MovementLoopAddLocation(NPC, 638.14, -21.35, 336.49, 2, 1)
+	MovementLoopAddLocation(NPC, 638.14, -21.35, 336.49, 2, 1,"FaceStreet")
 	MovementLoopAddLocation(NPC, 638.14, -21.35, 336.49, 2, 45,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 638.14, -21.35, 336.49, 2, 45,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 638.34, -21.35, 337.13, 2, 0)

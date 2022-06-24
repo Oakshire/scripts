@@ -16,9 +16,7 @@ end
 
 function hailed(NPC, Spawn)
 if Pigchase == true then
-     PlayFlavor(NPC, "voiceover/english/human_eco_evil_badkid/ft/eco/evil/human_eco_evil_badkid_pig_gm_9fa4475d.mp3", "Run ya swine. Run!", "", 1654188343, 2070658176, Spawn)
 elseif Catchase == true then 
-     PlayFlavor(NPC, "voiceover/english/human_eco_good_annoyingkid/ft/eco/good/human_eco_good_annoyingkid_cat_gm_fdc32a9.mp3", "Come back here kitty!", "", 204283170, 334524744, Spawn)
 else    
     FaceTarget(NPC, Spawn)
 	local choice = math.random(1,3)
