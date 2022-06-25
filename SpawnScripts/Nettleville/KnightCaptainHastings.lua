@@ -5,9 +5,14 @@
     Script Purpose : 
                    : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
+local Delivery = 5596
+local FPStout = 5595
 
 function spawn(NPC)
 	waypoints(NPC)
+    ProvidesQuest(NPC,Delivery)
 end
 
 function hailed(NPC, Spawn)
@@ -35,3 +40,83 @@ function waypoints(NPC)
 end
 
 
+
+function hailed(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+ 	FaceTarget(NPC, Spawn)
+ 	PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+    else
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
+	Dialog.AddDialog("Greetings resident!  No time to chat. I'm in charge of the local Qeynos Guard squad.")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_hastings/qey_village01/captainhastings000.mp3", 2830541890, 1668350468)
+ 	if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
+        Dialog.AddOption("I would love the opportunity to help the Qeynos Guard if there is anything that needs doing.", "Helping")
+    end
+    if GetQuestStep (Spawn, Delivery)==2 then 
+        Dialog.AddOption("I've returned with Captain Santis' response.","Delivered")
+    end
+    if GetQuestStep (Spawn, FPStout)==2 then 
+        Dialog.AddOption("...I have something that may be of interest to you.","FPStoutTurnin")
+    end
+    if HasCompletedQuest (Spawn, Delivery) then 
+        Dialog.AddOption("Keep up the good work!")
+    end
+    Dialog.AddOption("Sorry. Don't let me get in your way.")
+	Dialog.Start()
+end
+end
+
+
+function Helping(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I admire your dedication to the kingdom.  I have for you a task that will contribute to Qeynos' greatness.  Does this interest you?")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_hastings/qey_village01/captainhastings003.mp3", 3672561491, 3095253551)
+	Dialog.AddOption("I would be happy to serve!  Tell me what I must do!", "QuestBegin")
+	Dialog.AddOption("On second thought, I am needed elsewhere.")
+	Dialog.Start()
+end
+
+
+function QuestBegin (NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC, Spawn, Delivery)
+end
+
+
+function Delivered(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+    SetStepComplete(Spawn, Delivery, 2)
+	PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
+	Dialog.AddDialog("Excellent!  We will crush his team and earn the rights to the royal bunkhouse!  You are free to go, citizen.")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_hastings/qey_village01/captainhastings005.mp3", 3310150005, 1305294330)
+	Dialog.AddOption("")
+	Dialog.AddOption("Glad I could help!")
+	Dialog.Start()
+end
+
+function FPStoutTurnin(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Interesting.  What is this... something?")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_hastings/qey_village01/captainhastings001.mp3", 1036957677, 3879964827)
+	Dialog.AddOption("I was given this case of Freeport contraband and thought it should be turned into the authorities.", "FPStoutUpdate")
+	Dialog.AddOption("On second thought, I am needed elsewhere.")
+	Dialog.Start()
+end
+
+function FPStoutUpdate(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+    SetStepComplete(Spawn, FPStout, 2)
+ 	SendMessage(Spawn, "Captain Hastings hands you a medium sized bag as a token of thanks for your service to Qeynos.")	
+    SummonItem(Spawn,20749,1)   --Summons player a medium bag
+    Dialog.AddDialog("You did the right thing.  Thank you for bringing this to me.")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_hastings/qey_village01/captainhastings002.mp3", 1532795209, 281346736)
+	Dialog.AddOption("I'm glad to have it off my hands.")
+	Dialog.Start()
+end

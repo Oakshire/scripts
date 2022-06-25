@@ -3,7 +3,7 @@
 	Script Purpose	: Knight-Captain Elgrondeth
 	Script Author	: Dorbin
 	Script Date		: 2022.06.19
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Notes	:
 --]]
 
 require "SpawnScripts/Generic/DialogModule"
@@ -22,6 +22,10 @@ if not HasCompletedQuest(Spawn,305) and not HasQuest(Spawn,305) then
 Dialog4(NPC, Spawn)
 elseif HasQuest(Spawn,305) and GetQuestStep(Spawn,305)==2 then
 Dialog5(NPC,Spawn)    
+elseif HasQuest(Spawn,305) and GetQuestStep(Spawn,305)==4 then
+Dialog7(NPC,Spawn)    
+elseif HasQuest(Spawn,305) and GetQuestStep(Spawn,305)==6 then
+Dialog9(NPC,Spawn)
 else
 PlayFlavor(NPC, "voiceover/english/knight-captain_elgrondeth/qey_village01/100_quest_captain_elgrondeth_questcomplete_55592dd4.mp3", "I appreciate your help.  If I can return the favor someday, I shall.", "thanks", 1398230613, 3767711690, Spawn, 0)
 end
@@ -97,4 +101,44 @@ function Dialog6(NPC, Spawn)
 	Dialog.AddOption("I'll report back once I've taken care of them")
 	Dialog.AddOption("Bears?  Well, alright then.")
 	Dialog.Start()
+end
+
+function Dialog7(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn, 0)
+	Dialog.AddDialog("Truly remarkable!  You show incrediable fortitude for someone who has no guard training.  I have one final report I need you to handle.  Do you have time to complete this final task?")
+	Dialog.AddVoiceover("voiceover/english/captain_elgrondeth/qey_village01/captainelgrondeth006.mp3", 2945126475, 1397255123)
+	Dialog.AddOption("Certainly.  What is the threat?","Dialog8")
+	Dialog.AddOption("Another one?  I hope it is a real problem.","Dialog8")
+	Dialog.AddOption("I am a little preoccupied just now.")
+	Dialog.Start()
+end
+
+function Dialog8(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    SetStepComplete(Spawn,305, 4)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("These reports are very serious.  I'm sure you've seen the thicket lizards in your travels and kept your distance.  They have slain many adventurers.  You must stop the carnage.  Put an end to the menace, and I'll see you are rewarded for your help! ")
+	Dialog.AddVoiceover("voiceover/english/captain_elgrondeth/qey_village01/captainelgrondeth007.mp3", 2396655340, 2104454992)
+	Dialog.AddOption("I'll report back once they've been dealt with.")
+	Dialog.AddOption("Lizards it is then!")
+	Dialog.Start()
+end
+
+function Dialog9(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn, 0)
+	Dialog.AddDialog("Thank you very much!  I appreciate your help during our time of need.  Please, accept this small token as a sign of my appreciation.  Good luck to you!")
+	Dialog.AddVoiceover("voiceover/english/captain_elgrondeth/qey_village01/captainelgrondeth008.mp3", 2945126475, 1397255123)
+	Dialog.AddOption("Thanks. I'm glad I could help.","FinishQuest")
+	Dialog.AddOption("Well, at least that was the last one.  Take care.","FinishQuest")
+	Dialog.Start()
+end
+
+function StartQuest(NPC,Spawn)
+    PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn, 0)
+    SetStepComplete(Spawn,305, 6)
+    FaceTarget(NPC,Spawn)
 end
