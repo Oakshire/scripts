@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 
@@ -19,7 +20,16 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "thanks", 0, 0, Player)
+	Dialog.AddDialog("Take this sketch pad and search the center of Qeynos for the Qeynos Claymore Monument.  I have an order for a duplicate of the legendary sword and need an accurate sketch to use as a model.")
+	Dialog.AddVoiceover("voiceover/english/smith_cayless_chambers/qey_village01/smithcayless002.mp3", 1924901518, 3903244949)
+    if GetClass(Player)== 54 then
+	Dialog.AddOption("I'm actually a bit of a scholar.  Hopefully my skills will prove useful.")
+    end
+	Dialog.AddOption("No promises on my drawing skills, but I'll be back with a sketch.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

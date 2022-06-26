@@ -18,8 +18,8 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	if not HasQuest(Spawn, QUEST_1) and not HasCompletedQuest(Spawn, QUEST_1) then
+    	FaceTarget(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/foster_graham/qey_village01/qey_village01_foster_graham_callout_127b0ec4.mp3", "Come to gaze upon me, have you?", "smirk", 918053570, 706207599, Spawn)
 	end
 end
@@ -45,7 +45,7 @@ function dlg_22_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/foster_graham/qey_village01/fostergraham001.mp3", "", "", 716330203, 409660304, Spawn)
+	PlayFlavor(NPC, "voiceover/english/foster_graham/qey_village01/fostergraham001.mp3", "", "scream", 716330203, 409660304, Spawn)
 	AddConversationOption(conversation, "Stop the drama. I can get what you need.", "OfferQuest1")
 	AddConversationOption(conversation, "That's your problem, not mine.")
 	StartConversation(conversation, NPC, Spawn, "What!  It cannot be!  Nooooo... Where is my face cream?  My 'Erollisi's Bane?'  Have I run out?  Its secret ingredient is rare; the local shops have all been depleted of it.  Alas!")
@@ -62,7 +62,7 @@ function dlg_5_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/foster_graham/qey_village01/fostergraham003.mp3", "", "", 399908880, 4101526749, Spawn)
+	PlayFlavor(NPC, "voiceover/english/foster_graham/qey_village01/fostergraham003.mp3", "", "smile", 399908880, 4101526749, Spawn)
 	AddConversationOption(conversation, "Farewell.")
-	StartConversation(conversation, NPC, Spawn, "Many thanks, my homely friend.  Take this payment for your service and use it to improve your looks.        ")
+	StartConversation(conversation, NPC, Spawn, "Many thanks, my homely friend.  Take this payment for your service and use it to improve your looks.")
 end

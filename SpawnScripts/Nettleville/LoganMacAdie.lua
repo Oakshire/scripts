@@ -19,10 +19,13 @@ function respawn(NPC, Spawn)
 end
 
 function InRange(NPC, Spawn)
-	local chance = math.random(1, 100)
+if GetFactionAmount(Spawn,11)<0 then
+		PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+    
+--[[	local chance = math.random(1, 100)
 	if chance <= 20 then
 		FaceTarget(NPC, Spawn)
-		Say(NPC, "I'm sure you'll find whatever you need if you just keep around.", Spawn)
+		Say(NPC, "I'm sure you'll find whatever you need if you just keep around.", Spawn)]]--
 	end
 end
 
@@ -31,7 +34,8 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	local choice = math.random(1, 6)
+    RandomVoiceOver(NPC, Spawn)
+    local choice = math.random(1, 6)
 	if choice == 1 then
 		PlayFlavor(NPC, "", "Well its not easy being the best looking guy in town, but I think I pull it off well.", "flirt", 1689589577, 4560189, Spawn)
 	elseif choice == 2 then
@@ -48,6 +52,16 @@ function hailed(NPC, Spawn)
 
 end
 
+function RandomVoiceOver(NPC, Spawn)
+	local choice = math.random(1, 3)
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1002.mp3", "", "", 0, 0, Spawn)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1002.mp3", "", "", 0, 0, Spawn)
+	else
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1002.mp3", "", "", 0, 0, Spawn)
+	end
+end
 
     function Target(NPC)
     local Karrie = GetSpawn(NPC,2330021)

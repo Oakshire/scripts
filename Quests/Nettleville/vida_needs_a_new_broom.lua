@@ -3,12 +3,13 @@
 	Script Purpose	: Handles the quest, "Vida Needs a New Broom"
 	Script Author	: Scatman
 	Script Date	: 2009.08.12
-	
+	Notes:      Updated format post 'hailed' for consistency. - Dorbin 06.25.2022
 	Zone       : Nettleville
 	Quest Giver: Vida Sweeps
-	Preceded by: None
+	Preceded by: The Dusty Blue Stone
 	Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to find Tawli Whiskwind.", 1, "I need to find Tawli Whiskwind in the Baubbleshire and pick up Vida's new broom.", 0, 2380047)
@@ -17,11 +18,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-
-	PlayFlavor(QuestGiver, "voiceover/english/vida_sweeps/qey_village01/vidasweeps002.mp3", "", "", 1651808120, 3255633748, Player)
-	AddConversationOption(conversation, "I'll go over to the Baubbleshire and look for her.")
-	StartConversation(conversation, QuestGiver, Player, "Great!  I need you to pick up my new broom. Don't worry! It's already paid for; I just haven't picked it up. Tawli Whiskwind, a halfling lass in the Baubbleshire, should have it ready for me. You may have a difficult time finding her -- she's always running around looking for the finest materials for her brooms.")
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "thanks", 0, 0, Player)
+	Dialog.AddDialog("Great!  I need you to pick up my new broom. Don't worry! It's already paid for; I just haven't picked it up. Tawli Whiskwind, a halfling lass in the Baubbleshire, should have it ready for me. You may have a difficult time finding her -- she's always running around looking for the finest materials for her brooms.")
+	Dialog.AddVoiceover("voiceover/english/vida_sweeps/qey_village01/vidasweeps002.mp3", 1651808120, 3255633748)
+	Dialog.AddOption("I'll go over to the Baubbleshire and look for her.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

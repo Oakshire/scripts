@@ -18,8 +18,9 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
 	Dialog.AddDialog("Good choice!  My brother's name is Aves and he doesn't like to wait.  Hurry along now!")
 	Dialog.AddVoiceover("voiceover/english/verth/qey_village01/verth002.mp3", 4028969194, 2237905916)
 	Dialog.AddOption("I'll be back shortly.")
@@ -38,7 +39,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I met up with Aves.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I met Verth's brother, Aves, down by the docks.")
-	AddQuestStepChat(Quest, 2, "I need to decide what to do with this contraband.  I can deliver it to Verth as discussed or give it to the authorities.", 2285, 2330051,2330022)
+	AddQuestStepChat(Quest, 2, "I need to decide what to do with this contraband.", 1 , "I can deliver this crate of Freeport stout to Verth as discussed OR find authorities interested in this contraband.", 655, 2330051,2330022)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

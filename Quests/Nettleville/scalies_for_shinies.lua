@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,7 +19,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "smile", 0, 0, Player)
+	Dialog.AddDialog("In the caves, they are!  The scalies live in the caves.  Bring me ten albino snakeskins and get your reward! Go too!")
+	Dialog.AddVoiceover("voiceover/english/devon_varin/qey_village01/dirkvagrin002.mp3", 2533226550, 1889262998)
+	Dialog.AddOption("Alright.  I'm off.")
+	Dialog.AddOption("... did I just accept a job... err.  I'll be back.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -48,7 +48,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 595.46, -26.42, 379.64, 2, 0)
 	MovementLoopAddLocation(NPC, 591.84, -26.41, 378.62, 2, 0)
 	MovementLoopAddLocation(NPC, 589.6, -26.4, 378.57, 2, 0)
-	MovementLoopAddLocation(NPC, 586.74, -25.76, 373.23, 2, 1)
+	MovementLoopAddLocation(NPC, 586.74, -25.76, 373.23, 2, 1,"FaceGate")
 	MovementLoopAddLocation(NPC, 586.74, -25.76, 373.23, 2, 35,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 586.74, -25.76, 373.23, 2, 35,"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 586.73, -26.21, 375.45, 2, 0)
@@ -66,6 +66,9 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 666.95, -24.64, 362.82, 2, 0)
 end
 
+ function FaceGate(NPC)
+    SetHeading(NPC,153)
+end
 
  function Drink(NPC)
     PlayAnimation(NPC,11422)

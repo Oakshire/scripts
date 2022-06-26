@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/DownBelow/atombrifterpest.lua
+    Script Name    : SpawnScripts/DownBelow/afrenziedwatcher.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.04.24 06:04:32
+    Script Date    : 2022.06.25 10:06:54
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-      local Level = GetLevel(NPC)
-    local level1 = 7
-    local level2 = 8
+    local Level = GetLevel(NPC)
+    local level1 = 8
+    local level2 = 9
     local difficulty1 = 6
-    local hp1 = 200
-    local power1 = 90
+    local hp1 = 240
+    local power1 = 100
     local difficulty2 = 6
-    local hp2 = 240
-    local power2 = 100
+    local hp2 = 275
+    local power2 = 110
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -26,6 +26,7 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
+
 end
 
 function hailed(NPC, Spawn)

@@ -48,7 +48,6 @@ if GetFactionAmount(Spawn,11)<0 then
     else
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
 	Dialog.AddDialog("Greetings resident!  No time to chat. I'm in charge of the local Qeynos Guard squad.")
 	Dialog.AddVoiceover("voiceover/english/knight-captain_hastings/qey_village01/captainhastings000.mp3", 2830541890, 1668350468)
  	if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
@@ -72,6 +71,7 @@ end
 function Helping(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
 	Dialog.AddDialog("I admire your dedication to the kingdom.  I have for you a task that will contribute to Qeynos' greatness.  Does this interest you?")
 	Dialog.AddVoiceover("voiceover/english/knight-captain_hastings/qey_village01/captainhastings003.mp3", 3672561491, 3095253551)
 	Dialog.AddOption("I would be happy to serve!  Tell me what I must do!", "QuestBegin")

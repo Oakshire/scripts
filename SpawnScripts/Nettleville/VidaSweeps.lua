@@ -31,23 +31,6 @@ function LeaveRange(NPC, Spawn)
 	
 end
 
---[[
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/vida_sweeps/qey_village01/vidasweeps000.mp3", "", "", 931509640, 2296016698, Spawn)
-	if not HasCompletedQuest(Spawn, QUEST_1) then
-		if HasQuest(Spawn, QUEST_1) and GetQuestStep(Spawn, QUEST_1) == 2 then
-			AddConversationOption(conversation, "I brought back the new broom from Tawli.  She was a bit tough to find.", "dlg_13_1")
-		elseif GetLevel(Spawn) >= 3 then
-			AddConversationOption(conversation, "What little rocks?", "TheseStones")
-		end
-	end
-	AddConversationOption(conversation, "Good luck with your work.")
-	StartConversation(conversation, NPC, Spawn, "So much to do!  So little time!  I must get these tents in order, and all this sweeping is giving me blisters.  It wouldn't be so bad if there weren't all these little rocks about.")
-end
-]]
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -71,14 +54,16 @@ function hailed(NPC, Spawn)
 	Dialog.Start()
 end
 
+
+
 function TheseStones(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	
-	PlayFlavor(NPC, "voiceover/english/vida_sweeps/qey_village01/vidasweeps001.mp3", "", "", 3847370594, 2690301162, Spawn)
-	AddConversationOption(conversation, "I'll help you out.  I am interested in the blue stone.", "OfferQuest1")
-	AddConversationOption(conversation, "I'm sorry, but I really don't have time to run an errand for you.")
-	StartConversation(conversation, NPC, Spawn, "These stones on the ground, of course ... I guess I swept away most of the pebbles, but I did keep one strange blue rock that I found in the dust.  If you agree to help me, I'll give you the precious stone as payment. Unfortunately, I'm short on coin.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("These stones on the ground, of course ... I guess I swept away most of the pebbles, but I did keep one strange blue rock that I found in the dust.  If you agree to help me, I'll give you the precious stone as payment. Unfortunately, I'm short on coin.")
+	Dialog.AddVoiceover("voiceover/english/vida_sweeps/qey_village01/vidasweeps001.mp3", 3847370594, 2690301162)
+	Dialog.AddOption("I'll help you out.  I am interested in the blue stone.", "OfferQuest1")
+	Dialog.AddOption("I'm sorry, but I really don't have time to run an errand for you.")
+	Dialog.Start()
 end
 
 function OfferQuest1(NPC, Spawn)
@@ -87,25 +72,27 @@ function OfferQuest1(NPC, Spawn)
 end
 
 function dlg_13_1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
 	SetStepComplete(Spawn, QUEST_1, 2)
-	
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/vida_sweeps/qey_village01/vidasweeps003.mp3", "", "", 1668292894, 3552793002, Spawn)
-	AddConversationOption(conversation, "What should I do with this blue stone?", "dlg_13_2")
-	AddConversationOption(conversation, "Thank you very much.  ")
-	StartConversation(conversation, NPC, Spawn, "Aye, I told you she was a bit flighty.  Thank you for the broom and here is the stone I promised.  I hope it brings you good luck.")
+	Dialog.AddDialog("Aye, I told you she was a bit flighty.  Thank you for the broom and here is the stone I promised.  I hope it brings you good luck.")
+	Dialog.AddVoiceover("voiceover/english/vida_sweeps/qey_village01/vidasweeps003.mp3", 1668292894, 3552793002)
+	Dialog.AddOption("What should I do with this blue stone?", "Dialog7")
+	Dialog.AddOption("Thank you very much.  ")
+	Dialog.Start()
 end
 
-function dlg_13_2(NPC, Spawn)
+function Dialog7(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/vida_sweeps/qey_village01/vidasweeps004.mp3", "", "", 2095544938, 2706458688, Spawn)
-	AddConversationOption(conversation, "Hmm... I'll keep that in mind.")
-	StartConversation(conversation, NPC, Spawn, "I suppose that is up to you.  Maybe you can take it to a mineral expert somewhere in the city.")
+	Dialog.New(NPC, Spawn)
+	PlayFlavor(QuestGiver, "", "", "ponder", 0, 0, Player)
+	Dialog.AddDialog("I suppose that is up to you.  Maybe you can take it to a mineral expert somewhere in the city.")
+	Dialog.AddVoiceover("voiceover/english/vida_sweeps/qey_village01/vidasweeps004.mp3", 2095544938, 2706458688)
+	Dialog.AddOption("Hmm... I'll keep that in mind.")
+	Dialog.Start()
 end
+
+
 
     
 function EmoteLoop(NPC)

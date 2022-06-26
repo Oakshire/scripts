@@ -23,13 +23,13 @@ else
 if math.random(1, 100) <= 85 then
     if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
     	FaceTarget(NPC, Spawn)
-        choice = math.random(1,2)
+        choice = math.random(1,3)
         if choice ==1 then
-     	FaceTarget(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/verth/qey_village01/qey_village01_flavor_verth_callout_12846b29.mp3", "Psst!  Come over here!", "beckon", 2983925092, 3211744371, Spawn)
         elseif choice ==2 then
-    	FaceTarget(NPC, Spawn)
 	    PlayFlavor(NPC, "voiceover/english/verth/qey_village01/qey_village01_flavor_verth_multhail1_1b036b2d.mp3", "That meddling Falkoner didn't see you come back here, did he?  Hmmm... I don't know if I can trust you. You better leave, now!", "", 1876464980, 1327443401, Spawn)
+        elseif choice ==3 then
+		PlayFlavor(NPC, "voiceover/english/verth/qey_village01/qey_village01_flavor_verth_callout_12846b29.mp3", "Psst!  Come over here!", "beckon", 2983925092, 3211744371, Spawn)
         end
     end
 end
@@ -60,7 +60,9 @@ if GetFactionAmount(Spawn,11)<0 then
     if HasQuest (Spawn, Delivery) then 
         Dialog.AddOption("I'm still working on your pickup.  I'll let you know once I've got your package.")
     end
+    if not HasQuest (Spawn, Delivery) then 
     Dialog.AddOption("I'm not much for dealings in a back alley.  Keep your coin.")
+    end
 	Dialog.Start()
 end
 end
@@ -83,6 +85,8 @@ end
 function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+    SetStepComplete(Spawn, Delivery, 2)
+ 	PlayFlavor(NPC, "", "", "shrug", 0, 0, Spawn)
 	Dialog.AddDialog("Yeah yeah, I know the lecture, but nothing beats a Freeport Stout!  I don't care much for the people there, but their brewing, heh, that's a different story.")
 	Dialog.AddVoiceover("voiceover/english/verth/qey_village01/verth003.mp3", 715579141, 3202334422)
 	Dialog.AddOption("Pass one here and we'll pretend nothing happened here.","DoneDrink")
@@ -92,8 +96,9 @@ end
 
 function DoneDrink(NPC,Spawn)
     SetStepComplete(Spawn, Delivery, 2)
-    SummonItem(Spawn,9203,1)
+    SummonItem(Spawn,37386,1)
     SendMessage(Spawn, "Verth grumbles to himself as he pours out a drink and forces it in your hands.")	
+    PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 end
 
 function Done(NPC,Spawn)

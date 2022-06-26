@@ -9,10 +9,21 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
    	AddQuestStepChat(Quest, 1, "I need to go to the scribe shop.", 1, "I need to go to the scribe shop in Nettleville to see if Marjani Kenan is still there.", 11, 2360024)
 	AddQuestStepCompleteAction(Quest, 1, "CheckIn")
+end
+
+function Accepted(Quest, QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "scream", 0, 0, Player)
+	Dialog.AddDialog("Thank you.  That woman just makes my hair stand on end!  HhurrrrawrR!")
+	Dialog.AddVoiceover("voiceover/english/nia_jaja/qey_village01/niajaja002.mp3", 1501623975, 3086315049)
+	Dialog.AddOption("I'll be back shortly! Just take the moment to cool off.")
+	Dialog.Start()
 end
 
 
