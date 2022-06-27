@@ -13,7 +13,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to take the note to Captain Santis in Starcrest Commune.", 1, "Captain Hastings has asked that I take a note to Captain Santis in Starcrest Commune.", 75, 1980028)
+	AddQuestStepChat(Quest, 1, "I need to take the note to Captain Santis in Starcrest Commune.", 1, "Captain Hastings has asked that I take a note to Captain Santis in Starcrest Commune.", 75, 2340018)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Starcrest")
 end

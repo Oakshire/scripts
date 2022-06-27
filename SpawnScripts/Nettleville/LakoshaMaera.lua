@@ -75,7 +75,7 @@ function hailed(NPC, Spawn)
 		if GetRace(Spawn) == KERRA then
 			DoYouSeekDirection(NPC, Spawn)
 		else
-		  PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lakosha_maera/qey_village01/qst_lakosha_maera_notkerra_4ac0f123.mp3", "I am sorry, but I am not in a mood to speak.", "", 2967268605, 2864900763, Spawn)
+		  PlayFlavor(NPC, "voiceover/english/tutorial_revamp/lakosha_maera/qey_village01/qst_lakosha_maera_notkerra_4ac0f123.mp3", "I am sorry, but I am not in a mood to speak.", "no", 2967268605, 2864900763, Spawn)
 	  end
 	end
 end

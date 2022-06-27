@@ -14,7 +14,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	   conversation = CreateConversation()
-        if GetQuestStep(Spawn, Deposit)==2 then     
+        if GetQuestStep(Spawn, Deposit)==1 then     
         AddConversationOption(conversation, "I'm here to make a deposit for Grekin.", "Deposit1")
         end
     AddConversationOption(conversation, "That is good to know.")
@@ -23,6 +23,7 @@ function hailed(NPC, Spawn)
 end 
 
  function Deposit1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "I need the recpit. Thank you.", "Deposit2")
     PlayFlavor(NPC, "voiceover/english/banker_orudormo/qey_village02/bankerorudormo000.mp3","","thank",3783803084,3333586894,Spawn)

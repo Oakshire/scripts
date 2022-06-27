@@ -7,6 +7,7 @@
 --]]
 
 local QUEST_1 = 309
+local Timer = false
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
@@ -18,10 +19,18 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+if Timer == false then
 	if not HasQuest(Spawn, QUEST_1) and not HasCompletedQuest(Spawn, QUEST_1) then
     	FaceTarget(NPC, Spawn)
+        Timer = true
 		PlayFlavor(NPC, "voiceover/english/foster_graham/qey_village01/qey_village01_foster_graham_callout_127b0ec4.mp3", "Come to gaze upon me, have you?", "smirk", 918053570, 706207599, Spawn)
+        AddTimer(NPC,21000,"ResetTimer")
 	end
+end
+end
+
+function ResetTimer(NPC, Spawn)
+            Timer = false
 end
 
 function LeaveRange(NPC, Spawn)

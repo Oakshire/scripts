@@ -16,7 +16,25 @@ function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
 	ProvidesQuest(NPC, QUEST_2)
 	ProvidesQuest(NPC, QUEST_3)
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
+
+function InRange(NPC, Spawn) 
+if GetFactionAmount(Spawn,11)<0 then
+PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+FaceTarget(NPC, Spawn)
+else   
+ if GetRace(Spawn)==9 then
+       FaceTarget(NPC, Spawn)
+        choice = math.random(1,2)
+        if choice ==1 then
+        PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+        else
+        PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
+        end
+    end
+end   
+end   
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

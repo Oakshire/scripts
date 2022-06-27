@@ -19,11 +19,13 @@ end
 function InRange(NPC, Spawn) --Quest Callout
 if not HasCompletedQuest(Spawn, Deposit)then
 if math.random(1, 100) <= 70 then
-        choice = math.random(1,2)
+        choice = math.random(1,3)
         FaceTarget(NPC, Spawn)
         if choice ==1 then
         PlayFlavor(NPC, "voiceover/english/merchant_grekin/qey_village02/100_human_merchant_m_01_multhail1_78077dd5.mp3", "Sorry friend. I don't think you can help me.", "no", 3289788151, 1391553241, Spawn)
     	elseif choice ==2 then
+        PlayFlavor(NPC, "voiceover/english/merchant_grekin/qey_village02/100_human_merchant_m_01_callout_9b7d7d4.mp3", "To close the store or deliever the deposit. That is the question. If only I didn't have to choose! Perhaps you can help me traveler?", "ponder", 3289788151, 1391553241, Spawn)
+    	elseif choice ==3 then
         PlayFlavor(NPC, "voiceover/english/merchant_grekin/qey_village02/100_human_merchant_m_01_callout_9b7d7d4.mp3", "To close the store or deliever the deposit. That is the question. If only I didn't have to choose! Perhaps you can help me traveler?", "ponder", 3289788151, 1391553241, Spawn)
         end
     end
@@ -35,7 +37,7 @@ function hailed(NPC, Spawn)
 
 	FaceTarget(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/merchant_grekin/qey_village02/merchantgrekin.mp3", "", "beckon", 2492969401, 3280493975, Spawn)
-    if not HasQuest(Spawn, Deposit) then       
+    if not HasQuest(Spawn, Deposit) and not HasCompletedQuest(Spawn, Deposit) then       
                 AddConversationOption(conversation, "Have any jobs I can do?", "DepositStart")
             end
             if GetQuestStep(Spawn, Deposit)==2 then     

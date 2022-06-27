@@ -19,17 +19,17 @@ function hailed(NPC, Spawn)
 	local choice = math.random(1, 2)
 	if choice == 1 then
     PlayFlavor(NPC, "", "", "attack", 0, 0,Spawn)
-    SendMessage(Spawn, "The dog lunges at you threateningly.")	
+    SendMessage(Spawn, "The dog lunges at your tail threateningly.")	
 	elseif choice == 2 then
     SendMessage(Spawn, "The dog growls at you menecingly.")	
     end
     else                            --NORMAL RESPONSE
-    local choice = math.random(1, 2)
+--[[    local choice = math.random(1, 2)
 	if choice == 1 then
 	SendMessage(Spawn, "The dog cautiously eyes you.")	
 	elseif choice == 2 then
- 	SendMessage(Spawn, "The dog inspects you curiously.")
- 	 end
+ 	SendMessage(Spawn, "The dog sniffs you curiously.")
+ 	 end]]--
 end
 end
 

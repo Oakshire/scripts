@@ -64,7 +64,8 @@ end
 
 function LeaveIsland(NPC, Spawn)
     Race = GetRace(Spawn)
-
+  
+    Bind(Spawn, 559, -232.03, -56.06, 172.57, 360.0)
     -- Human / Kerra
     if Race == 9 or Race == 11 then
         AddSpellBookEntry(Spawn, 8057, 1)	

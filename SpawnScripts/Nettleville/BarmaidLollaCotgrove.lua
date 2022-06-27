@@ -10,7 +10,7 @@ require "SpawnScripts/Generic/DialogModule"
 local Delivery = 5446
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
 ProvidesQuest(NPC, Delivery)
 waypoints(NPC)
 end
@@ -20,7 +20,7 @@ if GetFactionAmount(Spawn,11)<0 then
 PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 FaceTarget(NPC, Spawn)
 else   
-if math.random(1, 100) <= 30 then
+if math.random(1, 100) <= 85 then
     if not HasCompletedQuest (Spawn, Delivery) and not HasQuest (Spawn, Delivery) then 
     	FaceTarget(NPC, Spawn)
         choice = math.random(1,3)

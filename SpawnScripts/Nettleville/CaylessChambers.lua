@@ -8,7 +8,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
-    SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
+    SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")		
     ProvidesQuest(NPC,5599)
 end
 

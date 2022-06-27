@@ -50,7 +50,7 @@ function Accepted(Quest, QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
 	PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
 	Dialog.AddDialog("Excellent!  Go to the Peat Bog, slay several sludges and report back to me.  I will reward you for your service to Qeynos.")
-	Dialog.AddVoiceover("voiceover/english/knight-captain_santis/qey_village02/captainsantis002.mp3", 1532795209, 281346736)
+	Dialog.AddVoiceover("voiceover/english/knight-captain_santis/qey_village02/captainsantis002.mp3", 1892648125, 144917500)
 	Dialog.AddOption("Sounds good.  I'll get right on it.")
 	Dialog.Start()end
 

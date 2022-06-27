@@ -50,6 +50,8 @@ else
 end
 end
 
+
+
 function Killed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
@@ -71,7 +73,7 @@ function Option4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("The Bog Sludges have swelled in number, spreading like pestilence.  This vermin has become a serious menace to the refugees in that region.  The Sludges must be exterminated for the safety of the people.  I hope you're not too squeamish for such a job.")
-	Dialog.AddVoiceover("voiceover/english/knight-captain_santis/qey_village02/captainsantis003.mp3", 3636963969, 2486393631)
+	Dialog.AddVoiceover("voiceover/english/knight-captain_santis/qey_village02/captainsantis001.mp3", 1552831304, 2969481054)
 	Dialog.AddOption("A few sludges shouldn't be a problem for me.", "Offer")
 	Dialog.AddOption("I have NO desire to step foot in that bog.  Sorry.")
 	Dialog.Start()

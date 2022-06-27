@@ -40,7 +40,7 @@ function EmoteLoop(NPC)
     if emoteChoice == 1 then
 -- flourish
         PlayAnimation(NPC, 11557)
-        AddTimer(NPC, MakeRandomInt(20000,22000), "EmoteLoop")	
+        AddTimer(NPC, MakeRandomInt(21000), "EmoteLoop")	
     elseif emoteChoice == 2 then
 -- kiss
         PlayAnimation(NPC, 11762)
@@ -54,7 +54,7 @@ function EmoteLoop(NPC)
     elseif emoteChoice == 4 then
 -- full curtsey
         PlayAnimation(NPC, 11633)
-        AddTimer(NPC, MakeRandomInt(7000,9000), "EmoteLoop")	
+        AddTimer(NPC, MakeRandomInt(7000,8000), "EmoteLoop")	
      end
 end
 end
@@ -88,7 +88,7 @@ function Swooning(NPC,Spawn)
         elseif choice == 2 then
         PlayFlavor(Duncan, "","", "flirt", 0, 0)            
         elseif choice == 3 then
-        PlayFlavor(Duncan, "","", "clap", 0, 0)            
+        PlayFlavor(Duncan, "","", "wink", 0, 0)            
         elseif choice == 4 then
         PlayAnimation(Duncan,10760)
         end
@@ -117,5 +117,5 @@ function Swooning(NPC,Spawn)
     end
     end
     end
-        AddTimer(NPC, MakeRandomInt(25000,32000), "Swooning")	
+        AddTimer(NPC, MakeRandomInt(23000,25000), "Swooning")	
 end

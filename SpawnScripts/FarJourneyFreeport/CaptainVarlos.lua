@@ -164,7 +164,7 @@ function zone_to_isle(NPC, player)
 	-- if no server type is set (default of 0 wildcard) or odd number means bit 1 is set
 	if serverType == 0 or (serverType % 2) == 1 then
 		-- DoF alignment, 0 = evil (Outpost of Overlord), 1 = good (Queens Colony)
-		alignment = GetDeity(player)
+		alignment = GetAlignment(player)
 		if alignment == 0 then
 			Zone(GetZone(278), player) -- outpost of overlord
 		else

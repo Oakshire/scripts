@@ -11,6 +11,7 @@
 	Followed by		:	None
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must gather glowmyst from the beetles in Oakmyst Forest", 10, 100, "I need to gather up glowmyst juice from Oakmyst Forest, reachable by any number of mariner bells within Qeynos, by hunting down glowmyst beetles.", 1204, 1950002)
@@ -43,8 +44,13 @@ function Reload(Quest, QuestGiver, Player, Step)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I must have my glowmyst! My customers won't settle for anything other than that glowing concoction!")
+	Dialog.AddVoiceover("voiceover/english/bartender_bermo/qey_village02/100_bartender_bermo_multhail4_bd869670.mp3", 2103292434, 2123107577)
+	Dialog.AddOption("All right, I'll try to hurry.")
+	Dialog.Start()
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined
