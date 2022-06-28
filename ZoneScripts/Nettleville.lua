@@ -21,7 +21,7 @@ function enter_location(zone, spawn, grid)
 --	if grid == 342305820 then
 --		SendPopUpMessage(Player, "Nettleville Market Row", 255, 255, 0)
 --	end
-	SetLocationProximityFunction(zone, 640.16, -24.67, 383.95, 30, "MarketRow","LeaveLocation")
+--	SetLocationProximityFunction(zone, 640.16, -24.67, 383.95, 30, "MarketRow","LeaveLocation")
 end
 
 function MarketRow(Zone,Player)

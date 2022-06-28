@@ -7,6 +7,7 @@
 --]]
 
 function spawn(NPC)
+    
 
 end
 

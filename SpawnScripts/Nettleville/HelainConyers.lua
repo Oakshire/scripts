@@ -70,7 +70,7 @@ function hailed(NPC, Spawn)
 end
 
 function NotHuman(NPC, Spawn, conversation)
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers027.mp3", "", "", 3089860217, 2120414759, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers027.mp3", "", "hello", 3089860217, 2120414759, Spawn)
 	AddConversationOption(conversation, "Thanks for the tip.")
 	StartConversation(conversation, NPC, Spawn, "Hello, traveler!  If it is peace you seek, the teachings of Quellious the Tranquil can show you the way.")
 end
@@ -80,7 +80,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------
 
 function HelloTraveler(NPC, Spawn, conversation)
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers027.mp3", "", "", 3089860217, 2120414759, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers027.mp3", "", "hello", 3089860217, 2120414759, Spawn)
 	AddConversationOption(conversation, "No, I suppose you can't.", "dlg_0_1")
 	AddConversationOption(conversation, "Thanks for the tip.")
 	StartConversation(conversation, NPC, Spawn, "Hello, traveler!  If it is peace you seek, the teachings of Quellious the Tranquil can show you the way.")
@@ -100,7 +100,7 @@ function dlg_0_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers003.mp3", "", "", 2892663311, 3066293848, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers003.mp3", "", "agree", 2892663311, 3066293848, Spawn)
 	AddConversationOption(conversation, "You obviously are a person of faith.", "dlg_0_3")
 	AddConversationOption(conversation, "We may not be the oldest of races, but we are tenacious. ")
 	StartConversation(conversation, NPC, Spawn, "Right you are!  And while change is constant and all around us, we adjust and adapt right along with it.  Thus our faiths and philosophies are very diverse.")
@@ -110,7 +110,7 @@ function dlg_0_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers004.mp3", "", "", 4064224894, 855111154, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers004.mp3", "", "nod", 4064224894, 855111154, Spawn)
 	AddConversationOption(conversation, "No doubt, especially in these times of turmoil and conflict.", "dlg_0_4")
 	StartConversation(conversation, NPC, Spawn, "Oh, yes!  I follow Quellious, the Tranquil child-goddess. I've been seeking inner peace for many years now. It has helped me so much! I look around and see so many others that would benefit from such personal peace.")
 end
@@ -129,7 +129,7 @@ function dlg_0_5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers006.mp3", "", "", 1674826360, 1009450237, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers006.mp3", "", "agree", 1674826360, 1009450237, Spawn)
 	AddConversationOption(conversation, "Interesting.  I still think that many wage war for the sake of war, or to gain power.", "dlg_0_6")
 	StartConversation(conversation, NPC, Spawn, "I do!  Knowledge of other cultures and philosophies is very important.  Why, if everyone fully understood themselves and their neighbors, there would be no conflict or war.  No need for it!")
 end
@@ -235,7 +235,7 @@ function dlg_7_7(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers014.mp3", "", "", 2665081235, 3868863075, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers014.mp3", "", "ponder", 2665081235, 3868863075, Spawn)
 	AddConversationOption(conversation, "It was, and Andret told me to be careful, but it is now missing some of its pages. ", "dlg_7_8")
 	StartConversation(conversation, NPC, Spawn, "What's wrong? Uh, that book looks ragged. Don't worry, I'll bet its spine was broken when you got it.")
 end
@@ -244,7 +244,7 @@ function dlg_7_8(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers015.mp3", "", "", 4075505082, 3317310532, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers015.mp3", "", "wince", 4075505082, 3317310532, Spawn)
 	AddConversationOption(conversation, "I will go look for the pages. I dropped them, so I will find them. ", "OfferQuest2")
 	StartConversation(conversation, NPC, Spawn, "Oh, dear. You're right. We are missing six pages from the book 'Followers of Brell Serilis.'  That would have been a great read, too. Oh, that's too bad.")
 end
@@ -287,7 +287,7 @@ function ANaturalHere(NPC, Spawn, conversation)
 		conversation = CreateConversation()
 	end
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers020.mp3", "", "", 2357657431, 1390308351, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers020.mp3", "", "nod", 2357657431, 1390308351, Spawn)
 	AddConversationOption(conversation, "Thanks. I just try to do what's right.", "dlg_10_3")
 	AddConversationOption(conversation, "Would you happen to have any other work for me?", "OfferQuest3")
 	StartConversation(conversation, NPC, Spawn, "You know, you are a natural here in Qeynos. So willing to learn and help your fellow citizens.")
@@ -297,7 +297,7 @@ function dlg_10_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers021.mp3", "", "", 2715980640, 3245538913, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers021.mp3", "", "orate", 2715980640, 3245538913, Spawn)
 	AddConversationOption(conversation, "You refer to Lucan and Freeport when you speak of ruling with fear. ", "dlg_10_4")
 	StartConversation(conversation, NPC, Spawn, "That will do you well in these troubled times, no matter your faith. Qeynos is a collective people who are all driven by the same desire to better the world rather than being ruled by fear.")
 end
@@ -319,7 +319,7 @@ end
 function OnQuest3(NPC, Spawn, conversation)
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/helain_conyers/qey_village01/helainconyers024.mp3", "", "", 1790327288, 1244496180, Spawn)
 	AddConversationOption(conversation, "I have not asked all of them, but so far, no.")
-	StartConversation(conversation, NPC, Spawn, "Did my friends have some work for you, Lophodeuh?")
+	StartConversation(conversation, NPC, Spawn, "Did my friends have some work for you?")
 end
 
 function HaveYouFoundWork(NPC, Spawn, conversation)

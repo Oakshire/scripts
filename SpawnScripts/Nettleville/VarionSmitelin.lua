@@ -11,12 +11,28 @@ local REFILL_THE_OAKMYST_SPIDER_SILK_JARS = 312
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
+function InRange(NPC, Spawn) --Quest Callout
+if GetFactionAmount(Spawn,11)<0 then
+PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+FaceTarget(NPC, Spawn)
+else   
+if math.random(1, 100) <= 85 then
+    if not HasCompletedQuest (Spawn, QUEST_1) and not HasQuest (Spawn, QUEST_1) then 
+  		PlayFlavor(NPC, "voiceover/english/scribe_varion_smitelin/qey_village01/qey_village01_sage_varion_smitelin_callout_1a43b9e.mp3", "Drat!  I've only a few more bog fairy wings.  I need help retrieving more.", "doh", 1849956247, 1756752392, Spawn)
+    end
+end
+end
+end
+
+ 
+    	
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()

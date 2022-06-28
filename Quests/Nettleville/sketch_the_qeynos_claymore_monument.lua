@@ -23,7 +23,7 @@ function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
 	PlayFlavor(QuestGiver, "", "", "thanks", 0, 0, Player)
-	Dialog.AddDialog("Take this sketch pad and search the center of Qeynos for the Qeynos Claymore Monument.  I have an order for a duplicate of the legendary sword and need an accurate sketch to use as a model.")
+	Dialog.AddDialog("Take this sketch pad and search the center of Qeynos for the Qeynos Claymore Monument.  I have an order for a duplicate of the legendary sword. I need an accurate sketch to use as a model.")
 	Dialog.AddVoiceover("voiceover/english/smith_cayless_chambers/qey_village01/smithcayless002.mp3", 1924901518, 3903244949)
     if GetClass(Player)== 54 then
 	Dialog.AddOption("I'm actually a bit of a scholar.  Hopefully my skills will prove useful.")

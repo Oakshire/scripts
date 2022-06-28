@@ -16,7 +16,7 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	PlayFlavor(NPC, "", "Ooh...I can't wait for some crunchies!", "manipulate", 1689589577, 4560189, Spawn)
+	PlayFlavor(QuestGiver, "", "Ooh...I can't wait for some crunchies!", "manipulate", 1689589577, 4560189, Player)
 end
 
 function Declined(Quest, QuestGiver, Player)

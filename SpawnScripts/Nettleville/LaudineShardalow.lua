@@ -26,16 +26,16 @@ function hailed(NPC, Spawn)
 		StartConversation(conversation, NPC, Spawn, "Didn't Johfrit Gythell have some work for you? ")
 	elseif HasQuest(Spawn, QUEST_3_FROM_HELAIN) then
 		if GetQuestStep(Spawn, QUEST_3_FROM_HELAIN) == 4 then
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow001.mp3", "", "", 533537902, 3419616012, Spawn)
+			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow001.mp3", "", "hello", 533537902, 3419616012, Spawn)
 			AddConversationOption(conversation, "Yes, and I feel like I am getting to know it rather quickly.", "dlg_23_1")
 			StartConversation(conversation, NPC, Spawn, "Hail, friend. I do not recognize you. New to these parts? ")
 		else
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow014.mp3", "", "", 3899128570, 664520913, Spawn)
+			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow014.mp3", "", "ponder", 3899128570, 664520913, Spawn)
 			AddConversationOption(conversation, "I have forgotten where he was.", "Forgot")
 			StartConversation(conversation, NPC, Spawn, "Didn't Johfrit Gythell have some work for you? ")
 		end
 	else
-		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow011.mp3", "", "", 914739778, 33666592, Spawn)
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow011.mp3", "", "agree", 914739778, 33666592, Spawn)
 		AddConversationOption(conversation, "And to you, madam.")
 		StartConversation(conversation, NPC, Spawn, "It is a beautiful day! I hope the gods are smiling upon you.")
 	end
@@ -45,7 +45,7 @@ function dlg_23_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow002.mp3", "", "", 3635283512, 863467573, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow002.mp3", "", "agree", 3635283512, 863467573, Spawn)
 	AddConversationOption(conversation, "Yes, in fact it was Helain Conyers' advice that I come to you. ", "dlg_23_2")
 	StartConversation(conversation, NPC, Spawn, "Met many others? ")
 end
@@ -64,7 +64,7 @@ function dlg_23_3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow004.mp3", "", "", 3519111089, 2079193245, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow004.mp3", "", "no", 3519111089, 2079193245, Spawn)
 	AddConversationOption(conversation, "Never mind.  She thought maybe you would have some work for me. ", "dlg_23_4")
 	StartConversation(conversation, NPC, Spawn, "What? ")
 end
@@ -73,7 +73,7 @@ function dlg_23_4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow005.mp3", "", "", 23943986, 4145393969, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow005.mp3", "", "shrug", 23943986, 4145393969, Spawn)
 	AddConversationOption(conversation, "Oh? ", "dlg_23_5")
 	StartConversation(conversation, NPC, Spawn, "Ah, no I don't, but ya know what?  I bet I know who does. ")
 end
@@ -93,7 +93,7 @@ function dlg_23_6(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow007.mp3", "", "", 300914977, 1228551584, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow007.mp3", "", "chuckle", 300914977, 1228551584, Spawn)
 	AddConversationOption(conversation, "All right. Thank you!")
 	StartConversation(conversation, NPC, Spawn, "Ha! No, you need not worry about that. You should find him near the Golden Scabbard armory. ")
 end
@@ -121,7 +121,7 @@ function dlg_32_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow016.mp3", "", "", 4035243333, 3360697754, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/laudine_shardalow/qey_village01/quests/newbie_path_human/laudineshardalow016.mp3", "", "thanks", 4035243333, 3360697754, Spawn)
 	AddConversationOption(conversation, "Thank you.")
 	StartConversation(conversation, NPC, Spawn, "A price I am very willing to pay.  Pleasure doing business with you.")
 end
