@@ -15,7 +15,7 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to take the note to Captain Santis in Starcrest Commune.", 1, "Captain Hastings has asked that I take a note to Captain Santis in Starcrest Commune.", 75, 2340018)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-    UpdateQuestZone(Quest,"Starcrest")
+    UpdateQuestZone(Quest,"Starcrest Commune")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -52,9 +52,9 @@ function QuestComplete(Quest, QuestGiver, Player)
 	GiveQuestReward(Quest, Player)
 end
 
-function Step1Complete(Quest, QuestGiver, Player, Step)
+function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
-		QuestComplete(Quest, QuestGiver, Player)
+		Step1Complete(Quest, QuestGiver, Player)
 	elseif Step == 2 then
 		QuestComplete(Quest, QuestGiver, Player)
 	end

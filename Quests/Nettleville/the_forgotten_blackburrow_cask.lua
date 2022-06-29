@@ -13,7 +13,7 @@
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I should search Starcrest Commune for the owner of the cask.", 1, "I should search Starcrest Commune for the owner of the cask.", 11, 2340025)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
-    UpdateQuestZone(Quest,"Starcrest")
+    UpdateQuestZone(Quest,"Starcrest Commune")
 end
 
 function Accepted(Quest, QuestGiver, Player)

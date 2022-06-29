@@ -125,12 +125,16 @@ function Garbled(NPC, Spawn, Faction)
 					PlayFlavor(NPC, "voiceover/english/erudite/ft/erudite/erudite_eco_garble_garbled_gm_f25c00f6.mp3", "Senseless is what you are. Staring at me this way.", "", 2181028941, 3368136634, Spawn,4)
 	               	end			    
 				elseif gender == FEMALE then
-					local choice = math.random(1, 1)  
+					local choice = math.random(1, 2)  
 	                if choice == 1 then				
 					PlayFlavor(NPC, "voiceover/english/erudite_base_1/ft/erudite/erudite_base_1_1_garbled_gf_20ee9ec8.mp3", "Power of the tongue is mighter than any of your weapons.", "", 1414494311, 909104232, Spawn,4)
 				    elseif choice ==2 then
 					PlayFlavor(NPC, "voiceover/english/erudite_base_1/ft/erudite/erudite_base_1_1_garbled_gf_8c788b45.mp3","Small minded fool. Read more books!", "nod", 159075636, 2590624879, Spawn,4)
-					end				    
+				    elseif choice ==3 then
+					PlayFlavor(NPC, "voiceover/english/exp02/aviak/ft/_exp02/erudite/quellithulian_erudite_garbled_gf_df116137.mp3","Sharp wit will get you no where here.", "shrug", 70857553, 297036016, Spawn,4)
+				    elseif choice ==4 then
+					PlayFlavor(NPC, "voiceover/english/exp02/aviak/ft/_exp02/erudite/quellithulian_erudite_garbled_gf_da3ff09.mp3"," Read more books! Small minded fool.", "no", 3602629272, 1744208297, Spawn,4)
+										end				    
 				end
 			elseif race == FROGLOK then
 				if gender == MALE then

@@ -20,7 +20,7 @@ function Accepted(Quest, QuestGiver, Player)
 		if GetDistance(Player, QuestGiver) < 30 then
 			FaceTarget(QuestGiver, Player)
 			conversation = CreateConversation()
-
+          	PlayFlavor(QuestGiver, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona015.mp3", "", "nod", 1504116798, 1802645516, Player)
 			AddConversationOption(conversation, "I will return once I get the information.")
 			StartConversation(conversation, QuestGiver, Player, "He will ask a favor of you. He doesn't accept payment in a traditional sense, but he will ask something of you. The more friends he has, and the more people for whom he does favors, who who do favors for him, the more information he can provide. So, please, indulge him.")
 		end
@@ -46,7 +46,7 @@ function step2_complete_obtainedBerries(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have collected the Red Sun Berries.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have collected the Red Sun Berries.")
 
-	AddQuestStepChat(Quest, 3, "I must return to Cayan Sable, I can use the bench behind the northwest corner of the armor shop to get to him.", 1, "I need to find Cayan Sable and get some needed information from him.", 0, 2340006)
+	AddQuestStepChat(Quest, 3, "I must return to Cayan Sable, I can use the bench behind the northwest corner of the armor shop to get to him.", 1, "I need to find Cayan Sable and get some needed information from him.", 0, 2340017)
 	AddQuestStepCompleteAction(Quest, 3, "step3_complete_talkedToCayan")
 end
 

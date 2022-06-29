@@ -11,6 +11,7 @@ require "SpawnScripts/Generic/DialogModule"
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 9, "InRange", "LeaveRange")
     ProvidesQuest(NPC, 240)
+    waypoints(NPC)
 end
 
 function hailed(NPC, Spawn)
@@ -82,17 +83,51 @@ end
 function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
-	Dialog.AddDialog("Let me read that... Ha!  Captain Hastings and his team wish to challenge the Starcrest Garrison to a Phalanx match?  We shall squash them.  Tell him I accept.")
+	PlayFlavor(NPC, "", "", "chuckle", 0, 0, Spawn)
+	SetStepComplete(Spawn, 5596, 1)
+	Dialog.AddDialog("Let me read that... Ha!  Captain Hastings and his team wish to challenge the Starcrest Garrison to a Phalanx match?  We shall squash them!  Tell him I accept.")
 	Dialog.AddVoiceover("voiceover/english/knight-captain_santis/qey_village02/captainsantis004.mp3", 2733227835, 642461041)
-	Dialog.AddOption("Phalanx match! I will tell him you accept.","Delivered2")
-	Dialog.Start()
+	Dialog.AddOption("A phalanx match! I will tell let him know.")
+    if not HasQuest(Spawn,240) and not HasCompletedQuest(Spawn,240)then
+    Dialog.AddOption("I will let him know.  You mentioned some trouble out in the bog?", "Option4")
+    end
+    Dialog.Start()
 end
 
-function Delivered2(NPC, Spawn)
-	SetStepComplete(Spawn, 5596, 1)
-end
+
 
 function Offer(NPC,Spawn)
 	OfferQuest(NPC, Spawn, 240)
 end
+
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 759, -24.95, 336.52, 2, 46)
+	MovementLoopAddLocation(NPC, 757.86, -24.92, 337.34, 2, 0)
+	MovementLoopAddLocation(NPC, 752.96, -24.79, 337.18, 2, 0)
+	MovementLoopAddLocation(NPC, 740.19, -24.59, 339.85, 2, 15)
+	MovementLoopAddLocation(NPC, 742.11, -24.63, 338.84, 2, 0)
+	MovementLoopAddLocation(NPC, 752.35, -24.78, 337.77, 2, 0)
+	MovementLoopAddLocation(NPC, 759.54, -24.97, 337.31, 2, 0)
+	MovementLoopAddLocation(NPC, 766.69, -25.1, 334.76, 2, 0)
+	MovementLoopAddLocation(NPC, 784.29, -24.99, 328.35, 2, 0)
+	MovementLoopAddLocation(NPC, 791.44, -25.16, 332.77, 2, 15)
+	MovementLoopAddLocation(NPC, 790.74, -25.17, 332.02, 2, 0)
+	MovementLoopAddLocation(NPC, 787.45, -25.1, 329.04, 2, 0)
+	MovementLoopAddLocation(NPC, 773.01, -25.02, 333.16, 2, 0)
+	MovementLoopAddLocation(NPC, 759.05, -24.92, 335.15, 2, 0)
+	MovementLoopAddLocation(NPC, 773.01, -25.02, 333.16, 2, 0)
+	MovementLoopAddLocation(NPC, 787.45, -25.1, 329.04, 2, 0)
+	MovementLoopAddLocation(NPC, 790.74, -25.17, 332.02, 2, 0)
+	MovementLoopAddLocation(NPC, 791.44, -25.16, 332.77, 2, 15)
+	MovementLoopAddLocation(NPC, 784.29, -24.99, 328.35, 2, 0)
+	MovementLoopAddLocation(NPC, 766.69, -25.1, 334.76, 2, 0)
+	MovementLoopAddLocation(NPC, 759.54, -24.97, 337.31, 2, 0)
+	MovementLoopAddLocation(NPC, 752.35, -24.78, 337.77, 2, 0)
+	MovementLoopAddLocation(NPC, 742.11, -24.63, 338.84, 2, 0)
+	MovementLoopAddLocation(NPC, 740.19, -24.59, 339.85, 2, 15)
+	MovementLoopAddLocation(NPC, 752.96, -24.79, 337.18, 2, 0)
+	MovementLoopAddLocation(NPC, 757.86, -24.92, 337.34, 2, 0)
+end
+
+

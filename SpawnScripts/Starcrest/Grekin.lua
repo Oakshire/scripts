@@ -18,7 +18,7 @@ end
 
 function InRange(NPC, Spawn) --Quest Callout
 if not HasCompletedQuest(Spawn, Deposit)then
-if math.random(1, 100) <= 70 then
+if math.random(1, 100) <= 80 then
         choice = math.random(1,3)
         FaceTarget(NPC, Spawn)
         if choice ==1 then

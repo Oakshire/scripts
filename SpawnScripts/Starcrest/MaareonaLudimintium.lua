@@ -54,6 +54,8 @@ function Begin(NPC, Spawn)
 				if HasCompletedQuest(Spawn, CONFRONTATION) then
 					if not HasQuest(Spawn, DELIVERING_NEWS) and not HasCompletedQuest(Spawn, DELIVERING_NEWS) then
 						dlg_56_3(NPC, Spawn)
+					else
+					    Ending(NPC,Spawn)
 					end
 				elseif HasQuest(Spawn, CONFRONTATION) then
 					IsItDestroyedYet(NPC, Spawn, conversation)
@@ -144,7 +146,7 @@ function dlg_20_6(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
 
-   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona009.mp3", "", "", 2014412725, 134790625, Spawn)
+   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona009.mp3", "", "agree", 2014412725, 134790625, Spawn)
    AddConversationOption(conversation, "Is there anything I can do to help?", "dlg_20_7")
    StartConversation(conversation, NPC, Spawn, "It is. We've given this much thought and this is the only acceptable solution, we cannot remain idle when Freeport gains influence among the citizens of Qeynos.")
 end
@@ -182,7 +184,7 @@ end
 function PerhapsYouWill(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
-
+   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona005.mp3", "", "", 2168647992, 2514092353, Spawn)
    AddConversationOption(conversation, "What do you seek?", "dlg_20_3")
    StartConversation(conversation, NPC, Spawn, "Perhaps you will.")
 end
@@ -319,7 +321,7 @@ function FoundPackage(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona022.mp3", "", "", 560393626, 4096174929, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona022.mp3", "", "agree", 560393626, 4096174929, Spawn)
 	AddConversationOption(conversation, "It's hard to read and soggy, but here.", "dlg_49_2")
 	StartConversation(conversation, NPC, Spawn, "The receipt was with it? Wonderful!")
 end
@@ -350,7 +352,7 @@ function dlg_49_4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona025.mp3", "", "", 4023924866, 963404506, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona025.mp3", "", "boggle", 4023924866, 963404506, Spawn)
 	AddConversationOption(conversation, "A Soul Spike?", "dlg_49_5")
 	StartConversation(conversation, NPC, Spawn, "Oh my! Boxes like this were made to hold objects of great metaphysical potential. Oh dear... these symbols... this box contains a Soul Spike.")
 end
@@ -446,7 +448,7 @@ function dlg_56_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona032.mp3", "", "", 632600853, 3687579453, Spawn)
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona032.mp3", "", "agree", 632600853, 3687579453, Spawn)
 	AddConversationOption(conversation, "Yes, that much seems obvious.", "dlg_56_2")
 	StartConversation(conversation, NPC, Spawn, "That is not surprising. He knows he has been found out and will not return. Another heretic fleeing to the lands of Freeport. What an ironic name... Jinoira, this news is rather big for all citizens of Qeynos, but, to Erudites, it is even bigger. We struggle to maintain our image among the other races here in Qeynos.")
 end
@@ -482,4 +484,14 @@ end
 
 function OfferDeliveringNews(NPC, Spawn)
 	OfferQuest(NPC, Spawn, DELIVERING_NEWS)
+end
+
+
+function Ending(NPC,Spawn)
+    FaceTarget(NPC,Spawn)
+	conversation = CreateConversation()
+
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/quests/maareona/maareona036a.mp3", "", "", 625407969, 2282669599, Spawn)
+	AddConversationOption(conversation, "Thank you.")
+	StartConversation(conversation, NPC,Spawn, "One more thing, " .. GetName(Spawn) .. ". It was nice working with you.")
 end

@@ -62,7 +62,7 @@ function dlg_35_1(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
 
-   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable002.mp3", "", "", 3326314353, 4151016678, Spawn)
+   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable002.mp3", "", "nod", 3326314353, 4151016678, Spawn)
    AddConversationOption(conversation, "We need-", "dlg_35_2")
    StartConversation(conversation, NPC, Spawn, "You wish a favor of your own accord? Speak of nothing else. What do you need?")
 end
@@ -89,7 +89,7 @@ function dlg_35_4(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
 
-   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable005.mp3", "", "", 3481387344, 4143272170, Spawn)
+   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable005.mp3", "", "agree", 3481387344, 4143272170, Spawn)
    AddConversationOption(conversation, "What favor?", "dlg_35_5")
    StartConversation(conversation, NPC, Spawn, " Very well. This will take some time, but not much. I will need to contact some friends, but I will get your information. For now I need you to do me a favor.")
 end
@@ -117,7 +117,7 @@ function dlg_35_7(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
 
-   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable008.mp3", "", "", 104262270, 421900564, Spawn)
+   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable008.mp3", "", "no", 104262270, 421900564, Spawn)
    AddConversationOption(conversation, "That's a pretty flimsy excuse, isn't it? What do you need them for?", "dlg_35_8")
    StartConversation(conversation, NPC, Spawn, "Hardly. You're an Erudite. You people are always using Red Sun Berries for alchemical experiments and what not. Nobody will question an Erudite collecting some berries. If they do, just tell them you're looking to cure some ancient disease, they'll buy it.")
 end
@@ -138,14 +138,14 @@ function dlg_36_6(NPC, Spawn)
    FaceTarget(NPC, Spawn)
    conversation = CreateConversation()
 
-   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable010.mp3", "", "", 3772026299, 415172365, Spawn)
+   PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cayan_sable/qey_village02/quests/cayan_sable/cayan_sable010.mp3", "", "sniff", 3772026299, 415172365, Spawn)
    AddConversationOption(conversation, "Thanks, how do I get out of here?", "ThanksHowDoIGetOut")
    AddConversationOption(conversation, "I will get them.")
    StartConversation(conversation, NPC, Spawn, "I thought so. You can find the berries on some bushes around Starcrest Commune. They're not very obvious, as they rest at the heart of the bush itself, but if you reach in and give it a good shake, you should get some.")
 end
 
 function ThanksHowDoIGetOut(NPC, Spawn)
-   PlayFlavor(NPC, "", "Just climb through this bush here.", "", 1689589577, 4560189, Spawn)
+   PlayFlavor(NPC, "", "Just climb through this bush along the wall behind me.", "nod", 1689589577, 4560189, Spawn)
 end
 
 function HaveYouCollectedBerries(NPC, Spawn)

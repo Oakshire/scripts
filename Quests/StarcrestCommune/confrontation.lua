@@ -16,7 +16,7 @@ local NULLIFICATION_STONE = 10087
 local SOUL_SPIKE = 13134
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to retrieve materials for a public demonstration from Cayan Sable. I can get to Cayan by climbing the bench behind the northwest corner of the armor shop.", 1, "I will need to confront the intended recipient of the package we intercepted. Cayan may know where to find him.", 0, 2340009) 
+	AddQuestStepChat(Quest, 1, "I need to retrieve materials for a public demonstration from Cayan Sable. I can get to Cayan by climbing the bench behind the northwest corner of the armor shop.", 1, "I will need to confront the intended recipient of the package we intercepted. Cayan may know where to find him.", 0, 2340017) 
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_talkedToCayan")
 end
 
@@ -70,6 +70,7 @@ end
 function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestDescription(Quest, 3, "I have spoken with Maareona.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Velderoth Malraen escaped after I confronted him.")
+	UpdateQuestDescription(Quest, "Velderoth Malraen confronted me when I destroyed the Soul Spike. He did not retrieve the Soul Spike but he did escape.")
 	GiveQuestReward(Quest, Player)
 end
 
