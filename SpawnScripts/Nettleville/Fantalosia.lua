@@ -15,11 +15,11 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    GenericEcologyHail(NPC, Spawn, faction)
+    GenericRaceCheckHail(NPC, Spawn, faction)
 end
 
 function InRange(NPC,Spawn)
-    GenericEcologyCallout(NPC, Spawn, faction)
+GenericRaceCheckCallout(NPC, Spawn, faction)
     end
     
 function FaceStreet(NPC)

@@ -10,6 +10,7 @@
 	Preceded by		:	None
 	Followed by		:	None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 -- Quest ID's
 local SOBERING_REMEDY = 246
@@ -77,10 +78,21 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddVoiceover("voiceover/english/vondorinsarnoo/qey_village02/vondorinsarnoo001.mp3", 197082902, 3827601565)
+	Dialog.AddDialog("I'll write in your journal what I need from the local Peat Bog. I'll create a concoction so foul that he'll expel what resides in his belly.")
+	Dialog.AddLanguage(4)
+	Dialog.AddOption("These items shouldn't be too difficult to find.", "Dialog1")
+	Dialog.Start()
+end
 
-	AddConversationOption(conversation, "These items shouldn't be too difficult to find.", "dlg_59_3")
-	StartConversation(conversation, QuestGiver, Player, "I'll write in your journal what I need from the local Peat Bog. I'll create a concoction so foul that he'll expel what resides in his belly.")
+function Dialog1(QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("He'll speak more clearly with that rotgut out of his stomach.")
+	Dialog.AddLanguage(4)
+	Dialog.AddOption("I'll be back soon.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

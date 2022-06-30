@@ -3,7 +3,7 @@
 	Script Purpose	: Knight-Captain Santis
 	Script Author	: Ememjr
 	Script Date		: 2017.10.28
-	Script Notes	: Restructured entire script to simplify dialog flow, used updated format, and applied lost voiceovers. - Dorbin 06.24.2022
+	Script Notes	: Added Nettleville Quest, restructured entire script to simplify dialog flow, used updated format, added patrol, and applied lost voiceovers. - Dorbin 06.24.2022
 --]]
 
 require "SpawnScripts/Generic/DialogModule"
@@ -85,7 +85,7 @@ function Delivered(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "chuckle", 0, 0, Spawn)
 	SetStepComplete(Spawn, 5596, 1)
-	Dialog.AddDialog("Let me read that... Ha!  Captain Hastings and his team wish to challenge the Starcrest Garrison to a Phalanx match?  We shall squash them!  Tell him I accept.")
+	Dialog.AddDialog("Let me read that... Ho- HuahaHa!  Captain Hastings and his team wish to challenge the Starcrest Garrison to a Phalanx match?  We shall squash them!  Tell him I accept.")
 	Dialog.AddVoiceover("voiceover/english/knight-captain_santis/qey_village02/captainsantis004.mp3", 2733227835, 642461041)
 	Dialog.AddOption("A phalanx match! I will tell let him know.")
     if not HasQuest(Spawn,240) and not HasCompletedQuest(Spawn,240)then

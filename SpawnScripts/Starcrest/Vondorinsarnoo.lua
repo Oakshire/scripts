@@ -3,8 +3,10 @@
 	Script Purpose	: Vondorinsarnoo 
 	Script Author	: John Adams
 	Script Date	: 2008.09.23
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Notes	: Completely recreated using new format, applied all voiceovers/language check - Dorbin 06.29.2022
 --]]
+require "SpawnScripts/Generic/DialogModule"
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 
 -- Quest ID's
 local SOBERING_REMEDY = 246
@@ -18,38 +20,63 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1008.mp3", "", "", 0, 0, Spawn)
-	
-	if CanReceiveQuest(Spawn, SOBERING_REMEDY) then
-		AddConversationOption(conversation, "What's wrong with him? ", "dlg_59_1")
-		AddConversationOption(conversation, "Guess some people handle their liquor better than others.  Good day!")
-		StartConversation(conversation, NPC, Spawn, "We are coping with the recent events...  some in better ways than others.  Take that poor drunk, Hubert, across the way for instance...")
-	elseif HasQuest(Spawn, SOBERING_REMEDY) and GetQuestStep(Spawn, SOBERING_REMEDY) == 4 then
-		SetStepComplete(Spawn, SOBERING_REMEDY, 4)
-		Say(NPC, "Sorry we don't have the turn in test")
-	end
+ FaceTarget(NPC,Spawn) 
+if GetFactionAmount(Spawn,11) <0 then
+    PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+else
+    if not HasLanguage(Spawn,4)then
+    Garbled(NPC,Spawn)
+    else
+    Dialog3(NPC, Spawn)
+    end
+end
 end
 
-function dlg_59_1(NPC, Spawn)
+function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	AddConversationOption(conversation, "I'll help you, seems to be a worthy cause.", "OfferQuestSoberingRemedy")
-	AddConversationOption(conversation, "Best of luck to you.  I'll be off to pursue other interests.")
-	StartConversation(conversation, NPC, Spawn, "His faith is shaken, and he's suffered insurmountable hardships and loss.  I could help this poor soul, but first, I must remove him from his drunken stupor.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("His faith is shaken, and he's suffered insurmountable hardships and loss.  I could help this poor soul, but first, I must remove him from his drunken stupor.")
+	Dialog.AddVoiceover("voiceover/english/vondorinsarnoo/qey_village02/vondorinsarnoo000.mp3", 1058669874, 774577358)
+	Dialog.AddLanguage(4)
+	Dialog.AddOption("I'll help you, seems to be a worthy cause.", "OfferQuestSoberingRemedy")
+	Dialog.AddOption("Best of luck to you.  I'll be off to pursue other interests.")
+	Dialog.Start()
 end
 
 function OfferQuestSoberingRemedy(NPC, Spawn)
 	OfferQuest(NPC, Spawn, SOBERING_REMEDY)
 end
 
-function dlg_59_3(NPC, Spawn)
+function Turnin(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC,"","","stinky",0,0,Spawn)
+	Dialog.AddDialog("Whew, from the stench I can tell you have the putrid ingredients.  Depart now traveler.  I must care for Hubert.")
+	Dialog.AddVoiceover("voiceover/english/vondorinsarnoo/qey_village02/vondorinsarnoo002.mp3", 2853879143, 1516182372)
+	SetStepComplete(Spawn, SOBERING_REMEDY, 4)
+	Dialog.AddLanguage(4)
+	Dialog.AddOption("Best of luck with Hubert.")
+	Dialog.AddOption("Yes, wonderful. Now to find somewhere to wash off this oder.")
+	Dialog.Start()
+end
 
-	AddConversationOption(conversation, "I'll be back soon.")
-	StartConversation(conversation, NPC, Spawn, "He'll speak more clearly with that rotgut out of his stomach.")
+function Dialog3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("We are coping with the recent events...  some in better ways than others.  Take that poor drunk, Hubert, across the way for instance...")
+	Dialog.AddVoiceover("voiceover/english/vondorinsarnoo/qey_village02/vondorinsarnoo.mp3", 2553715267, 748246036)
+	Dialog.AddLanguage(4)
+	if not HasQuest(Spawn, SOBERING_REMEDY) and not HasCompletedQuest(Spawn,SOBERING_REMEDY) then
+	Dialog.AddOption("What's wrong with him?","Dialog1")
+    end
+    if GetQuestStep(Spawn,SOBERING_REMEDY) ==4 then
+	Dialog.AddOption("Here are the components you asked for.","Turnin")
+    end        
+    Dialog.AddOption("Guess some people handle their liquor better than others.  Good day!")
+	Dialog.Start()
+end
+
+
+function respawn(NPC)
+	spawn(NPC)
 end
