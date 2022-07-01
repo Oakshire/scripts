@@ -16,6 +16,7 @@ require "SpawnScripts/Generic/DialogModule"
 local SOBERING_REMEDY = 246
 
 function Init(Quest)
+    UpdateQuestZone(Quest,"Peat Bog")
 	AddQuestStepKill(Quest, 1, "I must gather pieces from bog slugs", 1, 100, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 289, 1980018)
 	AddQuestStepKill(Quest, 2, "I must gather whiskers from large scavengers", 1, 100, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 2123, 1980017)
 	AddQuestStepKill(Quest, 3, "I must gather bile from bog sludges", 1, 100, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 1162, 1980002)
@@ -50,6 +51,7 @@ end
 
 function GiveStep4(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've successfully gathered what Vondorinsarnoo's concoction calls for.")
+    UpdateQuestZone(Quest,"Starcrest Commune")
 	
 	AddQuestStepChat(Quest, 4, "I must return to Vondorinsarnoo", 1, "I need to return to Vondorinsarnoo to give him the items for the concoction.", 11, 2340023)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
@@ -79,21 +81,14 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+	Dialog.AddDialog("I'll write in your journal what I need from the local Peat Bog. I'll create a concoction so foul that he'll expel what resides in his belly. He'll speak more clearly with that rotgut out of his stomach.")
 	Dialog.AddVoiceover("voiceover/english/vondorinsarnoo/qey_village02/vondorinsarnoo001.mp3", 197082902, 3827601565)
-	Dialog.AddDialog("I'll write in your journal what I need from the local Peat Bog. I'll create a concoction so foul that he'll expel what resides in his belly.")
 	Dialog.AddLanguage(4)
-	Dialog.AddOption("These items shouldn't be too difficult to find.", "Dialog1")
+	Dialog.AddOption("These items shouldn't be too difficult to find.", "Final")
 	Dialog.Start()
 end
 
-function Dialog1(QuestGiver, Player)
-	FaceTarget(QuestGiver, Player)
-	Dialog.New(QuestGiver, Player)
-	Dialog.AddDialog("He'll speak more clearly with that rotgut out of his stomach.")
-	Dialog.AddLanguage(4)
-	Dialog.AddOption("I'll be back soon.")
-	Dialog.Start()
-end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

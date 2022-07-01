@@ -11,7 +11,7 @@ function init_zone_script(Zone)
 end
 
 function player_entry(Zone, Player)
-
+      SendPopUpMessage(Player, "Castleview Hamlet", 255, 255, 255)
 end
 
 function FountOfValor(Zone,Player)

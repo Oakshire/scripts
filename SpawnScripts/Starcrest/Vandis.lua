@@ -5,10 +5,12 @@
 	Script Date	: 06.29.2022
 	Script Notes	: 
 --]]
+local HailCheck = false
 
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
+AddTimer(NPC, 5000, "EmoteLoop")
 end
 
 function respawn(NPC)
@@ -21,8 +23,14 @@ function hailed(NPC, Spawn)
 if GetFactionAmount(Spawn,11)<0 then
 	PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 else
+HailCheck = true
 Dialog1(NPC, Spawn)    
+AddTimer(NPC,26000,"HailReset")
 end
+end
+
+function HailReset(NPC)
+    HailCheck = false
 end
 
 function Dialog1(NPC, Spawn)
@@ -48,4 +56,42 @@ function Done(NPC, Spawn)
 	Dialog.AddOption("Well, I hope it helps!")
 	Dialog.AddOption("There may be more than just that piece enflucing your game.")
 	Dialog.Start()
+end
+
+
+function EmoteLoop(NPC)
+    if HailCheck == true then
+    AddTimer(NPC,26100,"EmoteLoop")
+    else
+    local emoteChoice = MakeRandomInt(1,6)
+
+    if emoteChoice == 1 then
+-- confused
+        PlayAnimation(NPC, 11214)
+        AddTimer(NPC, MakeRandomInt(11000,12000), "EmoteLoop")	
+    elseif emoteChoice == 2 then
+-- doh
+        PlayAnimation(NPC, 11410)
+        AddTimer(NPC, MakeRandomInt(6000,8000), "EmoteLoop")	
+    
+    elseif emoteChoice == 3 then
+-- ponder
+        PlayAnimation(NPC, 12030)
+        AddTimer(NPC, MakeRandomInt(12000,14000), "EmoteLoop")	
+    
+    elseif emoteChoice == 4 then
+-- agree
+        PlayAnimation(NPC, 10745)
+        AddTimer(NPC, MakeRandomInt(5000,6000), "EmoteLoop")	
+    elseif emoteChoice == 5 then
+-- no
+        PlayAnimation(NPC, 11881)
+        AddTimer(NPC, MakeRandomInt(5000,6000), "EmoteLoop")	
+     elseif emoteChoice == 6 then
+-- whome
+        PlayAnimation(NPC, 13295)
+        AddTimer(NPC, MakeRandomInt(7000,8000), "EmoteLoop")	
+  
+     end
+end
 end

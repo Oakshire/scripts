@@ -10,12 +10,14 @@
 	Preceded by	:	None
 	Followed by	:	None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill sand covered crabs to obtain their diatomaceous sand for Fawn's garden.", 5, 90, "She told me that I can probably find what she requires off of various creatures in Antonica. Some diatomaceous sand to add to her soil will help protect her garden, some fish eggs for fertilizer and some seeds to get her started should be a good start.", 11, 120417,120750,121479)
-	AddQuestStepKill(Quest, 2, "I need to gather some fish eggs from Coldwind barracuda off the coast of Antonica.", 5, 90, "She told me that I can probably find what she requires off of various creatures in Antonica. Some diatomaceous sand to add to her soil will help protect her garden, some fish eggs for fertilizer and some seeds to get her started should be a good start.", 11, 120081, 121238)
-	AddQuestStepKill(Quest, 3, "I need to gather some seeds from the fur of Antonican mammals.", 5, 90, "She told me that I can probably find what she requires off of various creatures in Antonica. Some diatomaceous sand to add to her soil will help protect her garden, some fish eggs for fertilizer and some seeds to get her started should be a good start.", 11, 120257,120119,120008)
+    UpdateQuestZone(Quest,"Antonica")
+	AddQuestStepKill(Quest, 1, "I need to kill sand covered crabs to obtain their diatomaceous sand for Fawn's garden.", 5, 90, "She told me that I can probably find what she requires off of various creatures in Antonica. Some diatomaceous sand to add to her soil will help protect her garden, some fish eggs for fertilizer and some seeds to get her started should be a good start.", 113, 120417,120750,121479)
+	AddQuestStepKill(Quest, 2, "I need to gather some fish eggs from Coldwind barracuda off the coast of Antonica.", 5, 90, "She told me that I can probably find what she requires off of various creatures in Antonica. Some diatomaceous sand to add to her soil will help protect her garden, some fish eggs for fertilizer and some seeds to get her started should be a good start.", 144, 120081, 121238)
+	AddQuestStepKill(Quest, 3, "I need to gather some seeds from the fur of Antonican mammals.", 5, 90, "She told me that I can probably find what she requires off of various creatures in Antonica. Some diatomaceous sand to add to her soil will help protect her garden, some fish eggs for fertilizer and some seeds to get her started should be a good start.", 2314, 120257,120119,120008)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2_Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3_Complete")
@@ -67,7 +69,11 @@ function Reload(Quest, QuestGiver, Player, Step)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Wonderful! Thank you so much.")
+	Dialog.AddOption("I'll be back.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

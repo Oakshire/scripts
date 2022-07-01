@@ -15,6 +15,10 @@ function init_zone_script(Zone)
 	SetLocationProximityFunction(Zone, 826.18, -21.43, -662.40, 5, "WillowWoodMemorial","LeaveLocation")
 end
 
+function player_entry(Zone, Player)
+      SendPopUpMessage(Player, "The Willow Wood", 255, 255, 255)
+end
+
 function InRange(Zone, Spawn)
 	if HasQuest(Spawn, WOODELF_MENTOR_QUEST_3) and GetQuestStep(Spawn, WOODELF_MENTOR_QUEST_3) == 4 then
 		local wolf = GetSpawn(Spawn, A_RABID_WOLF)

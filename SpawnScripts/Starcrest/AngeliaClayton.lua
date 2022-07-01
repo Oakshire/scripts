@@ -24,6 +24,7 @@ function HailReset(NPC)
 end
 
 
+
 function EmoteLoop(NPC)
     if HailCheck == true then
     AddTimer(NPC,26100,"EmoteLoop")

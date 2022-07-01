@@ -13,10 +13,30 @@ local SOBERING_REMEDY = 246
 
 function spawn(NPC)
 	ProvidesQuest(NPC, SOBERING_REMEDY)
+    SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")		
 end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+function InRange(NPC,Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+    PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+else
+    if not HasQuest(Spawn, SOBERING_REMEDY) and not HasCompletedQuest(Spawn,SOBERING_REMEDY)then
+    if math.random(1,100)<=85 then
+    if not HasLanguage(Spawn,4)then
+    Garbled(NPC,Spawn)
+else
+    if math.random(1,100)<=65 then
+    PlayFlavor(NPC, "voiceover/english/vondorinsarnoo/qey_village02/100_erudite_sorcerer_callout_df456754.mp3", "We're all coping with the recent events.  Some in better ways than others.  Take that poor drunk Hubert across the way.  I must help that poor lost soul.", "", 764679878, 531610440, Spawn,4)
+	FaceTarget(NPC, Spawn)
+    end    
+    end
+    end
+end
+end
 end
 
 function hailed(NPC, Spawn)
