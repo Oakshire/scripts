@@ -7,11 +7,11 @@
 --]]
 
 function init_zone_script(Zone)
-	SetLocationProximityFunction(Zone, 771.06, -18.49, 281.01, 10, "DeepReflection","LeaveLocation")
+	SetLocationProximityFunction(Zone, 771.06, -18.49, 281.01, 15, "DeepReflection","LeaveLocation")
 end
 
 function player_entry(Zone, Player)
-      SendPopUpMessage(Player, "Starcrest Commune", 255, 255, 255)
+      SendPopUpMessage(Player, "Starcrest Commune", 230, 230, 230)
 end
 
 function DeepReflection(Zone,Player)

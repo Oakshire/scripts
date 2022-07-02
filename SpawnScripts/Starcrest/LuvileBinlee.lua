@@ -6,6 +6,7 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)

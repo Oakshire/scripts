@@ -4,6 +4,7 @@
 	Script Author	:	Ememjr
 	Script Date	:	10/29/2017
 	Script Notes	: Overhauled by Dorbin to connect update check and added standard quest reload script if player zones to retain progress.
+	NOTE: This quest info is NOT the classic version. Should flow:  FawnStarts -> 15Wolves -> Fawn -> 5Octopuses -> FawnDone
 
 	Zone		:	Starcrest Commune
 	Quest Giver	:   Fawn
