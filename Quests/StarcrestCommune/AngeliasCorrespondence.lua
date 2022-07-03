@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I should take the note to Karrie Clayton in Nettleville.", 1, "I should take this note from Angelia Clayton to her sister Karrie in Nettleville.", 11,2330021)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Thank you friend!  I've not heard from Karrie in a long time.  I hope your visit finds her well.")
+    PlayFlavor(QuestGiver, "", "", "thanks", 0, 0, Player)
+	Dialog.AddVoiceover("voiceover/english/angelia_clayton/qey_village02/angeliaclayton002.mp3", 4258865427, 3710093138)
+	Dialog.AddOption("I'll head that way shortly.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

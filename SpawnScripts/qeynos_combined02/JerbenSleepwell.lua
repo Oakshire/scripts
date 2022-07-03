@@ -17,6 +17,7 @@ end
 function InRange(NPC, Spawn)
 if not HasQuest(Spawn, BatwingCrunchiesforJerben) then
 PlayFlavor(NPC, "voiceover/english/innkeeper_jerben_sleepwell/qey_village02/100_innkeeper_callout_ce8f52eb.mp3", "It's been so long since I've had one of my wife's special desserts! I want some crunchies! Will you help me get more crunchies?", "frustrated", 943990017, 651455380, Spawn)
+
 end
 end
 

@@ -5,6 +5,7 @@
 	Script Date	: 2009.08.08
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 local HailCheck = false
 
 function spawn(NPC)
@@ -17,15 +18,41 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+	PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
+else
+Dialog1(NPC, Spawn)
+end
+end
+
+function Dialog1(NPC, Spawn)
     HailCheck = true
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/karrie_clayton/qey_village01/karrieclayton.mp3", "", "nod", 1984155043, 1707628406, Spawn)
-	AddConversationOption(conversation, "I'm sorry.  Excuse me for interrupting your performance.")
-	StartConversation(conversation, NPC, Spawn, "Oh my!  Yet another overzealous admirer. Please wait till after the show for autographs.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Oh my!  Yet another overzealous admirer. Please wait till after the show for autographs.")
+	Dialog.AddVoiceover("voiceover/english/karrie_clayton/qey_village01/karrieclayton.mp3", 1984155043, 1707628406)
+    if GetQuestStep(Spawn,239)==1 then
+	Dialog.AddOption("I've actually got a letter for you from your sister, Angelia.","Delivered")
+    end
+	Dialog.AddOption("I'm sorry.  Excuse me for interrupting your performance.  ")
+	Dialog.Start()
     AddTimer(NPC,26000,"HailReset")
 end
+
+
+function Delivered(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+    SetStepComplete(Spawn, 239, 1)
+    PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+	Dialog.AddDialog("Oh, my loving sister worries about me!  Her note says her performances in Starcrest are not going well.  Now I feel guilty going home with such a full coin purse every night.  Hmm, let me add a message to this note.  You can bring it back to her!")
+	Dialog.AddVoiceover("voiceover/english/karrie_clayton/qey_village01/karrieclayton000.mp3", 2793000860, 2260935074)
+	Dialog.AddOption("I'll see Angelia get's your reply.")
+	Dialog.Start()
+end
+
+
 
 function HailReset(NPC)
     HailCheck = false

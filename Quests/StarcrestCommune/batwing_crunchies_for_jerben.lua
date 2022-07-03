@@ -31,7 +31,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have gathered the bat wings that I needed.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've collected all five albino bat wings for Jerben Sleepwell at the harbor in the Qeynos Province District.")
 
-	AddQuestStepChat(Quest, 2, "I need to speak with Jerben Sleepwell", 1, "I need to return to Jerben Sleepwell at the harbor in the Qeynos Province District.", 11, 2340030, 6600463)
+	AddQuestStepChat(Quest, 2, "I need to speak with Jerben Sleepwell", 1, "I need to return to Jerben Sleepwell at the harbor in the Qeynos Province District.", 140, 2340030, 6600463)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

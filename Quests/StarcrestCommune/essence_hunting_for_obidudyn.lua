@@ -49,8 +49,8 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have returned to Scholar Obidudyn.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I delivered six Essence of Elemental to Scholar Obidudyn.")
+	UpdateQuestStepDescription(Quest, 2, "I have returned to Scholar Obidudyn.")
+	UpdateQuestTaskGroupDescription(Quest, 2, "I delivered six Essence of Elemental to Scholar Obidudyn.")
 
 	UpdateQuestDescription(Quest, "I was able to collect six Essence of Elemental that Scholar Obidudyn tasked me with finding and paid me for the job.  He seemed a little surprised in how quickly I managed to fulfill his request.")
 	GiveQuestReward(Quest, Player)

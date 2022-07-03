@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must find five feathers from hawks in Antonica.", 5, 65, "I must find five perfect hawk feathers from the hawks in Antonica for Scribe Ommanoden.", 149, 2370108,120064,120029)
+	AddQuestStepKill(Quest, 1, "I must find five feathers from hawks in Antonica.", 5, 75, "I must find five perfect hawk feathers from the hawks in Antonica for Scribe Ommanoden.", 149, 2370108,120064,120029)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -45,8 +45,8 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have returned to Scribe Ommanoden.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I've delievered the hawk feathers to Scribe Ommanoden.")
+	UpdateQuestStepDescription(Quest, 2, "I have returned to Scribe Ommanoden.")
+	UpdateQuestTaskGroupDescription(Quest, 2, "I've delievered the hawk feathers to Scribe Ommanoden.")
 
 	UpdateQuestDescription(Quest, "Despite gathering the most perfect feathers for his quills, the Erudite scribe remained aloof.  Perhaps one day I will call on him to find information for me in all those books and scrolls he pens.")
 	GiveQuestReward(Quest, Player)
