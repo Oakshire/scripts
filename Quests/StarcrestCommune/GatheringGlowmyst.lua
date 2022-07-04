@@ -16,11 +16,13 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must gather glowmyst from the beetles in Oakmyst Forest", 10, 100, "I need to gather up glowmyst juice from Oakmyst Forest, reachable by any number of mariner bells within Qeynos, by hunting down glowmyst beetles.", 1204, 1950002)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Oakmyst Forest")
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have gathered the glowmyst Bermo needed.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've successfully gathered the glowmyst juice I need!")
+    UpdateQuestZone(Quest,"Starcrest Commune")
 
 	AddQuestStepChat(Quest, 2, "I need to return to Bartender Bermo", 1, "I should return to Bartender Bermo in the Lion's Mane Inn and Tavern in the Qeynos Capitol District.", 11, 2340025)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

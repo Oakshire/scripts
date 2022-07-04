@@ -95,9 +95,9 @@ function EmoteLoop(NPC)
     local emoteChoice = MakeRandomInt(1,4)
 
     if emoteChoice == 1 then
--- flourish
+-- flirt
         PlayAnimation(NPC, 11557)
-        AddTimer(NPC, MakeRandomInt(21000), "EmoteLoop")	
+        AddTimer(NPC, MakeRandomInt(23000), "EmoteLoop")	
     elseif emoteChoice == 2 then
 -- kiss
         PlayAnimation(NPC, 11762)
@@ -109,9 +109,9 @@ function EmoteLoop(NPC)
         AddTimer(NPC, MakeRandomInt(10000,12000), "EmoteLoop")	
     
     elseif emoteChoice == 4 then
--- full curtsey
-        PlayAnimation(NPC, 11633)
-        AddTimer(NPC, MakeRandomInt(7000,8000), "EmoteLoop")	
+-- curtsey
+        PlayAnimation(NPC, 11286)
+        AddTimer(NPC, MakeRandomInt(4000,5000), "EmoteLoop")	
      end
 end
 end

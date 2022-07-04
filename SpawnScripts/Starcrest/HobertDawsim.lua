@@ -93,20 +93,21 @@ function Drink3(NPC)
     PlayAnimation(NPC,11422)
 end
    
- function GuardCallout(NPC)
+ function GuardCallout(NPC,Spawn)
      local Trino = GetSpawn(NPC, 2340015)
-	
+if not HasCompletedQuest(Spawn,246)	then
 	if Trino ~= nil then 
     choice = math.random(1,3)
     if choice == 1 then
-        PlayFlavor(NPC,"voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_guard_gm_c874c635.mp3","I know..I shoul'n drink... Forgive me sir!","gut",1370911065,1198399974)
+        PlayFlavor(NPC,"voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_guard_gm_c874c635.mp3","I know..I shoul'n drink... Forgive me sir!","gut",1370911065,1198399974,Spawn)
         PlayFlavor(Trino,"","","shame",0,0)
     elseif choice == 2 then
-         PlayFlavor(NPC,"voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_guard_gm_b5bfa487.mp3","Look sir.  I just had'one ale n' hour ago withh dinner.","no",1705294225,1483651602)
+         PlayFlavor(NPC,"voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_guard_gm_b5bfa487.mp3","Look sir.  I just had'one ale n' hour ago withh dinner.","no",1705294225,1483651602,Spawn)
         PlayFlavor(Trino)
      elseif choice == 3 then
-         PlayFlavor(NPC,"voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_guard_gm_153d5a3.mp3","Let's have a drink and forget we ever met!","agree",2964980286,4014491635)
+         PlayFlavor(NPC,"voiceover/english/human_eco_evil_drunk/ft/eco/evil/human_eco_evil_drunk_guard_gm_153d5a3.mp3","Let's have a drink and forget we ever met!","agree",2964980286,4014491635,Spawn)
         PlayFlavor(Trino,"","","sniff",0,0)
     end      
 end  
 end   
+end

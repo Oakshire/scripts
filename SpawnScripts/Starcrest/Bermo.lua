@@ -13,6 +13,7 @@ local BlackburrowStout = 5594
 
 function spawn(NPC)
    ProvidesQuest(NPC, GATHERING_GLOWMYST)
+    SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function respawn(NPC)
@@ -23,7 +24,31 @@ function targeted(NPC, Spawn)
 	hailed(NPC, Spawn)
 end
 
-
+function InRange(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+else
+    if  HasCompletedQuest(Spawn,GATHERING_GLOWMYST)then
+	local chance = math.random(0, 100)
+	if chance <= 70 then
+	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn, 0)
+    end
+elseif not HasQuest(Spawn, GATHERING_GLOWMYST) and not HasCompletedQuest(Spawn,GATHERING_GLOWMYST)then
+	local chance = math.random(0, 100)
+	if chance <= 80 then
+    local choice = math.random(1,2)
+    if choice == 1 then
+	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/bartender_bermo/qey_village02/100_bartender_bermo_callout_2f0743af.mp3", "Now, how can I get enough Glowmyst for tonight?  I just can't run out!  Y-you there!  Perhaps you'd get me some of my patented Glowmyst?", "ponder", 552829775, 1518682030, Spawn)
+    elseif choice == 2 then
+	PlayFlavor(NPC, "voiceover/english/bartender_bermo/qey_village02/100_bartender_bermo_multhail4_bd869670.mp3", "I must have my Glowmyst!  My customers won't settle for anything other than that glowing concoction!", "agree", 2103292434, 2123107577, Spawn)
+    end    
+    end
+    end
+end
+end
 ---------------------------------------------------------------------------------------------------------------------
 --                     QUEST 1
 ---------------------------------------------------------------------------------------------------------------------
@@ -36,7 +61,7 @@ end
 
 function hailed(NPC, Spawn)
 if GetFactionAmount(Spawn,11)<0 then
-        PlayFlavor(NPC,"","","noway",0,0,Spawn)
+        PlayFlavor(NPC,"","","heckno",0,0,Spawn)
     else  
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)

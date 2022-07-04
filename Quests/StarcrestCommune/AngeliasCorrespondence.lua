@@ -39,7 +39,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I delivered the note to Karrie Clayton.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I delivered the note to Karrie Clayton.")
-    UpdateQuestZone(Quest,"Starcrest")
+    UpdateQuestZone(Quest,"Starcrest Commune")
 	AddQuestStepChat(Quest, 2, "I should return to Angelia Clayton in Starcrest.", 1, "I should return to Angelia Clayton with her sister Karrie's message in Starcrest Commune.", 11,2340029)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
