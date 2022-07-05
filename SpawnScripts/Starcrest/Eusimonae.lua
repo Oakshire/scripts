@@ -5,7 +5,7 @@
     Script Purpose : 
                    : 
 --]]
-
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
@@ -14,13 +14,38 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-    GenericEcologyHail(NPC, Spawn, faction)
+if GetFactionAmount(Spawn,11)<0 then
+    FaceTarget (NPC,Spawn)
+    GenericRaceCheckHail(NPC, Spawn, faction)
+    else
+    if not HasLanguage(Spawn,4)then
+        if math.random(0,100)<60 then
+        Garbled(NPC,Spawn)
+        end
+ else
+    FaceTarget (NPC,Spawn)
+     GenericEcologyHail(NPC, Spawn, faction)
+end
+end
 end
 
+
 function InRange(NPC,Spawn)
-    GenericEcologyCallout(NPC, Spawn, faction)
+if GetFactionAmount(Spawn,11)<0 then
+     FaceTarget (NPC,Spawn)
+   GenericRaceCheckHail(NPC, Spawn, faction)
+    else
+    if not HasLanguage(Spawn,4)then
+        if math.random(0,100)<60 then
+        Garbled(NPC,Spawn)
+        end
+ else
+     FaceTarget (NPC,Spawn)
+    GenericEcologyHail(NPC, Spawn, faction)
 end
+end
+end
+
 
 function Door1(NPC,Spawn)
     local door = GetSpawn(NPC, 2340077)

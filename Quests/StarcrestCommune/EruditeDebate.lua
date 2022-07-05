@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Then bring this message to Oomitelmora.  He should be humiliating Vandis in a game of King's Field on the eastern side of the village.  Scurry off now.  I must get back to my thoughts.")
+    PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+	Dialog.AddVoiceover("voiceover/english/philosopher_orrinalanya/qey_village02/philosopherorrinalanya001.mp3", 3961956565, 3669950879)
+	Dialog.AddOption("I'll see he gets your message.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

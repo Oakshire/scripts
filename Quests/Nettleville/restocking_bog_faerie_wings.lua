@@ -9,6 +9,7 @@
 	Preceded by: None
 	Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to collect eight bog faerie wings.", 8, 100, "I need to collect eight Bog Faerie Wings from the Peat Bog for Scribe Varion Smitelin.", 110, 1980007, 1980008, 1980010, 1980052, 1980026, 1980056, 1980061)
@@ -17,11 +18,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-
-	PlayFlavor(QuestGiver, "voiceover/english/scribe_varion_smitelin/qey_village01/varionsmitelin004.mp3", "", "", 4154898846, 3738847882, Player)
-	AddConversationOption(conversation, "You don't have to worry about me.")
-	StartConversation(conversation, QuestGiver, Player, "Fabulous!  I need a handful of the wings to restock my supply. Good luck in that nasty bog and be careful!")
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+	Dialog.AddDialog("Fabulous!  I need a handful of the wings to restock my supply. Good luck in that nasty bog and be careful!")
+	Dialog.AddVoiceover("voiceover/english/scribe_varion_smitelin/qey_village01/varionsmitelin004.mp3", 4154898846, 3738847882)
+	Dialog.AddOption("You don't have to worry about me.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

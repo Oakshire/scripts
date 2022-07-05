@@ -6,7 +6,34 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+function spawn(NPC)
+    SetPlayerProximityFunction(NPC, 11, "InRange", "LeaveRange")		
+end
+
+function InRange(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+	PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
+ else   
+	if chance <= 30 then
+Talk(NPC, Spawn)
+end
+end
+end
+    
+    
 function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+	PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
+else
+Talk(NPC, Spawn)
+end
+end
+
+
+
+function Talk(NPC, Spawn)
+
 	FaceTarget(NPC, Spawn)
 	choice = math.random(1,3)
 

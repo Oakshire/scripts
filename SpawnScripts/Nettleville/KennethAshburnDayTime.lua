@@ -43,12 +43,13 @@ end
 end
 
 function InRange(NPC,Spawn)
-	FaceTarget(NPC, Spawn)
 if GetFactionAmount(Spawn,11)<0 then
     FactionCheckHail(NPC,Spawn,faction)
+	FaceTarget(NPC, Spawn)
 else
  if math.random(0,100)<=25 then
-   if GetFactionAmount(Spawn,214)>=20000 then
+ 	FaceTarget(NPC, Spawn)
+  if GetFactionAmount(Spawn,214)>=20000 then
 	local choice = MakeRandomInt(1,6)
     elseif GetFactionAmount(Spawn,214)>=10000 then        
 	local choice = MakeRandomInt(1,5)

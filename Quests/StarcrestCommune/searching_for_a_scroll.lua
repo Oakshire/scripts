@@ -40,7 +40,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've been to Scribe Varion Smitelin.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've been to Varion, and he refuses to give up the scroll.")
     UpdateQuestZone(Quest,"Starcrest Commune")
-	AddQuestStepChat(Quest, 2, "I should return to Zentomaron Croosinaden in Starcrest.", 1, "Zentomaron will not be pleased to hear the news on the scroll.  I last saw him in Starcrest Commune.", 11,2340029)
+	AddQuestStepChat(Quest, 2, "I should return to Zentomaron Croosinaden in Starcrest.", 1, "Zentomaron will not be pleased to hear the news on the scroll.  I last saw him in Starcrest Commune.", 11,2340020)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

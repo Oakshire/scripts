@@ -59,7 +59,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.AddOption("What could Farnsbey have done to make you so concerned?","Dialog2")
     end
     if GetQuestStep (Spawn, 5604)==2 then 
-	Dialog.AddOption("Apparently ","Delivered")
+	Dialog.AddOption("Varion said he knows of the scroll you're looking for but he doesn't have it.  He also said to lay off his nephew.","Delivered")
     end
     Dialog.AddOption("Sorry.  I was just passing through.")
 	Dialog.Start()
@@ -84,7 +84,7 @@ end
 function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+    PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 	Dialog.AddDialog("How dare he!  I know he's lying- wait.  You didn't give him my name, did you?")
 	Dialog.AddVoiceover("voiceover/english/zentomaron_croosinaden/qey_village02/zentomaroncroosinaden002.mp3", 2909174434, 3369055337)
 	Dialog.AddOption("...You told me to tell him the demands were directly from you.","Delivered2")

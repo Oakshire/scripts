@@ -5,8 +5,18 @@
 	Script Date	: 2008.09.23
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
-
+  
 function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+	PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
+else
+Talk(NPC, Spawn)
+end
+end
+
+
+function Talk(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	choice = math.random(1,3)
 
