@@ -4,6 +4,7 @@
 	Script Author	: geordie0511
 	Script Date	: 2019.03.19
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	NOTE: NEEDS DIALOG RESTRUCTURED.  DIALOG FLOW IS NOT ACCURATE.
 --]]
 
 local Keep = 470

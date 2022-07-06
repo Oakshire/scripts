@@ -1,32 +1,12 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aLowlandBadger.lua
+    Script Name    : SpawnScripts/Generic/random_pattern_long_short_delay.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.05 04:07:41
+    Script Date    : 2022.07.05 05:07:13
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-    local Level = GetLevel(NPC)
-    local level1 = 12
-    local level2 = 13
-    local difficulty1 = 6
-    local hp1 = 450
-    local power1 = 190
-    local difficulty2 = 6
-    local hp2 = 550
-    local power2 = 200
-    if Level == level1 then
-    SpawnSet(NPC, "difficulty", difficulty1)
-    SpawnSet(NPC, "hp", hp1)
-    SpawnSet(NPC, "power", power1)
-    elseif Level == level2
-        then
-    SpawnSet(NPC, "difficulty", difficulty2)
-    SpawnSet(NPC, "hp", hp2)
-    SpawnSet(NPC, "power", power2)
-    end
-   
     ChooseMovement(NPC)
 end
 

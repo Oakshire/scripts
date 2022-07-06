@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aLowlandBadger.lua
+    Script Name    : SpawnScripts/Antonica/aCaltorsisMagiRoamLong.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.05 04:07:41
+    Script Date    : 2022.07.05 11:07:10
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 12
-    local level2 = 13
+    local level1 = 18
+    local level2 = 19
     local difficulty1 = 6
-    local hp1 = 450
-    local power1 = 190
+    local hp1 = 1180
+    local power1 = 410
     local difficulty2 = 6
-    local hp2 = 550
-    local power2 = 200
+    local hp2 = 1315
+    local power2 = 425
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -26,8 +26,8 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-   
-    ChooseMovement(NPC)
+
+ChooseMovement(NPC)
 end
 
 function ChooseMovement(NPC)
