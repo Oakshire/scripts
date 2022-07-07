@@ -14,18 +14,20 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	if GetQuestStep(Spawn, ZarvonnsLegacy) == 1 or GetQuestStep(Spawn, ZarvonnsLegacy) == 2 or GetQuestStep(Spawn, ZarvonnsLegacy) > 4 or HasCompletedQuest(Spawn, ZarvonnsLegacy) then
+    if GetQuestStep(Spawn, ZarvonnsLegacy) == 4 then
+	Option7(NPC, Spawn)	
+	else
 	local conversation = CreateConversation()
     PlayFlavor(NPC, "voiceover/english/assistant_d_verin/commonlands/qst_assistantdverin_000.mp3", "", "", 488507344, 934868479, Spawn )
     AddConversationOption(conversation, "Good luck with that!")
+	if GetQuestStep(Spawn, ZarvonnsLegacy) == 1 or GetQuestStep(Spawn, ZarvonnsLegacy) == 2 or GetQuestStep(Spawn, ZarvonnsLegacy) > 4 or HasCompletedQuest(Spawn, ZarvonnsLegacy) then
     if GetQuestStep(Spawn, ZarvonnsLegacy) == 2 then
 	AddConversationOption(conversation, "I have some information the nomads said you'd like to hear.", "Option1")
 	end
+	end
 	StartConversation(conversation, NPC, Spawn, "How did you make it past the servants?!  Please don't tell me that I'll have to raise them all again.")
-	elseif GetQuestStep(Spawn, ZarvonnsLegacy) == 4 then
-	Option7(NPC, Spawn)
-end
    end
+end
 
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

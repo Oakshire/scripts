@@ -22,7 +22,6 @@ if GetFactionAmount(Spawn,11)<0 then
 	PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 else
 if not HasQuest(Spawn, 5599) and not HasCompletedQuest(Spawn,5599)then
-	FaceTarget(NPC, Spawn)
 	local chance = math.random(0, 100)
     if chance <= 80 then
 	local choice = MakeRandomInt(1,2)

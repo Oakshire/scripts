@@ -16,12 +16,12 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     local choice = math.random(1, 3)
     if choice == 1 then
-	  PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1051.mp3", "", "", 0, 0, Spawn)
-	 elseif choice == 2 then
-	  PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1051.mp3", "", "", 0, 0, Spawn)
-	  else
-	   PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1051.mp3", "", "", 0, 0, Spawn)
-	   end
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1051.mp3", "", "", 0, 0, Spawn)
+	elseif choice == 2 then
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1051.mp3", "", "", 0, 0, Spawn)
+	else
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1051.mp3", "", "", 0, 0, Spawn)
+	end
 	 if GetQuestStep(Spawn, ZarvonnsLegacy) == 5 then
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "I don't take well to threats, mage.", "Option1")

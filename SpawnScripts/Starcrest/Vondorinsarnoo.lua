@@ -31,7 +31,7 @@ else
 else
     if math.random(1,100)<=65 then
     PlayFlavor(NPC, "voiceover/english/vondorinsarnoo/qey_village02/100_erudite_sorcerer_callout_df456754.mp3", "We're all coping with the recent events.  Some in better ways than others.  Take that poor drunk Hubert across the way.  I must help that poor lost soul.", "", 764679878, 531610440, Spawn,4)
-	FaceTarget(NPC, Spawn)
+--	FaceTarget(NPC, Spawn)
     end    
     end
     end
