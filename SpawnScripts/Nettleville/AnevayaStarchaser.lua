@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/Nettleville/AnevayaStarchaser.lua
     Script Author  : Dorbin
     Script Date    : 2022.06.22 05:06:26
-    Script Purpose : 
+    Script Purpose : Actually for Avilon Blueheart after name change
                    : 
 --]]
 

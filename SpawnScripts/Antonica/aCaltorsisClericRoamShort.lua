@@ -1,10 +1,12 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aCaltorsisMagiShortRoam.lua
+    Script Name    : SpawnScripts/Antonica/aCaltorsisClericRoamShort.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.06 07:07:31
+    Script Date    : 2022.07.07 08:07:01
     Script Purpose : 
                    : 
 --]]
+
+
 function spawn(NPC)
     local Level = GetLevel(NPC)
     local level1 = 18
@@ -27,7 +29,7 @@ function spawn(NPC)
     end
 
 ChooseMovement(NPC)
-    end
+end
 
 function ChooseMovement(NPC)
 	local route = math.random(1,4)
