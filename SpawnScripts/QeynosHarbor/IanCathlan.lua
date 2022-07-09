@@ -77,7 +77,7 @@ if GetFactionAmount(Spawn,11)<0 then --QEYNOS FACTION CHECK
     PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan017.mp3","I'm sorry. I don't know who ye are.  If ye'd be so kind as ta leave me to my business, I'd appreciate it.  Good day ta ye.","noway", 3568187069, 1024390098, Spawn)
 else
 if GetLevel(Spawn)>=20 then --LEVEL CHECK
-if  GetClass(Spawn)== WARRIOR or GetClass(Spawn)== GUARDIAN or GetClass(Spawn)== BERSERKER or GetClass(Spawn)== CRUSADER or GetClass(Spawn)== SHADOWKNIGHT or GetClass(Spawn)== PALADIN or GetClass(Spawn)== CLERIC or GetClass(Spawn)== TEMPLAR or GetClass(Spawn)== INQUISITOR or GetClass(Spawn)== SHAMAN or GetClass(Spawn)== MYSTIC or GetClass(Spawn)== DEFILER or  GetClass(Spawn)==ROGUE or GetClass(Spawn)==SWASHBUCKLER or GetClass(Spawn)==BRIGAND or GetClass(Spawn)==BARD or GetClass(Spawn)==TROUBADOR or GetClass(Spawn)==DIRGE or GetClass(Spawn)==PREDATOR or GetClass(Spawn)==RANGER or GetClass(Spawn)==ASSASSIN then
+if  GetClass(Spawn)== GUARDIAN or GetClass(Spawn)== BERSERKER  or GetClass(Spawn)== SHADOWKNIGHT or GetClass(Spawn)== PALADIN or GetClass(Spawn)== TEMPLAR or GetClass(Spawn)== INQUISITOR  or GetClass(Spawn)==SWASHBUCKLER or GetClass(Spawn)==BRIGAND or GetClass(Spawn)==TROUBADOR or GetClass(Spawn)==DIRGE or GetClass(Spawn)==RANGER or GetClass(Spawn)==ASSASSIN then
     FaceTarget(NPC, Spawn)
 
     if not HasQuest(Spawn,armor1) and not HasCompletedQuest(Spawn,armor1) then 
