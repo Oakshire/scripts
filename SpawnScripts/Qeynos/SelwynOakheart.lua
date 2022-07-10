@@ -124,6 +124,7 @@ if  GetClass(Spawn)== MONK or GetClass(Spawn)== BRUISER or GetClass(Spawn)== WAR
     
     elseif HasCompletedQuest(Spawn,armor6) then --FINISHED RESPONSE                         
     PlayFlavor(NPC,"","The sun truly shines on me today.  It's a joy to see you again, dear!  And thank you ever so much for all the help.  I hope that armor worked well for you and kept you safe.  Please stop by anytime and say hello to old Selwyn.","hello", 0, 0, Spawn) 
+    end
 else 
 	FaceTarget(NPC, Spawn) --NOT RIGHT CLASS
 	Dialog.New(NPC, Spawn)
@@ -132,7 +133,7 @@ else
 	Dialog.AddVoiceover("voiceover/english/selwyn_oakheart/qey_south/quests/selwyn_oakheart/selwyn017.mp3", 3697608701, 2678534832)
 	Dialog.AddOption("Alright.")
 	Dialog.Start()
-end
+
     end
 else  --NOT RIGHT LEVEL
 	FaceTarget(NPC, Spawn)

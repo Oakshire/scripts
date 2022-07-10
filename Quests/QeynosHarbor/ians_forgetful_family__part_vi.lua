@@ -17,6 +17,7 @@ function Init(Quest)
     AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+    UpdateQuestZone(Quest,"Thundering Steppes")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -54,7 +55,7 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5593, 1) and QuestStepIsComplete(Player, 5593, 2) and QuestStepIsComplete(Player, 5593, 3) then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've recovered everything Ian needed, I should return to him.")
-
+    UpdateQuestZone(Quest,"Qeynos Harbor")
 	AddQuestStepChat(Quest, 4, "I should return to Ian in Qeynos Harbor.", 1, 100, "I need to speak to Ian Cathlan in the Qeynos Harbor.", 11,2210084)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end

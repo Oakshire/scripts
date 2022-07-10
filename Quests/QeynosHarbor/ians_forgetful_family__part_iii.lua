@@ -13,11 +13,12 @@
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Ian's cousin lost his marble collection while running from some defiled knights within Stormhold.", 12, 100, "My cousin lost his marbles (literally) while fighting defiled knights within Stormhold. If you could give him another start on his collection and see if you can find some of the missing ones that would be nice. Also, my brother lost his silverware on the same journey into Stormhold. What an undead crusader would need with silverware I'll never know but you might check them. And lastly, my aunt lost her favorite gaming dice on the same trip after her dice bag was ripped open by the spear of a defiled cavalier. If you could get those back I'll give you the next piece of armor. - Ian", 2919, 150290,150010,150227,150076)
-	AddQuestStepKill(Quest, 2, "Ian's brother lost his favorite set of silverware after running from defiled crusaders in Stormhold.", 5, 100, "My cousin lost his marbles (literally) while fighting defiled knights within Stormhold. If you could give him another start on his collection and see if you can find some of the missing ones that would be nice. Also, my brother lost his silverware on the same journey into Stormhold. What an undead crusader would need with silverware I'll never know but you might check them. And lastly, my aunt lost her favorite gaming dice on the same trip after her dice bag was ripped open by the spear of a defiled cavalier. If you could get those back I'll give you the next piece of armor. - Ian", 364,150236,150020,150080)
+	AddQuestStepKill(Quest, 2, "Ian's brother lost his favorite set of silverware after running from defiled crusaders in Stormhold.", 5, 85, "My cousin lost his marbles (literally) while fighting defiled knights within Stormhold. If you could give him another start on his collection and see if you can find some of the missing ones that would be nice. Also, my brother lost his silverware on the same journey into Stormhold. What an undead crusader would need with silverware I'll never know but you might check them. And lastly, my aunt lost her favorite gaming dice on the same trip after her dice bag was ripped open by the spear of a defiled cavalier. If you could get those back I'll give you the next piece of armor. - Ian", 364,150236,150020,150080)
 	AddQuestStepKill(Quest, 3, "Ian's aunt lost her favorite set of gaming dice running from the defiled cavaliers in Stormhold.", 10, 100, "My cousin lost his marbles (literally) while fighting defiled knights within Stormhold. If you could give him another start on his collection and see if you can find some of the missing ones that would be nice. Also, my brother lost his silverware on the same journey into Stormhold. What an undead crusader would need with silverware I'll never know but you might check them. And lastly, my aunt lost her favorite gaming dice on the same trip after her dice bag was ripped open by the spear of a defiled cavalier. If you could get those back I'll give you the next piece of armor. - Ian", 3183,150040,150254)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+	UpdateQuestZone(Quest,"Stormhold")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -55,7 +56,7 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5590, 1) and QuestStepIsComplete(Player, 5590, 2) and QuestStepIsComplete(Player, 5590, 3) then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've recovered everything Ian needed, I should return to him.")
-
+	UpdateQuestZone(Quest,"Qeynos Harbor")
 	AddQuestStepChat(Quest, 4, "I should return to Ian in Qeynos Harbor.", 1, 100, "I need to speak to Ian Cathlan in the Qeynos Harbor.", 11,2210084)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end

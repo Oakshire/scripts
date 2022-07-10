@@ -118,10 +118,11 @@ if  GetClass(Spawn)== GUARDIAN or GetClass(Spawn)== BERSERKER  or GetClass(Spawn
     
     elseif HasCompletedQuest(Spawn,armor6) then --FINISHED RESPONSE                         
     PlayFlavor(NPC,"","Hail to ye as well.  Ahh, it's you! Good ta see ya again.  We finally got everything that was missing. Thanks again for your help! I don't know how I'd have done it without you!","hello", 0, 0, Spawn) 
+    end
 else 
 	FaceTarget(NPC, Spawn) --NOT RIGHT CLASS
     PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan017.mp3","I'm sorry. I don't know who ye are.  If ye'd be so kind as ta leave me to my business, I'd appreciate it.  Good day ta ye.","glare", 3568187069, 1024390098, Spawn)
-    end
+    
     end
 else
 FaceTarget(NPC, Spawn)  --NOT RIGHT LEVEL

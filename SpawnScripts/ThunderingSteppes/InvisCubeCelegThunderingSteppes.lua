@@ -20,7 +20,7 @@ end
 
 function InRange(NPC,Spawn)
 if RespawnTimer == false then       --Disable respawns for 11 min
-if GetQuestStep(Spawn,5617)==3 then --Player Quest Step Check (should be step 3, but available anywhere between 1-3)
+if GetQuestStep(Spawn,5617)==4 then --Player Quest Step Check (should be step 4, but available anywhere between 1-4)
 Celeg = GetSpawn(NPC,2490842)
 Crows = GetSpawn(NPC,2490843)
     if Celeg == nil and Crows == nil then

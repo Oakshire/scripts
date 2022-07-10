@@ -12,11 +12,12 @@
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I should try to find any arrows I can find near the giant kodiaks in Antonica.", 25, 100, "My great grandmother had her spellbook stolen years ago but it seems that a gnoll by the name of Grolven Chiptooth was seen with a book that looked just like it. Also, my nephew Terrin lost his favorite sash when he was in Blackburrow fighting blightfang broodtenders. I know it's probably not in one piece anymore but it has sentimental value to him. My uncle Acrius was good with a bow and always seemed to lose his arrows. Lately been running short on money and could use some of his old ones recovered. He used to kill giant kodiaks in his spare time, if you could look up near where they roam and see if you can't find a few I'd be grateful. - Ian", 2919, 120140,121284)
-	AddQuestStepKill(Quest, 2, "I should attempt to find the tattered sash pieces of Ian's nephew Terrin. He lost it when fighting blightfang broodtender spiders in Blackburrow.", 4, 100, "My great grandmother had her spellbook stolen years ago but it seems that a gnoll by the name of Grolven Chiptooth was seen with a book that looked just like it. Also, my nephew Terrin lost his favorite sash when he was in Blackburrow fighting blightfang broodtenders. I know it's probably not in one piece anymore but it has sentimental value to him. My uncle Acrius was good with a bow and always seemed to lose his arrows. Lately been running short on money and could use some of his old ones recovered. He used to kill giant kodiaks in his spare time, if you could look up near where they roam and see if you can't find a few I'd be grateful. - Ian", 364,170006)
+	AddQuestStepKill(Quest, 2, "I should attempt to find the tattered sash pieces of Ian's nephew Terrin. He lost it when fighting blightfang broodtender spiders in Blackburrow.", 4, 80, "My great grandmother had her spellbook stolen years ago but it seems that a gnoll by the name of Grolven Chiptooth was seen with a book that looked just like it. Also, my nephew Terrin lost his favorite sash when he was in Blackburrow fighting blightfang broodtenders. I know it's probably not in one piece anymore but it has sentimental value to him. My uncle Acrius was good with a bow and always seemed to lose his arrows. Lately been running short on money and could use some of his old ones recovered. He used to kill giant kodiaks in his spare time, if you could look up near where they roam and see if you can't find a few I'd be grateful. - Ian", 364,170006)
 	AddQuestStepKill(Quest, 3, "I should see if I can find Grolven Chiptooth.  Ian thinks this gnoll has the old spellbook that once belonged to his great grandmother.", 1, 100, "My great grandmother had her spellbook stolen years ago but it seems that a gnoll by the name of Grolven Chiptooth was seen with a book that looked just like it. Also, my nephew Terrin lost his favorite sash when he was in Blackburrow fighting blightfang broodtenders. I know it's probably not in one piece anymore but it has sentimental value to him. My uncle Acrius was good with a bow and always seemed to lose his arrows. Lately been running short on money and could use some of his old ones recovered. He used to kill giant kodiaks in his spare time, if you could look up near where they roam and see if you can't find a few I'd be grateful. - Ian", 3183,121488)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+    UpdateQuestZone(Quest,"Multiple Zones")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -54,7 +55,7 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5589, 1) and QuestStepIsComplete(Player, 5589, 2) and QuestStepIsComplete(Player, 5589, 3) then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've recovered everything Ian needed, I should return to him.")
-
+    UpdateQuestZone(Quest,"Qeynos Harbor")
 	AddQuestStepChat(Quest, 4, "I should return to Ian in Qeynos Harbor.", 1, 100, "I need to speak to Ian Cathlan in the Qeynos Harbor.", 11,2210084)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
