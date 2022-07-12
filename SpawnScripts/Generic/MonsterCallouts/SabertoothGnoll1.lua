@@ -38,6 +38,7 @@ end
 
 
 function death(NPC,Spawn)
+    if math.random(0,100)<=75 then
     if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
     else
@@ -48,6 +49,7 @@ function death(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/gnoll_sabertooths/ft/gnoll/gnoll_sabertooths_1_death_28e36f9f.mp3", "That one died.", "", 3168760203, 1628996126, Spawn, 18)
         end
     end
+end
 end
 
 function victory(NPC,Spawn)

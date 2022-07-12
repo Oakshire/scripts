@@ -20,17 +20,20 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if not HasQuest(Spawn, VerminReduction) and HasLanguage(spawn, 15) then
-        Dialog.New(NPC, Spawn)
-	    Dialog.AddDialog("Hass you seens any rats around latelys? ")
-	    Dialog.AddVoiceover("voiceover/english/optional1/ratcatcher_zarbt/fprt_hood1/qst_ratcatcherzarbt.mp3", 3774469332, 1538503466)
-	    Dialog.AddLanguage(15)
-	    Dialog.AddOption("Why would I care about rats? Don't bother me.")
-	    Dialog.Start()
-	    OfferQuest(NPC, Spawn, VerminReduction)
-    elseif QuestStepIsComplete(Spawn, VerminReduction, 1) then
-        SetStepComplete(Spawn, VerminReduction, 2)
-    end 
+    local count = GetQuestCompleteCount(Spawn, 5619)
+    if count<5 then --repeatable exactly 5 times
+        if not HasQuest(Spawn, VerminReduction) and HasLanguage(spawn, 15) then --Ykeshan
+            Dialog.New(NPC, Spawn)
+	        Dialog.AddDialog("Hass you seens any rats around latelys? ")
+	        Dialog.AddVoiceover("voiceover/english/optional1/ratcatcher_zarbt/fprt_hood1/qst_ratcatcherzarbt.mp3", 3774469332, 1538503466)
+	        Dialog.AddLanguage(15)
+	        Dialog.AddOption("Why would I care about rats? Don't bother me.")
+	        Dialog.Start()
+	        OfferQuest(NPC, Spawn, VerminReduction)
+        elseif QuestStepIsComplete(Spawn, VerminReduction, 1) then
+            SetStepComplete(Spawn, VerminReduction, 2)
+        end
+    end
 	RandomGreeting(NPC, Spawn)
 end
 

@@ -8,8 +8,18 @@
 
 function spawn(NPC)
 	waypoints(NPC)
+    VoiceBox(NPC)
 end
 
+
+function VoiceBox(NPC)
+ 	local choice = MakeRandomInt(1,2)
+ 	if choice == 1 then    
+    dofile("SpawnScripts/Generic/MonsterCallouts/BaseGnoll1.lua")
+ 	elseif choice == 2 then 
+ 	dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll2.lua")
+    end
+end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 end

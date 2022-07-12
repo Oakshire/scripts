@@ -20,7 +20,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if HasLanguage(Spawn, 14) then
+    if HasLanguage(Spawn, 14) then --Ogrish
         if not HasQuest(Spawn, MuzmogRat) and not HasCompletedQuest(Spawn, MuzmogRat) then
             OfferQuest(NPC, Spawn, MuzmogRat)
         end

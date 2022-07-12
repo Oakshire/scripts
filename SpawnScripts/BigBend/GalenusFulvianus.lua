@@ -28,7 +28,10 @@ function hailed(NPC, Spawn)
         if not HasQuest(Spawn, HobsForGalenus) and not HasCompletedQuest(Spawn, HobsForGalenus) then
             OfferQuest(NPC, Spawn, HobsForGalenus)
         end 
-    end 
+    end
+    if GetQuestStep(Spawn, HobsForGalenus) == 2 then
+        SetStepComplete(Spawn, HobsForGalenus, 2)
+    end
 end
 
 function RandomGreeting(NPC, Spawn)

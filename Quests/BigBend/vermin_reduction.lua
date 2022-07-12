@@ -15,7 +15,7 @@
 function Init(Quest)
 	SetQuestFeatherColor(Quest, 3)
 	SetQuestRepeatable(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill rats in Big Bend.", 6, 100, "Zarbt the Ratcatcher wants me to help him kill rats in Big Bend.", 99, 1540004)
+	AddQuestStepKill(Quest, 1, "I need to kill rats in Big Bend.", 6, 100, "Zarbt the Ratcatcher wants me to help him kill rats in Big Bend.", 99, 1540004, 1340004, 1340045)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

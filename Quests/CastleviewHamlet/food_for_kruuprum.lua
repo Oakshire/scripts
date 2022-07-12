@@ -5,7 +5,7 @@
     Script Purpose : 
 
         Zone       : CastleviewHamlet
-        Quest Giver: 
+        Quest Giver: Merchant Kruuprum
         Preceded by: None
         Followed by: 
 --]]

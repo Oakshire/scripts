@@ -26,30 +26,37 @@ end
     if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
     else
- 	local choice = MakeRandomInt(1,6)
+ 	local choice = MakeRandomInt(1,8)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_aggro_75cd5d19.mp3", "Not allowed here!", "", 1292107958, 2335134714, Spawn, 18)
         elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_aggro_d81be55c.mp3", "Bite! Show sharp teeth!", "", 612586564, 102929785, Spawn, 18)
+ 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_aggro_75cd5d19.mp3", "Not allowed here!", "", 1266801616, 137145352, Spawn, 18)
         elseif choice == 3 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_aggro_fda03a16.mp3", "Spin, weave, dodge, attack!!!", "", 1347636574, 484324781, Spawn, 18)
-         elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_aggro_75cd5d19.mp3", "Not allowed here!", "", 942309136, 3095091783, Spawn, 18)
+        elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_aggro_d81be55c.mp3", "Bite! Show sharp teeth!", "", 612586564, 102929785, Spawn, 18)
+        elseif choice == 5 then
+ 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_aggro_d81be55c.mp3", "Bite! Show sharp teeth!", "", 3848163428, 3270249405, Spawn, 18)
+        elseif choice == 6 then
 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_aggro_d81be55c.mp3", "Bite! Show sharp teeth!", "", 3276849474, 2846177216, Spawn, 18)
-         elseif choice == 5 then
-		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_aggro_959e4683.mp3", "Intruder!", "", 1672215946, 3521592402, Spawn, 18)
-          elseif choice == 6 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_aggro_fda03a16.mp3", "Spin, weave, dodge, attack!!!", "", 1516290828, 3143203494, Spawn, 18)
+        elseif choice == 7 then
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_aggro_fda03a16.mp3", "Spin, weave, dodge, attack!!!", "", 1347636574, 484324781, Spawn, 18)
+        elseif choice == 8 then
+ 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_aggro_fda03a16.mp3", "Spin, weave, dodge, attack!!!", "", 1516290828, 3143203494, Spawn, 18)
+ end
        AddTimer(NPC,15000,"FifteenCall")
-      end
     end
-end    
+end   
+
+-- Doesn't Work PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_aggro_959e4683.mp3", "Intruder!", "", 1672215946, 3521592402, Spawn, 18)
 
 
 function death(NPC,Spawn)
+    if math.random(0,100)<=75 then
     if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
     else
-        local choice = MakeRandomInt(1,6)
+        local choice = MakeRandomInt(1,5)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_death_9c1f07cb.mp3", "Another member of the pack down!", "", 782807197, 154562007, Spawn, 18)
         elseif choice == 2 then
@@ -57,29 +64,31 @@ function death(NPC,Spawn)
          elseif choice == 3 then
 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_death_138a3058.mp3", "That one will never mate!", "", 216068291, 510666258, Spawn, 18)
           elseif choice == 4 then
- 		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_death_7cbd3c71.mp3", "I'll rip your throat open!", "", 134141978, 4165685331, Spawn, 18)
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_death_9c1f07cb.mp3", "Another member of the pack down!", "", 3426629421, 3660282518, Spawn, 18)
           elseif choice == 5 then
 		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_death_9c1f07cb.mp3", "Another member of the pack down!", "", 869495756, 2144000535, Spawn, 18)
-          elseif choice == 6 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_death_9c1f07cb.mp3", "Another member of the pack down!", "", 3426629421, 3660282518, Spawn, 18)
      end
        AddTimer(NPC,15000,"FifteenCall")
     end
 end
+end
 
+-- DOES NOT WORK		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_death_7cbd3c71.mp3", "I'll rip your throat open!", "", 134141978, 4165685331, Spawn, 18)
 
-function FifteenCall(NPC,Spawn)
-    if math.random(0,100)<=30 then
-     if not HasLanguage(Spawn,18 )then
-    Garbled(NPC,Spawn)
+function FifteenCall(NPC,Player)
+ if IsAlive(NPC) then
+ if IsInCombat(NPC)==true then
+    if math.random(0,100)<=60 then
+     if not HasLanguage(Player,18 )then
+    Garbled(NPC,Player)
     else       
       local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_m_dbbe969a.mp3", "Grrrrrrrrrr! Yip!", "", 3107536729, 1468959623, Spawn, 18)
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_m_dbbe969a.mp3", "Grrrrrrrrrr! Yip!", "", 3107536729, 1468959623, Player, 18)
         elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_7c69417c.mp3", "Nip at their heels when they flee!", "", 4292535613, 1359167400, Spawn, 18)
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_7c69417c.mp3", "Nip at their heels when they flee!", "", 4292535613, 1359167400, Player, 18)
          elseif choice == 3 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_battle_m_2b13fb2e.mp3", "For the pack!", "", 2513141586, 2807818416, Spawn, 18)
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_battle_m_2b13fb2e.mp3", "For the pack!", "", 2513141586, 2807818416, Player, 18)
        end
     end
     end
@@ -87,7 +96,8 @@ function FifteenCall(NPC,Spawn)
     AddTimer(NPC,15000,"FifteenCall")
     end
 end  
-
+end
+end
 
 function healthchanged(NPC, Spawn)  
     if HealthCallout == false then

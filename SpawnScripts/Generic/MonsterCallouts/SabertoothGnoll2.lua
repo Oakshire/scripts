@@ -45,6 +45,8 @@ end
 -- RANDOM CALL IN COMBAT SCRIPT
 
 function FifteenCall(NPC,Spawn)
+if IsAlive(NPC)== true then
+ if IsInCombat(NPC)==true then
     if math.random(0,100)<=30 then
      if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
@@ -56,6 +58,8 @@ function FifteenCall(NPC,Spawn)
     AddTimer(NPC,15000,"FifteenCall")
     end
 end  
+end
+end
 
 -- HALF HEALTH SCRIPT
 
@@ -87,6 +91,7 @@ end
 -- ON DEATH SCRIPT
 
 function death(NPC,Spawn)
+    if math.random(0,100)<=60 then
     if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
     else
@@ -98,7 +103,7 @@ function death(NPC,Spawn)
         end
     end
 end
-
+end
 
 -- KILLED TARGET SCRIPT
 

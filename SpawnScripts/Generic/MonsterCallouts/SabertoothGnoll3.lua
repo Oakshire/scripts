@@ -37,8 +37,11 @@ end
     end
 end    
 
+
 function FifteenCall(NPC,Spawn)
-    if math.random(0,100)<=30 then
+if IsAlive(NPC)==true then
+  if IsInCombat(NPC)==true then
+   if math.random(0,100)<=30 then
      if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
     else       
@@ -54,9 +57,12 @@ function FifteenCall(NPC,Spawn)
     AddTimer(NPC,15000,"FifteenCall")
     end
 end   
+end
+end
 
 
 function death(NPC,Spawn)
+    if math.random(0,100)<=60 then
     if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
     else
@@ -68,14 +74,17 @@ function death(NPC,Spawn)
         end
     end
 end
+end
 
 function victory(NPC,Spawn)
         if  HasLanguage(Spawn,18 )then
-        local choice = MakeRandomInt(1,2)
+        local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
 	    PlayFlavor(NPC, "voiceover/english/gnoll_sabertooths/ft/gnoll/gnoll_sabertooths_3_victory_d3093859.mp3", "For you then Qeynos!", "", 3698260724, 2781542733, Spawn, 18)
         elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/gnoll_sabertooths/ft/gnoll/gnoll_sabertooths_3_victory_1ee5a435.mp3", "Now it's time to ruin your lands.", "", 3136436170, 378451446, Spawn, 18)
-        end
+         elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/gnoll_sabertooths/ft/gnoll/gnoll_sabertooths_3_victory_e99dd57c.mp3", "Who gonna die next?", "", 2679377087, 3844588159, Spawn, 18)
+       end
     end
 end
