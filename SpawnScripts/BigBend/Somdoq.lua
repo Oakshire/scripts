@@ -20,6 +20,10 @@ end
 function hailed(NPC, Spawn)
 	if GetQuestStep(Spawn, TheFumeFireCeremony) == 2 then
 	    Dialog3(NPC, Spawn)
+    elseif GetQuestStep(Spawn, TheFumeFireCeremony) == 6 then
+	    Dialog2(NPC, Spawn)
+	else
+	    Dialog1(NPC, Spawn)
     end
     RandomGreeting(NPC, Spawn)
 end
@@ -61,26 +65,17 @@ function Dialog7(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/somdoq/fprt_hood01/newbie_path_ogre/somdoq003.mp3", 2087963690, 2077453026)
 	Dialog.AddOption("I understand.")
 	Dialog.Start()
-	SetStepComplete(TheFumeFireCeremony, 2)
+	SetStepComplete(Spawn, TheFumeFireCeremony, 2)
 end
 
 ---------
-
-function Dialog1(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("This does not interest you!  Begone.")
-	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/somdoq/fprt_hood01/newbie_path_ogre/somdoq009.mp3", 1003816206, 3011545312)
-	Dialog.AddOption("I was just leaving.")
-	Dialog.Start()
-end
 
 function Dialog2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("May this land reflect the mighty throne that is your plane.  Hear the glorious tumult that is the heat of battle, where 'nlightenment is gained through victorious combat.")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/somdoq/fprt_hood01/newbie_path_ogre/somdoq005.mp3", 1278166954, 2389281517)
-	Dialog.AddOption("[listen to ceremony]")
+	Dialog.AddOption("[listen to ceremony]", "Dialog5")
 	Dialog.Start()
 end
 
@@ -89,7 +84,7 @@ function Dialog5(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Born of conflict we have come, and thrive in conflict we continue.  Mighty Rallos Zek, the victor of all wars, we survive to honor you with the defeat of the weak and inferior.  Wars in your name shake the very plane of this existence.")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/somdoq/fprt_hood01/newbie_path_ogre/somdoq004.mp3", 2873790137, 2496264354)
-	Dialog.AddOption("[listen to ceremony]")
+	Dialog.AddOption("[listen to ceremony]", "Dialog8")
 	Dialog.Start()
 end
 
@@ -107,7 +102,7 @@ function Dialog8(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("May joyous battle, and constant strife litter the ground with corpses of the fallen, and the bones of the weak.")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/somdoq/fprt_hood01/newbie_path_ogre/somdoq006.mp3", 487037760, 2070479487)
-	Dialog.AddOption("[listen to ceremony]")
+	Dialog.AddOption("[listen to ceremony]", "Dialog6")
 	Dialog.Start()
 end
 
@@ -117,6 +112,16 @@ function Dialog9(NPC, Spawn)
 	Dialog.AddDialog("You provided much for this ceremony.  Return to Kroota, and tell him that all went well.")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/somdoq/fprt_hood01/newbie_path_ogre/somdoq008.mp3", 2581222973, 154740872)
 	Dialog.AddOption("I will.")
+	Dialog.Start()
+	SetStepComplete(Spawn, TheFumeFireCeremony, 6)
+end
+
+function Dialog1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("This does not interest you!  Begone.")
+	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/somdoq/fprt_hood01/newbie_path_ogre/somdoq009.mp3", 1003816206, 3011545312)
+	Dialog.AddOption("I was just leaving.")
 	Dialog.Start()
 end
 

@@ -126,7 +126,6 @@ function Dialog5(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/crattok/fprt_hood01/newbie_path_ogre/crattok012.mp3", 1507687832, 2571146708)
 	Dialog.AddOption("Nice doing business with you.")
 	Dialog.Start()
-	AddItem(Spawn, 8298, 1)
 	SetStepComplete(Spawn, MuchAdoAboutRallos, 8)
 end
 

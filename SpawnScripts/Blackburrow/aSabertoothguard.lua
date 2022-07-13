@@ -10,14 +10,14 @@ VoiceBox(NPC)
 end
 
 function VoiceBox(NPC)
- 	local choice = MakeRandomInt(1,4)
+    local choice = MakeRandomInt(1,4)
  	if choice == 1 then    
     dofile("SpawnScripts/Generic/MonsterCallouts/BaseGnoll1.lua")
  	elseif choice == 2 then 
  	dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll1.lua")
  	elseif choice == 3 then 
  	dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll2.lua")
- 	elseif choice == 4 then 
+    else
  	dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll3.lua")
     end
 end

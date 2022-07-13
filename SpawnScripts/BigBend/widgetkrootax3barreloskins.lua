@@ -10,14 +10,14 @@ local MuchAdoAboutRallos = 5634
 
 function casted_on(NPC, Spawn, SpellName)
 	if SpellName == 'Take fresh skins' then
-		if not QuestStepIsComplete(Spawn, MuchAdoAboutRallos, 2) then
+		if GetQuestStep(Spawn, MuchAdoAboutRallos) == 2 then
             SetStepComplete(Spawn, MuchAdoAboutRallos, 2)
         end
     end
 end
 
 function spawn(NPC)
-
+    SetRequiredQuest(NPC, MuchAdoAboutRallos, 2)
 end
 
 function hailed(NPC, Spawn)

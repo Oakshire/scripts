@@ -100,7 +100,6 @@ function Dialog4(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/barch/fprt_hood01/newbie_path_ogre/barch010.mp3", 3797099812, 2066937388)
 	Dialog.AddOption("And the victors of war!")
 	Dialog.Start()
-	AddItem(Spawn, 4383, 1)
 	SetStepComplete(Spawn, MuchAdoAboutRallos, 5)
 end
 
