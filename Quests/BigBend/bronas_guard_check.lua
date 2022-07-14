@@ -46,14 +46,18 @@ function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 4, "I've checked the gate in Stonestair Byway")
 
     AddQuestStepLocation(Quest, 5, "I need to check the gate in Temple Street", 20, "I'm supposed to check all of the gates that lead into the city.", 11, 18, 2, 24, 136)
-	AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
+	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
+end
+
+function Step5Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 5, "I've checked the gate in Temple Street")
+	UpdateQuestTaskGroupDescription(Quest, 5, "I've checked all of the gates leading into the city.")
+	
+	AddQuestStepChat(Quest, 6, "I should return to Slaver Brona.", 1, "I should return to Slaver Brona.", 11, 1340030)
+	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
 end
 
 function QuestComplete(Quest, QuestGiver, Player)
-	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 5, "I've checked the gate in Temple Street")
-	UpdateQuestTaskGroupDescription(Quest, 5, "I've checked all of the gates leading into the city.")
-
 	UpdateQuestDescription(Quest, "It was easy enough work, but that Brona is up to something and I've unwittingly helped her. I wonder what she is trying to accomplish.")
 	GiveQuestReward(Quest, Player)
 end
@@ -71,7 +75,7 @@ function Deleted(Quest, QuestGiver, Player)
 end
 
 function Reload(Quest, QuestGiver, Player, Step)
-	if Step == 1 then
+if Step == 1 then
 	    Step1Complete(Quest, QuestGiver, Player)
 	elseif Step == 2 then
 	    Step2Complete(Quest, QuestGiver, Player)
@@ -80,6 +84,8 @@ function Reload(Quest, QuestGiver, Player, Step)
 	elseif Step == 4 then
 	    Step4Complete(Quest, QuestGiver, Player)
 	elseif Step == 5 then
+	    Step5Complete(Quest, QuestGiver, Player)
+	elseif Step == 6 then
 	    QuestComplete(Quest, QuestGiver, Player)
 	end
 end

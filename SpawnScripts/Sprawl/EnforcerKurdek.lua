@@ -7,6 +7,7 @@
 --]]
 
 local MoreBarshing  = 5636 --from Big Bend
+local TrollAdventures = 5643 --from Big Bend
 local QUEST_FROM_SCALEYARD_CLANCHEIFMALACHI = 203
 local QUEST_1 = 455
 local QUEST_2 = 540
@@ -54,6 +55,9 @@ function hailed(NPC, Spawn)
 	
 	if HasQuest(Spawn, MoreBarshing) then
 		SetStepComplete(Spawn, MoreBarshing, 1)
+	end
+	if HasQuest(Spawn, TrollAdventures) then
+		SetStepComplete(Spawn, TrollAdventures, 1)
 	end
 	if HasQuest(Spawn, QUEST_FROM_SCALEYARD_CLANCHEIFMALACHI) then
 		SetStepComplete(Spawn, QUEST_FROM_SCALEYARD_CLANCHEIFMALACHI, 1)

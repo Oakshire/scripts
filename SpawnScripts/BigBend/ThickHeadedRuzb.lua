@@ -9,6 +9,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 local ASubtleReminder = 5637
+local GnomoreGnomesteaks = 5642
 
 function spawn(NPC)
 end
@@ -22,7 +23,7 @@ function hailed(NPC, Spawn)
         Dialog4(NPC, Spawn)
     elseif GetQuestStep(Spawn, ASubtleReminder) == 3 then
         Dialog3(NPC, Spawn)
-    else
+    elseif GetQuestStep(Spawn, GnomoreGnomesteaks) == 1 then
         Dialog5(NPC, Spawn)
     end 
     
@@ -115,6 +116,8 @@ function Dialog6(NPC, Spawn)
 	SetStepComplete(Spawn, ASubtleReminder, 3)
 end
 
+--=============
+
 function Dialog5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
@@ -124,6 +127,7 @@ function Dialog5(NPC, Spawn)
 	Dialog.AddOption("BAD, BAD, BAD! Me put youz down! NOT EAT DA GNOMES!")
 	Dialog.AddOption("I'm sorry Ruzb, but this is the end of the line - we just can't have you eating the gnomes.")
 	Dialog.Start()
+	SetStepComplete(Spawn, GnomoreGnomesteaks, 1)
 end
 
 

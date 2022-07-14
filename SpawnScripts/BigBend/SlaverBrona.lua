@@ -10,8 +10,10 @@ local BronaThralls = 5630
 local BronaGuardCheck = 5631
 
 function spawn(NPC)
-    ProvidesQuest(NPC, BronaThralls)
-    ProvidesQuest(NPC, BronaGuardCheck)
+    if HasLanguage(Spawn,14) then
+        ProvidesQuest(NPC, BronaThralls)
+        ProvidesQuest(NPC, BronaGuardCheck)
+    end
 end
 
 function respawn(NPC)
@@ -20,13 +22,21 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if not HasQuest(Spawn, BronaThralls) and not HasCompletedQuest(Spawn, BronaThralls) then
-       OfferQuest(NPC, Spawn, BronaThralls)
+    if HasLanguage(Spawn,14) then
+        if not HasQuest(Spawn, BronaThralls) and not HasCompletedQuest(Spawn, BronaThralls) then
+            OfferQuest(NPC, Spawn, BronaThralls)
+        end
+        if HasCompletedQuest(Spawn, BronaThralls) then
+            if not HasQuest(Spawn, BronaGuardCheck) and not HasCompletedQuest(Spawn, BronaGuardCheck) then
+                OfferQuest(NPC, Spawn, BronaGuardCheck)
+            end 
+        end
     end
-    if HasCompletedQuest(Spawn, BronaThralls) then
-        if not HasQuest(Spawn, BronaGuardCheck) and not HasCompletedQuest(Spawn, BronaGuardCheck) then
-            OfferQuest(NPC, Spawn, BronaGuardCheck)
-        end 
+    if GetQuestStep(Spawn, BronaThralls) == 2 then
+       SetStepComplete(Spawn, BronaThralls, 2)
+    end
+    if GetQuestStep(Spawn, BronaGuardCheck) == 6 then
+       SetStepComplete(Spawn, BronaGuardCheck, 6)
     end
    	RandomGreeting(NPC, Spawn)
 end

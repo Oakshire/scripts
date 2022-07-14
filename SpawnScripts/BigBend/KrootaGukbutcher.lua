@@ -15,11 +15,11 @@ local TheFumeFireCeremony = 5635
 local MoreBarshing = 5636
 
 function spawn(NPC)
-     ProvidesQuest(NPC, AyRubbish)
-     ProvidesQuest(NPC, RatBarsh)
-     ProvidesQuest(NPC, MuchAdoAboutRallos)
-     ProvidesQuest(NPC, TheFumeFireCeremony)
-     ProvidesQuest(NPC, MoreBarshing)
+    ProvidesQuest(NPC, AyRubbish)
+    ProvidesQuest(NPC, RatBarsh)
+    ProvidesQuest(NPC, MuchAdoAboutRallos)
+    ProvidesQuest(NPC, TheFumeFireCeremony)
+    ProvidesQuest(NPC, MoreBarshing)
 end
 
 function respawn(NPC)
@@ -27,60 +27,55 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    local race = GetRace(Spawn)
     FaceTarget(NPC, Spawn)
-	if not HasQuest(Spawn, AyRubbish) and not HasCompletedQuest(Spawn, AyRubbish) then
-	    Dialog14(NPC, Spawn)
-    end
-    if HasCompletedQuest(Spawn, AyRubbish) then
-        if not HasQuest(Spawn, RatBarsh) and not HasCompletedQuest(Spawn, RatBarsh) then
-             Dialog50(NPC, Spawn)
+    if race == 12 then
+        if not HasQuest(Spawn, AyRubbish) and not HasCompletedQuest(Spawn, AyRubbish) then
+	        Dialog14(NPC, Spawn)
         end
-    end
-    if HasCompletedQuest(Spawn, RatBarsh) then
-        if not HasQuest(Spawn, MuchAdoAboutRallos) and not HasCompletedQuest(Spawn, MuchAdoAboutRallos) then
-             Dialog31(NPC, Spawn)
+        if HasCompletedQuest(Spawn, AyRubbish) then
+            if not HasQuest(Spawn, RatBarsh) and not HasCompletedQuest(Spawn, RatBarsh) then
+                Dialog50(NPC, Spawn)
+            end
         end
-    end
-    if HasCompletedQuest(Spawn, MuchAdoAboutRallos) then
-        if not HasQuest(Spawn, TheFumeFireCeremony) and not HasCompletedQuest(Spawn, TheFumeFireCeremony) then
-             Dialog12(NPC, Spawn)
+        if HasCompletedQuest(Spawn, RatBarsh) then
+            if not HasQuest(Spawn, MuchAdoAboutRallos) and not HasCompletedQuest(Spawn, MuchAdoAboutRallos) then
+                Dialog31(NPC, Spawn)
+            end
         end
-    end
-    if HasCompletedQuest(Spawn, TheFumeFireCeremony) then
-        if not HasQuest(Spawn, MoreBarshing) and not HasCompletedQuest(Spawn, MoreBarshing) then
-             Dialog2(NPC, Spawn)
+        if HasCompletedQuest(Spawn, MuchAdoAboutRallos) then
+            if not HasQuest(Spawn, TheFumeFireCeremony) and not HasCompletedQuest(Spawn, TheFumeFireCeremony) then
+                Dialog12(NPC, Spawn)
+            end
         end
-    end
-    if HasCompletedQuest(Spawn, MoreBarshing) then
-        local choice = MakeRandomInt(1,2)
-        if choice == 1 then
-            Dialog15(NPC, Spawn)
-        elseif choice == 2 then
-            Dialog35(NPC, Spawn)
+        if HasCompletedQuest(Spawn, TheFumeFireCeremony) then
+            if not HasQuest(Spawn, MoreBarshing) and not HasCompletedQuest(Spawn, MoreBarshing) then
+                Dialog2(NPC, Spawn)
+            end
         end
-    end
-    if GetQuestStep(Spawn, AyRubbish) == 3 then
-        SetStepComplete(Spawn, AyRubbish, 3)
-        Dialog50(NPC, Spawn)
-    end
-    if GetQuestStep(Spawn, RatBarsh) == 2 then
-        SetStepComplete(Spawn, RatBarsh, 2)
-        Dialog31(NPC, Spawn)
-    end
-    if GetQuestStep(Spawn, MuchAdoAboutRallos) == 7 then
-        Dialog19(NPC, Spawn)
-    end
-    if GetQuestStep(Spawn, MuchAdoAboutRallos) == 9 then
-        SetStepComplete(Spawn, MuchAdoAboutRallos, 9)
-        Dialog12(NPC, Spawn)
-    end
-    if GetQuestStep(Spawn, TheFumeFireCeremony) == 1 then
-        SetStepComplete(Spawn, TheFumeFireCeremony, 1)
-        Dialog1(NPC, Spawn)
-    end
-    if GetQuestStep(Spawn, TheFumeFireCeremony) == 7 then
-        SetStepComplete(Spawn, TheFumeFireCeremony, 7)
-        Dialog2(NPC, Spawn)
+        if GetQuestStep(Spawn, AyRubbish) == 3 then
+            SetStepComplete(Spawn, AyRubbish, 3)
+            Dialog50(NPC, Spawn)
+        end
+        if GetQuestStep(Spawn, RatBarsh) == 2 then
+            SetStepComplete(Spawn, RatBarsh, 2)
+            Dialog31(NPC, Spawn)
+        end
+        if GetQuestStep(Spawn, MuchAdoAboutRallos) == 7 then
+            Dialog19(NPC, Spawn)
+        end
+        if GetQuestStep(Spawn, MuchAdoAboutRallos) == 9 then
+            SetStepComplete(Spawn, MuchAdoAboutRallos, 9)
+            Dialog12(NPC, Spawn)
+        end
+        if GetQuestStep(Spawn, TheFumeFireCeremony) == 1 then
+            SetStepComplete(Spawn, TheFumeFireCeremony, 1)
+            Dialog1(NPC, Spawn)
+        end
+        if GetQuestStep(Spawn, TheFumeFireCeremony) == 7 then
+            SetStepComplete(Spawn, TheFumeFireCeremony, 7)
+            Dialog2(NPC, Spawn)
+        end
     end
     
     RandomGreeting(NPC, Spawn)

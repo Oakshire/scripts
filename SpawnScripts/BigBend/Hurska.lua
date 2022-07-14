@@ -18,10 +18,12 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    if HasQuest(Spawn, HopsForGalenus) and not HasCompletedQuest(Spawn, HopsForGalenus) then
-        SetStepComplete(Spawn, HopsForGalenus, 1)
+    if HasLanguage(Spawn, 15) then
+        if HasQuest(Spawn, HopsForGalenus) and not HasCompletedQuest(Spawn, HopsForGalenus) then
+            SetStepComplete(Spawn, HopsForGalenus, 1)
+        end
+        Dialog1(NPC, Spawn)
     end
-    Dialog1(NPC, Spawn)
 end
 
 function Dialog1(NPC, Spawn)

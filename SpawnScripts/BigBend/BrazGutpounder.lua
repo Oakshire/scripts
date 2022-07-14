@@ -11,11 +11,15 @@ require "SpawnScripts/Generic/DialogModule"
 local ASubtleReminder = 5637
 local TrollishDelights = 5639
 local TrollPatrol = 5641
+local GnomoreGnomesteaks = 5642
+local TrollAdventures = 5643
 
 function spawn(NPC)
     ProvidesQuest(NPC, ASubtleReminder)
     ProvidesQuest(NPC, TrollishDelights)
     ProvidesQuest(NPC, TrollPatrol)
+    ProvidesQuest(NPC, GnomoreGnomesteaks)
+    ProvidesQuest(NPC, TrollAdventures)
 end
 
 function respawn(NPC)
@@ -23,30 +27,48 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    if not HasQuest(Spawn, ASubtleReminder) and not HasCompletedQuest(Spawn, ASubtleReminder) then
-        Dialog10(NPC, Spawn)
-    end
-    if HasCompletedQuest(Spawn, ASubtleReminder) then
-        if not HasQuest(Spawn, TrollishDelights) and not HasCompletedQuest(Spawn, TrollishDelights) then
+    local race = GetRace(Spawn)
+    FaceTarget(NPC, Spawn)
+    if race == 14 then
+        if not HasQuest(Spawn, ASubtleReminder) and not HasCompletedQuest(Spawn, ASubtleReminder) then
+            Dialog10(NPC, Spawn)
+        end
+        if HasCompletedQuest(Spawn, ASubtleReminder) then
+            if not HasQuest(Spawn, TrollishDelights) and not HasCompletedQuest(Spawn, TrollishDelights) then
+                Dialog6(NPC, Spawn)
+            end
+        end 
+        if HasCompletedQuest(Spawn, TrollishDelights) then
+            if not HasQuest(Spawn, TrollPatrol) and not HasCompletedQuest(Spawn, TrollPatrol) then
+                Dialog17(NPC, Spawn)
+            end
+        end 
+        if HasCompletedQuest(Spawn, TrollPatrol) then
+            if not HasQuest(Spawn, GnomoreGnomesteaks) and not HasCompletedQuest(Spawn, GnomoreGnomesteaks) then
+                Dialog21(NPC, Spawn)
+            end
+        end 
+        if HasCompletedQuest(Spawn, GnomoreGnomesteaks) then
+            if not HasQuest(Spawn, TrollAdventures) and not HasCompletedQuest(Spawn, TrollAdventures) then
+                Dialog25(NPC, Spawn)
+            end
+        end 
+        if GetQuestStep(Spawn, ASubtleReminder) == 4 then
+            SetStepComplete(Spawn, ASubtleReminder, 4)
             Dialog6(NPC, Spawn)
         end
-    end 
-    if HasCompletedQuest(Spawn, TrollishDelights) then
-        if not HasQuest(Spawn, TrollPatrol) and not HasCompletedQuest(Spawn, TrollPatrol) then
+	    if GetQuestStep(Spawn, TrollishDelights) == 3 then
+            SetStepComplete(Spawn, TrollishDelights, 3)
             Dialog17(NPC, Spawn)
         end
-    end 
-    if GetQuestStep(Spawn, ASubtleReminder) == 4 then
-        SetStepComplete(Spawn, ASubtleReminder, 4)
-        Dialog6(NPC, Spawn)
-    end
-	if GetQuestStep(Spawn, TrollishDelights) == 3 then
-        SetStepComplete(Spawn, TrollishDelights, 3)
-        Dialog17(NPC, Spawn)
-    end
-	if GetQuestStep(Spawn, TrollPatrol) == 5 then
-        SetStepComplete(Spawn, TrollPatrol, 5)
-        Dialog21(NPC, Spawn)
+	    if GetQuestStep(Spawn, TrollPatrol) == 6 then
+            SetStepComplete(Spawn, TrollPatrol, 6)
+            Dialog21(NPC, Spawn)
+        end
+	    if GetQuestStep(Spawn, GnomoreGnomesteaks) == 3 then
+            SetStepComplete(Spawn, GnomoreGnomesteaks, 3)
+            Dialog25(NPC, Spawn)
+        end
     end
 	RandomGreeting(NPC, Spawn)
 end
@@ -425,6 +447,9 @@ function Dialog2(NPC, Spawn)
 	Dialog.AddOption("Den dis fing, I will do it for you.")
 	Dialog.AddOption("Now that's my kind of swift justice. I'll see to the 'problem'.")
 	Dialog.Start()
+	if not HasQuest(Spawn, GnomoreGnomesteaks) and not HasCompletedQuest(Spawn, GnomoreGnomesteaks) then
+        OfferQuest(NPC, Spawn, GnomoreGnomesteaks)
+    end
 end
 
 --=======================Quest 5
@@ -460,5 +485,8 @@ function Dialog18(NPC, Spawn)
 	Dialog.AddOption("Nujam gunna keep dat in mind!")
 	Dialog.AddOption("Perhaps I shall pay them a visit.")
 	Dialog.Start()
+	if not HasQuest(Spawn, TrollAdventures) and not HasCompletedQuest(Spawn, TrollAdventures) then
+        OfferQuest(NPC, Spawn, TrollAdventures)
+    end
 end
 

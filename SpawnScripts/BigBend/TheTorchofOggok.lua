@@ -17,7 +17,7 @@ function casted_on(NPC, Spawn, SpellName)
 end
 
 function spawn(NPC)
-    SetRequiredQuest(NPC, TrollishDelights, 4) -- only usable in Step 4
+    SetRequiredQuest(NPC, TrollishDelights, 2) -- only usable in Step 2
 end
 
 function hailed(NPC, Spawn)

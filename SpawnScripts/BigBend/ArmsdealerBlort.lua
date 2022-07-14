@@ -3,30 +3,32 @@
 	Script Purpose	: Armsdealer Blort
 	Script Author	: torsten
 	Script Date		: 2022.07.10
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Notes	: 
 --]]
 
 local TrollsAndArms = 5618
 
 function spawn(NPC)
-    ProvidesQuest(NPC, TrollsAndArms)
-    SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+    if HasLanguage(Spawn,15) then
+        ProvidesQuest(NPC, TrollsAndArms)
+    end
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
-function InRange(NPC, Spawn)
-  
-end
-
 function hailed(NPC, Spawn)
-    if not HasQuest(Spawn, TrollsAndArms) and not HasCompletedQuest(Spawn, TrollsAndArms) then
-        FaceTarget(NPC, Spawn)
-        OfferQuest(NPC, Spawn, TrollsAndArms)
+    FaceTarget(NPC, Spawn)
+    if HasLanguage(Spawn,15) then
+        if not HasQuest(Spawn, TrollsAndArms) and not HasCompletedQuest(Spawn, TrollsAndArms) and HasLanguage(Spawn,15) then
+            OfferQuest(NPC, Spawn, TrollsAndArms)
+        end
+        if GetQuestStep(Spawn, TrollsAndArms) == 2 then
+            SetStepComplete(Spawn, TrollsAndArms, 2)
+        end
     end
-	RandomGreeting(NPC, Spawn)
+    RandomGreeting(NPC, Spawn)
 end
 
 function RandomGreeting(NPC, Spawn)

@@ -6,7 +6,12 @@
 	Script Notes	: 
 --]]
 
+local SearchfortheShrubbery = 5645
+local SwampWaterStew = 5646
+
 function spawn(NPC)
+    ProvidesQuest(NPC, SearchfortheShrubbery)
+    ProvidesQuest(NPC, SwampWaterStew)
 end
 
 function respawn(NPC)
@@ -14,6 +19,39 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    local race = GetRace(Spawn)
+    if race == 14 then
+        if not HasQuest(Spawn, SearchfortheShrubbery) and not HasCompletedQuest(Spawn, SearchfortheShrubbery) then
+            OfferQuest(NPC, Spawn, SearchfortheShrubbery)
+        end
+        if HasCompletedQuest(Spawn, SearchfortheShrubbery) then
+            if not HasQuest(Spawn, SwampWaterStew) and not HasCompletedQuest(Spawn, SwampWaterStew) then
+                OfferQuest(NPC, Spawn, SwampWaterStew)
+            end
+        end 
+        if HasCompletedQuest(Spawn, TrollishDelights) then
+            if not HasQuest(Spawn, TrollPatrol) and not HasCompletedQuest(Spawn, TrollPatrol) then
+                Dialog17(NPC, Spawn)
+            end
+        end 
+        if HasCompletedQuest(Spawn, TrollPatrol) then
+            if not HasQuest(Spawn, GnomoreGnomesteaks) and not HasCompletedQuest(Spawn, GnomoreGnomesteaks) then
+                Dialog21(NPC, Spawn)
+            end
+        end 
+        if GetQuestStep(Spawn, SearchfortheShrubbery) == 2 then
+            SetStepComplete(Spawn, SearchfortheShrubbery, 2)
+        end
+	    if GetQuestStep(Spawn, SwampWaterStew) == 2 then
+            SetStepComplete(Spawn, SwampWaterStew, 2)
+        end
+	    if GetQuestStep(Spawn, TrollPatrol) == 6 then
+            SetStepComplete(Spawn, TrollPatrol, 6)
+        end
+	    if GetQuestStep(Spawn, GnomoreGnomesteaks) == 3 then
+            SetStepComplete(Spawn, GnomoreGnomesteaks, 3)
+        end
+    end
 	RandomGreeting(NPC, Spawn)
 end
 

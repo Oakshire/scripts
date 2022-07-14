@@ -9,6 +9,7 @@
 local HowDidTheirGardenGrow = 5361
 
 function spawn(NPC)
+ProvidesQuest(NPC,5361)
 end
 
 function respawn(NPC)

@@ -10,8 +10,10 @@ local SkaggaSign = 5623
 local SkaggaSkin = 5624
 
 function spawn(NPC)
-    ProvidesQuest(NPC, SkaggaSign)
-    ProvidesQuest(NPC, SkaggaSkin)
+    if HasLanguage(Spawn,15) then
+        ProvidesQuest(NPC, SkaggaSign)
+        ProvidesQuest(NPC, SkaggaSkin)
+    end
 end
 
 function respawn(NPC)
@@ -20,15 +22,23 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-	RandomGreeting(NPC, Spawn)
-	if not HasQuest(Spawn, SkaggaSign) and not HasCompletedQuest(Spawn, SkaggaSign) then
-        OfferQuest(NPC, Spawn, SkaggaSign)
+	if HasLanguage(Spawn,15) then 
+    	if not HasQuest(Spawn, SkaggaSign) and not HasCompletedQuest(Spawn, SkaggaSign) then
+            OfferQuest(NPC, Spawn, SkaggaSign)
+        end
+        if HasCompletedQuest(Spawn, SkaggaSign) then
+            if not HasQuest(Spawn, SkaggaSkin) and not HasCompletedQuest(Spawn, SkaggaSkin) then
+                OfferQuest(NPC, Spawn, SkaggaSkin)
+            end 
+        end
     end
-    if HasCompletedQuest(Spawn, SkaggaSign) then
-        if not HasQuest(Spawn, SkaggaSkin) and not HasCompletedQuest(Spawn, SkaggaSkin) then
-            OfferQuest(NPC, Spawn, SkaggaSkin)
-        end 
-    end 
+    if GetQuestStep(Spawn, SkaggaSign) == 2 then
+       SetStepComplete(Spawn, SkaggaSign, 2)
+    end
+    if GetQuestStep(Spawn, SkaggaSkin) == 2 then
+       SetStepComplete(Spawn, SkaggaSkin, 2)
+    end
+   	RandomGreeting(NPC, Spawn)
 end
 
 function RandomGreeting(NPC, Spawn)

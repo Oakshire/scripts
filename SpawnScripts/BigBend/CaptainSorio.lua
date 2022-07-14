@@ -22,7 +22,6 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-	RandomGreeting(NPC, Spawn)
 	if not HasQuest(Spawn, SorioGiantslayer) and not HasCompletedQuest(Spawn, SorioGiantslayer) then
         OfferQuest(NPC, Spawn, SorioGiantslayer)
     end
@@ -31,6 +30,13 @@ function hailed(NPC, Spawn)
             OfferQuest(NPC, Spawn, SorioDog)
         end 
     end 
+    if GetQuestStep(Spawn, SorioGiantslayer) == 2 then
+       SetStepComplete(Spawn, SorioGiantslayer, 2)
+    end
+    if GetQuestStep(Spawn, SorioDog) == 2 then
+       SetStepComplete(Spawn, SorioDog, 2)
+    end
+	RandomGreeting(NPC, Spawn)
 end
 
 function RandomGreeting(NPC, Spawn)

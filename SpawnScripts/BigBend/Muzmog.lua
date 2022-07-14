@@ -10,8 +10,10 @@ local MuzmogRat = 5627
 local FunnyRat = 5628
 
 function spawn(NPC)
-    ProvidesQuest(NPC, MuzmogRat)
-    ProvidesQuest(NPC, FunnyRat)
+    if HasLanguage(Spawn, 14) then
+        ProvidesQuest(NPC, MuzmogRat)
+        ProvidesQuest(NPC, FunnyRat)
+    end
 end
 
 function respawn(NPC)
@@ -20,7 +22,7 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if HasLanguage(Spawn, 14) then --Ogrish
+    if HasLanguage(Spawn, 14) then --Oggish
         if not HasQuest(Spawn, MuzmogRat) and not HasCompletedQuest(Spawn, MuzmogRat) then
             OfferQuest(NPC, Spawn, MuzmogRat)
         end
@@ -28,6 +30,12 @@ function hailed(NPC, Spawn)
             if not HasQuest(Spawn, FunnyRat) and not HasCompletedQuest(Spawn, FunnyRat) then
                 OfferQuest(NPC, Spawn, FunnyRat)
             end 
+        end
+        if GetQuestStep(Spawn, MuzmogRat) == 2 then
+            SetStepComplete(Spawn, MuzmogRat, 2)
+        end
+        if GetQuestStep(Spawn, FunnyRat) == 2 then
+            SetStepComplete(Spawn, FunnyRat, 2)
         end
     end
 	RandomGreeting(NPC, Spawn)

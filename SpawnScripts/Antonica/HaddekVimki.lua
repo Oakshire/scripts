@@ -13,6 +13,10 @@ local RiseAndShineWine = 5354
 local PracticalJokeOnBlarton = 5355
 
 function spawn(NPC)
+	ProvidesQuest(NPC, RunningOutOfBeer)   
+	ProvidesQuest(NPC, OuchMyHead)   
+	ProvidesQuest(NPC, RiseAndShineWine)   
+	ProvidesQuest(NPC, PracticalJokeOnBlarton)   
      SetPlayerProximityFunction(NPC, 10, "InRange", Spawn) 
 end
 

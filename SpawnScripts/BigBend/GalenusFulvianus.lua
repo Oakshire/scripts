@@ -19,9 +19,7 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-	RandomGreeting(NPC, Spawn)
-	if not HasQuest(Spawn, PayingTheTab) and not HasCompletedQuest(Spawn, PayingTheTab) then
+    if not HasQuest(Spawn, PayingTheTab) and not HasCompletedQuest(Spawn, PayingTheTab) then
         OfferQuest(NPC, Spawn, PayingTheTab)
     end
     if HasCompletedQuest(Spawn, PayingTheTab) then
@@ -29,9 +27,14 @@ function hailed(NPC, Spawn)
             OfferQuest(NPC, Spawn, HobsForGalenus)
         end 
     end
-    if GetQuestStep(Spawn, HobsForGalenus) == 2 then
-        SetStepComplete(Spawn, HobsForGalenus, 2)
+    if GetQuestStep(Spawn, PayingTheTab) == 2 then
+       SetStepComplete(Spawn, PayingTheTab, 2)
     end
+    if GetQuestStep(Spawn, HobsForGalenus) == 2 then
+       SetStepComplete(Spawn, HobsForGalenus, 2)
+    end
+    FaceTarget(NPC, Spawn)
+	RandomGreeting(NPC, Spawn)
 end
 
 function RandomGreeting(NPC, Spawn)

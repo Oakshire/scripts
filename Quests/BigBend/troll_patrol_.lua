@@ -44,20 +44,20 @@ end
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I have completed the patrol.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "I needed to patrol around Big Bend.")
-	--SpawnMob(134, 1340056, false, 6, 0, -9, 148)
-    local new_spawn = SpawnMob(134, 1340056, true, 6, 0, -9, 148)
-    if new_spawn ~= nil then
-        AddSpawnAccess(new_spawn, Player)
-    end
+	
+	local zone = GetZone(Player)
+	local Bushy = GetSpawnByLocationID(zone, 133773786, false)
+    local SpawnBushy = SpawnByLocationID(zone, 133773786,false)
+    
     AddQuestStepKill(Quest, 5, "Kill Bushy Swashbottom!", 1, 100, "I should kill that halfling.", 91, 1340056)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
 function Step5Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 5, "One o' clock, and all's well!")
-	UpdateQuestTaskGroupDescription(Quest, 5, "Except for a loathsome halfling that popped out of the sewer, the patrol was quiet.")
+	UpdateQuestStepDescription(Quest, 5, "I have killed Bushy Swashbottom.")
+	UpdateQuestTaskGroupDescription(Quest, 5, "I had to kill Bushy Swashbottom.")
 
-    AddQuestStepLocation(Quest, 6, "Return to Braz Gutpounder.", 1, "I should return to Braz Gutpounder.", 11, 11, 0, 9, 134)
+    AddQuestStepChat(Quest, 6, "Return to Braz Gutpounder.", 1, "I should return to Braz Gutpounder.", 11, 1340039)
 	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
 end
 
@@ -88,6 +88,8 @@ function Reload(Quest, QuestGiver, Player, Step)
 	elseif Step == 4 then
 	    Step4Complete(Quest, QuestGiver, Player)
 	elseif Step == 5 then
+	    Step5Complete(Quest, QuestGiver, Player)
+	elseif Step == 6 then
 	    QuestComplete(Quest, QuestGiver, Player)
 	end
 end

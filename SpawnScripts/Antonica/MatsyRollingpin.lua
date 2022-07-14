@@ -15,6 +15,7 @@ local Mail = 469
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange")
+ProvidesQuest(NPC,"Achoo")
 end
 
 function respawn(NPC)

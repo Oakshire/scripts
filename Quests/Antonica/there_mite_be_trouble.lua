@@ -10,6 +10,7 @@
 	Preceded by		:	None
 	Followed by		:	None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,7 +19,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Thank the lost gods! I know you can't exterminate all these pests, but please do your best. I'll reward you with what I can. Don't worry, little barley ... help is on the way.")
+	Dialog.AddVoiceover("voiceover/english/farmer_walcott/antonica/farmerwalcott002.mp3", 1854564329, 3891746852)
+    Dialog.AddOption("I will end your mite problems.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

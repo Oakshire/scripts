@@ -17,18 +17,6 @@ function Init(Quest)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
-function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
-
-function Declined(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is declined
-end
-
-function Deleted(Quest, QuestGiver, Player)
-	-- Remove any quest specific items here when the quest is deleted
-end
-
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've killed twelve tortured souls.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've slain twelve tortured souls.")
@@ -60,6 +48,18 @@ function QuestComplete(Quest, QuestGiver, Player)
 
 	UpdateQuestDescription(Quest, "I've taken care of the creatures for Vakiza Skinner.  She said the Overlord would be pleased with our work.")
 	GiveQuestReward(Quest, Player)
+end
+
+function Accepted(Quest, QuestGiver, Player)
+	-- Add dialog here for when the quest is accepted
+end
+
+function Declined(Quest, QuestGiver, Player)
+	-- Add dialog here for when the quest is declined
+end
+
+function Deleted(Quest, QuestGiver, Player)
+	-- Remove any quest specific items here when the quest is deleted
 end
 
 function Reload(Quest, QuestGiver, Player, Step)
