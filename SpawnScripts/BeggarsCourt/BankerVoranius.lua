@@ -6,6 +6,8 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+local DonationsfromtheBanker = 5657
+
 function spawn(NPC)
 end
 
@@ -14,6 +16,9 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+	if GetQuestStep(Spawn, DonationsfromtheBanker) == 1 then
+        SetStepComplete(Spawn, DonationsfromtheBanker, 1)	
+    end
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

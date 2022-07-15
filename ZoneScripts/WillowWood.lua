@@ -33,7 +33,9 @@ end
 
 function SpawnWolfForQuest(Zone, Spawn)
 	local wolf = SpawnMob(Zone, A_RABID_WOLF, 0, 770.647, 0.814391, -611.79, 258.078)
-	AddHate(Spawn, wolf, 100)
+    local wolfattack = GetSpawnID(Zone,A_RABID_WOLF)
+	AddHate(Spawn, wolfattack, 100)
+    Attack(wolf, Spawn)
 	SendMessage(Spawn, "You hear a growling in the hills to the east.")
 end
 

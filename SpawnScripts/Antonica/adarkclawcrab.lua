@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aMoatRat.lua
+    Script Name    : SpawnScripts/Antonica/adarkclawcrab.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.04 04:07:49
+    Script Date    : 2022.07.14 10:07:30
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 10
-    local level2 = 11
+    local level1 = 17
+    local level2 = 18
     local difficulty1 = 6
-    local hp1 = 370
-    local power1 = 130
+    local hp1 = 1180
+    local power1 = 360
     local difficulty2 = 6
-    local hp2 = 430
-    local power2 = 160
+    local hp2 = 1290
+    local power2 = 410
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -26,6 +26,7 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
+
 ChooseMovement(NPC)
 end
 

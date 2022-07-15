@@ -32,31 +32,28 @@ function FaceBar(NPC)
 	SpawnSet(NPC, "heading", "340")
 end	
 
-function FaceShop(NPC)
-	SpawnSet(NPC, "heading", "340")
-end	
 
 function Drink(NPC)
-    PlayAnimation(NPC,11422)
+    PlayAnimation(NPC,11422)--Drink
     AddTimer(NPC,8000, "Drink2")
 end
 
 function Drink2(NPC)
   choice = math.random(1,4)   
         if choice == 1 then    
-        PlayAnimation(NPC,891)
+        PlayAnimation(NPC,891)--Yawn
         elseif choice == 2 then    
-        PlayAnimation(NPC,11422)
+        PlayAnimation(NPC,11422) --Drink
         elseif choice == 3 then    
-        PlayFlavor(NPC,"","","chuckle",0,0)
+        PlayAnimation(NPC,11152 )--Chuckle
         else
-        PlayAnimation(NPC,11668)
+        PlayAnimation(NPC,11668)--Happy
         end            
     AddTimer(NPC,6000, "Drink3")
 end
 
 function Drink3(NPC)
-    PlayAnimation(NPC,11422)
+    PlayAnimation(NPC,11422)--Drink
 end
 
 function waypoints(NPC)

@@ -7,6 +7,7 @@
 --]]
 
 local TrollsAndArms = 5618
+local GetRichQuick = 5655
 
 function spawn(NPC)
     if HasLanguage(Spawn,15) then
@@ -21,12 +22,15 @@ end
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     if HasLanguage(Spawn,15) then
-        if not HasQuest(Spawn, TrollsAndArms) and not HasCompletedQuest(Spawn, TrollsAndArms) and HasLanguage(Spawn,15) then
+        if not HasQuest(Spawn, TrollsAndArms) and not HasCompletedQuest(Spawn, TrollsAndArms) then
             OfferQuest(NPC, Spawn, TrollsAndArms)
         end
         if GetQuestStep(Spawn, TrollsAndArms) == 2 then
             SetStepComplete(Spawn, TrollsAndArms, 2)
         end
+    end
+    if GetQuestStep(Spawn, GetRichQuick) == 1 then
+       SetStepComplete(Spawn, GetRichQuick, 1)
     end
     RandomGreeting(NPC, Spawn)
 end

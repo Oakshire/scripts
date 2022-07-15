@@ -10,6 +10,7 @@
 	Preceded by		:	A Tribute for Ulinir
 	Followed by		:	News for Germain
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,8 +19,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+   Dialog.AddDialog("Good. Go find the deer bodies that litter these lands. Ignore the bodies killed by predators, seek out only the intact bodies. Search them for clues: weapons, specific types of scars, anything that will help determine who is beind their death.")
+	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/ilaen_lilac/qey_adv02_ruins/quests/ilaen/ilaen004.mp3", 790266231, 2714051282)
+	Dialog.AddOption("I will return.", "Dialog8")
+	Dialog.Start()
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined
@@ -33,9 +39,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found a crude arrow in the body of a fallen deer.")
 	GiveQuestItem(Quest, Player, "You found a crude arrow impailed in the deer.", 1466)
 	   
-	while HasItem(Player, 1466) do
-    RemoveItem(Player,1466)
-    end
+
 	AddQuestStepChat(Quest, 2, "I need to take this arrow to Ilaen Lilac.", 1, "Ilaen Lilac has asked me to inspect the dead deer around here to figure out what has been killing them.", 363, 1960059)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
@@ -51,7 +55,9 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 3, "I have spoken with Lieutenant Germain.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I discovered gnoll teeth in one of the dead animals. I have given this information to Lieutenant Germain.")
-
+	if HasItem(Player, 1466) then
+    RemoveItem(Player,1466)
+    end
 	UpdateQuestDescription(Quest, "I found gnoll teeth in the bodies of one of the dead animals. I gave this information to Lieutenant Germain at Ilaen's request.")
 	GiveQuestReward(Quest, Player)
 end

@@ -3,10 +3,11 @@
 	Script Purpose	: ulinir_gravestone01
 	Script Author	: Scatman
 	Script Date	: 2009.09.26
-	Script Notes	: Updated by Jabantiz (4/21/2017)
+	cript Notes	: Updated by Jabantiz (4/21/2017) and again by Dorbin (07.14.2022)
 --]]
 
 local WOODELF_MENTOR_QUEST_5 = 217 -- A Tribute for Ulinir
+local WOODELF_MENTOR_QUEST_6 = 5494 -- A Tribute for Ulinir
 
 function spawn(NPC)
 end
@@ -23,13 +24,16 @@ function casted_on(NPC, Spawn, SpellName)
 	if HasQuest(Spawn, WOODELF_MENTOR_QUEST_5) and SpellName == "Read Gravestone" then
 		AddConversationOption(conversation, "Place the Tribute.", "PlaceTribute")
 	end
-	AddConversationOption(conversation, "Leave.", "CheckRace")
+	AddConversationOption(conversation, "Leave.", "CheckRaceTimer")
 	StartDialogConversation(conversation, 1, NPC, Spawn, "Ulinir\n\nOf the Pine\n\nNature's Strength")
 end
 
+function CheckRaceTimer(NPC, Spawn)
+    AddTimer(NPC,2500,"CheckRace")
+end
 
 function CheckRace(NPC, Spawn)
-	if HasCompletedQuest(Spawn, WOODELF_MENTOR_QUEST_5) then
+	if HasCompletedQuest(Spawn, WOODELF_MENTOR_QUEST_5) and not HasQuest(Spawn, WOODELF_MENTOR_QUEST_6) and not HasCompletedQuest(Spawn, WOODELF_MENTOR_QUEST_6) then
 		MakeIlaenTalk(NPC, Spawn)
     CloseConversation(NPC, Spawn)
 		else

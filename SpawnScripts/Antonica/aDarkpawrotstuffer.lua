@@ -1,11 +1,10 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aDarkpawanimator.lua
-    Script Author  : Dorbin
-    Script Date    : 2022.07.13 05:07:15
+    Script Name    : SpawnScripts/Antonica/aDarkpawrotstuffer.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.07.14 11:07:36
     Script Purpose : 
                    : 
 --]]
-dofile("SpawnScripts/Generic/MonsterCallouts/DarkpawGnoll1.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)

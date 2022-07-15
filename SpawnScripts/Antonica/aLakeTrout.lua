@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aMoatRat.lua
+    Script Name    : SpawnScripts/Antonica/aLakeTrout.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.04 04:07:49
+    Script Date    : 2022.07.14 11:07:31
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 10
-    local level2 = 11
+    local level1 = 15
+    local level2 = 16
     local difficulty1 = 6
-    local hp1 = 370
-    local power1 = 130
-    local difficulty2 = 6
-    local hp2 = 430
-    local power2 = 160
+    local hp1 = 920
+    local power1 = 270
+    local difficulty2 = 9
+    local hp2 = 1045
+    local power2 = 310
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -26,7 +26,7 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-ChooseMovement(NPC)
+    ChooseMovement(NPC)
 end
 
 function ChooseMovement(NPC)
@@ -96,4 +96,14 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
+end
+
+end
+
+function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+end
+
+function respawn(NPC)
+	spawn(NPC)
 end

@@ -3,10 +3,11 @@
 	Script Purpose	: Acting Lieutenant Germain 
 	Script Author	: Scatman
 	Script Date	: 2009.09.27
-	Script Notes	: 
+	Script Notes	: This script needs a re-write.  Using the dialog parser will help.  The mess here has been modified by several unlisted people.  - 07.14.2022 Dorbin
 --]]
 local QUEST_FROM_REMMY = 533
 local QUEST_FROM_POKO = 5474
+local QUEST_FROM_Ilaen = 5495
 local QUEST_1 = 520 --News for Germain
 local QUEST_2 = 521 --Favors
 local QUEST_3 = 522 --Return to the Disturbance
@@ -48,6 +49,8 @@ function hailed(NPC, Spawn)
 		AddConversationOption(conversation, "I have news for you.", "NewsForYou")
 	elseif HasQuest(Spawn, QUEST_FROM_REMMY) and GetQuestStep(Spawn, QUEST_FROM_REMMY) == 2 then
 		AddConversationOption(conversation, "I have news for you.", "NewsForYou2")	
+    elseif GetQuestStep(Spawn,QUEST_FROM_Ilaen)==3  then
+	AddConversationOption(conversation,"I found this arrow on a fallen deer around here.", "Dialog32")
 	end
 	
 	
@@ -192,7 +195,23 @@ function dlg_16_2a(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "The bad news just doesn't cease. Citizen, there are obviously multiple things afoot in this place, I thank you for your help even if you're adding to my discomfort.")
 end
 
+----------------------------------------------------------------------------------------------------------
+--					QUEST FROM Ilaen
+----------------------------------------------------------------------------------------------------------
 
+
+function Dialog32(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	conversation = CreateConversation()
+	Dialog.AddDialog("")
+	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/acting_lieutenant_germain/qey_adv02_ruins/quests/germain/germain_ilaen001.mp3","","nod", 1946196030, 3212706189,Spawn)
+ 	SetStepComplete(Spawn, QUEST_FROM_Ilaen, 3)
+	if not HasQuest(Spawn, QUEST_1) and not HasCompletedQuest(Spawn, QUEST_1) then
+	AddConversationOption(conversation, "I can help.", "dlg_1_3")
+	end
+	AddConversationOption(conversation,"The proof will come in time.")
+	StartConversation(conversation, NPC, Spawn, "I recognize this design... I hope this doesn't mean what I think it means. The gnolls may be on the move. Proof of this would spur Qeynos to move, but a single arrow is not proof.")
+end
 ----------------------------------------------------------------------------------------------------------
 --					QUEST 1
 ----------------------------------------------------------------------------------------------------------
