@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/time_to_stop_a_madman.lua
 	Script Purpose	: Handles the quest, "Time to Stop a Madman"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Inquisitor Thorson
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must stop Curfeld's deadly scheme at all costs!", 1, 100, "I must confront Investigator Curfeld and do whatever it takes to stop him.", 0, 1240083)
+	AddQuestStepKill(Quest, 1, "I must stop Curfeld's deadly scheme at all costs!", 1, 100, "I must confront Investigator Curfeld and do whatever it takes to stop him.", 0, 1240027)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_complete_KilledCurfield")
 end
 
@@ -31,7 +31,7 @@ function Step1_complete_KilledCurfield(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I faced Curfeld and defeated him in battle.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have ended Curfeld's threat once and for all.")
 
-	AddQuestStepChat(Quest, 2, "I should return to Inquisitor Thorson and let him know I was victorious.", 1, "I should tell Inquisitor Thorson that Curfeld is no more.", 0, 1240007)
+	AddQuestStepChat(Quest, 2, "I should return to Inquisitor Thorson and let him know I was victorious.", 1, "I should tell Inquisitor Thorson that Curfeld is no more.", 0, 1240024)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

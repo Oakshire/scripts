@@ -1,22 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/Blackburrow/aSabertoothsentry.lua
-    Script Author  : Cynnar
-    Script Date    : 2020.12.06 05:12:44
+    Script Name    : SpawnScripts/Blackburrow/acrimsonconstrictor.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.07.15 04:07:48
     Script Purpose : 
                    : 
 --]]
-    dofile("SpawnScripts/Generic/MonsterCallouts/BaseGnoll1.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 15
-    local level2 = 16
-    local difficulty1 = 9
-    local hp1 = 3150
-    local power1 = 1350
-    local difficulty2 = 9
-    local hp2 = 3485
-    local power2 = 1350
+    local level1 = 12
+    local level2 = 13
+    local difficulty1 = 5
+    local hp1 = 350
+    local power1 = 125
+    local difficulty2 = 5
+    local hp2 = 440
+    local power2 = 145
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -31,10 +30,9 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)
-
+	spawn(NPC)
 end
-

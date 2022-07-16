@@ -9,6 +9,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
+ProvidesQuest(NPC, 5494)
 end
 
 function respawn(NPC)
@@ -20,11 +21,11 @@ if GetFactionAmount(Spawn,11)<0 then
 		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/ilaen_lilac/qey_adv02_ruins_revamp/qst_woodelf_ilaen_lilac_done_8182d6c7.mp3", "I am sure this land shall recover, eventually.", "", 1994088059, 2615640220, Spawn, 0)
 elseif not GetRace(Spawn, 15) then -- Checking if Woodelf
 		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/ilaen_lilac/qey_adv02_ruins_revamp/qst_woodelf_ilaen_lilac_notonquest_ae7644e9.mp3", "There is no failing greater than a child unable to protect a parent.", "", 138794585, 337134419, Spawn, 0)
-elseif HasCompletedQuest(Spawn, 5494) or GetQuestStep(Spawn,5495)==3  then-- PostQuest   
+elseif HasCompletedQuest(Spawn, 5494) or GetQuestStep(Spawn,5494)==3  then-- PostQuest   
 		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/ilaen_lilac/qey_adv02_ruins_revamp/qst_woodelf_ilaen_lilac_done_8182d6c7.mp3", "I am sure this land shall recover, eventually.", "", 1994088059, 2615640220, Spawn, 0)
-elseif not HasQuest(Spawn,5495) and not HasCompletedQuest(Spawn,5494) then --PreQuest
+elseif not HasQuest(Spawn,5494) and not HasCompletedQuest(Spawn,5494) then --PreQuest
 Dialog9(NPC, Spawn)
-elseif GetQuestStep(Spawn,5495)==1 or GetQuestStep(Spawn,5495)==2 then
+elseif GetQuestStep(Spawn,5494)==1 or GetQuestStep(Spawn,5494)==2 then
  Dialog1(NPC, Spawn)    
 end
 end
@@ -34,7 +35,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Have you found a clue yet?")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/ilaen_lilac/qey_adv02_ruins/quests/ilaen/ilaen005.mp3", 2448866303, 129613781)
-    if GetQuestStep(Spawn,5495)==2 then    
+    if GetQuestStep(Spawn,5494)==2 then    
 	Dialog.AddOption("Yes, I found this arrow.", "Dialog2")
 	end
 	Dialog.AddOption("I'm afraid not.  I'm still looking.")
@@ -52,7 +53,7 @@ end
 
 function Dialog3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    OfferQuest(NPC,Spawn,5495)
+    OfferQuest(NPC,Spawn,5494)
 end
 
 function Dialog8(NPC, Spawn)
@@ -87,7 +88,7 @@ function Dialog6(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("This arrow is of gnollish make. It may have gotten here by innocent means, or a gnoll may have brought it here. If the gnolls are moving in then the Qeynos Guard will be very interested. I want you to take this arrow to Lieutenant Germain. Tell him where you found it, he will be most interested to hear this.")
 	Dialog.AddVoiceover("voiceover/english/tutorial_revamp/ilaen_lilac/qey_adv02_ruins/quests/ilaen/ilaen007.mp3", 4076027837, 3268404262)
- 	SetStepComplete(Player, Deer, 2)
+ 	SetStepComplete(Spawn, 5494, 2)
 	Dialog.AddOption("Alright, I shall.")
 	Dialog.Start()
 end

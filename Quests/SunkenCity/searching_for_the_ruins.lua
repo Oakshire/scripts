@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/searching_for_the_ruins.lua
 	Script Purpose	: Handles the quest, "Searching for the Ruins"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Inquisitor Thorson
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I should make my way to the Freeport Ruins and speak to Captain Arellius.", 1, "I should go to the Ruins and speak to Captain Arellius.", 0, 1270003)
+	AddQuestStepChat(Quest, 1, "I should make my way to the Freeport Ruins and speak to Captain Arellius.", 1, "I should go to the Ruins and speak to Captain Arellius.", 0, 1270000)
 	AddQuestStepCompleteAction(Quest, 1, "Quest_Complete")
 end
 

@@ -11,9 +11,7 @@ require "SpawnScripts/Generic/DialogModule"
 local VerminReduction = 5619
 
 function spawn(NPC)
-    if HasLanguage(Spawn, 15) then
-        ProvidesQuest(NPC, VerminReduction)
-    end 
+    ProvidesQuest(NPC, VerminReduction)
     waypoints(NPC)
 end
 
@@ -23,23 +21,23 @@ end
 
 function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
-    if HasLanguage(spawn, 15) then --Ykeshan
+    if HasLanguage(Spawn, 15) then --Ykeshan
         local count = GetQuestCompleteCount(Spawn, 5619)
         if count<5 then --repeatable exactly 5 times
-            if not HasQuest(Spawn, VerminReduction) then --Ykeshan
+            if GetQuestStep(Spawn, VerminReduction) == 2 then
+                SetStepComplete(Spawn, VerminReduction, 2)
+            else
                 Dialog.New(NPC, Spawn)
-	            Dialog.AddDialog("Hass you seens any rats around latelys? ")
-	            Dialog.AddVoiceover("voiceover/english/optional1/ratcatcher_zarbt/fprt_hood1/qst_ratcatcherzarbt.mp3", 3774469332, 1538503466)
+                Dialog.AddDialog("Hass you seens any rats around latelys? ")
+                Dialog.AddVoiceover("voiceover/english/optional1/ratcatcher_zarbt/fprt_hood1/qst_ratcatcherzarbt.mp3", 3774469332, 1538503466)
 	            Dialog.AddLanguage(15)
 	            Dialog.AddOption("Why would I care about rats? Don't bother me.")
 	            Dialog.Start()
 	            OfferQuest(NPC, Spawn, VerminReduction)
-            elseif QuestStepIsComplete(Spawn, VerminReduction, 1) then
-                SetStepComplete(Spawn, VerminReduction, 2)
             end
         end
     end
-	RandomGreeting(NPC, Spawn)
+    RandomGreeting(NPC, Spawn)
 end
 
 function RandomGreeting(NPC, Spawn)
@@ -52,8 +50,9 @@ function RandomGreeting(NPC, Spawn)
 	end
 end
 
+
 function waypoints(NPC)
-MovementLoopAddLocation(NPC, -27.38, -4.67, 101.28, 3, 0)
+    MovementLoopAddLocation(NPC, -27.38, -4.67, 101.28, 3, 0)
 	MovementLoopAddLocation(NPC, -26.77, -4.65, 87.02, 2, 0)
 	MovementLoopAddLocation(NPC, -26.06, -4.49, 70.28, 2, 0)
 	MovementLoopAddLocation(NPC, -25.79, -4.5, 63.68, 2, 0)

@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Kill Blackshield raiders", 2, 100, "I need to kill some of the Blackshields in the Sunken City.  I can reach the Sunken City by using any of the bells in and around the City of Freeport.", 611, 1240002)
+	AddQuestStepKill(Quest, 1, "Kill Blackshield raiders", 10, 100, "I need to kill some of the Blackshields in the Sunken City.  I can reach the Sunken City by using any of the bells in and around the City of Freeport.", 611, 1240002)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

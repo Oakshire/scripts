@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/finding_the_investigator
 	Script Purpose	: Handles the quest, "Finding the Investigator"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Inquisitor Thorson
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to speak to Investigator Curfeld of the Dismal Rage.", 1, "I need to seek out Investigator Curfeld and speak to him.", 0, 1240083)
+	AddQuestStepChat(Quest, 1, "I need to speak to Investigator Curfeld of the Dismal Rage.", 1, "I need to seek out Investigator Curfeld and speak to him.", 0, 1240027)
 	AddQuestStepCompleteAction(Quest, 1, "Quest_Complete")
 end
 

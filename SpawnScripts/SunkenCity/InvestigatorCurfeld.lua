@@ -6,11 +6,11 @@
 	Script Notes	: 
 --]]
 
-local QUEST_4_FROM_THORSON = 269
-local QUEST_1 = 270
-local QUEST_2 = 271
-local QUEST_3 = 272
-local QUEST_5_FROM_THORSON = 273
+local QUEST_4_FROM_THORSON = 379
+local QUEST_1 = 380
+local QUEST_2 = 381
+local QUEST_3 = 382
+local QUEST_5_FROM_THORSON = 383
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)

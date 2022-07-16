@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local QUEST_1_FROM_THORSON = 266
+local QUEST_1_FROM_THORSON = 376
 
 function spawn(NPC)
 end

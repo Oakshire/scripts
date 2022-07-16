@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aDarkpawmystic.lua
-    Script Author  : LordPazuzu
-    Script Date    : 2022.07.12 02:07:57
+    Script Name    : SpawnScripts/Antonica/aDarkpawpackleader.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.07.15 07:07:47
     Script Purpose : 
                    : 
 --]]

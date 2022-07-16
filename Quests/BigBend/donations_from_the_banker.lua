@@ -26,7 +26,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 end
 
 function QuestComplete(Quest, QuestGiver, Player)
-	UpdateQuestDescription(Quest, "I've collected the &quot;donation&quot; from the banker and given it to Manius. I've also told Manius what the banker said about him. Needless to say, he wasn't too happy. I just realized that I forgot to ask him about joining his gang. Maybe I'll ask him some other time.")
+	UpdateQuestDescription(Quest, "I've collected the 'donation' from the banker and given it to Manius. I've also told Manius what the banker said about him. Needless to say, he wasn't too happy. I just realized that I forgot to ask him about joining his gang. Maybe I'll ask him some other time.")
 	GiveQuestReward(Quest, Player)
 end
 

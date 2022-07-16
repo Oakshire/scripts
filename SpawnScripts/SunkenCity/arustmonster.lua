@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local QUEST_3_FROM_THORSON = 268
+local QUEST_3_FROM_THORSON = 378
 
 function spawn(NPC)
 end
@@ -17,6 +17,9 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if HasQuest(Spawn, QUEST_3_FROM_THORSON) and not QuestStepIsComplete(Spawn, QUEST_3_FROM_THORSON, 3) then
+		SetStepComplete(Spawn, QUEST_3_FROM_THORSON, 3)
+	end
 end
 
 function casted_on(Target, Caster)

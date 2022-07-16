@@ -10,10 +10,8 @@ local SkaggaSign = 5623
 local SkaggaSkin = 5624
 
 function spawn(NPC)
-    if HasLanguage(Spawn,15) then
-        ProvidesQuest(NPC, SkaggaSign)
-        ProvidesQuest(NPC, SkaggaSkin)
-    end
+    ProvidesQuest(NPC, SkaggaSign)
+    ProvidesQuest(NPC, SkaggaSkin)
 end
 
 function respawn(NPC)

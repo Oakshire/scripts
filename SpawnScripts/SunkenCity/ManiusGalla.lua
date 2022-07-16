@@ -11,6 +11,7 @@ local DonationsfromtheBanker = 5657
 
 function spawn(NPC)
 	ProvidesQuest(NPC, JoiningtheGang)
+	ProvidesQuest(NPC, DonationsfromtheBanker)
 end
 
 function respawn(NPC)

@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/gerbards_necklace.lua
 	Script Purpose	: Handles the quest, "Gerbard's Necklace
 	Script Author	: Scatman
-	Script Date	    : 2009.08.01
+	Script Date	    : 2009.08.01 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Gerbard the Snitch
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to find five pirate coins.", 5, 50, "I need to find five pirate coins.", 1763, 1240133, 1240058, 1240109, 1240045, 1240107, 1240040, 1240132, 1240038, 1240063, 1240144, 1240050, 1240061, 1240051, 1240146, 1240052, 1240057, 1240062, 1240108)
+	AddQuestStepKill(Quest, 1, "I need to find five pirate coins.", 5, 50, "I need to find five pirate coins.", 1240044, 1240035, 1240036)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_FoundCoins")
 end
 
@@ -31,7 +31,7 @@ function Step1_Complete_FoundCoins(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found five pirate coins.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found five pirate coins.")
 
-	AddQuestStepChat(Quest, 2, "I need to return to Gerbard.", 1, "I need to return to Gerbard.", 0, 1240020)
+	AddQuestStepChat(Quest, 2, "I need to return to Gerbard.", 1, "I need to return to Gerbard.", 0, 1240021)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/spirits_of_the_night.lua
 	Script Purpose	: Handles the quest, "Spirits of the Night"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Inquisitor Thorson
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I should defeat four undead creatures to obtain their spectral essences.", 4, 100, "I must search the Sunken City by night and collect the spectral essences of the undead that haunt this place.", 2515, 1240015, 1240012, 1240103, 1240028, 1240017, 1240030, 1240018, 1240135, 1240011, 1240016, 1240049, 1240060, 1240035, 1240059, 1240036, 1240054, 1240048, 1240053, 1240046, 1240026, 1240027, 1240034, 1240021, 1240022, 1240024, 1240070, 1240056, 1240112, 1240104, 1240045, 1240107, 1240040, 1240132, 1240038, 1240063, 1240144, 1240050, 1240061, 1240051, 1240146, 1240052, 1240057, 1240062, 1240108, 1240058, 1240109)
+	AddQuestStepKill(Quest, 1, "I should defeat four undead creatures to obtain their spectral essences.", 4, 100, "I must search the Sunken City by night and collect the spectral essences of the undead that haunt this place.", 1240004, 1240005, 1240006, 1240029, 1240030, 1240031, 1240035, 1240036, 1240038, 1240039, 1240040, 1240041, 1240042, 1240043, 1240044)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledSkeletons")
 end
 
@@ -30,7 +30,7 @@ function Step1_Complete_KilledSkeletons(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have obtained four spectral essences from the undead.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have defeated undead creatures and collected their spectral essences.")
 	
-	AddQuestStepChat(Quest, 2, "I should take the spectral essences to Inquisitor Thorson.", 1, "I need to return to Inquisitor Thorson and give him the essences.", 0, 1240007)
+	AddQuestStepChat(Quest, 2, "I should take the spectral essences to Inquisitor Thorson.", 1, "I need to return to Inquisitor Thorson and give him the essences.", 0, 1240024)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

@@ -24,6 +24,13 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if not HasQuest(Spawn, QUEST_1) and not HasCompletedQuest(Spawn, QUEST_1) then
+        OfferQuest(NPC, Spawn, QUEST_1)
+    end
+    if GetQuestStep(Spawn, QUEST_1) == 2 then
+        SetStepComplete(Spawn, QUEST_1, 2)
+    end
+    
 	conversation = CreateConversation()
 		PlayFlavor(NPC, "voiceover/english/gerbard_the_snitch/fprt_adv01_sunken/gerbard_the_snitch000.mp3", "", "", 2512842567, 445857936, Spawn)
 		AddConversationOption(conversation, "What happened?", "dlg_3_1")
@@ -65,7 +72,6 @@ end
 function dlg_3_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-OfferQuest(NPC, Spawn, QUEST_1)
 	PlayFlavor(NPC, "voiceover/english/gerbard_the_snitch/fprt_adv01_sunken/gerbard_the_snitch002.mp3", "", "", 4172245160, 2238267271, Spawn)
 		AddConversationOption(conversation, "Thanks, I'll search out some pirate coins.", "dlg_3_3")
 	StartConversation(conversation, NPC, Spawn, "Where do you think they come from? They're pirate coins!  Those undead buggers roam around where it's wet.  I'd go get them myself, but I gambled my sword away in a sure bet.")

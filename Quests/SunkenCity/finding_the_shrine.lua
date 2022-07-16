@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/finding_the_shrine.lua
 	Script Purpose	: Handles the quest, "Finding the Shrine"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Investigator Curfield
@@ -31,7 +31,7 @@ function Step1_Complete_FoundShrine(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found a shrine that seems to hum with mystical power.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the haunted ruins of an old shrine.")
 
-	AddQuestStepChat(Quest, 2, "I should return to Investigator Curfeld and tell him what I found.", 1, "I must return to Investigator Curfeld and tell him I found the shrine.", 0, 1240083)
+	AddQuestStepChat(Quest, 2, "I should return to Investigator Curfeld and tell him what I found.", 1, "I must return to Investigator Curfeld and tell him I found the shrine.", 0, 1240027)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

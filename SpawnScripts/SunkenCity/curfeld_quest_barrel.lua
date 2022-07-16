@@ -6,7 +6,7 @@
 	Script Notes	: <special-instructions>
 --]]
 
-local QUEST_1_FROM_CURFIELD = 270
+local QUEST_1_FROM_CURFIELD = 380
 
 function spawn(NPC)
 	SetRequiredQuest(QUEST_1_FROM_CURFIELD, 1)

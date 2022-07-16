@@ -10,10 +10,8 @@ local MuzmogRat = 5627
 local FunnyRat = 5628
 
 function spawn(NPC)
-    if HasLanguage(Spawn, 14) then
-        ProvidesQuest(NPC, MuzmogRat)
-        ProvidesQuest(NPC, FunnyRat)
-    end
+    ProvidesQuest(NPC, MuzmogRat)
+    ProvidesQuest(NPC, FunnyRat)
 end
 
 function respawn(NPC)

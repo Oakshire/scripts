@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/back_to_the_inquisitor.lua
 	Script Purpose	: Handles the quest, "Back to the Inquisitor"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Investigator Curfield
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I should return to Inquisitor Thorson.", 1, "I should return to Inquisitor Thorson and let him know that I have the research he needs.", 0, 1240007)
+	AddQuestStepChat(Quest, 1, "I should return to Inquisitor Thorson.", 1, "I should return to Inquisitor Thorson and let him know that I have the research he needs.", 0, 1240024)
 	AddQuestStepCompleteAction(Quest, 1, "Quest_Complete")
 end
 

@@ -6,7 +6,7 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local Sixth_SteppingUptheOffensive = 372
+local Sixth_SteppingUptheOffensive = 373
 local Seventh_KnockTheFightOutOfEm = 392
 local Eighth_VengeanceForShoreside = 393
 local Ninth_IdentifyingTheLonetuskAlly = 394

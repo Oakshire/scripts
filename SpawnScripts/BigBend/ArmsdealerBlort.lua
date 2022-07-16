@@ -10,9 +10,7 @@ local TrollsAndArms = 5618
 local GetRichQuick = 5655
 
 function spawn(NPC)
-    if HasLanguage(Spawn,15) then
-        ProvidesQuest(NPC, TrollsAndArms)
-    end
+    ProvidesQuest(NPC, TrollsAndArms)
 end
 
 function respawn(NPC)

@@ -1,0 +1,510 @@
+--[[
+    Script Name    : SpawnScripts/Antonica/agnollcamp.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.07.15 03:07:38
+    Script Purpose : Facilitates camps w/ distressed merchants & buffing ark rewards
+                   : 
+--]]
+
+function spawn(NPC)
+CampSpawn(NPC)
+end
+
+function respawn(NPC)
+	spawn(NPC)
+end
+
+function CampSpawn(NPC)
+if GetSpawnLocationID(NPC)==591698 then --GnollCamp1
+Camp1Spawn(NPC)
+elseif GetSpawnLocationID(NPC)==591701 then--GnollCamp2
+Camp2Spawn(NPC)
+elseif GetSpawnLocationID(NPC)==133773951 then--GnollCamp3
+Camp3Spawn(NPC)
+end
+end
+
+--- CAMP 1
+
+function Camp1Spawn(NPC, Spawn) -- Stage 1
+local zone = GetZone(NPC)
+local spawn1 = math.random(0,1)
+    if spawn1 == 1 then
+local Camp1Spawn1 = SpawnByLocationID(zone, 133773815) --Gnoll1 (mystic)
+    else
+    local Camp1Spawn1a = SpawnByLocationID(zone, 133773937) -- Gnoll1(youth)
+    end   
+local spawn2 = math.random(0,1)
+    if spawn2 == 1 then
+    local Camp1Spawn2 = SpawnByLocationID(zone, 133773817)--Gnoll2 (mystic)
+    else
+    local Camp1Spawn2a = SpawnByLocationID(zone, 133773935)-- Gnoll2(youth)
+    end
+local spawn3 = math.random(0,1)
+    if spawn3 == 1 then
+    local Camp1Spawn3 = SpawnByLocationID(zone, 133773812)--Gnoll3 (mystic)
+    else
+    local Camp1Spawn3a = SpawnByLocationID(zone, 133773933)-- Gnoll3(youth)
+    end   
+local spawn4 = math.random(0,1)
+    if spawn4 == 1 then
+    local Camp1Spawn4 = SpawnByLocationID(zone, 133773816)--Gnoll4 (mystic)
+    else
+    local Camp1Spawn4a = SpawnByLocationID(zone, 133773936)-- Gnoll4(youth)
+    end
+local spawn5 = math.random(0,1)
+    if spawn5 == 1 then
+    local Camp1Spawn5 = SpawnByLocationID(zone, 133773932)--Gnoll5 (mystic)
+    else
+    local Camp1Spawn5a = SpawnByLocationID(zone, 133773813)-- Gnoll5(youth)
+    end
+local spawn6 = math.random(0,1)
+    if spawn6 == 1 then
+    local Camp1Spawn6 = SpawnByLocationID(zone, 133773934)--Gnoll6 (mystic)
+    else
+    local Camp1Spawn6a = SpawnByLocationID(zone, 133773814)-- Gnoll6(youth)
+    end
+local MerchantSpawn =  math.random(0,1)
+    if MerchantSpawn == 1 then
+    local Camp1MerchantSpawn = SpawnByLocationID(zone, 134655)--Distressed Merchant
+    else
+    end
+        
+AddTimer(NPC,6000,"Camp1SpawnCheck_Stage1")
+end
+
+function Camp1SpawnCheck_Stage1(NPC, Spawn)  --Stage 1 Living Check
+  local zone = GetZone(NPC)
+local Camp1Spawn1 = GetSpawnByLocationID(zone, 133773815)
+local Camp1Spawn1a = GetSpawnByLocationID(zone, 133773937)
+local Camp1Spawn2 = GetSpawnByLocationID(zone, 133773817)
+local Camp1Spawn2a = GetSpawnByLocationID(zone, 133773935)
+local Camp1Spawn3 = GetSpawnByLocationID(zone, 133773812)
+local Camp1Spawn3a = GetSpawnByLocationID(zone, 133773933)
+local Camp1Spawn4 = GetSpawnByLocationID(zone, 133773816)
+local Camp1Spawn4a = GetSpawnByLocationID(zone, 133773936)
+local Camp1Spawn5 = GetSpawnByLocationID(zone, 133773932)
+local Camp1Spawn5a = GetSpawnByLocationID(zone, 133773813)
+local Camp1Spawn6 = GetSpawnByLocationID(zone, 133773934)
+local Camp1Spawn6a = GetSpawnByLocationID(zone, 133773814)
+if IsAlive(Camp1Spawn1) == true or IsAlive(Camp1Spawn1a) == true then
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp1Spawn2) == true or IsAlive(Camp1Spawn2a) == true then
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp1Spawn3) == true or IsAlive(Camp1Spawn3a) == true then
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp1Spawn4) == true or IsAlive(Camp1Spawn4a) == true then
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp1Spawn5) == true or IsAlive(Camp1Spawn5a) == true then
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp1Spawn6) == true or IsAlive(Camp1Spawn6a) == true then
+   AddTimer(NPC,6000,"Camp1SpawnCheck_Stage1",1, Spawn)
+   else
+      AddTimer(NPC, 6000, "Camp1_Stage2")
+  end
+end
+   
+function Camp1_Stage2(NPC, Spawn) --Stage 2 
+  local zone = GetZone(NPC)
+    local Camp1_Stage2Spawn1=SpawnByLocationID(zone, 190452)--darkpack pack leader
+    FaceTarget(Camp1_Stage2Spawn1, Spawn)
+    Attack(Camp1_Stage2Spawn1, Spawn)
+    
+AddTimer(NPC,6000,"Camp1SpawnCheck_Stage2")
+end
+
+
+function Camp1SpawnCheck_Stage2(NPC, Spawn)  --Stage 2 Living Check
+  local zone = GetZone(NPC)
+  local Camp1_Stage2Spawn1 = GetSpawnByLocationID(zone, 190452)
+ if IsAlive(Camp1_Stage2Spawn1) == true then
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage2",1, Spawn)
+   else
+      AddTimer(NPC, 6000, "Camp1_Stage3")
+  end
+end
+
+
+function Camp1_Stage3(NPC, Spawn) --Stage 3 (Possible Boss) 
+  local zone = GetZone(NPC)
+  local choice = math.random(0,100)
+    if choice <=33 then   -- % Chance for Boss to Spawn
+    local Camp1_Stage3Spawn1=SpawnByLocationID(zone, 133773818)--Tark
+    FaceTarget(Camp1_Stage3Spawn1, Spawn)
+    Attack(Camp1_Stage3Spawn1, Spawn)
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage3")
+else    -- Failed Boss Spawn
+    local Camp1ArkofPower = SpawnByLocationID(zone, 133773939)--Ark of Power
+    local Camp1MerchantSpawn = GetSpawnByLocationID(zone, 134655)--Distressed Merchant
+    if Camp1MerchantSpawn ~=nil then
+    Despawn(Camp1MerchantSpawn)
+    local Camp1GratifiedMerchant = SpawnByLocationID(zone, 133773938)--Gratified Merchant
+    AddTimer(NPC,90000,"Camp1Reset")
+    else   
+    AddTimer(NPC,60000,"Camp1Reset")
+end
+end
+end
+
+
+function Camp1SpawnCheck_Stage3(NPC, Spawn)  --Stage 2 Living Check
+  local zone = GetZone(NPC)
+  local Camp1_Stage3Spawn1 = GetSpawnByLocationID(zone, 133773818)
+ if IsAlive(Camp1_Stage2Spawn1) == true then
+    AddTimer(NPC,6000,"Camp1SpawnCheck_Stage3",1,Spawn)
+   else
+local Camp1MerchantSpawn = GetSpawnByLocationID(zone, 134655)--Distressed Merchant
+    if Camp1MerchantSpawn ~=nil then
+    Despawn(Camp1MerchantSpawn)
+    local Camp1GratifiedMerchant = SpawnByLocationID(zone, 133773938)--Gratified Merchant
+    AddTimer(NPC, 90000, "Camp1Reset",1,Spawn)
+    else
+    AddTimer(NPC, 10000, "Camp1Reset",1,Spawn)
+  end
+end
+end
+
+function Camp1Reset(NPC)
+local zone = GetZone(NPC)
+local Camp1Object = GetSpawnByLocationID(zone, 591698)   
+if Camp1Object~= nil then
+Despawn(Camp1Object)
+    local Camp1ArkofPower = GetSpawnByLocationID(zone, 133773939)--Ark of Power
+    if Camp1ArkofPower ~=nil then
+    Despawn(Camp1ArkofPower)
+    end  
+    local Camp1GratifiedMerchant = GetSpawnByLocationID(zone, 133773938)--Gratified Merchant
+    if Camp1GratifiedMerchant ~=nil then
+    Despawn(Camp1GratifiedMerchant)
+    end  
+end
+end
+
+
+
+--- CAMP 2
+
+function Camp2Spawn(NPC, Spawn) -- Stage 1
+local zone = GetZone(NPC)
+local Camp2Object2 = SpawnByLocationID(zone, 170244)   
+local spawn1 = math.random(0,1)
+    if spawn1 == 1 then
+local Camp2Spawn1 = SpawnByLocationID(zone, 133773943) --Gnoll1 (mystic)
+    else
+    local Camp2Spawn1a = SpawnByLocationID(zone, 133773809) -- Gnoll1(youth)
+    end   
+local spawn2 = math.random(0,1)
+    if spawn2 == 1 then
+    local Camp2Spawn2 = SpawnByLocationID(zone, 133773946)--Gnoll2 (mystic)
+    else
+    local Camp2Spawn2a = SpawnByLocationID(zone, 133773806)-- Gnoll2(youth)
+    end
+local spawn3 = math.random(0,1)
+    if spawn3 == 1 then
+    local Camp1Spawn3 = SpawnByLocationID(zone, 133773810)--Gnoll3 (mystic)
+    else
+    local Camp1Spawn3a = SpawnByLocationID(zone, 133773944)-- Gnoll3(youth)
+    end   
+local spawn4 = math.random(0,1)
+    if spawn4 == 1 then
+    local Camp2Spawn4 = SpawnByLocationID(zone, 133773945)--Gnoll4 (mystic)
+    else
+    local Camp2Spawn4a = SpawnByLocationID(zone, 133773807)-- Gnoll4(youth)
+    end
+local spawn5 = math.random(0,1)
+    if spawn5 == 1 then
+    local Camp2Spawn5 = SpawnByLocationID(zone, 133773808)--Gnoll5 (mystic)
+    else
+    local Camp2Spawn5a = SpawnByLocationID(zone, 133773942)-- Gnoll5(youth)
+    end
+local spawn6 = math.random(0,1)
+    if spawn6 == 1 then
+    local Camp2Spawn6 = SpawnByLocationID(zone, 133773947)--Gnoll6 (mystic)
+    else
+    local Camp2Spawn6a = SpawnByLocationID(zone, 133773805)-- Gnoll6(youth)
+    end
+local MerchantSpawn =  math.random(0,1)
+    if MerchantSpawn == 1 then
+    local Camp2MerchantSpawn = SpawnByLocationID(zone, 133773948)--Distressed Merchant
+    else
+    end
+        
+AddTimer(NPC,6000,"Camp2SpawnCheck_Stage1")
+end
+
+function Camp2SpawnCheck_Stage1(NPC, Spawn)  --Stage 1 Living Check
+  local zone = GetZone(NPC)
+local Camp2Spawn1 = GetSpawnByLocationID(zone, 133773943)
+local Camp2Spawn1a = GetSpawnByLocationID(zone, 133773809)
+local Camp2Spawn2 = GetSpawnByLocationID(zone, 133773946)
+local Camp2Spawn2a = GetSpawnByLocationID(zone, 133773806)
+local Camp2Spawn3 = GetSpawnByLocationID(zone, 133773810)
+local Camp2Spawn3a = GetSpawnByLocationID(zone, 133773944)
+local Camp2Spawn4 = GetSpawnByLocationID(zone, 133773945)
+local Camp2Spawn4a = GetSpawnByLocationID(zone, 133773807)
+local Camp2Spawn5 = GetSpawnByLocationID(zone, 133773808)
+local Camp2Spawn5a = GetSpawnByLocationID(zone, 133773942)
+local Camp2Spawn6 = GetSpawnByLocationID(zone, 133773947)
+local Camp2Spawn6a = GetSpawnByLocationID(zone, 133773805)
+if IsAlive(Camp2Spawn1) == true or IsAlive(Camp2Spawn1a) == true then
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp2Spawn2) == true or IsAlive(Camp2Spawn2a) == true then
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp2Spawn3) == true or IsAlive(Camp2Spawn3a) == true then
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp2Spawn4) == true or IsAlive(Camp2Spawn4a) == true then
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp2Spawn5) == true or IsAlive(Camp2Spawn5a) == true then
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp2Spawn6) == true or IsAlive(Camp2Spawn6a) == true then
+   AddTimer(NPC,6000,"Camp2SpawnCheck_Stage1",1, Spawn)
+   else
+      AddTimer(NPC, 6000, "Camp2_Stage2")
+  end
+end
+   
+function Camp2_Stage2(NPC, Spawn) --Stage 2 
+  local zone = GetZone(NPC)
+    local Camp2_Stage2Spawn1=SpawnByLocationID(zone, 190461)--darkpack pack leader
+    FaceTarget(Camp2_Stage2Spawn1, Spawn)
+    Attack(Camp2_Stage2Spawn1, Spawn)
+    
+AddTimer(NPC,6000,"Camp2SpawnCheck_Stage2")
+end
+
+
+function Camp2SpawnCheck_Stage2(NPC, Spawn)  --Stage 2 Living Check
+  local zone = GetZone(NPC)
+  local Camp2_Stage2Spawn1 = GetSpawnByLocationID(zone, 190461)
+ if IsAlive(Camp2_Stage2Spawn1) == true then
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage2",1, Spawn)
+   else
+      AddTimer(NPC, 6000, "Camp2_Stage3")
+  end
+end
+
+
+function Camp2_Stage3(NPC, Spawn) --Stage 3 (Possible Boss) 
+  local zone = GetZone(NPC)
+  local choice = math.random(0,100)
+    if choice <=33 then   -- % Chance for Boss to Spawn
+    local Camp2_Stage3Spawn1=SpawnByLocationID(zone, 133773811)--Tark
+    FaceTarget(Camp2_Stage3Spawn1, Spawn)
+    Attack(Camp2_Stage3Spawn1, Spawn)
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage3")
+else    -- Failed Boss Spawn
+    local Camp2ArkofPower = SpawnByLocationID(zone, 133773940)--Ark of Power
+    local Camp2MerchantSpawn = GetSpawnByLocationID(zone, 133773948)--Distressed Merchant
+    if Camp2MerchantSpawn ~=nil then
+    Despawn(Camp2MerchantSpawn)
+    local Camp2GratifiedMerchant = SpawnByLocationID(zone, 133773938)--Gratified Merchant
+    AddTimer(NPC,90000,"Camp2Reset")
+    else   
+    AddTimer(NPC,60000,"Camp2Reset")
+end
+end
+end
+
+
+function Camp2SpawnCheck_Stage3(NPC, Spawn)  --Stage 2 Living Check
+  local zone = GetZone(NPC)
+  local Camp2_Stage3Spawn1 = GetSpawnByLocationID(zone, 133773811)
+ if IsAlive(Camp2_Stage2Spawn1) == true then
+    AddTimer(NPC,6000,"Camp2SpawnCheck_Stage3",1,Spawn)
+   else
+local Camp2MerchantSpawn = GetSpawnByLocationID(zone, 133773948)--Distressed Merchant
+    if Camp2MerchantSpawn ~=nil then
+    Despawn(Camp2MerchantSpawn)
+    local Camp2GratifiedMerchant = SpawnByLocationID(zone, 133773941)--Gratified Merchant
+    AddTimer(NPC, 90000, "Camp2Reset",1,Spawn)
+    else
+    AddTimer(NPC, 10000, "Camp2Reset",1,Spawn)
+  end
+end
+end
+
+function Camp2Reset(NPC)
+local zone = GetZone(NPC)
+local Camp2Object = GetSpawnByLocationID(zone, 591701)   
+local Camp2Object2 = GetSpawnByLocationID(zone, 170244)   
+if Camp2Object~= nil then
+Despawn(Camp2Object)
+end
+if Camp2Object2~= nil then
+Despawn(Camp2Object2)
+end
+    local Camp2ArkofPower = GetSpawnByLocationID(zone, 133773940)--Ark of Power
+    if Camp2ArkofPower ~=nil then
+    Despawn(Camp2ArkofPower)
+    end  
+    local Camp2GratifiedMerchant = GetSpawnByLocationID(zone, 133773941)--Gratified Merchant
+    if Camp2GratifiedMerchant ~=nil then
+    Despawn(Camp2GratifiedMerchant)
+    end  
+end
+
+
+
+--- CAMP 3
+
+function Camp3Spawn(NPC, Spawn) -- Stage 1
+local zone = GetZone(NPC)
+local Camp3Object2 = SpawnByLocationID(zone, 170247)   
+local spawn1 = math.random(0,1)
+    if spawn1 == 1 then
+local Camp3Spawn1 = SpawnByLocationID(zone, 133773953) --Gnoll1 (mystic)
+    else
+    local Camp3Spawn1a = SpawnByLocationID(zone, 133773797) -- Gnoll1(youth)
+    end   
+local spawn2 = math.random(0,1)
+    if spawn2 == 1 then
+    local Camp3Spawn2 = SpawnByLocationID(zone, 133773800)--Gnoll2 (mystic)
+    else
+    local Camp3Spawn2a = SpawnByLocationID(zone, 133773957)-- Gnoll2(youth)
+    end
+local spawn3 = math.random(0,1)
+    if spawn3 == 1 then
+    local Camp3Spawn3 = SpawnByLocationID(zone, 133773952)--Gnoll3 (mystic)
+    else
+    local Camp3Spawn3a = SpawnByLocationID(zone, 133773796)-- Gnoll3(youth)
+    end   
+local spawn4 = math.random(0,1)
+    if spawn4 == 1 then
+    local Camp3Spawn4 = SpawnByLocationID(zone, 133773801)--Gnoll4 (mystic)
+    else
+    local Camp3Spawn4a = SpawnByLocationID(zone, 133773955)-- Gnoll4(youth)
+    end
+local spawn5 = math.random(0,1)
+    if spawn5 == 1 then
+    local Camp3Spawn5 = SpawnByLocationID(zone, 133773803)--Gnoll5 (mystic)
+    else
+    local Camp3Spawn5a = SpawnByLocationID(zone, 133773956)-- Gnoll5(youth)
+    end
+local spawn6 = math.random(0,1)
+    if spawn6 == 1 then
+    local Camp3Spawn6 = SpawnByLocationID(zone, 133773954)--Gnoll6 (mystic)
+    else
+    local Camp3Spawn6a = SpawnByLocationID(zone, 133773804)-- Gnoll6(youth)
+    end
+local MerchantSpawn =  math.random(0,1)
+    if MerchantSpawn == 1 then
+    local Camp3MerchantSpawn = SpawnByLocationID(zone, 134657)--Distressed Merchant
+    else
+    end
+        
+AddTimer(NPC,6000,"Camp3SpawnCheck_Stage1")
+end
+
+function Camp3SpawnCheck_Stage1(NPC, Spawn)  --Stage 1 Living Check
+  local zone = GetZone(NPC)
+local Camp3Spawn1 = GetSpawnByLocationID(zone, 133773953)
+local Camp3Spawn1a = GetSpawnByLocationID(zone, 133773797)
+local Camp3Spawn2 = GetSpawnByLocationID(zone, 133773800)
+local Camp3Spawn2a = GetSpawnByLocationID(zone, 133773957)
+local Camp3Spawn3 = GetSpawnByLocationID(zone, 133773952)
+local Camp3Spawn3a = GetSpawnByLocationID(zone, 133773796)
+local Camp3Spawn4 = GetSpawnByLocationID(zone, 133773801)
+local Camp3Spawn4a = GetSpawnByLocationID(zone, 133773955)
+local Camp3Spawn5 = GetSpawnByLocationID(zone, 133773803)
+local Camp3Spawn5a = GetSpawnByLocationID(zone, 133773956)
+local Camp3Spawn6 = GetSpawnByLocationID(zone, 133773954)
+local Camp3Spawn6a = GetSpawnByLocationID(zone, 133773804)
+if IsAlive(Camp3Spawn1) == true or IsAlive(Camp3Spawn1a) == true then
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp3Spawn2) == true or IsAlive(Camp3Spawn2a) == true then
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp3Spawn3) == true or IsAlive(Camp3Spawn3a) == true then
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp3Spawn4) == true or IsAlive(Camp3Spawn4a) == true then
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp3Spawn5) == true or IsAlive(Camp3Spawn5a) == true then
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage1",1, Spawn)
+    elseif IsAlive(Camp3Spawn6) == true or IsAlive(Camp3Spawn6a) == true then
+   AddTimer(NPC,6000,"Camp3SpawnCheck_Stage1",1, Spawn)
+   else
+      AddTimer(NPC, 6000, "Camp3_Stage2")
+  end
+end
+   
+function Camp3_Stage2(NPC, Spawn) --Stage 2 
+  local zone = GetZone(NPC)
+    local Camp3_Stage2Spawn1=SpawnByLocationID(zone, 133773958)--darkpack pack leader
+    FaceTarget(Camp3_Stage2Spawn1, Spawn)
+    Attack(Camp3_Stage2Spawn1, Spawn)
+    
+AddTimer(NPC,6000,"Camp3SpawnCheck_Stage2")
+end
+
+
+function Camp3SpawnCheck_Stage2(NPC, Spawn)  --Stage 2 Living Check
+  local zone = GetZone(NPC)
+  local Camp3_Stage2Spawn1 = GetSpawnByLocationID(zone, 133773958)
+ if IsAlive(Camp2_Stage2Spawn1) == true then
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage2",1, Spawn)
+   else
+      AddTimer(NPC, 6000, "Camp3_Stage3")
+  end
+end
+
+
+function Camp3_Stage3(NPC, Spawn) --Stage 3 (Possible Boss) 
+  local zone = GetZone(NPC)
+  local choice = math.random(0,100)
+    if choice <=33 then   -- % Chance for Boss to Spawn
+    local Camp3_Stage3Spawn1=SpawnByLocationID(zone, 133773802)--Tark
+    FaceTarget(Camp3_Stage3Spawn1, Spawn)
+    Attack(Camp3_Stage3Spawn1, Spawn)
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage3")
+else    -- Failed Boss Spawn
+    local Camp3ArkofPower = SpawnByLocationID(zone, 133773959)--Ark of Power
+    local Camp3MerchantSpawn = GetSpawnByLocationID(zone, 134657)--Distressed Merchant
+    if Camp3MerchantSpawn ~=nil then
+    Despawn(Camp3MerchantSpawn)
+    local Camp3GratifiedMerchant = SpawnByLocationID(zone, 133773938)--Gratified Merchant
+    AddTimer(NPC,90000,"Camp3Reset")
+    else   
+    AddTimer(NPC,60000,"Camp3Reset")
+end
+end
+end
+
+
+function Camp3SpawnCheck_Stage3(NPC, Spawn)  --Stage 2 Living Check
+  local zone = GetZone(NPC)
+  local Camp3_Stage3Spawn1 = GetSpawnByLocationID(zone, 133773802)--Tark
+ if IsAlive(Camp3_Stage2Spawn1) == true then
+    AddTimer(NPC,6000,"Camp3SpawnCheck_Stage3",1,Spawn)
+   else
+local Camp3MerchantSpawn = GetSpawnByLocationID(zone, 134657)--Distressed Merchant
+    if Camp3MerchantSpawn ~=nil then
+    Despawn(Camp3MerchantSpawn)
+    local Camp3GratifiedMerchant = SpawnByLocationID(zone, 133773960)--Gratified Merchant
+    AddTimer(NPC, 90000, "Camp3Reset",1,Spawn)
+    else
+    AddTimer(NPC, 10000, "Camp3Reset",1,Spawn)
+  end
+end
+end
+
+function Camp3Reset(NPC)
+local zone = GetZone(NPC)
+local Camp3Object = GetSpawnByLocationID(zone, 133773951)   
+local Camp3Object2 = GetSpawnByLocationID(zone, 170247)   
+if Camp3Object~= nil then
+Despawn(Camp3Object)
+end
+if Camp3Object2~= nil then
+Despawn(Camp3Object2)
+end
+    local Camp3ArkofPower = GetSpawnByLocationID(zone, 133773959)--Ark of Power
+    if Camp3ArkofPower ~=nil then
+    Despawn(Camp3ArkofPower)
+    end  
+    local Camp3GratifiedMerchant = GetSpawnByLocationID(zone, 133773960)--Gratified Merchant
+    if Camp3GratifiedMerchant ~=nil then
+    Despawn(Camp3GratifiedMerchant)
+    end  
+end
+
+
+

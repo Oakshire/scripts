@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/taking_back_from_the_blackshields.lua
 	Script Purpose	: Handles the quest, "Taking Back from the Blackshields"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Investigator Curfield
@@ -31,7 +31,7 @@ function Step1_Complete_FoundBarrel(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the research notes inside a barrel.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the stolen research materials inside a barrel.")
 
-	AddQuestStepChat(Quest, 2, "I must return to Investigator Curfeld.", 1, "I should take the stolen research back to Investigator Curfeld.", 0, 1240083)
+	AddQuestStepChat(Quest, 2, "I must return to Investigator Curfeld.", 1, "I should take the stolen research back to Investigator Curfeld.", 0, 1240027)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 

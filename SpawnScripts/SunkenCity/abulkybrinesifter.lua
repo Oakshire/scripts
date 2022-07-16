@@ -6,12 +6,17 @@
 	Script Notes	:	<special-instructions>
 --]]
 
+local QUEST_3_FROM_THORSON = 378
+
 function spawn(NPC)
 	waypoints(NPC)
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if HasQuest(Spawn, QUEST_3_FROM_THORSON) and not QuestStepIsComplete(Spawn, QUEST_3_FROM_THORSON, 1) then
+		SetStepComplete(Spawn, QUEST_3_FROM_THORSON, 1)
+	end
 end
 
 function respawn(NPC)

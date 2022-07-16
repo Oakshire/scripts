@@ -29,7 +29,8 @@ function casted_on(NPC, Spawn, SpellName)
 end
 
 function CheckRaceTimer(NPC, Spawn)
-    AddTimer(NPC,2500,"CheckRace")
+    CloseConversation(NPC, Spawn)
+    AddTimer(NPC,2000,"CheckRace",1,Spawn)
 end
 
 function CheckRace(NPC, Spawn)

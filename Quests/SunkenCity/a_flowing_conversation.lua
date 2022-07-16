@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/a_flowing_conversation.lua
 	Script Purpose	: Handles the quest, "A Flowing Conversation"
 	Script Author	: Scatman
-	Script Date	    : 2009.07.28
+	Script Date	    : 2009.07.28 (15.7.2022 by torsten)
 	
 	Zone       : Sunken City
 	Quest Giver: Inquisitor Thorson
@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to speak to the iksar named Saydith Yarr and listen to everything he has to say.", 1, "I should find and talk to the iksar named Saydith Yarr.", 0, 1240014)
+	AddQuestStepChat(Quest, 1, "I need to speak to the iksar named Saydith Yarr and listen to everything he has to say.", 1, "I should find and talk to the iksar named Saydith Yarr.", 0, 1240019)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_SpokeWithSaydith")
 end
 
@@ -30,7 +30,7 @@ function Step1_Complete_SpokeWithSaydith(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have spoken to Saydith Yarr and learned a bit about the Sunken City.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have spoken to Saydith Yarr.")
 	
-	AddQuestStepChat(Quest, 2, "I should return to Inquisitor Thorson.", 1, "I should let Thorson know that I talked to Yarr.", 0, 1240007)
+	AddQuestStepChat(Quest, 2, "I should return to Inquisitor Thorson.", 1, "I should let Thorson know that I talked to Yarr.", 0, 1240024)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 
