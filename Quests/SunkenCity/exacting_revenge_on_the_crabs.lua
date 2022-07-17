@@ -2,7 +2,7 @@
 	Script Name		:	exacting_revenge_on_the_crabs.lua
 	Script Purpose	:	Handles the quest, "Exacting Revenge on the Crabs"
 	Script Author	:	Neatz09	
-	Script Date		:	12/31/2018
+	Script Date		:	12/31/2018 (16.7.2022 by torsten, added more crab IDs)
 	Script Notes	:	Examined item (a twitching crab claw)
 
 	Zone			:	Sunken City
@@ -11,9 +11,8 @@
 	Followed by		:	None
 --]]
 
-local crabs = 1240007
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Kill crabs", 30, 100, "I need to kill crabs in the Sunken City until my rage subsides.  I can reach the Sunken City by using any of the bells in and around the City of Freeport.", 77, crabs)
+	AddQuestStepKill(Quest, 1, "Kill crabs", 30, 100, "I need to kill crabs in the Sunken City until my rage subsides.  I can reach the Sunken City by using any of the bells in and around the City of Freeport.", 77, 1240007, 1240008, 1240037, 1240045)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 

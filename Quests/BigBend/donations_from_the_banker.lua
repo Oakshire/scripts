@@ -21,7 +21,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've spoken with the banker Voranius in Beggar's Court.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "The banker was scared of my threat and gave his 'donation'. He also said some bad things about Manius.")
     
-    AddQuestStepChat(Quest, 2, "I should return to Manius.", 1, "I should return to Manius.", 11, 1240017)
+    AddQuestStepChat(Quest, 2, "I should return to Manius.", 1, "I should return to Manius.", 11, 1370127)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

@@ -1,10 +1,12 @@
 --[[
-	Script Name	: SpawnScripts/Sprawl/CrispinLuvinius.lua
+	Script Name	: SpawnScripts/BeggarsCourt/CrispinLuviniusBC.lua
 	Script Purpose	: Crispin Luvinius 
 	Script Author	: Scatman
 	Script Date	: 2009.07.26 (17.7.2022 by torsten, moved both quests from The Sprawl to Beggar's Court as in classic EverQuest)
 	Script Notes	: 
 --]]
+
+require "SpawnScripts/Generic/DialogModule"
 
 local ProblemSolving = 5661
 local AdvancedProblemSolving = 5662
@@ -32,12 +34,12 @@ function hailed(NPC, Spawn)
     if HasCompletedQuest(Spawn, ProblemSolving) and HasCompletedQuest(Spawn, AdvancedProblemSolving)then
         Dialog3(NPC, Spawn)
     end
-    if GetQuestStep(Spawn, ProblemSolving) == 1 then
-        SetStepComplete(Spawn, ProblemSolving, 1)
+    if GetQuestStep(Spawn, ProblemSolving) == 2 then
+        SetStepComplete(Spawn, ProblemSolving, 2)
         Dialog8(NPC, Spawn)
     end
-	if GetQuestStep(Spawn, AdvancedProblemSolving) == 1 then
-        SetStepComplete(Spawn, AdvancedProblemSolving, 1)
+	if GetQuestStep(Spawn, AdvancedProblemSolving) == 2 then
+        SetStepComplete(Spawn, AdvancedProblemSolving, 2)
         Dialog10(NPC, Spawn)
     end
     RandomGreeting(NPC, Spawn)

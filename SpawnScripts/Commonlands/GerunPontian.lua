@@ -14,6 +14,7 @@ local ArmadilloHides = 399
 local OrcsAndGhosts = 400
 local Rainus = 401
 local ReturningToCaptainFeralis = 5221
+local Eleventh_AJourneyOutsideTheCity = 5658
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange")
@@ -88,8 +89,11 @@ if GetDeity(Spawn) ~= 1   then
 	elseif HasQuest(Spawn, InHisName) then
 	    SetStepComplete(Spawn, InHisName, 1)
 	end
-elseif GetDeity(Spawn) == 1 then
+    elseif GetDeity(Spawn) == 1 then
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1022.mp3", "You are less then welcome here.", "", 0, 0, Spawn)
+    end
+    if GetQuestStep(Spawn, Eleventh_AJourneyOutsideTheCity) == 2 then
+        SetStepComplete(Spawn, Eleventh_AJourneyOutsideTheCity, 2)
     end
 end
 

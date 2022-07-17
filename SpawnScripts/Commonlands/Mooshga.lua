@@ -15,6 +15,7 @@ local OMugwumpWhereArtThou = 434
 local OverlordsOmelet = 435
 local PachydermPunch = 436
 local MushroomMadness = 437
+local Eleventh_AJourneyOutsideTheCity = 5658
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange")
@@ -109,7 +110,10 @@ function hailed(NPC, Spawn)
 	dlg31(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, HyenaJerky) and HasCompletedQuest(Spawn, SeafoodSurprise) and HasCompletedQuest(Spawn, CrackPot) and HasCompletedQuest(Spawn, WisperSweetNothings) and  HasCompletedQuest(Spawn, Rhinorific) and  HasCompletedQuest(Spawn, OMugwumpWhereArtThou) and  HasCompletedQuest(Spawn, OverlordsOmelet) and HasCompletedQuest(Spawn, PachydermPunch) and HasCompletedQuest(Spawn, MushroomMadness) then
 	PlayFlavor(NPC, "", "Hello, friend... Mooshga fed you well, no?", "", 0, 0, Spawn)
-end
+    end
+    if GetQuestStep(Spawn,  Eleventh_AJourneyOutsideTheCity) == 1 then
+        SetStepComplete(Spawn,  Eleventh_AJourneyOutsideTheCity, 1)
+    end
    end
 
 function dlg1(NPC, Spawn)

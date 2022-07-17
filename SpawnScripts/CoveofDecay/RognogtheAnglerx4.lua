@@ -6,26 +6,11 @@
     Script Notes   : Spell IDs still need to be collected.
 --]]
 
-spells = {1, 2, 3, 4, 5} -- need to get spell IDs/names
 
 function spawn(NPC)
 end
 
 function aggro(NPC, Spawn)
-    AddTimer(NPC, 1000, "spellLoop")
-end
-
-function spellLoop(NPC, Spawn) -- Loopback function for spellcasts.
-    AddTimer(NPC, math.random(1500,2500), "spellChoice")
-end
-
-function spellChoice(NPC, Spawn) -- select a spell from table.
-    local hated = GetMostHated(NPC) 
-        if hated ~= nil then 
-            FaceTarget(NPC, hated) 
-            -- CastSpell(hated, spells[math.random(#spells)], 3, NPC)
-        end
-    AddTimer(NPC, math.random(1500, 2500), "spellLoop")
 end
 
 function respawn(NPC)

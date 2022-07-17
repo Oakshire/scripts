@@ -1,5 +1,5 @@
 --[[
-	Script Name	: SpawnScripts/Sprawl/CrispinLuvinius.lua
+	Script Name	: SpawnScripts/BeggarsCourt/CrispinLuvinius.lua
 	Script Purpose	: Crispin Luvinius 
 	Script Author	: Scatman
 	Script Date	: 2009.07.26 (17.7.2022 by torsten, moved both quests from The Sprawl to Beggar's Court as in classic EverQuest)

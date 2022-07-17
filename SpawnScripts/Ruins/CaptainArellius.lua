@@ -9,14 +9,14 @@
 require "SpawnScripts/Generic/DialogModule"
 
 local QuestFromSprawl = 543
-local QuestFromGraveyard = 11111 --of course not a valid ID
+local QuestFromGraveyard = 553 --by torsten 16.7.2022
 local QuestFromSunkenCity = 384 --by torsten 15.7.2022
 
 local First_ReportingForDuty = 368
 local Fifth_RequestingFurtherOrders = 372
 local Sixth_SteppingUptheOffensive = 373
 local Tenth_FileAFinalReport = 395
-local Eleventh_AJourneyOutsideTheCity = 396
+local Eleventh_AJourneyOutsideTheCity = 5658
 
 function spawn(NPC)
 	ProvidesQuest(NPC, First_ReportingForDuty)
@@ -41,7 +41,7 @@ function hailed(NPC, Spawn)
 	elseif HasQuest(Spawn, QuestFromSprawl) then 
 		SetStepComplete(Spawn, QuestFromSprawl, 1)
 		if not HasCompletedQuest(Spawn, First_ReportingForDuty) and not HasQuest(Spawn, First_ReportingForDuty) then
-			AddConversationOption(conversation, "My name is .. GetName(Spawn) .. . Custodian Zaddar in the Graveyard sent me.", "dlg_0_1")
+			AddConversationOption(conversation, "My name is .. GetName(Spawn) .. . Enforcer Kurdek from The Sprawl sent me.", "dlg_0_1")
 		end
 	elseif HasQuest(Spawn, QuestFromSunkenCity) then
 		SetStepComplete(Spawn, QuestFromSunkenCity, 1)
@@ -51,75 +51,31 @@ function hailed(NPC, Spawn)
     end
 
     if not HasQuest(Spawn, First_ReportingForDuty) and not HasCompletedQuest(Spawn, First_ReportingForDuty) then
-            PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius001.mp3", "", "", 3910993894, 659100358, Spawn)
-		    AddConversationOption(conversation, "It sounds like you need a hand. How can I help?", "dlg_0_1")
-		    AddConversationOption(conversation, "Your conflict is none of my concern.")
-		    StartConversation(conversation, NPC, Spawn, "Stand your ground! I will defend Freeport to my dying breath! Are you friend or foe?")
-	        dlg_0_1(NPC, Spawn)
+        PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius001.mp3", "", "", 3910993894, 659100358, Spawn)
+	    AddConversationOption(conversation, "It sounds like you need a hand. How can I help?", "dlg_0_1")
+	    AddConversationOption(conversation, "Your conflict is none of my concern.")
+	    StartConversation(conversation, NPC, Spawn, "Stand your ground! I will defend Freeport to my dying breath! Are you friend or foe?")
+    end
+    if HasCompletedQuest(Spawn, First_ReportingForDuty) then
+        if not HasQuest(Spawn, Sixth_SteppingUptheOffensive) and not HasCompletedQuest(Spawn, Sixth_SteppingUptheOffensive) then
+            dlg_2_0(NPC, Spawn)
         end
-        if HasCompletedQuest(Spawn, First_ReportingForDuty) then
-            if not HasQuest(Spawn, Sixth_SteppingUptheOffensive) and not HasCompletedQuest(Spawn, Sixth_SteppingUptheOffensive) then
-                dlg_2_1(NPC, Spawn)
-            end
-        end 
-        if HasCompletedQuest(Spawn, First_ReportingForDuty) then
-            if not HasQuest(Spawn, TrollPatrol) and not HasCompletedQuest(Spawn, TrollPatrol) then
-                Dialog17(NPC, Spawn)
-            end
-        end 
-        RandomGreeting(NPC, Spawn)
-	end
-
-	--[[
-	elseif not CanReceiveQuest(Spawn, Sixth_SteppingUptheOffensive) and not HasCompletedQuest(Spawn, Fifth_RequestingFurtherOrders) then 
-		if HasQuest(Spawn, Fifth_RequestingFurtherOrders) then 
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius019.mp3", "", "", 79133986, 324326874, Spawn)
-			AddConversationOption(conversation, "I completed a number of tasks for the lieutenant. He sent me back to you to receive further orders.", "dlg_2_0")
-			AddConversationOption(conversation, "Not yet, Captain.")
-			StartConversation(conversation, NPC, Spawn, "Have you completed your assignments for Lieutenant Argosian at the first outpost?")
-		else
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius019.mp3", "", "", 79133986, 324326874, Spawn)
-			AddConversationOption(conversation, "Not yet, Captain.")
-			StartConversation(conversation, NPC, Spawn, "Have you completed your assignments for Lieutenant Argosian at the first outpost?")
-		end
-	elseif not HasCompletedQuest(Spawn, Sixth_SteppingUptheOffensive) then 
-		if CanReceiveQuest(Spawn, Sixth_SteppingUptheOffensive) then -- probably need to look this over again tbh
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius019.mp3", "", "", 79133986, 324326874, Spawn)
-			AddConversationOption(conversation, "I completed a number of tasks for the lieutenant. He sent me back to you to receive further orders.", "dlg_2_0")
-			AddConversationOption(conversation, "Not yet, Captain.")
-			StartConversation(conversation, NPC, Spawn, "Have you completed your assignments for Lieutenant Argosian at the first outpost?")
-		elseif HasQuest(Spawn, Sixth_SteppingUptheOffensive) then
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius029.mp3", "", "", 2327537314, 879285291, Spawn)
-			AddConversationOption(conversation, "Not yet.")
-			StartConversation(conversation, NPC, Spawn, "Have you finished your assignments given by Lieutenant Imperidus at the second outpost?")
-		end
-	elseif not CanReceiveQuest(Spawn, Eleventh_AJourneyOutsideTheCity) and not HasCompletedQuest(Spawn, Tenth_FileAFinalReport) then 
-		if HasQuest(Spawn, Tenth_FileAFinalReport) then
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius029.mp3", "", "", 2327537314, 879285291, Spawn)
-			AddConversationOption(conversation, "I helped the lieutenant investigate the Lonetusk orcs.", "dlg_40_1")
-			AddConversationOption(conversation, "Not yet.")
-			StartConversation(conversation, NPC, Spawn, "Have you finished your assignments given by Lieutenant Imperidus at the second outpost?")
-		else
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius029.mp3", "", "", 2327537314, 879285291, Spawn)
-			AddConversationOption(conversation, "Not yet.")
-			StartConversation(conversation, NPC, Spawn, "Have you finished your assignments given by Lieutenant Imperidus at the second outpost?")
-		end
-	elseif not HasCompletedQuest(Spawn, Eleventh_AJourneyOutsideTheCity) then
-			Say(Spawn, "here")
-		if HasQuest(Spawn, Eleventh_AJourneyOutsideTheCity) then
-			PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius037.mp3", "", "", 1359197915, 2412521722, Spawn)
-			AddConversationOption(conversation, "Be well, Captain.", "dlg_42_1")
-			StartConversation(conversation, NPC, Spawn, "It is good to see you again,  .. GetName(Spawn) .. ! We are in your debt for helping uncover the source of the orc menace. Thanks to you, we are keeping the orcs at bay and I'm confident we will drive them out of the Ruins soon.")
-		elseif CanReceiveQuest(Spawn, Eleventh_AJourneyOutsideTheCity) then
-			dlg_40_3(NPC, Spawn)
-		end 
-	elseif HasCompletedQuest(Spawn, Tenth_FileAFinalReport) then
-		Say(Spawn, "here")
-		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius037.mp3", "", "", 1359197915, 2412521722, Spawn)
-		AddConversationOption(conversation, "Be well, Captain.", "dlg_42_1")
-		StartConversation(conversation, NPC, Spawn, "It is good to see you again,  .. GetName(Spawn) .. ! We are in your debt for helping uncover the source of the orc menace. Thanks to you, we are keeping the orcs at bay and I'm confident we will drive them out of the Ruins soon.")
-	end
-	--]]
+    end 
+    if HasCompletedQuest(Spawn, Tenth_FileAFinalReport) then
+        if not HasQuest(Spawn, Eleventh_AJourneyOutsideTheCity) and not HasCompletedQuest(Spawn, Eleventh_AJourneyOutsideTheCity) then
+            dlg_40_3(NPC, Spawn)
+        end
+    end 
+    if GetQuestStep(Spawn, RequestingFurtherOrders) == 1 then
+        SetStepComplete(Spawn, RequestingFurtherOrders, 1)
+        dlg_2_0(NPC, Spawn)
+    end
+    if GetQuestStep(Spawn,  Tenth_FileAFinalReport) == 1 then
+        SetStepComplete(Spawn,  Tenth_FileAFinalReport, 1)
+        dlg_40_3(NPC, Spawn)
+    end
+    RandomGreeting(NPC, Spawn)
+end
 
 function dlg_0_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -127,7 +83,7 @@ function dlg_0_1(NPC, Spawn)
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius005.mp3", "", "", 1356974238, 3910566628, Spawn)
 		AddConversationOption(conversation, "Orcs, really?", "dlg_1_1")
-		AddConversationOption(conversation, "Where did the orcs come from?")
+		AddConversationOption(conversation, "Where did the orcs come from?", "dlg_1_1")
 		AddConversationOption(conversation, "Thank you for the information.")
 	StartConversation(conversation, NPC, Spawn, "You've entered a war zone, citizen. The Freeport Militia is here in force to defend our city. Two orc clans seem to be working together in an attempt to take over the Ruins and use it as a staging ground to attack Freeport.")
 end
@@ -199,7 +155,7 @@ function dlg_1_7(NPC, Spawn)
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius011.mp3", "", "", 2984532909, 290696404, Spawn)
 		AddConversationOption(conversation, "Couldn't the Militia save them?", "dlg_1_8")
-		AddConversationOption(conversation, "I've heard enough. How can I help you defend the Ruins?", "OfferQuest1")
+		AddConversationOption(conversation, "I've heard enough. How can I help you defend the Ruins?")
 		AddConversationOption(conversation, "Too bad.")
 	StartConversation(conversation, NPC, Spawn, "In an unusually clandestine move, the Brokentusk and Lonetusk tribes seized the opportunity to sneak into the Shoreside docks by nightfall. The cowardly beasts overpowered the small garrison left to defend the district, then proceeded to burn and pillage everything they found. Many noble citizens of Freeport died in that conflict.")
 end
@@ -247,29 +203,12 @@ end
 function dlg_1_12(NPC, Spawn) -- OFFER QUEST1
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+    OfferQuest(NPC, Spawn, First_ReportingForDuty)
+    
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius016.mp3", "", "", 3389775257, 1638630596, Spawn)
-		AddConversationOption(conversation, "I will do so.", "OfferQuest1")
+		AddConversationOption(conversation, "I will do so.")
 		AddConversationOption(conversation, "No thanks.")
 	StartConversation(conversation, NPC, Spawn, "I must remain here to give assignments to incoming troops. Go through the archway and report to one of my lieutenants, Argosian. He will tell you how you can best serve our cause.")
-end
-
-function dlg_1_13(NPC, Spawn) -- QUEST ACCEPT TEXT
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius017.mp3", "", "", 3161105606, 1921169647, Spawn)
-	AddConversationOption(conversation, "Thank you for the advice.", "dlg_2_14")
-	StartConversation(conversation, NPC, Spawn, "Good. Oh, be sure to pay homage to the statue of our beloved Overlord. It would prove most beneficial for you to bask in the wisdom of his visage.")
-end
-
-function dlg_1_14(NPC, Spawn) -- AFTER QUEST ACCEPT TEXT
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius018.mp3", "", "", 377300022, 2983031406, Spawn)
-		AddConversationOption(conversation, "I'll go see him.")
-	StartConversation(conversation, NPC, Spawn, "Lieutenant Argosian at the first outpost will be responsible for your initial training. Do not return to me until he has ordered you to do so.")
 end
 
 function dlg_2_0(NPC, Spawn)
@@ -285,9 +224,7 @@ end
 function dlg_2_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	if HasQuest(Spawn, Fifth_RequestingFurtherOrders) then
-		SetStepComplete(Spawn, Fifth_RequestingFurtherOrders, 1)
-	end 
+
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius021.mp3", "", "", 93483667, 1523875207, Spawn)
 		AddConversationOption(conversation, "Thank you, Captain. Is there anything else I can do to aid the Militia?", "dlg_2_2")
 		AddConversationOption(conversation, "I'm going to take my loot and go.")
@@ -337,9 +274,10 @@ end
 function dlg_2_6(NPC, Spawn) -- OFFER QUEST 6
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	OfferQuest(NPC, Spawn, Sixth_SteppingUptheOffensive)
+    
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius027.mp3", "", "", 2644659750, 71027369, Spawn)
-		AddConversationOption(conversation, "I will report to her.", "OfferQuest6")
+		AddConversationOption(conversation, "I will report to her.")
 		AddConversationOption(conversation, "Time for me to go.")
 	StartConversation(conversation, NPC, Spawn, "I need you to report to Lieutenant Imperidus, who is stationed at the second Militia outpost deeper in the Ruins. It is located to the west of here, near the gate to the Sprawl. She is heading up the Lonetusk investigation.")
 end
@@ -359,25 +297,9 @@ function dlg_40_2(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius031.mp3", "", "", 2636650714, 3532932245, Spawn)
-		AddConversationOption(conversation, "Where are these Rujarkian orcs located?", "WhereLocated")
+		AddConversationOption(conversation, "Where are these Rujarkian orcs located?")
 		AddConversationOption(conversation, "Am I to be rewarded for my efforts?", "dlg_40_3")
 	StartConversation(conversation, NPC, Spawn, "By the Overlord! This is vital information that I will send back to the Militia House immediately. It threatens the very security of Freeport!")
-end
-
-function WhereLocated(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	AddConversationOption(conversation, "Why does this information pose such a danger to Freeport?", "DangerToFreeport")
-	StartConversation(conversation, NPC, Spawn, "The Rujarkian orcs are based out of the clefts in the Desert of Ro, a harsh region that lies to the south of our own continent of D'Lere. Perhaps when you are much more experienced than you are now, you will seek adventure there.")
-end
-
-function DangerToFreeport(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	AddConversationOption(conversation, "I'm glad the information I obtained was useful.", "dlg_40_3")
-	StartConversation(conversation, NPC, Spawn, "The Rujarkian orcs are an extremely powerful and well-organized tribe. If the Rujarkians are supplying smaller groups like the Brokentusk and Lonetusk, it is only a matter of time before they provide weapons and armor to the Bloodskull orcs in the Commonlands. For all we know, such an alliance may already be forming.")
 end
 
 function dlg_40_3(NPC, Spawn)
@@ -391,44 +313,33 @@ function dlg_40_3(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Indeed, your efforts have aided Freeport greatly. To show our thanks, you may choose an additional reward from our supply chests. These items will serve you well.")
 end
 
-function dlg_40_4(NPC, Spawn) -- need to add offering quest once its scripted
+function dlg_40_4(NPC, Spawn) 
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
-		AddConversationOption(conversation, "Yes, I will travel to the Commonlands.")
+		AddConversationOption(conversation, "Yes, I will travel to the Commonlands.", "dlg_22_5")
 		AddConversationOption(conversation, "I think I will be going, Captain. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "Our service to the Overlord is never finished. I know of some loyal citizens in the Commonlands who need your help. Are you interested?")
 end
 
-function dlg_100_5(NPC, Spawn)
+function dlg_22_5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	OfferQuest(NPC, Spawn, Eleventh_AJourneyOutsideTheCity)
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius_solo003.mp3", "", "", 1562481055, 2208348974, Spawn)
-		AddConversationOption(conversation, "Understood.", "dlg_1_6")
+		AddConversationOption(conversation, "Understood.", "dlg_11_6")
 	StartConversation(conversation, NPC, Spawn, "Use the bell here on the docks to travel within Freeport and choose East Freeport as your destination. Use your map to guide you to the gate leading to West Freeport. From there, travel through that part of the city until you arrive at the main gate that leads to the Commonlands.")
 end
 
-function dlg_100_6(NPC, Spawn)
+function dlg_11_6(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/captain_arellius/fprt_adv04_ruins/revamp/captain_arellius_solo004.mp3", "", "", 91462570, 1357108888, Spawn)
-		AddConversationOption(conversation, "I will. Thank you, Captain.", "dlg_1_7")
+		AddConversationOption(conversation, "I will. Thank you, Captain.")
 	StartConversation(conversation, NPC, Spawn, "Remember that the Commonlands can be a dangerous place. Judge your battles carefully,  .. GetName(Spawn) .. . When you gather allies and are ready to undertake the fight against the Lonetusk orcs, return here.")
-end
-
-function OfferQuest1(NPC, Spawn)
-	OfferQuest(NPC, Spawn, First_ReportingForDuty)
-end
-
-function OfferQuest6(NPC, Spawn)
-	OfferQuest(NPC, Spawn, Sixth_SteppingUptheOffensive)
-end
-
-function OfferQuest11(NPC, Spawn)
-	OfferQuest(NPC, Spawn, Eleventh_AJourneyOutsideTheCity)
 end
 
 function RandomGreeting(NPC, Spawn)

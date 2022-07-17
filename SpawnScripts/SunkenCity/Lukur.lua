@@ -2,14 +2,14 @@
 	Script Name	: SpawnScripts/SunkenCity/Lukur.lua
 	Script Purpose	: Lukur <General Goods>
 	Script Author	: jakejp
-	Script Date	: 2018.12.27
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Date	: 2018.12.27 (16.7.2022 by Torsten)
+	Script Notes	: 
 --]]
 
-local QUEST_1 = 374
+local LukursAntiques = 374
 
 function spawn(NPC)
-	ProvidesQuest(NPC, QUEST_1)
+	ProvidesQuest(NPC, LukursAntiques)
 end
 
 function respawn(NPC)
@@ -20,9 +20,9 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	if not HasCompletedQuest(Spawn, QUEST_1) then
-		if HasQuest(Spawn, QUEST_1) then
-			if GetQuestStep(Spawn, QUEST_1) == 4 then
+	if not HasCompletedQuest(Spawn, LukursAntiques) then
+		if HasQuest(Spawn, LukursAntiques) then
+			if GetQuestStep(Spawn, LukursAntiques) == 4 then
 				AddConversationOption(conversation, "I've returned with the masks.", "dlg_12_1")
 			end
 		else
@@ -49,6 +49,7 @@ end
 function dlg_12_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+	SetStepComplete(Spawn, LukursAntiques, 4)
 
 	PlayFlavor(NPC, "voiceover/english/optional1/lukur/fprt_adv01_sunken/lukur003.mp3", "", "", 1196217033, 2873878783, Spawn)
 		AddConversationOption(conversation, "Thank you.  ", "dlg_12_2")
@@ -57,5 +58,5 @@ end
 
 function OfferQuest1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	OfferQuest(NPC, Spawn, QUEST_1)
+	OfferQuest(NPC, Spawn, LukursAntiques)
 end

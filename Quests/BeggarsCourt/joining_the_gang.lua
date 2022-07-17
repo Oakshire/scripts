@@ -20,7 +20,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed the Blackshield raiders.")
     
-	AddQuestStepChat(Quest, 2, "I should return to Manius.", 1, "I've let Manius know that I've done what it takes to pass his test.", 11, 1240017)
+	AddQuestStepChat(Quest, 2, "I should return to Manius.", 1, "I've let Manius know that I've done what it takes to pass his test.", 11, 1370127)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

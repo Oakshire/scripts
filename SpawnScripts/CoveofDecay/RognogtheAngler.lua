@@ -8,7 +8,7 @@
                    : The crabs in the zone also attack the player.
 --]]
 
-spells = {1, 2, 3, 4, 5} -- need to get spell IDs/names
+
 
 -- basic inclusions for mob behavior here
 function spawn(NPC)
