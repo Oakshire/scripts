@@ -6,6 +6,7 @@
 	Script Notes	: 
 --]]
 
+local MeettheInquisitor = 5671
 local HALFELF_MENTOR_QUEST_5 = 189
 local QUEST_1 = 376
 local QUEST_2 = 377
@@ -49,6 +50,10 @@ function hailed(NPC, Spawn)
 	if HasQuest(Spawn, HALFELF_MENTOR_QUEST_5) then
 		AddConversationOption(conversation, "My name is " .. GetName(Spawn) .. ". Delcairn Sebastian sent in Beggar's Court sent me here to speak with you.", "Delcairn")
 	end
+	if GetQuestStep(Spawn, MeettheInquisitor) == 1 then
+        SetStepComplete(Spawn, MeettheInquisitor, 1)
+        Delcairn(NPC, Spawn)
+    end
 	
 	if HasCompletedQuest(Spawn, QUEST_1) then
 		if HasCompletedQuest(Spawn, QUEST_2) then
