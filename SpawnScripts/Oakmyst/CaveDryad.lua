@@ -12,6 +12,7 @@
 	Script Date		:	01/15/2022 11:06:33 AM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/Dryad_Corrupt1.lua")
 
 function spawn(NPC)
 	waypoints(NPC)

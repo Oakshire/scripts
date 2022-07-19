@@ -7,6 +7,7 @@
 --]]
 
 local QUEST_1 = 386
+local InformationGatheringFromaFishmonger = 5677
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
@@ -34,6 +35,10 @@ function hailed(NPC, Spawn)
 	else
 		Say(NPC, "These are my fish so you can't have them! Go... go find your own!", Spawn)
 	end
+	
+	if GetQuestStep(Spawn, InformationGatheringFromaFishmonger) == 1 then
+        SetStepComplete(Spawn, InformationGatheringFromaFishmonger, 1)
+    end
 end
 
 function dlg_3_1(NPC, Spawn)

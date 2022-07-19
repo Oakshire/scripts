@@ -8,6 +8,8 @@
 
 require "SpawnScripts/Generic/DialogModule"
 
+local ADramaticPerformance = 5679
+
 function spawn(NPC)
 end
 
@@ -16,6 +18,9 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    if GetQuestStep(Spawn, ADramaticPerformance) == 1 then
+        SetStepComplete(Spawn, ADramaticPerformance, 1)
+    end
     Dialog1(NPC, Spawn)
 end
 

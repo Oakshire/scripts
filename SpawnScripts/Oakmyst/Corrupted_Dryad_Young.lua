@@ -2,9 +2,10 @@
     Script Name    : SpawnScripts/Oakmyst/anOakmystspider.lua
     Script Author  : Dorbin
     Script Date    : 2022.01.15
-    Script Purpose : Dryad Roaming
+    Script Purpose : Ground Roaming
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/Dryad_Corrupt1.lua")
 
 function spawn(NPC)
     ChooseMovement(NPC)

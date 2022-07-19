@@ -2,7 +2,7 @@
 	Script Name	: Quests/SunkenCity/exotic_soups.lua
 	Script Purpose	: Handles the quest, "Exotic Soups"
 	Script Author	: Scatman
-	Script Date	    : 2009.08.01 (15.7.2022 by torsten)
+	Script Date	    : 2009.08.01 (15.7.2022 by torsten, this quests used to start in Longshadow Alley but I'll leave it here)
 	
 	Zone       : Sunken City
 	Quest Giver: Tilzak N'Lim
