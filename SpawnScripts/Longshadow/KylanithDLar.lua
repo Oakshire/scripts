@@ -2,11 +2,14 @@
 	Script Name	: SpawnScripts/Longshadow/KylanithDLar.lua
 	Script Purpose	: Kylanith D`Lar 
 	Script Author	: John Adams
-	Script Date	: 2008.09.29
+	Script Date	: 2008.09.29 (20.7.2022 by torsten)
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+local TheStolenArtifactsofThex = 5683
+
 function spawn(NPC)
+    ProvidesQuest(NPC, TheStolenArtifactsofThex)
 end
 
 function respawn(NPC)
@@ -16,11 +19,24 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/optional1/kylanith_d_lar/fprt_hood05/qst_kylanith_hail.mp3", "", "", 387692981, 2731095766, Spawn)
-	AddConversationOption(conversation, "I cannot chat now. Farewell.")
-	--AddConversationOption(conversation, "Freeport is strong! Qeynos is weak!")
-	StartConversation(conversation, NPC, Spawn, "They call this the Age of Destiny. It's the age of someone's or some empire's claim to destiny. The world is in ruins. And now here we are, in Freeport, begging for acceptance and the embrace of its mighty walls.")
+	
+	if GetQuestStep(Spawn, TheStolenArtifactsofThex) == 5 then
+	    FaceTarget(NPC, Spawn)
+	    SetStepComplete(Spawn, TheStolenArtifactsofThex, 5)
+    end
+	if GetQuestStep(Spawn, TheStolenArtifactsofThex) == 7 then
+        SetStepComplete(Spawn, TheStolenArtifactsofThex, 7)
+    end
+    if not HasQuest(Spawn, TheStolenArtifactsofThex) and not HasCompletedQuest(Spawn, TheStolenArtifactsofThex) then
+	    PlayFlavor(NPC, "voiceover/english/optional1/kylanith_d_lar/fprt_hood05/qst_kylanith_hail.mp3", "", "", 387692981, 2731095766, Spawn)
+	    AddConversationOption(conversation, "I cannot chat now. Farewell.")
+	    AddConversationOption(conversation, "Freeport is strong! Qeynos is weak!", "dlg_10_1")
+	    StartConversation(conversation, NPC, Spawn, "They call this the Age of Destiny. It's the age of someone's or some empire's claim to destiny. The world is in ruins. And now here we are, in Freeport, begging for acceptance and the embrace of its mighty walls.")
+    else
+	    PlayFlavor(NPC, "voiceover/english/optional1/kylanith_d_lar/fprt_hood05/qst_kylanith_hail.mp3", "", "", 387692981, 2731095766, Spawn)
+	    AddConversationOption(conversation, "I cannot chat now. Farewell.")
+	    StartConversation(conversation, NPC, Spawn, "They call this the Age of Destiny. It's the age of someone's or some empire's claim to destiny. The world is in ruins. And now here we are, in Freeport, begging for acceptance and the embrace of its mighty walls.")
+    end    
 end
 
 function dlg_10_1(NPC, Spawn)
@@ -28,8 +44,8 @@ function dlg_10_1(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional1/kylanith_d_lar/fprt_hood05/quests/kylanithdlar/kylanith_lore_01.mp3", "", "", 1570701615, 3622138466, Spawn)
-	AddConversationOption(conversation, "Careful! Do not speak the Overlord's name or we shall both die!")
-	AddConversationOption(conversation, "I cannot chat now. Farewell.", "dlg_10_2")
+	AddConversationOption(conversation, "Careful! Do not speak the Overlord's name or we shall both die!", "dlg_10_2")
+	AddConversationOption(conversation, "I cannot chat now. Farewell.")
 	StartConversation(conversation, NPC, Spawn, "Qeynos or Freeport? There was no choice for my kind. The Antonicans fear the greatness of the Teir'Dal. And the Overlord? I believe he knows he cannot rule us, but better to keep an eye on us than let us claim our destiny.  We only exist within Longshadow Alley by the will of the Foci, not Lucan!")
 end
 
@@ -90,5 +106,6 @@ function dlg_10_7(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/optional1/kylanith_d_lar/language/thexian/lan_5_kylanith_x1_initial01.mp3", "", "", 2884704375, 1873644890, Spawn)
 	AddConversationOption(conversation, "I will find them and report back.", "dlg_10_8")
 	StartConversation(conversation, NPC, Spawn, "It is rumored that the artifacts are somewhere within Big Bend's foul-stenching streets. Some artifacts have sustained great damage. Find them for me and report their existence. ")
+	OfferQuest(NPC, Spawn, TheStolenArtifactsofThex)
 end
 

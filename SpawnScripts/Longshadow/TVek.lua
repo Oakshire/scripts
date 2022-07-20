@@ -6,6 +6,10 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+function spawn(NPC)
+	waypoints(NPC)
+end
+
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	choice = math.random(1, 4)
@@ -20,3 +24,12 @@ function hailed(NPC, Spawn)
     		PlayFlavor(NPC, "voiceover/english/darkelf_eco_evil_1/ft/service/guard/darkelf_guard_service_evil_1_hail_gm_edb196f8.mp3", "All praises to the Overlord. The Militia protects loyal citizens of Freeport.", "salute_freeport", 3432620709, 3039361332, Spawn)
 	end
 end
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 25.19, 3, 64.33, 2, 0)
+	MovementLoopAddLocation(NPC, 4.37, 3, 70.65, 2, 0)
+	MovementLoopAddLocation(NPC, 0.1, 3, 58.01, 2, 0)
+	MovementLoopAddLocation(NPC, 18.83, 3, 51.84, 2, 0)
+end
+
+

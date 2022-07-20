@@ -6,8 +6,11 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
+
 local ADramaticPerformance = 5679
 local AShadyClearing = 5680
+local TheTruthisoutThere = 5684
 
 function spawn(NPC)
     ProvidesQuest(NPC, AShadyClearing)
@@ -25,6 +28,14 @@ function hailed(NPC, Spawn)
     end
 	if GetQuestStep(Spawn, AShadyClearing) == 2 then
         SetStepComplete(Spawn, AShadyClearing, 2)
+    end
+	if GetQuestStep(Spawn, TheTruthisoutThere) == 1 then
+	    FaceTarget(NPC, Spawn)
+	    Dialog.New(NPC, Spawn)
+	    Dialog.AddDialog("Yes... I know something about this. Who sends you again ?")
+	    Dialog.AddOption("Captain L`Nek of course. Now tell me what you know!")
+	    Dialog.Start()
+        SetStepComplete(Spawn, TheTruthisoutThere, 1)
     end
 	RandomGreeting(NPC, Spawn)
 end
