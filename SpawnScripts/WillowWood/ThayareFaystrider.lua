@@ -14,7 +14,6 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare000.mp3", "", "", 1834305487, 313746184, Spawn)
 	AddConversationOption(conversation, "The cataclysms have passed. ", "dlg_8_1")
@@ -23,7 +22,6 @@ function hailed(NPC, Spawn)
 end
 
 function dlg_8_1(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare001.mp3", "", "", 436536244, 3083124811, Spawn)
@@ -33,7 +31,6 @@ function dlg_8_1(NPC, Spawn)
 end
 
 function dlg_8_2(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare002.mp3", "", "", 1265623853, 760817521, Spawn)
@@ -43,7 +40,6 @@ function dlg_8_2(NPC, Spawn)
 end
 
 function dlg_8_3(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare_faystrider/qey_village05/thayare003.mp3", "", "", 2415361913, 3209390874, Spawn)
@@ -54,7 +50,6 @@ function dlg_8_3(NPC, Spawn)
 end
 
 function dlg_8_4(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare_faystrider/qey_village05/thayare004.mp3", "", "", 2739778178, 2862887180, Spawn)
@@ -64,7 +59,6 @@ function dlg_8_4(NPC, Spawn)
 end
 
 function dlg_8_5(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare005.mp3", "", "", 1279667287, 2445439332, Spawn)
@@ -74,7 +68,6 @@ function dlg_8_5(NPC, Spawn)
 end
 
 function dlg_8_6(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare006.mp3", "", "", 3098906679, 78236071, Spawn)
@@ -85,7 +78,6 @@ function dlg_8_6(NPC, Spawn)
 end
 
 function dlg_8_7(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare007.mp3", "", "", 567824333, 4242442867, Spawn)
@@ -95,7 +87,6 @@ function dlg_8_7(NPC, Spawn)
 end
 
 function dlg_8_8(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare008.mp3", "", "", 2595470053, 1587010551, Spawn)
@@ -105,7 +96,6 @@ function dlg_8_8(NPC, Spawn)
 end
 
 function dlg_8_9(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare009.mp3", "", "", 3015822992, 4001180835, Spawn)
@@ -115,7 +105,6 @@ function dlg_8_9(NPC, Spawn)
 end
 
 function dlg_8_10(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare010.mp3", "", "", 894446080, 3870182222, Spawn)
@@ -125,7 +114,6 @@ function dlg_8_10(NPC, Spawn)
 end
 
 function dlg_8_11(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare011.mp3", "", "", 3635576474, 803732524, Spawn)
@@ -135,7 +123,6 @@ function dlg_8_11(NPC, Spawn)
 end
 
 function dlg_8_12(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare012.mp3", "", "", 3204674791, 3928586592, Spawn)
@@ -145,7 +132,6 @@ function dlg_8_12(NPC, Spawn)
 end
 
 function dlg_8_13(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare013.mp3", "", "", 3275962358, 3603060383, Spawn)
@@ -155,7 +141,6 @@ function dlg_8_13(NPC, Spawn)
 end
 
 function dlg_8_14(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare_faystrider/qey_village05/thayare014.mp3", "", "", 2960216728, 621843039, Spawn)
@@ -165,7 +150,6 @@ function dlg_8_14(NPC, Spawn)
 end
 
 function dlg_8_15(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare015.mp3", "", "", 4021587135, 1996842290, Spawn)
@@ -175,7 +159,6 @@ function dlg_8_15(NPC, Spawn)
 end
 
 function dlg_8_16(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/optional5/thayare/qey_village05/thayare016.mp3", "", "", 1874720017, 996176396, Spawn)

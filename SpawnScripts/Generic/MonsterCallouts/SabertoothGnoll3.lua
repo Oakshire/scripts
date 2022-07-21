@@ -39,6 +39,7 @@ end
 
 
 function FifteenCall(NPC,Spawn)
+if IsInCombat(NPC)==true then
 if IsAlive(NPC)==true then
   if IsInCombat(NPC)==true then
    if math.random(0,100)<=30 then
@@ -59,7 +60,7 @@ if IsAlive(NPC)==true then
 end   
 end
 end
-
+end
 
 function death(NPC,Spawn)
     if math.random(0,100)<=60 then

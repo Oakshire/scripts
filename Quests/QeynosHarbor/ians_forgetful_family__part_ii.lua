@@ -9,6 +9,7 @@
         Preceded by:  Ian's Forgetful Family - Part I
         Followed by:  Ian's Forgetful Family - Part III
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I should try to find any arrows I can find near the giant kodiaks in Antonica.", 25, 100, "My great grandmother had her spellbook stolen years ago but it seems that a gnoll by the name of Grolven Chiptooth was seen with a book that looked just like it. Also, my nephew Terrin lost his favorite sash when he was in Blackburrow fighting blightfang broodtenders. I know it's probably not in one piece anymore but it has sentimental value to him. My uncle Acrius was good with a bow and always seemed to lose his arrows. Lately been running short on money and could use some of his old ones recovered. He used to kill giant kodiaks in his spare time, if you could look up near where they roam and see if you can't find a few I'd be grateful. - Ian", 2919, 120140,121284)
@@ -22,11 +23,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-
-	AddConversationOption(conversation, "I'll return if I find anything.")
-	StartConversation(conversation, QuestGiver, Player, "I wrote it down for you.  You're not nearly so addle-brained as my aunt Phyllis, so I trust you won't lose it.  See what you can find.")
-end
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I wrote it down for you.  You're not nearly so addle-brained as my aunt Phyllis, so I trust you won't lose it.  See what you can find.")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan011.mp3", 1580781172, 297339745)
+	Dialog.AddOption("Thank you, Ian.  ")
+	Dialog.Start()
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

@@ -80,7 +80,7 @@ function Begin(NPC, Spawn)
 end
 
 function NotErudite(NPC, Spawn)
-	Say(NPC, "I suppose I appreciate your interest in speaking with me, but I am here as a service to those of my own kind.", Spawn)
+		PlayFlavor(NPC, "voiceover/english/tutorial_revamp/maareona_ludimintium/qey_village02/qst_maareona_noterudite_ca68359d.mp3", "I suppose I appreciate your interest in speaking with me, but I am here as a service to those of my own kind.", "nod", 1063893561, 411365816, Spawn, 0)
 end
 
 -------------------------------------------------------------------------------------------------------------------

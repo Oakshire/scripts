@@ -38,20 +38,23 @@ function Dialog1(NPC, Spawn)
 	Dialog.AddDialog("'Tis not just the victory I enjoy. To see this one writhe in frustration is highly amusing.")
 	Dialog.AddVoiceover("voiceover/english/optional4/oomitelmora/oomitelmora-mp3_64.mp3", 354169301, 3490300460)
     if GetQuestStep(Spawn,247)==1 then
-	Dialog.AddOption("Orrinalanya asked me to give you this letter.  She was hypothesizing about the gods.","Turnin")
-    end   
+	Dialog.AddOption("King's field discussions do not concern me.  I've a message for you from Orrinalanya.","Turnin")
+    else   
 	Dialog.AddOption("King's field discussions do not concern me.")
+    end
 	Dialog.Start()
 end
 
 function Turnin(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("[NOTE: Not Accurate] Interesting.  I must discuss with her how the gods may still be 'among us' but not among us. Once I've finished this King's Field match I will be sure to find her.")
+	Dialog.AddDialog("I would assume she wishes to debate religion.  I will make my way over to her soon enough.  Here, let me at least tip you with some of the money I've taken from poor Vandis.")
  	Dialog.AddOption("[I will report on Discord to EmemJR that you need your final dialog.]")
  	SetStepComplete(Spawn, 247,1)
 	Dialog.Start()
 end
+
+--I would assume she wishes to debate religion.  I will make my way over to her soon enough.  Here, let me at least tip you with some of the money I've taken from poor Vandis. ( Unknown order Pulled Dialog)
 
 function EmoteLoop(NPC)
     if HailCheck == true then

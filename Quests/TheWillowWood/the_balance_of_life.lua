@@ -10,10 +10,20 @@
         Followed by: 
 --]]
 
+
+
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill ten sea turtles in the waters near Antonica.", 10, 100, "I must bring down ten sea turtles to lower their population.", 201, 120033, 121212)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	UpdateQuestZone(Quest, "Antonica")
+end
+
+function Accepted(Quest, QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	local conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "voiceover/english/daryann_stormrider/qey_village05/quests/daryann_stormrider/daryann003.mp3", "", "nod", 1849804125, 150143999, Player)
+	AddConversationOption(conversation, "I will return.")
+	StartConversation(conversation, QuestGiver, Player, "Sometimes a population grows rapidly, and we must hunt weak and sickly creatures to ensure others in the population remain healthy. Other times, predators disrupt nature's balance. I need you to hunt ten sea turtles near Antonica's shore before their egg laying season begins.  Please return to me when you finish.")
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
@@ -64,9 +74,6 @@ function CrabsComplete(Quest, QuestGiver, Player)
     AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
  end   
   
-function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

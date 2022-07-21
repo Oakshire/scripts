@@ -174,6 +174,7 @@ function Dialog2(NPC, Spawn) -- Primary turn-in response.
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "What did you find?  Did you get them all?")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan006.mp3", 417646018, 2611075369)
 	Dialog.AddOption( "I found everything on the list.", "Option4")
 	Dialog.AddOption("I'm not sure.  I'll get back to you.")
 	Dialog.Start()
@@ -182,9 +183,10 @@ end
 function Option4(NPC, Spawn)  
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog( "Excellent.  Yes, these are perfect!  You did well. Here's the armor I promised.")
     PlayFlavor(NPC,"","","happy", 0, 0, Spawn)
-	Dialog.AddDialog( "Thank you, Ian.")
-	Dialog.AddOption("Excellent.  Yes, these are perfect!  You did well. Here's the armor I promised.")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan009.mp3", 3393697155, 3282809696)
+	Dialog.AddOption("Thank you, Ian.")
 	Dialog.Start()
 if GetQuestStep(Spawn,armor1)==3 then
 	QuestStepIsComplete(NPC,Spawn,armor1,3)
@@ -205,6 +207,7 @@ function Dialog3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "Judging from where you found the last stuff, I know where we should look next. Will you help me track down some more things?")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan010.mp3", 2484308007, 1400019031)
     if HasCompletedQuest(Spawn,armor1) and not HasQuest(Spawn,armor2) then
         Dialog.AddOption( "I have the time.  Where should I go next?", "Option5")
 	end
@@ -253,8 +256,8 @@ end
 function Dialog4(NPC, Spawn) --AQ6 turnin
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog( "Hrmm ... I see.  At least most of it is still in good shape ... except for these...")
 	Dialog.AddOption( "Those were like that when I found them.")
-	Dialog.AddOption("Hrmm ... I see.  At least most of it is still in good shape ... except for these...")
 	QuestStepIsComplete(NPC,Spawn,armor6,4)
 	Dialog.Start()
 end

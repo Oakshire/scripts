@@ -6,7 +6,7 @@
                    : 
 --]]
 local HealthCallout = false
-    
+   
 function Garbled(NPC,Spawn)
   	local choice = MakeRandomInt(1,5)
  	    if choice == 1 then
@@ -76,6 +76,7 @@ end
 -- DOES NOT WORK		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_death_7cbd3c71.mp3", "I'll rip your throat open!", "", 134141978, 4165685331, Spawn, 18)
 
 function FifteenCall(NPC,Player)
+if IsInCombat(NPC)==true then
  if IsAlive(NPC) then
  if IsInCombat(NPC)==true then
     if math.random(0,100)<=60 then
@@ -96,6 +97,7 @@ function FifteenCall(NPC,Player)
     AddTimer(NPC,15000,"FifteenCall")
     end
 end  
+end
 end
 end
 

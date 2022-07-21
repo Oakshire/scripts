@@ -34,7 +34,7 @@ local add3 = GetSpawnByLocationID(zone, 351405)
         elseif IsAlive(add3) == true then
             else
                 SetTempVariable(drayek, "addsphase", "1")
-                AddTimer(drayek, 500, "addsSpawn", 1, Spawn)
+                AddTimer(drayek, 10000, "addsSpawn", 1, Spawn)
                 
     end
 end

@@ -6,10 +6,14 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
+
 local QUEST_1 = 5263
+local AWorthyTeacher = 5687
 
 function spawn(NPC)
 	ProvidesQuest(NPC, QUEST_1)
+	ProvidesQuest(NPC, AWorthyTeacher)
 end
 
 function respawn(NPC)
@@ -21,14 +25,33 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
 	
 	RandomVoice(NPC, Spawn)
-	
-	if HasCompletedQuest(Spawn, QUEST_1) then
-		Say(NPC, "You must not let that fool Ithelz rule the Scale Yard. I need the help of a diligent soldier... what do you need, peasant?", Spawn)
-	elseif HasQuest(Spawn, QUEST_2) then
-		OnQuest1(NPC, Spawn, conversation)
-	else
-		NotWhoIAmExpecting(NPC, Spawn, conversation)
+
+	if not HasQuest(Spawn, QUEST_1) and not HasCompletedQuest(Spawn, QUEST_1) then
+	    NotWhoIAmExpecting(NPC, Spawn, conversation)
 	end
+	if HasCompletedQuest(Spawn, QUEST_1) then
+        if not HasQuest(Spawn, AWorthyTeacher) and not HasCompletedQuest(Spawn, AWorthyTeacher) then
+            FaceTarget(NPC, Spawn)
+	        Dialog.New(NPC, Spawn)
+	        Dialog.AddDialog("Ah, you again. Yes. How fortunate you have returned. I have great plans for these souls, but they have proven most obstinate. They resist control, and will not bend to my will. Most vexing. I fear a stronger magic is required to make them obedient. I need you to gather some information for me.")
+	        Dialog.AddOption("I'll help. What do you want me to do?","Dialog1")
+	        Dialog.Start()
+        end
+    end
+    if HasCompletedQuest(Spawn, AWorthyTeacher) then
+        RandomVoice(NPC, Spawn)
+    end
+    if GetQuestStep(Spawn, QUEST_1) == 2 then
+        OnQuest1(NPC, Spawn, conversation)
+    end
+    if GetQuestStep(Spawn, AWorthyTeacher) == 2 then
+        FaceTarget(NPC, Spawn)
+	    Dialog.New(NPC, Spawn)
+	    Dialog.AddDialog("GYAAAGGGHHH!!! How dare she! I swear by the blood of my brood she will pay for this insult! Let Verin Ithelz and all others know that Raban is now my enemy! I will tear her throat out with my teeth! I will claw her heart from her chest!")
+	    Dialog.AddOption("Aren't I going to get pa-- Umm... I mean, yes mistress.")
+	    Dialog.Start()
+	    SetStepComplete(Spawn, AWorthyTeacher, 2)
+	else
 end
 
 function RandomVoice(NPC, Spawn)
@@ -84,4 +107,15 @@ function dlg_1_1(NPC, Spawn)
 
 	AddConversationOption(conversation, "Servant?! Don't ever refer to me... whatever. Bye.")
 	StartConversation(conversation, NPC, Spawn, "Give me the crystal. Ah, yes, it's filled.  With these souls, Ithelz's puppet barbarians cannot prevent me from ruling over the district. You served me well, servant. Take this coin as a token of my gratitude.")
+end
+
+--====================Quest 2
+
+function Dialog1(NPC, Spawn)
+     FaceTarget(NPC, Spawn)
+	 Dialog.New(NPC, Spawn)
+	 Dialog.AddDialog("I want you to travel to Stonestair Byway and find an Erudite named Raban. She's insufferable, but is well-versed in the necromantic arts. She may be able to discen what I am doing wro-- ... I mean, what immense power I must summon. Give her this missive and treat her with respect. Do not trifle with her ... or with me.")
+	 Dialog.AddOption("I'll go give her the message.")
+	 Dialog.Start()
+	 OfferQuest(NPC, Spawn, AWorthyTeacher)
 end
