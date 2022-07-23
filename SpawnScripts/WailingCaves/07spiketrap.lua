@@ -7,15 +7,15 @@
 --]]
 
 function spawn(NPC)
-	--AddTransportSpawn(NPC)
-	AddTimer(NPC, 500, "Open")
+   AddTransportSpawn(NPC)
+   AddTimer(NPC, 5000, "UseLift")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
-function Open(NPC)
-	OpenDoor(NPC)
-	AddTimer(NPC, 15000, "Open")
+function UseLift(NPC)
+	UseWidget(NPC)
+	AddTimer(NPC, 5000, "UseLift")
 end

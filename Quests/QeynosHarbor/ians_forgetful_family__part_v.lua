@@ -9,6 +9,7 @@
         Preceded by:  Ian's Forgetful Family - Part III
         Followed by:  Ian's Forgetful Family - Part V
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Ian thinks his gnomish friend Torzig lost his poker chips the last time they ventured into the Thundering Steppes.  Some of the unearthed settlers must have picked them up.", 5, 80, "To continue the list of things lost by my family.  My cousin Terra lost her lucky coin collection when we were fighting some Sabertooth looters if you could look around them in the Thundering Steppes that would be nice of you.  My old gnomish friend Torzig dropped his poker chips when we were running for our lives from a huge mob undead villagers, all kinds were in that heap so I'm sure several of them must have picked up a chip or two.  I lost my set of keys when fighting corpse feeders.  If you could look on them while you're in the Steppes I'd be grateful.  I still can't open my sealed strongbox, made it too good I guess.  Oh, and during a titanic battle in the dry riverbed with a horde of undead a friend lost his favorite sword Bonechipper.  It's got the name on the blade so you can identify it. - Ian", 2302, 2490150)
@@ -24,11 +25,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-
-	AddConversationOption(conversation, "I'll be back after seeing what else I can find.")
-	StartConversation(conversation, QuestGiver, Player, "It takes a keen mind, a little insanity, and lots of practice.  Let me write down where you can pick up everything else that was lost.  I have high hopes that we'll find everything!")
-end
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("It takes a keen mind, a little insanity, and lots of practice.  Let me write down where you can pick up everything else that was lost.  I have high hopes that we'll find everything!")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan014.mp3", 1824092303, 3032162990)
+	Dialog.AddOption("I'll be back after seeing what else I can find.")
+	Dialog.Start()
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

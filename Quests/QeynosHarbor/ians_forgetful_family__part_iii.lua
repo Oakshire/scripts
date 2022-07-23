@@ -9,6 +9,7 @@
         Preceded by:  Ian's Forgetful Family - Part II
         Followed by:  Ian's Forgetful Family - Part IV
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -23,11 +24,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-
-	AddConversationOption(conversation, "No problem.  I'll be back when I find him or more of the things.")
-	StartConversation(conversation, QuestGiver, Player, "I wrote it down for you.  At least ya seem to carry things a little better than me nephew, so I trust you won't lose it.  See what you can find.")
-end
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I wrote it down for you.  At least ya seem to carry things a little better than me nephew, so I trust you won't lose it.  See what you can find.")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan012.mp3", 1176133948, 2712461164)
+	Dialog.AddOption("No problem.  I'll be back when I find him or more of the things.")
+	Dialog.Start()
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

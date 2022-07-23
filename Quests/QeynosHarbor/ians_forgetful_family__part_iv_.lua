@@ -9,6 +9,7 @@
         Preceded by:  Ian's Forgetful Family - Part III
         Followed by:  Ian's Forgetful Family - Part V
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
     AddQuestStepKill(Quest, 1, "I should try to find Ian's great-grandfather's leather straps on the deathly scarabs in The Crypt of Betrayal.", 25, 100, "My family and I have spent quite a bit of time in the Crypts below Qeynos battling the monsters there.  So we've lost a few things in the process.  I lost my favorite set of arrows but who knows where they have wound up. You'll know them by my name carved into each shaft.  I'm sure some of the restless corpses probably have a few still stuck in them.  My great grandfather lost a good set of leather straps down there ages ago, they are stamped with a four leaf clover.  You might check the scarabs, they may have used some of them as padding for their lairs.  And while nothing was lost can you kill a few of the shrillers down there just because I hate them, thanks. - Ian", 736, 2010013,2010002)
@@ -22,11 +23,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-
-	AddConversationOption(conversation, "Um, sure.  I'll be back.")
-	StartConversation(conversation, QuestGiver, Player, "When I was younger, I picked up after my family. I got used to it. After a while, I started to see how things got lost. Here's a list of directions for ya.  Good luck.")
-end
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("When I was younger, I picked up after my family. I got used to it. After a while, I started to see how things got lost. Here's a list of directions for ya.  Good luck.")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan013.mp3", 3987566922, 629145387)
+	Dialog.AddOption("Um, sure.  I'll be back.")
+	Dialog.Start()
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

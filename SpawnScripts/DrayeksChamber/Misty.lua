@@ -2,8 +2,8 @@
     Script Name    : SpawnScripts/DrayeksChamber/Misty.lua
     Script Author  : Neveruary
     Script Date    : 2022.07.17 09:07:41
-    Script Purpose : 
-                   : 
+    Script Purpose : Governs behavior of Misty in Drayek's Chamber.
+    Script Notes   : Spell collects are pending. The wolves send a timer to Drayek once they're dead so he attacks.
 --]]
 
 function spawn(NPC)
@@ -18,7 +18,7 @@ local add2 = GetSpawnByLocationID(zone, 351408)
         elseif IsAlive(add2) == true then
             else
                 SetTempVariable(drayek, "addsphase", "2")
-                AddTimer(drayek, 500, "wolfDeath", 1, Spawn)
+                AddTimer(drayek, 10000, "wolfDeath", 1, Spawn)
     end
 end
 

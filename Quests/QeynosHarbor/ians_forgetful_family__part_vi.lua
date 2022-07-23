@@ -9,6 +9,7 @@
         Preceded by:  Ian's Forgetful Family - Part V
         Followed by:  None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
     AddQuestStepKill(Quest, 1, "Ian's brother in law lost his collected bear hides after being chased out of the Thundering Steppes by Steelhoof hunters.", 15, 100, "Only a few more things I can think of that I need found in the Thundering Steppes.  If you could look for the bear hides that my brother in law lost after a run-in with some Steelhoof hunters that would be appreciated.  My grandfather was a bard and always had a variety of flutes on him.  Probably because he lost so many, but if you could find the ones he lost near an area with a lot of skeletal troopers that would be appreciated.  And last of all I lost my father's murky cutlass when walking up Deadview Pass in the Steppes.  A mean giant by the name of Ott Stompgut nearly grabbed me but got the cutlass instead and I'd like it back. - Ian", 123, 2490107)	
@@ -22,11 +23,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-
-	AddConversationOption(conversation, "Thanks Ian, I'll hope for the best.")
-	StartConversation(conversation, QuestGiver, Player, "Hrm ... well, this set didn't give me as much of a clue as I hoped.  But you can always try where we left off and see where that takes you.  Here, I'll write a few suggestions down. See if those help.")
-end
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Hrm ... well, this set didn't give me as much of a clue as I hoped.  But you can always try where we left off and see where that takes you.  Here, I'll write a few suggestions down. See if those help.")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan015.mp3", 1301702054, 185851169)
+	Dialog.AddOption("Thanks Ian, I'll hope for the best.")
+	Dialog.Start()
+	end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

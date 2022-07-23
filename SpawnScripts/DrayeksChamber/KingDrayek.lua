@@ -6,8 +6,8 @@
                    : Drayek has two unique abilities: Strike of the Giant King and Giant's Kick. Giant's Kick is a huge knockback.
                    : Drayek begins the encounter by allowing the frozen sentinels and vigilants to attack first. He then sends his wolves after the players, and finally engages.
                    : At set intervals, he calls adds (his royal guards twice, and then his 'kings of old') and then the encounter ends.
---]]
-
+                   : Spell collects are pending.
+--]]               
 frozenadds = {351396, 351398, 351399, 351401, 351404, 351405}
 wolves = {351408, 351406}
 guards = {133774010, 133774011, 133774013, 133774014, 133774015, 133774016}

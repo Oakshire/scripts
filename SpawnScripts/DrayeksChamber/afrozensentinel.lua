@@ -2,8 +2,8 @@
     Script Name    : SpawnScripts/DrayeksChamber/afrozensentinel.lua
     Script Author  : Neveruary
     Script Date    : 2022.07.17 09:07:02
-    Script Purpose : 
-                   : 
+    Script Purpose : Governs the behavior of a frozen sentinel in Drayek's Chamber.
+    Script Notes   : Spell collects are pending. The frozen mobs all check themselves when they die and send a timer to Drayek to send in the wolves.
 --]]
 
 function spawn(NPC)

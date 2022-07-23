@@ -9,8 +9,10 @@
 require "SpawnScripts/Generic/DialogModule"
 
 local BronaThralls = 5630
+local IcebrewSecretRecipe = 5692
 
 function spawn(NPC)
+    ProvidesQuest(NPC, IcebrewSecretRecipe)
 end
 
 function respawn(NPC)
@@ -18,18 +20,38 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    if not HasQuest(Spawn, IcebrewSecretRecipe) and not HasCompletedQuest(Spawn, IcebrewSecretRecipe) then
+        Dialog11(NPC, Spawn)
+    elseif GetQuestStep(Spawn, IcebrewSecretRecipe) == 2 then
+        Dialog3(NPC, Spawn)
+        SetStepComplete(Spawn, IcebrewSecretRecipe, 2)
+    else
+        Dialog7(NPC, Spawn)
+    end
     if HasQuest(Spawn, BronaThralls) and not HasCompletedQuest(Spawn, BronaThralls) then
         SetStepComplete(Spawn, BronaThralls, 1)
     end
-    Dialog1(NPC, Spawn)
 end
 
-function Dialog1(NPC, Spawn)
+
+function Dialog7(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Do you wanna drink or what?")
-	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_bartender_icebrew_multhail2_7bd7d291.mp3", 3841480611, 2334138214)
-	Dialog.AddOption("Sorry, I'll go find that Dark Elf.")
+	Dialog.AddDialog("What are you drinking? Ya better not make it one of those sissy drinks.")
+	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_icebrew.mp3", 3301168939, 3443300522)
+	Dialog.AddOption("Let me see what you have.")
+	Dialog.Start()
+end
+
+--====================Quest 1
+
+function Dialog11(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("What are you drinking? Ya better not make it one of those sissy drinks.")
+	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_icebrew.mp3", 3301168939, 3443300522)
+	Dialog.AddOption("What's the strongest drink you have on tap?", "Dialog2")
+	Dialog.AddOption("Let me see what you have.")
 	Dialog.Start()
 end
 
@@ -43,13 +65,13 @@ function Dialog2(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Dialog3(NPC, Spawn)
+function Dialog5(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("What are you drinking? Ya better not make it one of those sissy drinks.")
-	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_icebrew.mp3", 3301168939, 3443300522)
-	Dialog.AddOption("I have ten jars of liquid rust.", "Dialog6")
-	Dialog.AddOption("Let me see what you have.")
+	Dialog.AddDialog("Well, now, that's a problem. Just enough of the brew is left for one mug, and I don't have rust to make another batch. I ran out of the liquid rust a few hours back and can't make another batch of brew until I get more.")
+	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/quests/bartendericebrew/icebrew_x1_initial2.mp3", 3007403188, 2444158205)
+	Dialog.AddOption("You actually use rust?", "Dialog4")
+	Dialog.AddOption("Then I guess I'll look at what else you have.")
 	Dialog.Start()
 end
 
@@ -63,13 +85,34 @@ function Dialog4(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Dialog5(NPC, Spawn)
+function Dialog12(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Well, now, that's a problem. Just enough of the brew is left for one mug, and I don't have rust to make another batch. I ran out of the liquid rust a few hours back and can't make another batch of brew until I get more.")
-	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/quests/bartendericebrew/icebrew_x1_initial2.mp3", 3007403188, 2444158205)
-	Dialog.AddOption("You actually use rust?", "Dialog4")
-	Dialog.AddOption("Then I guess I'll look at what else you have.")
+	Dialog.AddDialog("Go to the Sunken City and slay the rust monsters that lurk there. Kill the beasts and squeeze them with all your might. Out of their bodies should pour about a jar's worth of pure, liquid rust. Come back with as many jars as you can, and we have a deal.")
+	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/quests/bartendericebrew/icebrew_x1_accept.mp3", 2282916525, 4054783281)
+	Dialog.AddOption("I can do this.", "Dialog9")
+	Dialog.Start()
+end
+
+function Dialog9(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("My customers are thirsty! You better get my liquid rust or I'll crush your skull!")
+	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_bartender_icebrew_multhail3_c40a6388.mp3", 3143807370, 1008038806)
+	Dialog.AddOption("All right!")
+	Dialog.Start()
+	OfferQuest(NPC, Spawn, IcebrewSecretRecipe)
+end
+
+--===== Quest 1 Step 2
+
+function Dialog3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("What are you drinking? Ya better not make it one of those sissy drinks.")
+	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_icebrew.mp3", 3301168939, 3443300522)
+	Dialog.AddOption("I have ten jars of liquid rust.", "Dialog6")
+	Dialog.AddOption("Let me see what you have.")
 	Dialog.Start()
 end
 
@@ -82,11 +125,14 @@ function Dialog6(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Dialog7(NPC, Spawn)
+--============Quest 2
+
+function Dialog10(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("What are you drinking? Ya better not make it one of those sissy drinks.")
 	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_icebrew.mp3", 3301168939, 3443300522)
+	Dialog.AddOption("Were you able to make any more of that Wheat Rust Stout?", "Dialog8")
 	Dialog.AddOption("Let me see what you have.")
 	Dialog.Start()
 end
@@ -101,50 +147,13 @@ function Dialog8(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Dialog9(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("My customers are thirsty! You better get my liquid rust or I'll crush your skull!")
-	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_bartender_icebrew_multhail3_c40a6388.mp3", 3143807370, 1008038806)
-	Dialog.AddOption("All right!")
-	Dialog.Start()
-end
-
-function Dialog10(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("What are you drinking? Ya better not make it one of those sissy drinks.")
-	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_icebrew.mp3", 3301168939, 3443300522)
-	Dialog.AddOption("Were you able to make any more of that Wheat Rust Stout?", "Dialog8")
-	Dialog.AddOption("Let me see what you have.")
-	Dialog.Start()
-end
-
-function Dialog11(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("What are you drinking? Ya better not make it one of those sissy drinks.")
-	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/mer_icebrew.mp3", 3301168939, 3443300522)
-	Dialog.AddOption("What's the strongest drink you have on tap?", "Dialog2")
-	Dialog.AddOption("Let me see what you have.")
-	Dialog.Start()
-end
-
-function Dialog12(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Go to the Sunken City and slay the rust monsters that lurk there. Kill the beasts and squeeze them with all your might. Out of their bodies should pour about a jar's worth of pure, liquid rust. Come back with as many jars as you can, and we have a deal.")
-	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/quests/bartendericebrew/icebrew_x1_accept.mp3", 2282916525, 4054783281)
-	Dialog.AddOption("I can do this.", "Dialog9")
-	Dialog.Start()
-end
-
 function Dialog13(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Take this tankard of Stout and head to Longshadow Alley where those prissy little Dark Elves live. The Iksar at my bar drink some strange things, so I can't use them to gauge the quality of my brew.  Find one of those little purple freaks in a tavern and offer him a taste.  Let me know how he likes it. Got it?")
 	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/quests/bartendericebrew/icebrew_x2_accept.mp3", 1018004755, 1842224270)
-	Dialog.AddOption("Will do. I'll let you know what he thinks.", "Dialog1")
+	Dialog.AddOption("Will do. I'll let you know what he thinks.")
 	Dialog.Start()
 end
+
 
