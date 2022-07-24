@@ -6,6 +6,8 @@
                    : 
 --]]
  	dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll2.lua")
+ 	
+ local TheChomper = 5696
 
 function spawn(NPC)
 
@@ -17,4 +19,10 @@ end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+function death(NPC, Spawn)
+if QuestIsComplete(Spawn, TheChomper) or HasItem(Spawn, 1285) then
+RemoveLootItem(NPC, 1285) 
+  end
 end

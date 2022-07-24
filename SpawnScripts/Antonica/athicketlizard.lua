@@ -1,22 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aCaltorsisMagi.lua
+    Script Name    : SpawnScripts/Antonica/athicketlizard.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.05 09:07:35
+    Script Date    : 2022.07.24 04:07:12
     Script Purpose : 
                    : 
 --]]
-dofile("SpawnScripts/Generic/MonsterCallouts/Antonica_Skeleton1.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 18
-    local level2 = 19
-    local difficulty1 = 6
-    local hp1 = 1180
-    local power1 = 410
-    local difficulty2 = 6
-    local hp2 = 1315
-    local power2 = 425
+    local level1 = 15
+    local level2 = 16
+    local difficulty1 = 9
+    local hp1 = 3150
+    local power1 = 1350
+    local difficulty2 = 9
+    local hp2 = 3485
+    local power2 = 1350
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)

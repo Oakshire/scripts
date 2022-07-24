@@ -5,8 +5,18 @@
     Script Purpose : Basic Gnoll Callouts v1
                    : 
 --]]
-local HealthCallout = false
-   
+local HealthCallout = false --REDUCES Half-Health Spam
+local CalloutTimer = false --REDUCES Callout Spam
+
+function ResetTimer(NPC) -- 7 SECOND PAUSE BETWEEN VOs
+    CalloutTimer = false
+end
+
+function HealthReset (NPC)  -- SO HALF HEALTH DOESN'T SPAM
+    HealthCallout = false
+end
+    
+
 function Garbled(NPC,Spawn)
   	local choice = MakeRandomInt(1,5)
  	    if choice == 1 then
@@ -23,6 +33,9 @@ function Garbled(NPC,Spawn)
 end
 
  function aggro(NPC,Spawn)   
+ if CalloutTimer == false then
+    CalloutTimer = true
+    AddTimer(NPC,7000,"ResetTimer")
     if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
     else
@@ -47,11 +60,15 @@ end
        AddTimer(NPC,15000,"FifteenCall")
     end
 end   
+end
 
 -- Doesn't Work PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_aggro_959e4683.mp3", "Intruder!", "", 1672215946, 3521592402, Spawn, 18)
 
 
 function death(NPC,Spawn)
+ if CalloutTimer == false then
+    CalloutTimer = true
+    AddTimer(NPC,7000,"ResetTimer")
     if math.random(0,100)<=75 then
     if not HasLanguage(Spawn,18 )then
     Garbled(NPC,Spawn)
@@ -72,24 +89,25 @@ function death(NPC,Spawn)
     end
 end
 end
+end
 
 -- DOES NOT WORK		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_death_7cbd3c71.mp3", "I'll rip your throat open!", "", 134141978, 4165685331, Spawn, 18)
 
-function FifteenCall(NPC,Player)
+function FifteenCall(NPC,Spawn)
 if IsInCombat(NPC)==true then
  if IsAlive(NPC) then
  if IsInCombat(NPC)==true then
     if math.random(0,100)<=60 then
-     if not HasLanguage(Player,18 )then
-    Garbled(NPC,Player)
+     if not HasLanguage(Spawn,18 )then
+    Garbled(NPC,Spawn)
     else       
       local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_m_dbbe969a.mp3", "Grrrrrrrrrr! Yip!", "", 3107536729, 1468959623, Player, 18)
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_m_dbbe969a.mp3", "Grrrrrrrrrr! Yip!", "", 3107536729, 1468959623, Spawn, 18)
         elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_7c69417c.mp3", "Nip at their heels when they flee!", "", 4292535613, 1359167400, Player, 18)
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_everyfifteenseconds_7c69417c.mp3", "Nip at their heels when they flee!", "", 4292535613, 1359167400, Spawn, 18)
          elseif choice == 3 then
-		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_battle_m_2b13fb2e.mp3", "For the pack!", "", 2513141586, 2807818416, Player, 18)
+		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_battle_m_2b13fb2e.mp3", "For the pack!", "", 2513141586, 2807818416, Spawn, 18)
        end
     end
     end
@@ -117,9 +135,6 @@ end
 end
 end
 
-function HealthReset (NPC)
-    HealthCallout = false
-end
 
 --		PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_maomage_8fb8565d.mp3", "Yip! Watch out for their magic!", "", 1674162517, 4259121980, Spawn, 18)
 --		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_battle_m_5c7913bb.mp3", "Bah!  You smell horrible!", "", 687847219, 3365844906, Spawn, 18)

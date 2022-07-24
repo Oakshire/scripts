@@ -6,7 +6,7 @@
                    : 
 --]]
 function spawn(NPC)
-VoiceBox(NPC)
+AddTimer(NPC,1000,"VoiceBox")
 end
 
 function VoiceBox(NPC)

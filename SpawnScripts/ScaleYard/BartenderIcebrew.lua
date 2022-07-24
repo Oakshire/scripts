@@ -10,9 +10,11 @@ require "SpawnScripts/Generic/DialogModule"
 
 local BronaThralls = 5630
 local IcebrewSecretRecipe = 5692
+local BlindTasteTest = 5693
 
 function spawn(NPC)
     ProvidesQuest(NPC, IcebrewSecretRecipe)
+    ProvidesQuest(NPC, BlindTasteTest)
 end
 
 function respawn(NPC)
@@ -22,15 +24,23 @@ end
 function hailed(NPC, Spawn)
     if not HasQuest(Spawn, IcebrewSecretRecipe) and not HasCompletedQuest(Spawn, IcebrewSecretRecipe) then
         Dialog11(NPC, Spawn)
-    elseif GetQuestStep(Spawn, IcebrewSecretRecipe) == 2 then
+    end
+    if HasCompletedQuest(Spawn, IcebrewSecretRecipe) then
+        if not HasQuest(Spawn, BlindTasteTest) and not HasCompletedQuest(Spawn, BlindTasteTest) then
+            Dialog10(NPC, Spawn)
+        end
+    end
+    if GetQuestStep(Spawn, IcebrewSecretRecipe) == 2 then
         Dialog3(NPC, Spawn)
         SetStepComplete(Spawn, IcebrewSecretRecipe, 2)
-    else
-        Dialog7(NPC, Spawn)
+    end
+    if GetQuestStep(Spawn, BlindTasteTest) == 2 then
+        SetStepComplete(Spawn, BlindTasteTest, 2)
     end
     if HasQuest(Spawn, BronaThralls) and not HasCompletedQuest(Spawn, BronaThralls) then
         SetStepComplete(Spawn, BronaThralls, 1)
     end
+    Dialog7(NPC, Spawn)
 end
 
 
@@ -154,6 +164,7 @@ function Dialog13(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/bartender_icebrew/fprt_hood06/quests/bartendericebrew/icebrew_x2_accept.mp3", 1018004755, 1842224270)
 	Dialog.AddOption("Will do. I'll let you know what he thinks.")
 	Dialog.Start()
+	OfferQuest(NPC, Spawn, BlindTasteTest)
 end
 
 
