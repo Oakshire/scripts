@@ -9,7 +9,7 @@
 local TheChomper = 5696
 
 function examined(Item, Player)
-if not HasQuest(Player, TheChomper) and not HasCompletedQuest(Player, TheChomper) then
+if not HasQuest(Player, TheChomper) then
 OfferQuest(nil, Player, TheChomper)
 end
    end

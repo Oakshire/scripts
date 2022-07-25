@@ -8,6 +8,7 @@
 
 local EndingtheFury = 5690
 local AvoidingtheSeaBeasties = 5691
+local WillWorkforWar = 5703
 
 function spawn(NPC)
     ProvidesQuest(NPC, EndingtheFury)
@@ -19,7 +20,7 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    if HasLanguage(Spawn, 1) then
+    if HasLanguage(Spawn, 1) then --Halasian
         if not HasQuest(Spawn, EndingtheFury) and not HasCompletedQuest(Spawn, EndingtheFury) then
             OfferQuest(NPC, Spawn, EndingtheFury)
         end
@@ -33,6 +34,9 @@ function hailed(NPC, Spawn)
         end
         if GetQuestStep(Spawn, AvoidingtheSeaBeasties) == 2 then
             SetStepComplete(Spawn, AvoidingtheSeaBeasties, 2)
+        end
+        if GetQuestStep(Spawn, WillWorkforWar) == 1 then
+            SetStepComplete(Spawn, WillWorkforWar, 1)
         end
     end
 	RandomGreeting(NPC, Spawn)
