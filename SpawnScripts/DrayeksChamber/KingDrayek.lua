@@ -35,6 +35,7 @@ local twenty = GetMaxHP(NPC) * 0.2
 local current = GetHP(NPC)
     if current < twenty and GetTempVariable(NPC, "encounterphase") == "3" then
         SetTempVariable(NPC, "addsphase", "3")
+        SetTempVariable(NPC, "encounterphase", "4")
         AddTimer(NPC, 3000, "addsSpawn")
     elseif current < fifty and GetTempVariable(NPC, "encounterphase") == "2" then
         SetTempVariable(NPC, "addsphase", "2")
