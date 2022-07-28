@@ -75,11 +75,12 @@ function death(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_death_gm_e1755f3f.mp3", "Come back you coward! I'm not dead yet.", "", 86111608, 3954832486)
         end  
     else
- 	local choice = MakeRandomInt(1,1)
+ 	local choice = MakeRandomInt(1,2)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_death_gf_e8c02d1e.mp3", "Feel kinda sleepy. Whacha do to me?", "", 3447489483, 4136415601)
         else
-        end
+ 		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_death_gf_e1755f3f.mp3", "Come back you coward! I'm not dead yet.", "", 695536554, 1919499087, Spawn, 0)
+       end
     end
     end
 --end

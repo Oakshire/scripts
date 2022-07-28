@@ -5,10 +5,10 @@
     Script Purpose : 
                    : 
 --]]
-dofile("SpawnScripts/Generic/GnollSpeak.lua")
+
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGnoll1.lua")
 
 function spawn(NPC)
-
 end
 
 
