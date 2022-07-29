@@ -90,7 +90,7 @@ if  GetClass(Spawn)== WIZARD or GetClass(Spawn)== WARLOCK or GetClass(Spawn)== I
     Dialog1(NPC,Spawn) -- INITIAL HAIL
     
     elseif HasQuest(Spawn,armor1) and GetQuestStep(Spawn,armor1)~=3 then --INBETWEEN QUESTS (no ready to turn in)
-    PlayFlavor(NPC,"","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder", 0, 0, Spawn)
+    PlayFlavor(NPC,"voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree005.mp3","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder",  242380919, 3536759386, Spawn)
     
     elseif GetQuestStep(Spawn,armor1)==3 or GetQuestStep(Spawn,armor2)==4 or GetQuestStep(Spawn,armor3)==4 or GetQuestStep(Spawn,armor4)==4 or  GetQuestStep(Spawn,armor5)==5 then
     Dialog2(NPC,Spawn) -- DEFAULT QUEST TURN-IN AQ1-5
@@ -100,30 +100,30 @@ if  GetClass(Spawn)== WIZARD or GetClass(Spawn)== WARLOCK or GetClass(Spawn)== I
     elseif HasCompletedQuest(Spawn,armor1) and not HasQuest(Spawn,armor2) then
     Dialog3(NPC,Spawn)  
     elseif HasQuest(Spawn,armor2) and GetQuestStep(Spawn,armor2)~=4 then
-    PlayFlavor(NPC,"","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder", 0, 0, Spawn)
+    PlayFlavor(NPC,"voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree005.mp3","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder",  242380919, 3536759386, Spawn)
 
     elseif HasCompletedQuest(Spawn,armor2) and not HasQuest(Spawn,armor3) then
     Dialog3(NPC,Spawn)  
     elseif HasQuest(Spawn,armor3) and GetQuestStep(Spawn,armor3)~=3 then
-    PlayFlavor(NPC,"","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder", 0, 0, Spawn)
+    PlayFlavor(NPC,"voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree005.mp3","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder",  242380919, 3536759386, Spawn)
  
     elseif HasCompletedQuest(Spawn,armor3) and not HasQuest(Spawn,armor4) then
     Dialog3(NPC,Spawn)  
     elseif HasQuest(Spawn,armor4) and GetQuestStep(Spawn,armor4)~=4 then
-    PlayFlavor(NPC,"","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder", 0, 0, Spawn)
+    PlayFlavor(NPC,"voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree005.mp3","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder",  242380919, 3536759386, Spawn)
 
     elseif HasCompletedQuest(Spawn,armor4) and not HasQuest(Spawn,armor5) then
     Dialog3(NPC,Spawn)  
     elseif HasQuest(Spawn,armor5) and GetQuestStep(Spawn,armor5)~=5 then
-    PlayFlavor(NPC,"","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder", 0, 0, Spawn)
+    PlayFlavor(NPC,"voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree005.mp3","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder",  242380919, 3536759386, Spawn)
  
     elseif HasCompletedQuest(Spawn,armor5) and not HasQuest(Spawn,armor6) then
     Dialog3(NPC,Spawn)  
     elseif HasQuest(Spawn,armor6) and GetQuestStep(Spawn,armor6)~=5 then
-    PlayFlavor(NPC,"","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder", 0, 0, Spawn)
+    PlayFlavor(NPC,"voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree005.mp3","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder",  242380919, 3536759386, Spawn)
     
     elseif HasCompletedQuest(Spawn,armor6) then --FINISHED RESPONSE                         
-    PlayFlavor(NPC,"","It's a pleasure to see you again.  I hope your adventuring career has been good to you.  There are far too few good adventurers these days.  I must thank you once again for all of your help while I was preparing for my daughter's wedding.  Your service was very kind.  Farewell and good day!","bye", 0, 0, Spawn) 
+    PlayFlavor(NPC,"voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree005.mp3","A pleasure to see you again. Are you done? Or are you taking a break?  I know this job is taxing, but you need to finish!","ponder",  242380919, 3536759386, Spawn)
     end
 else 
 	FaceTarget(NPC, Spawn) --NOT RIGHT CLASS
@@ -164,7 +164,7 @@ function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "Why, thank you! A friend of mine in Qeynos tailored this for me. Perhaps I can see if she has time to make an extra set for you--if you help me with a few favors.")
-
+	Dialog.AddVoiceover("voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree002.mp3", 2359463822, 3639301391)
 	Dialog.AddOption( "What could I do for you?", "Option2")
 	Dialog.AddOption("No, I'm not interested right now.")
 	Dialog.Start()
@@ -174,6 +174,7 @@ function Option2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "As a Qeynosian wizard, I'm often asked to defend the city with my magical might. Unfortunately, prior commitments require I stay in the city for the next several weeks. If you help with my responsibilities that take me outside the city, I'd be very thankful.")
+	Dialog.AddVoiceover("voiceover/english/gildas_cedartree/qey_elddar/quests/gildas_cedartree/gildascedartree003.mp3", 4282077641, 830643203)
 	Dialog.AddOption( "It would be my pleasure to help you.", "Option3")
 	Dialog.AddOption("I'm sorry, I don't have time right now.")
 	Dialog.Start()
