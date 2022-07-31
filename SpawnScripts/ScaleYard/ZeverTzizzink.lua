@@ -6,7 +6,10 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+local PoisonousZever = 5711
+
 function spawn(NPC)
+    ProvidesQuest(NPC, PoisonousZever)
 end
 
 function respawn(NPC)
@@ -14,6 +17,15 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    if not HasQuest(Spawn, PoisonousZever) and not HasCompletedQuest(Spawn, PoisonousZever) then
+        OfferQuest(NPC, Spawn, PoisonousZever)
+    end
+    if GetQuestStep(Spawn, PoisonousZever) == 2 then
+        SetStepComplete(Spawn, PoisonousZever, 2)
+    end
+	if GetQuestStep(Spawn, PoisonousZever) == 4 then
+        SetStepComplete(Spawn, PoisonousZever, 4)
+    end
 	RandomGreeting(NPC, Spawn)
 end
 

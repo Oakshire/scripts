@@ -15,7 +15,10 @@ end
 
 function casted_on(NPC, Spawn, Spell)
 if Spell == 'use your key' then
-SetStepComplete(Spawn, AFilthybronzekey, 1)
+    if HasItem(Spawn, 1655) then
+    RemoveItem(Spawn, 1655)  -- a filthy bronze key item
+    SetStepComplete(Spawn, AFilthybronzekey, 1)
+    end 
   end
 end  
 

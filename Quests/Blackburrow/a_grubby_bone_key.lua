@@ -32,10 +32,10 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the chest that the key fits.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the chest where the gnoll hid his treasure.")
     if HasItem(Player, 1881) then
+    	GiveQuestReward(Quest, Player)   -- Rewards might be incorrect, need more info.    
     RemoveItem(Player, 1881)
     end
 	UpdateQuestDescription(Quest, "Inside the chest, I found the remains of the gnoll's personal property.")
-	GiveQuestReward(Quest, Player)
 end
 
 function Reload(Quest, QuestGiver, Player, Step)

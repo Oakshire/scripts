@@ -10,6 +10,7 @@
         Followed by: 
 --]]
 
+
 function Init(Quest)
 	AddQuestStep(Quest, 1, "Find the chest in Blackburrow that the key fits.", 1, 100, "I need to find the chest where the gnoll hid his treasure.", 648)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
@@ -27,15 +28,23 @@ function Deleted(Quest, QuestGiver, Player)
 	-- Remove any quest specific items here when the quest is deleted
 end
 
+
 function QuestComplete(Quest, QuestGiver, Player)
-	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I found the chest that the key fits.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the chest where the gnoll hid his treasure.")
-    if HasItem(Player, 1655) then
-    RemoveItem(Player, 1655)  -- a filthy bronze key item
-    end 
+--[[    choice = MakeRandomInt(1,3) 
+    if choice == 1 then
+    AddQuestRewardItem(Quest, 162069)
+    elseif choice == 2 then
+    AddQuestRewardItem(Quest,  162070)
+    elseif choice == 3 then
+    AddQuestRewardItem(Quest,  162073)
+    end]]--
 	UpdateQuestDescription(Quest, "Inside the chest, I found the remains of the gnoll's personal property.")
-	GiveQuestReward(Quest, Player)
+	if HasItem(Player, 1655) then
+    GiveQuestReward(Quest,Player)
+    RemoveItem(Player, 1655)
+    end
 end
 
 function Reload(Quest, QuestGiver, Player, Step)
