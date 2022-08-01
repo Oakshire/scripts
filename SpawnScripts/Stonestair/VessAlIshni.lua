@@ -30,25 +30,29 @@ function hailed(NPC, Spawn)
 	
 	
 	local result = false;
-	result = HandleQuest1Dialog(NPC, Spawn, conversation)
-	if not result then
-		result = HandleQuest2Dialog(NPC, Spawn, conversation)
+	
+	local race = GetRace(Spawn)
+    if race == 3 then --Erudite
+	    result = HandleQuest1Dialog(NPC, Spawn, conversation)
+	    if not result then
+		    result = HandleQuest2Dialog(NPC, Spawn, conversation)
+	    end
+	
+	    if not result then
+		    result = HandleQuest3Dialog(NPC, Spawn, conversation)
+	    end
+	
+	    if not result then
+		    result = HandleQuest4Dialog(NPC, Spawn, conversation)
+	    end
+	
+	    if not result then
+		    result = HandleQuest5Dialog(NPC, Spawn, conversation)
+	    end
 	end
 	
 	if not result then
-		result = HandleQuest3Dialog(NPC, Spawn, conversation)
-	end
-	
-	if not result then
-		result = HandleQuest4Dialog(NPC, Spawn, conversation)
-	end
-	
-	if not result then
-		result = HandleQuest5Dialog(NPC, Spawn, conversation)
-	end
-	
-	if not result then
-		Say(NPC, "Sorry this dialog was never collected.")
+		Say(NPC, "Sorry. Have a good day.")
 	end
 end
 

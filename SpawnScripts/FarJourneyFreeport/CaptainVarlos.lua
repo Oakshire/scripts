@@ -177,7 +177,11 @@ function zone_to_isle(NPC, player)
 end
 
 function quest_step_9(NPC, player)	
+    if GetClientVersion(player)<= 546 then
 	AddTimer(GetSpawn(NPC, 270013), 100, "attack")
+	else
+	AddTimer(GetSpawn(NPC, 270013), 100, "NonDoFattack")
+    end	    
 	AddTimer(NPC, 1000, "quest_step_9b", 1, player)	
 end
 

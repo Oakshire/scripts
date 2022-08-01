@@ -32,10 +32,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I found the chest that the key fits.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the chest where the gnoll hid his treasure.")
-    if HasItem(Player, 1160) then -- badly polished steel key
     	GiveQuestReward(Quest, Player)    
-    RemoveItem(Player, 1160)
-    end
 	UpdateQuestDescription(Quest, "Inside the chest, I found the remains of the gnoll's personal property.")
 end
 

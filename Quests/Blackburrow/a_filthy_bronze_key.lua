@@ -12,7 +12,8 @@
 
 
 function Init(Quest)
-	AddQuestStep(Quest, 1, "Find the chest in Blackburrow that the key fits.", 1, 100, "I need to find the chest where the gnoll hid his treasure.", 648)
+    SetQuestRepeatable(Quest)
+    AddQuestStep(Quest, 1, "Find the chest in Blackburrow that the key fits.", 1, 100, "I need to find the chest where the gnoll hid his treasure.", 648)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -32,6 +33,7 @@ end
 function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the chest that the key fits.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the chest where the gnoll hid his treasure.")
+    GiveQuestItem(Quest, Player, "Inside the chest, I found the remains of the gnoll's personal property.",162069)
 --[[    choice = MakeRandomInt(1,3) 
     if choice == 1 then
     AddQuestRewardItem(Quest, 162069)
@@ -41,10 +43,8 @@ function QuestComplete(Quest, QuestGiver, Player)
     AddQuestRewardItem(Quest,  162073)
     end]]--
 	UpdateQuestDescription(Quest, "Inside the chest, I found the remains of the gnoll's personal property.")
-	if HasItem(Player, 1655) then
-    GiveQuestReward(Quest,Player)
-    RemoveItem(Player, 1655)
-    end
+    QuestIsComplete(Quest)
+--    GiveQuestReward(Quest,Player)
 end
 
 function Reload(Quest, QuestGiver, Player, Step)

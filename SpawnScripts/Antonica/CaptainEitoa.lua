@@ -12,10 +12,7 @@ local Gnoll = 471
 local Captain = 472
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-	ProvidesQuest(NPC, Keep)   
-	ProvidesQuest(NPC, Gnoll)   
-	ProvidesQuest(NPC, Captain)   
+	SetPlayerProximityFunction(NPC, 10, "InRange")
     waypoints(NPC)
 end
 
@@ -24,10 +21,21 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+ if not HasQuest(Spawn, Keep) and not HasCompletedQuest(Spawn, Keep) then
+    ProvidesQuest(NPC, Keep) 
+      SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, Keep) then
+       ProvidesQuest(NPC, Gnoll) 
+      SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+elseif HasCompletedQuest(Spawn, Gnoll) then
+       ProvidesQuest(NPC, Captain) 
+      SetInfoFlag(NPC)
+SetVisualFlag(NPC)
 end
+   end
 
-function LeaveRange(NPC, Spawn)
-end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
