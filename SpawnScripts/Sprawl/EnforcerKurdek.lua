@@ -2,13 +2,13 @@
 	Script Name	: SpawnScripts/Sprawl/EnforcerKurdek.lua
 	Script Purpose	: Enforcer Kurdek <Dreadnaught>
 	Script Author	: Scatman
-	Script Date	: 2008.09.29
+	Script Date	: 2008.09.29 (updated by torsten 1.8.2022)
 	Script Notes	: 
 --]]
 
 local MoreBarshing  = 5636 --from Big Bend
 local TrollAdventures = 5643 --from Big Bend
-local QUEST_FROM_SCALEYARD_CLANCHEIFMALACHI = 203
+local GoVisitTheSprawl = 350 --from Scale Yard
 local QUEST_1 = 455
 local QUEST_2 = 540
 local QUEST_3 = 541
@@ -59,8 +59,8 @@ function hailed(NPC, Spawn)
 	if HasQuest(Spawn, TrollAdventures) then
 		SetStepComplete(Spawn, TrollAdventures, 1)
 	end
-	if HasQuest(Spawn, QUEST_FROM_SCALEYARD_CLANCHEIFMALACHI) then
-		SetStepComplete(Spawn, QUEST_FROM_SCALEYARD_CLANCHEIFMALACHI, 1)
+	if GetQuestStep(Spawn, GoVisitTheSprawl) == 1 then
+		SetStepComplete(Spawn, GoVisitTheSprawl, 1)
 	end
 
 	if HasCompletedQuest(Spawn, QUEST_1) then

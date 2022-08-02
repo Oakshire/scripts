@@ -2,7 +2,7 @@
 	Script Name	: Quests/ScaleYard/wasp_what_i_can_do.lua
 	Script Purpose	: Quest, "Wasp What I Can Do"
 	Script Author	: Xanibunib
-	Script Date	: 4.4.209
+	Script Date	: 4.4.2009 (updated by torsten 1.8.2022)
 	
 	Zone       : Scale Yard
 	Quest Giver: Clan Chief Malachi Sleetspear
@@ -11,10 +11,11 @@
 	Followed by: Sound Off!
 --]]
 
+local WASP = 346
 
 function Init(Quest)
 	
-	AddQuestStepKill(Quest, 1, "I need to kill several wasps.", 4, 100, "I need to take care of the wasps near the Freeport Reserve.", 611, 1390030, 1390044)
+	AddQuestStepKill(Quest, 1, "I need to kill several wasps.", 4, 100, "I need to take care of the wasps near the Freeport Reserve.", 611, 1390035)
 	AddQuestStepSpell(Quest, 2, "I must destroy the wasp hive.", 1, 100, "I need to take care of the wasps near the Freeport Reserve.", 0, 5029)
 
 	AddQuestStepCompleteAction(Quest, 1, "Step1_WaspsDead")
@@ -38,25 +39,21 @@ end
 
 function Step1_WaspsDead(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed several wasps.")
-	
-	if QuestIsComplete(Player, 175) then
-		OneAndTwoComplete(Quest, QuestGiver, Player)
-	end
+	CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2_HiveDestro(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have destroyed the wasp hive.")
-	
-	if QuestIsComplete(Player, 175) then
-		OneAndTwoComplete(Quest, QuestGiver, Player)
-	end
+	CheckProgress(Quest, QuestGiver, Player)
 end
 
-function OneAndTwoComplete(Quest,QuestGiver, Player)
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have proved that I am indeed strong enough to survive in the Scale Yard.")
-	
-	AddQuestStepChat(Quest, 3, "I should let malachi know I've delt with the wasps.", 1, "I've taken care of the wasps and need to talk to Malachi.", 0, 1390077)
-	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
+function CheckProgress(Quest, QuestGiver, Player)
+    if QuestStepIsComplete(Player, WASP, 1) and QuestStepIsComplete(Player, WASP, 2) then
+ 	    UpdateQuestTaskGroupDescription(Quest, 1, "I have proved that I am indeed strong enough to survive in the Scale Yard.")
+	    
+	    AddQuestStepChat(Quest, 3, "I should let Malachi know I've dealt with the wasps.", 1, "I've taken care of the wasps and need to talk to Malachi.", 0, 1390077)
+	    AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
+    end	
 end
 
 function QuestComplete(Quest, QuestGiver, Player)
@@ -71,8 +68,6 @@ function Reload(Quest, QuestGiver, Player, Step)
 	elseif Step == 2 then
 		Step2_HiveDestro(Quest, QuestGiver, Player)
 	elseif Step == 3 then
-		Step3_OneAndTwoComplete(Quest, QuestGiver, Player)
-	elseif Step == 4 then
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end

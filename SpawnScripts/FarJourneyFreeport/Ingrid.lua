@@ -18,6 +18,7 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+        FaceTarget(NPC, Spawn)
     step = GetQuestStep(Spawn, 524)
     if step == 4 then
         SendStateCommand(NPC, 0)

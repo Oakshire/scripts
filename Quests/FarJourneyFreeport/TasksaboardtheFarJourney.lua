@@ -88,7 +88,9 @@ end
 function Step9Init(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 8, "I have killed the rats.")
 	UpdateQuestTaskGroupDescription(Quest, 8, "I killed the rats that Captain Varlos requested.")
-
+    if GetLevel(Player) <2 then
+        SetPlayerLevel(Player,2)
+    end
 	AddQuestStepChat(Quest, 9, "I should speak to Captain Varlos.", 1, "Inform Captain Varlos that you have exterminated the vermin.", 11, CaptainVarlos)
 	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")
 end

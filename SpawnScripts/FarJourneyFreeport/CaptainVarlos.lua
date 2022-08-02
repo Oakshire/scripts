@@ -81,7 +81,12 @@ function hailed(NPC, player)
 	SendStateCommand(GetSpawn(NPC, 270000), VSTATE_HELLO)
 	SendStateCommand(GetSpawn(NPC, 270000), 0)
 	if not HasQuest(player, 524) and not HasCompletedQuest(player, 524) then
-		InstructionWindowClose(player)
+    if GetClientVersion(player)<= 546 then --GOBLIN ANIMATIONS
+	AddTimer(GetSpawn(NPC, 270008), 100, "idle_loop")
+	else
+	AddTimer(GetSpawn(NPC, 270008), 100, "NonDoF_idle_loop")
+    end	    
+        InstructionWindowClose(player)
 		needs_selection_help = true
 		finished_hailed = false
 		finished_where_am_I = false
@@ -294,8 +299,11 @@ function quest_step_7c(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Wit this 'ere club. It is nice and splintered, sure ta' cause them some pain.")
 	Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_014.mp3", 2083163804, 202693960)
-	Dialog.AddOption("Aye, aye, Captain!", "")
+    Dialog.AddOption("Aye, aye, Captain!", "quest_step_7d")
 	Dialog.Start()
+end
+
+function quest_step_7d (NPC,player)
 	SetStepComplete(player, 524, 7) 
 end
 
@@ -438,7 +446,7 @@ end
 function offer_quest(NPC, player)
 	if HasQuest(player, 524) == false then
 		OfferQuest(NPC, player, 524)
-		AddTimer(NPC, 7000, "Accepted_Tutorial_Instructions", 1, player)	
+		AddTimer(NPC, 9000, "Accepted_Tutorial_Instructions", 1, player)	
 	end
 end
 

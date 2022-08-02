@@ -7,7 +7,7 @@
 --]]
 
 -- Race ID's
-local BARBARIAN = 14 --0
+local BARBARIAN = 0
 
 -- Quest ID's
 local QUEST_1 = 346 -- 175 --Wasp What I Can Do

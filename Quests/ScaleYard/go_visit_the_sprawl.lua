@@ -1,50 +1,45 @@
 --[[
-	Script Name	: Quests/ScaleYard/go_visit_the_sprawl.lua
-	Script Purpose	: Quest 203, Go Visit The Sprawl
-	Script Author	: Xanibunib
-	Script Date	: 4.10.2009
-	
-	Zone       : Scale Yard
-	Quest Giver: Clan Cheif Malachi Sleetspear
-	Preceded by: What Happens In The Scale Yard Stays...
-	Followed by: 
+	Script Name		:	go_visit_the_sprawl.lua
+	Script Purpose	:	Handles the quest, "Go Visit The Sprawl"
+	Script Author	:	torsten
+	Script Date		:	01.08.2022
+	Script Notes	:	
+
+	Zone			:	Miscellaneous
+	Quest Giver		:	Malachi
+	Preceded by		:	Barbarian racial questline
+	Followed by		:	None
 --]]
 
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to speak to Enforcer Kurdek in the Sprawl.", 1, "", 0, 1260017)
-	AddQuestStepCompleteAction(Quest, 1, "Step1_Kurdek")
+	AddQuestStepChat(Quest, 1, "I need to speak to Enforcer Kurdek in the Sprawl.", 1, "I can get to the Sprawl by using the bell at the Scale Yard docks, travel to Big Bend and then find the gate to the Sprawl.", 11, 1260017)
+	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	if QuestGiver ~= nil then
-		if GetDistance(Player, QuestGiver) < 30 then
-			PlayFlavor(QuestGiver, "voiceover/english/gu38/tutorial_revamp/clan_chief_malachi_sleetspear/fprt_hood06/malachi056.mp3", "", "", 3512384326, 3311708493, Player)
-			AddConversationOption(conversation, "Okay.", "dlg_0_0")
-			StartConversation(conversation, QuestGiver, Player, "Aye, you've done much already but I'm afraid after all the ruckus you stirred up, its best you find work elsewhere. Go speak to Enforcer Kurdek in the Sprawl and see if he could use your help.")
-		end
-	end
+	-- Add dialog here for when the quest is accepted
 end
 
 function Declined(Quest, QuestGiver, Player)
+	-- Add dialog here for when the quest is declined
 end
 
-function dlg_0_0(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-
-	PlayFlavor(NPC, "voiceover/english/gu38/tutorial_revamp/clan_chief_malachi_sleetspear/fprt_hood06/malachi057.mp3", "", "", 3904497109, 418111137, Spawn)
-	AddConversationOption(conversation, "For New Halas!")
-	StartConversation(conversation, NPC, Spawn, "Good luck Fuhe, and remember... For New Halas!")
+function Deleted(Quest, QuestGiver, Player)
+	-- Remove any quest specific items here when the quest is deleted
 end
 
-function Step1_Kurdek(Quest, QuestGiver, Spawn)
-	UpdateQuestDescription(Quest, "I have spoken to Enforcer Kurdek.")
+function QuestComplete(Quest, QuestGiver, Player)
+	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
+	UpdateQuestStepDescription(Quest, 1, "I have spoken with Enforcer Kurdek.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have spoken with Enforcer Kurdek.")
+
+	UpdateQuestDescription(Quest, "I have spoken with Enforcer Kurdek.")
 	GiveQuestReward(Quest, Player)
 end
 
-function Reload(Quest, QuestGiver, Player)
+function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
-		Step1_Kurdek(Quest, QuestGiver, Player)
+		QuestComplete(Quest, QuestGiver, Player)
 	end
 end

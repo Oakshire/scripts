@@ -48,6 +48,8 @@ end
 
 function Reload(Quest, QuestGiver, Player)
 	if Step == 1 then
-		Step1_KillAgents(Quest, QuestGiver, Player)
+		Step1Complete(Quest, QuestGiver, Player)
+	elseif Step == 2 then
+		QuestComplete(Quest, QuestGiver, Player)
 	end
 end
