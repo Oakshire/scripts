@@ -2,7 +2,7 @@
     Script Name    : Quests/Blackburrow/a_filthy_bronze_key.lua
     Script Author  : Premierio015
     Script Date    : 2022.07.29 09:07:57
-    Script Purpose : 
+    Script Purpose : Attempting to add random reward item to quest completion. - Dorbin 07.31.2022
 
         Zone       : Blackburrow
         Quest Giver: 
@@ -34,17 +34,9 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the chest that the key fits.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the chest where the gnoll hid his treasure.")
     GiveQuestItem(Quest, Player, "Inside the chest, I found the remains of the gnoll's personal property.",162069)
---[[    choice = MakeRandomInt(1,3) 
-    if choice == 1 then
-    AddQuestRewardItem(Quest, 162069)
-    elseif choice == 2 then
-    AddQuestRewardItem(Quest,  162070)
-    elseif choice == 3 then
-    AddQuestRewardItem(Quest,  162073)
-    end]]--
+
 	UpdateQuestDescription(Quest, "Inside the chest, I found the remains of the gnoll's personal property.")
-    QuestIsComplete(Quest)
---    GiveQuestReward(Quest,Player)
+    GiveQuestReward(Quest,Player)
 end
 
 function Reload(Quest, QuestGiver, Player, Step)
@@ -53,3 +45,11 @@ function Reload(Quest, QuestGiver, Player, Step)
 	end
 end
 
+--[[    choice = MakeRandomInt(1,3) 
+    if choice == 1 then
+    AddQuestRewardItem(Quest, 162069)
+    elseif choice == 2 then
+    AddQuestRewardItem(Quest,  162070)
+    elseif choice == 3 then
+    AddQuestRewardItem(Quest,  162073)
+    end]]--
