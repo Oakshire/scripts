@@ -13,6 +13,20 @@ function spawn(NPC)
 	
 end
 
+function hailed(NPC, Spawn)
+	RandomGreeting(NPC, Spawn)
+end
+
+function RandomGreeting(NPC, Spawn)
+	local choice = MakeRandomInt(1,2)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/geredo/boat_06p_tutorial02_fvo_002.mp3", "Thinking I should design a new mechanical boat. It would be perfect! Yes, perfect indeed!", "ponder", 2630458163, 1309095480, Spawn, 0)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/geredo/boat_06p_tutorial02_fvo_001.mp3", "Do you happen to have any mechanical leg extenders? I want to see the water.", "agree", 2902186099, 1357276764, Spawn, 0)
+	end
+end
+
 -- sent from Ingrid to start the flirting
 -- sends back to Ingrid after Geredo starts flirting with a flex
 function GeredoFlirtingWithIngird(NPC, Spawn)
@@ -99,9 +113,6 @@ function CaptainCallingIngrid(NPC, Spawn)
 	PlayAnimation(NPC, 12246)
 end
 
-function hailed(NPC, Spawn)
-
-end
 
 function respawn(NPC)
 

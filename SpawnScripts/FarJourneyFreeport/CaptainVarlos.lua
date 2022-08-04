@@ -111,6 +111,8 @@ function hailed(NPC, player)
 		Dialog.AddOption("What is it?", "quest_step_7a")
 		Dialog.Start()
 		get_attention_animation = false
+	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 8 then
+		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_015.mp3", "Blimey! Ya' tryin to cause a mutiny? I told you to kill those rats, now do it ya landlubber!", "", 1239213594, 177688376, Spawn, 0)
 	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 10 then
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_023.mp3", "You still need to kill that landlubber of a goblin! Get to it mate!", "", 3269557913, 3104212801)
 	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 9 then
