@@ -14,18 +14,21 @@ end
 
 function hailed(NPC, Spawn)
 	goblin = GetSpawn(NPC, 270008)
-	if goblin == nil or IsAlive(goblin) == false then
+	if goblin == nil and GetSpawn(NPC, 270011)~= nil or IsAlive(goblin) == false and GetSpawn(NPC, 270011)~= nil then
 		FaceTarget(NPC, Spawn)	
 		choice = math.random(1, 2) 	    
 		if choice == 1 then
-			PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02_fvo_001.mp3", "Thanks for saving me", "thanks", 3802219844, 3242323771)
+		PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02_fvo_001.mp3", "Thanks for saving me", "thanks", 3802219844, 3242323771)
 		else
-			PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02/anikra_0_003.mp3", "I don't know how I did that. What was that?", "boggle", 927876289, 3048340606)
+		PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02/anikra_0_003.mp3", "I don't know how I did that. What was that?", "boggle", 927876289, 3048340606)
 		end
-	else
+    elseif IsAlive(goblin) == true and GetSpawn(NPC, 270011)== nil then --Stops hails during goblin attack
+    else
 		PlayFlavor(NPC, "voiceover/english/anikra/boat_06p_tutorial02_fvo_002.mp3", "I really miss my husband. Why did those smugglers have to throw him overboard?", "sigh", 1493499523, 2767493059)
 	end
 end
+
+
 
 --[[
 function callDrake(NPC, Spawn)

@@ -81,6 +81,7 @@ function hailed(NPC, player)
 	SendStateCommand(GetSpawn(NPC, 270000), VSTATE_HELLO)
 	SendStateCommand(GetSpawn(NPC, 270000), 0)
 	if not HasQuest(player, 524) and not HasCompletedQuest(player, 524) then
+	SetTarget(NPC,player)    
     if GetClientVersion(player)<= 546 then --GOBLIN ANIMATIONS
 	AddTimer(GetSpawn(NPC, 270008), 100, "idle_loop")
 	else
@@ -149,12 +150,20 @@ function quest_completed(NPC, player)
 end
 
 function drop_anchor(NPC, player)
+    
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Ingrid! Swing the lead and prepare to drop anchor!")
 	Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_026.mp3", 3011518245, 3851752713)
 	Dialog.AddOption("[Continue]", "hailed")
 	Dialog.Start()
-end
+		MovementLoopAddLocation(GetSpawn(NPC, 270001), 4.21, -2.07, 3.72, 4,0)
+		MovementLoopAddLocation(GetSpawn(NPC, 270001), 1.97, 0.59, 16.73, 4,0)
+		MovementLoopAddLocation(GetSpawn(NPC, 270001), 1.07, 0.66, 18.69, 4,20)
+		MovementLoopAddLocation(GetSpawn(NPC, 270001), 1.07, 0.66, 18.69, 2,0)
+		MovementLoopAddLocation(GetSpawn(NPC, 270001), 1.97, 0.59, 16.73, 2,0)
+		MovementLoopAddLocation(GetSpawn(NPC, 270001), 4.21, -2.07, 3.72, 2,0)
+		MovementLoopAddLocation(GetSpawn(NPC, 270001), 2.91, -2.07, -3.61, 2,120)
+	end
 
 function ready_to_go_ashore(NPC, player)
 	Dialog.New(NPC, player)
@@ -206,6 +215,7 @@ function quest_step_9c(NPC, player)
 	Anikra = GetSpawn(NPC, 270006)	
 	Valik = GetSpawn(NPC, 270005)	
 	Geredo = GetSpawn(NPC, 270004)
+	Vim = GetSpawn(NPC, 270007)
 	
 	FaceTarget(Anikra, Drake)
 	FaceTarget(Valik, Drake)	
@@ -219,7 +229,16 @@ function quest_step_9c(NPC, player)
 	SendStateCommand(GetSpawn(NPC, 270001), VSTATE_CROUCH_ENTER)
 	SendStateCommand(GetSpawn(NPC, 270007), VSTATE_SQUEAL)
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_018.mp3", "Quick! Ingrid, secure th'loot! Thar be a Drakota off the bow! Quick now! Secure those chests!", "", 3607547478, 39534308)
+    MoveToLocation(Vim, -0.27, 0.56, 15.78,4)
+    MoveToLocation(Vim, 2.15, 0.55, 15.60,4)
+    MoveToLocation(Vim, 5.84, -1.82, 9.84,4)
+	AddTimer(NPC, 8000, "VimHeading")	
 	AddTimer(NPC, 9000, "quest_step_9d", 1, player)	
+end
+
+function VimHeading(NPC, player)	
+	Vim = GetSpawn(NPC, 270007)
+	SetHeading(Vim, 78)
 end
 
 function quest_step_9d(NPC, player)	
@@ -375,7 +394,8 @@ function where_are_we_headed(NPC, player)
 		AddTimer(NPC, 500, "shake_camera_medium", 1, player)
 		AddTimer(NPC, 1500, "shake_camera_low", 1, player)
 		AddTimer(NPC, 2500, "shake_camera_low", 1, player)	
-		AddTimer(NPC, 3000, "high_winds_1", 1, player)
+		AddTimer(NPC, 3100, "shake_camera_low", 1, player)	
+		AddTimer(NPC, 3600, "high_winds_1", 1, player)
 	end
 end
 
@@ -410,6 +430,8 @@ function high_winds_2(NPC, player)
 	finished_high_winds_1 = true
 	if not finished_high_winds_2 then
 		FaceTarget(GetSpawn(NPC, 270001), NPC)
+		SetTarget(GetSpawn(NPC, 270001), NPC)
+		SetTarget( NPC,GetSpawn(NPC, 270001))
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_007.mp3", "Don't want the ship to come apart in these high winds, do ya'?!", "scold", 517097409, 4194681002)
 		SendStateCommand(GetSpawn(NPC, 270001), 0)
 		AddTimer(NPC, 4000, "high_winds_3", 1, player)
@@ -435,6 +457,9 @@ function high_winds_4(NPC, player)
 	MoveToLocation(GetSpawn(NPC, 270001), -1.86, -2.03, -8.17, 8, "", true)
 	MoveToLocation(GetSpawn(NPC, 270001), 2.48, -2.07, -3.26, 8, "", false)
 	FaceTarget(NPC, player)
+	GetSpawn(nil, NPC)
+	SetTarget( NPC,nil)
+	SetTarget(GetSpawn(NPC, 270001), nil)
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_008.mp3", "Ya think she'd never seen a gnome afore.", "", 2447879193, 4289147535)
 	GenerateStateDefines(player)
 	SendStateCommand(GetSpawn(NPC, 270001), VSTATE_SQUARE)

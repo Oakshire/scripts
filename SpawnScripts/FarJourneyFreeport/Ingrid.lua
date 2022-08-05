@@ -18,8 +18,10 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-        FaceTarget(NPC, Spawn)
     step = GetQuestStep(Spawn, 524)
+    if not HasQuest(Spawn,524) and not HasCompletedQuest(Spawn, 524) then --Avoids stopping Ingred while she is moving around
+    else    
+    FaceTarget(NPC, Spawn)
     if step == 4 then
         SendStateCommand(NPC, 0)
         Dialog.New(NPC, Spawn)
@@ -58,6 +60,7 @@ function hailed(NPC, Spawn)
                 "smile", 964088856, 3568852318, Spawn)
         end
     end
+end
 end
 
 function WalkToGeredo(NPC, Spawn)

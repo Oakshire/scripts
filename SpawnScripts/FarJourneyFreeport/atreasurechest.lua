@@ -13,6 +13,7 @@ end
 function spawn(NPC)
     ChangeHandIcon(NPC, 0)
     SpawnSet(NPC, "targetable", 0)
+SetRequiredQuest(NPC, 524, 2, 0,1)
 end
 
 function respawn(NPC)
@@ -35,6 +36,12 @@ function open(NPC, Player)
 end
 
 function finished_open_animation(NPC)
-    SpawnSet(NPC, "visual_state", 11903) -- this swings open right in DoF, in AoM its really quick but better, not aware of any time we can expose
+   SpawnSet(NPC, "visual_state", 11897)-- this swings open right in DoF, in AoM its really quick but better, not aware of any time we can expose
+   AddTimer(NPC,1800, "ChestOpen")
     SendStateCommand(NPC, 400)
+end
+
+
+function ChestOpen(NPC)
+  SpawnSet(NPC, "visual_state", 11903) 
 end

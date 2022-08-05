@@ -1,7 +1,14 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
+end
 
+function InRange (NPC,player)
+	step = GetQuestStep(player, 524) 
+    if step == 2 or step ==3 then
+		PlayFlavor(NPC, "voiceover/english/waulon/boat_06p_tutorial02/walon_0_004.mp3", "Where's me hat? Needs me lucky hat!", "confused", 2688932325, 103225044, player, 0)
+end
 end
 
 function hailed(NPC, player)
@@ -17,9 +24,10 @@ function hailed(NPC, player)
 			Dialog.AddDialog("Wot? Oh, hey there, ye' startled me.")
 			Dialog.AddVoiceover("voiceover/english/waulon/boat_06p_tutorial02/walon_0_001.mp3", 814960513, 2301562586)
 			Dialog.AddOption("Sorry about that.", "startled_me")
-			Dialog.Start()	
-		elseif step == 3 then
-			PlayFlavor(NPC, "voiceover/english/waulon/boat_06p_tutorial02/walon_0_004.mp3", "Where's me hat? Needs me lucky hat!", "", 2688932325, 103225044)
+			Dialog.Start()
+	elseif step == 2 then
+		PlayFlavor(NPC, "", "", "frustrated", 2688932325, 103225044, player, 0)
+    elseif step == 3 then
 			Dialog.New(NPC, player)
 			Dialog.AddDialog("Ah, me hat! Was worried. See, dis' hat gives me the luck.")
 			Dialog.AddVoiceover("voiceover/english/waulon/boat_06p_tutorial02/walon_0_005.mp3", 4097259098, 893296183)

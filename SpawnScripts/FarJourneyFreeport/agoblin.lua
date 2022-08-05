@@ -34,7 +34,7 @@ end
 ----NON DOF VERSION
 
 function NonDoF_idle_loop(NPC)-- For NON DOF/CLASSIC CLIENTS
-    local states = {15, 11255 , 11256 , 883, 11287 , 11554 , 11663 , 11676 , 12081 , 12166 , 12172 , 12191 , 12325 , 12983 , 13015 , 13063 , 10844 }
+    local states = {11255 , 11256 , 883, 11287 , 11554 , 11663 , 11676 , 12081 , 12166 , 12172 , 12191 , 12325 , 12983 , 13015 , 13063 , 10844 }
         SendStateCommand(NPC, states[math.random(#states)])
 	AddTimer(NPC, math.random(5000, 7000), "NonDoF_stop_animation")	
 end
@@ -71,11 +71,21 @@ end
 
 function run_around_loop(NPC)
 	MovementLoopAdd(NPC, -4.43, -2.07, 6.17, 5, 3, "run_around_loop_pause1")
+	MovementLoopAdd(NPC, -4.43, -2.07, 6.17, 5, 0)
 	MovementLoopAdd(NPC, -5.23, -2.01, 0.39, 5, 3, "run_around_loop_pause2")
+	MovementLoopAdd(NPC, -5.23, -2.01, 0.39, 5, 0)
 	MovementLoopAdd(NPC, -4.88, -2.06, 4.26, 5, 3, "run_around_loop_pause3")
+	MovementLoopAdd(NPC, -4.88, -2.06, 4.26, 5, 0)
 	MovementLoopAdd(NPC, 3.94, -2.07, 0.66, 5, 3, "run_around_loop_pause4")
+	MovementLoopAdd(NPC, 3.94, -2.07, 0.66, 5, 0)
 	MovementLoopAdd(NPC, 2.84, -2.07, -2.07, 5, 3, "run_around_loop_pause5")
+	MovementLoopAdd(NPC, 2.84, -2.07, -2.07, 5, 0)
 	MovementLoopAdd(NPC, 3.41, -1.99, -7.42, 5, 3, "run_around_loop_pause6")
+	MovementLoopAdd(NPC, 3.41, -1.99, -7.42, 5, 0)
+	MovementLoopAdd(NPC, -2.75, -2.02, -5.82, 5, 0)
+	MovementLoopAdd(NPC, -2.63, 1.21, -18.11,5,3,"run_around_loop_pause7")
+	MovementLoopAdd(NPC, -2.63, 1.21, -18.11,3,0)
+	MovementLoopAdd(NPC, -2.75, -2.02, -5.82, 5, 0)
 end
 
 function run_around_loop_pause(NPC)
@@ -112,9 +122,9 @@ end
 
 function run_around_loop_pause4(NPC)
     if legacy == true then --DoF or Classic Client
-	SendStateCommand(GetSpawn(NPC, 270004), 535) --SHIVER
+	SendStateCommand(GetSpawn(NPC, 270004), 717) --THREATEN
 	else
-	SendStateCommand(GetSpawn(NPC, 270004), 12236)
+	SendStateCommand(GetSpawn(NPC, 270004), 13063)
 	end 
 	run_around_loop_pause(NPC)
 end
@@ -132,6 +142,19 @@ function run_around_loop_pause6(NPC)
 	run_around_loop_pause(NPC)
 end
 
+function run_around_loop_pause7(NPC)
+    if legacy == true then --DoF or Classic Client
+	SendStateCommand(GetSpawn(NPC, 270002), 528) --Shakefist
+	else
+	SendStateCommand(GetSpawn(NPC, 270002), 12214)
+	end
+	run_around_loop_pause(NPC)
+end
+
 function run_around_loop_stop_animation(NPC)
 	SendStateCommand(NPC, 0)	
+end
+
+function death(NPC,Spawn)
+    	AddTimer(GetSpawn(NPC, 270008), 100, "idle_loop")
 end
