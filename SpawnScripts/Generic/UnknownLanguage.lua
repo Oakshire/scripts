@@ -349,10 +349,14 @@ function Garbled(NPC, Spawn, Faction)
 				end
 			elseif race == WOOD_ELF then
 				if gender == MALE then
-                local choice = math.random(1,1)	         
+                local choice = math.random(1,3)	         
 	                if choice == 1 then
-		            PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_8a0bc5f8.mp3", "You need to stop and smell the flowers sometime. Even from the treetops.", "", 1811305493, 2624435147, Spawn, 16)
-	                end					    
+            		PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_f197012c.mp3", "Molokeeenakah  watroo    olozamm", "", 2097905045, 1612835219, Spawn, 16)
+                	elseif choice == 2 then
+            		PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_8a0bc5f8.mp3", "Kaamahaneah    queeeola      chi   sa", "", 1811305493, 2624435147, Spawn, 16)
+                	elseif choice == 3 then
+            		PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_1b979d55.mp3", "Aleeda merende wovesta", "", 2513619643, 1543099294, Spawn, 16)
+                  end					    
 				elseif gender == FEMALE then
                 local choice = math.random(1,1)	         
 	                if choice == 1 then

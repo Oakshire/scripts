@@ -517,7 +517,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 				    if Qfaction <0 then
                     FactionChecking(NPC, Spawn, faction)
 				    else
-				    local choice = math.random(1,4)
+				    local choice = math.random(1,9)
 
                         if choice == 1 then
 	                    PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_hail_gm_f3d18eed.mp3", "Happiness is an invention that doesn't blow up in your face.", "cackle", 3009155014, 2014645373, Spawn)
@@ -533,6 +533,10 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	                    PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_hail_gm_275aaf38.mp3", "Wouldn't it be great if fruit was explosive?  It would be a wonderful power source and delicious at the same time!", "agree", 1275295146, 514792648, Spawn)
                     	elseif choice == 7 then
                     	PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_aoi_gm_dad26fdb.mp3", "May your calculations work most of the time!", "thumbsup", 1756949489, 1962052288, Spawn)
+                    	elseif choice == 8 then
+                		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_hail_gm_67761539.mp3", "If there's more to life than tinkering, I don't want to know.", "no", 2273281159, 3514782534, Spawn, 0)
+                    	elseif choice == 9 then
+                		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/gnome/gnome_eco_good_1_hail_gm_67fc1b9e.mp3", "If a gear is lost in a forest and no one can find it, did it ever exist to begin with?", "shrug", 2116604349, 2342019789, Spawn, 0)
 		                end
 	                 end
                 end
@@ -673,12 +677,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	    elseif race == HALFLING then
 			if gender == MALE then
 		       if Qfaction < 0 then
-                    local choice = math.random(1,2)
-				        if choice == 1 then
-	           	        PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gm_cd9164d6.mp3", "You're a stranger. And I don't like strangers, no sir I don't!", "sulk", 785726454, 3155500140, Spawn)
-				        elseif choice == 2 then		           
-		                PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_6da83eeb.mp3", "I'll defend myself if it comes to that, savage!", "shakefist", 893626909, 4027326251, Spawn)
-                        end
+                FactionChecking(NPC, Spawn, faction)
                 else
 	            local choice = math.random(1,12)
 
@@ -1300,7 +1299,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			        if Qfaction <0 then
                     FactionChecking(NPC, Spawn, faction)
 				    else			    
-            	local choice = math.random(1,10)
+            	local choice = math.random(1,11)
 
             	    if choice == 1 then
 	           	    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_31587971.mp3", "Greetings, friend.  I hope your visit to the city brings both inner peace and prosperity.", "curtsey", 999961843, 2491010297, Spawn)
@@ -1322,7 +1321,8 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	        	    PlayFlavor(NPC, "voiceover/english/optional2/woodelf_eco_good_2/ft/woodelf/woodelf_eco_good_2_aoi_gf_e67f1023.mp3", "Such a beautiful day!  All I need now is a nice vintage of elven mulberry and my relaxation will be complete.", "yawn", 3245673411, 1934163553, Spawn)
 	                elseif choice == 10 then
             		PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_aoi_gf_afb48a33.mp3", "I told him we'd make it.  We made it to Qeynos my friends!  I hope you like our new home.", "cheer", 1733622982, 4215625501, Spawn)
-	        	    
+	                elseif choice == 11 then
+                    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_d7a31929.mp3", "The greatest enemy a community can face is hubris.  Always remember, we must work together for peace.", "agree", 2056858183, 299006724, Spawn, 0)	        	    
 	        	    end    
                 end   
             end
@@ -2592,7 +2592,15 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 			        elseif choice == 2 then
 				    PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_race_good/ft/eco/good/halfelf_eco_race_good_hail_gf_15163426.mp3", "You talk to strangers?  What's the purpose of that?", "confused", 3457658686, 921014902, Spawn)
 				    elseif choice == 3 then
-                            if spawnRace == WOODELF then
+                            if spawnRace == GNOME then
+                       		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_race_good/ft/eco/good/halfelf_eco_race_good_gnome_gf_e91c924a.mp3", "If I wanted to build something, I'd ask you.", "", 1799736683, 3559236176, Spawn, 0)
+                            elseif spawnRace == HALFLING then
+                    		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_race_good/ft/eco/good/halfelf_eco_race_good_halfling_gf_8cd07501.mp3", "Yes, what is it?  Oh, just saying hello ...well, then, hello.", "", 3116622950, 2719160299, Spawn, 0)
+                            elseif spawnRace == KERRA then
+                     		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_race_good/ft/eco/good/halfelf_eco_race_good_kerra_gf_152ec69a.mp3", "What are you really hiding behind that fur coat anyway?", "", 3158059786, 910215330, Spawn, 0)
+                            elseif spawnRace == RATONGA then
+                    		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_race_good/ft/eco/good/halfelf_eco_race_good_ratonga_gf_a45c19a7.mp3", "I believe it will take some time before I am comfortable with your kind around.", "", 3181114735, 4256128337, Spawn, 0)
+                            elseif spawnRace == WOODELF then
 					        PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_race_good/ft/eco/good/halfelf_eco_race_good_woodelf_gf_1f97d15c.mp3", "May your life be filled with the green of trees and your heart be filled with...uh' hope!", "agree", 1410070569, 2067586254, Spawn)
                             end
                         else
@@ -2640,9 +2648,9 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
                                     elseif check == 2 then
 					                PlayFlavor(NPC, "voiceover/english/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_halfling_gm_4a75dace.mp3", "That was some joke you told the other day! I'm still laughing over it!", "chuckle", 4080228661, 501342601, Spawn)
                                     elseif check == 3 then
-					                PlayFlavor(NPC, "", "There are few halflings as big as you are.  Well, not that you're big, size-wise, but you know...you got a big reputation!", "hello", 0, 0, Spawn)
+                            		PlayFlavor(NPC, "voiceover/english/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_status_gm_93caef2a.mp3", "There are few halflings as big as you are.  Well, not that you're big, size-wise, but you know...you got a big reputation.", "", 189865119, 3985482419, Spawn, 0)
                                     elseif check == 4 then
-					                PlayFlavor(NPC, "", "May the fur on your feet be as thick and lustrous as the Misty Thicket.", "bow", 0, 0, Spawn)
+                            		PlayFlavor(NPC, "voiceover/english/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_status_gm_940d0880.mp3", "May the fur on your feet be as thick and lustrous as the Misty Thicket.", "bow", 1164257869, 2013275284, Spawn, 0)
                                     end
                                 end
                             elseif spawnRace == HIGH_ELF then
@@ -3293,7 +3301,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
                 		            PlayFlavor(NPC, "voiceover/english/woodelf_eco_race_good/ft/eco/good/woodelf_eco_race_good_halfelf_gf_eb3acf89.mp3", "I don't understand the need for piercings, but they look fine on you.", "agree", 1366742481, 2195063196, Spawn)
                                 end                            
                             elseif spawnRace == HALFLING then
-					        PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1011.mp3", "I miss the woods too, little one.  I miss them too.", "", 0, 0, Spawn)
+                    		PlayFlavor(NPC, "voiceover/english/woodelf_eco_race_good/ft/eco/good/woodelf_eco_race_good_halfling_gf_8ce6a2c5.mp3", "I miss the woods too, little one.  I miss them too.", "", 3038478488, 3547141924, Spawn, 0)
                             elseif spawnRace == HIGH_ELF then
 					        PlayFlavor(NPC, "voiceover/english/woodelf_eco_race_good/ft/eco/good/woodelf_eco_race_good_highelf_gf_51612aae.mp3", "Yes, I'm keeping busy.  Thank you for asking.  May Tunare bless your family.", "hello", 4258351464, 2283092283, Spawn)
                             elseif spawnRace == HUMAN then
@@ -7422,7 +7430,7 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
                 		            PlayFlavor(NPC, "voiceover/english/woodelf_eco_race_good/ft/eco/good/woodelf_eco_race_good_halfelf_gf_eb3acf89.mp3", "I don't understand the need for piercings, but they look fine on you.", "agree", 1366742481, 2195063196)
                                 end                            
                             elseif spawnRace == HALFLING then
-					        PlayFlavor(NPC, "", "I miss the woods too, little one.  I miss them too.", "", 0, 0)
+                    		PlayFlavor(NPC, "voiceover/english/woodelf_eco_race_good/ft/eco/good/woodelf_eco_race_good_halfling_gf_8ce6a2c5.mp3", "I miss the woods too, little one.  I miss them too.", "", 3038478488, 3547141924)
                             elseif spawnRace == HIGH_ELF then
 					        PlayFlavor(NPC, "voiceover/english/woodelf_eco_race_good/ft/eco/good/woodelf_eco_race_good_highelf_gf_51612aae.mp3", "Yes, I'm keeping busy.  Thank you for asking.  May Tunare bless your family.", "hello", 4258351464, 2283092283)
                             elseif spawnRace == HUMAN then
@@ -7818,12 +7826,28 @@ function FactionChecking(NPC, Spawn, faction)
 	
 	    elseif race == HALFLING then
 			if gender == MALE then
-                	    local choice = math.random(1,2)			      
+                        local choice = math.random(1,10)
 				        if choice == 1 then
 	           	        PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gm_cd9164d6.mp3", "You're a stranger. And I don't like strangers, no sir I don't!", "sulk", 785726454, 3155500140, Spawn)
 				        elseif choice == 2 then		           
 		                PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_6da83eeb.mp3", "I'll defend myself if it comes to that, savage!", "shakefist", 893626909, 4027326251, Spawn)
-                        end
+				        elseif choice == 3 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_b24ac070.mp3", "Antonius Bayle save us from this brute!", "squeal", 2644325632, 752257336, Spawn, 0)
+				        elseif choice == 4 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_8236a789.mp3", "Remove yourself from my presence, outsider.", "glare", 4139750487, 3071647531, Spawn, 0)
+				        elseif choice == 5 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_48350e59.mp3", "You're not allowed in here!", "point", 3153039066, 1022629282, Spawn, 0)
+				        elseif choice == 6 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_e0dfed5b.mp3", "P-p-please d-don't hurt me!", "beg", 4247254203, 625054807, Spawn, 0)
+				        elseif choice == 7 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_1a98f879.mp3", "How did you get past the city gates?", "scold", 1838503200, 402154879, Spawn, 0)
+ 				        elseif choice == 8 then		           
+                   		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_bccf2c5f.mp3", "Stand away or I ... I ... I'll stick you!", "cringe", 826633879, 2154983341, Spawn, 0)
+  				        elseif choice == 9 then		           
+                  		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_5afcbd03.mp3", "The streets aren't safe with your kind upon them.", "no", 3361169489, 287430657, Spawn, 0)
+ 				        elseif choice == 10 then		           
+                   		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_ad3832d1.mp3", "Guards! Guards!!!", "raisehand", 391472415, 592625987, Spawn, 0)
+  
     		elseif gender == FEMALE then
                 	    local choice = math.random(1,6)			      
 		                if choice == 1 then
@@ -8172,19 +8196,33 @@ function FactionChecking(NPC, Spawn, faction)
 			    
 		elseif race == WOOD_ELF then
 			if gender == MALE then
-			            local choice = math.random(1,2)
+			            local choice = math.random(1,3)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gm_1a98f879.mp3", "How did you get past the city gates?", "scold", 831690150, 3038858013, Spawn, 0)
+                        elseif choice == 2 then
 		                PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gm_7e3f7ca.mp3", "I refuse to contaminate myself by conversing with trash.", "sulk", 2529393016, 3485196338, Spawn, 0)
-				        end			    
+                        elseif choice == 3 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gm_e0dfed5b.mp3", "P-p-please d-don't hurt me!", "beg", 164479950, 4101172212, Spawn, 0)
+                        end			    
 			elseif gender == FEMALE then
-			            local choice = math.random(1,2)
+			            local choice = math.random(1,8)
 				        if choice == 1 then
 	                	PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_6da83eeb.mp3", "I'll defend myself if it comes to that, savage.", "flex", 3093358427, 2924286482, Spawn, 0)
 				        elseif choice == 2 then
 		                PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_48350e59.mp3", "You're not allowed in here!", "point", 3467450810, 1776058479, Spawn, 0)
-				        end			    
+                    	elseif choice == 3 then
+	                    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_1a98f879.mp3", "How did you get past the city gates?", "scold", 782275258, 3837169593, Spawn, 0)
+                    	elseif choice == 4 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_e0dfed5b.mp3", "P-p-please d-don't hurt me!", "beg", 1095453924, 2094435397, Spawn, 0)
+                    	elseif choice == 5 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_b24ac070.mp3", "Antonius Bayle save us from this brute!", "squeal", 3788238989, 2842063534, Spawn, 0)
+                    	elseif choice == 6 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_489221e4.mp3", "Stand away or I...I...I'll stick you!", "cringe", 878678548, 2536272126, Spawn, 0)
+                    	elseif choice == 7 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_ad3832d1.mp3", "Guards! Guards!!!", "raisehand", 2175782353, 363648631, Spawn, 0)
+                    	elseif choice == 8 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_8236a789.mp3", "Remove yourself from my presence, outsider.", "glare", 2931258572, 81583115, Spawn, 0)
+                        end			    
                     end
 
 				
@@ -8578,12 +8616,28 @@ function FactionCheckingCallout(NPC, Spawn, faction)
 	
 	    elseif race == HALFLING then
 			if gender == MALE then
-                	    local choice = math.random(1,2)			      
+                    local choice = math.random(1,2)
 				        if choice == 1 then
 	           	        PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gm_cd9164d6.mp3", "You're a stranger. And I don't like strangers, no sir I don't!", "sulk", 785726454, 3155500140)
 				        elseif choice == 2 then		           
 		                PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_6da83eeb.mp3", "I'll defend myself if it comes to that, savage!", "shakefist", 893626909, 4027326251)
-                        end
+				        elseif choice == 3 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_b24ac070.mp3", "Antonius Bayle save us from this brute!", "squeal", 2644325632, 752257336)
+				        elseif choice == 4 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_8236a789.mp3", "Remove yourself from my presence, outsider.", "glare", 4139750487, 3071647531)
+				        elseif choice == 5 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_48350e59.mp3", "You're not allowed in here!", "point", 3153039066, 1022629282)
+				        elseif choice == 6 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_e0dfed5b.mp3", "P-p-please d-don't hurt me!", "beg", 4247254203, 625054807)
+				        elseif choice == 7 then		           
+                		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_1a98f879.mp3", "How did you get past the city gates?", "scold", 1838503200, 402154879)
+ 				        elseif choice == 8 then		           
+                   		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_bccf2c5f.mp3", "Stand away or I ... I ... I'll stick you!", "cringe", 826633879, 2154983341)
+  				        elseif choice == 9 then		           
+                  		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_5afcbd03.mp3", "The streets aren't safe with your kind upon them.", "no", 3361169489, 287430657)
+ 				        elseif choice == 10 then		           
+                   		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_notcitizen_gm_ad3832d1.mp3", "Guards! Guards!!!", "raisehand", 391472415, 592625987)
+  
     		elseif gender == FEMALE then
                 	    local choice = math.random(1,6)			      
 		                if choice == 1 then
@@ -8952,19 +9006,33 @@ function FactionCheckingCallout(NPC, Spawn, faction)
 			    
 		elseif race == WOOD_ELF then
 			if gender == MALE then
-			            local choice = math.random(1,2)
+			            local choice = math.random(1,3)
 				        if choice == 1 then
-				        PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-				        elseif choice == 2 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gm_1a98f879.mp3", "How did you get past the city gates?", "scold", 831690150, 3038858013)
+                        elseif choice == 2 then
 		                PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gm_7e3f7ca.mp3", "I refuse to contaminate myself by conversing with trash.", "sulk", 2529393016, 3485196338)
-				        end			    
+                        elseif choice == 3 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gm_e0dfed5b.mp3", "P-p-please d-don't hurt me!", "beg", 164479950, 4101172212)
+                        end			    
 			elseif gender == FEMALE then
-			            local choice = math.random(1,2)
+			            local choice = math.random(1,8)
 				        if choice == 1 then
 	                	PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_6da83eeb.mp3", "I'll defend myself if it comes to that, savage.", "flex", 3093358427, 2924286482)
 				        elseif choice == 2 then
 		                PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_48350e59.mp3", "You're not allowed in here!", "point", 3467450810, 1776058479)
-				        end			    
+                    	elseif choice == 3 then
+	                    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_1a98f879.mp3", "How did you get past the city gates?", "scold", 782275258, 3837169593)
+                    	elseif choice == 4 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_e0dfed5b.mp3", "P-p-please d-don't hurt me!", "beg", 1095453924, 2094435397)
+                    	elseif choice == 5 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_b24ac070.mp3", "Antonius Bayle save us from this brute!", "squeal", 3788238989, 2842063534)
+                    	elseif choice == 6 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_489221e4.mp3", "Stand away or I...I...I'll stick you!", "cringe", 878678548, 2536272126)
+                    	elseif choice == 7 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_ad3832d1.mp3", "Guards! Guards!!!", "raisehand", 2175782353, 363648631)
+                    	elseif choice == 8 then
+                        PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_notcitizen_gf_8236a789.mp3", "Remove yourself from my presence, outsider.", "glare", 2931258572, 81583115)
+                        end			    
                     end
 
 				

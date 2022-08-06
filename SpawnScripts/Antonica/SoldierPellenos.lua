@@ -18,16 +18,8 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-
 	Dialog.AddDialog("Hello there!  Come for tea?  I'm sorry, but I'm completely out of sugar!  Ask the gnolls; they killed everyone here.  Yes, everyone ... but me.  And now I don't know where the teapot is.  But there's no sugar, so it doesn't matter.  Hee hee!")
+	Dialog.AddVoiceover("voiceover/english/soldier_pellenos/antonica/soldierpellenos000.mp3", 1163216661, 1374396993)
 	Dialog.AddOption("Goodbye.")
-
 	Dialog.Start()
-
-	--[[	Say() from this NPC
-
-
-			Orphaned PlayFlavors
-	--]]
-
 end
