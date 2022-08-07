@@ -33,7 +33,7 @@ end
 function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the chest that the key fits.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the chest where the gnoll hid his treasure.")
-    GiveQuestItem(Quest, Player, "Inside the chest, I found the remains of the gnoll's personal property.",162069)
+--  GiveQuestItem(Quest, Player, "Inside the chest, I found the remains of the gnoll's personal property.",162069)
 
 	UpdateQuestDescription(Quest, "Inside the chest, I found the remains of the gnoll's personal property.")
     GiveQuestReward(Quest,Player)
