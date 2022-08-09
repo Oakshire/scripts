@@ -18,10 +18,6 @@ function aggro(NPC, Spawn)
     AddTimer(NPC, 1000, "eleLoop")
 end
 
-function spellLoop(NPC, Spawn) -- Loopback function for spellcasts.
-    AddTimer(NPC, 3000, "spellChoice")
-end
-
 function eleLoop(NPC, Spawn)
     Shout(NPC, "eleLoop firing.")
     AddTimer(NPC, 57000, "eleSpawns")
@@ -30,15 +26,6 @@ end
 function eleSpawns(NPC, Spawn) -- spawns elementals on a timer. timer starts on aggro.
     AddTimer(NPC, 1000, "eleLoop")
 -- CastSpell(NPC, summon chaotic elemental, 3, NPC)
-end
-    
-function spellChoice(NPC, Spawn) -- select a spell from table.
-    local hated = GetMostHated(NPC) 
-        if hated ~= nil then 
-            FaceTarget(NPC, hated) 
-            CastSpell(hated, spells[math.random(#spells)], 3, NPC)
-        end
-    AddTimer(NPC, math.random(1500, 2500), "spellLoop")
 end
 
 function hailed(NPC, Spawn)

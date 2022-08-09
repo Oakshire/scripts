@@ -6,8 +6,6 @@
 	Script Notes	:
 --]]
 
---dofile("SpawnScripts/Generic/GenericScribeVoiceOvers.lua")
-
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
@@ -26,14 +24,8 @@ end
 function LeaveRange(NPC, Spawn)
 end
 
---[[function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	GenericScribeHail(NPC, Spawn)
-end--]]
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-
-	local choice = math.random(1,4)
+function GenericScribeHail(NPC, Spawn)
+    local choice = math.random(1,4)
 
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/scribe/gnome_scribe_service_good_1_hail_gf_392a4f4e.mp3", "Be careful, it's best not to read the scrolls.  If you want to know what they are, just ask me.", "nod", 3255267278, 1071089122, Spawn)
@@ -43,7 +35,10 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/scribe/gnome_scribe_service_good_1_hail_gf_58ed77b2.mp3", "All right where is my pen?  How am I supposed to scribe anything without my pen?", "tapfoot", 513035073, 2771699263, Spawn)
 	elseif choice == 4 then
 		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/scribe/gnome_scribe_service_good_1_hail_gf_cbc94cb6.mp3", "Blast it! Who keeps taking all of the parchment?  ", "swear", 1429173278, 1014473963, Spawn)
-	else
 	end
+end
 
+function hailed(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	GenericScribeHail(NPC, Spawn)
 end

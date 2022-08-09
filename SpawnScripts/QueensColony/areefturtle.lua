@@ -24,7 +24,7 @@ function spawn(NPC)
 	MovementLoopAddLocation(NPC, -76.23, -11.57, 191.61, 2, math.random(10, 20))
 	MovementLoopAddLocation(NPC, -73.02, -12.19, 194.15, 2, 0)
 	MovementLoopAddLocation(NPC, -61.55, -11.84, 193.48, 2, 0)
-elseif GetSpawnByLocationID(NPC) == 427014 then
+elseif GetSpawnLocationID(NPC) == 427014 then
     MovementLoopAddLocation(NPC, -48.31, -13.79, 256.58, 2, math.random(10, 20))
 	MovementLoopAddLocation(NPC, -62.36, -14.7, 266.1, 2, math.random(10, 20))
 	MovementLoopAddLocation(NPC, -71.29, -15.18, 262.18, 2, math.random(10, 20))

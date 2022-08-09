@@ -16,8 +16,8 @@ function spawn(NPC)
 	SetBrainTick(NPC, 500)
 	Think(NPC, Spawn)
 	ProvidesQuest(NPC, TheSourceOfEvil)
-    ResetTimer = 1
-    AddTimer(NPC,10000,"TimerClear")         --Temp Fix for Cleric. Allows reset after 10 seconds. 
+    SetTempVariable(NPC, "ResetTimer", "1")
+    AddTimer(NPC, 10000, "TimerClear")         --Temp Fix for Cleric. Allows reset after 10 seconds. 
 end
 
 function respawn(NPC)
@@ -25,7 +25,7 @@ function respawn(NPC)
 end
 
 function TimerClear(NPC)
-    ResetTimer = 0
+    SetTempVariable(NPC, "ResetTimer", nil)
 end
 
 -- Brain override
@@ -89,7 +89,7 @@ end
 function ClericReset(NPC)
 	PlayFlavor(NPC, "", "Hold on! Getting ready!", "", 0, 0, Spawn)
     Despawn(NPC)
-    SpawnByLocationID(Zone,1584884)
+    SpawnByLocationID(GetZone(NPC), 1584884)
 end
 function DoNotFret(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -127,8 +127,8 @@ function KeepTrying(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/cleric_mara_vaen/tutorial_island02_revamp/quests/citizenship/clericmaravaen/clericmaravaen004.mp3", "", "beckon", 873884307, 3834280576, Spawn)
-    if ResetTimer == 0 then     --Temp Fix for Cleric.
-	AddConversationOption(conversation, "Get ready!","ClericReset")
+    if GetTempVariable(NPC, "ResetTimer") ~= nil then     --Temp Fix for Cleric.
+	    AddConversationOption(conversation, "Get ready!","ClericReset")
     end
     AddConversationOption(conversation, "I'll keep trying.")
 	StartConversation(conversation, NPC, Spawn, "Keep trying, I believe we can save more scouts if you get them close to me.")

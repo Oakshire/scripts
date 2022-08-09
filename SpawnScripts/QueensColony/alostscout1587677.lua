@@ -14,14 +14,12 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	math.randomseed(os.time())
 	voice = math.random (1,3)
-
-        PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1001.mp3", "", "hello", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..voice.."_1001.mp3", "", "hello", 0, 0, Spawn)
 end
 
 function respawn(NPC)
-        spawn(NPC)
+    spawn(NPC)
 end
 
 function waypoints(NPC)
@@ -43,7 +41,7 @@ function casted_on(NPC, Spawn, Message)
 		if newScout ~= nil then
 			CopySpawnAppearance(newScout, NPC)
 			SpawnSet(newScout, "visual_state", "0")
-                        SpawnSet(newScout, "attackable", "false")
+            SpawnSet(newScout, "attackable", "false")
 			AddTimer(newScout, 5000, "Speak")
 		end
 		local mostHated = GetMostHated(NPC)
@@ -57,19 +55,23 @@ function casted_on(NPC, Spawn, Message)
 end
 
 function aggro(NPC, Spawn)
+    if not IsPlayer(Spawn) then
+        return
+    end
+    
 	if not HasLanguage(Spawn, 1) then  -- IF PLAYER DOESN'T SPEAK HALASIAN THEN HE WILL HEAR THOSE VOICEOVERS.
 		local choice = math.random(1, 2)
 		if choice == 1  then
           PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_garbled_gf_b80c3123.mp3", "Asfkher van baed rijs prakti kjen", "", 3736519483, 298405430, Spawn, 1)
-                else
+        else
           PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_garbled_gf_b0cb46d4.mp3", "Neit te geb ruiken, wat weg hout u hetten", "", 3553301683, 4073612943, Spawn, 1)
-          end
-       elseif HasLanguage(Spawn, 1) then
-               local choice = math.random(1, 2)
-               if choice == 1  then
+        end
+    elseif HasLanguage(Spawn, 1) then
+        local choice = math.random(1, 2)
+        if choice == 1  then
             PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_aggro_gf_5cbe779b.mp3", "Enemies approach!", "", 991095436, 863644706, Spawn,1)
-              else
+        else
             PlayFlavor(NPC, "voiceover/english/optional3/barbarian_outland/ft/barbarian/barbarian_outland_1_aggro_gf_9ed7a064.mp3", "This is what we were trained for!  Do not fail in your duty!", "", 3130720919, 1154579014, Spawn,1)      
- end
+        end
     end
-       end
+end

@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-ratcheck(NPC)
+--ratcheck(NPC)
 end
 
 function hailed(NPC, Spawn)

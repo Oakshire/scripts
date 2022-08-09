@@ -94,7 +94,7 @@ function run_around_loop_pause(NPC)
     else    -- POST DoF Client
 	local choice = {11255, 11287, 12325, 13063, 13063, 13063, 125, 125}
     end    
-        SendStateCommand(NPC, states[math.random(#states)])
+        SendStateCommand(NPC, choice[math.random(#choice)])
 	AddTimer(NPC, 2800, "run_around_loop_stop_animation")
 end
 

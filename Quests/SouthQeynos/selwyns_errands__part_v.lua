@@ -73,6 +73,7 @@ function CheckProgress(Quest, QuestGiver, Player)
 	AddQuestStepChat(Quest, 5, "I should return to Selwyn in South Qeynos", 1, "I need to speak to Selwyn Oakheart in the South Qeynos.", 11, 2310028)
 	AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
 end
+end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
