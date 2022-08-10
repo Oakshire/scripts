@@ -98,8 +98,6 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 end
 
-end
-
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 end

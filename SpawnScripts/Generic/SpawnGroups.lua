@@ -16,9 +16,8 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	if HasQuest(Spawn, QUEST_3_FROM_THORSON) and not QuestStepIsComplete(Spawn, QUEST_3_FROM_THORSON, 4) then
-		SetStepComplete(Spawn, QUEST_3_FROM_THORSON, 4)
+    	if HasQuest(Caster, QUEST_3_FROM_THORSON) and not QuestStepIsComplete(Caster, QUEST_3_FROM_THORSON, 4) then
+		SetStepComplete(Caster, QUEST_3_FROM_THORSON, 4)
 	end
 end
 

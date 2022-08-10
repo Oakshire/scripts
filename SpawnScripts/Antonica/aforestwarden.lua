@@ -31,6 +31,14 @@ function spawn(NPC)
     ChooseMovement(NPC)
 end
 
+function respawn(NPC, Spawn)
+    spawn(NPC)
+end
+
+function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+end
+
 function ChooseMovement(NPC)
 	local route = math.random(1,4)
 	if route == 1 then
@@ -90,22 +98,4 @@ function RouteFour(NPC, Spawn)
 	MovementLoopAddLocation(NPC, X - 20, Y, Z, 2, 0)
 	MovementLoopAddLocation(NPC, X - 14, Y, Z + 4, 2, 0)
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10))
-end
-
-function respawn(NPC, Spawn)
-    spawn(NPC)
-end
-
-function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-end
-
-end
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
-
-function respawn(NPC)
-	spawn(NPC)
 end
