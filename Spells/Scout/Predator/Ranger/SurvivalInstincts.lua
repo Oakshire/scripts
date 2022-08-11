@@ -6,7 +6,7 @@
                    : 
 --]]
 
-function cast(Caster, Target, Agi, Avoid, OffSkill, Parry, Def)
+function cast(Caster, Target, Agi, Avoid, OffAmt, Parry, Def)
     -- Increases AGI of caster by 13.1
     AddSpellBonus(Target, 2, Agi)
 

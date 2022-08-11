@@ -16,7 +16,6 @@
    
 --]]
 
-local zone = GetZone(NPC)
 local CACHES_QUEST_ID = 5492
 local toolGuard = 1960098
 
