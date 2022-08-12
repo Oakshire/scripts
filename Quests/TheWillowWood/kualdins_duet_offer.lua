@@ -10,6 +10,7 @@
 	Preceded by		:	None
 	Followed by		:	None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -19,7 +20,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Her name is Bupipa Guryup and she resides in Castleview.  I would ask her but I hate denying my fans a daily serenade.  Please let me know if she accepts my offer.")
+	Dialog.AddVoiceover("voiceover/english/kualdin_swoonsong/qey_village05/kualdinswoonsong002.mp3", 23545717, 1052293137)
+	PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+	Dialog.AddOption("I will go ask her for you.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

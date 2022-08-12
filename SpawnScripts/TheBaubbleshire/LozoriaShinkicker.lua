@@ -77,7 +77,7 @@ function hailed(NPC, Spawn, conversation)
 	FaceTarget(NPC, Spawn)
 if HasQuest (Spawn, PieThief) and GetQuestStep(Spawn, PieThief) == 4 then
         conversation = CreateConversation()
-     AddConversationOption(conversation, "Ah-ha, it was you! Those pie crumbs on your tunic give you away. You took Nyla's pie!", "Guilty")
+     AddConversationOption(conversation, "I smell that pie!  You were the one that took it from Nyla's window!", "Guilty")
           AddConversationOption(conversation, "Nothing right now. Enjoy your pint.")
     StartConversation(conversation, NPC, Spawn, "Bring me another pint, Bregun!  Mine's almost empty!  Well, hello there! What brings you into my Papa's fine establishment?", "", Spawn)
 	PlayFlavor(NPC, "voiceover/english/lozoria_shinkicker/qey_village06/lozoriashinkicker000.mp3", "", "", 1408955306, 2441116246, Spawn)
