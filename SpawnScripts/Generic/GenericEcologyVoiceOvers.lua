@@ -2056,7 +2056,9 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_gnome_gm_8081d786.mp3", "I've no use for a toy soldier.", "no", 2452036802, 1703948999, Spawn)
                             elseif spawnRace == HALF_ELF then
 					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_halfelf_gm_8677807d.mp3", "Half perfect, half diseased.  Still disgusting!", "sniff", 512466716, 4175253448, Spawn)
-                            elseif spawnRace == HIGH_ELF then                        
+ 		                    elseif spawnRace == HALFLING then                        
+                     		PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_halfling_gm_e2eb04c4.mp3", "Get away from me, you foul little worm.", "lookaway", 1784326229, 362190500, Spawn, 0)
+                     		elseif spawnRace == HIGH_ELF then                        
                     		PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_highelf_gm_9eab37c6.mp3", "An evil high elf?  Dear Innoruuk, we've prevailed!", "cheer", 172789471, 2283627974, Spawn, 0)
                             elseif spawnRace == HUMAN then
 					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_human_gm_3694a5ae.mp3", "Were your Overlord not around, we Tier'Dal would have crushed Freeport.", "sarcasm", 3436507932, 1702035959, Spawn)
@@ -5977,7 +5979,9 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_gnome_gf_8081d786.mp3", "I've no use for a toy soldier.", "no", 2452036802, 1703948999)
                             elseif spawnRace == HALF_ELF then
 					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_halfelf_gf_8677807d.mp3", "Half perfect, half diseased.  Still disgusting!", "sniff", 512466716, 4175253448)
-                            elseif spawnRace == HIGH_ELF then                        
+ 		                    elseif spawnRace == HALFLING then                        
+                     		PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_halfling_gm_e2eb04c4.mp3", "Get away from me, you foul little worm.", "lookaway", 1784326229, 362190500)
+ 		                    elseif spawnRace == HIGH_ELF then                        
                     		PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_highelf_gf_9eab37c6.mp3", "An evil high elf?  Dear Innoruuk, we've prevailed!", "cheer", 172789471, 2283627974)
                             elseif spawnRace == HUMAN then
 					        PlayFlavor(NPC, "voiceover/english/darkelf_eco_race_evil/ft/eco/evil/darkelf_eco_race_evil_human_gf_3694a5ae.mp3", "Were your overlord not around, we Tier'Dal would have crushed Freeport.", "sarcasm", 3436507932, 1702035959)
