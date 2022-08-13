@@ -49,15 +49,11 @@ function hailed(NPC, Spawn)
         local rand = math.random(0, 2)
 
         if rand == 0 then
-            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_009.mp3",
-                "I hate rats, every time we dock they get on board and eat our supplies.", "grumble", 3636322414,
-                1973183674, Spawn)
+            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_009.mp3","I hate rats, every time we dock they get on board and eat our supplies.", "grumble", 3636322414,1973183674, Spawn)
         elseif rand == 1 then
-            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_008.mp3", "Don't you just love the sea?",
-                "sniff", 541733813, 1294072887, Spawn)
+            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_008.mp3", "Don't you just love the sea?","sniff", 541733813, 1294072887, Spawn)
         else
-            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_007.mp3", "Yo ho ho and a bottle of rum!",
-                "smile", 964088856, 3568852318, Spawn)
+            PlayFlavor(NPC, "voiceover/english/ingrid/boat_06p_tutorial02_fvo_007.mp3", "Yo ho ho and a bottle of rum!","smile", 964088856, 3568852318, Spawn)
         end
     end
 end

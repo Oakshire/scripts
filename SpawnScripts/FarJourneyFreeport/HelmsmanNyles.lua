@@ -13,11 +13,12 @@ end
 function hailed(NPC, Spawn)
     local conversation = CreateConversation()
         AddConversationOption(conversation, "Yes", "leave")
-           AddConversationOption(conversation, "No")
-                  StartConversation(conversation, NPC, Spawn, "          Head for land?          [Leave The Far Journey?]")
+        AddConversationOption(conversation, "No")
+        StartConversation(conversation, NPC, Spawn, "          Head for land?          [Leave The Far Journey?]")
 end
 
 function leave(NPC, Spawn)
+	PlayFlavor(NPC, "", "The captain's gonna kill me for this...", "", 0, 0, Spawn, 0)
 if GetLevel(Spawn)<2 then
     SetPlayerLevel(Spawn,2)
     end
