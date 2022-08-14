@@ -89,14 +89,13 @@ function run_around_loop(NPC)
 end
 
 function run_around_loop_pause(NPC)
-    local choice
     if legacy == true then --DoF or Classic Client
-	    choice = {217, 226, 550, 717, 125, 125, 125, 125} -- update to retain intention of original script. mostly want threaten.
+	local choice = {217, 226, 550, 717, 125, 125, 125, 125} -- update to retain intention of original script. mostly want threaten.
     else    -- POST DoF Client
-	    choice = {11255, 11287, 12325, 13063, 13063, 13063, 125, 125}
-    end
-    
-    SendStateCommand(NPC, choice[math.random(#choice)])
+    legacy = false
+    local choice = {11255, 11287, 12325, 13063, 13063, 13063, 125, 125}
+    end    
+        SendStateCommand(NPC, choice[math.random(#choice)])
 	AddTimer(NPC, 2800, "run_around_loop_stop_animation")
 end
 
