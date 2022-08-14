@@ -104,6 +104,8 @@ function hailed(NPC, player)
 		Dialog.AddOption("Where am I?", "where_am_I")
 		Dialog.Start()		
 		AddTimer(NPC, 8000, "hailed_instructions", 1, player)
+	elseif HasQuest(player, 524) and GetQuestStep(player, 524) <= 6  then
+        PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_010.mp3", "Back ye up a few paces. I be needin' this room.", "", 2009097517, 3594231199, player, 0)	    
 	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 7 then
 		SetTutorialStep(player, 32)
 		Dialog.New(NPC, player)
@@ -113,9 +115,9 @@ function hailed(NPC, player)
 		Dialog.Start()
 		get_attention_animation = false
 	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 8 then
-		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_015.mp3", "Blimey! Ya' tryin to cause a mutiny? I told you to kill those rats, now do it ya landlubber!", "", 1239213594, 177688376, Spawn, 0)
+		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_015.mp3", "Blimey! Ya' tryin to cause a mutiny? I told you to kill those rats, now do it ya landlubber!", "", 1239213594, 177688376, player, 0)
 	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 10 then
-		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_023.mp3", "You still need to kill that landlubber of a goblin! Get to it mate!", "", 3269557913, 3104212801)
+		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_023.mp3", "You still need to kill that landlubber of a goblin! Get to it mate!", "", 3269557913, 3104212801,player)
 	elseif HasQuest(player, 524) and GetQuestStep(player, 524) == 9 then
 		SetTutorialStep(player, 51)
 		Dialog.New(NPC, player)
@@ -431,6 +433,7 @@ function high_winds_2(NPC, player)
 	if not finished_high_winds_2 then
 		FaceTarget(GetSpawn(NPC, 270001), NPC)
 		SetTarget(GetSpawn(NPC, 270001), NPC)
+		FaceTarget(NPC, GetSpawn(NPC, 270001))
 		SetTarget( NPC,GetSpawn(NPC, 270001))
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_007.mp3", "Don't want the ship to come apart in these high winds, do ya'?!", "scold", 517097409, 4194681002)
 		SendStateCommand(GetSpawn(NPC, 270001), 0)
