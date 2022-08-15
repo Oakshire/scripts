@@ -59,8 +59,8 @@ function hailed(NPC, Spawn)
 end
 end
 
-function WalkToGeredo(NPC, Spawn)
-	playerhasquest = HasQuest(Spawn, 524)
+function WalkToGeredo(NPC, Player)
+	playerhasquest = HasQuest(Player, 524)
 	if playerhasquest == true then
 	MoveToLocation(NPC, 2.35, -2.07, -3.34, 5, nil, false)
 	else

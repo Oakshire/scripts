@@ -291,6 +291,8 @@ function Accepted(Quest, QuestGiver, Player)
 	
 	local Waulon = GetSpawn(QuestGiver, 270002)
 	FaceTarget(QuestGiver, Waulon)	
+--	local Ingred = GetSpawn(QuestGiver, 270001)
+--  WalkToGeredo(Ingred, Spawn)
 end
 
 function Declined(Quest, QuestGiver, Player)

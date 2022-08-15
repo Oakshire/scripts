@@ -476,7 +476,7 @@ end
 function offer_quest(NPC, player)
 	if HasQuest(player, 524) == false then
 		OfferQuest(NPC, player, 524)
-		AddTimer(NPC, 9000, "Accepted_Tutorial_Instructions", 1, player)	
+		AddTimer(NPC, 10000, "Accepted_Tutorial_Instructions", 1, player)	
 	end
 end
 

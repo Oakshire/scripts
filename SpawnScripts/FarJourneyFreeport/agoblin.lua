@@ -4,6 +4,7 @@
     Script Date    : 2020.07.02
     Script Purpose : Govern movement and spawn behavior of the goblin on the Far Journey.
     Script Notes   : Re-wrote random behavior functions so they suck less. Neveruary 08/07/21
+    Script Notes   : Created client versioning & added interactions between NPCs.  MISSING INGRED CHASE AROUND BOAT, but not necessary. - Dorbin 08.14.22  
 --]]
 local legacy = true -- Client check.  True == DoF or Classic
 
@@ -34,7 +35,7 @@ end
 ----NON DOF VERSION
 
 function NonDoF_idle_loop(NPC)-- For NON DOF/CLASSIC CLIENTS
-    local states = {11255 , 11256 , 883, 11287 , 11554 , 11663 , 11676 , 12081 , 12166 , 12172 , 12191 , 12325 , 12983 , 13015 , 13063 , 10844 }
+    local states = {11255 , 11256 , 883, 11287 , 11554 , 11663 , 11676 , 12081 , 12166 , 12172 , 12191 , 12325 , 12983 , 13015 , 13063 , 10844, 11880 }
         SendStateCommand(NPC, states[math.random(#states)])
 	AddTimer(NPC, math.random(5000, 7000), "NonDoF_stop_animation")	
 end
@@ -70,51 +71,72 @@ function run_around_loop_init_finished(NPC)
 end
 
 function run_around_loop(NPC)
+	MovementLoopAdd(NPC, -4.43, -2.07, 6.17, 5, 1)
 	MovementLoopAdd(NPC, -4.43, -2.07, 6.17, 5, 3, "run_around_loop_pause1")
 	MovementLoopAdd(NPC, -4.43, -2.07, 6.17, 5, 0)
+	MovementLoopAdd(NPC, -5.23, -2.01, 0.39, 5, 1)
 	MovementLoopAdd(NPC, -5.23, -2.01, 0.39, 5, 3, "run_around_loop_pause2")
 	MovementLoopAdd(NPC, -5.23, -2.01, 0.39, 5, 0)
+	MovementLoopAdd(NPC, -4.88, -2.06, 4.26, 5, 1)
 	MovementLoopAdd(NPC, -4.88, -2.06, 4.26, 5, 3, "run_around_loop_pause3")
 	MovementLoopAdd(NPC, -4.88, -2.06, 4.26, 5, 0)
+	MovementLoopAdd(NPC, 3.94, -2.07, 0.66, 5, 1)
 	MovementLoopAdd(NPC, 3.94, -2.07, 0.66, 5, 3, "run_around_loop_pause4")
 	MovementLoopAdd(NPC, 3.94, -2.07, 0.66, 5, 0)
+	MovementLoopAdd(NPC, 2.84, -2.07, -2.07, 5, 1)
 	MovementLoopAdd(NPC, 2.84, -2.07, -2.07, 5, 3, "run_around_loop_pause5")
 	MovementLoopAdd(NPC, 2.84, -2.07, -2.07, 5, 0)
+	MovementLoopAdd(NPC, 3.41, -1.99, -7.42, 5, 1)
 	MovementLoopAdd(NPC, 3.41, -1.99, -7.42, 5, 3, "run_around_loop_pause6")
 	MovementLoopAdd(NPC, 3.41, -1.99, -7.42, 5, 0)
 	MovementLoopAdd(NPC, -2.75, -2.02, -5.82, 5, 0)
+	MovementLoopAdd(NPC, -2.63, 1.21, -18.11,5,1)
 	MovementLoopAdd(NPC, -2.63, 1.21, -18.11,5,3,"run_around_loop_pause7")
 	MovementLoopAdd(NPC, -2.63, 1.21, -18.11,3,0)
 	MovementLoopAdd(NPC, -2.75, -2.02, -5.82, 5, 0)
 end
 
 function run_around_loop_pause(NPC)
-    if legacy == true then --DoF or Classic Client
 	local choice = {217, 226, 550, 717, 125, 125, 125, 125} -- update to retain intention of original script. mostly want threaten.
-    else    -- POST DoF Client
-    legacy = false
-    local choice = {11255, 11287, 12325, 13063, 13063, 13063, 125, 125}
-    end    
-        SendStateCommand(NPC, choice[math.random(#choice)])
-	AddTimer(NPC, 2800, "run_around_loop_stop_animation")
+    SendStateCommand(NPC, choice[math.random(#choice)])
+	AddTimer(NPC, 3000, "run_around_loop_stop_animation")
 end
 
+function run_around_loop_pauseNonDoF(NPC)
+    local choice = {11255, 11287, 12325, 13063, 13063, 13063, 12153, 125,11757,11880}
+    SendStateCommand(NPC, choice[math.random(#choice)])
+	AddTimer(NPC, 3000, "run_around_loop_stop_animation")
+end
+
+
+
 function run_around_loop_pause1(NPC)
-    if legacy == true then --DoF or Classic Client
+    SetTarget(GetSpawn(NPC, 270005),NPC)
+    FaceTarget(GetSpawn(NPC, 270005), NPC) 
+    SetTarget(NPC,GetSpawn(NPC, 270005)) 
+    FaceTarget(NPC,GetSpawn(NPC, 270005)) 
+   if legacy == true then --DoF or Classic Client
 	SendStateCommand(GetSpawn(NPC, 270005), 218) --CRINGE
-    else
-	SendStateCommand(GetSpawn(NPC, 270005), 11256)
-    end    
 	run_around_loop_pause(NPC)
+	else
+	SendStateCommand(GetSpawn(NPC, 270005), 11256)
+    run_around_loop_pauseNonDoF(NPC)
+    end    
+
 end
 
 function run_around_loop_pause2(NPC)
+    SetTarget(GetSpawn(NPC, 270006),NPC)
+    SetTarget(NPC,GetSpawn(NPC, 270006)) 
+    FaceTarget(GetSpawn(NPC, 270006), NPC) 
+    FaceTarget(NPC,GetSpawn(NPC, 270006)) 
     if legacy == true then --DoF or Classic Client
 	SendStateCommand(GetSpawn(NPC, 270006), 525) --SCREAM
+	run_around_loop_pause(NPC)
 	else
 	SendStateCommand(GetSpawn(NPC, 270006), 12192)
-	end    
-	run_around_loop_pause(NPC)
+    run_around_loop_pauseNonDoF(NPC)
+    end    
 end
 
 function run_around_loop_pause3(NPC)
@@ -122,21 +144,31 @@ function run_around_loop_pause3(NPC)
 end
 
 function run_around_loop_pause4(NPC)
+    SetTarget(GetSpawn(NPC, 270004),NPC)
+    FaceTarget(GetSpawn(NPC, 270004), NPC) 
+    SetTarget(NPC,GetSpawn(NPC, 270004)) 
+    FaceTarget(NPC,GetSpawn(NPC, 270004)) 
     if legacy == true then --DoF or Classic Client
 	SendStateCommand(GetSpawn(NPC, 270004), 717) --THREATEN
+	run_around_loop_pause(NPC)
 	else
 	SendStateCommand(GetSpawn(NPC, 270004), 13063)
-	end 
-	run_around_loop_pause(NPC)
+    run_around_loop_pauseNonDoF(NPC)
+    end  
 end
 
 function run_around_loop_pause5(NPC)
-    if legacy == true then --DoF or Classic Client
+    SetTarget(GetSpawn(NPC, 270001),NPC)
+    FaceTarget(GetSpawn(NPC, 270001), NPC) 
+    SetTarget(NPC,GetSpawn(NPC, 270001)) 
+    FaceTarget(NPC,GetSpawn(NPC, 270001)) 
+   if legacy == true then --DoF or Classic Client
 	SendStateCommand(GetSpawn(NPC, 270001), 218) --CRINGE
+	run_around_loop_pause(NPC)
 	else
 	SendStateCommand(GetSpawn(NPC, 270001), 11256)
-	end
-	run_around_loop_pause(NPC)
+    run_around_loop_pauseNonDoF(NPC)
+    end  
 end
 
 function run_around_loop_pause6(NPC)
@@ -144,20 +176,31 @@ function run_around_loop_pause6(NPC)
 end
 
 function run_around_loop_pause7(NPC)
-    SetTarget(GetSpawn(NPC, 270002),270008)
-    FaceTarget(GetSpawn(NPC, 270002), 270008) 
-    if legacy == true then --DoF or Classic Client
+    SetTarget(GetSpawn(NPC, 270002),NPC)
+    SetTarget(NPC,GetSpawn(NPC, 270002)) 
+    FaceTarget(GetSpawn(NPC, 270002), NPC) 
+    FaceTarget(NPC,GetSpawn(NPC, 270002)) 
+   if legacy == true then --DoF or Classic Client
 	SendStateCommand(GetSpawn(NPC, 270002), 528) --Shakefist
+	run_around_loop_pause(NPC)
 	else
 	SendStateCommand(GetSpawn(NPC, 270002), 12214)
-	end
-	run_around_loop_pause(NPC)
+    run_around_loop_pauseNonDoF(NPC)
+    end  
 end
 
 function run_around_loop_stop_animation(NPC)
 	SendStateCommand(NPC, 0)	
-end
+    SetTarget(NPC,nil)
+    SetTarget(GetSpawn(NPC, 270001),nil)
+    SetTarget(GetSpawn(NPC, 270002),nil)
+    SetTarget(GetSpawn(NPC, 270003),nil)
+    SetTarget(GetSpawn(NPC, 270004),nil)
+    SetTarget(GetSpawn(NPC, 270005),nil)
+    SetTarget(GetSpawn(NPC, 270006),nil)
+    SetTarget(NPC,nil) 
+   end
 
 function death(NPC,Spawn)
-    	AddTimer(GetSpawn(NPC, 270008), 100, "idle_loop")
+--    	AddTimer(GetSpawn(NPC, 270008), 100, "idle_loop")
 end

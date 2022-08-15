@@ -36,7 +36,7 @@ function open(NPC, Player)
 end
 
 function finished_open_animation(NPC)
-   SpawnSet(NPC, "visual_state", 11897)-- this swings open right in DoF, in AoM its really quick but better, not aware of any time we can expose
+   SpawnSet(NPC, "visual_state", 11897)-- this swings open correct in DoF, in AoM its really quick but better, not aware of any time we can expose
    AddTimer(NPC,1800, "ChestOpen")
     SendStateCommand(NPC, 400)
 end
