@@ -206,7 +206,7 @@ end
 function quest_step_9b(NPC, player)
 	FaceTarget(NPC, GetSpawn(NPC, 270013))
 	PlayFlavor(NPC, "voiceover/english/captain_varlos/boat_06p_tutorial02_fvo_017.mp3", "Wait. Tis that a... No, it cain' be!", "", 1253231512, 1752159147)
-	AddTimer(NPC, 5000, "quest_step_9c", 1, player)	
+	AddTimer(NPC, 4000, "quest_step_9c", 1, player)	
 	GenerateStateDefines(player)
 	SendStateCommand(GetSpawn(NPC, 270005), VSTATE_DOUBLETAKE)	
 end
