@@ -11,8 +11,11 @@ require "SpawnScripts/Generic/DialogModule"
 local BottlesOfBeerInMyHand = 5649
 
 function spawn(NPC)
-    ProvidesQuest(NPC, BottlesOfBeerInMyHand)
+     ProvidesQuest(NPC, BottlesOfBeerInMyHand)
 end
+
+
+
 
 function respawn(NPC)
 	spawn(NPC)
@@ -21,10 +24,9 @@ end
 function hailed(NPC, Spawn)
     if not HasQuest(Spawn, BottlesOfBeerInMyHand) and not HasCompletedQuest(Spawn, BottlesOfBeerInMyHand) then
         Dialog2(NPC, Spawn)
-    end
-    if GetQuestStep(Spawn, BottlesOfBeerInMyHand) == 2 then
+    elseif GetQuestStep(Spawn, BottlesOfBeerInMyHand) == 2 then
         SetStepComplete(Spawn, BottlesOfBeerInMyHand, 2)
-        Dialog6(NPC, Spawn)
+        --Dialog6(NPC, Spawn)
     end
 end
 
