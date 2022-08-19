@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/QeynosHarbor/IanCathlan.lua
     Script Author  : Dorbin
     Script Date    : 2022.06.11
-    Script Purpose : Ian Cathlan Scout/Plate Fighter Armor Quests.   Needs Voiceovers!!!
+    Script Purpose : Ian Cathlan Scout/Plate Fighter Armor Quests.   
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
@@ -117,7 +117,7 @@ if  GetClass(Spawn)== GUARDIAN or GetClass(Spawn)== BERSERKER  or GetClass(Spawn
     PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan005.mp3","Did you find anything else?  I'm afraid my leads have come up dry as well.  Do you mind looking for these one more time?","ponder", 4113276061, 3432810128, Spawn) 
     
     elseif HasCompletedQuest(Spawn,armor6) then --FINISHED RESPONSE                         
-    PlayFlavor(NPC,"","Hail to ye as well.  Ahh, it's you! Good ta see ya again.  We finally got everything that was missing. Thanks again for your help! I don't know how I'd have done it without you!","hello", 0, 0, Spawn) 
+    PlayFlavor(NPC,"voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan016.mp3","Hail to ye as well.  Ahh, it's you! Good ta see ya again.  We finally got everything that was missing. Thanks again for your help! I don't know how I'd have done it without you!","hello", 652508257, 2879341192, Spawn) 
     end
 else 
 	FaceTarget(NPC, Spawn) --NOT RIGHT CLASS
@@ -257,6 +257,7 @@ function Dialog4(NPC, Spawn) --AQ6 turnin
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "Hrmm ... I see.  At least most of it is still in good shape ... except for these...")
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan008.mp3", 412980948, 3391212572)
 	Dialog.AddOption( "Those were like that when I found them.")
 	QuestStepIsComplete(NPC,Spawn,armor6,4)
 	Dialog.Start()
