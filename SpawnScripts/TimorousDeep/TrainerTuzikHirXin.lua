@@ -16,7 +16,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-        SetTradeskillLevel(Spawn, 100)
+       -- SetTradeskillLevel(Spawn, 100)
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1004.mp3", "", "", 0, 0, Spawn)
 	AddConversationOption(conversation, "What can cause my death? ", "dlg_0_1")
 	StartConversation(conversation, NPC, Spawn, "In time, all must fall. Allow me to teach you the consequences of death and how you can recover properly.")

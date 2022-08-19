@@ -19,7 +19,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 local conversation = CreateConversation()
 FaceTarget(QuestGiver, Player)
-AddConversationOption(conversation, "Sorry to cut you off, but the down below beckons.")
+AddConversationOption(conversation, "Sorry to cut you off, but the Down Below beckons.")
 StartConversation(conversation, QuestGiver, Player, "Deep down in the catacombs there are many shrines to protect the fallen - the heroes of Bristlebane and Rodcet Nife - who carried Qeynos through trials and tribulations, who fought hordes of undead, who...")
 PlayAnimation (NPC, orate)
 end
