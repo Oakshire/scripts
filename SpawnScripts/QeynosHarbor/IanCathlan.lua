@@ -257,7 +257,7 @@ function Dialog4(NPC, Spawn) --AQ6 turnin
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog( "Hrmm ... I see.  At least most of it is still in good shape ... except for these...")
-	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan008.mp3", 412980948, 3391212572)
+	Dialog.AddVoiceover("voiceover/english/optional3/ian_cathlan/qey_harbor/quests/ian_cathlan/iancathlan008.mp3", 412980948, 3391212572) --Addee VO
 	Dialog.AddOption( "Those were like that when I found them.")
 	QuestStepIsComplete(NPC,Spawn,armor6,4)
 	Dialog.Start()

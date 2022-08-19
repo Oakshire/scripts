@@ -1,24 +1,31 @@
+
 --[[
-	Script Name	: SpawnScripts/Oakmyst/RotweedThistle.lua
-	Script Purpose	: Rotweed Thistle
-	Script Author	: Scatman
-	Script Date	: 2009.10.08
-	Script Notes	: 
+    Script Name    : SpawnScripts/Oakmyst/RotweedThistle.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.05.20 04:05:04
+    Script Purpose : 
+                   : 
 --]]
 
-function spawn(NPC)
-end
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
-function hailed(NPC, Spawn)
-end
-
 function death(NPC, Spawn)
-	local rotweed = GetSpawn(GetZone(Spawn), 1950204)
-	if rotweed == nil then
-		SpawnMob(Zone, 1950204, 0, 932.211, 11.7721, -167.759, 280.656)
-	end
+  local zone = GetZone(NPC)
+  local thistle1 = GetSpawnByLocationID(zone, 422456)
+  local thistle2 = GetSpawnByLocationID(zone, 422457)
+  local thistle3 = GetSpawnByLocationID(zone, 422458)
+  if IsAlive(thistle1) == true then
+    elseif IsAlive(thistle2) == true then
+    elseif IsAlive(thistle3) == true then
+    else
+      AddTimer(NPC, 1000, "rotweedSpawn", 1, Spawn)
+  end
+end
+
+function rotweedSpawn(NPC, Spawn)
+  local zone = GetZone(NPC)
+  local thistle1 = GetSpawnByLocationID(zone, 422456)
+  local rotweed=SpawnByLocationID(zone, 422459)
+  if rotweed ~= nil then
+      FaceTarget(rotweed, Spawn)
+      Attack(rotweed, Spawn)
+  end
 end
