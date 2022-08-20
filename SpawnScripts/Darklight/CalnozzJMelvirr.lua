@@ -102,7 +102,6 @@ function hailed(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_1_1048.mp3", 0, 0)
 	Dialog.AddRequirement(REQ_QUEST_DOESNT_HAVE_QUEST, DrawUponWellsprings)
 	Dialog.AddRequirement(REQ_QUEST_NOT_HAS_COMPLETED_QUEST, DrawUponWellsprings)
-	Dialog.AddRequirement(REQ_LEVEL, 50)
 	Dialog.AddOption("You heard the guards speaking of me?", "Quest_DrawUponWellsprings_01A")
 	Dialog.AddOption("I am good.", "Quest_DrawUponWellsprings_01B")
 	
@@ -170,8 +169,8 @@ function hailed(NPC, Spawn)
 	Dialog.AddOption("I have some flesh from Smolderfin and thought you might be interested.", "Quest_RichFishFlesh")	
 	
 	Dialog.AddDialog("Hello again. Should you find your business here at the outpost concluded, I'd encourage you to travel west and seek out Wanderlust Fair. Many an odd character reside there, many more could use the help of someone like you. The Queen smiles upon you, young one. Good day.")
-	Dialog.AddRequirement(REQ_LEVEL, 1)
-	Dialog.AddOption("testing")
+	
+	
 	Dialog.Start()
 	
 end

@@ -3,13 +3,17 @@
 	Script Purpose	: the quest Tutorial: Learning to Harvest
 	Script Author	: theFoof
 	Script Date	: 2013.5.15
+	modified date : 8-19-22
+	modified by  : ememjr
+	modified notes : update conversion to dialog module
+	
 
         Zone            : Unknown (global)
         Quest Giver     : Trainer Hawk Dunlop (and other harvesting tutors will add as I get to those zones)
         Preceded by     : None
         Followed by     : "If I Had a Hammer" & "Tutorial: Forging Ahead"
 --]]
-
+require "SpawnScripts/Generic/DialogModule"
 local HarvestTutorial = 11
 
 function Init(Quest)
@@ -86,13 +90,14 @@ function Accepted(Quest, QuestGiver, Player)
 	if not HasItem(Player, 20747, 1) then
 		SummonItem(Player, 20747)
 	end
-	if GetName(QuestGiver) == "Glin Hammerhelm" then
+	--if GetName(QuestGiver) == "Glin Hammerhelm" then
 		conversation = CreateConversation()
 		FaceTarget(QuestGiver, Player)
-		
-		AddConversationOption(conversation, "I'll get right on it.")
-		StartConversation(conversation, QuestGiver, Player, "Harvesting resources tend to be segregated by areas - for example, you'll be able to harvest items (often also called nodes) for making equipment for level 1-9 adventurers, in the same areas where you'll find level 1-9 adventurers hunting.  There are seven types of harvestable item: wood, roots, ore, soft metal, animal dens, shrubs, and fish. I'd like you to get a few harvests from each type of harvestable item.")
-	end
+		Dialog.New(QuestGiver,Player)
+	    Dialog.AddDialog("Harvesting resources tend to be segregated by areas - for example, you'll be able to harvest items (often also called nodes) for making equipment for level 1-9 adventurers, in the same areas where you'll find level 1-9 adventurers hunting.  There are seven types of harvestable item:  wood, roots, ore, soft metal, animal dens, shrubs, and fish.  I'd like you to get a few harvests from each type of harvestable item.")
+	    Dialog.AddOption("I'll get right on it.")
+	    Dialog.Start()
+--	end
 end
 
 function Declined(Quest, QuestGiver, Player)

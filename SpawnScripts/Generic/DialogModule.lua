@@ -120,8 +120,10 @@ local function PrintOptions(dlg, con)
 	for k, v in pairs(dlg.Options) do
 		if CheckRequirements(v.Requirements) == true then
 			AddConversationOption(con, v.option, v.callback)
+			ret=true
 		end
 	end
+	return ret
 end
 
 -- Actual member functions are below, these are what you call in the other scripts
@@ -174,16 +176,6 @@ function Dialog.AddVoiceover(file, key1, key2)
 	dlg.VOKey2 = key2
 end
 
---PLACEHOLDER - NON FUNCTIONAL FOR NOW
---Sets a specific language to be used for this dialog
-function Dialog.AddLanguage(languageID)
-end
-
---PLACEHOLDER - NON FUNCTIONAL FOR NOW
---Marks this as a "Signature" dialog which changes the background/text color in game
-function Dialog.SetIsSignature(bSig)
-end
-
 -- Adds an emote to the last added dialog
 function Dialog.AddEmote(emote)
 	local dlg = Dialog.Dialog[#Dialog.Dialog]
@@ -231,7 +223,6 @@ function Dialog.Start()
 	
 	-- loop through all the dialogs
 	for key, dlg in pairs(Dialog.Dialog) do
-		
 		-- Check the dialog requirements if there are any and set the found bool
 		if dlg.Requirements ~= nil then
 			found = CheckRequirements(dlg.Requirements)
@@ -242,16 +233,35 @@ function Dialog.Start()
 		
 		-- if we found a dialog to use lets set up the options for it and send it
 		if found == true then
-			PrintOptions(dlg, con)
+		    HadOptions =  PrintOptions(dlg, con)
+			
 			if dlg.Emote ~= nil then
 				if dlg.VOFile ~= nil then
-					PlayFlavor(Dialog.NPC, dlg.VOFile, "", dlg.Emote, dlg.VOKey1, dlg.VOKey2, Dialog.Player)
+				    PlayFlavor(Dialog.NPC, dlg.VOFile, "", dlg.Emote, dlg.VOKey1, dlg.VOKey2, Dialog.Player)
 				else
-					PlayFlavor(Dialog.NPC, "", "", dlg.Emote, 0, 0, Dialog.Player)
+				    PlayFlavor(Dialog.NPC, "", "", dlg.Emote, 0, 0, Dialog.Player)
 				end
-				StartConversation(con, Dialog.NPC, Dialog.Player, dlg.Text)
+				if HadOptions == true then
+					StartConversation(con, Dialog.NPC, Dialog.Player, dlg.Text)
+				else
+					Say(Dialog.NPC,dlg.Text)
+				end
 			else
-				StartConversation(con, Dialog.NPC, Dialog.Player, dlg.Text, dlg.VOFile, dlg.VOKey1, dlg.VOKey2)
+			     
+				 if dlg.VOFile ~= nil then
+				    if HadOptions == true then
+						StartConversation(con, Dialog.NPC, Dialog.Player, dlg.Text, dlg.VOFile, dlg.VOKey1, dlg.VOKey2)
+					else
+						PlayFlavor(Dialog.NPC, dlg.VOFile, dlg.Text, "", dlg.VOKey1, dlg.VOKey2, Dialog.Player)
+					end
+				else
+				    if HadOptions == true then
+						StartConversation(con, Dialog.NPC, Dialog.Player, dlg.Text)
+					else 
+						Say(Dialog.NPC,dlg.Text)
+					end
+				end
+						
 			end
 			
 			-- we sent a dialog so get out of the loop
