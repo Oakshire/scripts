@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need ten badger pelts.", 10, 80, "I must collect ten badger pelts in the Forest Ruins or Oakmyst Forest.", 93, 1960011, 1960017, 1950035, 1950039)
+	AddQuestStepKill(Quest, 1, "I need ten badger pelts.", 10, 100, "I must collect ten badger pelts in the Forest Ruins or Oakmyst Forest.", 93, 1960011, 1960017, 1950035, 1950039)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_killedBadgers")
 end
 
@@ -21,7 +21,7 @@ function Accepted(Quest, QuestGiver, Player)
 	conversation = CreateConversation()
 
 	AddConversationOption(conversation, "Ok.")
-	StartConversation(conversation, QuestGiver, Player, "Try to make them high quality pelts!")
+	StartConversation(conversation, QuestGiver, Player, "Try to make them good quality pelts!")
 end
 
 function Declined(Quest, QuestGiver, Player)

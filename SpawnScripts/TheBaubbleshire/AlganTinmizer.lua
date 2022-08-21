@@ -34,7 +34,7 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
-if GetFactionAmount(Spawn,11) >0 then  
+if GetFactionAmount(Spawn,11) <0 then  
     FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "","", "shakefist", 0, 0, Spawn)
 else    
@@ -55,6 +55,7 @@ else
 	Dialog.AddOption("Nothing I need. I will be going now.")
     end
     Dialog.AddOption("Wait, what? I don't want any part of this.")
+	Dialog.Start()
     end	
 end
 

@@ -15,14 +15,6 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	local choice = MakeRandomInt(1, 1)
-	if choice == 1 then
-	PlayFlavor(NPC, "voiceover/english/gornit_penwiggle/qey_village06/penwiggle000.mp3", "", "", 2844059086, 1628915067, Spawn)
-	elseif choice == 2 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1024.mp3", "", "", 0, 0, Spawn)  
-	elseif choice == 3 then
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1024.mp3", "", "", 0, 0, Spawn)  
-	end
     PlayFlavor(NPC, "voiceover/english/gornit_penwiggle/qey_village06/penwiggle000.mp3", "", "", 2844059086, 1628915067, Spawn)
 	local conversation = CreateConversation()
 	if GetQuestStep(Spawn, 	AnIntriguingEye) == 3 then
@@ -34,7 +26,7 @@ function hailed(NPC, Spawn)
 	end
 	AddConversationOption(conversation, "Gornit? That's an odd name. ", "Option1")
 	AddConversationOption(conversation, "I won't bother you. Bye.")
-	StartConversation(conversation, NPC, Spawn, "Can't you see I'm busy doing something you can't even begin to fathom?")
+	StartConversation(conversation, NPC, Spawn, "Can't you see I'm busy? I'm the kegkeeper of the tavern, and as you can see, these lot drink a lot ... Ha! ... Made a funny!")
 end
 
 function Option1(NPC, Spawn)

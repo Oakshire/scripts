@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to find a pristine Mystail rat tail.", 1, 65, "I need to hunt down Mystail matriarch in the Oakmyst forest until I can find a suitable tail.", 172, 1950017)
@@ -17,11 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-
-	AddConversationOption(conversation, "Ok, I'll be back.")
-	StartConversation(conversation, QuestGiver, Player, "FINE! Sorry to be harsh, but you bother me a critical juncture! If you want to help me, go get me something to scrub this bit of metal. Perhaps the tail of a Mystail rat will do the trick. Yes, yes. That would work. Get one from the Oakmyst Forest! ")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("FINE! Sorry to be harsh, but you bother me a critical juncture! If you want to help me, go get me something to scrub this bit of metal. Perhaps the tail of a Mystail rat will do the trick. Yes, yes. That would work. Get one from the Oakmyst Forest!")
+    PlayFlavor(NPC, "","","sigh",0,0, Spawn)
+	Dialog.AddVoiceover("voiceover/english/smithy_findlebop/qey_village06/smithyfindlebop002.mp3",3746495978,2876844206)
+	Dialog.AddOption("Ok, I'll be back.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

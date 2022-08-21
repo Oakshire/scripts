@@ -36,9 +36,16 @@ function hailed(NPC, Spawn)
 	if GetQuestStep(Spawn, InSearchoftheSepulcherofJahnda) == 1 then
 	Dialog.AddOption("Do you know anything about a Sepulcher? ", "Option1")
 	end
-	if not HasCompletedQuest (Spawn, Estle) and not HasQuest(Spawn, Estle) then 
-	Dialog.AddOption("I don't need faith, I need work", "EstleSearch")
+
+	if not HasCompletedQuest (Spawn, Estle) and not HasQuest(Spawn, Estle) and GetClass(Spawn) >= 11 and GetClass(Spawn) <= 20 and GetLevel(Spawn) >=5 then 
+	Dialog.AddOption("I already pursue my faith, but I need work.", "EstleSearch")
     end
+	if not HasCompletedQuest (Spawn, Estle) and not HasQuest(Spawn, Estle) and GetLevel(Spawn) >=5  then 
+	Dialog.AddOption("I don't need faith, I need work.", "EstleSearch")
+    end
+    if GetLevel(Spawn) < 5 then
+ 	Dialog.AddOption("I'm afraid I need more experience before I explore my faith.")
+    end       
     if GetQuestStep(Spawn, InSearchoftheSepulcherofJahnda) == 3 then
 	Dialog.AddOption("I have brought your crystals. Where are my directions?", "Option3")
 	end
