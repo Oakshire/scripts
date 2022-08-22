@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
     AddQuestStepChat(Quest, 1, "I need to deliver a basket to Yola.", 1, "I need to deliver a picnic basket to Yola over by the pond.", 2695, 2380032)
@@ -16,10 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-  conversation = CreateConversation()
-      PlayFlavor(QuestGiver,"","","nod",0,0,Player)
-  AddConversationOption(conversation, "I'll dash right over.")
-  StartConversation(conversation, QuestGiver, Player, "Great, let me know when you get done with that delivery!")
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I prepared a picnic basket for Yola, and I need it delivered to her at the little lake.  You'll find her at the lunch spot.  I'll spot you a few coins if you're quick on your toes!  Hehe. Off with ya!")
+	Dialog.AddVoiceover("voiceover/english/tapster_bregun/qey_village06/tapsterbregun002.mp3", 895648320,2977770410)
+    PlayFlavor(QuestGiver,"","","chuckle",0,0,Player)
+	Dialog.AddOption("Alright.  I'll make sure she gets this!")
+	Dialog.Start()
 end   
 
 

@@ -18,10 +18,10 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
 	Dialog.AddDialog("FINE! Sorry to be harsh, but you bother me a critical juncture! If you want to help me, go get me something to scrub this bit of metal. Perhaps the tail of a Mystail rat will do the trick. Yes, yes. That would work. Get one from the Oakmyst Forest!")
-    PlayFlavor(NPC, "","","sigh",0,0, Spawn)
+    PlayFlavor(QuestGiver, "","","sigh",0,0, Player)
 	Dialog.AddVoiceover("voiceover/english/smithy_findlebop/qey_village06/smithyfindlebop002.mp3",3746495978,2876844206)
 	Dialog.AddOption("Ok, I'll be back.")
 	Dialog.Start()

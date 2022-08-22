@@ -15,10 +15,15 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+		PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
+		FaceTarget(NPC, Spawn)
+else    
 	if math.random(0, 100) <= 25 then
 		FaceTarget(NPC, Spawn)
 		GenericScribeHail(NPC, Spawn)
 	end
+end
 end
 
 function LeaveRange(NPC, Spawn)
@@ -39,6 +44,11 @@ function GenericScribeHail(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+if GetFactionAmount(Spawn,11)<0 then
+		PlayFlavor(NPC, "", "", "heckno", 0, 0, Spawn)
+		FaceTarget(NPC, Spawn)
+else
+		FaceTarget(NPC, Spawn)
 	GenericScribeHail(NPC, Spawn)
+end
 end

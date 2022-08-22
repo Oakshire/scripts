@@ -3,12 +3,16 @@
 	Script Purpose	: the quest If I Had A Hammer
 	Script Author	: theFoof
 	Script Date	: 2013.5.16
+	modiifed by :ememjr
+	Modified Date : 8/21/2022
+	Modified Notes : add dialog module in accepted section
 
         Zone            : Frostfang Sea
         Quest Giver     : Bull the Craft
         Preceded by     : Tutorial: Learning to Harvest
         Followed by     : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 -- reward is "Handbook of the Ravens of the North", 722 tradeskill xp, +250 Ravens of the North faction and 6-8 silver
 
 function Init(Quest)
@@ -48,13 +52,19 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
     FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-
-	PlayFlavor(QuestGiver, "", "", "", 0, 0, Player)
-	AddConversationOption(conversation, "I'll get those items now.")
-	StartConversation(conversation, QuestGiver, Player, "Pick up a copy of my lucky charm recipe over there beside me, and scribe it into your recipe book.  Then grab some coal from the sack.  You'll also need one of the tin clusters and lead clusters that you harvested earlier, and make sure you have them with you in your bags.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Pick up a copy of my lucky charm recipe over thereside me, and scribe it into your recipe book.  Then grab some coal from the sack.  You'll also need one of the tin clusters and lead clusters that you harvested earlier, and make sure you have them with you in your bags.")
+	Dialog.AddOption("I'll get those items now.")
+	Dialog.Start()
+    
 	AddSpawnAccess(GetSpawn(Player, 4701805), Player)
 	AddSpawnAccess(GetSpawn(Player, 4701804), Player)
+	if HasItem(Player,32122)then
+	    SetStepComplete(Player, 12, 1)
+	    if HasItem(Player,5771) then
+	    SetStepComplete(Player, 12, 2)
+	end
+	end
 end
 
 function Declined(Quest, QuestGiver, Player)

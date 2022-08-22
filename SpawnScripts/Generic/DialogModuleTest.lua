@@ -262,12 +262,6 @@ function Dialog.Start()
 					Say(Dialog.NPC,"emote true VO false ")
 				    PlayFlavor(Dialog.NPC, "", "", dlg.Emote, 0, 0, Dialog.Player)
 				end
-				if HadOptions == true then
-				    Say(Dialog.NPC,"hasoptions ")
-					StartConversation(con, Dialog.NPC, Dialog.Player, dlg.Text)
-				else
-					Say(Dialog.NPC,dlg.Text)
-				end
 			else
 			     
 				 if dlg.VOFile ~= nil then

@@ -5,6 +5,8 @@
 	Script Date	: 2009.09.27
 	Script Notes	: Added quest & updated dialog module.  2022.08.20 Dorbin
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 local MystratTails = 5439
 
 --dofile("SpawnScripts/Generic/GenericWeaponsmithVoiceOvers.lua") NOT NECESSARY FOR FINDLEBOP
@@ -93,7 +95,7 @@ end
 function Begin(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Now, if only I could only figure out how this sprocket will fit in this device, it'll be set. Oh! Yes? Why are you interrupting my work? Can't you SEE I'M BUSY?")
+	Dialog.AddDialog("Now, if only I could only figure out how this sprocket will fit in this device, it'll be set. Oh! Yes? Why are you interrupting my work? Can't you SEE I'M BUSY HERE?")
     PlayFlavor(NPC, "","","frustrated",0,0, Spawn)
 	Dialog.AddVoiceover("voiceover/english/smithy_findlebop/qey_village06/smithyfindlebop000.mp3",1173629486, 2280866988)
 	if not HasQuest(Spawn, MystratTails) and not HasCompletedQuest(Spawn, MystratTails) then

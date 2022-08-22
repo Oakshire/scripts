@@ -38,7 +38,7 @@ function step1_complete_beetles(Quest, QuestGiver, Player)
 end
 
 function quest_complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 2, "I have returned to Lozoria Shinkicker.")
+	UpdateQuestStepDescription(Quest, 2, "I returned with the oro root that Lozoria needed for his next batch of brew.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have given the Oro roots to Lozoria Shinkicker.")
 	UpdateQuestDescription(Quest, "I managed to collect the ten roots that Lozoria wanted for their new brew. He seems to like the ale it makes just fine, that's for certain! He's rather charming in an odd sort of way!")
 	GiveQuestReward(Quest, Player)

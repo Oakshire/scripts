@@ -9,6 +9,7 @@
 	Preceded by: None
 	Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,10 +19,11 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-
-	AddConversationOption(conversation, "Ok.")
-	StartConversation(conversation, QuestGiver, Player, "Try to make them good quality pelts!")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Then prepare for a hunting trip in the Forest Ruins.  I'll pay you handsomely for a bundle of badger pelts.  I may even toss in a bit of Diggs' finest armor.")
+	Dialog.AddVoiceover("voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs002.mp3", 2590912109, 2110560767)
+	Dialog.AddOption("I will return with the bundle of badger pelts. ", "Dialog8")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

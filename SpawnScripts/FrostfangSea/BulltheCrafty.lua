@@ -5,9 +5,9 @@
 	Script Date	: 2013.05.16
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModuleTest"
 
 local HarvestTutorial = 11
-
 local HadAHammer = 12
 
 function spawn(NPC)
@@ -25,23 +25,92 @@ end
 function LeaveRange(NPC, Spawn)
 end
 
-function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
+function hailed(NPC, Player)
+    -- VO option Well Met, Hail, Hello,
+    
+    
+    
+    FaceTarget(NPC, Player)
+   -- REQ_QUEST_HAS_COMPLETED_QUEST
+    --REQ_QUEST_HAS_QUEST
+    --REQ_QUEST_DOESNT_HAVE_QUEST
+    --REQ_QUEST_NOT_HAS_COMPLETED_QUEST
+    --REQ_QUEST_ON_STEP
+    
+    Dialog.New(NPC, Player)
+    Dialog.AddDialog("Greetings!  I noticed you harvesting out there.  Are you interested in trying your hand at making something out of them?")   
+    Dialog.AddRequirement(REQ_QUEST_HAS_COMPLETED_QUEST,HarvestTutorial)
+    Dialog.AddRequirement(REQ_QUEST_DOESNT_HAVE_QUEST,HadAHammer)
+    Dialog.AddRequirement(REQ_QUEST_NOT_HAS_COMPLETED_QUEST,HadAHammer)
+    Dialog.AddOption("Sure, why not?  Is it hard?", "Quest1Chat_2")
+    
+    Dialog.AddDialog("The recipe's right there in front of me there, don't forget to read it once you pick it up. The coal's on the ground there.  And make sure you have a tin cluster and a lead cluster in your bags, they'll be no use to you in the bank!")
+    Dialog.AddEmote("nod")
+    Dialog.AddRequirement(REQ_QUEST_BEFORE_STEP,HadAHammer,3)
+    
+    Dialog.AddDialog("Having any trouble? You might have noticed that at the bottom of the crafting window you see six tradeskill arts you can use. Three will improve the durability, and three the progress of your craft. Try using those as much as you need while crafting.")
+    Dialog.AddRequirement(REQ_QUEST_ON_STEP,HadAHammer,3)
+    Dialog.AddOption("I'll try.")
+    
+    
+    
+    
+    
+    
+   
+   
+    
+    
+    Dialog.Start()
+    
+function Quest1Chat_2(NPC, Player)
+	FaceTarget(NPC, Player)
+	Dialog.New(NPC, Player)
+	Dialog.AddDialog("Nay, not hard at all once you wrap your head around it.  But I'm not one to keep talking all day.  Why don't you just jump in and try it?")
+	Dialog.AddOption("Okay, what do I do?", "OfferHadAHammer")
+    Dialog.Start()
+end    
+
+function OfferHadAHammer(NPC, Player)
+    OfferQuest(NPC, Player, HadAHammer)
+end
+    
+    
+    
+    
+    
+    
+    
+function dontuse  (NPC, Player)  
+    
+    
+    
 	conversation = CreateConversation()
 	
     if HasCompletedQuest(Spawn, HarvestTutorial) and HasQuest(Spawn, HadAHammer) == false and HasCompletedQuest(Spawn, HadAHammer) == false then
 	    Quest1Chat_1(NPC, Spawn)
+	    
+	    
+	    
 	elseif GetQuestStep(Spawn, HadAHammer) == 1 or GetQuestStep(Spawn, HadAHammer) == 2 then
 	   	PlayFlavor(NPC, "", "The recipe's right there in front of me there, don't forget to read it once you pick it up. The coal's on the ground there.  And make sure you have a tin cluster and a lead cluster in your bags, they'll be no use to you in the bank!", "nod", 1689589577, 4560189, Spawn)
+	
+	
 	elseif GetQuestStep(Spawn, HadAHammer) == 3 then
 	    AddConversationOption(conversation, "I'll try.")
 		StartConversation(conversation, NPC, Spawn, "Having any trouble? You might have noticed that at the bottom of the crafting window you see six tradeskill arts you can use. Three will improve the durability, and three the progress of your craft. Try using those as much as you need while crafting.")
+	
+	
 	elseif GetQuestStep(Spawn, HadAHammer) == 4 then
 	    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1002.mp3", "", "", 0, 0, Spawn)
 	    AddConversationOption(conversation, "I made a lucky wolf paw charm!", "Quest1Chat_3")
 	    StartConversation(conversation, NPC, Spawn, "How did you make out?  Was my recipe simple enough?")
+	
+	
 	elseif GetQuestStep(Spawn, HadAHammer) == 5 or HasCompletedQuest(Spawn, HadAHammer) then
 	    Quest1Chat_1(NPC, Spawn)
+	
+	
 	else
 	    PlayFlavor(NPC, "", "At peace or at war, my work must go on.", "nod", 1689589577, 4560189, Spawn)
 	end
@@ -52,8 +121,8 @@ function Quest1Chat_1(NPC, Spawn)
 	AddConversationOption(conversation, "Sure, why not?  Is it hard?", "Quest1Chat_2")
 	StartConversation(conversation, NPC, Spawn, "Greetings!  I noticed you harvesting out there.  Are you interested in trying your hand at making something out of them?")
 end
-
-function Quest1Chat_2(NPC, Spawn)
+end
+function Quest1Chat_2xx(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
@@ -73,7 +142,7 @@ function Quest1Chat_3(NPC, Spawn)
 end
 
 
-function OfferHadAHammer(NPC, Spawn)
+function OfferHadAHammerxx(NPC, Spawn)
     if HasCompletedQuest(Spawn, HadAHammer) == false and HasQuest(Spawn, HadAHammer) == false then
         OfferQuest(NPC, Spawn, HadAHammer)
 	end

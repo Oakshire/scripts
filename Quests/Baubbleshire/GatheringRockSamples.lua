@@ -10,6 +10,7 @@
 	Preceded by		:	None
 	Followed by		:	None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 local GEOLOGIST_QUARDIFLE_ID = 2380036
 
@@ -20,12 +21,13 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-	UpdateQuestZone(Quest, "The Caves")
-	PlayFlavor(QuestGiver, "voiceover/english/geologist_quardifle/qey_village06/geologistquardifle003.mp3", "", "", 3141164092, 1027825871, Player)
-	AddConversationOption(conversation, "Alright. I'll see what I can find!")
-	StartConversation(conversation, QuestGiver, Player, "Great! You'll find that these caves are largely unexplored. Seek out intricate areas of these caves and bring me back some unique rock samples and I'll be happy!")
-end
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Great! You'll find some unexplored caves in this area. To get there, ring one of the dock bells. Once you arrive, seek out intricate areas of the caves. Bring me back some unique rock samples and I'll be happy!")
+	Dialog.AddVoiceover("voiceover/english/geologist_quardifle/qey_village06/geologistquardifle003.mp3", 3141164092, 1027825871)
+	Dialog.AddLanguage(6)
+	Dialog.AddOption("Alright, I'll see what I can find!")
+	Dialog.Start()
+	end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found a windpsirit sample.")

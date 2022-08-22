@@ -77,7 +77,7 @@ function OroStart(NPC, Spawn)
 	Dialog.AddDialog("Oh you are, are ya? Well I'll tell ya what - if ya do something for me, I'll get you a pint on the house and pay ya as well.")
 	Dialog.AddVoiceover("voiceover/english/lozoria_shinkicker/qey_village06/lozoriashinkicker001.mp3", 297007289,1280253281)
 --	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
---	Dialog.AddEmote("ponder")
+	Dialog.AddEmote("ponder")
 	Dialog.AddOption("I could go for a pint. What do you need?", "TheJob")
 	Dialog.Start()
 end
