@@ -47,7 +47,7 @@ else
 	Dialog.AddOptionRequirement(REQ_QUEST_DOESNT_HAVE_QUEST, YolaPicnic)
 	Dialog.AddOptionRequirement(REQ_QUEST_NOT_HAS_COMPLETED_QUEST, YolaPicnic)
 	    
-	Dialog.AddOption("I've delievered the picnic basket to Yola as requested.")
+	Dialog.AddOption("I've delievered the picnic basket to Yola as requested.","DoorDashDone")
 	Dialog.AddOptionRequirement(REQ_QUEST_ON_STEP, YolaPicnic , 2)
 
 

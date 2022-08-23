@@ -43,7 +43,7 @@ end
 
 function InRange(NPC, Spawn)
     if GetFactionAmount(Spawn,11)>0 then	  
-	    if math.random(1, 100) <= 80 and not HasQuest(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS) and not HasCompletedQuest(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS) then
+	    if math.random(1, 100) <= 80 and not HasQuest(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS) and not HasCompletedQuest(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS) and GetLevel(Spawn) >= 5 then
  	        FaceTarget(NPC, Spawn)
             if not HasCompletedQuest(Spawn, FIGHT_THE_FORGOTTEN_GUARDIANS) then
             PlayFlavor(NPC, "voiceover/english/marshal_surefoot/qey_village06/100_marshal_shortfoot_callout_21d33319.mp3", "Forgotten guardians are no match for a Leatherfoot, Ha! Greetings adventurer. I can tell you're a fearless warrior!", "salute", 3286953341, 3627183103, Spawn)

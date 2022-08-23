@@ -21,8 +21,15 @@ end
 function InRange(NPC, Spawn)
 	if math.random(0, 100) <= 25 then
 		FaceTarget(NPC, Spawn)
-		GenericArmorsmithHail(NPC, Spawn)
-	end
+					local choice = math.random(1, 3)
+					if choice == 1 then
+						Say(NPC, "You can never be too careful when it comes to protecting yourself. Why not try something new?", Spawn)
+					elseif choice == 2 then
+						PlayFlavor(NPC, "", "Your garb looks a mite worn. Can I interest you in a fine new set of armor?", "", 1689589577, 4560189, Spawn)
+					else
+						PlayFlavor(NPC, "", "Hello there! Can I interest you in some of the finest merchandise this side of Norrath?", "wave", 1689589577, 4560189, Spawn)
+					end
+					end
 end
 
 function LeaveRange(NPC, Spawn)

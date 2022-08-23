@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: Reconstructed manually
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must get ten fledgling antelope sinews in the Thundering Steppes.", 10, 100, "Tinkerer Spindlecog needs ten fledgling antelope sinews from the Thundering Steppes.", 99, 2490056)
@@ -17,12 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-    conversation = CreateConversation()
-    FaceTarget(QuestGiver, Player)
-	PlayFlavor(QuestGiver, "voiceover/english/tinkerer_spindlecog/qey_village06/tinkererspindlecog003.mp3", "", "no", 2508515239, 4260547544, Player)
-	AddConversationOption(conversation, "I'll be back with these items.")
-	AddConversationOption(conversation, "Try not to blow anything up.")
-	StartConversation(conversation, QuestGiver, Player, "Of course not!  That's horribly inefficient!  Why would I ever do something by hand when I can build a machine to do it for me? If I could only connect these two ... Ah! Brilliant! Brilliant! Let me jot this down for you, and once you get this stuff, bring it back straightaway!  It's a bit of a trek, but I'm sure you are up to the challenge!")
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Of course not!  That's horribly inefficient!  Why would I ever do something by hand when I can build a machine to do it for me? If I could only connect these two ... Ah! Brilliant! Brilliant! Let me jot this down for you, and once you get this stuff, bring it back straightaway!  It's a bit of a trek, but I'm sure you are up to the challenge!")
+	Dialog.AddVoiceover("voiceover/english/tinkerer_spindlecog/qey_village06/tinkererspindlecog003.mp3", 2508515239, 4260547544)
+	Dialog.AddLanguage(6)
+	Dialog.AddOption("I'll see what I can do.", "Dialog1")
+	Dialog.Start()
 end
 
 function Step1Complete(Quest, QuestGiver, Player)

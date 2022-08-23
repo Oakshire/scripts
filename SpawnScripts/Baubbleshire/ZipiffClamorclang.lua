@@ -24,7 +24,7 @@ else
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Careful where you walk!   I don't want you bending a sprocket or tweaking a spring, and you mustn't crimp a cog!  If I have to uncrimp just one more cog...")
 	Dialog.AddVoiceover("voiceover/english/zipiff_clamorclang/qey_village06/zipiffclamorclang000.mp3", 2450977341, 1936083009)
-	PlayFlavor(NPC, "", "", "swear", 0, 0, Spawn)
+	PlayFlavor(NPC, "", "", "frustrated", 0, 0, Spawn)
 
 	Dialog.AddOption("I'm checking on Lolla Cotgrove's kegs.", "TheOrder")
 	Dialog.AddOptionRequirement(REQ_QUEST_ON_STEP, Delivery , 1)
