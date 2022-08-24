@@ -107,6 +107,15 @@ local function CheckRequirements(reqs)
 			elseif v.Type == REQ_LOCATION_ID and GetSpawnLocationID(Dialog.NPC) ~= v.Value1 then
 				ret = false
 				break
+			elseif v.Type == REQ_TSLEVEL and GetTradeskillLevel(Dialog.Player) ~= v.Value1 then
+				ret = false
+				break
+			elseif v.Type == REQ_TSLEVEL_GREATER_OR_EQUAL and GetTradeskillLevel(Dialog.Player) < v.Value1 then
+				ret = false
+				break
+			elseif v.Type == REQ_TSLEVEL_LESS_OR_EQUAL and GetTradeskillLevel(Dialog.Player) > v.Value1 then
+				ret = false
+				break
 			end
 		end
 	end
@@ -246,16 +255,17 @@ function Dialog.Start()
 		    HadOptions =  PrintOptions(dlg, con)
 			
 			if dlg.Emote ~= nil then
-				if dlg.VOFile ~= nil then
-				    PlayFlavor(Dialog.NPC, dlg.VOFile, "", dlg.Emote, dlg.VOKey1, dlg.VOKey2, Dialog.Player)
-				else
-				    PlayFlavor(Dialog.NPC, "", "", dlg.Emote, 0, 0, Dialog.Player)
-				end
 				if HadOptions == true then
 					StartConversation(con, Dialog.NPC, Dialog.Player, dlg.Text)
 				else
 					Say(Dialog.NPC,dlg.Text)
 				end
+				if dlg.VOFile ~= nil then
+				    PlayFlavor(Dialog.NPC, dlg.VOFile, "", dlg.Emote, dlg.VOKey1, dlg.VOKey2, Dialog.Player)
+				else
+				    PlayFlavor(Dialog.NPC, "", "", dlg.Emote, 0, 0, Dialog.Player)
+				end
+				
 			else
 			     
 				 if dlg.VOFile ~= nil then
