@@ -57,7 +57,9 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 844.6, -17.35, -463.51, 1, 0)
 	MovementLoopAddLocation(NPC, 847.22, -17.91, -464.83, 1, 0)
 	MovementLoopAddLocation(NPC, 852.31, -18.55, -467.71, 1, 25,"Sleep")
-	MovementLoopAddLocation(NPC, 854.55, -16.68, -469.33, 1, 25)
+	MovementLoopAddLocation(NPC, 854.55, -16.68, -469.33, 1, 1,"Heading")
+	MovementLoopAddLocation(NPC, 854.55, -16.68, -469.33, 1, 25,"Sleep")
+	MovementLoopAddLocation(NPC, 854.55, -16.68, -469.33, 1, 0)
 	MovementLoopAddLocation(NPC, 854.12, -16.92, -468.49, 1, 0)
 	MovementLoopAddLocation(NPC, 852.89, -18.58, -466.16, 1, 0)
 	MovementLoopAddLocation(NPC, 858.75, -18.92, -466.44, 1, 0)
@@ -111,6 +113,10 @@ end
 end
 function Wake(NPC)    
     SpawnSet(NPC, "action_state", 0)
+end
+
+function Heading(NPC)
+    SetHeading(NPC,180)
 end
 
 --[[ OLD

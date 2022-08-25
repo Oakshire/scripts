@@ -28,7 +28,7 @@ function respawn(NPC)
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 608.2, -22.42, -262.67, 2, 1)
-	MovementLoopAddLocation(NPC, 608.2, -22.42, -262.67, 2, math.random(6,40)"EcologyEmotes")
+	MovementLoopAddLocation(NPC, 608.2, -22.42, -262.67, 2, math.random(6,40),"EcologyEmotes")
 	MovementLoopAddLocation(NPC, 608.2, -22.42, -262.67, 2, 0)
 	MovementLoopAddLocation(NPC, 628, -19.98, -255.72, 2, math.random(0,8))
 	MovementLoopAddLocation(NPC, 648.99, -18.69, -259.97, 2, math.random(0,8))

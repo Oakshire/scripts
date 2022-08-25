@@ -57,8 +57,9 @@ end
 
 
 function waypoints(NPC)
-	MovementLoopAddLocation(NPC, 879.49, -17.11, -511.61, 2, math.random(1))
+	MovementLoopAddLocation(NPC, 879.49, -17.11, -511.61, 2, 1,"Heading")
 	MovementLoopAddLocation(NPC, 879.49, -17.11, -511.61, 2, math.random(10, 15),"Action")
+	MovementLoopAddLocation(NPC, 879.49, -17.11, -511.61, 2, 0)
 	MovementLoopAddLocation(NPC, 878.04, -16.77, -515.6, 2, 0)
 	MovementLoopAddLocation(NPC, 880.47, -16.46, -518.44, 2, 0)
 	MovementLoopAddLocation(NPC, 885.54, -16.3, -516.52, 2, 0)
@@ -73,7 +74,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 889.61, -19.18, -463.69, 2, 0)
 	MovementLoopAddLocation(NPC, 892.35, -19.01, -459.51, 2, 0)
 	MovementLoopAddLocation(NPC, 891.78, -18.75, -457.06, 2, 0)
-	MovementLoopAddLocation(NPC, 888.81, -18.36, -454.83, 2, math.random(1))
+	MovementLoopAddLocation(NPC, 888.81, -18.36, -454.83, 2, 1)
 	MovementLoopAddLocation(NPC, 888.81, -18.36, -454.83, 2, math.random(10, 20),"Action")
 	MovementLoopAddLocation(NPC, 886.47, -18.48, -453.4, 2, 0)
 	MovementLoopAddLocation(NPC, 887.14, -18.74, -455.05, 2, 0)
@@ -99,6 +100,10 @@ function hailed(NPC, Spawn)
     else    
 	Begin(NPC, Spawn)
     end
+end
+
+function Heading(NPC)
+    SetHeading(NPC,166)
 end
 
 function Begin(NPC, Spawn)

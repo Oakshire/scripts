@@ -10,7 +10,7 @@
         Followed by: 
 --]]
 
-require "SpawnScripts/GenericUriParser/DialogModule"
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I should search for a clue in the Thundering Steppes.", 10, "I should find some clue to the whereabouts of Clan McMarrin somewhere in the Thundering Steppes.", 11, 1345, -2, -81, 12)
@@ -18,7 +18,7 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-		FaceTarget(QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
 
 	Dialog.AddOption("I can understand that.")

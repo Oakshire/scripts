@@ -13,7 +13,7 @@ function init_zone_script(Zone)
 end
 
 function player_entry(zone, player)
-SendPopUpMessage(Player, "Qeynos Province District", 230, 230, 230)    
+SendPopUpMessage(player, "Qeynos Province District", 230, 230, 230)    
 end
 
 

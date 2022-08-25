@@ -13,7 +13,7 @@ function init_zone_script(Zone)
 end
 
 function player_entry(Zone, Player)
-SendPopUpMessage(Spawn, "The Elddar Grove", 230, 230, 230)   
+SendPopUpMessage(Player, "The Elddar Grove", 230, 230, 230)   
 end
 
 function dawn(Zone)

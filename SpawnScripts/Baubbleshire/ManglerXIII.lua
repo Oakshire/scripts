@@ -58,6 +58,8 @@ end
 
 function InRange(NPC, Spawn)
 	if math.random(1, 100) <= 25 then
+    	FaceTarget(NPC, Spawn)
+	    PlayFlavor(NPC,"","","attack",0,0,Spawn)
 		SendMessage(Spawn, GetName(NPC) .. " barks at you.")
 	end
 end

@@ -9,7 +9,7 @@
 local Tree = 5533
 
 function spawn(NPC)
-OfferQuest(NPC,Tree)
+ProvidesQuest(NPC,Tree)
 end
 
 function respawn(NPC)
