@@ -3,7 +3,7 @@
 	Script Purpose	:	for the portal that spawns orc
 	Script Author	:	theFoof
 	Script Date		:	2013.6.8
-	Script Notes	:	
+	Script Notes	:	Update, increased the chance of an additional orc to 3 seconds to avoid overwhelming dwarves. 2022.08.28 Dorbin
 --]]
 
 function spawn(NPC)
@@ -12,5 +12,5 @@ end
 
 function SpawnTimer(NPC)
 	SpawnMob(GetZone(NPC), 4700096, 0, 750.68 + math.random(-4,4), 103.15, -504.11 + math.random(-4,4), 130)
-	AddTimer(NPC, math.random(1,12000), "SpawnTimer")
+	AddTimer(NPC, math.random(3000,12000), "SpawnTimer")
 end

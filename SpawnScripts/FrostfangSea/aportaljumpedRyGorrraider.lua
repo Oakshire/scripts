@@ -3,10 +3,11 @@
 	Script Purpose	:	for the raiders that pop out of the portal in frostfang
 	Script Author	:	theFoof
 	Script Date		:	2013.6.8
-	Script Notes	:	
+	Script Notes	:	Added Despawn so orcs don't stand around forever.
 --]]
 
 function spawn(NPC)
+    AddTimer(NPC,60000,"despawn")
 	local choice = math.random(1,2)
 	SetSpeed(NPC, 7)
 	if choice == 1  then
@@ -21,5 +22,8 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+end
+
+function despawn(NPC)
+    Despawn (NPC)
 end
