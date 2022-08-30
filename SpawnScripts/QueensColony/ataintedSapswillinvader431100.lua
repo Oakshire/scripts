@@ -38,9 +38,9 @@ function respawn(NPC)
 end
 
 function waypoints(NPC)
-	MoveToLocation(NPC, 174.34, -3.11, 155.46, 2)
-	MoveToLocation(NPC, 82.43, -4.49, 171.83, 2)
-	MoveToLocation(NPC, 72.49, -4.30, 170.27, 2, "waypointsLoop")
+	MovementLoopAddLocation(NPC, 174.34, -3.11, 155.46, 2)
+	MovementLoopAddLocation(NPC, 82.43, -4.49, 171.83, 2)
+	MovementLoopAddLocation(NPC, 72.49, -4.30, 170.27, 2, "waypointsLoop")
 end
 
 function waypointsLoop(NPC)

@@ -11,8 +11,8 @@ function spawn(NPC)
     local level1 = 13
     local level2 = 14
     local difficulty1 = 6
-    local hp1 = 550
-    local power1 = 200
+    local hp1 = 655
+    local power1 = 205
     local difficulty2 = 6
     local hp2 = 765
     local power2 = 240
