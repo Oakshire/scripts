@@ -22,38 +22,13 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, -94.38, 1.9, -192.88, 7.5, 3)
 	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
 	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -54.28, 2.04, -152.77, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -94.38, 1.9, -192.88, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -54.28, 2.04, -152.77, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -94.38, 1.9, -192.88, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -54.28, 2.04, -152.77, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -94.38, 1.9, -192.88, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -54.28, 2.04, -152.77, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -94.38, 1.9, -192.88, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -54.28, 2.04, -152.77, 7.5, 0)
-	MovementLoopAddLocation(NPC, -48.62, 2.02, -158.23, 7.5, 0)
-	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
+	MovementLoopAddLocation(NPC, -54.28, 2.04, -152.77, 7.5, 300)
+	
+	
 end
 
-function waypointsLoop(NPC)
+--[[function waypointsLoop(NPC)
 	MovementLoopAddLocation(NPC, -53.65, 2.04, -165.68, 7.5, 0)
 	MovementLoopAddLocation(NPC, -53.65, 2.50, -165.68, 7.5, 0)
 
-end
-
+end]]--

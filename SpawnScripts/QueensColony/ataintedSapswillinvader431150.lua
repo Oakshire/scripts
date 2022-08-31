@@ -46,7 +46,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 61.5, -4, 183.71, 2)
 	MovementLoopAddLocation(NPC, 76.53, -4.32, 198.53, 2)
 	MovementLoopAddLocation(NPC, 75.82, -4.48, 180.13, 2)
-	MovementLoopAddLocation(NPC, 68.99, -4.49, 177.68, 2, "waypointsLoop")
+	MovementLoopAddLocation(NPC, 68.99, -4.49, 177.68, 2, 0, "waypointsLoop")
 end
 
 function waypointsLoop(NPC)

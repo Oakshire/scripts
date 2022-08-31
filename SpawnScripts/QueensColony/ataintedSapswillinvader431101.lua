@@ -1,4 +1,4 @@
-MovementLoopAddLocation--[[
+--[[
         Script Name     :       SpawnScripts/QueensColony/ataintedSapswillinvader431101.lua
 	Script Purpose	:	Waypoint Path for ataintedSapswillinvader431101.lua
 	Script Author	:	Rylec
@@ -45,7 +45,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 127.48, -4.1, 150.44, 2)
 	MovementLoopAddLocation(NPC, 115.91, -3.93, 155.97, 2)
 	MovementLoopAddLocation(NPC, 78.56, -4.36, 157.78, 2)
-	MovementLoopAddLocation(NPC, 75.75, -4.36, 160.57, 2, "waypointsLoop")
+	MovementLoopAddLocation(NPC, 75.75, -4.36, 160.57, 2, 0, "waypointsLoop")
 --	MovementLoopAddLocation(NPC, 73.31, -4.36, 164.62, 2)
 --	MovementLoopAddLocation(NPC, 72.34, -4.3, 169.86, 2, "waypointsLoop")
 end

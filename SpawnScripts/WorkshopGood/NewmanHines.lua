@@ -18,6 +18,8 @@ end
 
 function hailed(NPC, Spawn)
  Dialog1(NPC, Spawn)
+ -- notes on live once you receive the book, there is never anymore dialog, also after you have received book once even if you deleted it you can never get a free one again.
+ -- there is an error in the script everytime i talk to Newman i get a book
  end
 
 function Dialog1(NPC, Spawn)
@@ -40,6 +42,7 @@ function Dialog2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	SummonItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1)
+	SetTradeskillLevel(Spawn, 2)
 	Dialog.AddDialog("There, you now have the basic recipes and the knowledge to begin crafting.  Everything else you need to get yourself started can be found right here.")
 	Dialog.AddOption("I actually want to learn more about crafting professions.","Professions")
     Dialog.AddOption("I will start on that now.")
