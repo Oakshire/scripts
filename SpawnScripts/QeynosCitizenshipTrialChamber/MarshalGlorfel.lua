@@ -41,7 +41,7 @@ elseif HasCompletedQuest(Spawn,QCitizen) then
      Dialog2(NPC,Spawn)
 else
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "","Hey! You're not allowed in here!  Off with ya until you've proven yourself to complete this trial.", "glare", 0,0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_notcitizen_gm_48350e59.mp3","Hey! You're not allowed in here!  Off with ya until you've proven yourself to complete this trial.", "glare", 1734668326, 429140096, Spawn)
 end    
 end
 
@@ -128,4 +128,12 @@ function Option1F(NPC,Spawn)
 	Dialog.AddOption("Let us begin, Marshal.")
 	Dialog.Start()
 	SetStepComplete(Spawn,QCitizen,3)
+    DoorCheck(NPC,Spawn)
 end	
+
+function DoorCheck(NPC,Spawn)
+     Door = GetSpawn(NPC,22101355)
+    if Door ~= nil then
+    Despawn(Door)
+    end
+end

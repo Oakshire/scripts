@@ -8,11 +8,17 @@
 --\\\\##FFFF00You pull an application for citizenship from the wall.
 
 function spawn(NPC)
-
+SetRequiredQuest(NPC, 5718, 2)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+function casted_on(NPC, Spawn,SpellName)
+ if SpellName == 'Enter the Trial' then  
+    if GetQuestStep(Spawn,5718)==2 then
+        SetStepComplete(Spawn,5718,2)
+        ZoneRef = GetZone("QeynosCitizenshipTrialChamber")
+        Zone(ZoneRef,Spawn)      
+    end
+end
 end
 
 function respawn(NPC)

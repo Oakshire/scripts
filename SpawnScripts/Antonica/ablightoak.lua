@@ -28,7 +28,7 @@ function spawn(NPC)
     end
     
     
-    ChooseMovement(NPC)
+   ChooseMovement(NPC)
 end
 
 function ChooseMovement(NPC)
