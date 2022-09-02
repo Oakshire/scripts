@@ -9,7 +9,6 @@
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
     SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")		
     Target(NPC)
 end
@@ -17,6 +16,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     GenericEcologyHail(NPC, Spawn, faction)
+    SetTarget(NPC,Spawn)
 end
 
 function InRange(NPC,Spawn)

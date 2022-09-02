@@ -5,7 +5,7 @@
 	Script Date	: 2009.09.27
 	Script Notes	: This spawn speaks Ayr'Dal
 --]]
-
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 local QUEST_1 = 222
 
 function spawn(NPC)
@@ -41,7 +41,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	if not HasLanguage(Spawn, 7) then
-	PlayFlavor(NPC, "voiceover/english/halfelf/ft/halfelf/halfelf_eco_garble_garbled_gm_2e8f1542.mp3", "Another lost wanderer clawing at the gates. What?","ponder", 1894354512, 3476177255, Spawn, 7)
+    Garbled(NPC,Spawn)
 	else    
 	conversation = CreateConversation()
 	

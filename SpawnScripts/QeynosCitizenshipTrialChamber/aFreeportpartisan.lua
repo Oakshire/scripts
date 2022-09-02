@@ -6,9 +6,19 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
+local BBQCitizen = 5718
+local CVQCitizen = 5719
+local GQCitizen = 5720
+local NQCitizen = 5721
+local SCQCitizen = 5722
+local WWQCitizen = 5723
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
+end
 
+function InRange(NPC, Spawn)
+PlayFlavor(NPC, "","Hello, friend. You look like a sensible Qeynosian!", "", 0,0, Spawn)
 end
 
 function hailed(NPC, Spawn)
@@ -38,6 +48,7 @@ function Dialog2(NPC, Spawn)
     PlayFlavor(NPC,"","","nod",0,0,Spawn)
 	Dialog.AddOption("Perhaps.  I need to think upon this further.")
 	Dialog.AddOption("I'm not sure I can trust you. You're here as a traitor.", "Dialog3")
+	Dialog.AddOption("Coin cannot cover what you've done!", "AttackTimer")
 	Dialog.AddOption("No, there can be no bribery.", "AttackTimer")
 	Dialog.Start()
 end
@@ -69,8 +80,21 @@ function aggro(NPC,Spawn)
      SpawnSet(NPC,"attackable",1)
     SpawnSet(NPC,"show_level",1)
     SpawnSet(NPC,"command_primary",11)
+    SpawnSet(NPC,"action_state",0)
 end
 
 function death(NPC,Spawn)
-    SetStepComplete(Spawn,5718,6)
+	if HasQuest(Spawn,BQCitizen) then
+	SetStepComplete(Spawn,BQCitizen,6)
+	elseif HasQuest(Spawn,CVQCitizen) then
+ 	SetStepComplete(Spawn,CVQCitizen,6)
+	elseif HasQuest(Spawn,GQCitizen) then
+ 	SetStepComplete(Spawn,GQCitizen,6)
+	elseif HasQuest(Spawn,NQCitizen) then
+ 	SetStepComplete(Spawn,NQCitizen,6)
+	elseif HasQuest(Spawn,SCQCitizen) then
+ 	SetStepComplete(Spawn,SCQCitizen,6)
+	elseif HasQuest(Spawn,WWQCitizen) then
+ 	SetStepComplete(Spawn,WWQCitizen,6)
+ 	end    
 end

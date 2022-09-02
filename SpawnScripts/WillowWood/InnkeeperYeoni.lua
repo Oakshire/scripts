@@ -3,7 +3,7 @@
 	Script Purpose	: Innkeeper Yeoni <Housing>
 	Script Author	: Scatman
 	Script Date	: 2009.09.15
-	Script Notes	: 
+	Script Notes	: Added Quest & updated dialogue flow - 2022.2.? -Dorbin
 --]]
 
 local Message = 5479
@@ -16,16 +16,33 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function InRange(NPC, Spawn) --Quest Callout
+function InRange(NPC, Spawn)
 if math.random(1, 100) <= 70 then
-        choice = math.random(1,2)
-         if choice ==1 then
+    RandomGreeting(NPC, Spawn)
+    check = math.random(1,2)
+         if check ==1 then
          PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
         else
         PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
          end
     end
 end
+
+function RandomGreeting(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	local choice = MakeRandomInt(1,4)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_good_1/ft/service/innkeeper/halfelf_innkeeper_service_good_1_hail_gf_f9f93f86.mp3", "Many adventurers fresh from the road, head straight in to have a hot bath.  Shall I prepare one for you?", "wink", 1745153471, 1126955121, Spawn, 0)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_good_1/ft/service/innkeeper/halfelf_innkeeper_service_good_1_hail_gf_b9a44b08.mp3", "Hello there, will you be needing a room for the evening.", "hello", 3306251302, 2577851930, Spawn, 0)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_good_1/ft/service/innkeeper/halfelf_innkeeper_service_good_1_hail_gf_dc02003d.mp3", "Good day to you adventurer, can I fix you up something to eat?", "smile", 195141551, 1613034466, Spawn, 0)
+	elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/optional2/halfelf_eco_good_1/ft/service/innkeeper/halfelf_innkeeper_service_good_1_hail_gf_ff8f2e0b.mp3", "Is there something I can get for you.  Do you need extra towels or a new set of sheets?", "shrug", 2772660615, 737066360, Spawn, 0)
+    end
+end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

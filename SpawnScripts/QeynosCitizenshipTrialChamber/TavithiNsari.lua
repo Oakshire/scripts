@@ -7,8 +7,19 @@
 --]]
 require "SpawnScripts/Generic/DialogModule"
 
-function spawn(NPC)
+local BBQCitizen = 5718
+local CVQCitizen = 5719
+local GQCitizen = 5720
+local NQCitizen = 5721
+local SCQCitizen = 5722
+local WWQCitizen = 5723
 
+function spawn(NPC)
+SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+PlayFlavor(NPC, "","No!  Please don't hurt me!", "cringe", 0,0, Spawn)
 end
 
 function hailed(NPC, Spawn)
@@ -81,5 +92,17 @@ function aggro(NPC,Spawn)
 end
 
 function death(NPC,Spawn)
-    SetStepComplete(Spawn,5718,7)
-end
+	if HasQuest(Spawn,BQCitizen) then
+	SetStepComplete(Spawn,BQCitizen,7)
+	elseif HasQuest(Spawn,CVQCitizen) then
+ 	SetStepComplete(Spawn,CVQCitizen,7)
+	elseif HasQuest(Spawn,GQCitizen) then
+ 	SetStepComplete(Spawn,GQCitizen,7)
+	elseif HasQuest(Spawn,NQCitizen) then
+ 	SetStepComplete(Spawn,NQCitizen,7)
+	elseif HasQuest(Spawn,SCQCitizen) then
+ 	SetStepComplete(Spawn,SCQCitizen,7)
+	elseif HasQuest(Spawn,WWQCitizen) then
+ 	SetStepComplete(Spawn,WWQCitizen,7)
+ 	end    
+ end

@@ -5,7 +5,7 @@
     Script Purpose : Quest Scavenging Rats w/ Woodelf language check
                    : 
 --]]
-
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 
 local Rats = 5478
 
@@ -19,19 +19,13 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-    if not HasLanguage(Spawn, 16) then
-        	 if math.random(1, 100) <= 60 then
-            local choice = math.random(1,2)
-            
-            if choice == 1 then
-	        PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_87567d71.mp3", "Nature's balance begins with the words here.", "ponder", 2241066225, 3802156744, Spawn, 16)
-    	    elseif choice == 2 then
-	        PlayFlavor(NPC, "", "", "no", 0, 0, Spawn, 16)
-    	    end
+if math.random(1, 100) <= 75 then
+   if not HasLanguage(Spawn, 16) then
+            Garbled(NPC,Spawn)
     	end
 	elseif not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) then 
             if math.random(1, 100) <= 60 then
-            PlayFlavor(NPC, "", "The balance of nature is delecate, but all these newcomer...", "ponder", 0, 0, Spawn, 16)
+            PlayFlavor(NPC, "", "The balance of nature is delecate, but all these newcomers...", "ponder", 0, 0, Spawn, 16)
             elseif HasCompletedQuest (Spawn, Rats) and math.random(1, 100) <= 30 then
             FaceTarget(NPC,Spawn)
             PlayFlavor(NPC, "voiceover/english/salinia_brooklily/qey_village05/100_salinia_brooklily_callout_b524f5d0.mp3", "Hello friend! Please, take your time and browse at your leisure.", "hello", 996096760, 49604074, Spawn, 16)
@@ -42,7 +36,7 @@ end
 
 function hailed(NPC, Spawn)
          if not HasLanguage(Spawn, 16) then
-	        PlayFlavor(NPC, "voiceover/english/woodelf_forrest_wardens/ft/woodelf/woodelf_forrest_wardens_1_garbled_gm_87567d71.mp3", "Nature's balance begins with the words here.", "ponder", 2241066225, 3802156744, Spawn, 16)
+            Garbled(NPC,Spawn)
 	    else
 	    FaceTarget(NPC, Spawn)
 	    PlayFlavor(NPC,  "voiceover/english/salinia_brooklily/qey_village05/saliniabrooklily_x000.mp3", "","hello", 1124223156, 142078310, Spawn)

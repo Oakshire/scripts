@@ -7,6 +7,22 @@
 --]]
 require "SpawnScripts/Generic/DialogModule"
 
+local BBQCitizen = 5718
+local CVQCitizen = 5719
+local GQCitizen = 5720
+local NQCitizen = 5721
+local SCQCitizen = 5722
+local WWQCitizen = 5723
+
+function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+PlayFlavor(NPC, "","I'm so sorry... I didn't mean to do it!", "cry", 0,0, Spawn)
+end
+
+
 function hailed(NPC, Spawn)
 Dialog1(NPC, Spawn)
 end
@@ -28,6 +44,7 @@ function Dialog2(NPC, Spawn)
 	Dialog.AddOption("Perhaps.  I need to think upon this further.")
 	Dialog.AddOption("I'm listening...", "Dialog3")
 	Dialog.AddOption("You must be punished for your crimes!", "AttackTimer")
+	Dialog.AddOption("All traitors to Qeynos must die!", "AttackTimer")
 	Dialog.Start()
 end
 
@@ -37,7 +54,7 @@ function Dialog3(NPC, Spawn)
 	Dialog.AddDialog("I'll do anything!  I betrayed all who I loved by my actions, and I cannot bring myself to face the consequences.")
     PlayFlavor(NPC,"","","beg",0,0,Spawn)
 	Dialog.AddOption("You will have to face those consequences... but you will not face death. Begone.","ThankYou")
-	Dialog.AddOption("You must be punished for your crimes!", "AttackTimer")
+	Dialog.AddOption("You can and will face the consequences.  For treason, this means death.", "AttackTimer")
 	Dialog.Start()
 end
 
@@ -45,7 +62,7 @@ end
 
 function ThankYou(NPC,Spawn)
     AddTimer(NPC,6400,"Runaway",1)
-    SetStepComplete(Spawn,5718,5)
+    Update(NPC,Spawn)
     PlayFlavor(NPC,"","","notworthy",0,0,Spawn)
 end 
 
@@ -59,8 +76,24 @@ function Runaway(NPC,Spawn)
 end
 
 function death(NPC,Spawn)
-    SetStepComplete(Spawn,5718,5)
+Update(NPC,Spawn)
 end
+ 
+ function Update(NPC,Spawn)
+    if HasQuest(Spawn,BQCitizen) then
+	SetStepComplete(Spawn,BQCitizen,5)
+	elseif HasQuest(Spawn,CVQCitizen) then
+ 	SetStepComplete(Spawn,CVQCitizen,5)
+	elseif HasQuest(Spawn,GQCitizen) then
+ 	SetStepComplete(Spawn,GQCitizen,5)
+	elseif HasQuest(Spawn,NQCitizen) then
+ 	SetStepComplete(Spawn,NQCitizen,5)
+	elseif HasQuest(Spawn,SCQCitizen) then
+ 	SetStepComplete(Spawn,SCQCitizen,5)
+	elseif HasQuest(Spawn,WWQCitizen) then
+ 	SetStepComplete(Spawn,WWQCitizen,5)
+ 	end    
+ end
     
 function Leave(NPC)
     Despawn(NPC)
