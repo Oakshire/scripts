@@ -14,7 +14,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to obtain the albino fur of the cave bats.", 5, 70, "I need to gather the rare albino fur of the bats from the Caves near the Baubbleshire.", 126, 1970014,1970023)
+	AddQuestStepKill(Quest, 1, "I need to obtain the albino fur of the cave bats.", 5, 100, "I need to gather the rare albino fur of the bats from the Caves near the Baubbleshire.", 126, 1970014,1970023,8260073)
 	AddQuestStepCompleteAction(Quest, 1, "Bats1")
 	UpdateQuestZone(Quest,"The Caves")
 end
@@ -46,7 +46,7 @@ function BatsReturn1(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I returned to Fevalin")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've delivered the albino pelts to Fevalin.")
 
-	AddQuestStepKill(Quest, 3, "I need to obtain MORE albino fur of the cave bats.", 5, 80, "I need to gather MORE rare albino fur of the bats from the Caves near the Baubbleshire.", 126, 1970014,1970023)
+	AddQuestStepKill(Quest, 3, "I need to obtain MORE albino fur of the cave bats.", 5, 100, "I need to gather MORE rare albino fur of the bats from the Caves near the Baubbleshire.", 126, 1970014,1970023,8260073)
 	AddQuestStepCompleteAction(Quest, 3, "Bats2")
 	UpdateQuestZone(Quest,"The Caves")
 end

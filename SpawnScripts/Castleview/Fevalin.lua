@@ -13,7 +13,7 @@ local Bats = 5463
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
 ProvidesQuest(NPC, Rats)
-ProvidesQuest(NPC, Bats)
+
 end
 
 function respawn(NPC)
@@ -44,7 +44,7 @@ function hailed(NPC, Spawn)
             if not HasQuest(Spawn, Rats) then       
                 AddConversationOption(conversation, "Have any jobs I can do?", "RatsStart")
             end
-            if not HasQuest(Spawn, Bats) and GetLevel(Spawn)>=7 then       
+            if not HasQuest(Spawn, Bats) and GetLevel(Spawn)>=6 then       
                 AddConversationOption(conversation, "You and Kruuprum have a decent selection! Need any help?", "BatsStart")
             end
             if GetQuestStep(Spawn, Rats)==2 then
