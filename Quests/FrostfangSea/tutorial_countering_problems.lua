@@ -18,8 +18,7 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	SummonItem(Player, 31373, 1)
-	SummonItem(Player, 4142, 1)
+	GiveQuestItem(Quest,Player,".",4142,31373)
 	FaceTarget(QuestGiver, Player)
 	conversation = CreateConversation()
 
