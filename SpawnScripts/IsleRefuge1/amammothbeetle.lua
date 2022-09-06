@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/IsleRefuge1/GoliathBeetle.lua
+    Script Name    : SpawnScripts/IsleRefuge1/amammothbeetle.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.09.05 03:09:44
+    Script Date    : 2022.09.06 01:09:05
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 3
-    local level2 = 4
+    local level1 = 2
+    local level2 = 3
     local difficulty1 = 6
-    local hp1 = 75
-    local power1 = 45
+    local hp1 = 45
+    local power1 = 35
     local difficulty2 = 6
-    local hp2 = 110
-    local power2 = 55
+    local hp2 = 75
+    local power2 = 45
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)

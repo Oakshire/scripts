@@ -57,7 +57,7 @@ function hailed(NPC, Player)
  
     Dialog.Start()
     
-    
+  end  
 function OfferHadAHammer(NPC, Player)
     OfferQuest(NPC, Player, HadAHammer)
 end    

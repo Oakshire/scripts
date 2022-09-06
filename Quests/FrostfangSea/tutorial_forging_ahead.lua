@@ -41,6 +41,7 @@ function CraftedCandelabra(Quest, QuestGiver, Player)
 end
 
 function CompleteQuest(Quest, QuestGiver, Player)
+    UpdateQuestDescription(Quest,"I created the candelabra as instructed by the tutor.")
 	GiveQuestReward(Quest, Player)
 end
 
@@ -48,4 +49,8 @@ function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		CraftedCandelabra(Quest, QuestGiver, Player)
 	end
+	if Step == 2 then
+		CompleteQuest(Quest, QuestGiver, Player)
+	end
+	
 end
