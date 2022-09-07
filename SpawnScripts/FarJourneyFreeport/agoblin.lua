@@ -10,6 +10,7 @@ local legacy = true -- Client check.  True == DoF or Classic
 
 function spawn(NPC)
 --	AddTimer(NPC, 5000, "idle_loop")
+CageCollision(NPC)
 end
 
 function hailed(NPC, player)
@@ -22,6 +23,10 @@ function idle_loop(NPC)
 	AddTimer(NPC, math.random(5000, 7000), "stop_animation")	
 end
 
+
+function CageCollision(NPC)
+    SpawnMob(GetZone(NPC),270011,-3.74,-0.57,15.74)
+end
 
 function stop_animation(NPC)
 	SendStateCommand(NPC, 0)
