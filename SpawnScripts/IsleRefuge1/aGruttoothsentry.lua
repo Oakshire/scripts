@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/IsleRefuge1/aGruttoothguardAngry.lua
+    Script Name    : SpawnScripts/IsleRefuge1/aGruttoothsentry.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.09.06 08:09:27
+    Script Date    : 2022.09.09 04:09:16
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 3
-    local level2 = 4
+    local level1 = 4
+    local level2 = 5
     local difficulty1 = 6
-    local hp1 = 75
-    local power1 = 45
+    local hp1 = 110
+    local power1 = 55
     local difficulty2 = 6
-    local hp2 = 110
-    local power2 = 55
+    local hp2 = 130
+    local power2 = 65
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -25,14 +25,8 @@ function spawn(NPC)
     SpawnSet(NPC, "difficulty", difficulty2)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
-    SpawnSet(NPC, "visual_state", 12030)
-end
-    
+    end
 
-end
-
-function aggro(NPC,Spawn)
-    SpawnSet(NPC, "visual_state", 0)
 end
 
 function hailed(NPC, Spawn)
@@ -42,5 +36,3 @@ end
 function respawn(NPC)
 	spawn(NPC)
 end
-
-

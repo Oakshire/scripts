@@ -14,7 +14,7 @@ if not HasQuest(Player, LANGUAGE_QUEST) or GetQuestStep(Player,LANGUAGE_QUEST)==
 AddConversationOption(conversation, "Closely inspect the territory marker.", "Study")
 end
 AddConversationOption(conversation, "Hold on to the territory marker for use later","CloseItemConversation")
-StartDialogConversation(conversation, 2, Item, Player, "After some inspection, you notice Norrathian words printed next to the Goblish scribbles and gibberish on this scrap.  Perhaps deciphering more of these will offer you understand their meaning.")
+StartDialogConversation(conversation, 2, Item, Player, "This plank looks like it is part of a goblin signpost. There are words on it written both in Norrathian and some other indecipherable script. It seems to be a goblin territory marker. ")
 end
 
 
@@ -26,5 +26,8 @@ function Study(Item,Player)
 	    CloseItemConversation(Item,Player)
         RemoveItem(Player,7832,1) --territory marker
         SummonItem(Player,13528)-- studied territory marker
-	end
+conversation = CreateConversation()
+AddConversationOption(conversation, "Put away the studied marker.","CloseItemConversation")
+StartDialogConversation(conversation, 2, Item, Player, "With what little of the note appeared in both languages you were able to study it and gain a better understanding of the goblin language.")
+end
 end
