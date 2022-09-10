@@ -7,10 +7,16 @@
 --]]
 
 -- Increases Threat to target by 135 - 166 
-function cast(Caster, Target, MinVal, MaxVal)
+--[[function cast(Caster, Target, MinVal, MaxVal)
     if MaxVal ~= nil and MinVal < MaxVal then
         AddHate(Caster, Target, math.random(MaxVal, MinVal), 1)
     else
         AddHate(Caster, Target, MinVal, 1)
     end
+end
+--]]
+
+function cast(Caster, Target, MinVal, MaxVal)
+AddHate(Caster, Target, math.random(MinVal, MaxVal), 1)
+    
 end

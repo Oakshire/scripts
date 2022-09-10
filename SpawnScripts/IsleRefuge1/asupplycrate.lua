@@ -7,12 +7,22 @@
 --]]
 
 function spawn(NPC)
-    
+AddTimer(NPC,1000,"cast")
+end
+
+function cast(NPC)
+CastSpell(NPC,993,1,NPC)
+end
+
+function casted_on(NPC, Spawn, Message)
+    if Message == "Lightning Burst" then
+        SpawnSet(NPC,"visual_state",3120)
+    end
 end
 
 function death(NPC, Spawn)
 PlaySound(NPC,"sounds/widgets/chests/chest_smash001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
-SpawnSet(NPC,"model_type",3312)
+SpawnSet(NPC,"visual_state",3120)
 GoblinRevenge(NPC,Spawn)
 end
 

@@ -101,6 +101,9 @@ function hailed(NPC, player)
 		Dialog.AddDialog("Ahoy! 'Tis good to see you awake. Ya seem a little squiffy, least ya' cheated death!")
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_001.mp3", 1930075150, 2666442405)
 		Dialog.AddEmote("hello")
+        if GetClass(player)>0 then
+ 	    Dialog.AddOption("There must be a mistake.  I'm just a commoner.", "Commoner")
+        end    
 		Dialog.AddOption("Where am I?", "where_am_I")
 		Dialog.Start()		
 		AddTimer(NPC, 8000, "hailed_instructions", 1, player)
@@ -143,6 +146,20 @@ function hailed(NPC, player)
 	end
 end
 
+
+function Commoner(NPC,player)
+    PlayFlavor(NPC, "", "", "grumble", 0, 0, player, 0)
+	Dialog.New(NPC, player)
+	Dialog.AddDialog("Ya' know, me hates doing paperwork! Arrrr!")
+	Dialog.AddVoiceover("voiceover/english/captain_varlos/tutorial_island02_fvo_hail2.mp3", 724307296, 1739482284)
+	Dialog.AddOption("Thank you.  Now, where are am I?", "who_are_you")
+	Dialog.Start()
+	SetAdventureClass(player,0)
+	SendMessage(player, "You are now a Commoner.")
+    SendPopUpMessage(player, "You are now a Commoner.", 255, 255, 255)
+    SetPlayerLevel(player,1)
+end
+
 function quest_completed(NPC, player)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("There be the Island of Refuge, get ready ta' drop anchor. Just let me know when ya' want ta' go ashore.")
@@ -183,7 +200,11 @@ function zone_to_isle(NPC, player)
 	if serverType == 0 or (serverType % 2) == 1 then
 		-- DoF alignment, 0 = evil (Outpost of Overlord), 1 = good (Queens Colony)
 		alignment = GetAlignment(player)
-		if alignment == 0 then
+		if GetClass(Spawn) == 0 then
+          ZoneRef = GetZone("IsleRefuge1")
+            Zone(ZoneRef,Spawn)  
+		
+		elseif alignment == 1 then
 			Zone(GetZone(278), player) -- outpost of overlord
 		else
 			Zone(GetZone(253), player) -- queens colony
