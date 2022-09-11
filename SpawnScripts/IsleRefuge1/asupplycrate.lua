@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-AddTimer(NPC,1000,"cast")
+AddTimer(NPC,500,"cast")
 end
 
 function cast(NPC)

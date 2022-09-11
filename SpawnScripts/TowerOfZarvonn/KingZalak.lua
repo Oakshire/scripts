@@ -1,48 +1,131 @@
 --[[
-	Script Name	    : SpawnScripts/EchoesOfTimeEpic/KingZalak.lua
-	Script Purpose	: Govern behavior and encounter for King Zalak in Echoes of Time (5310002)
-	Script Author	: Neveruary
-	Script Date	    : 08/09/2021
-	Script Notes	: Need spell ID for Regal Arc. 
-	                : This fight operates by summoning adds every so often. They cast spells, and the
-	                : patriarchs will heal him and then explode in an aoe.
+	Script Name		:	SpawnScripts/EchoesOfTimeEpic/KingZalaktheAncient.lua
+	Script Purpose	:	King Zalak the Ancient in Echoes of Time: Epic 
+	Script Author	:	alfa24t
+	Script Date		:	03/09/2022
+	Boss Mechanics : Boss periodically call Royal Patriarch that can spawn in 3 different spot. If Royal P come near Zalak it cast AOE on raid and heal Zalak
+
+Buff
+UnholyBlessing -- 90195
+InnoruuksCaress -- 90130
+Spell
+Grave Sacrament III -- 90105
+SiphonStrength -- 90174
+
 --]]
 
---Declare variables for iterative use later. These are all Location IDs.
-patriarchlocs = {365525, 365526, 133772501, 133772502, 133772503, 133772504, 133772505, 133772506, 133772507}
+buffs = {90195, 90130}
+spells = {90105,90174}
+groupspawn = {365523, 365519, 365524, 365521, 365522} --need to remove 365520 from zone spwns
+adds = {365525, 365526, 133772501, 133772502, 133772503, 133772504, 133772505, 133772506, 133772507}
 
 function spawn(NPC)
+	AddTimer(NPC, 1500, "spellbuffloop")
 end
- 
-function aggro(NPC, Spawn) -- on aggro, refer to pat spawn loop. also start timer for spellcasts.
-	SetTempVariable(NPC, "first", "1")
-	AddTimer(NPC, math.random(21000, 30000), "patriarchLoop")
-	AddTimer(NPC, math.random(1000), "spellLoop")
-end
- 
-function patriarchLoop(NPC, Spawn)
-    if GetTempVariable(NPC, "first") == "1" then
-        AddTimer(NPC, 1000, "patriarchSpawns")
-        SetTempVariable(NPC, "first", "0")
-        else
-    AddTimer(NPC, math.random(21000,30000), "patriarchSpawns")
-    end
-end
- 
-function patriarchSpawns(NPC, Spawn) -- spawns patriarchs on a timer. timer starts on aggro.
-    Shout(NPC, "Royal Patriarchs come aid your king!")
-    AddTimer(NPC, 1000, "patriarchLoop")
-    zone = GetZone(NPC)
-	    for k,v in pairs(patriarchlocs) do
-		    if not IsAlive(GetSpawnByLocationID(zone, v)) then
-			    newPat = SpawnByLocationID(zone, v)
-			    AddTimer(newPat, 1000, "runtozalak")
-			    break
-		    end
-		
-        end
-end
- 
+
 function respawn(NPC)
-spawn(NPC)
+	spawn(NPC)
+end
+
+function hailed(NPC, Spawn)
+end
+
+function hailed_busy(NPC, Spawn)
+end
+
+function casted_on(NPC, Spawn, Message)
+end
+
+function targeted(NPC, Spawn)
+end
+
+function attacked(NPC, Spawn)
+end
+
+function aggro(NPC, Spawn)
+	AddTimer(NPC, math.random(15000, 25000), "spellattackloop")
+    AddTimer(NPC, 30000, "addsloop")
+end
+
+function spellbuffloop(NPC, Spawn) -- Loopback function for spellcasts.
+	if IsAlive(NPC) then
+		CastSpell(NPC, buffs[math.random(#buffs)], 3, NPC)
+		AddTimer(NPC, math.random(15000, 25000), "spellbuffloop")
+	end
+end
+
+function spellattackloop(NPC, Spawn) -- Loopback function for spellcasts.
+	if IsAlive(NPC) then
+		if IsInCombat(NPC) then
+			local hated = GetMostHated(NPC) 
+			if hated ~= nil then 
+				FaceTarget(NPC, hated) 
+				CastSpell(hated, spells[math.random(#spells)], 3, NPC)
+			end
+			AddTimer(NPC, math.random(15000, 25000), "spellattackloop")
+		end
+	end
+end
+
+function addsloop(NPC, Spawn)
+	zone = GetZone(NPC)
+	if IsAlive(NPC) then
+		if IsInCombat(NPC) then
+			Shout(NPC, "Royal Patriarchs come aid your king!")
+			SpawnByLocationID(zone, adds[math.random(#adds)])
+			SpawnByLocationID(zone, adds[math.random(#adds)])
+			SpawnByLocationID(zone, adds[math.random(#adds)])
+			AddTimer(NPC, 30000, "addsloop")
+		end
+	end
+end
+
+function healthchanged(NPC, Spawn)
+end
+
+function auto_attack_tick(NPC, Spawn)
+end
+
+function death(NPC, Spawn)
+	--StopTimer(NPC, "spellbuffloop")
+	--StopTimer(NPC, "spellattackloop")
+	--StopTimer(NPC, "addsloop")
+	for k,v in ipairs(adds) do
+		if IsAlive(GetSpawnByLocationID(zone, v)) then
+			Despawn(GetSpawnByLocationID(zone, v), 1)
+		end
+	end
+end
+
+function killed(NPC, Spawn)
+	--StopTimer(NPC, "spellbuffloop")
+	--StopTimer(NPC, "spellattackloop")
+	--StopTimer(NPC, "addsloop")
+	for k,v in ipairs(adds) do
+		if IsAlive(GetSpawnByLocationID(zone, v)) then
+			Despawn(GetSpawnByLocationID(zone, v), 1)
+		end
+	end
+end
+
+function CombatReset(NPC)
+	--StopTimer(NPC, "spellbuffloop")
+	--StopTimer(NPC, "spellattackloop")
+	--StopTimer(NPC, "addsloop")
+	local zone = GetZone(NPC)
+	for k,v in ipairs(adds) do
+		if IsAlive(GetSpawnByLocationID(zone, v)) then
+			Despawn(GetSpawnByLocationID(zone, v), 1)
+		end
+	end
+	for k,v in ipairs(groupspawn) do
+		if IsAlive(GetSpawnByLocationID(zone, v)) then
+			Despawn(GetSpawnByLocationID(zone, v), 1)
+		end
+	end
+	SpawnGroupByID(zone, 9116)
+	Despawn(NPC)
+end
+
+function randomchat(NPC, Message)
 end

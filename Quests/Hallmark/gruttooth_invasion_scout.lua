@@ -5,8 +5,8 @@
     Script Purpose : 
 
         Zone       : Hallmark
-        Quest Giver: 
-        Preceded by: None
+        Quest Giver: Garven Tralk
+        Preceded by: Gruttooth Invasion
         Followed by: 
 --]]
 require "SpawnScripts/Generic/DialogModule"
@@ -34,7 +34,7 @@ function Deleted(Quest, QuestGiver, Player)
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
-    GiveQuestItem(Quest,Player,"You found some items that suit you on the weapon rack.",1001011, 73896)
+    GiveQuestItem(Quest,Player,"You found some items that suit you on the weapon rack.",1001011,73896)
 
 	UpdateQuestStepDescription(Quest, 1, "Got my weapon, now to kill some goblins.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've got my weapon and am ready to do my part defending the outpost.")

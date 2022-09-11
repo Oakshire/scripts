@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "Grab a weapon from the nearby weapon rack.", 1, 100, "I need to grab a weapon off of the weapon rack on the beach and help defend the outpost.", 45)
@@ -18,8 +19,8 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
-	Dialog.AddDialog("All right then.  Quickly now, grab a weapon from the rack here and go to the west gate.  Our scouts have reported that another group of goblins is going to charge the barricade at any moment now -- if they haven't already.  I know you may think this is none of your affair, but trust me, if you want to get off this island alive and well you have no choice.  Come back to me after you've defeated at least one Gruttooth invader and maybe I can help you out.")
-	Dialog.AddVoiceover("voiceover/english/garven_tralk/tutorial_island02/garventralk017.mp3",1887135280, 3302385767)
+	Dialog.AddDialog("All right then.  Quickly now, grab a weapon from the rack here and go to the west gate.  Our scouts have reported that another group of goblins is going to charge the barricade at any moment now -- if they haven't already.")
+	Dialog.AddVoiceover("voiceover/english/garven_tralk/tutorial_island02/garventralk017.mp3",2814753632, 2666092435)
 	Dialog.AddOption("Continue.", "PContinue2")
 	Dialog.Start()
 end

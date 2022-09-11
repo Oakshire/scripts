@@ -6,6 +6,7 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
+local Fighter2 = 5731
 
 function spawn(NPC)
 
@@ -19,6 +20,9 @@ function hailed(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "hello", 0,0, Spawn)
 	Dialog.AddOption("Thank you.")
 	Dialog.Start()
+if HasQuest(Spawn, Fighter2) then
+    QuestStepIsComplete(Spawn,Fighter2,1)
+end
 end
 
 function respawn(NPC)

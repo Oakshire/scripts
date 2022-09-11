@@ -9,6 +9,6 @@
 -- Inflicts 16 - 28 melee damage on target
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-SpellDamage(Target, DmgType, MinVal, MaxVal)
+    SpellDamage(Target, DmgType, MinVal, MaxVal)
 end
 

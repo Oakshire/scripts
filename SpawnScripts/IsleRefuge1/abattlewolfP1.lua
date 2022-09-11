@@ -8,7 +8,7 @@
 
 function spawn(NPC)
 
-AddTimer(NPC, 800, "followsentry")      
+AddTimer(NPC, 1000, "followsentry")      
 end
 
 function hailed(NPC, Spawn)

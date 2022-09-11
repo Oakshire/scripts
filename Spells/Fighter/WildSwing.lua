@@ -15,7 +15,7 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     else
         SpellDamage(Target, DmgType, MinVal)
     end
-    Say(Caster, "Facing Target Not Implemented.")
+    --Say(Caster, "Facing Target Not Implemented.")
 
 end
 

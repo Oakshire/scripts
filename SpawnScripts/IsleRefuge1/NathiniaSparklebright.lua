@@ -7,9 +7,17 @@
 --]]
 
 require "SpawnScripts/Generic/DialogModule"
+local Priest2 = 5732
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 16, "InRange", "LeaveRange")
+end
 
+function InRange(NPC,Spawn)
+	FaceTarget(NPC, Spawn)
+    if HasQuest(Spawn,Priest2)then	
+    PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02_fvo_priestcallout.mp3","If you are one that follows the ways of the priest, then I need your help.","",2406483258,3086152442, Spawn)
+    end
 end
 
 function hailed(NPC, Spawn)
@@ -19,6 +27,9 @@ function hailed(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright001.mp3", 3193576979, 57142690)
 	Dialog.AddOption("Thank you for that bit of wisdom.")
 	Dialog.Start()
+if HasQuest(Spawn, Priest2) then
+    SetStepComplete(Spawn,Priest2,1)
+end
 end
 
 function respawn(NPC)

@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-function hailed(NPC, Spawn)	
+function hail(NPC, Spawn)	
 	conversation = CreateConversation()
 		AddConversationOption(conversation, "I would like to travel.", "dlg_1_1")
 		AddConversationOption(conversation, "Nowhere.")
@@ -153,5 +153,4 @@ end
 function VicToRef(NPC, Spawn)
 	StartAutoMount(Spawn, 762)
 	SetMount(Spawn, 1369)
-end
 end

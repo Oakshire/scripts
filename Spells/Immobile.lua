@@ -6,12 +6,7 @@
                    : 
 --]]
 
---[[ Info from spell_display_effects (remove from script when done)
 
-
---]]
-function cast(Caster, Target, DmgType, MinVal, MaxVal)
---    if MaxVal ~= nil and MinVal < MaxVal then
+function cast(Caster, Target)
         AddControlEffect(Target, 4)
---    end
 end

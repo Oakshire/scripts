@@ -7,22 +7,16 @@
 --]]
 
 function spawn(NPC)
-CampSpawn (NPC)
-end
+Cage6(NPC, Spawn)end
 
 function respawn(NPC)
     spawn(NPC)
 end
 
-function CampSpawn(NPC)
-if GetSpawnLocationID(NPC)==133775273 then
-Cage4(NPC)
-end
-end
-
-function Cage4(NPC, Spawn)
+function Cage6(NPC, Spawn)
 local zone = GetZone(NPC)
-local Goblin = SpawnByLocationID(zone, 133775216) --Goblin
+local Goblin1 = SpawnByLocationID(zone, 133775216) --Goblin1
+local Goblin2 = SpawnByLocationID(zone, 133775442) --Goblin2
 AddTimer(NPC,3500,"GobLiveCheck")
 end
 
@@ -30,11 +24,12 @@ end
 
 function GobLiveCheck(NPC, Spawn)
 local zone = GetZone(NPC)
-local Goblin = GetSpawnByLocationID(zone, 133775216) --Goblin
+local Goblin = GetSpawnByLocationID(zone, 133775216) --Goblin1
+local Goblin = GetSpawnByLocationID(zone, 133775442) --Goblin2
 local Refugee = GetSpawnByLocationID(zone, 133775267) --Refugee
 
-if IsAlive(Goblin) ==false then
-    if GetSpawnByLocationID(zone, Refugee)~=nil then
+if IsAlive(Goblin1) ==false and IsAlive(Goblin2) ==false then
+    if Refugee~=nil then
     waypoints(NPC,Spawn)
     SpawnSet(Refugee,"mood_state",0)    
     SpawnSet(Refugee,"initial_state",16512)    
@@ -42,7 +37,8 @@ if IsAlive(Goblin) ==false then
     AddTimer(NPC,15000,"DespawnTimer")
     end
 else
-    choice = MakeRandomInt(1,9)
+    AddTimer(NPC,6000,"GobLiveCheck")
+    choice = MakeRandomInt(1,10)
     if choice == 1 then
     PlayFlavor(Refugee, "", "", "cringe",0,0)
     elseif choice == 2 then
@@ -61,11 +57,10 @@ else
     PlayFlavor(Refugee, "", "", "pout",0,0) 
     elseif choice == 9 then
     PlayFlavor(Refugee, "", "", "frustrated",0,0) 
-    elseif choice == 9 then
+    elseif choice == 10 then
     PlayFlavor(Refugee, "", "", "sulk",0,0) 
     end   
   
-AddTimer(NPC,6000,"GobLiveCheck")
 end
 end
 

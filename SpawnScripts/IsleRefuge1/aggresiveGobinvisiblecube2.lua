@@ -7,44 +7,46 @@
 --]]
 
 
-
 function spawn(NPC)
-CampSpawn (NPC)
+Cage2(NPC)
 end
 
 function respawn(NPC)
     spawn(NPC)
 end
 
-function CampSpawn(NPC)
-if GetSpawnLocationID(NPC)==133775199 then
-Cage2(NPC)
-end
-end
 
 function Cage2(NPC, Spawn)
 local zone = GetZone(NPC)
-local Goblin = SpawnByLocationID(zone, 133775212) --Goblin
+local Goblin1 = SpawnByLocationID(zone, 133775212) --Goblin1
+local Goblin2 = SpawnByLocationID(zone, 133775438) --Goblin2
 AddTimer(NPC,3500,"GobLiveCheck")
+--    Say(NPC,"Spawning")
 end
 
 
 
 function GobLiveCheck(NPC, Spawn)
 local zone = GetZone(NPC)
-local Goblin = GetSpawnByLocationID(zone, 133775212) --Goblin
+local Goblin1 = GetSpawnByLocationID(zone, 133775212) --Goblin1
+local Goblin2 = GetSpawnByLocationID(zone, 133775438) --Goblin2
 local Refugee = GetSpawnByLocationID(zone, 133775245) --Refugee
-
-if IsAlive(Goblin) ==false then
-    if GetSpawnByLocationID(zone, Refugee)~=nil then
+ --   Say(NPC,"Checking")
+if IsAlive(Goblin1) ==false and IsAlive(Goblin2) ==false then --CHECKS IF GOBLIN IS ALIVE, IF NOT THE FOLLOWING FREES THE REFUGEE
+    if Refugee~=nil then
     waypoints(NPC,Spawn)
     SpawnSet(Refugee,"mood_state",0)    
     SpawnSet(Refugee,"initial_state",16512)    
     AddTimer(NPC,2000,"ThankYou")
-    AddTimer(NPC,15000,"DespawnTimer",1,Refugee)
-    end
-else
-    choice = MakeRandomInt(1,9)
+    AddTimer(NPC,15000,"DespawnTimer")
+--    Say(Refugee,"Freedom")
+--    Say(NPC,"Goblin Dead - Free Refugee")
+--    Say(Goblin,"Dead")
+   end
+else -- GOBLIN IS ALIVE.  REFUGEE IS SAD.
+--     Say(NPC,"Alive")
+   AddTimer(NPC,6000,"GobLiveCheck")
+    choice = MakeRandomInt(1,10)
     if choice == 1 then
     PlayFlavor(Refugee, "", "", "cringe",0,0)
     elseif choice == 2 then
@@ -63,11 +65,9 @@ else
     PlayFlavor(Refugee, "", "", "pout",0,0) 
     elseif choice == 9 then
     PlayFlavor(Refugee, "", "", "frustrated",0,0) 
-    elseif choice == 9 then
+    elseif choice == 10 then
     PlayFlavor(Refugee, "", "", "sulk",0,0) 
-    end   
-  
-AddTimer(NPC,6000,"GobLiveCheck")
+    end 
 end
 end
 
@@ -86,7 +86,7 @@ local z=GetZ(NPC)
 	MovementLoopAddLocation(Refugee, 252.05, -3.92, 1.43, 4, 15)
 end
 
-function ThankYou(NPC,Spawn)
+function ThankYou(NPC,Spawn) --THANKS PLAYER WITH EMOTE BEFORE RUNNING W/ WAYPOINTS
     local zone = GetZone(NPC)
     local Refugee = GetSpawnByLocationID(zone, 133775245) --Refugee
     FaceTarget(Refugee,Spawn)

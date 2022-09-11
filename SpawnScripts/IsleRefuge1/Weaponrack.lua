@@ -26,11 +26,12 @@ function casted_on(NPC, Player, Message)
             SetStepComplete(Player,PriestGI,1)
             
         elseif GetQuestStep(Player,MageGI)==1 then
-            SetStepComplete(Player,MageGI,1)end
+            SetStepComplete(Player,MageGI,1)
         
         elseif GetQuestStep(Player,ScoutGI)==1 then
             SetStepComplete(Player,ScoutGI,1)
         end
+    end
 end
 
 function respawn(NPC)

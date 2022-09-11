@@ -53,7 +53,7 @@ SendMessage(Player, "You found 20 flasks of water in the bag.")
 SendMessage(Player, "You found 20 rations in the bag.")
 		alignment = GetDeity(Player)
 		if alignment == 0 then
-			OfferQuest(Player, 1413,1) -- evil rewards
+			SummonItem(Player, 1413,1) -- evil rewards
 		else
 			SummonItem(Player, 1414,1) -- good rewards
 		end

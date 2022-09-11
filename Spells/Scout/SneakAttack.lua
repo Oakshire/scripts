@@ -10,9 +10,9 @@
 -- Must be flanking or behind
 
 function precast(Caster,Target)
-	if not IsFlanking(Target, Caster) then
-		SendMessage(Caster, "Must be flanking or behind", "yellow")
-			return false
+	if not IsFlanking(Caster, Target) and not IsBehind(Caster, Target) then
+        SendMessage(Caster, "Must be flanking or behind", "yellow")
+        return false
 				end
 	return true
 end
