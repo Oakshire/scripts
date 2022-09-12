@@ -5,6 +5,7 @@
     Script Purpose : Bypasses Boat/tutorial and Zones players to their cities/starting areas
                    : 
 --]]
+dofile("SpawnScripts/Generic/SubClassToCommoner.lua")
 
 function spawn(NPC)
     
@@ -28,7 +29,7 @@ if GetLevel(Spawn)<2 then
     SetPlayerLevel(Spawn,2)
     end
 if HasQuest(Spawn, 524)then
-    fail(Spawn, 524)
+    QuestIsComplete(Spawn, 524)
     end
 if GetClass(Spawn) == 0 then
           ZoneRef = GetZone("IsleRefuge1")
@@ -49,6 +50,7 @@ end
 
 function Commoner(NPC, Spawn)
 	PlayFlavor(NPC, "", "Well, so ya are.  Let me help you with that.", "", 0, 0, Spawn, 0)
+    RemoveGear(NPC,Spawn)
 	SetAdventureClass(Spawn,0)
 	SendMessage(Spawn, "You are now a Commoner.")
     SendPopUpMessage(Spawn, "You are now a Commoner.", 255, 255, 255)	

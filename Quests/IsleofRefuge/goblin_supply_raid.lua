@@ -9,6 +9,7 @@
         Preceded by: Speaking with Brasken
         Followed by: Refugee Rescue
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, " I need to kill four goblin supply runners.", 4, 100, "I need to kill four goblin supply runners at one of their supply camps west of the outpost.", 91, 3250077)
@@ -16,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Now we're talking!  Find the supply camp and look for goblin supply runners in the area.  If you can kill several of those varmints it should buy the mages enough time to take care of the supply crates. ")
+	Dialog.AddVoiceover("voiceover/english/braksan_steelforge/tutorial_island02/braksansteelforge004.mp3", 1964849884,396353877)
+    PlayFlavor(QuestGiver, "", "", "happy", 0, 0, Player)
+    Dialog.AddOption("Don't worry, I'll take care of them for you.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

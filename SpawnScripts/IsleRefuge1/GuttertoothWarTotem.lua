@@ -9,8 +9,8 @@ local Healing = true
 
 function spawn(NPC)
 	-- set the calls to the ai as there is no ai
---	SetLuaBrain(NPC)
---	SetBrainTick(NPC, 600000)
+	SetLuaBrain(NPC)
+	SetBrainTick(NPC, 600000)
 	-- give the spawn a crap load of hp so we can't one hit kill
 	SetHP(NPC, 1000000)
 end

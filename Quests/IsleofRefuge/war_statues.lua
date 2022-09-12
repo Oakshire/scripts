@@ -9,6 +9,7 @@
         Preceded by: Speaking with Nathinia
         Followed by: Venom Sac Collection
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Thank you.  Be wary of the mystics who guard the idols.  Even without the idols they could prove to be deadly enemies.  May the gods protect you and guide your hand in this task.")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright004.mp3", 3851336954,3648952364)
+    PlayFlavor(QuestGiver, "", "", "thanks", 0, 0, Player)
+    Dialog.AddOption("Thank you.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

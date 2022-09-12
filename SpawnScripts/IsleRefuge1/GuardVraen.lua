@@ -5,10 +5,25 @@
     Script Purpose : 
                    : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
-
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
+
+function InRange(NPC,Spawn)
+    if GetClass(Spawn)==0 then	
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC,"","","point",0,0, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Make sure to speak with Garven Tralk before you venture too far.  Danger lies beyond these gates.")
+	Dialog.AddVoiceover("voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_notcitizen_gf_48350e59.mp3",3405287024, 2122169059)
+	Dialog.AddOption("Alright.")
+	Dialog.Start()
+	end
+end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

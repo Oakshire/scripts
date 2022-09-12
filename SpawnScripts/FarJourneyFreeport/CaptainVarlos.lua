@@ -5,6 +5,7 @@
 	Script Notes    : 
 	Script Purpose  : 
 --]]
+dofile("SpawnScripts/Generic/SubClassToCommoner.lua")
 
 get_attention_animation = true
 needs_selection_help = true
@@ -154,6 +155,11 @@ function Commoner(NPC,player)
 	Dialog.AddVoiceover("voiceover/english/captain_varlos/tutorial_island02_fvo_hail2.mp3", 724307296, 1739482284)
 	Dialog.AddOption("Thank you.  Now, where are am I?", "who_are_you")
 	Dialog.Start()
+    RemoveGear(NPC,player)
+    AddTimer(NPC,800,"ClassSet",1,player)
+end
+
+function ClassSet(NPC,player)
 	SetAdventureClass(player,0)
 	SendMessage(player, "You are now a Commoner.")
     SendPopUpMessage(player, "You are now a Commoner.", 255, 255, 255)
@@ -193,14 +199,12 @@ function ready_to_go_ashore(NPC, player)
 end
 
 function zone_to_isle(NPC, player)
-
 	serverType = GetRuleFlagInt32("R_World", "StartingZoneRuleFlag")
-	
 	-- if no server type is set (default of 0 wildcard) or odd number means bit 1 is set
 	if serverType == 0 or (serverType % 2) == 1 then
 		-- DoF alignment, 0 = evil (Outpost of Overlord), 1 = good (Queens Colony)
 		alignment = GetAlignment(player)
-		if GetClass(Spawn) == 0 then
+		if GetClass(Spawn) == 0 then -- isle of refuge (Commoners are sent here automatically)
           ZoneRef = GetZone("IsleRefuge1")
             Zone(ZoneRef,Spawn)  
 		
@@ -209,9 +213,9 @@ function zone_to_isle(NPC, player)
 		else
 			Zone(GetZone(253), player) -- queens colony
 		end
-	-- even value serverType > 0 (return 0) means isle of refuge (bit 2) is set
-	else
-		Zone(GetZone(325), player) -- isle of refuge
+	        -- even value serverType > 0 (return 0) means isle of refuge (bit 2) is set
+	    else
+		Zone(GetZone(325), player) -- isle of refuge (Commoners are sent here automatically)
 	end
 end
 

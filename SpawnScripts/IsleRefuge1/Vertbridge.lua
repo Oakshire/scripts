@@ -6,7 +6,10 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
-local Fighter2 = 5731
+local Fighter3 = 5735
+local Priest3 = 5734
+local Mage3 = 5736
+local Scout3 = 5737
 
 function spawn(NPC)
 
@@ -20,8 +23,15 @@ function hailed(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "hello", 0,0, Spawn)
 	Dialog.AddOption("Thank you.")
 	Dialog.Start()
-if HasQuest(Spawn, Fighter2) then
-    QuestStepIsComplete(Spawn,Fighter2,1)
+	
+if GetQuestStep(Spawn, Fighter3)==3 then
+    SetStepComplete(Spawn,Fighter3,3)
+elseif GetQuestStep(Spawn, Priest3)==3 then
+    SetStepComplete(Spawn,Priest3,3)
+elseif GetQuestStep(Spawn, Mage3)==3 then
+    SetStepComplete(Spawn,Mage3,3)
+elseif GetQuestStep(Spawn, Scout3)==3 then
+    SetStepComplete(Spawn,Scout3,3)
 end
 end
 

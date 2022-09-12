@@ -9,10 +9,13 @@ require "SpawnScripts/Generic/DialogModule"
 local Scout2 = 5730
 
 function spawn(NPC)
-
+	SetPlayerProximityFunction(NPC, 16, "InRange", "LeaveRange")
 end
 
 function hailed(NPC, Spawn)
+if GetClass(Spawn)== 0 then
+     PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_2_1032.mp3","Hey!  I'm quite certain we could make use of you here, but first you have to register with Garven right away.  That's it, stop staring and go back to the beach.","point",0,0, Spawn)
+else   
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("You weathered the seas well, but are you fit enough to help on the island?")
@@ -21,6 +24,7 @@ function hailed(NPC, Spawn)
 	Dialog.Start()
 if HasQuest(Spawn, Scout2) then
     SetStepComplete(Spawn,Scout2,1)
+end
 end
 end
 

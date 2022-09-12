@@ -20,6 +20,7 @@ Dialog1(NPC, Spawn)
 end
 
 
+--You look lost refugee.  All newcomers must first register with Garven Tralk at the beach.
 
 function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

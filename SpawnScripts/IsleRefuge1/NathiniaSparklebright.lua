@@ -8,33 +8,150 @@
 
 require "SpawnScripts/Generic/DialogModule"
 local Priest2 = 5732
+local Priest3 = 5734
+local Priest4 = 5738
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 16, "InRange", "LeaveRange")
+    ProvidesQuest(NPC, Priest3)
+    ProvidesQuest(NPC, Priest4)
 end
 
 function InRange(NPC,Spawn)
-	FaceTarget(NPC, Spawn)
     if HasQuest(Spawn,Priest2)then	
+	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02_fvo_priestcallout.mp3","If you are one that follows the ways of the priest, then I need your help.","",2406483258,3086152442, Spawn)
+    elseif not HasQuest(Spawn, Priest4) and HasCompletedQuest(Spawn,Priest3) and not HasCompletedQuest(Spawn,Priest4) then
+    PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02_fvo_priestq2.mp3","I hope all is going well for you.","I hope all is going well for you.",3851336954,3648952364, Spawn)
+        
     end
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+if GetClass(Spawn)==0 then
+    PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_3_1011.mp3","I can sense a deep spirituality inside you, but I can't teach you until you register with Garven.","no",0,0, Spawn)
+elseif HasQuest(Spawn, Priest2) or not HasQuest(Spawn, Priest3) and not HasCompletedQuest(Spawn, Priest3) and HasCompletedQuest(Spawn,Priest2) then
+    Dialog2(NPC,Spawn) 
+elseif not HasQuest(Spawn, Priest4) and HasCompletedQuest(Spawn,Priest3) and not HasCompletedQuest(Spawn,Priest4) then
+    Dialog3(NPC,Spawn) 
+else
+    FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Spiritual enlightenment is as important to being as air to breathe or food to eat.")
 	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright001.mp3", 3193576979, 57142690)
+    if GetQuestStep(Spawn, Priest3)==2 then
+	Dialog.AddOption("The statues have been cleansed.","Priest3Turnin")
+    end    
+    if GetQuestStep(Spawn, Priest4)==2 then
+	Dialog.AddOption("I have five giant spider venom sacs for you.","Priest4Turnin")
+    end
 	Dialog.AddOption("Thank you for that bit of wisdom.")
 	Dialog.Start()
-if HasQuest(Spawn, Priest2) then
-    SetStepComplete(Spawn,Priest2,1)
+
 end
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+--					QUEST 1
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+function Dialog2(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Word has spread about you defending our outpost from the goblin assaults.  Your effort is greatly appreciated.  However, I have another task, if you are interested.")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright002.mp3", 514500382, 260398895)
+    PlayFlavor(NPC, "", "", "curtsey", 0, 0, Spawn)
+    Dialog.AddOption("I am interested.  What is it?","Interested")	
+    Dialog.AddOption("Not right now.")	
+	Dialog.Start()
+    if HasQuest(Spawn, Priest2) then
+        SetStepComplete(Spawn,Priest2,1)
+    end
+end
+
+function Interested(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("The Gruttooth invaders you fought off at the barricades are but fodder compared to the goblins trying to push us from this outpost.  Among the more dangerous members of their makeshift army you'll find the Gruttooth mystics.")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright003.mp3", 3378158003,1090901335)
+    Dialog.AddOption("How are these mystics different?","Mystics")	
+	Dialog.Start()
+end
+
+function Mystics(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("While physically the same as the other goblins, the mystics rely on depraved priestly powers gained from the idols they worship to perform their foul magic.  I've come to learn that the source of this power may have to do with the goblin idol statues found on this island.")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright018.mp3", 2424446864,2926608065)
+    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+    Dialog.AddOption("And so you want me to destroy these statues.","YouWantMe")	
+	Dialog.Start()
+end
+
+function YouWantMe(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Exactly.  It is only one of our professions that can perform such a task, for I've heard the idols are impossible to destroy without divine power.  Will you aid us in destroying the heart of these goblins' foul powers?")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright019.mp3", 110104558,1387202040)
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddOption("I will.","Iwill")	
+    Dialog.AddOption("Perhaps another time.")	
+	Dialog.Start()
+end
+
+function Iwill(NPC,Player)
+    OfferQuest(NPC,Player,Priest3)
+    FaceTarget(NPC, Spawn)
+end
+
+function Priest3Turnin(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Well done brave friend.  With the mystics weakened, the goblins will have a harder time with their siege plans.  I have taken the liberty of placing a reward in your bank.  Seek out Banker Vertbridge and he will help you receive it.  Wear them well, you will need the protection.  Are you able to assist us with another task?")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright004.mp3", 1831865050,2426267765)
+    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+    Dialog.AddOption("Thank you. I will seek out the banker.","SeeBanker")	
+	Dialog.Start()
+    SetStepComplete(Spawn,Priest3,2)
+end
+
+--------------------------------------------------------------------------------------------------------------------------------
+--					QUEST 2
+--------------------------------------------------------------------------------------------------------------------------------
+
+function Dialog3(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Thus far we've done well defending our outpost against the goblin forces, but now many goblins are tipping their spears with a form of poison.  Goblin shaman create the poison by using giant spider venom sacs.  We need you to collect a few of these sacs so I can produce an antidote.  Would you do us this favor, friend?")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright006.mp3", 1039316566,2813655652)
+    Dialog.AddOption("I will collect the venom sacs for you.","IwillCollect")	
+    Dialog.AddOption("That does sound like a problem, but I am busy at the momment.")	
+	Dialog.Start()
+end
+
+function IwillCollect(NPC,Player)
+    OfferQuest(NPC,Player,Priest4)
+    FaceTarget(NPC, Spawn)
+end
+
+function Priest4Turnin(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Excellent job!  You proved your value, adventurer.  I will start on this antidote immediately.  For a job well done, here are some leggings.  I know it is asking a lot, but may I ask you another favor?")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright008.mp3", 1685520077,3945672786)
+    PlayFlavor(NPC, "", "", "curtsey", 0, 0, Spawn)
+    Dialog.AddOption("I'll do what I can. [WORK IN PROGRESS]","Dialog4")	
+	Dialog.Start()
+    SetStepComplete(Spawn,Priest4,2)
+end
+
+
 
 --[[
     Script Name    : SpawnScripts/IsleRefuge1/NathiniaSparklebright.lua
@@ -206,24 +323,6 @@ function OfferQuest2(NPC,Player)
     StartConversation(conversation, NPC, Player,"Thus far we've done well defending our outpost against the goblin forces, but now many goblins are tipping their spears with a form of poison.  Goblin shaman create the poison by using giant spider venom sacs.  We need you to collect a few of these sacs so I can produce an antidote.  Would you do us this favor, friend? ")
     
 end
-function OnQuest2(NPC,Player)
-    conversation = CreateConversation()
-    PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright001.mp3","","",3193576979,57142690, Player)
-    if HasQuest(Player,QUEST_2) then
-        Say(Player,"On Quest 2")
-        if QuestStepIsComplete(Player, QUEST_2, 1) == true and QuestStepIsComplete(Player, QUEST_2, 2) == false then
-	        Say(Player,"Has quest 2 and step 1 complete")
-	        AddConversationOption(conversation,"Thank you for that bit of wisdom.  ","")
-            AddConversationOption(conversation,"I have five giant spider venom sacs for you.","notme")
-	    else 
-	        AddConversationOption(conversation,"Thank you for that bit of wisdom.  ")
-        end
-        StartConversation(conversation, NPC, Player,"Spiritual enlightenment is as important to being as air to breathe or food to eat.")
-    else 
-        Say(Player," offer quest 3 here not has quest 3")
-        OfferQuest3(NPC,Player)
-    end    
-    
     
 end
 function IwillCollect(NPC,Player)
