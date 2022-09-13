@@ -5,17 +5,25 @@
     Script Purpose : 
 
         Zone       : IsleofRefuge
-        Quest Giver: 
-        Preceded by: None
-        Followed by: 
+        Quest Giver: Mizan Vaeolin
+        Preceded by: Destroying the Goblin's Supplies
+        Followed by: Striking Back at the Goblins
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to kill five mire bogs.", 5, 100, "I need to kill and collect the remains of five mire bogs found in the island's central grove northwest of the outpost.", 343, 3250073)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Excellent.  For months I've been studying a goo-like creature with some very unique properties.  It's called a mire bog and it's impervious to physical damage but susceptible to magic spells.  The death of a mire bog creates a strange effect.  Its remains produce a highly fire retardant substance.  If you provide me with the remains of several mire bogs, I can fashion a sealant to use on the barricades.")
+	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin007.mp3", 3025597607, 3927222327)
+    PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+    Dialog.AddOption("I will return with the components you require.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

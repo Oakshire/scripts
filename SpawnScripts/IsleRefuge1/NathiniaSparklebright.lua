@@ -105,8 +105,8 @@ function YouWantMe(NPC,Spawn)
 	Dialog.Start()
 end
 
-function Iwill(NPC,Player)
-    OfferQuest(NPC,Player,Priest3)
+function Iwill(NPC,Spawn)
+    OfferQuest(NPC,Spawn,Priest3)
     FaceTarget(NPC, Spawn)
 end
 

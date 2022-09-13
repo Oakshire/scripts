@@ -5,7 +5,6 @@
     Script Purpose : 
                    : 
 --]]
-local Healing = true
 
 function spawn(NPC)
 	-- set the calls to the ai as there is no ai
@@ -17,16 +16,36 @@ end
 
 function casted_on(NPC, Spawn, Message)
     if Message == "Smite" then
-        SpawnSet(NPC,"visual_state",3120)
-    Healing = false
-    SetHP(NPC, GetHP(NPC)*0.5)
+
+    SpawnSet(NPC,"visual_state",3120)
+    PlaySound(NPC,"sounds/widgets/chests/chest_smash001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+--    GoblinRevenge(NPC,Spawn)
+    AddTimer(NPC,800,"Collapse")  
+    AddTimer(NPC,4200,"CoolOff")  
+    AddTimer(NPC,6000,"Despawning")  
     end
+end
+
+
+
+function Collapse(NPC)
+SpawnSet(NPC,"model_type",1428)
+PlaySound(NPC,"sounds/widgets/chests/chest_smash001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+end
+
+function CoolOff(NPC)
+    SpawnSet(NPC,"visual_state",0)
+
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
+function Despawning(NPC,Spawn)
+    KillSpawn(NPC)
+    Despawn(NPC)
+end
 
 function Think(NPC,Target)
 	-- no ai so won't attack
@@ -35,7 +54,6 @@ end
 
 function healthchanged(NPC, Spawn)
 	-- insta heal so should be impossible to kill without the /kill command
-if Healing == true then
 	SetHP(NPC, GetMaxHP(NPC))
-end
+
 end

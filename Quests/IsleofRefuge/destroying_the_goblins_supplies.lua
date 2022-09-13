@@ -9,6 +9,7 @@
         Preceded by: Speaking with Mizan
         Followed by: Gathering Sealant Components
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to destroy five supply crates with my Lightning Burst spell.", 5, 100, "I need to raid the goblin supply camps west of the outpost and destroy five supply crates with my Lightning Burst spell.", 566, 3250067)
@@ -16,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Excellent.  Others are heading towards the camp now.  Use your lightning burst spell to destroy the goblin supply crates.  You must ruin several of the crates, if you are successful you shall receive a reward.  Please report back to me when you have completed this assignment.")
+	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin004.mp3", 2611909866, 614181676)
+    PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+    Dialog.AddOption("I will take care of the supply crates.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
