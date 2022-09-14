@@ -9,13 +9,25 @@
         Preceded by: Speaking with Vladiminn
         Followed by: Scouting the Goblin Camp
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to kill healthy deer in the grove.", 5, 100, "I need to track down and kill five healthy deer for their meat to restore the outposts food supply.  The deer can be found in the island's central grove just northwest of the outpost.", 135, 3250071)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Your service is invaluable. Now, listen well hunt only the deer healed by the clergy.  We cannot eat diseased meat, lest we become ill ourselves.  Use your skills wisely... and uh if I may offer some advice, bring a priest with you on your hunt. A clergyman can heal the deer before you slay it.")
+	Dialog.AddVoiceover("voiceover/english/vladiminn/tutorial_island02/vladiminn002.mp3", 2857587826, 449408957)
+    PlayFlavor(QuestGiver, "", "", "thanks", 0, 0, Player)
+    Dialog.AddOption("Sound advice.  I'll bring back a good amount of meat.")	
+	Dialog.Start()
+
+if HasQuest(Player, 5730) then
+    SetStepComplete(Player,5730,1)
+end
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -15,11 +15,18 @@ function respawn(NPC)
 end
 
 
-function hailed(NPC,Spawn)
-PlayFlavorID(NPC, 2, 100, 0, nil, 18)
-
---insert into voiceovers set type_id=2,id=100,indexed=1,mp3_string="voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_2_garbled_2f8caa7b.mp3", text_string="Krovel grarggt ereverrrn", key1=2385604574, key2=3717589402, garbled=1,garble_link_id=1;
---insert into voiceovers set type_id=2,id=100,indexed=1,mp3_string="voiceover/english/sean_wellfayer/qey_harbor/100_qst_sean_wellfayer_multhail1_5dca659c.mp3", text_string="I don't think fishing interests you.  Perhaps you should be on your way!", key1=1997164956, key2=747011072, garbled=0,garble_link_id=1;
+function hailed(NPC,player)
+UnequipSlot(player,0)
+UnequipSlot(player,1)  
+UnequipSlot(player,3)  
+UnequipSlot(player,6)  
+UnequipSlot(player,7)  
+UnequipSlot(player,8)  
+UnequipSlot(player,16)  
+UnequipSlot(player,17)  
+UnequipSlot(player,20)  
+UnequipSlot(player,22)  
+UnequipSlot(player, 23) 
 end
 
 --[[

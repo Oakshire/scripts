@@ -10,6 +10,7 @@ require "SpawnScripts/Generic/DialogModule"
 local Fighter2 = 5731
 local Fighter3 = 5735
 local Fighter4 = 5739
+local Fighter5 = 5743
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 14, "InRange", "LeaveRange")
@@ -47,8 +48,14 @@ function hailed(NPC, Spawn)
     if not HasQuest(Spawn, Fighter4) and HasCompletedQuest(Spawn,Fighter3) and not HasCompletedQuest(Spawn,Fighter4) then	
 	Dialog.AddOption("I am interested in helping out.  Do you have any work for me?","Quest4Start")
     end
+    if not HasQuest(Spawn, Fighter5) and HasCompletedQuest(Spawn,Fighter4) and not HasCompletedQuest(Spawn,Fighter5) then	
+	Dialog.AddOption("What other work did you want to talk about?","Quest5Start")
+    end
     if GetQuestStep(Spawn,Fighter4)==2 then
 	Dialog.AddOption("I killed five of the goblin aggressors.","Quest4Turnin")
+	end    
+    if GetQuestStep(Spawn,Fighter5)==2 then
+	Dialog.AddOption("I have four flint head spears for you.","Quest5Turnin")
 	end    
     Dialog.AddOption("I will leave you to your work.")
 
@@ -63,7 +70,7 @@ end
 
 
 --------------------------------------------------------------------------------------------------------------------------------
---					QUEST 1
+--					QUEST 3
 --------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -110,7 +117,7 @@ end
 
 
 --------------------------------------------------------------------------------------------------------------------------------
---					QUEST 2
+--					QUEST 4
 --------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -135,27 +142,43 @@ function Quest4Turnin(NPC,Spawn)
  	Dialog.AddDialog("Excellent work adventurer!  The refugees are safe.  Hopefully now they will know better than to wander off into the woods.  As promised here is your reward.  These leggings will protect you, and trust me, you'll need them.  I have another job for you.  The scouts discovered more useful information.  Curious to know what they found?")
 	Dialog.AddVoiceover("voiceover/english/braksan_steelforge/tutorial_island02/braksansteelforge008.mp3", 2823482933, 2765578198)
     PlayFlavor(NPC, "", "", "smile", 0, 0, Spawn)
-    Dialog.AddOption("Perhaps, what is it?","Dialog4")	
+    Dialog.AddOption("Perhaps, what is it?","Quest5Start")	
 	Dialog.Start()
     SetStepComplete(Spawn,Fighter4,2)
 end
 
 --------------------------------------------------------------------------------------------------------------------------------
---					QUEST 3
+--					QUEST 5
 --------------------------------------------------------------------------------------------------------------------------------
 
-function Dialog4(NPC,Spawn)
+function Quest5Start(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("I knew you'd help!  It's time for those green beasties to get what's coming to them!  Our scouts located the goblins' main encampment in the northwest!  Other adventurers are setting out to give those goblins a good arse kicking!  They'll need your help.  No one serves up a whoopin' like a fighter.  Am I right?")
 	Dialog.AddVoiceover("voiceover/english/braksan_steelforge/tutorial_island02/braksansteelforge009.mp3", 3901042740, 207303651)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
-    Dialog.AddOption("Of course you are! [WORK IN PROGRESS]","")	
+    Dialog.AddOption("Of course you are!","Quest5Offer")	
     Dialog.AddOption("Actually, I have some other buisness to attend to.")	
 	Dialog.Start()
     SetStepComplete(Spawn,Fighter4,2)
 end
 
+function Quest5Offer(NPC,Player)
+    OfferQuest(NPC,Player,Fighter5)
+    FaceTarget(NPC, Spawn)
+end
+
+function Quest5Turnin(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Ah, yes.  The spears will do just fine.  Thank you for your hard work, friend. I knew you were a brave fighter.  Please accept this hand-made tunic for your hard work in the outpost.  Now I hate to ask you, knowing how much fighting you have already done, but I thought you might be curious about what's causing the goblin attacks.")
+	Dialog.AddVoiceover("voiceover/english/braksan_steelforge/tutorial_island02/braksansteelforge011.mp3", 2911283846, 1300227614)
+    PlayFlavor(NPC, "", "", "smile", 0, 0, Spawn)
+    Dialog.AddOption("I am interested in helping out.  Do you have any work for me? [WORK IN PROGRESS]","")	
+    Dialog.AddOption("No, I want to get off this island.")	
+	Dialog.Start()
+    SetStepComplete(Spawn,Fighter5,2)
+end
 
 --[[
 (1120758857)[Thu Jul 07 13:54:17 2005] Your quest journal has been updated.
@@ -170,6 +193,7 @@ end
 (1120760719)[Thu Jul 07 14:25:19 2005] \aNPC 11743 Braksan Steelforge:Braksan Steelforge\/a says to you,"I wish I could chit-chat but I must work.  The goblins don't care how many times I fix these things, they just keep breaking them."
 (1120760722)[Thu Jul 07 14:25:22 2005] You say to Braksan Steelforge,"I have four flint head spears for you."
 (1120760722)[Thu Jul 07 14:25:22 2005] \aNPC 11743 Braksan Steelforge:Braksan Steelforge\/a says to you,"Ah, yes.  The spears will do just fine.  Thank you for your hard work, friend. I knew you were a brave fighter.  Please accept this hand-made tunic for your hard work in the outpost.  Now I hate to ask you, knowing how much fighting you have already done, but I thought you might be curious about what's causing the goblin attacks."
+(1121037222)[Sun Jul 10 19:13:42 2005] You say to Braksan Steelforge,"No, I want to get off this island.  "
 (1120760731)[Thu Jul 07 14:25:31 2005] \aNPC 11743 Braksan Steelforge:Braksan Steelforge\/a says to you,"I wish I could chit-chat but I must work.  The goblins don't care how many times I fix these things, they just keep breaking them."
 (1120760732)[Thu Jul 07 14:25:32 2005] You say to Braksan Steelforge,"I am interested in helping out.  Do you have any work for me?"
 (1120760732)[Thu Jul 07 14:25:32 2005] \aNPC 11743 Braksan Steelforge:Braksan Steelforge\/a says to you,"An orc was spotted in the northeast part of the island.  Rumor is that it's the infamous Grimgash the Black, a fearsome orc pirate.  If this is true, it explains why the goblins are attacking our outpost.  Grimgash may have taken control of the local goblin tribe and turned them into his private army."

@@ -10,6 +10,7 @@ require "SpawnScripts/Generic/DialogModule"
 local Mage2 = 5733
 local Mage3 = 5736
 local Mage4 = 5740
+local Mage5 = 5744
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
@@ -41,6 +42,8 @@ elseif HasQuest(Spawn, Mage2) or not HasQuest(Spawn, Mage3) and not HasCompleted
     Dialog2(NPC,Spawn) 
 elseif  not HasQuest(Spawn, Mage4) and not HasCompletedQuest(Spawn, Mage4) and HasCompletedQuest(Spawn,Mage3) then
     Dialog2(NPC,Spawn) 
+elseif  not HasQuest(Spawn, Mage5) and not HasCompletedQuest(Spawn, Mage5) and HasCompletedQuest(Spawn,Mage4) then
+    Quest5Start(NPC,Spawn) 
 else
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Can't you see I am in the middle of my research.  What do you need?")
@@ -50,6 +53,9 @@ else
 	end
     if GetQuestStep(Spawn,Mage4)==2 then
 	Dialog.AddOption("I have returned with the remains of five mire bogs.","Quest4Turnin")
+	end    
+    if GetQuestStep(Spawn,Mage5)==2 then
+	Dialog.AddOption("I have the goblin blood samples you asked for.","Quest5Turnin")
 	end    
 	Dialog.AddOption("I will leave you to your research.")
 	Dialog.Start()
@@ -80,9 +86,9 @@ function Dialog2(NPC,Spawn)
     if HasCompletedQuest(Spawn,Mage3) and not HasCompletedQuest(Spawn,Mage4) and not HasQuest(Spawn,Mage4) or GetQuestStep(Spawn,Mage3)==3 and not HasQuest(Spawn,Mage4) then 
     Dialog.AddOption("I am interested.  What is it?","Quest4Start")	
     end
---    if HasCompletedQuest(Spawn,Mage4) and not HasCompletedQuest(Spawn,Mage5) and not HasQuest(Spawn,Mage5) then 
---   Dialog.AddOption("Yes, how can I be of further assistance?","Dialog4")	
---   end  
+    if HasCompletedQuest(Spawn,Mage4) and not HasCompletedQuest(Spawn,Mage5) and not HasQuest(Spawn,Mage5) then 
+    Dialog.AddOption("Yes, how can I be of further assistance?","Dialog4")	
+    end  
     Dialog.AddOption("I am too busy right now.")	
     Dialog.Start()
     if HasQuest(Spawn, Mage2) then
@@ -145,7 +151,8 @@ function Quest4Turnin(NPC,Spawn)
  	Dialog.AddDialog("Splendid.  I will start my first batch of sealant with these mire bog remains.  As payment for your hard work, take these leggings. You've earned them.  You've aided our outpost well, adventurer, but more work must be done.  Can we count on you to help?")
 	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin008.mp3", 4291717677, 2222410962)
     PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
-    Dialog.AddOption("Yes, how can I be of further assistance? [WORK IN PROGRESS]","Quest5Start")	
+    Dialog.AddOption("Yes, how can I be of further assistance?","Quest5Start")	
+    Dialog.AddOption("I have other matters to attend to.  Perhaps later.")	
 	Dialog.Start()
     SetStepComplete(Spawn,Mage4,2)
 end
@@ -160,13 +167,25 @@ function Quest5Start(NPC,Spawn)
  	Dialog.AddDialog("While you were away, it seems that a few of Vladiminn's new recruits scouted out the main goblin encampment on the northwestern part of the island.  Other adventurers are gathering to make an attack against it.  My teacher, Malvonicus, has determined that we could make use of goblin blood in creating wards against the creatures.  If you are willing, could you go along with this attack and while you are there, collect a few samples of goblin blood?")
 	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin009.mp3", 963345532, 1033695526)
     Dialog.AddOption("I'll go along and collect the samples.","Quest5Offer")	
-    Dialog.AddOption("That does sound like a problem, but I am busy at the momment.")	
+    Dialog.AddOption("Bleh! That sounds dreadful.  I'd rather not deal with goblin blood.")	
 	Dialog.Start()
 end
 
 function Quest5Offer(NPC,Player)
     OfferQuest(NPC,Player,Mage5)
     FaceTarget(NPC, Spawn)
+end
+
+function Quest5Turnin(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("This is exactly what Malvonicus needs to begin research on the goblin warding spells.  He instructed me to give you this apprentice robe in appreciation for the work you rendered here.  I am remiss to ask this, but others need your services for one final task.  Are you willing to help us?")
+	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin011.mp3", 4291717677, 2222410962) --UNKNOWN KEY.  MISSING.
+    PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
+    Dialog.AddOption("I will help with this task. [WORK IN PROGRESS]","")	
+    Dialog.AddOption("I must leave this island.  Best of luck with your tasks.")	
+	Dialog.Start()
+    SetStepComplete(Spawn,Mage5,2)
 end
 
 --[[(1125785819)[Sat Sep 03 18:16:59 2005] \aNPC 11942 Mizan Vaeoulin:Mizan Vaeoulin\/a says to you,"Can't you see I am in the middle of my research.  What do you need?"

@@ -10,9 +10,10 @@ require "SpawnScripts/Generic/DialogModule"
 local Priest2 = 5732
 local Priest3 = 5734
 local Priest4 = 5738
+local Priest5 = 5742
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 16, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
     ProvidesQuest(NPC, Priest3)
     ProvidesQuest(NPC, Priest4)
 end
@@ -20,10 +21,10 @@ end
 function InRange(NPC,Spawn)
     if HasQuest(Spawn,Priest2)then	
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02_fvo_priestcallout.mp3","If you are one that follows the ways of the priest, then I need your help.","",2406483258,3086152442, Spawn)
+    PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02_fvo_priestcallout.mp3","If you are one that follows the ways of the priest, then I need your help.","hello",2406483258,3086152442, Spawn)
     elseif not HasQuest(Spawn, Priest4) and HasCompletedQuest(Spawn,Priest3) and not HasCompletedQuest(Spawn,Priest4) then
-    PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02_fvo_priestq2.mp3","I hope all is going well for you.","I hope all is going well for you.",3851336954,3648952364, Spawn)
-        
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC,"voiceover/english/nathinia_sparklebright/tutorial_island02_fvo_priestq2.mp3","I hope all is going well for you.","bye",3742259648,1726362202, Spawn)
     end
 end
 
@@ -34,6 +35,8 @@ elseif HasQuest(Spawn, Priest2) or not HasQuest(Spawn, Priest3) and not HasCompl
     Dialog2(NPC,Spawn) 
 elseif not HasQuest(Spawn, Priest4) and HasCompletedQuest(Spawn,Priest3) and not HasCompletedQuest(Spawn,Priest4) then
     Dialog3(NPC,Spawn) 
+elseif not HasQuest(Spawn, Priest5) and HasCompletedQuest(Spawn,Priest4) and not HasCompletedQuest(Spawn,Priest5) then
+    Dialog4(NPC,Spawn) 
 else
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
@@ -45,7 +48,10 @@ else
     if GetQuestStep(Spawn, Priest4)==2 then
 	Dialog.AddOption("I have five giant spider venom sacs for you.","Priest4Turnin")
     end
-	Dialog.AddOption("Thank you for that bit of wisdom.")
+    if GetQuestStep(Spawn, Priest5)==2 then
+	Dialog.AddOption("I have returned with four totems for you.","Priest5Turnin")
+    end
+    Dialog.AddOption("Thank you for that bit of wisdom.")
 	Dialog.Start()
 
 end
@@ -57,7 +63,7 @@ end
 
 
 --------------------------------------------------------------------------------------------------------------------------------
---					QUEST 1
+--					QUEST 3
 --------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -114,15 +120,15 @@ function Priest3Turnin(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("Well done brave friend.  With the mystics weakened, the goblins will have a harder time with their siege plans.  I have taken the liberty of placing a reward in your bank.  Seek out Banker Vertbridge and he will help you receive it.  Wear them well, you will need the protection.  Are you able to assist us with another task?")
-	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright004.mp3", 1831865050,2426267765)
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright005.mp3", 1831865050,2426267765)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    Dialog.AddOption("Thank you. I will seek out the banker.","SeeBanker")	
+    Dialog.AddOption("Thank you. I will seek out the banker.")	
 	Dialog.Start()
     SetStepComplete(Spawn,Priest3,2)
 end
 
 --------------------------------------------------------------------------------------------------------------------------------
---					QUEST 2
+--					QUEST 4
 --------------------------------------------------------------------------------------------------------------------------------
 
 function Dialog3(NPC,Spawn)
@@ -146,14 +152,61 @@ function Priest4Turnin(NPC,Spawn)
  	Dialog.AddDialog("Excellent job!  You proved your value, adventurer.  I will start on this antidote immediately.  For a job well done, here are some leggings.  I know it is asking a lot, but may I ask you another favor?")
 	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright008.mp3", 1685520077,3945672786)
     PlayFlavor(NPC, "", "", "curtsey", 0, 0, Spawn)
-    Dialog.AddOption("I'll do what I can. [WORK IN PROGRESS]","Dialog4")	
+    Dialog.AddOption("I'll do what I can.","Dialog4")	
+    Dialog.AddOption("Perhaps. I need a momment.")	
 	Dialog.Start()
     SetStepComplete(Spawn,Priest4,2)
 end
 
+--------------------------------------------------------------------------------------------------------------------------------
+--					QUEST 5
+--------------------------------------------------------------------------------------------------------------------------------
+
+function Dialog4(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Our scouts have found the location of the goblins' main encampment.  Adventurers are organizing now to attack the village.  I don't know if this will defeat the goblins or just scatter them for a time, but either way, it is a necessary action.  The warriors fighting there will undoubtedly need of your healing talents and blessings.  Could you join the assault on the goblin village and, perhaps, collect something for me in the process?")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright009.mp3", 1871132929,3238860300)
+    Dialog.AddOption("I'll assist with the assault.","Quest5Offer")	
+    Dialog.AddOption("I need to consider this further.")	
+	Dialog.Start()
+end
 
 
+function Quest5Offer(NPC,Player)
+    OfferQuest(NPC,Player,Priest5)
+    FaceTarget(NPC, Spawn)
+end
+
+function Priest4Turnin(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Excellent.  I shall study these totems and determine if they are part of what is stirring the goblins up.  You have been very helpful to the people of this outpost.  Please, take this tunic as a token of our appreciation.  You have most assuredly earned it.  I am reluctant to ask this but others need your service one final time.  Are you willing to help us with this last task?")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright008.mp3", 1685520077,3945672786)
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddOption("I will help with this task. [WORK IN PROGRESS]")	
+    Dialog.AddOption("Perhaps. I need a momment.")	
+	Dialog.Start()
+    SetStepComplete(Spawn,Priest5,2)
+end
 --[[
+
+(1125791549)[Sat Sep 03 19:52:29 2005] You say,"Hail, Nathinia Sparklebright"
+(1125791549)[Sat Sep 03 19:52:29 2005] \aNPC 11979 Nathinia Sparklebright:Nathinia Sparklebright\/a says to you,"Spiritual enlightenment is as important to being as air to breathe or food to eat."
+(1125791551)[Sat Sep 03 19:52:31 2005] You say to Nathinia Sparklebright,"I have returned with four totems for you."
+(1125791552)[Sat Sep 03 19:52:32 2005] Your quest journal has been updated.
+(1125791552)[Sat Sep 03 19:52:32 2005] You gain experience!
+(1125791552)[Sat Sep 03 19:52:32 2005] Your quest journal has been updated.
+(1125791552)[Sat Sep 03 19:52:32 2005] \aNPC 11979 Nathinia Sparklebright:Nathinia Sparklebright\/a says to you,"Excellent.  I shall study these totems and determine if they are part of what is stirring the goblins up.  You have been very helpful to the people of this outpost.  Please, take this tunic as a token of our appreciation.  You have most assuredly earned it.  I am reluctant to ask this but others need your service one final time.  Are you willing to help us with this last task?"
+(1125791554)[Sat Sep 03 19:52:34 2005] You say to Nathinia Sparklebright,"I will help with this task."
+(1125791554)[Sat Sep 03 19:52:34 2005] \aNPC 11979 Nathinia Sparklebright:Nathinia Sparklebright\/a says to you,"We know the force behind the goblin attacks.  Some time ago a renowned orc pirate capsized on the island and took control of the goblin tribes.  Now he rules over the goblins and uses them for his private army.  We must put an end to his treachery.  We need your help.  Are you ready for the task, adventurer?"
+(1125791555)[Sat Sep 03 19:52:35 2005] You say to Nathinia Sparklebright,"I will help remove this orc from power."
+(1125791557)[Sat Sep 03 19:52:37 2005] Your quest journal has been updated.
+(1125791557)[Sat Sep 03 19:52:37 2005] \aNPC 11979 Nathinia Sparklebright:Nathinia Sparklebright\/a says to you,"Good.  Others are planning an attack on the creature.  Go now and aid them with your healing and blessing powers.  They depend on you to keep them alive and well.  Be safe, young priest.  The orc hides in a cave at the far northeast side of the isle.  Find the cave and destroy the beast."
+(1125791558)[Sat Sep 03 19:52:38 2005] You say to Nathinia Sparklebright,"I will return to you after slaying this beast."
+
+
+
     Script Name    : SpawnScripts/IsleRefuge1/NathiniaSparklebright.lua
     Script Author  : Ememjr
     Script Date    : 2022.03.06 11:03:22

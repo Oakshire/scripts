@@ -1,23 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/IsleRefuge1/afallenpirate.lua
+    Script Name    : SpawnScripts/IsleRefuge1/anoxiouscobra.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.09.13 03:09:54
+    Script Date    : 2022.09.14 03:09:33
     Script Purpose : 
                    : 
 --]]
 
-dofile("SpawnScripts/Generic/MonsterCallouts/BaseSkeleton1.lua")
-
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 4
-    local level2 = 5
+    local level1 = 5
+    local level2 = 6
     local difficulty1 = 6
-    local hp1 = 110
-    local power1 = 55
+    local hp1 = 130
+    local power1 = 65
     local difficulty2 = 6
-    local hp2 = 130
-    local power2 = 65
+    local hp2 = 150
+    local power2 = 80
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -28,7 +26,7 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-    SetSpawnAnimation(NPC, 13016)
+
 end
 
 function hailed(NPC, Spawn)

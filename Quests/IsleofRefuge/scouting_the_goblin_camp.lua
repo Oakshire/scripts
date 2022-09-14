@@ -9,6 +9,7 @@
         Preceded by: Deer Hunting
         Followed by: Striking Back at the Goblins
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("You must move stealthy past the goblin guards and spy on the camp.  Get a headcount of goblins and a layout of the camp.  Be careful if a goblin finds you, you'll be ripped to pieces without mercy. Remember this is a scout mission. Don't attempt any heroic acts you'll only end up dead.")
+	Dialog.AddVoiceover("voiceover/english/vladiminn/tutorial_island02/vladiminn005.mp3", 3243100129, 1880511698)
+    PlayFlavor(QuestGiver, "", "", "orate", 0, 0, Player)
+    Dialog.AddOption("Don't worry about me, worry about the new refugees.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
