@@ -7,8 +7,10 @@
 --]]
 
 function spawn(NPC)
-
+    SetPlayerProximityFunction(NPC, 9, "InRange", "LeaveRange")
 end
+
+
 
 function hailed(NPC, Spawn)
     choice = MakeRandomInt(1,2)

@@ -5,9 +5,10 @@
     Script Purpose : 
                    : 
 --]]
+local DiseaseCheck = false
 
 function spawn(NPC)
-    local Level = GetLevel(NPC)
+   local Level = GetLevel(NPC)
     local level1 = 2
     local level2 = 3
     local difficulty1 = 6
@@ -29,9 +30,64 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-    
-    
+
+    SetInfoStructUInt(NPC, "friendly_target_npc", 1)
+    Diseased(NPC)   
     ChooseMovement(NPC)
+end
+
+
+
+function Diseased(NPC)
+    choice= MakeRandomInt(1,2)
+    if choice == 1 then
+    else
+        DiseaseCheck = true
+        SpawnSet(NPC,"visual_state",11395 )
+        local hp = GetMaxHP(NPC) * 0.25
+        ModifyHP(NPC, -20)
+    end
+end
+
+function casted_on(NPC, Spawn, SpellName)  --Priests use minor heal if the deer is diseased.  These deer will then give updates for scouts to scouts.
+  if SpellName == 'Minor Healing' and not IsInCombat(NPC) then
+    choice = MakeRandomInt(1,4)
+    if choice ==1 then
+    SendMessage(Spawn, "The grove deer bleats appreciatively as it appears healthier.")
+    elseif choice ==2 then
+    SendMessage(Spawn, "The grove deer's coat returns to a natual sheen.")
+    elseif choice ==3 then
+    SendMessage(Spawn, "The grove deer's eyes glow normally as you purge its malady.")
+    else
+    SendMessage(Spawn, "The grove deer's hooves stomp thankfully as its disease abates.")
+    end        
+    DiseaseCheck = false
+    SpawnSet(NPC,"visual_state",0 )
+    FaceTarget(NPC,Spawn)
+    AddTimer(NPC,18000,"DiseaseReturn")   
+
+    end
+end
+
+function DiseaseReturn(NPC) --Reset Disease
+    DiseaseCheck = true
+    SpawnSet(NPC,"visual_state",11395)
+end   
+
+function healthchanged(NPC) -- So Health on Diseased never excedes 75% outside of combat
+    if DiseaseCheck ==true  and not IsInCombat(NPC) then
+        local hp = GetMaxHP(NPC) * 0.75
+        ModifyHP(NPC, -20)
+    end
+end
+        
+
+function death (NPC,Spawn) -- Gives Quest Update if on the scout quest 'Deer Hunt'.  ONLY Healthy deer update.
+    if DiseaseCheck==false then
+        if GetQuestStep(Spawn,5737)==1 then
+            SetStepComplete(Spawn,5737,1)
+        end
+    end
 end
 
 function ChooseMovement(NPC)
@@ -99,6 +155,3 @@ function respawn(NPC, Spawn)
     spawn(NPC)
 end
 
-function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-end

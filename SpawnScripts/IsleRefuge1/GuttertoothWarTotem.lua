@@ -12,6 +12,7 @@ function spawn(NPC)
 	SetBrainTick(NPC, 600000)
 	-- give the spawn a crap load of hp so we can't one hit kill
 	SetHP(NPC, 1000000)
+    SetRequiredQuest(NPC,5734,1)
 end
 
 function casted_on(NPC, Spawn, Message)

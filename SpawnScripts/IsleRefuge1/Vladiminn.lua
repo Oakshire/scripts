@@ -15,6 +15,7 @@ function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
     ProvidesQuest(NPC, Scout3)
     ProvidesQuest(NPC, Scout4)
+    ProvidesQuest(NPC, Scout5)
 end
 
 function InRange(NPC,Spawn)

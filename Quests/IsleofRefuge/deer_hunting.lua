@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill healthy deer in the grove.", 5, 100, "I need to track down and kill five healthy deer for their meat to restore the outposts food supply.  The deer can be found in the island's central grove just northwest of the outpost.", 135, 3250071)
+	AddQuestStep(Quest, 1, "I need to kill healthy deer in the grove.", 5, 100, "I need to track down and kill five healthy deer for their meat to restore the outposts food supply.  The deer can be found in the island's central grove just northwest of the outpost.", 135)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

@@ -52,7 +52,7 @@ function EmoteLoop(NPC,Spawn)
  	    elseif choice == 5 then
  	    PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn, 0)
  	    elseif choice == 6 then
- 	    PlayFlavor(NPC, "", "", "flex", 0, 0, Spawn, 0)
+ 	    PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn, 0)
  	    elseif choice == 7 then
  	    PlayFlavor(NPC, "", "", "duck", 0, 0, Spawn, 0)
   	    elseif choice == 8 then
@@ -60,7 +60,7 @@ function EmoteLoop(NPC,Spawn)
   	    elseif choice == 9 then
  	    PlayFlavor(NPC, "", "", "notworthy", 0, 0, Spawn, 0)
   	    elseif choice == 10 then
- 	    PlayFlavor(NPC, "", "", "threaten", 0, 0, Spawn, 0)
+ 	    PlayFlavor(NPC, "", "", "taunt", 0, 0, Spawn, 0)
   	    elseif choice == 11 then
  	    PlayFlavor(NPC, "", "", "peer", 0, 0, Spawn, 0)
    	    elseif choice == 12 then
