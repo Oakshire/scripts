@@ -16,6 +16,7 @@ function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
     ProvidesQuest(NPC, Priest3)
     ProvidesQuest(NPC, Priest4)
+    ProvidesQuest(NPC, Priest5)
 end
 
 function InRange(NPC,Spawn)
@@ -178,7 +179,7 @@ function Quest5Offer(NPC,Player)
     FaceTarget(NPC, Spawn)
 end
 
-function Priest4Turnin(NPC,Spawn)
+function Priest5Turnin(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("Excellent.  I shall study these totems and determine if they are part of what is stirring the goblins up.  You have been very helpful to the people of this outpost.  Please, take this tunic as a token of our appreciation.  You have most assuredly earned it.  I am reluctant to ask this but others need your service one final time.  Are you willing to help us with this last task?")

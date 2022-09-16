@@ -5,7 +5,7 @@
     Script Purpose : 
                    : 
 --]]
-local DiseaseCheck = false
+ 
 
 function spawn(NPC)
    local Level = GetLevel(NPC)
@@ -30,7 +30,8 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructUInt(NPC, "hp_regen", 1)
     SetInfoStructUInt(NPC, "friendly_target_npc", 1)
     Diseased(NPC)   
     ChooseMovement(NPC)
@@ -41,51 +42,48 @@ end
 function Diseased(NPC)
     choice= MakeRandomInt(1,2)
     if choice == 1 then
+    SetTempVariable(NPC,"Update","true" )
     else
-        DiseaseCheck = true
-        SpawnSet(NPC,"visual_state",11395 )
-        local hp = GetMaxHP(NPC) * 0.25
-        ModifyHP(NPC, -20)
+    CastSpell(NPC,993)
+    SetTempVariable(NPC,"Update","false" )
     end
 end
 
 function casted_on(NPC, Spawn, SpellName)  --Priests use minor heal if the deer is diseased.  These deer will then give updates for scouts to scouts.
-  if SpellName == 'Minor Healing' and not IsInCombat(NPC) then
-    choice = MakeRandomInt(1,4)
-    if choice ==1 then
-    SendMessage(Spawn, "The grove deer bleats appreciatively as it appears healthier.")
-    elseif choice ==2 then
-    SendMessage(Spawn, "The grove deer's coat returns to a natual sheen.")
-    elseif choice ==3 then
-    SendMessage(Spawn, "The grove deer's eyes glow normally as you purge its malady.")
-    else
-    SendMessage(Spawn, "The grove deer's hooves stomp thankfully as its disease abates.")
-    end        
-    DiseaseCheck = false
-    SpawnSet(NPC,"visual_state",0 )
+if HasSpellEffect(NPC,993) then
+  if SpellName == 'Minor Healing' or SpellName == 'Minor Arch Healing' or SpellName == 'Cure' or SpellName == 'Cure Noxious' then
+        choice = MakeRandomInt(1,4)
+        if choice ==1 then
+        SendMessage(Spawn, "The grove deer bleats appreciatively as it appears healthier.")
+        elseif choice ==2 then
+        SendMessage(Spawn, "The grove deer's coat returns to a natual sheen.")
+        elseif choice ==3 then
+        SendMessage(Spawn, "The grove deer's eyes glow normally as you purge its malady.")
+        else
+        SendMessage(Spawn, "The grove deer's hooves stomp thankfully as its disease abates.")
+        end        
+    CastSpell(NPC,993,1, NPC)
+    SpawnSet(NPC,"visual_state",0)
     FaceTarget(NPC,Spawn)
-    AddTimer(NPC,18000,"DiseaseReturn")   
-
+    AddTimer(NPC,120000,"DiseaseReturn")   
+    end
     end
 end
 
 function DiseaseReturn(NPC) --Reset Disease
-    DiseaseCheck = true
-    SpawnSet(NPC,"visual_state",11395)
+    CastSpell(NPC,993,1, NPC)
+    SetTempVariable(NPC,"Update","false" )
 end   
 
-function healthchanged(NPC) -- So Health on Diseased never excedes 75% outside of combat
-    if DiseaseCheck ==true  and not IsInCombat(NPC) then
-        local hp = GetMaxHP(NPC) * 0.75
-        ModifyHP(NPC, -20)
-    end
-end
-        
 
 function death (NPC,Spawn) -- Gives Quest Update if on the scout quest 'Deer Hunt'.  ONLY Healthy deer update.
-    if DiseaseCheck==false then
-        if GetQuestStep(Spawn,5737)==1 then
-            SetStepComplete(Spawn,5737,1)
+    if GetQuestStep(Spawn,5737)==1 then
+        if GetTempVariable(NPC, "Update") == "true" then
+--        if not HasSpellEffect(NPC,993) then
+            AddStepProgress(Spawn,5737,1,1)
+        SendMessage(Spawn, "You successfully harvest the grove deer.")
+        else
+        SendMessage(Spawn, "The grove deer's meat was too diseased to harvest successfully.  A priest could help remove the disease.")
         end
     end
 end

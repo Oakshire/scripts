@@ -329,7 +329,7 @@ function thanksS(NPC,Spawn)
 	if GetQuestStep(Spawn, ScoutGI)==3 then
 	SetStepComplete(Spawn,ScoutGI,3)
 	end
-    if not HasQuest(Spawn,ScoutGI) and not HasCompletedQuest(Spawn,ScoutGI)then
+    if not HasQuest(Spawn,Scout2) and not HasCompletedQuest(Spawn,Scout2)then
 	    OfferQuest(NPC, Spawn,Scout2)
 	end
 end

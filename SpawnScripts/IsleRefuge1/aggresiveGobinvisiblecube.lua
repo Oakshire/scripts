@@ -19,7 +19,6 @@ end
 function Cage1(NPC, Spawn)
 local zone = GetZone(NPC)
 local Goblin1 = SpawnByLocationID(zone, 133775211) --Goblin1
-local Goblin2 = SpawnByLocationID(zone, 133775437) --Goblin2
 AddTimer(NPC,3500,"GobLiveCheck")
 end
 
@@ -28,10 +27,9 @@ end
 function GobLiveCheck(NPC, Spawn)
 local zone = GetZone(NPC)
 local Goblin1 = GetSpawnByLocationID(zone, 133775211) --Goblin1
-local Goblin2 = GetSpawnByLocationID(zone, 133775437) --Goblin2
 local Refugee = GetSpawnByLocationID(zone, 133775246) --Refugee
 
-if IsAlive(Goblin1) ==false and IsAlive(Goblin2) ==false then
+if IsAlive(Goblin1) ==false  then
     if  Refugee~=nil then
     waypoints(NPC,Spawn)
     SpawnSet(Refugee,"mood_state",0)    
@@ -73,6 +71,7 @@ local Refugee = GetSpawnByLocationID(zone, 133775246) --Refugee
 local x=GetX(NPC)
 local y=GetY(NPC)
 local z=GetZ(NPC)
+    PlaySound(NPC, "sounds/widgets/doors/door_metal_slam001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
     MovementLoopAddLocation(Refugee, x, y, z, 4, 1)
 	MovementLoopAddLocation(Refugee, x, y, z, 4, 6,"ThankYou")
     MovementLoopAddLocation(Refugee, x, y, z, 4, 0)
@@ -87,13 +86,15 @@ function ThankYou(NPC,Spawn)
     local zone = GetZone(NPC)
     local Refugee = GetSpawnByLocationID(zone, 133775246) --Refugee
     FaceTarget(Refugee,Spawn)
-    choice = MakeRandomInt(1,3)
+    choice = MakeRandomInt(1,4)
     if choice == 1 then
     PlayFlavor(Refugee, "", "", "thanks",0,0)
     elseif choice == 2 then
     PlayFlavor(Refugee, "", "", "bow",0,0)
     elseif choice == 3 then
     PlayFlavor(Refugee, "", "", "notworthy",0,0)
+    elseif choice == 3 then
+    PlayFlavor(Refugee, "", "", "cheer",0,0)
     end
 end
 

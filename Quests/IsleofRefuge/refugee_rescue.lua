@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to taunt and kill five Gruttooth aggressors.", 5, 100, "I need to find the refugees being held captive on the west most part of the island and use my taunt ability to distract, and then kill their goblin aggressors.", 91, 3250115)
+	AddQuestStep(Quest, 1, "I need to taunt and kill five Gruttooth aggressors.", 5, 100, "I need to find the refugees being held captive on the west most part of the island and use my taunt ability to distract, and then kill their goblin aggressors.", 91)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

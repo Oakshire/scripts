@@ -27,6 +27,7 @@ function spawn(NPC)
     SpawnSet(NPC, "power", power2)
     end
 EmoteLoop(NPC,Spawn)
+SetTempVariable(NPC,"Update","false")
 end
 
 function hailed(NPC, Spawn)
@@ -36,6 +37,18 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
+function casted_on(NPC, Spawn, SpellName)  --Priests use minor heal if the deer is diseased.  These deer will then give updates for scouts to scouts.
+    if SpellName == 'Taunt' then
+    if GetQuestStep(Spawn, 5739) ==1 then
+
+     SetTempVariable(NPC,"Update","true")
+    end
+    end
+end
+
+--function aggro(NPC,Spawn)
+--if GetQuestStep(Spawn, 5739)==1 then
+    
 
 function EmoteLoop(NPC,Spawn)
    if IsInCombat(NPC) == false then
@@ -71,3 +84,13 @@ function EmoteLoop(NPC,Spawn)
         end
     end   
 
+function death(NPC,Spawn)
+if GetQuestStep(Spawn, 5739)==1 then
+    if GetTempVariable(NPC,"Update")=="true" then
+        AddStepProgress(Spawn,5739,1,1)
+        else
+         SendMessage(Spawn, "You must 'TAUNT' the Gruttooth aggressors if you wish to demonstrate your battle prowess.")
+         SendPopUpMessage(Spawn, "You must 'TAUNT' the Gruttooth aggressors.",200, 200, 200)
+        end
+    end
+end

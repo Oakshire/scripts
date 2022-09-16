@@ -103,7 +103,7 @@ function hailed(NPC, player)
 		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_001.mp3", 1930075150, 2666442405)
 		Dialog.AddEmote("hello")
         if GetClass(player)>0 then
- 	    Dialog.AddOption("There must be a mistake.  I'm just a commoner.", "Commoner")
+ 	    Dialog.AddOption("There must be a mistake.  I'm just a commoner. [CLASSIC CLASS CHANGE]", "Commoner")
         end    
 		Dialog.AddOption("Where am I?", "where_am_I")
 		Dialog.Start()		

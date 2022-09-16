@@ -35,10 +35,10 @@ function Deleted(Quest, QuestGiver, Player)
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 1, "I've destroyed 3 war statues.")
+	UpdateQuestStepDescription(Quest, 1, "I've killed four supply runners.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found and managed to kill four of the goblin supply runners.  Brasken should hear about this development.")
 
-	AddQuestStepChat(Quest, 2, "I need to report back to Braksan in the outpost.", 1, "I need to return to Braksan and tell him of my deeds.", 11, 3250017)
+	AddQuestStepChat(Quest, 2, "I need to report back to Braksan.", 1, "I need to return to Braksan and tell him of my deeds.", 11, 3250017)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
