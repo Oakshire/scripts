@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to collect 4 goblin totems from Gruttooth Brutes.", 4, 80, "I need to collect four goblin totems for Nathinia.  The totems can be obtained by killing Gruttooth brutes in the main goblin encampments found on the northern part of the island.", 372, 3250124)
+	AddQuestStepKill(Quest, 1, "I need to collect 4 Flint Head Spears.", 4, 80, "I need to kill Gruttooth Brutes to collect 4 Flint Head Spears", 287, 3250124)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -35,19 +35,19 @@ function Deleted(Quest, QuestGiver, Player)
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 1, "I collected 4 goblin totems.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I collected four goblin totems for Nathinia while attacking the goblin village.")
+	UpdateQuestStepDescription(Quest, 1, "I collected 4 Flint Head Spears.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I collected 4 Flint Head Spears.")
 
-	AddQuestStepChat(Quest, 2, "I need to take these totems to Nathinia.", 1, "I need to take these goblin totems to Nathinia back at the outpost.", 11, 3250017)
+	AddQuestStepChat(Quest, 2, "I need to talk to Braksan.", 1, "I need to get these Flint Head Spears back to Braksan.", 11, 3250017)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 2, "I gave the totems to Nathinia.")
-	UpdateQuestTaskGroupDescription(Quest, 2, "I gave the totems to Nathinia.")
+	UpdateQuestStepDescription(Quest, 2, "I spoke to Braksan.")
+	UpdateQuestTaskGroupDescription(Quest, 2, "I gave Braksan the Flint Head Spears.")
 
-	UpdateQuestDescription(Quest, "I was able to collect four goblin totems for Nathinia and gave them to her for her study.  She may be able to determine the power of the totems and if they are the reason the goblins have become so aggressive.")
+	UpdateQuestDescription(Quest, "I joined with others who were attacking the goblin village.  I was able to collect up four flint head spears for Braksan like he asked and deliver them to him.  He was very appreciative of my work and gave me a tunic in payment.")
 	GiveQuestReward(Quest, Player)
 end
 

@@ -78,7 +78,9 @@ function EmoteLoop(NPC,Spawn)
  	    PlayFlavor(NPC, "", "", "tantrum", 0, 0, Spawn, 0)
  	    end
  	    AddTimer(NPC,MakeRandomInt(7000,9000),"EmoteLoop")    
-    end
+        else
+ 	    AddTimer(NPC,MakeRandomInt(10000,11000),"EmoteLoop") 
+ 	    end
 end
 
 function InRange(NPC,Spawn)

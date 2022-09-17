@@ -11,7 +11,6 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)
@@ -20,4 +19,15 @@ end
 
 function aggro(NPC)
     Say(NPC,"[NOTE] I should be immune to physical attacks!  You need a magic weapon.")
+     
 end
+
+function healthchanged(NPC, Spawn)
+    
+    if GetHP(NPC) <= GetMaxHP(NPC) * 0.8 then
+    Say(NPC,"Ouch!")
+    CastSpell(NPC, 5477, 1, NPC)
+    end
+    
+end
+    
