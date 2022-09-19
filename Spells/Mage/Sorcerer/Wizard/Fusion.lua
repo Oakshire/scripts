@@ -1,3 +1,4 @@
+
 --[[
     Script Name    : Spells/Mage/Sorcerer/Wizard/Fusion.lua
     Script Author  : neatz09
@@ -13,3 +14,12 @@
 -- Stuns targets in Area of Effect
 --     If Target is not Epic
 -- Resistibility increases against targets higher than level 29.
+
+
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    if MaxVal ~= nil and MinVal < MaxVal then
+        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
+    else
+        SpellDamage(Target, DmgType, MinVal)
+    end
+end

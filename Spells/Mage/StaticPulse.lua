@@ -15,6 +15,7 @@ function cast(Caster, Target, DoTType, MinVal, MaxVal)
     else
         SpellDamage(Target, DoTType, MinVal)
     end
+    SpawnSet(Target,"visual_state",11737)
 end
 
 function tick(Caster, Target, DoTType, MinVal, MaxVal)

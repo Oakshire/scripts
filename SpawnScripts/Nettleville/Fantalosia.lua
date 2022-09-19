@@ -21,7 +21,7 @@ end
 function InRange(NPC,Spawn)
 if GetFactionAmount(Spawn,11)<0 then
     FaceTarget (NPC,Spawn)
-    FactionCheckHail(NPC,Spawn,faction)
+    FactionChecking(NPC,Spawn,faction)
     end
 end
 
