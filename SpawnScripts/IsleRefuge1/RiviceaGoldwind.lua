@@ -9,8 +9,15 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
-
+    SetPlayerProximityFunction(NPC, 25, "InRange")
 end
+
+function InRange(NPC, Spawn)
+ if HasCollectionsToHandIn(Spawn) then
+  SpawnSet(NPC, "visual_state", 6674 )   
+  end
+end    
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

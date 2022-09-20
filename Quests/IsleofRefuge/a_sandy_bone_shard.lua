@@ -39,7 +39,7 @@ function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have examined the pieces.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have examined the pieces.")
 
-	AddQuestStepKill(Quest, 3, "I should find some fish to make glue from.", 6, 80, "The easiest and nearest source of glue is probably the skin off the fish that can be found in the waters near the docks.  I should collect a few.", 2540, 3250101,3250056,3250157,3250158,3250159)
+	AddQuestStepKill(Quest, 3, "I should find some fish to make glue from.", 6, 80, "The easiest and nearest source of glue is probably the skin off the fish that can be found in the waters near the docks.  I should collect a few.", 2540, 3250101,3250056,3250157,3250158,3250159, 3250162,3250160)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 

@@ -90,7 +90,7 @@ local z=GetZ(NPC)
 	MovementLoopAddLocation(Refugee, -72.75, -8.70, 29.3, 4, 0)
 	MovementLoopAddLocation(Refugee, -69.56, -7.11, 42.6, 4, 0)
 	MovementLoopAddLocation(Refugee, -67.84, -8.05, 58.29, 4, 1)
-	MovementLoopAddLocation(Refugee, -67.84, -8.05, 58.29, 4, 6,"ThankYou2")
+	MovementLoopAddLocation(Refugee, -67.84, -8.05, 58.29, 4, 6,"ThankYou")
 	MovementLoopAddLocation(Refugee, -67.84, -8.05, 58.29, 4, 30,"Despawn")
 	MovementLoopAddLocation(Refugee, -67.84, -8.05, 58.29, 4, 0)
 end
@@ -98,6 +98,11 @@ end
 function ThankYou(NPC,Spawn)
     local zone = GetZone(NPC)
     local Refugee = GetSpawnByLocationID(zone, 133775727) --Refugee
+    SpawnSet(Refugee,"name","a liberated refugee")
+    SpawnSet(Refugee,"faction","34")
+    SpawnSet(Refugee,"hp","45")
+    SpawnSet(Refugee,"power","45")
+    SpawnSet(Refugee,"aggro_radius","3")
     FaceTarget(Refugee,Spawn)
     choice = MakeRandomInt(1,4)
     if choice == 1 then
@@ -106,7 +111,7 @@ function ThankYou(NPC,Spawn)
     PlayFlavor(Refugee, "", "", "bow",0,0)
     elseif choice == 3 then
     PlayFlavor(Refugee, "", "", "notworthy",0,0)
-    elseif choice == 3 then
+    elseif choice == 4 then
     PlayFlavor(Refugee, "", "", "cheer",0,0)
     end
 end
@@ -115,7 +120,6 @@ function ThankYou2(NPC,Spawn)
     local zone = GetZone(NPC)
     local Refugee = GetSpawnByLocationID(zone, 133775727) --Refugee
     PlayFlavor(Refugee, "", "", "notworthy",0,0)
-    SpawnSet(Refugee,"faction",32)
 end
 
 
