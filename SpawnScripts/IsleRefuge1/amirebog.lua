@@ -98,5 +98,4 @@ function respawn(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
 end

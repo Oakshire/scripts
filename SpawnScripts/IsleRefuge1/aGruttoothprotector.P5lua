@@ -1,0 +1,33 @@
+--[[
+    Script Name    : SpawnScripts/IsleRefuge1/aGruttoothprotector.P5lua
+    Script Author  : Dorbin
+    Script Date    : 2022.09.20 03:09:33
+    Script Purpose : 
+                   : 
+--]]
+
+function spawn(NPC)
+waypoints(NPC)
+end
+
+function respawn(NPC)
+	spawn(NPC)
+end
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, -95.34, -9.04, -39.9, 2, 0)
+	MovementLoopAddLocation(NPC, -95.99, -7.1, -44.11, 2, 0)
+	MovementLoopAddLocation(NPC, -97.41, -2.69, -51.65, 2, 0)
+	MovementLoopAddLocation(NPC, -95.81, 1.94, -59.99, 2, 0)
+	MovementLoopAddLocation(NPC, -95.3, 4.61, -64.59, 2, 0)
+	MovementLoopAddLocation(NPC, -94.4, 5.46, -67.64, 2, 0)
+	MovementLoopAddLocation(NPC, -94.11, 5.45, -68.67, 2, 22)
+	MovementLoopAddLocation(NPC, -93.54, 5.45, -67.98, 2, 0)
+	MovementLoopAddLocation(NPC, -94.07, 2.72, -61.42, 2, 0)
+	MovementLoopAddLocation(NPC, -94.68, -0.72, -55.45, 2, 0)
+	MovementLoopAddLocation(NPC, -94.89, -3.78, -49.48, 2, 0)
+	MovementLoopAddLocation(NPC, -95.08, -8, -42.37, 2, 0)
+	MovementLoopAddLocation(NPC, -94.86, -9.04, -38.61, 2, 22)
+	MovementLoopAddLocation(NPC, -94.7, -9.03, -37.61, 2, 0)
+	MovementLoopAddLocation(NPC, -95.94, -8.99, -37.46, 2, 0)
+end

@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/IsleRefuge1/aGruttoothprotector.lua
-    Script Author  : LordPazuzu
-    Script Date    : 2022.09.13 08:09:15
+    Script Name    : SpawnScripts/IsleRefuge1/aGruttoothsaboteur.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.09.20 03:09:28
     Script Purpose : 
                    : 
 --]]
@@ -10,9 +10,13 @@ function spawn(NPC)
     EmoteLoop(NPC,Spawn)
 end
 
+function hailed(NPC, Spawn)
+end
+
 function respawn(NPC)
 	spawn(NPC)
 end
+
 
 function EmoteLoop(NPC,Spawn)
    if IsInCombat(NPC) == false and HasMoved(NPC)==false then
