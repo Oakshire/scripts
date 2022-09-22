@@ -95,7 +95,7 @@ function Quest3Offer(NPC,Spawn)
 
 end
 
-function Scout3Turnin(NPC,Spawn)
+function Quest3Turnin(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("Well done brave friend.  With the mystics weakened, the goblins will have a harder time with their siege plans.  I have taken the liberty of placing a reward in your bank.  Seek out Banker Vertbridge and he will help you receive it.  Wear them well, you will need the protection.  Are you able to assist us with another task?")

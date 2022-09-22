@@ -65,6 +65,7 @@ if HasSpellEffect(NPC,993) then
     CastSpell(NPC,993,1, NPC)
     SpawnSet(NPC,"visual_state",0)
     FaceTarget(NPC,Spawn)
+    SetTempVariable(NPC,"Update","true" )
     AddTimer(NPC,120000,"DiseaseReturn")   
     end
     end

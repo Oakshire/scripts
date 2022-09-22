@@ -9,10 +9,11 @@
 -- Info from spell_display_effects (remove from script when done)
 -- Increases speed of group members (AE) by 16.0%
 
-function cast(Caster, Target, BuffValue)
-    AddSpellBonus(Target, 609, BuffValue)
+function cast(Caster, Target, Speed)
+    AddSpellBonus(Target, 609, Speed)
 end
 
-function remove(Caster, Target, BuffValue)
+
+function remove(Caster, Target)
     RemoveSpellBonus(Target)
 end

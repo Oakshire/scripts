@@ -7,11 +7,22 @@
 --]]
 
 function spawn(NPC)
-    EmoteLoop(NPC,Spawn)
+    AddTimer(NPC,2000,"EmoteLoop")
 end
 
-function hailed(NPC, Spawn)
+function aggro(NPC, Spawn)
+    aggrotimer(NPC)
 end
+
+function aggrotimer(NPC)
+    if IsInCombat(NPC) then
+    AddTimer(NPC,8000,"aggrotimer")
+    else 
+    Despawn(NPC)
+    end
+end
+ 
+
 
 function respawn(NPC)
 	spawn(NPC)

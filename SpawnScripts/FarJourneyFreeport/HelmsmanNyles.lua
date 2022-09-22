@@ -25,12 +25,105 @@ end
 
 function leave(NPC, Spawn)
 	PlayFlavor(NPC, "", "The captain's gonna kill me for this...", "", 0, 0, Spawn, 0)
+if not HasItem(Spawn,185427) then
+    SummonItem(Spawn,185427,1,1)
+end
+if not HasItem(Spawn,20904) then
+    SummonItem(Spawn,20904,1,1)
+end
 if GetLevel(Spawn)<2 then
     SetPlayerLevel(Spawn,2)
     end
 if HasQuest(Spawn, 524)then
-    QuestIsComplete(Spawn, 524)
-    end
+        if GetQuestStep(Spawn,524)==1 then
+        SetStepComplete(Spawn,524,1)
+        SetStepComplete(Spawn,524,2)
+        SetStepComplete(Spawn,524,3)
+        SetStepComplete(Spawn,524,4)
+        SetStepComplete(Spawn,524,5)
+        SetStepComplete(Spawn,524,6)
+        SetStepComplete(Spawn,524,7)
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==2 then
+        SetStepComplete(Spawn,524,2)
+        SetStepComplete(Spawn,524,3)
+        SetStepComplete(Spawn,524,4)
+        SetStepComplete(Spawn,524,5)
+        SetStepComplete(Spawn,524,6)
+        SetStepComplete(Spawn,524,7)
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==3 then
+        SetStepComplete(Spawn,524,3)
+        SetStepComplete(Spawn,524,4)
+        SetStepComplete(Spawn,524,5)
+        SetStepComplete(Spawn,524,6)
+        SetStepComplete(Spawn,524,7)
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==4 then
+        SetStepComplete(Spawn,524,4)
+        SetStepComplete(Spawn,524,5)
+        SetStepComplete(Spawn,524,6)
+        SetStepComplete(Spawn,524,7)
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==5 then
+        SetStepComplete(Spawn,524,5)
+        SetStepComplete(Spawn,524,6)
+        SetStepComplete(Spawn,524,7)
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==6 then
+        SetStepComplete(Spawn,524,6)
+        SetStepComplete(Spawn,524,7)
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==7 then
+        SetStepComplete(Spawn,524,7)
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==8 then
+        SetStepComplete(Spawn,524,8)
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==9 then
+        SetStepComplete(Spawn,524,9)
+        SetStepComplete(Spawn,524,10)
+        end
+        if GetQuestStep(Spawn,524)==10 then
+        SetStepComplete(Spawn,524,10)
+        end
+
+end
+
+AddTimer(NPC,3000,"ToShore",1,Spawn)
+end
+
+
+function ToShore(NPC, Spawn)
+        if HasItem(Spawn,9357) then
+            RemoveItem(Spawn,9357,1)
+        end
+        if HasItem(Spawn,15354) then
+            RemoveItem(Spawn,15354,1)
+        end        
 if GetClass(Spawn) == 0 then
           ZoneRef = GetZone("IsleRefuge1")
         Zone(ZoneRef,Spawn)     

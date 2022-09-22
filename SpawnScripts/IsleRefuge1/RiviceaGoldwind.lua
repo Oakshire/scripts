@@ -31,8 +31,11 @@ function hailed(NPC, Spawn)
     elseif choice ==3 then
     Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_3_1011.mp3", 0, 0)
     end    
-	PlayFlavor(NPC, "", "", "hello", 0,0, Spawn)
-	Dialog.AddOption("What kind of collections?","Collections")
+    PlayFlavor(NPC, "", "", "hello", 0,0, Spawn)
+    if HasCollectionsToHandIn(Spawn) then
+    Dialog.AddOption("I have a collection for you.", "TurnIn")
+    end
+    Dialog.AddOption("What kind of collections?","Collections")
 	Dialog.AddOption("Good bye.")
 	Dialog.Start()
 end
@@ -44,7 +47,18 @@ end
 function Collections(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("The reason I trade is to collect more shinies.  I can find some in the ground here, but travelers bring some of the most wonderful things!")
-	Dialog.AddOption("Interesting.  Thank you for sharing!")
+	Dialog.AddDialog("Why, any sort of collection. There's so much out there to find! Just open your eyes and peek under the rocks.  If you find anything interesting, let me have a look. Collecting is the only way I seem to relive my youth!")
+	Dialog.AddOption("I'll keep that in mind.")
+	Dialog.Start()
+end
+
+
+function TurnIn(NPC,Spawn)
+	FaceTarget(NPC, Spawn)
+	HandInCollections(Spawn)
+	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "thanks", 0,0, Spawn)
+	Dialog.AddDialog("Thank you so much! This will make a fantastic addition to my collections!  Please take this for helping me.")
+	Dialog.AddOption("Okay, bye!")
 	Dialog.Start()
 end

@@ -5,18 +5,36 @@
     Script Purpose : 
                    : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
+local Cellar =5749
+
 
 function spawn(NPC)
+    ProvidesQuest(NPC,Cellar)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+end
 
+function InRange(NPC,Spawn)
+if not HasQuest(Player,Cellar) and not HasCompletedQuest(Player,Cellar) then
+    PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/030_wizard_assistant_dreak_aoicallout_e3958bf.mp3","Such a mess! Malvonicus is going to kill me!","grumble",541493613,293203409, Spawn)
+end
 end
 
 function hailed(NPC, Player)
-    Say(Player, "this was a hail")
+if not HasQuest(Player,Cellar) and not HasCompletedQuest(Player,Cellar) then
+Dialog1(NPC,Player)
+end
+end
+
+function Dialog1(NPC, Player)
     conversation = CreateConversation()
     PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/assistant_dreak001.mp3","","",2907679285,3779656812, Player)
     AddConversationOption(conversation,"Why, what happened to the workshop?","WhatHappened")
     StartConversation(conversation, NPC, Player,"Oh, hello there. Welcome to the mage tower.  If you're looking for masters Mizan or Malvonicus, they can both be found upstairs.  If you've come to use the workshop ... well, I'm afraid you're out of luck for the time being.")
 end
+
+
+
 function WhatHappened(NPC, Player)
     conversation = CreateConversation()
     PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/assistant_dreak002.mp3","","",402125016,2910805792, Player)
@@ -29,11 +47,10 @@ function ItsMyFault(NPC, Player)
     AddConversationOption(conversation,"All right, it's a deal.","ForCrafting")
     StartConversation(conversation, NPC, Player,"For crafting, of course!  With the right recipes and materials, you can make just about anything you want down there, from metal working to brewing.  Say... if you're interested in learning more about crafting yourself, I'd be willing to make you a deal.  I'll give you free, unlimited access to the workshop, if you'd be willing to clean up the place.  What do you say?")
 end
+
 function ForCrafting(NPC, Player)
-    conversation = CreateConversation()
-    PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/assistant_dreak004.mp3","","",246435936,3107615538, Player)
-    AddConversationOption(conversation,"Very well then.","Wonderful")
-    StartConversation(conversation, NPC, Player,"Wonderful!  Here's a list of instructions on what needs to be done down there.  Just go through the cellar door here, and you should find everything you need.  Just come back and see me once you've got everything straightened out.  Oh, and thanks again!")
+    FaceTarget(NPC,Player)
+    OfferQuest(NPC,Player,Cellar)
 end
 
 

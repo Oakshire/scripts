@@ -57,7 +57,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I have glued the pieces of the token back together using the sticky gelatin from the fish skins I collected.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "I have glued the pieces of the token back together using the sticky gelatin from the fish skins I collected.")
 
-	AddQuestStepKillByRace(Quest, 5, "I should find a replacement cord on the goblins found on the island.", 1, 25, "The pieces of the token are now glued back together I just need a leather cord to wear it.  The goblins on the island must have a suitable one somewhere.", 1113, 300)
+	AddQuestStepKillByRace(Quest, 5, "I should find a replacement cord on the goblins found on the island.", 1, 60, "The pieces of the token are now glued back together I just need a leather cord to wear it.  The goblins on the island must have a suitable one somewhere.", 1113, 300)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
