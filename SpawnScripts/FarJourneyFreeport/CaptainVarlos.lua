@@ -148,7 +148,19 @@ function hailed(NPC, player)
 end
 
 
-function Commoner(NPC,player)
+function Commoner(NPC, player)
+		FaceTarget(NPC, player)
+		Dialog.New(NPC, player)
+		Dialog.AddDialog("Me apologies. Are you sure?  This can't be undone. We'll take you to The Isle of Refuge if that is the case.")
+		Dialog.AddVoiceover("voiceover/english/captain_varlos/boat_06p_tutorial02/varlos_0_002.mp3", 2054400186, 1976167819)
+		Dialog.AddEmote("ponder")
+		Dialog.AddOption("Yes, I am a Commoner.", "Commoner2")
+		Dialog.AddOption("Nevermind.  Who are you?","who_are_you")
+		Dialog.Start()
+end
+
+
+function Commoner2(NPC,player)
     PlayFlavor(NPC, "", "", "grumble", 0, 0, player, 0)
 	Dialog.New(NPC, player)
 	Dialog.AddDialog("Ya' know, me hates doing paperwork! Arrrr!")
@@ -156,7 +168,7 @@ function Commoner(NPC,player)
 	Dialog.AddOption("Thank you.  Now, where are am I?", "who_are_you")
 	Dialog.Start()
     RemoveGear(NPC,player)
-    AddTimer(NPC,800,"ClassSet",1,player)
+    AddTimer(NPC,2000,"ClassSet",1,player)
 end
 
 function ClassSet(NPC,player)

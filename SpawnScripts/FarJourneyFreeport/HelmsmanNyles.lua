@@ -16,7 +16,7 @@ function hailed(NPC, Spawn)
         AddConversationOption(conversation, "Yes", "leave")
         AddConversationOption(conversation, "No")
         if GetClass(Spawn)>0 then
-        AddConversationOption(conversation, "Wait, I don't know what I'm doing here.  I'm just a commoner.","Commoner")
+        AddConversationOption(conversation, "Wait, I don't know what I'm doing here.  I'm just a commoner [CLASSIC CLASS CHANGE TO COMMONER].","Commoner")
         end
 
         
@@ -25,16 +25,16 @@ end
 
 function leave(NPC, Spawn)
 	PlayFlavor(NPC, "", "The captain's gonna kill me for this...", "", 0, 0, Spawn, 0)
-if not HasItem(Spawn,185427) then
+if not HasItem(Spawn,185427) then   -- GIVES THREADBARE TUNIC
     SummonItem(Spawn,185427,1,1)
 end
-if not HasItem(Spawn,20904) then
+if not HasItem(Spawn,20904) then  -- GIVES SMALL BAG  
     SummonItem(Spawn,20904,1,1)
 end
-if GetLevel(Spawn)<2 then
+if GetLevel(Spawn)<2 then       --SET LEVEL TO 2
     SetPlayerLevel(Spawn,2)
     end
-if HasQuest(Spawn, 524)then
+if HasQuest(Spawn, 524)then     -- COMPLETES REMAINING QUEST STEPS (Replace w/ quest removal once we figure that out)
         if GetQuestStep(Spawn,524)==1 then
         SetStepComplete(Spawn,524,1)
         SetStepComplete(Spawn,524,2)
@@ -118,12 +118,15 @@ end
 
 
 function ToShore(NPC, Spawn)
-        if HasItem(Spawn,9357) then
+        if HasItem(Spawn,9357) then     --REMOVES Mariner's Charm
             RemoveItem(Spawn,9357,1)
         end
         if HasItem(Spawn,15354) then
-            RemoveItem(Spawn,15354,1)
-        end        
+            RemoveItem(Spawn,15354,1)   --REMOVES Waulon's Hat
+        end
+        if HasItem(Spawn,12565) then    --REMOVES Shard of Luclin
+            RemoveItem(Spawn,12565,1)
+        end          
 if GetClass(Spawn) == 0 then
           ZoneRef = GetZone("IsleRefuge1")
         Zone(ZoneRef,Spawn)     
@@ -142,6 +145,13 @@ function respawn(NPC)
 end
 
 function Commoner(NPC, Spawn)
+    local conversation = CreateConversation()
+        AddConversationOption(conversation, "Yes, I am a Commoner.", "Commoner2")
+        AddConversationOption(conversation, "Nevermind.")
+        StartConversation(conversation, NPC, Spawn, "Are you sure?  This can't be undone. We'll take you to The Isle of Refuge if that is the case.")
+end
+
+function Commoner2(NPC, Spawn)
 	PlayFlavor(NPC, "", "Well, so ya are.  Let me help you with that.", "", 0, 0, Spawn, 0)
     RemoveGear(NPC,Spawn)
 	SetAdventureClass(Spawn,0)

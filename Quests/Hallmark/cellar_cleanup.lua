@@ -34,7 +34,7 @@ function Accepted(Quest, QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
 	Dialog.AddDialog("Wonderful!  Here's a list of instructions on what needs to be done down there.  Just go through the cellar door here, and you should find everything you need.  Just come back and see me once you've got everything straightened out.  Oh, and thanks again!")
 	Dialog.AddVoiceover("voiceover/english/assistant_dreak/tutorial_island02/assistant_dreak004.mp3",246435936,3107615538)
-    PlayFlavor(NPC,"","","happy",0,0, Player)
+    PlayFlavor(QuestGiver,"","","smile",0,0, Player)
 	Dialog.AddOption("Very well then.")
 	Dialog.Start()
 end
@@ -98,7 +98,17 @@ function Step8Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 8, "I spoke with Assistant Dreak.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I told Assistant Dreak that the cellar is clean.")
     UpdateQuestZone(Quest,"Mizan's Cellar")
-
+    if GetTradeskillLevel(Player)<2 then
+        SetTradeskillLevel(Player,2)
+    end
+    GiveQuestItem(Quest, Player, "", 20708,4142,4142,4142,7391,7391,7391)
+--    GiveQuestItem(Quest, Player, "", 4142)
+--   GiveQuestItem(Quest, Player, "", 4142)
+--    GiveQuestItem(Quest, Player, "", 4142)
+--    GiveQuestItem(Quest, Player, "", 7391)
+--    GiveQuestItem(Quest, Player, "", 7391)
+--    GiveQuestItem(Quest, Player, "", 7391)
+    
 	AddQuestStepCraft(Quest, 9, "Use the forge to create a tin bar using a fossil temper, a tin cluster and some fuel.", 1, 100, "I need to make Assistant Dreak a simple tin spike to block entrance to the cellar.", 775, 14460,12502,6055,11039)
 	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")
 end

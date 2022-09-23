@@ -56,7 +56,7 @@ end
 function Dialog4(Item,Player)
     conversation = CreateConversation()
     if GetQuestStep(Player,BoneShard)==6 then
-    AddConversationOption(conversation, "[Add the Leather Cord]", "ExamineUpdate1")
+    AddConversationOption(conversation, "[Add the Leather Cord]", "QuestFinish")
     end
     if GetQuestStep(Player,BoneShard)==4 then
     SetStepComplete(Player,BoneShard,4)
@@ -66,7 +66,7 @@ function Dialog4(Item,Player)
 end
 
 function QuestFinish(Item,Player)
-    if GetQuestStep(Player,BoneShard)==4 then
+    if GetQuestStep(Player,BoneShard)==6 then
     SetStepComplete(Player,BoneShard,6)
     end    
     if HasItem(Player,1001012) then
