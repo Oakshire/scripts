@@ -6,8 +6,7 @@
                    : 
 --]]
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 3, "InRange", "LeaveRange")
-SetTempVariable(NPC,"Fire",nil)
+--SetPlayerProximityFunction(NPC, 3, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)

@@ -14,7 +14,9 @@ end
 
 function InRange(NPC, Spawn)
  if HasCollectionsToHandIn(Spawn) then
-  SpawnSet(NPC, "visual_state", 6674 )   
+  SpawnSet(NPC, "visual_state", 6674 )
+  else
+  SpawnSet(NPC, "visual_state", 0 )
   end
 end    
 
@@ -54,8 +56,8 @@ end
 
 
 function TurnIn(NPC,Spawn)
-	FaceTarget(NPC, Spawn)
 	HandInCollections(Spawn)
+	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "thanks", 0,0, Spawn)
 	Dialog.AddDialog("Thank you so much! This will make a fantastic addition to my collections!  Please take this for helping me.")

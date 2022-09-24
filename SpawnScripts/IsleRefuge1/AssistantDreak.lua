@@ -11,7 +11,7 @@ local Cellar =5749
 
 function spawn(NPC)
     ProvidesQuest(NPC,Cellar)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 11, "InRange", "LeaveRange")
 end
 
 function InRange(NPC,Player)
