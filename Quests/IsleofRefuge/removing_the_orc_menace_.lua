@@ -9,15 +9,23 @@
         Preceded by: Striking Back at the Goblins
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to enter the orc cave.", 1, "I must find and enter the lair of the orc leader. His cave should be somewhere on the northeastern part of the island, past the main goblin encampment.", 11, -13.77, 0.00, -3.00, 324)
+	AddQuestStepZoneLoc(Quest, 1, "I need to enter the orc cave.", 1, "I must find and enter the lair of the orc leader. His cave should be somewhere on the northeastern part of the island, past the main goblin encampment.", 11, -13.77, 0.00, -3.00, 324)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Good.  Others are planning an attack on the creature.  Go now and aid them with your healing and blessing powers.  They depend on you to keep them alive and well.  Be safe, young priest.  The orc hides in a cave at the far northeast side of the isle.  Find the cave and destroy the beast.")
+	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright013.mp3", 969428761,2830927430)
+    Dialog.AddEmote("agree")	
+--    PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+    Dialog.AddOption("I will return to you after slaying this beast.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

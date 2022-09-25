@@ -5,7 +5,7 @@
     Script Purpose : 
                    : 
 --]]
-local EbiksMissingParts = 185
+local EbiksMissingParts = 5755
 
 function spawn(NPC)
 	SetRequiredQuest(NPC, EbiksMissingParts, 3)

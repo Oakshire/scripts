@@ -9,6 +9,7 @@
         Preceded by: Striking Back at the Golbins
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Fantastic!  Your magical skills are vital in successfully attacking this evil orc.  Wield your magic arts and destroy the creature that commands the attacks against our settlement!  The orc resides in a cave on the northeast side of the island.  Find the cave and slay the beast.")
+	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin013.mp3", 703001455, 1456004072)
+    PlayFlavor(QuestGiver, "", "", "smile", 0, 0, Player)
+    Dialog.AddOption("I'll return once the deed is done.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -16,7 +16,7 @@ function hailed(NPC, Spawn)
         AddConversationOption(conversation, "Yes", "leave")
         AddConversationOption(conversation, "No")
         if GetClass(Spawn)>0 then
-        AddConversationOption(conversation, "Wait, I don't know what I'm doing here.  I'm just a commoner [CLASSIC CLASS CHANGE TO COMMONER].","Commoner")
+        AddConversationOption(conversation, "      Wait,  I'm just a commoner.              [CLASSIC CLASS CHANGE TO COMMONER].","Commoner")
         end
 
         
@@ -34,6 +34,7 @@ end
 if GetLevel(Spawn)<2 then       --SET LEVEL TO 2
     SetPlayerLevel(Spawn,2)
     end
+
 if HasQuest(Spawn, 524)then     -- COMPLETES REMAINING QUEST STEPS (Replace w/ quest removal once we figure that out)
         if GetQuestStep(Spawn,524)==1 then
         SetStepComplete(Spawn,524,1)
@@ -157,4 +158,10 @@ function Commoner2(NPC, Spawn)
 	SetAdventureClass(Spawn,0)
 	SendMessage(Spawn, "You are now a Commoner.")
     SendPopUpMessage(Spawn, "You are now a Commoner.", 255, 255, 255)	
+if GetTradeskillLevel(Spawn)>0 then
+    SetTradeskillLevel(Spawn, 0)
+end
+if GetTradeskillClass(Spawn)>0 then
+    SetTradeskillClass(Spawn,0)
+end
 end

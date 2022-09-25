@@ -11,11 +11,61 @@ local Mage2 = 5733
 local Mage3 = 5736
 local Mage4 = 5740
 local Mage5 = 5744
+local Mage6 = 5752
+local Research = true
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 5, "InRange", "LeaveRange")
     ProvidesQuest(NPC, Mage3)
     ProvidesQuest(NPC, Mage4)
+    ProvidesQuest(NPC, Mage5)
+    ProvidesQuest(NPC, Mage6)
+    AddTimer(NPC,3000,"CastResearch")
+end
+
+function CastResearch(NPC,Spawn)
+    if Research == true then
+    choice = MakeRandomInt(1,6)
+    if choice == 1 then
+    CastSpell(NPC,16)
+    elseif choice == 2 then
+    CastSpell(NPC,19)
+    elseif choice == 3 then
+    CastSpell(NPC,132)    
+    elseif choice == 4 then
+    CastSpell(NPC,183)    
+    elseif choice == 5 then
+    CastSpell(NPC,17)   
+    elseif choice == 6 then
+    CastSpell(NPC,210011)   
+    end
+    AddTimer(NPC,4000,"Consideration")
+end
+    AddTimer(NPC,math.random(15000,22000),"CastResearch")
+end
+
+function Consideration(NPC,Spawn)
+    choice2 = MakeRandomInt(1,6)
+    if choice2 == 1 then
+    PlayFlavor(NPC, "", "", "ponder", 0, 0)
+    elseif choice2 ==2 then
+    PlayFlavor(NPC, "", "", "confused", 0, 0)
+    elseif choice2 ==3 then
+    PlayFlavor(NPC, "", "", "agree", 0, 0)
+    elseif choice2 ==4 then
+    PlayFlavor(NPC, "", "", "boggle", 0, 0)
+    elseif choice2 ==5 then
+    PlayFlavor(NPC, "", "", "sniff", 0, 0)
+    elseif choice2 ==6 then
+    PlayFlavor(NPC, "", "", "nod", 0, 0)
+    end
+end
+
+
+
+function ResetResearch(NPC,Spawn)
+    Research = true
+--SetTempVariable(NPC,"Research","Yes")
 end
 
 function InRange(NPC,Spawn)
@@ -29,6 +79,9 @@ else
     elseif not HasQuest(Spawn, Mage4) and not HasCompletedQuest(Spawn, Mage4) and HasCompletedQuest(Spawn,Mage3) then
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC,"voiceover/english/mizan_vaeoulin/tutorial_island02_fvo_mageq2.mp3","Ah, you have returned.  I am in need of your assistance.","nod",2357058615,3609625942, Spawn)
+    elseif not HasQuest(Spawn, Mage6) and not HasCompletedQuest(Spawn, Mage5) and HasCompletedQuest(Spawn,Mage6) then
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC,"voiceover/english/mizan_vaeoulin/tutorial_island02_fvo_mageq4.mp3","The vile leader of the goblins has been discovered!","nod",1615575534,1155005165, Spawn)
     end
 
 end
@@ -36,6 +89,9 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+    Research = false
+--    SetTempVariable(NPC,"Research","No")
+    AddTimer(NPC,60000,"ResetResearch",1,Spawn)
 if GetClass(Spawn)== 0 then
     PlayFlavor(NPC,"voiceover/english/mizan_vaeoulin/tutorial_island02_fvo_nomage.mp3","You there!  Unregistered refugees are not permitted in this area.  Return to Garven Tralk and register at once.  You'll find him on the beach where you arrived.","scold",777511365,1811810491, Spawn)
 elseif HasQuest(Spawn, Mage2) or not HasQuest(Spawn, Mage3) and not HasCompletedQuest(Spawn, Mage3) and HasCompletedQuest(Spawn,Mage2) then
@@ -44,6 +100,8 @@ elseif  not HasQuest(Spawn, Mage4) and not HasCompletedQuest(Spawn, Mage4) and H
     Dialog2(NPC,Spawn) 
 elseif  not HasQuest(Spawn, Mage5) and not HasCompletedQuest(Spawn, Mage5) and HasCompletedQuest(Spawn,Mage4) then
     Quest5Start(NPC,Spawn) 
+elseif  not HasQuest(Spawn, Mage6) and not HasCompletedQuest(Spawn, Mage6) and HasCompletedQuest(Spawn,Mage5) then
+    Quest6Start(NPC,Spawn) 
 else
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Can't you see I am in the middle of my research.  What do you need?")
@@ -57,10 +115,21 @@ else
     if GetQuestStep(Spawn,Mage5)==2 then
 	Dialog.AddOption("I have the goblin blood samples you asked for.","Quest5Turnin")
 	end    
+    if GetQuestStep(Spawn,Mage6)==3 then
+	Dialog.AddOption("The orc responsible for the goblin uprising is no more.","Quest6Turnin")
+	end  
+    if HasCompletedQuest(Spawn,Mage6) then
+	Dialog.AddOption("I suppose it is time I do my own research off the island.  Good day Mizan.","Thanks")
+	end 	
 	Dialog.AddOption("I will leave you to your research.")
 	Dialog.Start()
 
 end
+end
+
+function Thanks(NPC,Spawn)
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC,"","","bow",0,0, Spawn)
 end
 
 function respawn(NPC)
@@ -167,7 +236,7 @@ function Quest5Start(NPC,Spawn)
  	Dialog.AddDialog("While you were away, it seems that a few of Vladiminn's new recruits scouted out the main goblin encampment on the northwestern part of the island.  Other adventurers are gathering to make an attack against it.  My teacher, Malvonicus, has determined that we could make use of goblin blood in creating wards against the creatures.  If you are willing, could you go along with this attack and while you are there, collect a few samples of goblin blood?")
 	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin009.mp3", 963345532, 1033695526)
     Dialog.AddOption("I'll go along and collect the samples.","Quest5Offer")	
-    Dialog.AddOption("Bleh! That sounds dreadful.  I'd rather not deal with goblin blood.")	
+    Dialog.AddOption("That sounds dreadful!  I'd rather not deal with goblin blood.")	
 	Dialog.Start()
 end
 
@@ -188,14 +257,33 @@ function Quest5Turnin(NPC,Spawn)
     SetStepComplete(Spawn,Mage5,2)
 end
 
---[[(1125785819)[Sat Sep 03 18:16:59 2005] \aNPC 11942 Mizan Vaeoulin:Mizan Vaeoulin\/a says to you,"Can't you see I am in the middle of my research.  What do you need?"
-(1125785820)[Sat Sep 03 18:17:00 2005] You say to Mizan Vaeoulin,"I have the goblin blood samples you asked for."
-(1125785820)[Sat Sep 03 18:17:00 2005] You gain experience!
-(1125785820)[Sat Sep 03 18:17:00 2005] Your quest journal has been updated.
-(1125785820)[Sat Sep 03 18:17:00 2005] \aNPC 11942 Mizan Vaeoulin:Mizan Vaeoulin\/a says to you,"This is exactly what Malvonicus needs to begin research on the goblin warding spells.  He instructed me to give you this apprentice robe in appreciation for the work you rendered here.  I am remiss to ask this, but others need your services for one final task.  Are you willing to help us?"
-(1125785824)[Sat Sep 03 18:17:04 2005] You say to Mizan Vaeoulin,"I will help with this task."
-(1125785824)[Sat Sep 03 18:17:04 2005] \aNPC 11942 Mizan Vaeoulin:Mizan Vaeoulin\/a says to you,"We know the force behind the goblin attacks.  Some time ago, a renowned orc pirate settled on the island and took control of the goblin tribes.  He rules over the tribes and holds a deep hatred for the Far Seas Trading Company.  Adventurers are forming an alliance to find the orc and destroy him.  They shall put an end to his menacing our outpost.  They need your help.  Are you ready for the task, adventurer?"
-(1125785826)[Sat Sep 03 18:17:06 2005] You say to Mizan Vaeoulin,"I'll go and aid them with my magic."
-]]--
+--------------------------------------------------------------------------------------------------------------------------------
+--					QUEST 6
+--------------------------------------------------------------------------------------------------------------------------------
 
+function Quest6Start(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("We know the force behind the goblin attacks.  Some time ago, a renowned orc pirate settled on the island and took control of the goblin tribes.  He rules over the tribes and holds a deep hatred for the Far Seas Trading Company.  Adventurers are forming an alliance to find the orc and destroy him.  They shall put an end to his menacing our outpost.  They need your help.  Are you ready for the task, adventurer?")
+	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin012.mp3", 2000860005, 2814938079)
+    Dialog.AddOption("I'll go and aid them with my magic.","Quest6Offer")	
+    Dialog.AddOption("You must be joking.  I will NOT be dealing with any orc!")	
+	Dialog.Start()
+end
+
+function Quest6Offer(NPC,Player)
+    OfferQuest(NPC,Player,Mage6)
+    FaceTarget(NPC, Spawn)
+end
+
+function Quest6Turnin(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("You have served this outpost well.  In sincere appreciation, we award you this mage staff.  Use it well on your path to knowledge and mastery of the arcane arts. ")
+	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin014.mp3", 35364237, 702859208) 
+    PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
+    Dialog.AddOption("Thank you.  I wish you luck in your future research.")	
+	Dialog.Start()
+    SetStepComplete(Spawn,Mage6,3)
+end
 

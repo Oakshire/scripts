@@ -7,7 +7,7 @@
         Zone       : IsleofRefuge
         Quest Giver: Vladimin
         Preceded by: Striking Back at the Goblins
-        Followed by: 
+        Followed by: None
 --]]
 
 
@@ -17,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("The other leaders and I are sending out an alliance to destroy this beastly leader.  You will join this force and destroy the orc.  Be warned, this is a treacherous journey that you alone cannot complete.  Go now and find comrades who will help you on this mission to destroy the grisly beast.")
+	Dialog.AddVoiceover("voiceover/english/vladiminn/tutorial_island02/vladiminn012.mp3", 2472668333, 3361828940)
+    PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+    Dialog.AddOption("I will be on my way.  Be prepared to hear back from me soon.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

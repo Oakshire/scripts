@@ -9,6 +9,7 @@
         Preceded by: Striking Back at the Goblins
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I need to find the orc's cave.", 1, "I need to find the orc's cave on the northeast part of the island, past the main goblin encampment.", 11, -13.77, 0.00, -3.00, 324)
@@ -16,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("The others will rely on you to handle most of the fighting but I know you can handle it.  You're a brave fighter after all!  Go, meet with the others in the village and give those goblins what they deserve!  While you are at it friend, fetch me some flint head spears that the goblins carry.  I figure it's the least those buggers owe me, considering all of my gear they've stole or broke in the past few weeks.  Quickly now!  Time is a wasting!")
+	Dialog.AddVoiceover("voiceover/english/braksan_steelforge/tutorial_island02/braksansteelforge013.mp3", 3489827867,2503461206)
+    PlayFlavor(QuestGiver, "", "", "no", 0, 0, Player)
+    Dialog.AddOption("I'll put an end to this.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

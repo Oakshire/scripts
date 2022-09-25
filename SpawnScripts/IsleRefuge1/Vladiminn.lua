@@ -10,12 +10,15 @@ local Scout2 = 5730
 local Scout3 = 5737
 local Scout4 = 5741
 local Scout5 = 5745
+local Scout6 = 5753
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
     ProvidesQuest(NPC, Scout3)
     ProvidesQuest(NPC, Scout4)
     ProvidesQuest(NPC, Scout5)
+    ProvidesQuest(NPC, Scout6)
+    CastSpell(NPC,8231)
 end
 
 function InRange(NPC,Spawn)
@@ -57,9 +60,12 @@ else
     if not HasQuest(Spawn, Scout5) and HasCompletedQuest(Spawn,Scout4) and not HasCompletedQuest(Spawn,Scout5) then
 	Dialog.AddOption("I was fine for the first two bits, let's get on with this.","Quest5Start")
 	end
---    if not HasQuest(Spawn, Scout6) and HasCompletedQuest(Spawn,Scout5) and not HasCompletedQuest(Spawn,Scout6) then
---    Dialog.AddOption("Are you certain you could not use my help?","Quest6Start")	
---	end
+    if not HasQuest(Spawn, Scout6) and HasCompletedQuest(Spawn,Scout5) and not HasCompletedQuest(Spawn,Scout6) then
+    Dialog.AddOption("Are you certain you could not use my help?","Quest6Start")	
+	end
+    if HasCompletedQuest(Spawn, Scout6) then
+    Dialog.AddOption("Fit as I can be thanks you.  I must prepare for my voyage off this island.  Farewell, Vladiminn.")
+    end
 	Dialog.AddOption("Fit, but currently unwilling.")
 	Dialog.Start()
 end
@@ -147,12 +153,12 @@ function Quest5Start(NPC,Spawn)
  	Dialog.AddDialog("Anxious, are we?  Before you get too excited I should tell you this next task is dangerous, far more dangerous than previous tasks.  Are you willing to risk your life for your fellow refugees?  I'll reward you handsomely at the end of your duty but an award is of no use to a dead man.  I ask you now, are you up for the task?")
 	Dialog.AddVoiceover("voiceover/english/vladiminn/tutorial_island02/vladiminn007.mp3", 2208035850,4224224811)
     PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
-    Dialog.AddOption("I'm up for anything.","Quest5SOffer")	
+    Dialog.AddOption("I'm up for anything.","Quest5Offer")	
     Dialog.AddOption("Going to the goblin camp? No way!")	
 	Dialog.Start()
 end
 
-function Quest5SOffer(NPC,Player)
+function Quest5Offer(NPC,Player)
     OfferQuest(NPC,Player,Scout5)
     FaceTarget(NPC, Spawn)
 end
@@ -164,6 +170,7 @@ function Quest5Turnin(NPC,Spawn)
 	Dialog.AddVoiceover("voiceover/english/vladiminn/tutorial_island02/vladiminn009.mp3", 125664112,3235575096)
     PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
     Dialog.AddOption("Are you certain you could not use my help?","Quest6Start")	
+    Dialog.AddOption("Best of luck piecing this puzzle together.")	
 	Dialog.Start()
     SetStepComplete(Spawn,Scout5,2)
 end
@@ -187,11 +194,23 @@ function Quest6StartB(NPC,Spawn)
  	Dialog.AddDialog("I don't want panic our people, but I believe an orc is responsible for the chaos on the island.  No mere goblin chief is capable of creating such fury and frenzy in an entire camp, but an orc is certainly capable of creating such turmoil.")
 	Dialog.AddVoiceover("voiceover/english/vladiminn/tutorial_island02/vladiminn011.mp3", 472635060,3815131652)
     PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
-    Dialog.AddOption("[WORK IN PROGRESS]")	
+    Dialog.AddOption("[continue]","Quest6Offer")	
+    Dialog.AddOption("I've heard enough.  I want off this island!")	
 	Dialog.Start()
 end
 
-function Quest6SOffer(NPC,Player)
+function Quest6Offer(NPC,Player)
     OfferQuest(NPC,Player,Scout6)
     FaceTarget(NPC, Spawn)
+end
+
+function Quest6Turnin(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("I commend you on your progress.  Your talents are too valuable to waste on this island.  Please accept this final gift to help on your world journey.  Whatever city you choose to reside shall be lucky to have you as its citizen.  Farewell adventurer!")
+	Dialog.AddVoiceover("voiceover/english/vladiminn/tutorial_island02/vladiminn013.mp3", 1409277433,3036762776)
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddOption("Thank you.  I'll put my skills to good use.")	
+	Dialog.Start()
+    SetStepComplete(Spawn,Scout6,3)
 end
