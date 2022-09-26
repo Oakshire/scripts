@@ -20,11 +20,15 @@ Dialog2(NPC, Spawn)
 end
 
 function Dialog1(NPC, Spawn)
+	HandInCollections(Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("This is a magnificent find! Here, take this for all your hard work.")
 	Dialog.AddOption("Okay, bye!")
 	Dialog.Start()
+    if HasCollectionsToHandIn(Spawn) then
+    HandInCollections(Spawn)
+    end
 end
 
 function Dialog2(NPC, Spawn)
@@ -33,20 +37,13 @@ function Dialog2(NPC, Spawn)
 	Dialog.AddDialog("Hello, traveler!  How I envy you.  What I wouldn't give to journey the world as I did in my youth.   Alas, I am an old man, but at least I can occupy myself with my various trinkets and collections that I picked up in my travels.")
 	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_3_1008.mp3", 0, 0)
 	Dialog.AddOption("What collections?","Dialog6")
+    if HasCollectionsToHandIn(Spawn) then
 	Dialog.AddOption("I have a collection for you.", "Dialog1")
+    end
 	Dialog.AddOption("Goodbye!")
 	Dialog.Start()
 end
 
-function Dialog3(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Hello, traveler!  How I envy you.  What I wouldn't give to journey the world as I did in my youth.   Alas, I am an old man, but at least I can occupy myself with my various trinkets and collections that I picked up in my travels.")
-	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_3_1008.mp3", 0, 0)
-	Dialog.AddOption("What collections?", "Dialog6")
-	Dialog.AddOption("Goodbye!")
-	Dialog.Start()
-end
 
 function Dialog4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -56,15 +53,7 @@ function Dialog4(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Dialog5(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Hello, traveler!  How I envy you.  What I wouldn't give to journey the world as I did in my youth.   Alas, I am an old man, but at least I can occupy myself with my various trinkets and collections that I picked up in my travels.")
-	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_2_1008.mp3", 0, 0)
-	Dialog.AddOption("What collections?", "Dialog6")
-	Dialog.AddOption("Goodbye!")
-	Dialog.Start()
-end
+
 
 function Dialog6(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -85,13 +74,5 @@ function Dialog7(NPC, Spawn)
 	Dialog.Start()
 end
 
-function Dialog8(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Hello, traveler!  How I envy you.  What I wouldn't give to journey the world as I did in my youth.   Alas, I am an old man, but at least I can occupy myself with my various trinkets and collections that I picked up in my travels.")
-	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_1_1008.mp3", 0, 0)
-	Dialog.AddOption("What collections?", "Dialog6")
-	Dialog.AddOption("Goodbye!")
-	Dialog.Start()
-end
+
 

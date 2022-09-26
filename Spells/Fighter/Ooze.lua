@@ -7,7 +7,11 @@
 --]]
 
 
-function cast(Caster, Target)
-    AddSpellBonus(Caster, 200000, Physical)    
+function cast(Caster, Target, Physical)
+    AddSpellBonus(Caster, 200, Physical)        -- physical
 
+end
+
+function remove(Caster, Target)
+  
 end

@@ -26,7 +26,6 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-
 end
 
 function hailed(NPC, Spawn)

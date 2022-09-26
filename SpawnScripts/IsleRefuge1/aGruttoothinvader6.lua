@@ -19,7 +19,7 @@ function respawn(NPC)
 end
 
 function waypoints(NPC)
-	MovementLoopAddLocation(NPC, 216.91, -3.34, 145.55, 2, 5)
+	MovementLoopAddLocation(NPC, 216.91, -3.34, 145.55, 2, 0)
 	MovementLoopAddLocation(NPC, 214.71, -3.3, 142.35, 2, 0)
 	MovementLoopAddLocation(NPC, 211.47, -3.36, 142.4, 2, 0)
 	MovementLoopAddLocation(NPC, 204.83, -3.29, 144.21, 2, 0)

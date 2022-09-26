@@ -25,7 +25,7 @@ end
 
 function CastResearch(NPC,Spawn)
     if Research == true then
-    choice = MakeRandomInt(1,6)
+    choice = MakeRandomInt(1,8)
     if choice == 1 then
     CastSpell(NPC,16)
     elseif choice == 2 then
@@ -38,14 +38,16 @@ function CastResearch(NPC,Spawn)
     CastSpell(NPC,17)   
     elseif choice == 6 then
     CastSpell(NPC,210011)   
+    elseif choice == 7 then
+    CastSpell(NPC,62) 
     end
     AddTimer(NPC,4000,"Consideration")
 end
-    AddTimer(NPC,math.random(15000,22000),"CastResearch")
+    AddTimer(NPC,math.random(24000,32000),"CastResearch")
 end
 
 function Consideration(NPC,Spawn)
-    choice2 = MakeRandomInt(1,6)
+    choice2 = MakeRandomInt(1,8)
     if choice2 == 1 then
     PlayFlavor(NPC, "", "", "ponder", 0, 0)
     elseif choice2 ==2 then
@@ -58,6 +60,8 @@ function Consideration(NPC,Spawn)
     PlayFlavor(NPC, "", "", "sniff", 0, 0)
     elseif choice2 ==6 then
     PlayFlavor(NPC, "", "", "nod", 0, 0)
+    elseif choice2 ==7 then
+    PlayFlavor(NPC, "", "", "no", 0, 0)
     end
 end
 
@@ -90,7 +94,6 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     Research = false
---    SetTempVariable(NPC,"Research","No")
     AddTimer(NPC,60000,"ResetResearch",1,Spawn)
 if GetClass(Spawn)== 0 then
     PlayFlavor(NPC,"voiceover/english/mizan_vaeoulin/tutorial_island02_fvo_nomage.mp3","You there!  Unregistered refugees are not permitted in this area.  Return to Garven Tralk and register at once.  You'll find him on the beach where you arrived.","scold",777511365,1811810491, Spawn)

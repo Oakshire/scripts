@@ -101,7 +101,9 @@ function Step8Complete(Quest, QuestGiver, Player)
     if GetTradeskillLevel(Player)<2 then
         SetTradeskillLevel(Player,2)
     end
+    if not HasItem(Player,20708) then
     GiveQuestItem(Quest, Player, "", 20708,4142,4142,4142,7391,7391,7391)
+    end
 --    GiveQuestItem(Quest, Player, "", 4142)
 --   GiveQuestItem(Quest, Player, "", 4142)
 --    GiveQuestItem(Quest, Player, "", 4142)
