@@ -58,6 +58,10 @@ function LeaveIsland(NPC, Spawn)
         ZoneRef = GetZone("Baubbleshire")
         Zone(ZoneRef,Spawn)
 
+
+
+
+
 end
 end
 
@@ -69,56 +73,48 @@ end
     Race = GetRace(Spawn)
   
     Bind(Spawn, 559, -232.03, -56.06, 172.57, 360.0)
-    -- Human / Kerra
-    if Race == 9 or Race == 11 then
+    -- Erudite / Kerra
+    if Race == 3 or Race == 11 then
         AddSpellBookEntry(Spawn, 8057, 1)	
-        ZoneRef = GetZone("Freeport")
+        ZoneRef = GetZone("Stonestair")
         Zone(ZoneRef,Spawn)
 
       -- Ratonga / Gnome
     elseif Race == 5 or Race == 13 then
         AddSpellBookEntry(Spawn, 8057, 1)	
-        ZoneRef = GetZone("Freeport")
+        ZoneRef = GetZone("TempleSt")
         Zone(ZoneRef,Spawn)
 
 
-      -- Half Elf
-    elseif Race == 6 then
+      -- Human / Half Elf
+    elseif Race == 9 or Race == 6 then
         AddSpellBookEntry(Spawn, 8057, 1)	
-        ZoneRef = GetZone("Freeport")
+        ZoneRef = GetZone("BeggarsCourt")
         Zone(ZoneRef,Spawn)
 
 
    -- Orge / Troll
     elseif Race == 12 or Race == 14 then
         AddSpellBookEntry(Spawn, 8057, 1)	
-        ZoneRef = GetZone("Freeport")
+        ZoneRef = GetZone("BigBend")
         Zone(ZoneRef,Spawn)
     
-   -- Dark Elf / Iksar
-    elseif Race == 1 or Race == 10 then
+   -- Dark Elf 
+    elseif Race == 1  then
         AddSpellBookEntry(Spawn, 8057, 1)	
-        ZoneRef = GetZone("Freeport")
+        ZoneRef = GetZone("Longshadow")
         Zone(ZoneRef,Spawn)
 
-
-
-    -- Erudite / Freeblood
-    elseif Race == 3 or Race == 19 then
+    -- Barbarian / Iksar
+    elseif Race == 0 or Race == 10 then
         AddSpellBookEntry(Spawn, 8057, 1)
-        ZoneRef = GetZone("Freeport")
+        ZoneRef = GetZone("ScaleYard")
         Zone(ZoneRef,Spawn)
 
-
-    -- Barbarian and Aerakyn
-    elseif Race == 0 or Race == 20 then
+    else 
         AddSpellBookEntry(Spawn, 8057, 1)
-        ZoneRef = GetZone("Freeport")
+        ZoneRef = GetZone("EastFreeport")
         Zone(ZoneRef,Spawn)
+    end
 
-    -- Arasai or Sarnak
-    elseif Race == 17 or Race == 18 then
-        AddSpellBookEntry(Spawn, 8057, 1)
-        ZoneRef = GetZone("Freeport")
-        Zone(ZoneRef,Spawn)
 ]]--

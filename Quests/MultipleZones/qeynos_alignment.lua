@@ -1,19 +1,19 @@
 --[[
 	Script Name		:	qeynos_alignment.lua
 	Script Purpose	:	Handles the quest, "Qeynos Alignment"
-	Script Author	:	QuestParser (Replace this)
+	Script Author	:	Dorbin
 	Script Date		:	8/29/2022
 	Script Notes	:	Auto generated with QuestParser.
 
 	Zone			:	Hallmark
-	Quest Giver		:	
+	Quest Giver		:	Ambassador Saera (3250004)
 	Preceded by		:	None
 	Followed by		:	None
 --]]
 
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I must speak with Duke Ferrin.", 1, "Duke Ferrin will arrange transport for me to Qeynos.", 11, 0) --Needs Duke Ferrin
+	AddQuestStepChat(Quest, 1, "I must speak with Duke Ferrin.", 1, "Duke Ferrin will arrange transport for me to Qeynos.", 11, 3250003)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -33,7 +33,43 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I spoke with Duke Ferrin.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Duke Ferrin has arranged transport for me to Qeynos.")
 
-	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2340166,2330168,2350184,2380173,2360174,2370111)
+   Race = GetRace(Player)
+    
+    -- Human / Kerra
+    if Race == 9 or Race == 11 then
+	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2330168)
+    UpdateQuestZone(Quest, "Nettleville")
+
+    -- Erudite
+    elseif Race == 3 then
+	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2340166)
+    UpdateQuestZone(Quest, "Starcrest")
+
+
+    -- Barbarian / Dwarf
+    elseif Race == 0 or Race == 2 then
+	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2350184)
+    UpdateQuestZone(Quest, "Graystone Yard")
+
+
+    -- High Elf / Froglok
+    elseif Race == 4 or Race == 8 then
+	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2360174)
+    UpdateQuestZone(Quest, "Castleview")
+
+
+    -- Half Elf / Wood Elf
+    elseif Race == 6 or Race == 15 then
+	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2370111)
+    UpdateQuestZone(Quest, "Willow Wood")
+
+
+    -- Gnome / Halfling
+    elseif Race == 5 or Race == 7 then
+	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2380173)
+    UpdateQuestZone(Quest, "Baubbleshire")
+end
+
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

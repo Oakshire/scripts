@@ -1,8 +1,8 @@
 --[[
-    Script Name    : SpawnScripts/IsleRefuge1/campfirewood.lua
+    Script Name    : SpawnScripts/IsleRefuge1/BurningFireinvisiblecube.lua
     Script Author  : Dorbin
     Script Date    : 2022.09.18 08:09:26
-    Script Purpose : 
+    Script Purpose : Burning in proximity to fire at night.  Used on isle of refuge.
                    : 
 --]]
 
@@ -17,7 +17,7 @@ end
 
 
 function InRange(NPC,Spawn,Zone)
-    if GetDistance(NPC,Spawn)<1 and IsNight(GetZone(NPC))==true then
+    if GetDistance(NPC,Spawn)<1 and IsNight(GetZone(NPC))==true or GetSpawnLocationID(NPC)== 133776619  and GetDistance(NPC,Spawn)<1 or GetSpawnLocationID(NPC)== 133776620 and GetDistance(NPC,Spawn)<1 then
     SpawnSet(Spawn,"visual_state",492)
     TakeFireDamage(Spawn)   
 	SendMessage(Spawn, "You are burning!", "red")

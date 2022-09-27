@@ -16,17 +16,7 @@ end
 
 
 function hailed(NPC,player)
-UnequipSlot(player,0)
-UnequipSlot(player,1)  
-UnequipSlot(player,3)  
-UnequipSlot(player,6)  
-UnequipSlot(player,7)  
-UnequipSlot(player,8)  
-UnequipSlot(player,16)  
-UnequipSlot(player,17)  
-UnequipSlot(player,20)  
-UnequipSlot(player,22)  
-UnequipSlot(player, 23) 
+RemoveSpellBookEntry(player, 8057, 1)
 end
 
 --[[

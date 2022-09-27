@@ -1,11 +1,10 @@
 --[[
-    Script Name    : SpawnScripts/IsleRefuge1/campfirewood.lua
+    Script Name    : SpawnScripts/GrimgashsLair/BurningFireinvisiblecube.lua
     Script Author  : Dorbin
-    Script Date    : 2022.09.18 08:09:26
+    Script Date    : 2022.09.26 02:09:57
     Script Purpose : 
                    : 
 --]]
-
 
 function spawn(NPC)
     SetPlayerProximityFunction(NPC, 1, "InRange", "LeaveRange")
@@ -17,7 +16,7 @@ end
 
 
 function InRange(NPC,Spawn,Zone)
-    if GetDistance(NPC,Spawn)<1 and IsNight(GetZone(NPC))==true then
+    if GetDistance(NPC,Spawn)<1 then
     SpawnSet(Spawn,"visual_state",492)
     TakeFireDamage(Spawn)   
 	SendMessage(Spawn, "You are burning!", "red")

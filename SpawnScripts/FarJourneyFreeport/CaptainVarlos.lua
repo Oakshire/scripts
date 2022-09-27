@@ -176,8 +176,8 @@ function ClassSet(NPC,player)
 	SendMessage(player, "You are now a Commoner.")
     SendPopUpMessage(player, "You are now a Commoner.", 255, 255, 255)
     SetPlayerLevel(player,1)
-if GetTradeskillClass(Spawn)>0 then
-    SetTradeskillClass(Spawn,0)
+if GetTradeskillClass(player)>0 then
+    SetTradeskillClass(player,0)
 end
 end
 

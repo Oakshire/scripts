@@ -16,7 +16,7 @@ end
 
 function InRange(NPC,Player)
 if not HasQuest(Player,Cellar) and not HasCompletedQuest(Player,Cellar)   then
-    PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/030_wizard_assistant_dreak_aoicallout_e3958bf.mp3","Such a mess! Malvonicus is going to kill me!","grumble",541493613,293203409, Spawn)
+    PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/030_wizard_assistant_dreak_aoicallout_e3958bf.mp3","Such a mess! Malvonicus is going to kill me!","grumble",0,0, Spawn)
 end
 end
 
@@ -118,14 +118,16 @@ end
 function Dialog2(NPC,Player)
     choice = MakeRandomInt(1,3)
     if choice == 1 then
-        PlayFlavor(NPC,"","I hope to become a powerful mage one day, but... it's a difficult journey.","pout",0,0,Player)
+        PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_1_1034.mp3","I hope to become a powerful mage one day, but... it's a difficult journey.","pout",0,0,Player)
     elseif choice == 2 then
-        PlayFlavor(NPC,"","Hello there! Do you need some candles?","hello",0,0,Player)
+        PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3","Hello there! Do you need some candles?","hello",0,0,Player)
     elseif choice == 3 then
-        PlayFlavor(NPC,"","I need to finish these candles for Mizan. You should speak to him if you're seeking to learn the ways of a mage.","nod",0,0,Player)
+        PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_3_1034.mp3","I need to finish these candles for Mizan. You should speak to him if you're seeking to learn the ways of a mage.","nod",0,0,Player)
     end
 end
 --[[
+
+
 
 (1113153331)[Sun Apr 10 13:15:31 2005] \aNPC 117481 Assistant Dreak:Assistant Dreak\/a says to you,"Oh, hello there. Welcome to the mage tower.  If you're looking for masters Mizan or Malvonicus, they can both be found upstairs.  If you've come to use the workshop ... well, I'm afraid you're out of luck for the time being."
 (1113153334)[Sun Apr 10 13:15:34 2005] You say to Assistant Dreak,"I cleaned up the workshop."
