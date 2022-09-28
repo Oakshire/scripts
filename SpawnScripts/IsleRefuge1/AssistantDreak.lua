@@ -16,7 +16,7 @@ end
 
 function InRange(NPC,Player)
 if not HasQuest(Player,Cellar) and not HasCompletedQuest(Player,Cellar)   then
-    PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/030_wizard_assistant_dreak_aoicallout_e3958bf.mp3","Such a mess! Malvonicus is going to kill me!","grumble",0,0, Spawn)
+    PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/030_wizard_assistant_dreak_aoicallout_e3958bf.mp3","Such a mess! Malvonicus is going to kill me!","grumble",541493613,293203409, Spawn)
 end
 end
 

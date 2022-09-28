@@ -155,8 +155,10 @@ function CurrentStep(Quest, QuestGiver, Player)
 			delrat = GetRandomSpawnByID(Player, 270009)
 			Despawn(delrat)
 		end
-		if HasItem(Player, 88140) == false then
+		if HasItem(Player, 88140) == false and GetClass(Player)>0 then
 			GiveQuestItem(Quest, Player, "", 88140)
+		elseif 	HasItem(Player, 1070013) == false then
+			GiveQuestItem(Quest, Player, "", 1070013)
 		end
 		if HasItemEquipped(Player, 88140) == false then
 			ShowWindow(Player, "Inventory.Inventory", 0)

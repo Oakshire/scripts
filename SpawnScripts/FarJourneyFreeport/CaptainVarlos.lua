@@ -219,9 +219,9 @@ function zone_to_isle(NPC, player)
 	if serverType == 0 or (serverType % 2) == 1 then
 		-- DoF alignment, 0 = evil (Outpost of Overlord), 1 = good (Queens Colony)
 		alignment = GetAlignment(player)
-		if GetClass(Spawn) == 0 then -- isle of refuge (Commoners are sent here automatically)
+		if GetClass(player) == 0 then -- isle of refuge (Commoners are sent here automatically)
           ZoneRef = GetZone("IsleRefuge1")
-            Zone(ZoneRef,Spawn)  
+            Zone(ZoneRef,player)  
 		
 		elseif alignment == 1 then
 			Zone(GetZone(278), player) -- outpost of overlord

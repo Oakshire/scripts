@@ -20,7 +20,7 @@ function InRange(NPC,Spawn)
     if GetQuestStep(Spawn,saboteur)==1 then
         SetStepComplete(Spawn,saboteur,1)
     end
-    if GetQuestStep(Spawn,saboteur)==1 or GetQuestStep(Spawn,saboteur)==2 then
+    if  GetQuestStep(Spawn,saboteur)==1  or GetQuestStep(Spawn,saboteur)==2 then
         local zone = GetZone(NPC)
         if GetSpawnByGroupID(zone, 1051222) ==nil then
             SpawnGroupByID(zone,1051222)
@@ -90,10 +90,11 @@ function AttackPlayer(NPC,Spawn)
            local Gob3 = GetSpawnByLocationID(zone,133776464)
            local Gob4 = GetSpawnByLocationID(zone,133776458)
            local Gob5 = GetSpawnByLocationID(zone,133776459)
+           local Campfire = GetSpawnByLocationID(zone,133776522)
              
-     if IsAlive(Gob1)==true or IsAlive(Gob2)==true or IsAlive(Gob3)==true or IsAlive(Gob4)==true or IsAlive(Gob5)==true then
-            AddTimer(NPC,6000,"SpawnCheck",1,Spawn)
-        else
+     if Campfire~=nil and IsAlive(Gob1)==true or IsAlive(Gob2)==true or IsAlive(Gob3)==true or IsAlive(Gob4)==true or IsAlive(Gob5)==true then -- States goblins are alive and campfire is active
+            AddTimer(NPC,8000,"SpawnCheck",1,Spawn) -- Repeats spawn check
+        elseif Campfire~=nil then -- Campfire despawns if goblins depspawn from leashing, which disables the update.  Campfire does not despawn if goblins die by player.
         if GetQuestStep(Spawn,saboteur)==2 then
             SetStepComplete(Spawn,saboteur,2)
         end

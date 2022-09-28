@@ -17,9 +17,9 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     if not HasQuest(Spawn, Bones) and not HasCompletedQuest(Spawn, Bones) then
     Dialog1(NPC, Spawn)
-    elseif GetQuestStep(Spawn, Bones) < 2 then
+    elseif GetQuestStep(Spawn, Bones) < 2 and not HasCompletedQuest(Spawn, Bones) then
     Dialog6(NPC, Spawn)
-    elseif GetQuestStep(Spawn, Bones) == 2 then
+    elseif GetQuestStep(Spawn, Bones) == 2 and not HasCompletedQuest(Spawn, Bones) then
     Dialog7(NPC, Spawn)
     elseif HasCompletedQuest(Spawn, Bones) then
     PlayFlavor(NPC, "voiceover/english/priestess_xaliea/tutorial_island02_fvo_hail1.mp3", "Yeah, yeah. Heal this, cure that. Keep moving.", "sniff", 3735315332, 426916800, Spawn)

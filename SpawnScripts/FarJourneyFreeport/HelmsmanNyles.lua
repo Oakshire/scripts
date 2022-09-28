@@ -28,8 +28,8 @@ function leave(NPC, Spawn)
 if not HasItem(Spawn,185427) then   -- GIVES THREADBARE TUNIC
     SummonItem(Spawn,185427,1,1)
 end
-if not HasItem(Spawn,20904) then  -- GIVES SMALL BAG  
-    SummonItem(Spawn,20904,1,1)
+if not HasItem(Spawn,20902) then  -- GIVES SMALL BAG  
+    SummonItem(Spawn,20902,1,1)
 end
 if GetLevel(Spawn)<2 then       --SET LEVEL TO 2
     SetPlayerLevel(Spawn,2)
@@ -158,9 +158,6 @@ function Commoner2(NPC, Spawn)
 	SetAdventureClass(Spawn,0)
 	SendMessage(Spawn, "You are now a Commoner.")
     SendPopUpMessage(Spawn, "You are now a Commoner.", 255, 255, 255)	
-if GetTradeskillLevel(Spawn)>0 then
-    SetTradeskillLevel(Spawn, 0)
-end
 if GetTradeskillClass(Spawn)>0 then
     SetTradeskillClass(Spawn,0)
 end

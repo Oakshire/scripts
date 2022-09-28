@@ -135,49 +135,53 @@ end
 
 function LeaveIsland(NPC, Spawn)
     Race = GetRace(Spawn)
-
+    
+    
     -- Human / Kerra
     if Race == 9 or Race == 11 then
         AddSpellBookEntry(Spawn, 8057, 1)	
         ZoneRef = GetZone("Nettleville")
-        Bind(Spawn, 233, 684.27, -35.60, 339.19, 360.0)
         Zone(ZoneRef,Spawn)
 
     -- Erudite
     elseif Race == 3 then
         AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Starcrest")
-        Bind(Spawn, 234, 724.91, -35.73, 325.28, 360.0)
         Zone(ZoneRef,Spawn)
 
     -- Barbarian / Dwarf
     elseif Race == 0 or Race == 2 then
         AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Graystone")
-        Bind(Spawn, 235, 950.74, -25.23, -156.65, 360.0)        
         Zone(ZoneRef,Spawn)
 
     -- High Elf / Froglok
     elseif Race == 4 or Race == 8 then
         AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Castleview")
-        Bind(Spawn, 236, 789.0, -35.07, -93.64, 360.0)
         Zone(ZoneRef,Spawn)
 
     -- Half Elf / Wood Elf
-    elseif Race == 6 or Race == 15 then
+    elseif Race == 6 or Race == 15 or Race == 17 then
         AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Willowwood")
-        Bind(Spawn, 237, 829.24, -20.36, -780.82, 360.0)
         Zone(ZoneRef,Spawn)
 
     -- Gnome / Halfling
     elseif Race == 5 or Race == 7 then
         AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Baubbleshire")
-        Bind(Spawn, 238, 966.52, -18.21, -436.97, 360.0)
         Zone(ZoneRef,Spawn)
 
+--[[
+    -- Fae
+    elseif Race == 17 then
+        AddSpellBookEntry(Spawn, 8057, 1)
+        ZoneRef = GetZone("Kelethin")
+        Zone(ZoneRef,Spawn)
+--]]
+
+    -- Unknown
     else
         PlayFlavor(NPC, "", "Sorry, I cannot deal with someone of your race. Try visiting the boat on the other island!", "", 0, 0, Spawn)
         ZoneRef = GetZone("OutpostOverlord")
@@ -188,13 +192,11 @@ end
 function LeaveIslandFrostfang(NPC, Spawn)
     AddSpellBookEntry(Spawn, 8057, 1)	
     ZoneRef = GetZone("FrostfangSea")
-    Bind(Spawn, 470,-229.54, 34.62, -725.88, 360.00)
     Zone(ZoneRef,Spawn)
 end
 
 function LeaveIslandKelethin(NPC, Spawn)
     AddSpellBookEntry(Spawn, 8057, 1)	
     ZoneRef = GetZone("GreaterFaydark")
-    Bind(Spawn, 114, -116.83, -43.94, -785.47, 360.00)
     Zone(ZoneRef,Spawn)
 end
