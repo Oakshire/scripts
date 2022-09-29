@@ -16,7 +16,7 @@ end
 
 
 function hailed(NPC,player)
-RemoveSpellBookEntry(player, 8057, 1)
+AddSkill(NPC, player, "Slashing",1,1)
 end
 
 --[[

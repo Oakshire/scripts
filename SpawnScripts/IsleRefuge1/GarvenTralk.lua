@@ -54,22 +54,22 @@ elseif GetQuestStep(Spawn, FighterGI)~=3 and  HasCompletedQuest(Spawn,IsleIntro)
 
 elseif GetQuestStep(Spawn, FighterGI)==3 then --FINAL GRUTTOOTH INVASION STEP & IF PLAYER DOES NOT HAVE NEXT QUEST
     Dialog3F(NPC,Spawn)
-elseif not HasQuest(Spawn, Fighter2) and HasCompletedQuest(Spawn, FighterGI) then
+elseif not HasQuest(Spawn, Fighter2) and HasCompletedQuest(Spawn, FighterGI) and not HasCompletedQuest(Spawn, Fighter2) then
      Dialog3F(NPC,Spawn)
    
 elseif GetQuestStep(Spawn, PriestGI)==3 then
     Dialog3P(NPC,Spawn)
-elseif not HasQuest(Spawn, Priest2) and HasCompletedQuest(Spawn, PriestGI) then
+elseif not HasQuest(Spawn, Priest2) and HasCompletedQuest(Spawn, PriestGI) and not HasCompletedQuest(Spawn, Priest2) then
      Dialog3P(NPC,Spawn)
      
 elseif GetQuestStep(Spawn, MageGI)==3 then
     Dialog3M(NPC,Spawn)
-elseif not HasQuest(Spawn, Mage2) and HasCompletedQuest(Spawn, MageGI) then
+elseif not HasQuest(Spawn, Mage2) and HasCompletedQuest(Spawn, MageGI)  and not HasCompletedQuest(Spawn, Mage2) then
      Dialog3M(NPC,Spawn)
      
 elseif GetQuestStep(Spawn, ScoutGI)==3 then
     Dialog3S(NPC,Spawn)
-elseif not HasQuest(Spawn, Scout2) and HasCompletedQuest(Spawn, ScoutGI) then
+elseif not HasQuest(Spawn, Scout2) and HasCompletedQuest(Spawn, ScoutGI) and not HasCompletedQuest(Spawn, Scout2) then
      Dialog3S(NPC,Spawn)
      
 else    

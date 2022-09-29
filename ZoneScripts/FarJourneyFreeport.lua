@@ -47,7 +47,7 @@ function signal_changed(zone, player, signal)
 			InstructionWindow(player, -1.0, "The quest journal will keep track of all important quest information for you.", "voiceover/english/narrator/boat_06p_tutorial02/narrator_008_dea98146.mp3", 1585802421, 4158930887, "tutorial_stage_10", "", "continue")
 			SetTutorialStep(player, 9)
 	end
-	if signal == "tutorial_stage_10" and GetTutorialStep(player) == 9 then
+--[[	if signal == "tutorial_stage_10" and GetTutorialStep(player) == 9 then
 			FlashWindow(player, "Journals.ActiveQuest", 6.5)
 			InstructionWindow(player, -1.0, "This is your quest helper. It displays the current step of your active quest.", "voiceover/english/narrator/boat_06p_tutorial02/narrator_009_7270f5ed.mp3", 1886677883, 3646680727, "tutorial_stage_13", "", "continue")
 			SetTutorialStep(player, 10)
@@ -111,7 +111,7 @@ function signal_changed(zone, player, signal)
 		InstructionWindow(player, -1.0, "Notice the tunic now occupies the chest equipment slot and you are now wearing it.", "voiceover/english/narrator/boat_06p_tutorial02/narrator_018_8786e939.mp3", 3902294834, 2836623234, "tutorial_stage_22", "", "continue")
 		FlashWindow(player, "Inventory.Inventory.EquipmentPage.EqSlot3", 6.0)
 		SetTutorialStep(player, 21)
-	end
+	end]]--
 	if signal == "tutorial_stage_22" and GetTutorialStep(player) == 21 then
 			FlashWindow(player, "Inventory.Inventory.EquipmentPage.Chest3", 0.0)
 			InstructionWindow(player, -1.0, "Waulon is waiting for you to return with his hat. Close your inventory window and go talk to him. Remember, double left clicking on Waulon will start the conversation.", "voiceover/english/narrator/boat_06p_tutorial02/narrator_019_9da1b75d.mp3", 741062937, 535829184, "tutorial_stage_23", "Double left click on Waulon to hail him.", "server")			
@@ -133,7 +133,7 @@ function signal_changed(zone, player, signal)
 		SetTutorialStep(player, 28)
 	end
 
-	if signal == "equipping_weapons" then
+--[[	if signal == "equipping_weapons" then
 		SetTutorialStep(player, 34)
 		ShowWindow(player, "MainHUD.StartMenu", 0)
 		FlashWindow(player, "MainHUD.StartMenu.inventory", 0.0)
@@ -197,7 +197,7 @@ function signal_changed(zone, player, signal)
 		InstructionWindow(player, -1.0, "Place your mouse pointer over the target box. The tool-tip will show you detailed information about the target and its encounter.", "voiceover/english/narrator/boat_06p_tutorial02/narrator_040_1e780c5b.mp3", 0, 9, "tutorial_stage_45.5", "", "continue")
 		FlashWindow(player, "MainHUD.Target.HealthBar", 12.0)
 		FlashWindow(player, "MainHUD.Target.Name", 12.0)
-	end
+	end]]--
 	if signal == "tutorial_stage_45.5" then
 		FlashWindow(player, "MainHUD.Player.HealthBar", 0.0)
 		FlashWindow(player, "MainHUD.Player.Name", 0.0)
