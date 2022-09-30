@@ -20,6 +20,7 @@ function Accepted(Quest, QuestGiver, Player)
       while HasItem(Player, 10149, 1) do
           RemoveItem(Player, 10149)
     end
+    SendMessage(Player, "Your old salt encrusted cutlass has been placed in your quest satchel.")
 end 
 
 function Declined(Quest, QuestGiver, Player)

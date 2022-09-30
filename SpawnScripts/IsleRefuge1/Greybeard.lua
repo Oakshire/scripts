@@ -6,7 +6,7 @@
                    : 
 --]]
 
-dofile("SpawnScripts/Generic/MonsterCallouts/BaseSkeleton1.lua")
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseSkeleton2.lua")
 
 function spawn(NPC)
     SetSpawnAnimation(NPC, 13016)

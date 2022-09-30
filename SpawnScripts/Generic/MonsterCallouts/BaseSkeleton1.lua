@@ -36,8 +36,8 @@ local NECROMANCER = 30
 
     
 function aggro(NPC,Spawn)
---[[    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
+    SetTempVariable(NPC, "CalloutTimer", "true")
+    AddTimer(NPC,10000,"ResetTimer")
  	local choice = MakeRandomInt(1,4)
  	    if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_aggro_c77d7bff.mp3", "Your eyes are so pretty.", "", 1412152942, 873988632)
@@ -52,15 +52,13 @@ function aggro(NPC,Spawn)
         PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_aggro_2168c5.mp3", "Seek death and it finds you.", "", 2988489621, 1045543573)
         end
     end
-       AddTimer(NPC,15000,"FifteenCall")
+       AddTimer(NPC,math.random(15000,30000),"FifteenCall",1,Spawn)
 end   
 
 
 
 function death(NPC,Spawn)
---[[  if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
+  if     GetTempVariable(NPC, "CalloutTimer")== "false" and IsPlayer(Spawn) then
         local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_death_ff39f327.mp3", "Final death comes at last.", "", 3768284332, 62777040)
@@ -68,15 +66,15 @@ function death(NPC,Spawn)
         PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_death_fbcb503b.mp3", "Rest in peace.", "", 3591309093, 1423656405)
     end
     end
---end
+end
 
 
 
 function FifteenCall(NPC,Spawn)
-if IsInCombat(NPC)==true and IsAlive(NPC) == true and math.random(0,100)<=25 then
---[[ if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
+if IsInCombat(NPC)==true and IsAlive(NPC) == true and math.random(0,100)<=25 and IsPlayer(Spawn) then
+if GetTempVariable(NPC, "CalloutTimer") == "false" then
+    SetTempVariable(NPC, "CalloutTimer", "true")
+    AddTimer(NPC,10000,"ResetTimer")
       local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_everyfifteenseconds_8c0aac8c.mp3", "Nightmares are not only for slumber.", "", 4250803944, 3206368665)
@@ -87,21 +85,21 @@ if IsInCombat(NPC)==true and IsAlive(NPC) == true and math.random(0,100)<=25 the
     end
     end
     if IsAlive(NPC)then
-    AddTimer(NPC,15000,"FifteenCall")
+    AddTimer(NPC,math.random(15000,30000),"FifteenCall",1,Spawn)
     end
 end  
---end
+end
 
 
 
 function healthchanged(NPC, Spawn)  
---[[ if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
-    if HealthCallout == false then
+ if GetTempVariable(NPC, "CalloutTimer") == "false" and IsPlayer(Spawn) then
+    if GetTempVariable(NPC, "HealthCallout") == "false" then
     if GetHP(NPC) < GetMaxHP(NPC) * 0.55 then
-     if GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
-        HealthCallout = true
+    if GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
+    SetTempVariable(NPC, "HealthCallout", "true")
+    SetTempVariable(NPC, "CalloutTimer", "true")
+        AddTimer(NPC,10000,"ResetTimer")
         AddTimer(NPC,12500,"HealthReset")
     local choice = MakeRandomInt(1,2)
 	if choice == 1 then
@@ -113,13 +111,10 @@ function healthchanged(NPC, Spawn)
     end
     end
 end
---end
+end
 
 
 function victory(NPC,Spawn)
---[[ if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
   local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_victory_d2a649e7.mp3", "The life ebbs from them so quickly.", "", 2674394976, 3151731037)
@@ -129,13 +124,13 @@ function victory(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_victory_ccde17c2.mp3", "Another falls to join our ranks.", "", 3285235030, 4198320186)
 end
 end
---end
+
 
 
 function ResetTimer(NPC) -- 7 SECOND PAUSE BETWEEN VOs
-    CalloutTimer = false
+    SetTempVariable(NPC, "CalloutTimer", "false")
 end
 
 function HealthReset (NPC)  --SO HALF HEALTH DOESN'T SPAM
-    HealthCallout = false
+    SetTempVariable(NPC, "HealthCallout", "false")
 end

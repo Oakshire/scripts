@@ -15,8 +15,8 @@ function respawn(NPC)
 end
 
 
-function hailed(NPC,player)
-AddSkill(NPC, player, "Slashing",1,1)
+function hailed(NPC,Spawn)
+AddSkill(Spawn, "Slashing", 1)
 end
 
 --[[

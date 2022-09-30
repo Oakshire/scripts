@@ -21,6 +21,7 @@ function Accepted(Quest, QuestGiver, Player)
 		if HasItem(Player, 1471) then
 	RemoveItem(Player, 1471)
 	end
+    SendMessage(Player, "The crumpled scroll has been placed in your quest satchel.")
 end
 
 function Declined(Quest, QuestGiver, Player)

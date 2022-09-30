@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGoblin3.lua")
 
 function spawn(NPC)
 
@@ -17,7 +18,7 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function aggro(NPC)
+--[[function aggro(NPC)
     Say(NPC,"[NOTE] I should be immune to physical attacks!  You need a magic weapon.")
      
 end
@@ -29,5 +30,5 @@ function healthchanged(NPC, Spawn)
     CastSpell(NPC, 5477, 1, NPC)
     end
     
-end
+end]]--
     

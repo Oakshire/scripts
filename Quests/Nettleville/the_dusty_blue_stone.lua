@@ -19,7 +19,10 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+      while HasItem(Player, 6631, 1) do
+          RemoveItem(Player, 6631)
+    end
+    SendMessage(Player, "The dusty blue stone has been placed in your quest satchel.")
 end
 
 function Declined(Quest, QuestGiver, Player)

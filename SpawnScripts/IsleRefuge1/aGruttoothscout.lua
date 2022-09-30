@@ -6,6 +6,7 @@
                    : 
 --]]
 
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGoblin1.lua")
 
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 20, "InRange", "LeaveRange")		

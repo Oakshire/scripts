@@ -9,13 +9,10 @@ local HealthCallout = false --REDUCES Half-Health Spam
 local CalloutTimer = false --REDUCES Callout Spam
 
 function ResetTimer(NPC) -- 7 SECOND PAUSE BETWEEN VOs
-    CalloutTimer = false
+    SetTempVariable(NPC, "CalloutTimer", "false")
 end
 
-function HealthReset (NPC)  -- SO HALF HEALTH DOESN'T SPAM
-    HealthCallout = false
-end
-    
+ 
 
 function Garbled(NPC,Player)
   	local choice = MakeRandomInt(1,4)
@@ -31,18 +28,21 @@ function Garbled(NPC,Player)
 end
 
  function aggro(NPC,Player)   
-    AddTimer(NPC,15000,"FifteenCall",1,Player)
- if CalloutTimer == false and MakeRandomInt(0,100) <30 and IsPlayer(Player) then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")
+    AddTimer(NPC,math.random(15000,30000),"FifteenCall",1,Player)
+    SetTempVariable(NPC, "CalloutTimer", "false")
+if  GetTempVariable(NPC, "CalloutTimer")== "false" and math.random(0,100) <=33 and IsPlayer(Player) then
+    SetTempVariable(NPC, "CalloutTimer", "true")
+    AddTimer(NPC,10000,"ResetTimer")
     if not HasLanguage(Player,20 )then
     Garbled(NPC,Player)
     else
- 	local choice = MakeRandomInt(1,2)
+ 	local choice = MakeRandomInt(1,3)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/goblin_base_1/ft/goblin/goblin_base_1_1_aggro_3e6d7bc3.mp3", "They want to kill us all! Charge!","", 1297886042, 938149593, Player, 20)
         elseif choice == 2 then
  		PlayFlavor(NPC, "voiceover/english/goblin_base_1/ft/goblin/goblin_base_1_1_aggro_b639fe0e.mp3", "Help! Help! Big ones coming!", "", 1606472655, 3222319850, Player, 20)
+        elseif choice == 3 then
+ 		PlayFlavor(NPC, "voiceover/english/goblin_base_1/ft/goblin/goblin_base_1_1_aggro_c4b47779.mp3", "Attack! Attack!  Kill everything!", "", 2914843599, 3201999114, Player, 20)
         end
 end   
 end
@@ -50,9 +50,7 @@ end
 
 
 function death(NPC,Player)
- if CalloutTimer == false and IsPlayer(Player) then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")
+ if  GetTempVariable(NPC, "CalloutTimer")== "false" and IsPlayer(Player) then
     if math.random(0,100)<=35 then
     if not HasLanguage(Player,20 )then
     Garbled(NPC,Player)
@@ -70,9 +68,11 @@ end
 
 
 function FifteenCall(NPC,Player)
- if IsAlive(NPC) and IsInCombat(NPC)==true  and IsPlayer(Player) then
-     if math.random(0,100)<=60 then
-     if not HasLanguage(Player,20 )then
+ if IsAlive(NPC) and IsInCombat(NPC)==true  and IsPlayer(Player)and  GetTempVariable(NPC, "CalloutTimer")== "false" then
+    if math.random(0,100)<=33 then
+    SetTempVariable(NPC, "CalloutTimer", "true")
+    AddTimer(NPC,10000,"ResetTimer")
+    if not HasLanguage(Player,20 )then
     Garbled(NPC,Player)
     else       
       local choice = MakeRandomInt(1,2)
@@ -84,7 +84,7 @@ function FifteenCall(NPC,Player)
     end
     end
     if IsAlive(NPC)then
-    AddTimer(NPC,15000,"FifteenCall",1,Player)
+    AddTimer(NPC,math.random(15000,30000),"FifteenCall",1,Player)
     end
 end  
 end
@@ -94,8 +94,8 @@ end
 
 
 function victory(NPC,Player)
-        if IsPlayer(Player)and  not HasLanguage(Player,20 )then
-    Garbled(NPC,Player)
+    if IsPlayer(Player)and  not HasLanguage(Player,20 )then
+        Garbled(NPC,Player)
     elseif  IsPlayer(Player) and HasLanguage(Player,20 )then
 	    PlayFlavor(NPC, "voiceover/english/goblin_base_1/ft/goblin/goblin_base_1_1_victory_f76bf039.mp3", "What I do now?", "", 3938448472, 456821246, Player, 20)
     end

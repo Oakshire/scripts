@@ -12,7 +12,16 @@ local Mage3 = 5736
 local Scout3 = 5737
 
 function spawn(NPC)
+		SetRequiredQuest(NPC, Fighter3, 3, 1,1)
+		SetRequiredQuest(NPC, Priest3, 3, 1,1)
+		SetRequiredQuest(NPC, Mage3, 3, 1,1)
+		SetRequiredQuest(NPC, Scout3, 3, 1,1)
+end
 
+function casted_on(NPC, Spawn, SpellName)
+  if SpellName == 'bank' then
+    hailed(NPC, Spawn)
+    end
 end
 
 function hailed(NPC, Spawn)
@@ -34,6 +43,7 @@ elseif GetQuestStep(Spawn, Scout3)==3 then
     SetStepComplete(Spawn,Scout3,3)
 end
 end
+
 
 function respawn(NPC)
 	spawn(NPC)

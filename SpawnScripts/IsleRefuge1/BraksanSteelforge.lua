@@ -130,6 +130,9 @@ function Quest3Turnin(NPC,Spawn)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
     Dialog.AddOption("I will go check the bank.")	
 	Dialog.Start()
+    if not HasItem(Spawn,152754) then
+    SummonItem (Spawn, 152754, 1, "bank", 1)
+    end
     SetStepComplete(Spawn,Fighter3,2)
 end
 
@@ -144,6 +147,7 @@ function Quest4Start(NPC,Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("I must organize a search party for some refugees who wandered into the wilderness.  Unfortunately, because our guards are watching over the barricades, I've been unable to organize a party.  I'm afraid those goblin buggers are holding the refugees in an alcove west of here.  Will you be willing to crack a few goblin skulls for us?")
 	Dialog.AddVoiceover("voiceover/english/braksan_steelforge/tutorial_island02/braksansteelforge006.mp3", 2676048621, 3798941591)
+    PlayFlavor(NPC, "", "", "tapfoot", 0, 0, Spawn)
     Dialog.AddOption("I can handle a few goblins.","Quest4Offer")	
     Dialog.AddOption("No, thanks.  I'm busy.")	
 	Dialog.Start()

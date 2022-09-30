@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGoblin2.lua")
 
 function spawn(NPC)
     AddTimer(NPC,2000,"EmoteLoop")

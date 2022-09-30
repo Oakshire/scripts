@@ -54,6 +54,9 @@ else
     if GetQuestStep(Spawn,Scout5)==2 then
 	Dialog.AddOption("I've got what you needed from the wolves.","Quest5Turnin")
     end 
+    if GetQuestStep(Spawn,Scout6)==3 then
+	Dialog.AddOption("It is done.  The orc leader is no more.","Quest6Turnin")
+    end
     if not HasQuest(Spawn, Scout4) and HasCompletedQuest(Spawn,Scout3) and not HasCompletedQuest(Spawn,Scout4) then
 	Dialog.AddOption("I wouldn't mind helping out again.","Quest4Start")
 	end

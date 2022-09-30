@@ -36,9 +36,9 @@ function Cutlass1(NPC, Spawn)
 	Dialog.AddDialog("Aye, it's seen better days but I should be able to take care of it.  The work will cost you a little bit but not much.  Supplies and all, you know.  Do you have some coin?")
 	Dialog.AddVoiceover("voiceover/english/mender_mannus/tutorial_island02/mendermannus001.mp3", 1882269963, 1659514832)
 	PlayFlavor(NPC, "", "", "nod", 0,0, Spawn)
-   if HasCoin(Spawn) >=40 then
+--    if HasCoin(Spawn) >=40 then
 	Dialog.AddOption("I can give you 40 copper to clean it up.","Cutlass2")
-    end
+--    end
 
 	Dialog.AddOption("Hmm, I'll have to think about it.")
 	Dialog.Start()
@@ -54,5 +54,7 @@ function Cutlass2(NPC, Spawn)
 	Dialog.AddOption("This is great.  Thank you!")
 	Dialog.Start()
 	SetStepComplete(Spawn,5724,1)
+    SendMessage(Player, "You pay Mender Mannus 40 copper.")
+	
 end
 

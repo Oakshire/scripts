@@ -36,8 +36,8 @@ local NECROMANCER = 30
 
     
 function aggro(NPC,Spawn)
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")
+    SetTempVariable(NPC, "CalloutTimer", "true")
+    AddTimer(NPC,10000,"ResetTimer")
  	local choice = MakeRandomInt(1,3)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/skeleton_base_2/ft/skeleton/skeleton_base_2_1_aggro_c6c2672d.mp3", "Brains! It's what's for dinner.", "", 2091371377, 2422178491)
@@ -46,16 +46,14 @@ function aggro(NPC,Spawn)
         elseif choice == 3 then
 		PlayFlavor(NPC, "voiceover/english/optional3/skeleton_base_2/ft/skeleton/skeleton_base_2_1_aggro_daf16808.mp3", "To the grave with you!", "", 958122326, 1810359159)
         end
-       AddTimer(NPC,15000,"FifteenCall")
+       AddTimer(NPC,math.random(15000,30000),"FifteenCall")
     end
    
 
 
 
 function death(NPC,Spawn)
- --[[if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
+  if     GetTempVariable(NPC, "CalloutTimer")== "false" then
         local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/skeleton_base_2/ft/skeleton/skeleton_base_2_1_death_bb6b2b8e.mp3", "You cannot eliminate us!", "", 897103301, 541292352)
@@ -63,15 +61,15 @@ function death(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional3/skeleton_base_2/ft/skeleton/skeleton_base_2_1_death_edc04fb8.mp3", "That pile of bones was my friend!", "", 2317728806, 1758283676)
     end
     end
---end
+end
 
 
 
 function FifteenCall(NPC,Player)
 if IsInCombat(NPC)==true and IsAlive(NPC) == true and math.random(0,100)<=25 then
---[[ if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
+if GetTempVariable(NPC, "CalloutTimer") == "false" then
+    SetTempVariable(NPC, "CalloutTimer", "true")
+    AddTimer(NPC,10000,"ResetTimer")
       local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/skeleton_base_1/ft/skeleton/skeleton_base_1_1_everyfifteenseconds_8c0aac8c.mp3", "Nightmares are not only for slumber.", "", 4250803944, 3206368665)
@@ -82,21 +80,21 @@ if IsInCombat(NPC)==true and IsAlive(NPC) == true and math.random(0,100)<=25 the
     end
     end
     if IsAlive(NPC)then
-    AddTimer(NPC,15000,"FifteenCall")
+    AddTimer(NPC,math.random(15000,30000),"FifteenCall")
     end
 end  
---end
+end
 
 
 
 function healthchanged(NPC, Spawn)  
---[[  if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
-    if HealthCallout == false then
+ if GetTempVariable(NPC, "CalloutTimer") == "false" then
+    if GetTempVariable(NPC, "HealthCallout") == "false" then
     if GetHP(NPC) < GetMaxHP(NPC) * 0.55 then
-     if GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
-        HealthCallout = true
+    if GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
+    SetTempVariable(NPC, "HealthCallout", "true")
+    SetTempVariable(NPC, "CalloutTimer", "true")
+        AddTimer(NPC,10000,"ResetTimer")
         AddTimer(NPC,12500,"HealthReset")
     local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
@@ -108,13 +106,10 @@ function healthchanged(NPC, Spawn)
     end
     end
 end
---end
+end
 
 
 function victory(NPC,Spawn)
- --[[if CalloutTimer == false then
-    CalloutTimer = true
-    AddTimer(NPC,7000,"ResetTimer")]]--
   local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/skeleton_base_2/ft/skeleton/skeleton_base_2_1_victory_39c9d69e.mp3", "We're all just bones in the end.", "", 3276297174, 633510318)
@@ -124,12 +119,11 @@ function victory(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional3/skeleton_base_2/ft/skeleton/skeleton_base_2_1_victory_d7e375be.mp3", "Never too early to slumber in the grave.", "", 353194320, 2589250240)
 end
 end
---end
 
 function ResetTimer(NPC) -- 7 SECOND PAUSE BETWEEN VOs
-    CalloutTimer = false
+    SetTempVariable(NPC, "CalloutTimer", "false")
 end
 
 function HealthReset (NPC)  --SO HALF HEALTH DOESN'T SPAM
-    HealthCallout = false
+    SetTempVariable(NPC, "HealthCallout", "false")
 end

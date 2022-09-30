@@ -5,7 +5,7 @@
     Script Purpose : 
                    : 
 --]]
-dofile("SpawnScripts/Generic/MonsterCallouts/BaseGoblin1.lua")
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGoblin2.lua")
 
 function spawn(NPC)
     ChooseMovement(NPC)
@@ -30,20 +30,20 @@ function RouteOne(NPC, Spawn)
 	local Z = GetZ(NPC)
     MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10))
     MovementLoopAddLocation(NPC, X + 12, Y, Z, 2,math.random(5,10))
-    MovementLoopAddLocation(NPC, X + 12, Y, Z + 4, 2 , math.random(5,10))
+    MovementLoopAddLocation(NPC, X + 12, Y, Z + 4, 2 , 15 , "InitialPause")
 	MovementLoopAddLocation(NPC, X + 14, Y, Z, 2, math.random(5,10))
 	MovementLoopAddLocation(NPC, X + 5, Y, Z + 4, 4, math.random(5,10))
-	MovementLoopAddLocation(NPC, X, Y, Z, 4, math.random(5,10))
+	MovementLoopAddLocation(NPC, X, Y, Z, 4, 15 , "InitialPause")
 end
 
 function RouteTwo(NPC, Spawn)
     local X = GetX(NPC)
 	local Y = GetY(NPC)
 	local Z = GetZ(NPC)
-    MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10))
+    MovementLoopAddLocation(NPC, X, Y, Z, 2, 15 , "InitialPause")
     MovementLoopAddLocation(NPC, X - 5, Y, Z, 2, math.random(5,10))
     MovementLoopAddLocation(NPC, X - 14, Y, Z - 4, 4, math.random(5,10))
-	MovementLoopAddLocation(NPC, X - 12, Y, Z, 2, math.random(5,10))
+	MovementLoopAddLocation(NPC, X - 12, Y, Z, 2, 15 , "InitialPause")
 	MovementLoopAddLocation(NPC, X - 12, Y, Z - 4, 2, math.random(5,10))
 	MovementLoopAddLocation(NPC, X, Y, Z, 1, 0)
 end
@@ -52,10 +52,10 @@ function RouteThree(NPC, Spawn)
     local X = GetX(NPC)
 	local Y = GetY(NPC)
 	local Z = GetZ(NPC)
-    MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10))
+    MovementLoopAddLocation(NPC, X, Y, Z, 2, 15 , "InitialPause")
     MovementLoopAddLocation(NPC, X + 12, Y, Z, 4, math.random(5,10))
 	MovementLoopAddLocation(NPC, X + 5, Y, Z - 4, 2, math.random(5,10))
-	MovementLoopAddLocation(NPC, X + 14, Y, Z, 2, math.random(5,10))
+	MovementLoopAddLocation(NPC, X + 14, Y, Z, 2, 15 , "InitialPause")
 	MovementLoopAddLocation(NPC, X + 12, Y, Z - 4, 4, math.random(5,10))
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10))
 end
@@ -65,10 +65,10 @@ function RouteFour(NPC, Spawn)
 	local Y = GetY(NPC)
 	local Z = GetZ(NPC)
     MovementLoopAddLocation(NPC, X, Y, Z, 4, math.random(5,10))
-    MovementLoopAddLocation(NPC, X - 12, Y, Z, 2, math.random(5,10))
+    MovementLoopAddLocation(NPC, X - 12, Y, Z, 2, 15 , "InitialPause")
 	MovementLoopAddLocation(NPC, X - 5, Y, Z + 4, 2, math.random(5,10))
 	MovementLoopAddLocation(NPC, X - 14, Y, Z, 4, math.random(5,10))
-	MovementLoopAddLocation(NPC, X - 12, Y, Z + 4, 2, math.random(5,10))
+	MovementLoopAddLocation(NPC, X - 12, Y, Z + 4, 2, 15 , "InitialPause")
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10))
 end
 
@@ -80,6 +80,32 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 end
 
-function gather(NPC, Spawn)
-    PlayAnimation(NPC, 2809 )
+function InitialPause(NPC)
+
+    math.randomseed(os.time())
+    local pause = math.random (1, 4)
+
+            if pause == 1 then
+                    AddTimer(NPC, 100, "stop_gathering")  
+            else
+                    AddTimer(NPC, 1000, "Gather")
+            end 
+end
+
+function Gather(NPC)
+    SpawnSet(NPC, "visual_state", "2809")	-- Start gathering
+    AddTimer(NPC, 8000, "Collect")	        -- for 5 seconds, then stop
+end
+
+function Collect(NPC)
+    SpawnSet(NPC, "visual_state", "2810")	-- Start gathering
+    AddTimer(NPC, 2000, "stop_gathering")	-- for 5 seconds, then stop
+end
+
+function stop_gathering(NPC)
+    SpawnSet(NPC, "visual_state", "0") 	        -- Stop gathering
+end
+
+function aggro(NPC,Spawn)
+        SpawnSet(NPC, "visual_state", "0") 	        -- Stop gathering
 end
