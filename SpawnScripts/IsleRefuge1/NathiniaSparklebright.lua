@@ -171,6 +171,9 @@ function Priest3Turnin(NPC,Spawn)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
     Dialog.AddOption("Thank you. I will seek out the banker.")	
 	Dialog.Start()
+    if not HasItem(Spawn,130119) then
+    SummonItem (Spawn, 130119, 1, "bank", 1)
+    end
     SetStepComplete(Spawn,Priest3,2)
 end
 

@@ -16,6 +16,13 @@ function spawn(NPC)
 		SetRequiredQuest(NPC, Priest3, 3, 1,1)
 		SetRequiredQuest(NPC, Mage3, 3, 1,1)
 		SetRequiredQuest(NPC, Scout3, 3, 1,1)
+	SetPlayerProximityFunction(NPC, 11, "InRange", "LeaveRange")
+end
+
+function InRange(NPC,Spawn)
+if GetQuestStep(Spawn, Fighter3)==3 or GetQuestStep(Spawn, Priest3)==3 or GetQuestStep(Spawn, Mage3)==3 or GetQuestStep(Spawn, Scout3)==3 then
+ hailed(NPC, Spawn)
+ end
 end
 
 function casted_on(NPC, Spawn, SpellName)
@@ -30,6 +37,9 @@ function hailed(NPC, Spawn)
 	Dialog.AddDialog("Ah, so you've found my little bank.  If you are tired of carrying around any possessions, please feel free to deposit them into your account.")
 	Dialog.AddVoiceover("voiceover/english/banker_vertbridge/tutorial_island02/bankervertbridge001.mp3", 677968905, 2264651259)
 	PlayFlavor(NPC, "", "", "hello", 0,0, Spawn)
+    if GetQuestStep(Spawn, Fighter3)==3 and GetQuestStep(Spawn, Priest3)==3 and GetQuestStep(Spawn, Mage3)==3 and GetQuestStep(Spawn, Scout3)==3 then
+	Dialog.AddOption("I'm just picking up some footware that were left for me.  Thanks.")
+    end
 	Dialog.AddOption("Thank you.")
 	Dialog.Start()
 	

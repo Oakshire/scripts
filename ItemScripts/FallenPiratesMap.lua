@@ -27,6 +27,6 @@ end
 function QuestStart(Item,Player)
     CloseItemConversation(Item,Player)
     if not HasQuest(Player,Xspot) then
-        OfferQuest(Item,Player,Xspot)
+        OfferQuest(nil,Player,Xspot)
     end
 end

@@ -60,7 +60,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 end
 
 function QuestStepCheck(Quest, QuestGiver, Player)
-    if QuestStepIsComplete(Player,1) and QuestStepIsComplete(Player,2) and QuestStepIsComplete(Player,3) and QuestStepIsComplete(Player,4)then
+    if QuestStepIsComplete(Player,5757,1) and QuestStepIsComplete(Player,5757,2) and QuestStepIsComplete(Player,5757,3) and QuestStepIsComplete(Player,5757,4)then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the four types of animals listed in the notebook.")
 
 	AddQuestStepChat(Quest, 5, "I need to take these specimens to Master Malvonicus.", 1, "I need to take the collected specimens to Master Malvonicus.", 11, 3250031)

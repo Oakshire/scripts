@@ -112,6 +112,9 @@ function Quest3Turnin(NPC,Spawn)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
     Dialog.AddOption("Thank you, Vladiminn, I'm sure they'll be wonderful.")	
 	Dialog.Start()
+     if not HasItem(Spawn,158693) then
+    SummonItem (Spawn, 158693, 1, "bank", 1)
+    end
     SetStepComplete(Spawn,Scout3,2)
 end
 

@@ -19,6 +19,7 @@ function casted_on(NPC, Spawn, Message)
     SendPopUpMessage(Spawn, "You have disturbed the fallen captain's grave!", 230, 230, 230)
     RockbellyNew = SpawnByLocationID(zone,133774610)
     Attack(RockbellyNew,Spawn)
+    PlayFlavor(RockbellyNew, "voiceover/english/captain_rockbelly/tutorial_island02_fvo_ghostshout.mp3", "Get youz away from meez treasures!  Dis meez loots!", "", 3040387050, 4243014787)
     SetStepComplete(Spawn,5747,1)
     end
 end

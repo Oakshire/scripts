@@ -7,13 +7,14 @@
 --]]
 
 function precast(Caster, Target)
-   if IsGroundSpawn(Target) then
+    if IsGroundSpawn(Target) then
       return CanHarvest(Caster, Target)
-   end
+    end
+   
    
    return false
 end
 
 function cast(Caster, Target)
-	Harvest(Caster, Target)
+   	Harvest(Caster, Target)
 end

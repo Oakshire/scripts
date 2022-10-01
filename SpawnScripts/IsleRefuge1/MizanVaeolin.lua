@@ -193,6 +193,9 @@ function Quest3Turnin(NPC,Spawn)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
     Dialog.AddOption("Thank you.  I will return.")	
 	Dialog.Start()
+     if not HasItem(Spawn,132364) then
+    SummonItem (Spawn, 132364, 1, "bank", 1)
+    end
     SetStepComplete(Spawn,Mage3,2)
 end
 

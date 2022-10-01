@@ -7,10 +7,12 @@
 --]]
 
 function examined(Item, Player)
-if GetZone(Player)~= 325 then
+  local zone = GetZone(Player)
+if GetZoneID(zone)~= 325 then
     	SendMessage(Player, "The notebook is a research manual for aquatic creatures living on the Isle of Refuge.  It won't do you any good now that you have left the isle.")
 else
- OfferQuest(Item,Player,5757)
+if not HasQuest(Player,5757) and not HasCompletedQuest(Player, 5757) then
+ OfferQuest(nil,Player,5757)
 end
 end
-
+end

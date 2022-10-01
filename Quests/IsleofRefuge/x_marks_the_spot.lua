@@ -16,7 +16,7 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-    CloseItemConversation(Player)
+    CloseItemConversation(QuestGiver,Player)
     if HasItem(Player,7027) then
     RemoveItem(Player,7027,1)
     end
