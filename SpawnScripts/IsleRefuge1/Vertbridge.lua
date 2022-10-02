@@ -27,9 +27,10 @@ end
 
 function casted_on(NPC, Spawn, SpellName)
   if SpellName == 'bank' then
-    hailed(NPC, Spawn)
+    hailed2(NPC, Spawn)
     end
 end
+
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
@@ -37,11 +38,30 @@ function hailed(NPC, Spawn)
 	Dialog.AddDialog("Ah, so you've found my little bank.  If you are tired of carrying around any possessions, please feel free to deposit them into your account.")
 	Dialog.AddVoiceover("voiceover/english/banker_vertbridge/tutorial_island02/bankervertbridge001.mp3", 677968905, 2264651259)
 	PlayFlavor(NPC, "", "", "hello", 0,0, Spawn)
-    if GetQuestStep(Spawn, Fighter3)==3 and GetQuestStep(Spawn, Priest3)==3 and GetQuestStep(Spawn, Mage3)==3 and GetQuestStep(Spawn, Scout3)==3 then
-	Dialog.AddOption("I'm just picking up some footware that were left for me.  Thanks.")
-    end
 	Dialog.AddOption("Thank you.")
 	Dialog.Start()
+
+if GetQuestStep(Spawn, Fighter3)==3 then
+    SetStepComplete(Spawn,Fighter3,3)
+elseif GetQuestStep(Spawn, Priest3)==3 then
+    SetStepComplete(Spawn,Priest3,3)
+elseif GetQuestStep(Spawn, Mage3)==3 then
+    SetStepComplete(Spawn,Mage3,3)
+elseif GetQuestStep(Spawn, Scout3)==3 then
+    SetStepComplete(Spawn,Scout3,3)
+end
+end
+
+function hailed2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Ah, so you've found my little bank.  If you are tired of carrying around any possessions, please feel free to deposit them into your account.")
+	Dialog.AddVoiceover("voiceover/english/banker_vertbridge/tutorial_island02/bankervertbridge001.mp3", 677968905, 2264651259)
+	PlayFlavor(NPC, "", "", "hello", 0,0, Spawn)
+	Dialog.AddOption("I'm just picking up some footware that were left for me.  Thanks.")
+	Dialog.AddOption("Thank you.")
+	Dialog.Start()
+    
 	
 if GetQuestStep(Spawn, Fighter3)==3 then
     SetStepComplete(Spawn,Fighter3,3)

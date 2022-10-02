@@ -54,7 +54,6 @@ function Cutlass2(NPC, Spawn)
 	Dialog.AddOption("This is great.  Thank you!")
 	Dialog.Start()
 	SetStepComplete(Spawn,5724,1)
-    SendMessage(Player, "You pay Mender Mannus 40 copper.")
-	
+    SendMessage(Spawn, "You pay Mender Mannus 40 copper.")
 end
 

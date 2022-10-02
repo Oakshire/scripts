@@ -28,6 +28,39 @@ function hailed(NPC, Spawn)
 	end
 end
 
+
+
+function Dialog1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Ahoy! Good ta' see ya' here. I was just telling the Duke what happened on the Far Journey.")
+	Dialog.AddVoiceover("voiceover/english/island_of_refuge/captain_draik_varlos/ior_capnvarlos_001.mp3", 4236315164, 382405206)
+	PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+	Dialog.AddOption("It was nothing. I was happy to help.", "Dialog2")
+	Dialog.Start()
+end
+
+function Dialog2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I would love ta' tip an ale back wit' ya', but me gots ta' get this paperwork done. Why don't ya' speak ta' Duke Ferrin, he can explain some things for ya'.")
+	Dialog.AddVoiceover("voiceover/english/captain_varlos/tutorial_island01/varlos/varlos_ally_firsttalk_02.mp3", 2666783191, 241094847)
+		PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+	Dialog.AddOption("Ok, I will do that.", "Dialog3")
+	Dialog.Start()
+end
+
+function Dialog3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Thanks fa' everything, really. Ya' helped save me ship.")
+	Dialog.AddVoiceover("voiceover/english/island_of_refuge/captain_draik_varlos/ior_capnvarlos_003.mp3", 1693533028, 3782277754)
+	Dialog.AddOption("Think nothing of it.")
+	Dialog.Start()
+end
+
+
+
 function respawn(NPC)
 	spawn(NPC)
 end

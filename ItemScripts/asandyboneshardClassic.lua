@@ -66,13 +66,13 @@ function Dialog4(Item,Player)
 end
 
 function QuestFinish(Item,Player)
+    CloseItemConversation(Item,Player)
     if GetQuestStep(Player,BoneShard)==6 then
     SetStepComplete(Player,BoneShard,6)
     end    
     if HasItem(Player,1001012) then
         RemoveItem(Player,1001012,1)
     end
-    CloseItemConversation(Item,Player)
 end
     
 function Completed(Item,Player)

@@ -16,9 +16,10 @@ function aggro(NPC, Spawn)
 end
 
 function aggrotimer(NPC)
-    if IsInCombat(NPC) then
+local   distance = GetRunbackDistance(NPC)
+    if IsInCombat(NPC) and distance <=35 then
     AddTimer(NPC,8000,"aggrotimer") -- Check is Goblins and Campfire are up
-    else 
+    else
     Despawn(NPC) --Despawns Goblins and Campfire, which disables update
     zone = GetZone(NPC)
     local Campfire = GetSpawnByLocationID(zone,133776522)

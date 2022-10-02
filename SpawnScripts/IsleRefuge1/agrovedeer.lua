@@ -42,24 +42,20 @@ end
 function Diseased(NPC)
     choice= MakeRandomInt(1,2)
     if choice == 1 then
-    SetTempVariable(NPC,"Update","true" )
-    else
     CastSpell(NPC,993)
-    SetTempVariable(NPC,"Update","false" )
+    SetTempVariable(NPC,"Update","false" ) 
+    else
+    SetTempVariable(NPC,"Update","true" )
     end
 end
 
 function casted_on(NPC, Spawn, SpellName)  --Priests use minor heal if the deer is diseased.  These deer will then give updates for scouts to scouts.
 if HasSpellEffect(NPC,993) then
   if SpellName == 'Minor Healing' or SpellName == 'Minor Arch Healing' or SpellName == 'Cure' or SpellName == 'Cure Noxious' then
-        choice = MakeRandomInt(1,4)
+        choice = MakeRandomInt(1,2)
         if choice ==1 then
         SendMessage(Spawn, "The grove deer bleats appreciatively as it appears healthier.")
         elseif choice ==2 then
-        SendMessage(Spawn, "The grove deer's coat returns to a natual sheen.")
-        elseif choice ==3 then
-        SendMessage(Spawn, "The grove deer's eyes glow normally as you purge its malady.")
-        else
         SendMessage(Spawn, "The grove deer's hooves stomp thankfully as its disease abates.")
         end        
     CastSpell(NPC,993,1, NPC)
@@ -84,7 +80,7 @@ function death (NPC,Spawn) -- Gives Quest Update if on the scout quest 'Deer Hun
             AddStepProgress(Spawn,5737,1,1)
         SendMessage(Spawn, "You successfully harvest the grove deer.")
         else
-        SendMessage(Spawn, "The grove deer's meat was too diseased to harvest successfully.  A priest could help remove the disease.")
+        SendMessage(Spawn, "This deer's meat was diseased! A priest could have healed this disease away.")
         end
     end
 end

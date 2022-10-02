@@ -163,9 +163,7 @@ function Dialog2(NPC,Spawn)
     end  
     Dialog.AddOption("I am too busy right now.")	
     Dialog.Start()
-    if HasQuest(Spawn, Mage2) then
-        SetStepComplete(Spawn,Mage2,1)
-    end
+
 end
 
 function Quest3Start(NPC,Spawn)
@@ -183,6 +181,9 @@ end
 function Quest3Offer(NPC,Spawn)
     OfferQuest(NPC,Spawn,Mage3)
     FaceTarget(NPC, Spawn)
+    if HasQuest(Spawn, Mage2) then
+        SetStepComplete(Spawn,Mage2,1)
+    end
 end
 
 function Quest3Turnin(NPC,Spawn)
