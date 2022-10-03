@@ -18,7 +18,9 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-if not HasCompletedQuest(Spawn,305) and not HasQuest(Spawn,305) then
+if GetFactionAmount(Spawn,11)<0 then
+    PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn, 0)
+elseif not HasCompletedQuest(Spawn,305) and not HasQuest(Spawn,305) then
 Dialog4(NPC, Spawn)
 elseif HasQuest(Spawn,305) and GetQuestStep(Spawn,305)==2 then
 Dialog5(NPC,Spawn)    
@@ -137,7 +139,7 @@ function Dialog9(NPC, Spawn)
 	Dialog.Start()
 end
 
-function StartQuest(NPC,Spawn)
+function FinishQuest(NPC,Spawn)
     PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn, 0)
     SetStepComplete(Spawn,305, 6)
     FaceTarget(NPC,Spawn)

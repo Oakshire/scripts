@@ -21,9 +21,10 @@ end
 function Step1Complete(Quest,QuestGiver,Player)
 	UpdateQuestStepDescription(Quest, 1, "I've killed some juvenile shrillers.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have collected five sets of shriller wings.")
+	UpdateQuestZone(Quest,"Graystone Yard")
 	
-	AddQuestStepChat(Quest, 1, "I need to return to Assistant Tillheel.", 1, "I must deliver these shriller wings to Tillheel in Graystone.", 140, 2350056)
-	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
+	AddQuestStepChat(Quest, 2, "I need to return to Assistant Tillheel.", 1, "I must deliver these shriller wings to Tillheel in Graystone.", 140, 2350056)
+	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -40,8 +41,7 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have delivered the sets of shriller wings.")
-	UpdateQuestZone(Quest,"Graystone Yard")
+	UpdateQuestTaskGroupDescription(Quest, 2, "I have delivered the sets of shriller wings.")
 	UpdateQuestDescription(Quest, "I collected and delivered five sets of shriller wings to Tillheel. He was very grateful.")
 	GiveQuestReward(Quest, Player)
 end

@@ -65,7 +65,7 @@ end
 
 function givePartsToEbik(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have Ebik's three items.")
-	AddQuestStepChat(Quest, 4, "I should bring these parts back to Ebik.", 1, "I found all the parts Ebik needs and I should return them to him.", 0, 2530059)
+	AddQuestStepChat(Quest, 4, "I should bring these parts back to Ebik.", 1, "I found all the parts Ebik needs and I should return them to him.", 0, 3250008)
 	AddQuestStepCompleteAction(Quest, 4, "quest_complete_gavePartsToEbik")
 end
 

@@ -1,34 +1,14 @@
 --[[
-	Script Name	: SpawnScripts/Caves/analabastergolem.lua
-	Script Purpose	: an alabaster golem 
-	Script Author	: LordPazuzu
-	Script Date	: 10/2/2022
-	Script Notes	: 
+    Script Name    : SpawnScripts/Caves/DrossAdds.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.10.03 03:10:43
+    Script Purpose : 
+                   : 
 --]]
 
-
-
 function spawn(NPC)
-    local Level = GetLevel(NPC)
-    local level1 = 7
-    local level2 = 8
-    local difficulty1 = 6
-    local hp1 = 200
-    local power1 = 90
-    local difficulty2 = 6
-    local hp2 = 240
-    local power2 = 100
-    if Level == level1 then
-    SpawnSet(NPC, "difficulty", difficulty1)
-    SpawnSet(NPC, "hp", hp1)
-    SpawnSet(NPC, "power", power1)
-    elseif Level == level2
-        then
-    SpawnSet(NPC, "difficulty", difficulty2)
-    SpawnSet(NPC, "hp", hp2)
-    SpawnSet(NPC, "power", power2)
-    end
-    AttackRocks(NPC)
+
+AttackRocks(NPC)
 
 end
 
@@ -57,7 +37,9 @@ function AttackRocks(NPC)
 end
 
 function Rocks(NPC)
+    if not IsInCombat(NPC) then
     SpawnSet(NPC, "visual_state", "10783")	-- Start attacking
+    end
     AddTimer(NPC, 3500, "stop_attack")	        -- for 2 seconds, then stop
 end
 

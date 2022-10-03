@@ -258,7 +258,7 @@ function Quest5Turnin(NPC,Spawn)
  	Dialog.AddDialog("This is exactly what Malvonicus needs to begin research on the goblin warding spells.  He instructed me to give you this apprentice robe in appreciation for the work you rendered here.  I am remiss to ask this, but others need your services for one final task.  Are you willing to help us?")
 	Dialog.AddVoiceover("voiceover/english/mizan_vaeoulin/tutorial_island02/mizanvaeoulin011.mp3", 4291717677, 2222410962) --UNKNOWN KEY.  MISSING.
     PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
-    Dialog.AddOption("I will help with this task. [WORK IN PROGRESS]","")	
+    Dialog.AddOption("I will help with this task.","Quest6Start")	
     Dialog.AddOption("I must leave this island.  Best of luck with your tasks.")	
 	Dialog.Start()
     SetStepComplete(Spawn,Mage5,2)

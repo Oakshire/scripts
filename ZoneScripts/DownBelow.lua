@@ -11,6 +11,6 @@ function init_zone_script(Zone)
 end
 
 function player_entry(Zone, Player)
-SendPopUpMessage(Spawn, "The Down Below", 230, 230, 230)   
+SendPopUpMessage(Player, "The Down Below", 230, 230, 230)   
 end
 

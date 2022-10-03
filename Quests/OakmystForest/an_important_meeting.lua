@@ -16,8 +16,8 @@
 
 
 function Init(Quest)
-    AddQuestStep(Quest, 1, "I need to interrupt the meeting being held on the small hill that overlooks the falls just west of The Western Falls.", 1, 100, ".", 0)
-	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledGilrix")
+AddQuestStepKill(Quest, 1, "I need to interrupt the meeting.", 1, 100, "I need to interrupt the meeting being held on the small hill that overlooks the falls just west of The Western Falls.", 11, 	1950065)
+AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledGilrix")
 end
 
 function Accepted(Quest, QuestGiver, Player)

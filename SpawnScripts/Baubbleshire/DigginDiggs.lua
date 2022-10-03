@@ -92,7 +92,7 @@ function BundleOfPelts(NPC, Spawn)
 	Dialog.Start()
 end
 
-function FarSeas_FiftyDone(NPC, Spawn)
+function FarseasDone(NPC, Spawn)
     if GetQuestStep(Spawn, FarSeas_Fifty) == 4 then 
     SetStepComplete(Spawn, FarSeas_Fifty, 4)
     end

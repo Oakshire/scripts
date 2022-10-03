@@ -9,9 +9,9 @@
 local quest = 235
 
 function examined(Item, Player)
---[[	if not HasQuest(Player, quest) and not HasCompletedQuest(Player, quest) then
-		OfferQuest(Item, Player, quest)
+	if not HasQuest(Player, quest) and not HasCompletedQuest(Player, quest) then
+		OfferQuest(nil, Player, quest)
 	else
 		--remove quest starter
-	end]]--
+	end
 end

@@ -20,6 +20,7 @@ function Accepted(Quest, QuestGiver, Player)
     if HasItem(Player,3776) then
     RemoveItem(Player,3776,1)
     end
+    SendMessage(Player, "You place the old note in your quest satchel.")
 end
 
 function Declined(Quest, QuestGiver, Player)

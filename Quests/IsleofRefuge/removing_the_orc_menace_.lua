@@ -48,7 +48,7 @@ function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I killed Grimgash the Black.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I killed Grimgash the Black.")
 
-	AddQuestStepChat(Quest, 3, "I need to return to Nathinia to let her know the orc has been removed from power.", 11, 3250014)
+	AddQuestStepChat(Quest, 3, "I need to return to Nathinia to let her know the orc has been removed from power.", 1, "I should tell Nathinia that Grimgash is dead.", 11, 3250014)
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end
 

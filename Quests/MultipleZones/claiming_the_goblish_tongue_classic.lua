@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepObtainItem(Quest, 1, "Hunt goblins of Norrath for territory markers to study.", 7, 100, "I must collect and study more territory markers from the goblins of Norrath to learn the goblin language.", 417, 13528)
+	AddQuestStepObtainItem(Quest, 1, "Hunt goblins of Norrath for territory markers to study.", 7, 100, "I must collect and study more territory markers from the goblins of Norrath to learn the goblin language.", 185, 13528)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -21,6 +21,7 @@ function Accepted(Quest, QuestGiver, Player)
 		if HasItem(Player, 7832) then
 			RemoveItem(Player, 7832,1)
 		end
+		CloseItemConversation(nil,Player)
 end
 
 function Declined(Quest, QuestGiver, Player)

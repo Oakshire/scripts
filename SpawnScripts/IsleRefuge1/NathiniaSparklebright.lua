@@ -72,7 +72,7 @@ elseif not HasQuest(Spawn, Priest4) and HasCompletedQuest(Spawn,Priest3) and not
 elseif not HasQuest(Spawn, Priest5) and HasCompletedQuest(Spawn,Priest4) and not HasCompletedQuest(Spawn,Priest5) then
     Dialog4(NPC,Spawn) 
 elseif not HasQuest(Spawn, Priest6) and HasCompletedQuest(Spawn,Priest5) and not HasCompletedQuest(Spawn,Priest6) then
-    Dialog4(NPC,Spawn) 
+    Dialog5(NPC,Spawn) 
 else
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
@@ -234,7 +234,7 @@ function Priest5Turnin(NPC,Spawn)
  	Dialog.AddDialog("Excellent.  I shall study these totems and determine if they are part of what is stirring the goblins up.  You have been very helpful to the people of this outpost.  Please, take this tunic as a token of our appreciation.  You have most assuredly earned it.  I am reluctant to ask this but others need your service one final time.  Are you willing to help us with this last task?")
 	Dialog.AddVoiceover("voiceover/english/nathinia_sparklebright/tutorial_island02/nathiniasparklebright011.mp3", 744531264,1982225584)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
-    Dialog.AddOption("I will help with this task. [WORK IN PROGRESS]")	
+    Dialog.AddOption("I will help with this task.","Dialog5")	
     Dialog.AddOption("Perhaps, but I need a momment.")	
 	Dialog.Start()
     SetStepComplete(Spawn,Priest5,2)

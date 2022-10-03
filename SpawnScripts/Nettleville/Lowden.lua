@@ -9,7 +9,6 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
 	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 

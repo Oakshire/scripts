@@ -70,32 +70,34 @@ end
 function Step1_Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, b[item1] )
 	
-	if QuestIsComplete(Player, AFamilyRecipe) then
+--	if QuestIsComplete(Player, AFamilyRecipe) then
 		FoundAllItems(Quest, QuestGiver, Player)
-	end
+--	end
 end
 
 function Step2_Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, b[item2] )
 	
-	if QuestIsComplete(Player, AFamilyRecipe) then
+--	if QuestIsComplete(Player, AFamilyRecipe) then
 		FoundAllItems(Quest, QuestGiver, Player)
-	end
+--	end
 end
 
-function Step3_Complete_FoundHoney(Quest, QuestGiver, Player)
+function Step3_Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, b[item3])
 	
-	if QuestIsComplete(Player, AFamilyRecipe) then
+--	if QuestIsComplete(Player, AFamilyRecipe) then
 		FoundAllItems(Quest, QuestGiver, Player)
-	end
+--	end
 end
 
 function FoundAllItems(Quest, QuestGiver, Player)
+    if QuestStepIsComplete(Player,283,1) and QuestStepIsComplete(Player,283,2) and QuestStepIsComplete(Player,283,3) then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have collected all of the needed ingredients.")
 	
 	AddQuestStepChat(Quest, 4, "I need to bring all of these components to Mav Boilfist near the docks.", 1, "I need to bring these ingredients to Mav Boilfist in Graystone Yard.", 0, 2350016) 
 	AddQuestStepCompleteAction(Quest, 4, "Quest_Complete")
+end
 end
 
 function Quest_Complete(Quest, QuestGiver, Player)

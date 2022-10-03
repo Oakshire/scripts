@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill centipedes, or crawlers, for Moyna is use as bait.", 10, 100, "I must kill ten centipedes in the Forest Ruins and gather their remains for use as bait.", 0, 1960026)
+	AddQuestStepKill(Quest, 1, "I need to kill centipedes, or crawlers, for Moyna to use as bait.", 10, 100, "I must kill ten centipedes in the Forest Ruins and gather their remains for use as bait.", 0, 1960026)
 	AddQuestStepCompleteAction(Quest, 1, "step1_completed_killedCentipedes")
 end
 
