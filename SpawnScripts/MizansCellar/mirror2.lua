@@ -11,7 +11,7 @@ SetPlayerProximityFunction(NPC, 20, "InRange", "LeaveRange")
 end
 
 function InRange(NPC,Spawn)
-if QuestStepIsComplete(Spawn,5749,4)== true then
+if QuestStepIsComplete(Spawn,5749,4)== true or QuestIsComplete(Spawn,5749)== true then
 SpawnSet(NPC,"model_type","7")
 end
 end

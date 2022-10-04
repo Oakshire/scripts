@@ -21,10 +21,14 @@ end
 end
 
 function hailed(NPC, Player)
-if not HasQuest(Player,Cellar) and not HasCompletedQuest(Player,Cellar) or GetQuestStep(Player,Cellar)<=8 then
+if not HasQuest(Player,Cellar) and not HasCompletedQuest(Player,Cellar) or GetQuestStep(Player,Cellar)<=8 and not HasCompletedQuest(Player,Cellar) then
 Dialog1(NPC,Player)
 elseif GetQuestStep(Player, Cellar)==9 or GetQuestStep(Player, Cellar)==10 then
 Dialog2(NPC,Player)
+elseif GetQuestStep(Player, Cellar)==11  then
+Dialog3(NPC,Player)
+elseif HasCompletedQuest(Player, Cellar)  then
+Finished(NPC,Player)
 end
 end
 
@@ -106,8 +110,8 @@ function QuestUpdate8(NPC, Player)
         if GetTradeskillLevel(Player)<2 then
         SetTradeskillLevel(Player,2)
         SetTradeskillClass(Player,1)
-	    SendMessage(Spawn, "You are now an Artisan!")
-        SendPopUpMessage(Spawn, "You are now an Artisan!", 200, 200, 200)            
+	    SendMessage(Player, "You are now an Artisan!")
+        SendPopUpMessage(Player, "You are now an Artisan!", 200, 200, 200)            
         end
 end
 
@@ -124,6 +128,25 @@ function Dialog2(NPC,Player)
     elseif choice == 3 then
         PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_3_1034.mp3","I need to finish these candles for Mizan. You should speak to him if you're seeking to learn the ways of a mage.","nod",0,0,Player)
     end
+end
+
+function Dialog3(NPC, Player)
+		FaceTarget(NPC, Player)
+		Dialog.New(NPC, Player)
+		Dialog.AddDialog("Well done!  The masters will be so pleased with me... err, you I mean!  As promised, you're welcome to use the workshop for all of your crafting needs for as long as you stay on the island.")
+		Dialog.AddVoiceover("voiceover/english/assistant_dreak/tutorial_island02/assistant_dreak008.mp3",2753065662,90696178)
+        PlayFlavor(NPC,"","","happy",0,0,Player)
+        if GetTradeskillLevel(Player)<3 then
+        SetTradeskillLevel(Player,3)
+        end
+		Dialog.AddOption("Thanks.")
+		Dialog.Start()
+        SetStepComplete(Player, Cellar,11)
+end
+
+function Finished(NPC, Player)
+		FaceTarget(NPC, Player)
+        PlayFlavor(NPC,"voiceover/english/assistant_dreak/tutorial_island02/030_wizard_assistant_dreak_quest_completed_e3b1aced.mp3","Thanks for all your help!  Make sure to clean up when you're done in the cellar.","thanks",1096069834,205718440, Spawn)
 end
 --[[
 

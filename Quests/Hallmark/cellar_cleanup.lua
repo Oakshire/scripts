@@ -104,6 +104,7 @@ function Step8Complete(Quest, QuestGiver, Player)
     if not HasItem(Player,20708) then
     GiveQuestItem(Quest, Player, "", 20708,4142,4142,4142,7391,7391,7391)
     end
+    SummonItem(Player,1030001,1)
 --    GiveQuestItem(Quest, Player, "", 4142)
 --   GiveQuestItem(Quest, Player, "", 4142)
 --    GiveQuestItem(Quest, Player, "", 4142)
@@ -114,6 +115,9 @@ function Step8Complete(Quest, QuestGiver, Player)
 	AddQuestStepCraft(Quest, 9, "Use the forge to create a tin bar using a fossil temper, a tin cluster and some fuel.", 1, 100, "I need to make Assistant Dreak a simple tin spike to block entrance to the cellar.", 775, 14460,12502,6055,11039)
 	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")
 end
+
+   
+
 
 function Step9Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 9, "I created a tin bar for use in making the tin spike.")
@@ -126,7 +130,19 @@ function Step10Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 10, "I have completed making a tin spike to hold the cellar door closed!")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I made Assistant Dreak a tin spike to cover the door.")
     UpdateQuestZone(Quest,"Isle of Refuge")
-
+    if HasItem(Player,14474) then
+        RemoveItem(Player,14474,1)
+    end
+     if HasItem(Player,12513) then
+        RemoveItem(Player,12513,1)
+    end   
+    if HasItem(Player,6066) then
+        RemoveItem(Player,6066,1)
+    end
+    if HasItem(Player,11049) then
+        RemoveItem(Player,11049,1)
+    end    
+    SendMessage(Player,"You place the tin spike in your quest satchle.","yellow")   
 	AddQuestStepChat(Quest, 11, "I need to speak to Assistant Dreak.", 1, "I need to return with the spike that I made for Assistant Dreak.", 681, 3250167)
 	AddQuestStepCompleteAction(Quest, 11, "QuestComplete")
 end

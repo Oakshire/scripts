@@ -17,6 +17,9 @@ function hailed(NPC, Spawn)
         elseif choice == 2 then
         PlayFlavor(NPC,"voiceover/english/overseer_ivagora/fprt_hood03/qst_overseer_ivagora_callout2_29d95cf.mp3","Here! Here! Here! Refugees come here!!!","beckon",50468124,3582989183,Spawn)
     end
+	if GetQuestStep(Spawn, 5758)==2 then
+	    SetStepComplete(Spawn, 5758,2)
+	end
 end
 
 function respawn(NPC)

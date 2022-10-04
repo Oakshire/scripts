@@ -18,8 +18,8 @@ function hailed(NPC, player)
 	else
 		step = GetQuestStep(player, 524) 
 		if step == 1 then			
-			InstructionWindowGoal(player,0)	
-			InstructionWindowClose(player)
+--			InstructionWindowGoal(player,0)	
+--			InstructionWindowClose(player)
 			Dialog.New(NPC, player)
 			Dialog.AddDialog("Wot? Oh, hey there, ye' startled me.")
 			Dialog.AddVoiceover("voiceover/english/waulon/boat_06p_tutorial02/walon_0_001.mp3", 814960513, 2301562586)

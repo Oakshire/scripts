@@ -5,6 +5,10 @@
     Script Purpose : 
                    : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
+local Qeynos = 5717
+local Freeport = 5758
 
 function spawn(NPC)
 
@@ -16,6 +20,9 @@ function hailed(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
+    if HasQuest(Spawn, Qeynos) or HasQuest(Spawn, Freeport) then
+    Dialog1(NPC, Spawn)
+    else
     FaceTarget(NPC, Spawn)
     math.randomseed(os.time())
     voice = MakeRandomInt(1,3)
@@ -27,7 +34,7 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/captain_varlos/tutorial_island02_fvo_hail3.mp3", "Ya' best be sure ta' explore the whole island, ya' hear!", "agree", 1155995604, 1406357895, Spawn)
 	end
 end
-
+end
 
 
 function Dialog1(NPC, Spawn)

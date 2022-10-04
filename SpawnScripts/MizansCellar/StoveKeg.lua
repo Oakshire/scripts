@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    SetRequiredQuest(NPC,5749,9,0,0,1)
+    SetRequiredQuest(NPC,5749,9,0,1,1)
 end
 
 function hailed(NPC, Spawn)

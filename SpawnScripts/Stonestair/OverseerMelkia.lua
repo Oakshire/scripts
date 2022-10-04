@@ -17,6 +17,9 @@ function hailed(NPC, Spawn)
         elseif choice == 2 then
         PlayFlavor(NPC,"voiceover/english/overseer_melkia/fprt_hood02/qst_overseer_melkia_callout2_e5f9b75f.mp3","New refugees are required to speak with me immediately!","nod",566743467,1453719370,Spawn)
     end
+	if GetQuestStep(Spawn, 5758)==2 then
+	    SetStepComplete(Spawn, 5758,2)
+	end
 end
 
 function respawn(NPC)

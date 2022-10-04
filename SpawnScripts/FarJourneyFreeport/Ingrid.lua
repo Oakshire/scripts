@@ -14,7 +14,10 @@ local ShardOfLuclin = 12565
 
 function spawn(NPC)
     SetTempVariable(NPC, "TempAnimationVar", "FirstRun")
-    AddTimer(NPC, 30000, "WalkToGeredo")
+    SetTempVariable(NPC, "Staring", "Checking")
+--  AddTimer(NPC, 30000, "WalkToGeredo")
+    SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
+
 end
 
 function hailed(NPC, Spawn)
@@ -57,6 +60,13 @@ function hailed(NPC, Spawn)
         end
     end
 end
+end
+
+function InRange(NPC,Player)
+if GetTempVariable(NPC,"Starting","Checking") then
+    SetTempVariable(NPC, "Staring", "Done")
+    AddTimer(NPC, 30000, "WalkToGeredo",1,Player)
+    end
 end
 
 function WalkToGeredo(NPC, Player)
@@ -297,6 +307,7 @@ function vim_who(NPC, Spawn)
     Dialog.Start()
     vim = GetRandomSpawnByID(NPC, 270007)
     FaceTarget(NPC, vim)
+    PlayFlavor(NPC,"","","point",0,0,Player)
     AddTimer(NPC, 3000, "turn_towards_player", 1, Spawn)
 end
 

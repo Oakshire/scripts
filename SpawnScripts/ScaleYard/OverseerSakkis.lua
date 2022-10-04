@@ -1,18 +1,20 @@
 --[[
-    Script Name    : SpawnScripts/MizansCellar/SewingTableMannequin.lua
+    Script Name    : SpawnScripts/ScaleYard/OverseerSakkis.lua
     Script Author  : Dorbin
-    Script Date    : 2022.09.22 06:09:54
+    Script Date    : 2022.10.03 07:10:45
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-    SetRequiredQuest(NPC,5749,10,0,1,1)
 
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if GetQuestStep(Spawn, 5758)==2 then
+	    SetStepComplete(Spawn, 5758,2)
+	end
 end
 
 function respawn(NPC)

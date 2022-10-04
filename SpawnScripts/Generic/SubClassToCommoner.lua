@@ -92,7 +92,8 @@ if FPmages >0 then Changefaction(player, 104, -FPmages)
     else Changefaction(player, 104, (FPmages*-1))
 end
 ]]--
-AddTimer(NPC,500,"Removal")
+AddTimer(NPC,500,"Removal",1,player)
+AddTimer(NPC,1000,"SkillSwitch",1,player)
 end
 
 function Removal(NPC,player)
@@ -449,6 +450,97 @@ if HasItem(player,85697) then
 end
 if HasItem(player,42288) then
     RemoveItem(player,42288,1)
+end
+
+end
+
+function SkillSwitch(NPC,player)
+if HasSkill(player, 366253016) then --Ministration
+    RemoveSkill(player, 366253016)
+end
+if HasSkill(player, 613995491) then -- Disruption
+    RemoveSkill(player, 613995491)
+end
+if HasSkill(player, 882983852) then -- Subjigation
+    RemoveSkill(player, 882983852)
+end
+if HasSkill(player, 3587918036) then -- Ordination
+    RemoveSkill(player, 3587918036)
+end
+if HasSkill(player, 2638198038) then -- Focus
+    RemoveSkill(player, 2638198038)
+end
+
+if HasSkill(player, 723762198) then -- Aggression
+    RemoveSkill(player, 723762198)
+end
+if HasSkill(player, 540022425) then -- Parry
+    RemoveSkill(player, 540022425)
+end
+
+if HasSkill(player, 3421494576) then -- Crushing
+    RemoveSkill(player, 3421494576)
+end
+if HasSkill(player, 1756482397) then -- Ranged
+    RemoveSkill(player, 1756482397)
+end
+if HasSkill(player, 3048574950) then -- Piercing
+    RemoveSkill(player, 3048574950)
+end
+if HasSkill(player, 418532101) then -- Slashing
+    RemoveSkill(player, 418532101)
+end
+
+
+if HasSkill(player, 609880714) then -- Defense
+    RemoveSkill(player, 609880714)
+end
+if HasSkill(player, 540022425) then -- Parry
+    RemoveSkill(player, 540022425)
+end
+if HasSkill(player, 2897193374) then -- Light Armor
+    RemoveSkill(player, 2897193374)
+end
+if HasSkill(player, 2246237129) then -- Medium Armor
+    RemoveSkill(player, 2246237129)
+end
+if HasSkill(player, 241174330) then -- Heavy Armor
+    RemoveSkill(player, 241174330)
+end
+
+
+
+if HasSkill(player, 3659699625) then -- Mining
+    RemoveSkill(player, 3659699625)
+end
+if HasSkill(player, 688591146) then -- Foresting
+    RemoveSkill(player, 688591146)
+end
+if HasSkill(player, 1048513601) then -- Gathering
+    RemoveSkill(player, 1048513601)
+end
+if HasSkill(player, 4158365743) then -- Trapping
+    RemoveSkill(player, 4158365743)
+end
+if HasSkill(player, 2319450178) then -- Fishing
+    RemoveSkill(player, 2319450178)
+end
+if HasSkill(player, 1970131346) then -- Transmuting
+    RemoveSkill(player, 1970131346)
+end
+
+--COMMONER GAINED SKILLS
+if not HasSkill(player, 2072844078) then -- Magic Affinity
+    AddSkill(player, 2072844078,1,5)
+end
+if not HasSkill(player, 3539032716) then -- Very Light Armor
+    AddSkill(player, 3539032716,1,5)
+end
+if not HasSkill(player, 2383540775) then -- Spell Avoidance
+    AddSkill(player, 2383540775,30,30)
+end
+if not HasSkill(player, 609880714) then -- Defense
+    AddSkill(player, 609880714,30,30)
 end
 
 end

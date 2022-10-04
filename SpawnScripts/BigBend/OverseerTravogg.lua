@@ -12,6 +12,9 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+	if GetQuestStep(Spawn, 5758)==2 then
+	    SetStepComplete(Spawn, 5758,2)
+	end
 end
 
 function respawn(NPC)

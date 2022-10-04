@@ -57,7 +57,9 @@ function AttackRocks(NPC)
 end
 
 function Rocks(NPC)
+    if not IsInCombat(NPC) then
     SpawnSet(NPC, "visual_state", "10783")	-- Start attacking
+    end
     AddTimer(NPC, 3500, "stop_attack")	        -- for 2 seconds, then stop
 end
 

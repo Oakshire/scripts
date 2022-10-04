@@ -8,6 +8,9 @@
 
 require "SpawnScripts/Generic/DialogModule"
 
+local Qeynos = 5717
+local Freeport = 5758
+
 function spawn(NPC)
 end
 
@@ -16,19 +19,77 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
- Dialog12(NPC, Spawn)
- end
+    if GetQuestStep(Spawn, Qeynos)==1 or GetQuestStep(Spawn, Freeport)==1 then
+    LeaveDialog1(NPC, Spawn)
+    elseif GetQuestStep(Spawn, Qeynos)>1 then
+    PlayFlavor(NPC,"voiceover/english/duke_ferrin/tutorial_island02/dukeferrin026.mp3","Very well, you will find the Qeynos dock to the south.  Ring the mariner's bell at the end of the dock, and a ship bound for Qeynos will pick you up.  I'm sure that one of the Qeynos representatives will cover your fee. ","",2656074166,2921193295,Spawn)
+   
+    elseif GetQuestStep(Spawn, Freeport)>1 then   
+    PlayFlavor(NPC,"voiceover/english/duke_ferrin/tutorial_island02/dukeferrin027.mp3","The eastern-most dock is the one that ships bound for Freeport use.  If you ring the mariner's bell at the end of the dock, one of the ships leaving for Freeport will pick you up.  I'll make sure to collect your fee from the Ambassador.","",1132073001,313723949,Spawn)
+    else    
+    Dialog12(NPC, Spawn)
+    end
+end
 
-
-function Dialog1(NPC, Spawn)
+--LEAVING DIALOG --
+function LeaveDialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Both of the cities have set up citizenship programs. Once you are delivered to the city you will live in the... outskirts, until you have proven your worth.")
-	Dialog.AddVoiceover("voiceover/english/duke_ferrin/tutorial_island02/dukeferrin019.mp3", 658541721, 2588639135)
-	Dialog.AddOption("How do I prove my worth?", "Dialog10")
+	Dialog.AddDialog("Well, I see you've managed to do quite well for yourself out here on the island.  I suppose I owe you some measure of gratitude for what you've managed to accomplish during your short stay here.")
+	Dialog.AddVoiceover("voiceover/english/duke_ferrin/tutorial_island02/dukeferrin023.mp3", 1028484409, 3054994254)
+	Dialog.AddOption("Thanks, it's nice to know my efforts are appreciated.", "LeaveDialog2")
 	Dialog.Start()
 end
 
+function LeaveDialog2(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("You seem capable of surviving in whatever city you end up living in, but you're lacking transportation.")
+	Dialog.AddVoiceover("voiceover/english/duke_ferrin/tutorial_island02/dukeferrin024.mp3", 4155527992, 2524136639)
+	Dialog.AddOption("How about one of your boats?", "LeaveDialog3")
+	Dialog.Start()
+end
+
+function LeaveDialog3(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I suppose I could grant you passage on the next ship out. Which city have you decided on?")
+	Dialog.AddVoiceover("voiceover/english/duke_ferrin/tutorial_island02/dukeferrin025.mp3", 422571619, 2531247876)
+    if HasQuest(Spawn,5717) then
+	Dialog.AddOption("Qeynos", "LeaveDialogQ")
+    else
+	Dialog.AddOption("Freeport", "LeaveDialogFP")
+	end	Dialog.Start()
+end
+
+
+
+
+function LeaveDialogQ(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Very well, you will find the Qeynos dock to the south.  Ring the mariner's bell at the end of the dock, and a ship bound for Qeynos will pick you up.  I'm sure that one of the Qeynos representatives will cover your fee.")
+	Dialog.AddVoiceover("voiceover/english/duke_ferrin/tutorial_island02/dukeferrin026.mp3", 2656074166,2921193295)
+	PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+	Dialog.AddOption("Thank you very much.")
+	Dialog.Start()
+	SetStepComplete(Spawn,Qeynos,1)
+end
+
+
+function LeaveDialogFP(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("The eastern-most dock is the one that ships bound for Freeport use.  If you ring the mariner's bell at the end of the dock, one of the ships leaving for Freeport will pick you up.  I'll make sure to collect your fee from the Ambassador.")
+	Dialog.AddVoiceover("voiceover/english/duke_ferrin/tutorial_island02/dukeferrin027.mp3", 1132073001,313723949)
+	PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+	Dialog.AddOption("I'm sure you will.")
+	Dialog.Start()
+	SetStepComplete(Spawn,Freeport,1)
+end
+
+
+--REGULAR DIALOG
 function Dialog2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)

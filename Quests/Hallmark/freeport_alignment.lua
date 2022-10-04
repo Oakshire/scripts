@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Excellent! I knew you were a brave soul.  First you must speak with the Duke and arrange passage to Freeport.  The Overlord will cover the expenses for your journey but you must repay him for his generosity.  When you reach the district where you are living, speak with the Overseer assigned to the area and he will show you to your new quarters. ")
+	Dialog.AddVoiceover("voiceover/english/ambassador_t_kirr/tutorial_island02/ambassadortkirr008.mp3", 1533775256, 3058641435)
+    PlayFlavor(QuestGiver,"","","agree",0,0,Player)
+	Dialog.AddOption("Then I have no further need of you.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -32,7 +39,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've spoken with Duke Ferrin.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Duke Ferrin has arranged transport for me to Freeport.")
 
-	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 000)
+	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1380128,1360197,1350116,1390126,1340141)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

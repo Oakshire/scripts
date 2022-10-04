@@ -5,20 +5,75 @@
     Script Purpose : 
                    : 
 --]]
+local BARBARIAN = 0
+local DARK_ELF = 1
+local DWARF = 2
+local ERUDITE = 3
+local FROGLOK = 4
+local GNOME = 5
+local HALF_ELF = 6
+local HALFLING = 7
+local HIGH_ELF = 8
+local HUMAN = 9
+local IKSAR = 10
+local KERRA = 11
+local OGRE = 12
+local RATONGA = 13
+local TROLL = 14
+local WOOD_ELF = 15
+local FAE = 16
+local ARASAI = 17
+local SARNAK = 18
+local VAMPIRE = 19
+local AERAKYN = 20
 
 function spawn(NPC)
 
 end
 
+function respawn(NPC)
+	spawn(NPC)
+end
+
 function casted_on(NPC, Spawn, Message)
 	if Message == "leave the isle" then
-        if GetClass(Spawn)>0 then
-	    LeaveIsland(NPC, Spawn)
+   if GetClass(Spawn)<0 then -- STILL NEED CLASS UPDATE
+        PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+ 	    SendPopUpMessage(Spawn,"Speak with Garven Tralk to advance your training.",200,200,200)
+	    SendMessage(Spawn,"Speak with Garven Tralk to advance your training before leaving the island.")  
+	    
+	elseif GetQuestStep(Spawn,5758)==1 or GetQuestStep(Spawn,5717)==1 then -- STILL NEED DUKE FERRIN UPDATE
+        PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_003.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+ 	    SendPopUpMessage(Spawn,"Speak with Duke Ferrin about securing a vessel off the island.",200,200,200)
+	    SendMessage(Spawn,"Speak with Duke Ferrin about securing a vessel off the island.")   
+	    
+	    
+    elseif GetQuestStep(Spawn,5758)==2 or HasCompletedQuest(Spawn, 5758) then --FREEPORT LEAVING
+    PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+	window = CreateOptionWindow();
+	AddOptionWindowOption(window, " Leave", "Leave the Island.  It is unlikely you will return, but you will continue to pursue greatness in Freeport.", 0, 2297, "LeaveIslandFP")
+	AddOptionWindowOption(window, " Stay", "Stay on the Island.  Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
+	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
+	
+    elseif GetQuestStep(Spawn,5717)==2 or HasCompletedQuest(Spawn, 5717)  then --QEYNOS LEAVING
+    PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+	window = CreateOptionWindow();
+	AddOptionWindowOption(window, " Leave", "Leave the Island.  It is unlikely you will return, but you will continue to pursue greatness in Qeynos.", 0, 2297, "LeaveIslandQ")
+	AddOptionWindowOption(window, " Stay", "Stay on the Island.  Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
+	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
+	
+	    else -- STILL NEED ALIGNMENT QUEST
+        PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+	    SendPopUpMessage(Spawn,"Speak with an ambassador if you are ready to leave the island.",200,200,200)
+	    SendMessage(Spawn,"Speak with an ambassador if you are ready to leave the island.")
         end
 end
 end
 
-function LeaveIsland(NPC, Spawn)
+
+
+function LeaveIslandQ(NPC, Spawn)
+    PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_005.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
     Race = GetRace(Spawn)
     
     
@@ -65,56 +120,53 @@ function LeaveIsland(NPC, Spawn)
 end
 end
 
-function respawn(NPC)
-	spawn(NPC)
-end
 
---[[function LeaveIsland(NPC, Spawn)
-    Race = GetRace(Spawn)
-  
-    Bind(Spawn, 559, -232.03, -56.06, 172.57, 360.0)
+
+function LeaveIslandFP(NPC, Spawn)
+        PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_005.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+       Race = GetRace(Spawn)
+
     -- Erudite / Kerra
     if Race == 3 or Race == 11 then
-        AddSpellBookEntry(Spawn, 8057, 1)	
+ --       AddSpellBookEntry(Spawn, 8057, 1)	
         ZoneRef = GetZone("Stonestair")
         Zone(ZoneRef,Spawn)
 
       -- Ratonga / Gnome
     elseif Race == 5 or Race == 13 then
-        AddSpellBookEntry(Spawn, 8057, 1)	
+ --       AddSpellBookEntry(Spawn, 8057, 1)	
         ZoneRef = GetZone("TempleSt")
         Zone(ZoneRef,Spawn)
 
 
       -- Human / Half Elf
     elseif Race == 9 or Race == 6 then
-        AddSpellBookEntry(Spawn, 8057, 1)	
+--        AddSpellBookEntry(Spawn, 8057, 1)	
         ZoneRef = GetZone("BeggarsCourt")
         Zone(ZoneRef,Spawn)
 
 
    -- Orge / Troll
     elseif Race == 12 or Race == 14 then
-        AddSpellBookEntry(Spawn, 8057, 1)	
+ --       AddSpellBookEntry(Spawn, 8057, 1)	
         ZoneRef = GetZone("BigBend")
         Zone(ZoneRef,Spawn)
     
    -- Dark Elf 
     elseif Race == 1  then
-        AddSpellBookEntry(Spawn, 8057, 1)	
+--        AddSpellBookEntry(Spawn, 8057, 1)	
         ZoneRef = GetZone("Longshadow")
         Zone(ZoneRef,Spawn)
 
     -- Barbarian / Iksar
     elseif Race == 0 or Race == 10 then
-        AddSpellBookEntry(Spawn, 8057, 1)
+--        AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("ScaleYard")
         Zone(ZoneRef,Spawn)
 
     else 
-        AddSpellBookEntry(Spawn, 8057, 1)
+--        AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("EastFreeport")
         Zone(ZoneRef,Spawn)
     end
-
-]]--
+end

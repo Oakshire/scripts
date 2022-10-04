@@ -17,6 +17,9 @@ function hailed(NPC, Spawn)
         elseif choice == 2 then
         PlayFlavor(NPC,"voiceover/english/overseer_daerla/fprt_hood05/qst_overseer_daerla_callout2_8e8f4739.mp3","All of you lowly refugees are to speak with me at once!","sniff",2064397815,2852618419,Spawn)
     end
+	if GetQuestStep(Spawn, 5758)==2 then
+	    SetStepComplete(Spawn, 5758,2)
+	end
 end
 
 function respawn(NPC)

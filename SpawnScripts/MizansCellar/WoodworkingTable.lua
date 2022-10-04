@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    SetRequiredQuest(NPC,5749,10,1,0,1)
+    SetRequiredQuest(NPC,5749,10,1,1,1)
 
 end
 

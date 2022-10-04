@@ -16,7 +16,7 @@ function hailed(NPC, Spawn)
 	    if choice == 1 then
         PlayFlavor(NPC,"voiceover/english/steward_quyntar/qey_village04/qst_steward_quyntar_callout1_e7d4a59e.mp3","I trust you find the day to your liking.  Safe travels to you.","hello",704563926,296687769,Spawn)
         elseif choice == 2 then
-        PlayFlavor(NPC,"voiceover/english/steward_quyntar/qey_village04/qst_steward_quyntar_hail1_a1370939.mp3","I trust you are enjoying this splended day.  Safe travels to you.","nod",1077432596,453293758,Spawn)
+        PlayFlavor(NPC,"voiceover/english/steward_quyntar/qey_village04/qst_steward_quyntar_hail1_a1370939.mp3","I trust you are enjoying this splendid day.  Safe travels to you.","nod",1077432596,453293758,Spawn)
 end
 end
 
