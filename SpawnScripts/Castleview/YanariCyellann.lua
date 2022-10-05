@@ -67,7 +67,7 @@ function hailed(NPC, Spawn)
     if GetFactionAmount(Spawn,11) <0 then
         FactionChecking(NPC, Spawn, faction)
         else  	
-            if not HasCompletedQuest (Spawn, Badgers) and not HasCompletedQuest (Spawn, Slime) then
+            if not HasCompletedQuest (Spawn, Badgers) or not HasCompletedQuest (Spawn, Slime) then
             FaceTarget(NPC, Spawn)
                 conversation = CreateConversation()   
             if not HasQuest(Spawn, Badgers) then       
@@ -83,7 +83,7 @@ function hailed(NPC, Spawn)
 	           AddConversationOption(conversation, "I've returned with your bag of daggers.", "DoneSlime")
 	        end
 	        
-	           AddConversationOption(conversation, "You seem to be a bit busy at the moment.  I'll leave you alone.")
+	            AddConversationOption(conversation, "You seem to be a bit busy at the moment.  I'll leave you alone.")
                 PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan.mp3", "", "", 3613336528, 1736617695, Spawn)
 	           StartConversation(conversation, NPC, Spawn, "Do not touch anything!  You could turn yourself into a goo or destroy the entire building.  What do you need?")
 	          end

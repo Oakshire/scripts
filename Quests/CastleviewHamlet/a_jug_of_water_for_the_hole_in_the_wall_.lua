@@ -33,7 +33,7 @@ function FoundWater(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I discovered the Oakmyst waterfall and filled the jug with its pure water.")
     
     UpdateQuestZone(Quest, "Castleview Hamlet")
-	AddQuestStepChat(Quest, 2, "I need return to Bulurg.", 3, "I need to bring this full jug back to Bulurg.", 310, 2360021)
+	AddQuestStepChat(Quest, 2, "I need return to Bulurg.", 1, "I need to bring this full jug back to Bulurg.", 310, 2360021)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

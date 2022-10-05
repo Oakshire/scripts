@@ -14,6 +14,7 @@ function InRange(NPC, Spawn)
 if GetFactionAmount(Spawn,11)<0 then
 	PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
  else   
+    chance = MakeRandomInt(0,100)
 	if chance <= 30 then
 Talk(NPC, Spawn)
 end

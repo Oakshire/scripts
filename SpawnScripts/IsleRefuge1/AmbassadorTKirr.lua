@@ -39,14 +39,20 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-if not HasQuest(Spawn,5758)then
+if GetClass(Spawn)>0 then
+if not HasQuest(Spawn,5758) and not HasQuest(Spawn,5717) and not HasCompletedQuest(Spawn,5758)  and not HasCompletedQuest(Spawn,5717) then
     if GetRace(Spawn) == BARBARIAN or GetRace(Spawn) == DARK_ELF or GetRace(Spawn) == ERUDITE or GetRace(Spawn) ==GNOME or GetRace(Spawn) == HALF_ELF or GetRace(Spawn) == HUMAN or GetRace(Spawn) == IKSAR or GetRace(Spawn) == KERRA or GetRace(Spawn) == OGRE or GetRace(Spawn) == RATONGA or GetRace(Spawn) == TROLL or GetRace(Spawn) == ARASAI or GetRace(Spawn) == SARNAK or GetRace(Spawn) == VAMPIRE or GetRace(Spawn) == AERAKYN then
     Dialog1(NPC, Spawn)
     else
-    PlayFlavor(NPC,"voiceover/english/ambassador_t_kirr/tutorial_island02/ambassadortkirr003.mp3","Ignore this fair-skinned wench's lies! She knows nothing of Freeport!","no",1210422898,1324228526,Spawn)
+    PlayFlavor(NPC,"voiceover/english/ambassador_t_kirr/tutorial_island02/ambassadortkirr003.mp3","Ignore this fair-skinned wench's lies! She knows nothing of Freeport!","no",1210422898,1324228526,Spawn) --NOT RIGHT RACE
     end
+    elseif HasQuest(Spawn,5717)then
+    PlayFlavor(NPC,"voiceover/english/ambassador_t_kirr/tutorial_island02/ambassadortkirr003.mp3","Ignore this fair-skinned wench's lies! She knows nothing of Freeport!","shakefist",1210422898,1324228526,Spawn) --POSSIBLE FREEPORTER ACCEPTED QEYNOS
 else
-    PlayFlavor(NPC,"voiceover/english/island_of_refuge/ambassador_tkir/ior_ktir_002.mp3","Right, can't you tell I'm busy?","stare",1541998982,3704557731,Spawn)
+    PlayFlavor(NPC,"voiceover/english/island_of_refuge/ambassador_tkir/ior_ktir_002.mp3","Right, can't you tell I'm busy?","glare",1541998982,3704557731,Spawn) --DONE WITH AVAILBLE STEPS
+end
+else
+    PlayFlavor(NPC,"voiceover/english/island_of_refuge/ambassador_tkir/ior_ktir_002.mp3","Right, can't you tell I'm busy?","stare",1541998982,3704557731,Spawn) --COMMONER RESPONSE
 end
 end
 

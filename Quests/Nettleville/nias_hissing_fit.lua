@@ -35,7 +35,7 @@ function CheckIn(Quest, QuestGiver, Player)
 UpdateQuestStepDescription(Quest, 1, "I went to the scribe shop.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I went to the scribe shop and found Marjani Kenan still there.")
 
-	AddQuestStepChat(Quest, 2, "I need to return to Nia Jaja.", 1, "Nia should know Marjani is still at the scribe shop.  She most likely won't be happy.", 0, 2360011)
+	AddQuestStepChat(Quest, 2, "I need to return to Nia Jaja.", 1, "Nia should know Marjani is still at the scribe shop.  She most likely won't be happy.", 0, 2330023)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

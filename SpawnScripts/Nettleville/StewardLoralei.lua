@@ -18,6 +18,11 @@ function hailed(NPC, Spawn)
         elseif choice == 2 then
         PlayFlavor(NPC,"voiceover/english/steward_loralei/qey_village01/qst_steward_loralei_hail1_7d12d980.mp3","Good day to you, friend.  Good luck on your journey.","nod",749070938,2751400419,Spawn)
 end
+if GetRace(Spawn)== 9 or GetRace(Spawn)== 11 then
+    if HasQuest(Spawn,5717) and GetQuestStep(Spawn,5717)==2 then
+        SetStepComplete(Spawn,5717,2)
+    end
+end
 end
 
 function respawn(NPC)

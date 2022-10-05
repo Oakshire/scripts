@@ -18,6 +18,12 @@ function hailed(NPC, Spawn)
         elseif choice == 2 then
         PlayFlavor(NPC,"voiceover/english/steward_daedeakovoon/qey_village02/qst_steward_daedeakovoon_multhail2_78a42729.mp3","On behalf of Qeynos, I welcome you, friend.  Your journey is over, and now you are among friends.","bow",1550457164,405052003,Spawn)
 end
+if GetRace(Spawn)== 9 or GetRace(Spawn)== 3 or GetRace(Spawn)== 20 then
+    if HasQuest(Spawn,5717) and GetQuestStep(Spawn,5717)==2 then
+        SetStepComplete(Spawn,5717,2)
+    end
+end
+
 end
 
 function respawn(NPC)

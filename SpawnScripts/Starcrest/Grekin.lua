@@ -102,7 +102,7 @@ function DepositDone(NPC, Spawn)
 	Dialog.Start()
 end
 
-function DepositDone(NPC, Spawn)
+function ReqDone(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
     PlayFlavor(NPC, "", "", "boggle", 0, 0, Spawn)

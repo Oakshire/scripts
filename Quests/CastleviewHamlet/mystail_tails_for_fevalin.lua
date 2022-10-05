@@ -34,7 +34,7 @@ function RatsDead(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have collected six mystail yearling tails.")
 
 	AddQuestStepChat(Quest, 2, "I must return to Fevalin.", 1, "I must gives these mystrat tails to Fevalin.", 172, 2360039)
-	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
+	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 	UpdateQuestZone(Quest, "Castleview Hamlet")
 end
 

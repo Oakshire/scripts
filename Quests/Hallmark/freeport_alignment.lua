@@ -39,7 +39,43 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've spoken with Duke Ferrin.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Duke Ferrin has arranged transport for me to Freeport.")
 
-	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1380128,1360197,1350116,1390126,1340141)
+   Race = GetRace(Player)
+
+    -- Erudite / Kerra
+    if Race == 3 or Race == 11 then
+	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1350116)
+    UpdateQuestZone(Quest, "Stonestair Byway")
+
+
+      -- Ratonga / Gnome
+    elseif Race == 5 or Race == 13 then
+	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1360197)
+    UpdateQuestZone(Quest, "Temple Street")
+
+
+      -- Human / Half Elf
+    elseif Race == 9 or Race == 6 then
+	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1370128)
+    UpdateQuestZone(Quest, "Beggar's Court")
+
+
+   -- Orge / Troll
+    elseif Race == 12 or Race == 14 then
+	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1340141)
+    UpdateQuestZone(Quest, "Big Bend")
+    
+   -- Dark Elf / Arasai / Freeblood
+    elseif Race == 1 or Race == 17 or Race == 19 then
+	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1380128)
+    UpdateQuestZone(Quest, "Longshadow Alley")
+
+    -- Barbarian / Iksar / Sarnak
+    elseif Race == 0 or Race == 10 or Race == 19 then
+	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1390126)
+    UpdateQuestZone(Quest, "Scale Yard")
+
+    end
+
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

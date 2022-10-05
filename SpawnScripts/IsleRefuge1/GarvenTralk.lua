@@ -73,7 +73,15 @@ elseif not HasQuest(Spawn, Scout2) and HasCompletedQuest(Spawn, ScoutGI) and not
      Dialog3S(NPC,Spawn)
      
 else    
-	PlayFlavor(NPC, "voiceover/english/garven_tralk/tutorial_island02/garventralk001.mp3", "If we don't get refugees with some degree of skill soon we'll have to pull out of here.", "nod", 1755275352, 190331174, Spawn, 0) --FINAL HAIL
+ --FINAL HAIL
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("If we don't get refugees with some degree of skill soon we'll have to pull out of here.")
+	Dialog.AddVoiceover("voiceover/english/garven_tralk/tutorial_island02/garventralk001.mp3",1755275352, 190331174)
+	PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+	Dialog.AddOption("Good luck with that.")
+	Dialog.Start()
+
 end
 end
 

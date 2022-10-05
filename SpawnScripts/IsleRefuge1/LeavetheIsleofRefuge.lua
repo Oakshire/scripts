@@ -51,14 +51,14 @@ function casted_on(NPC, Spawn, Message)
     elseif GetQuestStep(Spawn,5758)==2 or HasCompletedQuest(Spawn, 5758) then --FREEPORT LEAVING
     PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
 	window = CreateOptionWindow();
-	AddOptionWindowOption(window, " Leave", "Leave the Island.  It is unlikely you will return, but you will continue to pursue greatness in Freeport.", 0, 2297, "LeaveIslandFP")
+	AddOptionWindowOption(window, " Leave for Freeport", "Leave the Island.  It is unlikely you will return, but you will continue to pursue greatness in Freeport.                                           [All active Isle of Refuge quests will be removed!]", 0, 2297, "LeaveIslandQ")
 	AddOptionWindowOption(window, " Stay", "Stay on the Island.  Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
 	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
 	
     elseif GetQuestStep(Spawn,5717)==2 or HasCompletedQuest(Spawn, 5717)  then --QEYNOS LEAVING
     PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
 	window = CreateOptionWindow();
-	AddOptionWindowOption(window, " Leave", "Leave the Island.  It is unlikely you will return, but you will continue to pursue greatness in Qeynos.", 0, 2297, "LeaveIslandQ")
+	AddOptionWindowOption(window, " Leave for Qeynos", "Leave the Island.  It is unlikely you will return, but you will continue to pursue greatness in Qeynos.                                           [All active Isle of Refuge quests will be removed!]", 0, 2297, "LeaveIslandQ")
 	AddOptionWindowOption(window, " Stay", "Stay on the Island.  Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
 	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
 	

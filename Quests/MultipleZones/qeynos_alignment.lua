@@ -10,6 +10,7 @@
 	Preceded by		:	None
 	Followed by		:	None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,7 +19,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Splendid!  You must speak to Duke Ferrin about leaving the island.  Once you arrive to your appointed village, find a steward.  He will guide you to your new home, and give you further instructions.  Do you have any other questions?")
+	Dialog.AddVoiceover("voiceover/english/ambassador_saera/tutorial_island02/ambassadorsaera006.mp3", 2295776297, 2824040451)
+    PlayFlavor(QuestGiver,"","","curtsey",0,0,Player)
+	Dialog.AddOption("No, I believe I'm all set. Thanks!")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
