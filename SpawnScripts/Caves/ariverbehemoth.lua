@@ -5,6 +5,8 @@
 	Script Date	: 2009.05.18
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
+
 
 local RIVER_BEHEMOTH_REMAINS_ID = 1970101
 

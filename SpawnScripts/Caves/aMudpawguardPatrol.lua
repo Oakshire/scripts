@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGnoll1.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
@@ -61,7 +62,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 73.49, 28.87, -54.84, 2, 0)
 	MovementLoopAddLocation(NPC, 77.28, 30.72, -58.78, 2, 0)
 	MovementLoopAddLocation(NPC, 80.1, 34.02, -64.35, 2, 0)
-	MovementLoopAddLocation(NPC, 80.13, 34.54, -66.15, 2, 6)
+	MovementLoopAddLocation(NPC, 80.13, 34.54, -66.15, 2, 0)
 	MovementLoopAddLocation(NPC, 80.13, 34.54, -66.15, 2, 0)
 	MovementLoopAddLocation(NPC, 80.02, 33.89, -64.13, 2, 0)
 	MovementLoopAddLocation(NPC, 78.5, 31.81, -60.84, 2, 0)

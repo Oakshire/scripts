@@ -6,8 +6,5 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "", "Spin, weave, dodge, attack!!!", "", 1689589577, 4560189)
-end
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGnoll1.lua")
 

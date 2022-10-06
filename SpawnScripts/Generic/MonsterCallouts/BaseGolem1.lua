@@ -1,33 +1,10 @@
 --[[
-    Script Name    : SpawnScripts/Caves/Drossdozer.lua
-    Script Author  : LordPazuzu
-    Script Date    : 2022.10.03 03:10:05
+    Script Name    : SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.10.05 11:10:55
     Script Purpose : 
                    : 
 --]]
-function spawn(NPC)
-waypoints(NPC)
-end
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
-function waypoints(NPC)
-	MovementLoopAddLocation(NPC, -42.33, 33.32, -51.54, 1, math.random(5,10))
-	MovementLoopAddLocation(NPC, -31.27, 33.67, -53.77, 1,  math.random(5,10))
-	MovementLoopAddLocation(NPC, -31.27, 33.67, -53.77, 1, 0)
-	MovementLoopAddLocation(NPC, -41.76, 33.3, -58.75, 1,  math.random(5,10))
-	MovementLoopAddLocation(NPC, -41.76, 33.3, -58.75, 1, 0)
-	MovementLoopAddLocation(NPC, -32.22, 33.34, -42.87, 1,  math.random(5,10))
-	MovementLoopAddLocation(NPC, -32.22, 33.34, -42.87, 1, 0)
-	MovementLoopAddLocation(NPC, -34.87, 33.39, -47.26, 1, 0)
-	MovementLoopAddLocation(NPC, -30.24, 33.77, -52.87, 1,  math.random(5,10))
-	MovementLoopAddLocation(NPC, -30.24, 33.77, -52.87, 1, 0)
-	MovementLoopAddLocation(NPC, -49.76, 34.14, -48.48, 1, 0)
-	MovementLoopAddLocation(NPC, -42.33, 33.32, -51.54, 1, 0)
-end
-
 local HealthCallout = false --REDUCES Half-Health Spam
 local CalloutTimer = false --REDUCES Callout Spam
 
@@ -66,7 +43,7 @@ end
  function aggro(NPC,Player)   
     SpawnSet(NPC, "visual_state", 0)
     SetTempVariable(NPC, "CalloutTimer", "false")
-if  GetTempVariable(NPC, "CalloutTimer")== "false" and  IsPlayer(Player) then
+if  GetTempVariable(NPC, "CalloutTimer")== "false" and math.random(0,100) <=33 and IsPlayer(Player) then
     SetTempVariable(NPC, "CalloutTimer", "true")
     AddTimer(NPC,10000,"ResetTimer")
     if not HasLanguage(Player,27 )then
@@ -137,3 +114,18 @@ end
 
 
 
+--[[
+function victory(NPC,Player)
+     if IsPlayer(Player)and  not HasLanguage(Player,27 )then
+        Garbled(NPC,Player)
+    elseif  IsPlayer(Player) and HasLanguage(Player,27 )then
+        local choice = MakeRandomInt(1,3)
+	    if choice == 1 then
+	    PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_victory_e4520926.mp3", "Packmate not happy with scrawny catch.", "", 1321865956, 173648139, Player, 18)
+        elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_victory_8e18fe38.mp3", "Your fight is hopeless!", "", 2306110016, 2442076674, Player, 18)
+        elseif choice == 3 then
+    	PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_victory_f225e591.mp3", "One to bring back to lair!", "", 3397285495, 2608729760,Player,18)
+    end
+end
+end]]--

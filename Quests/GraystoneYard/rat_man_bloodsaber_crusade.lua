@@ -21,7 +21,7 @@ function Step1Complete(Quest,QuestGiver,Player)
 	UpdateQuestStepDescription(Quest, 1, "	I have killed enough ratongas.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain four Bloodsabers.")
 	
-	AddQuestStepChat(Quest, 2, "I need to return to to Watcher Curmogliel.", 1, "I must report my deed to Watcher Curmogliel in Graystone.", 2482, 2350056)
+	AddQuestStepChat(Quest, 2, "I need to return to to Watcher Curmogliel.", 1, "I must report my deed to Watcher Curmogliel in Graystone.", 2482, 2350011)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

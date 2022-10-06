@@ -5,25 +5,17 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
-
 AttackRocks(NPC)
-
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
-function aggro(NPC,Spawn)
-    SpawnSet(NPC, "visual_state", 0)
-end
 
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
 
 function AttackRocks(NPC)
 

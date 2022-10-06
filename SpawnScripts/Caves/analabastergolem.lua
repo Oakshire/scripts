@@ -5,6 +5,7 @@
 	Script Date	: 10/2/2022
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 
 
@@ -36,14 +37,7 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function aggro(NPC,Spawn)
-    SpawnSet(NPC, "visual_state", 0)
-end
 
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
 
 function AttackRocks(NPC)
 

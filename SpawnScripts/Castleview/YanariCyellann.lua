@@ -70,10 +70,10 @@ function hailed(NPC, Spawn)
             if not HasCompletedQuest (Spawn, Badgers) or not HasCompletedQuest (Spawn, Slime) then
             FaceTarget(NPC, Spawn)
                 conversation = CreateConversation()   
-            if not HasQuest(Spawn, Badgers) then       
+            if not HasQuest(Spawn, Badgers) and not HasCompletedQuest (Spawn, Badgers) then       
                 AddConversationOption(conversation, "What are you doing?", "BadgerStart")
             end
-            if not HasQuest(Spawn, Slime) then       
+            if not HasQuest(Spawn, Slime) and not HasCompletedQuest (Spawn, Slime) then       
                 AddConversationOption(conversation, "I don't mean to bother you, but I overheard you needed something?", "SlimeStart")
             end
             if GetQuestStep(Spawn, Badgers)==2 then
@@ -134,7 +134,7 @@ end
     StartConversation(conversation, NPC, Spawn, "Go to the Down Below in the catacombs. In the Down Below, you must slay several gunks and fill my vials with their extract. Leave immediately! I need these ingredients to complete my research.")
 end   
 
- function DoneBugs(NPC, Spawn)
+ function DoneSlime(NPC, Spawn)
     conversation = CreateConversation()
     AddConversationOption(conversation, "Thank you.", "RewardSlime")
     AddConversationOption(conversation, "Yeesh, okay. I'm going now.", "RewardSlime")

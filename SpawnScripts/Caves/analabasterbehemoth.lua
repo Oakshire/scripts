@@ -5,6 +5,7 @@
 	Script Date	: 2009.11.20
 	Script Notes	: 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 local MIN_TIME = 3000
 local MAX_TIME = 10000
@@ -29,7 +30,3 @@ function MakeAttack(NPC)
 	AddTimer(NPC, math.random(MIN_TIME, MAX_TIME), "MakeAttack")
 end
 
---[[
-PlayFlavor(NPC, "voiceover/english/optional3/golem_base_1/ft/golem/golem_base_1_1_garbled_e0fead4d.mp3", "Pintoota kolata eldina mastarina", "", 2947217871, 3677590207)
-PlayFlavor(NPC, "voiceover/english/optional5/golem_base_2/ft/golem/golem_base_2_1_garbled_48632408.mp3", "Boona vas kontrella", "", 3186320893, 862014285)
---]]

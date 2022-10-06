@@ -58,7 +58,7 @@ function Dialog1(NPC, Spawn)
     if GetQuestStep(Spawn, Deposit)==2 then     
 	Dialog.AddOption("I have delivered your deposit to the Qeynos Exchange.","DepositDone")
     end
-    if GetQuestStep(Spawn, Req931)==2 or GetQuestStep(Spawn, Req378)==2  then
+    if GetQuestStep(Spawn, Req931)==3 or GetQuestStep(Spawn, Req378)==2  then
   	Dialog.AddOption("I have completed a requisition order for you.","ReqDone")
     end
     Dialog.AddOption("I'm just browsing. Thank you.")
@@ -106,11 +106,11 @@ function ReqDone(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
     PlayFlavor(NPC, "", "", "boggle", 0, 0, Spawn)
-    if GetQuestStep(Spawn, Req931)==2 then
-    SetStepComplete(Spawn, Req931, 2)
+    if GetQuestStep(Spawn, Req931)==3 then
+    SetStepComplete(Spawn, Req931, 3)
     end
-    if GetQuestStep(Spawn, Req378)== 3  then
-    SetStepComplete(Spawn, Req378, 3)
+    if GetQuestStep(Spawn, Req378)== 2  then
+    SetStepComplete(Spawn, Req378, 2)
     end   
 	Dialog.AddDialog("My requisition! I've waited for this for far too long. You would think a local requisition could be fulfilled much quicker. Take your fee and be off.")
 	Dialog.AddVoiceover("voiceover/english/merchant_grekin/qey_village02/merchantgrekin003.mp3", 57347681,3755735620)

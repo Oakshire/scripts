@@ -104,5 +104,6 @@ function TowerFinish(NPC, Spawn)
     Dialog.AddEmote ("thanks")
 	Dialog.AddOption("No problem at all.")
 	Dialog.Start()
+	SetStepComplete(Spawn, TowerOfThree, 1)
 end
 
