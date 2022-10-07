@@ -25,6 +25,9 @@ function Accepted(Quest, QuestGiver, Player)
     PlayFlavor(QuestGiver,"","","agree",0,0,Player)
 	Dialog.AddOption("Then I have no further need of you.")
 	Dialog.Start()
+	if not HasItem(Player,1413)then
+    GiveQuestItem(Quest,Player,"So it shall be!  This coin is given to all refugees seeking to start a life in Freeport.",1413)
+    end
 end
 
 function Declined(Quest, QuestGiver, Player)

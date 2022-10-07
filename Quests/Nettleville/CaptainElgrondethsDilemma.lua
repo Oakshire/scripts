@@ -15,6 +15,7 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill ten sonic shriekers in Antonica.", 10, 100, "I must seek out and slay the sonic shriekers, young brown bears and timber wolves in Antonica as required by Captain Elgrondeth.", 611, 120297, 121406)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Antonica")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -35,6 +36,7 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed ten sonic shriekers.")
+    UpdateQuestZone(Quest,"Nettleville")
 	
 	AddQuestStepChat(Quest, 2, "I need to speak to Captain Elgrondeth in Nettleville.", 1, "I must seek out and slay the sonic shriekers, young brown bears and timber wolves in Antonica as required by Captain Elgrondeth.", 0, 2330030)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
@@ -42,6 +44,7 @@ end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I spoke to Captain Elgrondeth in Nettleville.")
+    UpdateQuestZone(Quest,"Antonica")
 	
 	AddQuestStepKill(Quest, 3, "I must kill five young brown bears roaming Antonica.", 5, 100, "I must seek out and slay the sonic shriekers, young brown bears and timber wolves in Antonica as required by Captain Elgrondeth.", 611, 120011, 121191)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
@@ -49,6 +52,7 @@ end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I have killed five young brown bears.")
+    UpdateQuestZone(Quest,"Nettleville")
 	
 	AddQuestStepChat(Quest, 4, "I need to speak to Captain Elgrondeth in Nettleville.", 1, "I must seek out and slay the sonic shriekers, young brown bears and timber wolves in Antonica as required by Captain Elgrondeth.", 0, 2330030)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
@@ -56,6 +60,7 @@ end
 
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I spoke to Captain Elgrondeth in Nettleville.")
+    UpdateQuestZone(Quest,"Antonica")
 	
 	AddQuestStepKill(Quest, 5, "I must hunt down and slay ten timber wolves in Antonica.", 5, 100, "I must seek out and slay the sonic shriekers, young brown bears and timber wolves in Antonica as required by Captain Elgrondeth.", 611, 120008, 121188)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
@@ -63,6 +68,7 @@ end
 
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I have killed ten timber wolves.")
+    UpdateQuestZone(Quest,"Nettleville")
 	
 	AddQuestStepChat(Quest, 6, "I need to speak to Captain Elgrondeth in Nettleville.", 1, "I must seek out and slay the sonic shriekers, young brown bears and timber wolves in Antonica as required by Captain Elgrondeth.", 0, 2330030)
 	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")

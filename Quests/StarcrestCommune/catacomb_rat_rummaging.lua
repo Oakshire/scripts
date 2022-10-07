@@ -38,7 +38,7 @@ function Deleted(Quest, QuestGiver, Player)
 	-- Remove any quest specific items here when the quest is deleted
 end
 
-function step1_complete_killedGuardians(Quest, QuestGiver, Player)
+function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've gathered all four corpses of the rats in good condition.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered all four corpses of the rats in good condition.")
 	UpdateQuestZone(Quest, "Starcrest Commune")	
@@ -59,5 +59,7 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Step1Complete(Quest, QuestGiver, Player)
-	end
+	elseif Step == 2 then
+		QuestComplete(Quest, QuestGiver, Player)
+		end
 end

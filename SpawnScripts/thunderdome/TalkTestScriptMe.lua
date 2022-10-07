@@ -5,6 +5,7 @@
     Script Purpose : For testing dialogue scripts.  Breeeeak it!!
                    : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
 
@@ -16,7 +17,14 @@ end
 
 
 function hailed(NPC,Spawn)
-AddSkill(Spawn, "Slashing", 1)
+--AddSkill(Spawn, "Slashing", 1)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("As you examine the coin, a magical voice fills your mind.")
+	Dialog.AddVoiceover("voiceover/english/overlord_lucan_d_lere/fprt_west/lucan_isle_speech.mp3", 2912329438, 4090300715)
+	Dialog.AddOption("Put coin away.")
+	Dialog.Start()
+
 end
 
 --[[

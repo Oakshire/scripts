@@ -26,6 +26,9 @@ function Accepted(Quest, QuestGiver, Player)
     PlayFlavor(QuestGiver,"","","curtsey",0,0,Player)
 	Dialog.AddOption("No, I believe I'm all set. Thanks!")
 	Dialog.Start()
+	if not HasItem(Player,1414)then
+    GiveQuestItem(Quest,Player,"Congratulations! This coin is given to all refugees seeking to start a life in Qeynos.",1414)
+    end
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -5,21 +5,22 @@
     Script Purpose : 
 
         Zone       : QeynosHarbor
-        Quest Giver: 
+        Quest Giver: Shanda Tierbold
         Preceded by: None
         Followed by: 
 --]]
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I must speak with Baily.", 1, "I should take this letter from Shanda and her boss to Baily Dowden in Nettleville.", 1223, 2330016)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
+    UpdateQuestZone(Quest,"Nettleville")
 end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
     PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Spawn)	
     local conversation = CreateConversation()
-	AddConversationOption(conversation, "I'll make sure he gets it.")
-	StartConversation(conversation, QuestGiver, Player, "Fine.  If you're really looking to make yourself useful, deliver this to Baily Dowden in Nettleville.  He's the landlord there and has been expecting this payment information for some time.  The envelope is sealed, so don't even think of tampering with it!")
+	AddConversationOption(conversation, "I will see it safely to him.")
+	StartConversation(conversation, QuestGiver, Player, "Good. Then take this letter over to Baily Dowden.  Now, my boss needs this letter to get to him right away.  I don't know why he gave me the letter to send, since I need to guard this door all day.  But he is the boss and he said to get it done and I shall.")
 end	
 
 function Declined(Quest, QuestGiver, Player)

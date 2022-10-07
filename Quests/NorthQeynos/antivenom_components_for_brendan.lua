@@ -12,10 +12,10 @@
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Gather a cave serpent venom sac.", 1, 30, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 1161, 1970008)
-		AddQuestStepKill(Quest, 2, "Gather white spider venom sacs.", 4, 30, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 413, 1970012)
+	AddQuestStepKill(Quest, 2, "Gather white spider venom sacs.", 4, 30, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 413, 1970012)
     UpdateQuestZone(Quest,"The Caves")
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 
 end
 
@@ -50,6 +50,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 3, "I've returned to Medic Brendan and spoken with him.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "Medic Brendan's reagents have been delivered.")
+    UpdateQuestZone(Quest,"North Qeynos")
 
 	UpdateQuestDescription(Quest, "I was able to return safely with all of the required components for the antidote Brendan wished.  With any luck those reagents will save a guard's life someday.")
 	GiveQuestReward(Quest, Player)

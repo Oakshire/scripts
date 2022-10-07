@@ -66,16 +66,15 @@ function hailed(NPC, Spawn)
 if GetClass(Spawn)>0 then
 if not HasQuest(Spawn,5758) and not HasQuest(Spawn,5717) and not HasCompletedQuest(Spawn,5758)  and not HasCompletedQuest(Spawn,5717) then
     if GetRace(Spawn) == BARBARIAN or GetRace(Spawn) == DWARF or GetRace(Spawn) == ERUDITE or GetRace(Spawn) ==GNOME or GetRace(Spawn) == HALF_ELF or GetRace(Spawn) == HUMAN or GetRace(Spawn) == FROGLOK or GetRace(Spawn) == KERRA or GetRace(Spawn) == HIGH_ELF or GetRace(Spawn) == HALFLING or GetRace(Spawn) == WOOD_ELF or GetRace(Spawn) == FAE or GetRace(Spawn) == AERAKYN then
-    Dialog1(NPC, Spawn)
+        Dialog1(NPC, Spawn)
+        else
+        NotRace(NPC, Spawn)
+        end
+    elseif HasQuest(Spawn,5717) or HasCompletedQuest(Spawn,5717) then
+        DialogDone(NPC,Spawn)
     else
-    NotRace(NPC, Spawn)
-    end
-elseif HasQuest(Spawn,5758) or HasCompletedQuest(Spawn,5717) then
-    DialogDone(NPC,Spawn)
-else
      NotRace(NPC, Spawn) --Completed FP Quest or Has FP Quest
-
-end
+    end
 else
     PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gf_869cb34a.mp3", "Hello, young adventurer. It is with the utmost delight that I greet you.", "curtsey", 1236739692, 2465236460, Spawn) --COMMONER RESPONSE
 end
@@ -109,7 +108,7 @@ function Dialog2(NPC, Spawn)
 	Dialog.AddDialog("Ahh yes, Qeynos.  Our city stands as a shining beacon of light in this ever-darkening world and our leader, Queen Antonia Bayle is the fire that inspires us all.")
 	Dialog.AddVoiceover("voiceover/english/ambassador_saera/tutorial_island02/ambassadorsaera002.mp3", 2077728306, 53108566)
     PlayFlavor(NPC,"","","orate",0,0,Spawn)
-	Dialog.AddOption("[continue]", "Dialog2a")
+	Dialog.AddOption("[Continue]", "Dialog2a")
 	Dialog.Start()
 end
 
@@ -129,7 +128,7 @@ function Dialog3(NPC, Spawn)
 	Dialog.AddDialog("We welcome new citizens of Qeynos with open arms.  Our safe city walls offer many opportunities for starting a new life.  Together we can rebuild Norrath.")
     PlayFlavor(NPC,"","","agree",0,0,Spawn)
 	Dialog.AddVoiceover("voiceover/english/ambassador_saera/tutorial_island02/ambassadorsaera004.mp3", 436329400, 1699103452)
-	Dialog.AddOption("[continue]", "Dialog4")
+	Dialog.AddOption("[Continue]", "Dialog4")
 	Dialog.Start()
 end
 
@@ -146,12 +145,22 @@ function Dialog4(NPC, Spawn)
 end
 
 
-
 function Dialog5(NPC, Spawn)
+	window = CreateOptionWindow();
+	AddOptionWindowOption(window, " Pledge allegiance to Qeynos", "Dedicate yourself to the City of Qeynos and to its leader,           Queen Antonia Bayle.                                                                                [This decision is final!]", 2, 16, "Dialog6")
+	AddOptionWindowOption(window, " Reconsider", "Rescind your request.  Return to Ambassador Saera if you decide Qeynos is right for you.", 2, 13, "Sigh")
+	SendOptionWindow(window, Spawn, "Pledge allegiance to Qeynos?", "Cancel")
+end
+
+function Dialog6(NPC, Spawn)
 OfferQuest(NPC,Spawn,5717)
 FaceTarget(NPC,Spawn)
 end
 
+function Sigh(NPC, Spawn)
+    PlayFlavor(NPC,"","","sniff",0,0,Spawn)
+    FaceTarget(NPC,Spawn)
+end
 
 function DialogDone(NPC,Spawn)
 	FaceTarget(NPC, Spawn)

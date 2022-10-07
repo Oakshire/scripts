@@ -33,10 +33,9 @@ end
 function Step1Compelte(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've got the four fine pelts.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've filled the order of four fine pelts.")
-
+    UpdateQuestZone(Quest,"North Qeynos")
 	AddQuestStepChat(Quest, 2, "I need to deliver these fine bear pelts to Rachael Clothspinner.", 1, "Rachael Clothspinner is waiting for these fine pelts in North Qeynos.", 124, 2220060)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
-    UpdateQuestZone(Quest,"North Qeynos")
 end
 
 function QuestComplete(Quest, QuestGiver, Player)
@@ -50,7 +49,7 @@ end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
-		QuestComplete(Quest, QuestGiver, Player)
+		Step1Compelte(Quest, QuestGiver, Player)
 	elseif Step == 2 then
 		QuestComplete(Quest, QuestGiver, Player)
 		end

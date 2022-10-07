@@ -12,6 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
+	UpdateQuestZone(Quest, "Antonica")	
 	AddQuestStepKill(Quest, 1, "I must find five feathers from hawks in Antonica.", 5, 75, "I must find five perfect hawk feathers from the hawks in Antonica for Scribe Ommanoden.", 149, 2370108,120064,120029)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
@@ -55,6 +56,8 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Step1Complete(Quest, QuestGiver, Player)
-	end
+	elseif Step == 2 then
+		QuestComplete(Quest, QuestGiver, Player)
+		end
 end
 

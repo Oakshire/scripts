@@ -15,6 +15,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Skin four bears in Antonica for the Clothspinner shop.", 4, 60, "I must try and obtain four preserved bear hides in Antonica for Danielle. Some of the great bears there may have the right quality of coats.", 93, 121370,120257,120011)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Antonica")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -36,6 +37,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have the skins of four bears.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the four preserved bear hides for Danielle.")
+    UpdateQuestZone(Quest,"North Qeynos")
 
 	AddQuestStepChat(Quest, 2, "I should speak with Danielle Clothspinner.", 1, "I must make sure I get these bear hides to Danielle in North Qeynos.", 93, 2220061)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

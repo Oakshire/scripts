@@ -11,6 +11,7 @@
 --]]
 
 function Init(Quest)
+    UpdateQuestZone(Quest,"Caves")
 	AddQuestStepKill(Quest, 1, "I must gather the wings from five albino bats in the Caves.  The locals call these bats 'shale bats'.", 5, 30, "I need to gather up some bat wings for Jerben Sleepwell at the harbor in the Qeynos Province District.  The bat wings can be found in the Caves, reachable by mariner bell within the City of Qeynos.", 140, 1970014)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
@@ -30,6 +31,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have gathered the bat wings that I needed.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've collected all five albino bat wings for Jerben Sleepwell at the harbor in the Qeynos Province District.")
+    UpdateQuestZone(Quest,"Starcrest Commune")
 
 	AddQuestStepChat(Quest, 2, "I need to speak with Jerben Sleepwell", 1, "I need to return to Jerben Sleepwell at the harbor in the Qeynos Province District.", 140, 2340030, 6600463)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

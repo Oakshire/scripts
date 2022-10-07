@@ -18,6 +18,7 @@ function Init(Quest)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+    UpdateQuestZone(Quest,"Vermin's Snye")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -51,6 +52,7 @@ function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5545, 1) and QuestStepIsComplete(Player, 5545, 2)  and QuestStepIsComplete(Player, 5545, 3)  then
 	AddQuestStepChat(Quest, 4, "I must return to Elsabethia", 1, "I must return to Elsabethia Hartsunder.", 11, 2220141)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
+    UpdateQuestZone(Quest,"North Qeynos")
 end
 end
 

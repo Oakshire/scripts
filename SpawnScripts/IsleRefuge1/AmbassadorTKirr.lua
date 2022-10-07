@@ -79,7 +79,7 @@ function Dialog1a(NPC, Spawn)
     Dialog.AddOption("Then tell me more about it.", "Dialog3")
     end
 	Dialog.AddOption("You had me at riches!", "Dialog3")
-	Dialog.AddOption("I think I should be going...")
+	Dialog.AddOption("I think I should be going...", "Sigh")
 	Dialog.Start()
 end
 
@@ -140,10 +140,21 @@ function Dialog5(NPC, Spawn)
 	Dialog.Start()
 end
 
-
 function Dialog6(NPC, Spawn)
+	window = CreateOptionWindow();
+	AddOptionWindowOption(window, " Pledge allegiance to Freeport", "Dedicate yourself to the City of Freeport and to its leader,           Overlord Lucan D'lere.                                                                                [This decision is final!]", 2, 16, "Dialog7")
+	AddOptionWindowOption(window, " Reconsider", "Rescind your request.  Return to Ambassador T'Kirr if you decide Freeport is right for you.", 2, 13, "Sigh")
+	SendOptionWindow(window, Spawn, "Pledge allegiance to Freeport?", "Cancel")
+end
+
+function Dialog7(NPC, Spawn)
 OfferQuest(NPC,Spawn,5758)
 FaceTarget(NPC,Spawn)
+end
+
+function Sigh(NPC, Spawn)
+    PlayFlavor(NPC,"voiceover/english/island_of_refuge/ambassador_tkir/ior_ktir_002.mp3","Right, can't you tell I'm busy?","stare",1541998982,3704557731,Spawn)
+    FaceTarget(NPC,Spawn)
 end
 
 

@@ -13,6 +13,7 @@
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "I need to find the Tower of the Oracles.", 5, "I should see if I can locate the Tower of the Oracles out in the Antonican hills.", 11, -1033.25, 14.12, -627.10)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
+    UpdateQuestZone(Quest,"Antonica")
 end
 
 function Accepted(Quest, QuestGiver, Player)

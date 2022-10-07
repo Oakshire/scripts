@@ -15,7 +15,7 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill some albino snakes for their skins. The locals often call these snakes 'cave serpents'.", 10, 100, "I need to collect ten Albino Snake Skins for Dirk Vagrin in the Caves.", 98, 1970008)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-    UpdateQuestZone(Quest,"Caves")
+    UpdateQuestZone(Quest,"The Caves")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -42,7 +42,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have collected the snake skins.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I gathered ten Albino Snake Skins for Dirk Vagrin.")
     UpdateQuestZone(Quest,"Nettleville")
-	AddQuestStepKill(Quest, 2, "I must deliver these albino snakes for their skins. The locals often call these snakes 'cave serpents'.", 1, 100, "I need to deliver these Albino Snake Skins to Dirk Vagrin in Nettleville.", 98, 2330020)
+	AddQuestStepChat(Quest, 2, "I must deliver these albino snakes for their skins. The locals often call these snakes 'cave serpents'.", 1, "I need to deliver these Albino Snake Skins to Dirk Vagrin in Nettleville.", 98, 2330020)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

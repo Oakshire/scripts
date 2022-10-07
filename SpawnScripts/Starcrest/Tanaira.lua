@@ -44,7 +44,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.AddOption("He does seem fairly preoccupied.  Have you gone to talk to him?","Dialog3")
     end       
     if GetQuestStep(Spawn, 5605) == 2 then
-	Dialog.AddOption("I've completed the map to the picnic spot.  Just past the Clearwater Pond you follow the stream.  You'll find the waterfall near the cliff surrounded by frogs.")
+	Dialog.AddOption("I've completed the map to the picnic spot.  Just past the Clearwater Pond you follow the stream.  You'll find the waterfall near the cliff surrounded by frogs.","Delivered")
     end        
 	Dialog.AddOption("I am just browsing.  I'll let you get back to daydreaming. ")
 	Dialog.Start()

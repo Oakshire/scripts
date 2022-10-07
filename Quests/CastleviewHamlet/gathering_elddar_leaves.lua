@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to gather Elddar leaves for Scribe Bleemeb.", 10, "I need to gather leaves from the base of the greatest Elddar tree in the grove.", 199, 663.74 -9.72 -373.53)
+	AddQuestStepLocation(Quest, 1, "I need to gather Elddar leaves for Scribe Bleemeb.", 14, "I need to gather leaves from the base of the greatest Elddar tree in the grove.", 199, 663.74 -9.72 -373.53)
 	AddQuestStepCompleteAction(Quest, 1, "LeavesGathered")
 	UpdateQuestZone(Quest, "The Eldarr Grove")
 end
@@ -32,10 +32,10 @@ function LeavesGathered(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I've gathered the Elddar leaves for Scribe Bleemeb.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered a bundle of leaves from the base of the great Elddar tree for Bleemeb.")
-
-	AddQuestStepChat(Quest, 2, "I need to return to Scribe Bleemeb.", 10, "I've gathered leaves from the base of the greatest Elddar tree and need to return.", 199, 2360055, 2360045)
-	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 	UpdateQuestZone(Quest, "Castleview Hamlet")
+
+	AddQuestStepChat(Quest, 2, "I need to return to Scribe Bleemeb.", 1, "I've gathered leaves from the base of the greatest Elddar tree and need to return.", 199, 2360055, 2360045)
+	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 
 function QuestComplete(Quest, QuestGiver, Player)

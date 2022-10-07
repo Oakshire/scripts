@@ -131,12 +131,12 @@ end
 
 function FinishQuest1(NPC,Spawn)
  	FaceTarget(NPC, Spawn)
-    SetStepComplete(Spawn,Potion, 2)
+    SetStepComplete(Spawn,potion, 2)
 end 
 function FinishQuest2(NPC,Spawn)
     PlayFlavor(NPC, "", "", "chuckle", 0, 0, Spawn)
  	FaceTarget(NPC, Spawn)
-    SetStepComplete(Spawn,Potion, 2)
+    SetStepComplete(Spawn,potion, 2)
 end 
 
 
@@ -146,7 +146,7 @@ function Wings1(NPC, Spawn)
 	Dialog.AddDialog("I've pleanty of work that needs to be done.  I need rabid shriller wings, several of them.  Go to the catacombs and there you'll find pleanty of the wings.  Of course, you'll be rewarded for your efforts.")
 	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun005.mp3", 1992360074, 1666083068)
 	Dialog.AddOption("Easy enough.  I'll return once I have them.", "Wings2")
-	Dialog.AddOption("Catacombs? Rabid? Sounds a combination I should avoid.")
+	Dialog.AddOption("Catacombs? Rabid? Sounds like a combination I should avoid.")
 	Dialog.Start()
 end
 
@@ -155,7 +155,7 @@ function Wings2(NPC, Spawn)
     OfferQuest(NPC,  Spawn,wings)
     end
  
- function Pickup(NPC, Spawn)
+ function WingsDone(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
     PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
