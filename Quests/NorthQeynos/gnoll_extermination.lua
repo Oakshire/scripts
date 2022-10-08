@@ -53,3 +53,12 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestDescription(Quest, "Sir Laughlin commended me on my battle prowess!  I've taken my first steps into the greater world beyond the city.  Today Qeynos, tomorrow the world!")
 	GiveQuestReward(Quest, Player)
 end
+
+function Reload(Quest, QuestGiver, Player, Step)
+	if Step == 1 then
+		Step1Complete(Quest, QuestGiver, Player)
+	elseif Step == 2 then
+		QuestComplete(Quest, QuestGiver, Player)
+	elseif Step == 3 then
+	end
+end

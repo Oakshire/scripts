@@ -11,9 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKillByRace(Quest, 1, "I need to find a zombie reanimating essence.", 1, 100, "I must locate several zombie body parts.", 2516, 343)
-	AddQuestStepKillByRace(Quest, 2, "I need to find a zombie degenerated vitae.", 1, 100, "I must locate several zombie body parts.", 2516, 343)
-	AddQuestStepKillByRace(Quest, 3, "I need to find a zombie grotesque visage.", 1, 100, "I must locate several zombie body parts.", 2516, 343)
+	AddQuestStepKillByRace(Quest, 1, "I need to find a zombie reanimating essence.", 1, 35, "I must locate several zombie body parts.", 2516, 343)
+	AddQuestStepKillByRace(Quest, 2, "I need to find a zombie degenerated vitae.", 1, 15, "I must locate several zombie body parts.", 2522, 343)
+	AddQuestStepKillByRace(Quest, 3, "I need to find a zombie grotesque visage.", 1, 25, "I must locate several zombie body parts.", 2493, 343)
 	AddQuestStep(Quest, 4, "I need to find and study a necrotic zombie skin.", 1, 100, "I must locate several zombie body parts.", 11)
 	AddQuestStep(Quest, 5, "I need to find and study a flesh covered zombie bone.", 1, 100, "I must locate several zombie body parts.", 11)
 	AddQuestStep(Quest, 6, "I need to find and study a piece of rotted zombie flesh.", 1, 100, "I must locate several zombie body parts.", 11)
@@ -63,7 +63,7 @@ end
 
 function CheckProgress(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player, 5397, 1) and QuestStepIsComplete(Player, 5397, 2) and QuestStepIsComplete(Player, 5397, 3) and QuestStepIsComplete(Player, 5397, 4) and QuestStepIsComplete(Player, 5397, 5) and QuestStepIsComplete(Player, 5397, 6) and QuestStepIsComplete(Player, 5397, 7) and QuestStepIsComplete(Player, 5397, 8) then
-        QuestIsComplete(Quest, QuestGiver, Player)
+        QuestComplete(Quest, QuestGiver, Player)
     end
 end
 
@@ -113,7 +113,7 @@ function Step8Complete(Quest, QuestGiver, Player)
    CheckProgress(Quest, QuestGiver, Player)
 end
 
-function QuestIsComplete(Quest, QuestGiver, Player)
+function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have located all of the necessary zombie body parts.")
 	UpdateQuestDescription(Quest, "I have learned the secrets of the zombie.")
 	GiveQuestReward(Quest, Player)

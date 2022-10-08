@@ -11,7 +11,7 @@ function init_zone_script(zone)
 end
 
 function player_entry(zone, player)
-SendPopUpMessage(Player, "Qeynos Capitol District", 230, 230, 230)    
+SendPopUpMessage(player, "Qeynos Capitol District", 230, 230, 230)    
 end
 
 

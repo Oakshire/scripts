@@ -14,7 +14,7 @@ local Pie = 468
 local Mail = 469
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange")
+	SetPlayerProximityFunction(NPC, 15, "InRange")
 ProvidesQuest(NPC,"Achoo")
 end
 
@@ -73,18 +73,30 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1039.mp3", "", "", 0, 0, Spawn)
-	if GetQuestStep(Spawn, Achoo) == 2 then
+	if GetQuestStep(Spawn, Achoo) == 1 then
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1039.mp3", "I need that pepper as soon as possible...oh my water is boiling.", "tapfoot", 1689589577, 4560189, Spawn)
+	elseif GetQuestStep(Spawn, Achoo) == 2 then
 		AddConversationOption(conversation, "Thanks a lot. I'm starving!")
 		StartConversation(conversation, NPC, Spawn, "Oh my! Pepper! That is exactly what I needed! Here, eat something. You look flush. Have you seen my ladle?")	
 		SetStepComplete(Spawn, Achoo, 2)
+	elseif GetQuestStep(Spawn, Blub) == 1 then
+		PlayFlavor(NPC, "", "I need the extra fish if I am going to make more chowder. Were you still going to fetch that for me?", "happy", 1689589577, 4560189, Spawn)
 	elseif GetQuestStep(Spawn, Blub) == 2 then
 		SetStepComplete(Spawn, Blub, 2)
+	elseif GetQuestStep(Spawn, Killing) == 1 then
+		PlayFlavor(NPC, "", "That poor soul, is he still staggering around? Aroof is such a large one, you'd think he could hold his liquor better then most.", "sigh", 1689589577, 4560189, Spawn)
 	elseif GetQuestStep(Spawn, Killing) == 2 then
 		SetStepComplete(Spawn, Killing, 2)
+	elseif GetQuestStep(Spawn, Care) == 1 then
+		PlayFlavor(NPC, "", "Please give Blarton the cookies and my best wishes. Sweets to sweeten a sour disposition I always say.", "nod", 1689589577, 4560189, Spawn)
 	elseif GetQuestStep(Spawn, Care) == 2 then
 		SetStepComplete(Spawn, Care, 2)
+	elseif HasQuest(Spawn,Pie) and GetQuestStep(Spawn, Pie) ~= 4 then
+		PlayFlavor(NPC, "", "As soon as you can gather those ingredients for me, we will make something new and scrumptious!", "", 1689589577, 4560189, Spawn)
 	elseif GetQuestStep(Spawn, Pie) == 4 then
 		SetStepComplete(Spawn, Pie, 4)
+	elseif HasQuest(Spawn,Mail) then
+		PlayFlavor(NPC, "", "Did you take that letter to Jacque yet?", "hello", 0, 0, Spawn, 0)
 	elseif HasCompletedQuest(Spawn, Achoo) == false and HasQuest(Spawn, Achoo) == false then
 		AddConversationOption(conversation, "I have time. What did you need?", "dlg_1_2")
 		AddConversationOption(conversation, "Sorry, I'm kind of busy.")
@@ -106,7 +118,10 @@ function hailed(NPC, Spawn)
 		AddConversationOption(conversation, "Sorry, I have to meet someone.")
 		StartConversation(conversation, NPC, Spawn, "Every cook has their experimental side, which must be nurtured! If you could run out and rustle up these ingredients for me, I think we would make something new and exciting!")
 	elseif HasCompletedQuest(Spawn, Mail) == false and HasQuest(Spawn, Mail) == false and HasCompletedQuest(Spawn, Pie) then
-		OfferQuest(NPC, Spawn, Mail)
+		AddConversationOption(conversation, "Sure I'll take the letter.  I'll head that way shortly.", "Quest6")
+		AddConversationOption(conversation, "Sorry, I'm not heading that way.")
+		StartConversation(conversation, NPC, Spawn, "I need this letter delivered to Jacques in The Thundering Steppes, so he can take it to Blarton.")
+
 	end
 end
 
@@ -130,6 +145,9 @@ function Quest5(NPC, Spawn)
 	OfferQuest(NPC, Spawn, Pie)
 end
 
+function Quest5(NPC, Spawn)
+	OfferQuest(NPC, Spawn, Mail)
+end
 ------------- Blub
 
 function dlg_0_2(NPC, Spawn)

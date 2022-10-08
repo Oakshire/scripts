@@ -33,5 +33,5 @@ function casted_on(NPC, Spawn, Message)
       SetStepComplete(Spawn, AFrontiersladysTask, 3)
       local con = CreateConversation() 
       AddConversationOption(con, "Stop inspecting the target")
-         StartDialogConversation(con, 1, NPC, Spawn, "You ram the special arrow deep into the target.")
+        StartDialogConversation(con, 1, NPC, Spawn, "You ram the special arrow deep into the target.")
 end

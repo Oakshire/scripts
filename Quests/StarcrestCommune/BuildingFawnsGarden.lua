@@ -31,22 +31,27 @@ function step1_complete(Quest, QuestGiver, Player)
 end
 
 function step2_complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 2, "	I've gathered enough fish eggs for Fawn's garden.")
+	UpdateQuestStepDescription(Quest, 2, "I've gathered enough fish eggs for Fawn's garden.")
 	giveitemstoFawn(Quest, QuestGiver, Player)
 	
 end
 
 function step3_complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 3, "	I've gathered enough seeds for Fawn to use in her garden.")
+	UpdateQuestStepDescription(Quest, 3, "I've gathered enough seeds for Fawn to use in her garden.")
 	giveitemstoFawn(Quest, QuestGiver, Player)
 end
 
 function giveitemstoFawn(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player,241,1) and QuestStepIsComplete(Player,241,2) and QuestStepIsComplete(Player,241,3) then
+    QuestStep4(Quest, QuestGiver, Player)
+end
+end
+
+
+function QuestStep4(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've managed to gather everything for Fawn Starstone's garden.")
 	AddQuestStepChat(Quest, 4, "Return to Fawn in Starcrest Commune.", 1, "I need to give these items to Fawn for her garden.", 0, 2530059)
 	AddQuestStepCompleteAction(Quest, 4, "quest_complete_gaveitemstoFawn")
-end
 end
 
 function quest_complete_gaveitemstoFawn(Quest, QuestGiver, Player)
@@ -65,7 +70,7 @@ function Reload(Quest, QuestGiver, Player, Step)
     elseif Step == 3 then
     	step3_complete(Quest, QuestGiver, Player)
     elseif Step == 4 then
-    	giveitemstoFawn(Quest, QuestGiver, Player)
+    	QuestStep4(Quest, QuestGiver, Player)
         end
 end
 

@@ -64,7 +64,7 @@ function casted_on(NPC, Spawn, Message)
 	
 	    else -- STILL NEED ALIGNMENT QUEST
         PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
-	    SendPopUpMessage(Spawn,"Speak with an ambassador if you are ready to leave the island.",200,200,200)
+	    SendPopUpMessage(Spawn,"Speak with an Ambassador if you are ready to leave the island.",200,200,200)
 	    SendMessage(Spawn,"Speak with an ambassador if you are ready to leave the island.")
         end
 end
@@ -84,7 +84,7 @@ function LeaveIslandQ(NPC, Spawn)
         Zone(ZoneRef,Spawn)
 
     -- Erudite
-    elseif Race == 3 then
+    elseif Race == 3 or Race == 20 then
   --      AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Starcrest")
         Zone(ZoneRef,Spawn)
@@ -95,7 +95,7 @@ function LeaveIslandQ(NPC, Spawn)
         ZoneRef = GetZone("Graystone")
         Zone(ZoneRef,Spawn)
 
-    -- High Elf / Froglok
+    -- Froglok / High Elf 
     elseif Race == 4 or Race == 8 then
    --     AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Castleview")
@@ -112,12 +112,9 @@ function LeaveIslandQ(NPC, Spawn)
     --    AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("Baubbleshire")
         Zone(ZoneRef,Spawn)
-
-
-
-
-
-end
+    else
+	    SendMessage(Spawn,"There doesn't seem to be a boat available for you to Qeynos right now.  [Report this!]")   
+    end
 end
 
 
@@ -168,5 +165,6 @@ function LeaveIslandFP(NPC, Spawn)
 --        AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("EastFreeport")
         Zone(ZoneRef,Spawn)
+
     end
 end

@@ -10,6 +10,7 @@
         Followed by: None
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,7 +19,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	PlayFlavor(QuestGiver,"","","bow",0,0,Player)
+    Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Oh, thank you so much, friend!  I'm not too familiar with the Steppes, but I do remember being told that if I get in trouble while I'm there, I should run straight for the Bridge Keep.  Maybe the Sage knew to do the same thing?")
+	Dialog.AddOption("I'll check there first, then.  Wish me luck!")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

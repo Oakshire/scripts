@@ -68,7 +68,7 @@ end
 function dlg_5(NPC, Spawn)
 	
 	SummonItem(Spawn, VISIONS_OF_COLDWIND_POINT, 1)
-	
+    SetStepComplete(Spawn,ONCE_UPON_AN_ISLE_DREARY,2)	
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 

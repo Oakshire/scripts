@@ -9,6 +9,7 @@
         Preceded by: The Age of Rediscovery
         Followed by: Never Judge a Book by it's Cover
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "I need to find and search the area around the Bells of Vhalen.", 6, "According to Demini, the scholar to the Sage of Ages was last seen at the Bells of Vhalen out in Antonica.  Perhaps I can find him there.", 11, -1300, 38 ,45)
@@ -16,7 +17,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	PlayFlavor(QuestGiver,"","","nod",0,0,Player)
+    Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I'm hoping you can find the scholar. According to the last page of this journal, he was camping near the Bells of Vhalen.  If I remember correctly, that's in Antonica.  Maybe you can find a clue as to his whereabouts?")
+	Dialog.AddOption("I think I can do that.  I'll be back when I find out more information.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -20,9 +20,9 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
-
-	Dialog.AddOption("I can understand that.")
+    PlayFlavor(QuestGiver,"","","agree",0,0,Player)
 	Dialog.AddDialog("You would?  Aye, that is good to hear.  I like Qeynos and all, but us barbarians need a place we can call our own, you know?")
+	Dialog.AddOption("I can understand that.")
 	Dialog.Start()
 end
 

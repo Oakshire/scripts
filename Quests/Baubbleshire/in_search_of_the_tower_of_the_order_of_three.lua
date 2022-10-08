@@ -21,7 +21,7 @@ function Accepted(Quest, QuestGiver, Player)
 	conversation = CreateConversation()
 
 
-	AddConversationOption(conversation, "I will find the mage tower ruins.")
+	AddConversationOption(conversation, "I'll be back shortly, I hope.")
 	StartConversation(conversation, QuestGiver, Player, "Good! I can't wait to hear about it!")
     PlayFlavor(QuestGiver, "","","clap",0,0,Player)
 end

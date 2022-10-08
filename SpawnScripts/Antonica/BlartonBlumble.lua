@@ -14,7 +14,7 @@ local FishingForBait = 5339
 local PracticalJokeOnBlarton = 5355
 
 function spawn(NPC)
- SetPlayerProximityFunction(NPC, 10, "InRange", Spawn) 
+ SetPlayerProximityFunction(NPC, 15, "InRange", Spawn) 
 end
 
 function InRange(NPC, Spawn)

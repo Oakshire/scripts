@@ -31,7 +31,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.AddDialog("Oh! My poor crops! What will I do with all these ravenous beetles scurrying about?")
 	Dialog.AddVoiceover("voiceover/english/farmer_walcott/antonica/farmerwalcott000.mp3", 1905672247, 2052203858)
 	if HasQuest(Spawn, ThereMite) == false and HasCompletedQuest(Spawn, ThereMite) == false then
-	Dialog.AddOption("Sounds like you need a beetle charmer. ", "Dialog9")
+	Dialog.AddOption("Sounds like you need a beetle charmer. ", "Dialog6")
     end
     if GetQuestStep(Spawn,TheHalfEatenOrderSlip)==1 then
 	Dialog.AddOption("I found this slip with your name on it. ", "Dialog14")
@@ -50,6 +50,7 @@ function Dialog1(NPC, Spawn)
     end
     Dialog.AddOption("I am sorry I cannot help you. Farewell.")
 	Dialog.Start()
+    PlayFlavor(NPC,"","","sigh",0,0,Spawn)
 end
 
 function Dialog2(NPC, Spawn)
@@ -60,6 +61,7 @@ function Dialog2(NPC, Spawn)
 	Dialog.AddOption("The gnoll was creating scarecrows, evil ones! ", "Dialog18")
 	Dialog.AddOption("I don't want to get involved. Farewell. ")
 	Dialog.Start()
+    PlayFlavor(NPC,"","","confused",0,0,Spawn)
 end
 
 function Dialog3(NPC, Spawn)
@@ -68,25 +70,17 @@ function Dialog3(NPC, Spawn)
 end
 
 
-function Dialog5(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Oh! My poor crops! What will I do with all these ravenous beetles scurrying about?")
-	Dialog.AddVoiceover("voiceover/english/farmer_walcott/antonica/farmerwalcott000.mp3", 1905672247, 2052203858)
-	Dialog.AddOption("Sounds like you need a beetle charmer. ", "Dialog9")
-	Dialog.AddOption("I found this slip with your name on it. ", "Dialog14")
-	Dialog.AddOption("I am sorry I cannot help you. Farewell.")
-	Dialog.Start()
-end
-
 function Dialog6(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("A beetle charmer would be grand -- if there were such a thing. I would be satisfied just hiring an adventurer to stomp a bunch of the beetles. Oh my poor barley!")
 	Dialog.AddVoiceover("voiceover/english/farmer_walcott/antonica/farmerwalcott001.mp3", 2875116766, 2106137000)
+    if GetLevel(Spawn) >=6 then
 	Dialog.AddOption("Then today is your lucky day. Here I am! ", "Dialog3")
+    end
 	Dialog.AddOption("If I see any I will send them your way. Farewell.")
 	Dialog.Start()
+    PlayFlavor(NPC,"","","nod",0,0,Spawn)
 end
 
 function Dialog8(NPC, Spawn)
@@ -97,6 +91,7 @@ function Dialog8(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/farmer_walcott/antonica/farmerwalcott010.mp3", 3414706112, 3583405611)
 	Dialog.AddOption("I am glad I could help. ")
 	Dialog.Start()
+    PlayFlavor(NPC,"","","smile",0,0,Spawn)
 end
 
 
@@ -108,6 +103,7 @@ function Dialog11(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/farmer_walcott/antonica/farmerwalcott006.mp3", 3891109775, 3345154753)
 	Dialog.AddOption("Farewell, farmer. ")
 	Dialog.Start()
+    PlayFlavor(NPC,"","","thanks",0,0,Spawn)
 end
 
 
@@ -148,6 +144,8 @@ function Dialog17(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/farmer_walcott/antonica/farmerwalcott003.mp3", 2680820592, 3831371965)
 	Dialog.AddOption("Not a problem. Anything for an Antonican.")
 	Dialog.Start()
+	SetStepComplete(Spawn,ThereMite,2)
+    PlayFlavor(NPC,"","","clap",0,0,Spawn)
 end
 
 function Dialog18(NPC, Spawn)

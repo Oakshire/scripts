@@ -35,7 +35,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have gathered all the earthcrawler leg joints.")
 
-	AddQuestStepZoneLoc(Quest, 2, "I should polish these earthcrawler leg joints for Landwyn. The water in Crater pond should work well.", 10, "I need to gather perfectly polished earthcrawler leg joints for Landwyn.", 2514, 78, -24, 436, 12 )
+	AddQuestStepZoneLoc(Quest, 2, "I should polish these earthcrawler leg joints for Landwyn. The water in Crater pond should work well.", 50, "I need to polish the earthcrawler leg joints for Landwyn.", 2514,128.12, -24.96, 481.58, 12 )
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 

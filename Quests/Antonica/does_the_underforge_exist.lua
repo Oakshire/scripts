@@ -7,11 +7,11 @@
         Zone       : Antonica
         Quest Giver: 
         Preceded by: None
-        Followed by: 
+        Followed by: Nightbow's Deposit
 --]]
 
 function Init(Quest)
-	AddQuestStepZoneLoc(Quest, 1, "	I need to find the Underforge.", 10, "I should see if I could find the Underforge within Stormhold.", 11, -130, -1, -55, 15)
+	AddQuestStepZoneLoc(Quest, 1, "I need to find the Underforge.", 10, "I should see if I could find the Underforge within Stormhold.", 11, -130, -1, -55, 15)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

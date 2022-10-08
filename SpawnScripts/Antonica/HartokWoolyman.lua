@@ -11,7 +11,7 @@ local DoorToDoorDelivery = 5346 -- Door to Door Delivery quest
 local AttackOfTheKillerBear = 5347 -- Attack of the Killer Bear quest
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange")
+SetPlayerProximityFunction(NPC, 15, "InRange")
 end
 
 
@@ -47,7 +47,7 @@ function hailed(NPC, Spawn)
 	Option7(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, PatchworkRugs) and HasCompletedQuest(Spawn, DoorToDoorDelivery) and not HasQuest(Spawn, AttackOfTheKillerBear) and not HasCompletedQuest(Spawn, AttackOfTheKillerBear) then
 	Option11(NPC, Spawn)
-	elseif GetQuestStep(Spawn, PatchworkRugs) == 1 or GetQuestStep(Spawn, DoorToDoorDelivery) == 1 or GetQuestStep(Spawn, AttackOfTheKillerBear)  then
+	elseif GetQuestStep(Spawn, PatchworkRugs) == 1 or GetQuestStep(Spawn, DoorToDoorDelivery) == 1 or GetQuestStep(Spawn, AttackOfTheKillerBear)==1  then
 	Quest_Progress(NPC, Spawn)
 	elseif GetQuestStep(Spawn, PatchworkRugs) == 2 then
 	Option6(NPC, Spawn)

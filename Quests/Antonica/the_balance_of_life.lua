@@ -13,8 +13,8 @@
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill ten sea turtles in the waters near Antonica.", 10, 100, "I must bring down ten sea turtles to lower their population.", 201, 120033, 121212)
-	AddQuestStepKill(Quest, 2, "I must kill some red tailed hawks in Antonica.", 3, 100, "I must slay three of the red tailed hawks in Antonica.", 201, 120029, 121208) -- need correct icon
-	AddQuestStepKill(Quest, 3, "I must kill seven darkclaw crabs on the shores of Antonica.", 7, 100, "I must destroy seven darkclaw crabs on the shores of Antonica.", 201, 120118, 120762, 121265) -- need correct icon
+	AddQuestStepKill(Quest, 2, "I must kill some red tailed hawks in Antonica.", 3, 100, "I must slay three of the red tailed hawks in Antonica.", 201, 80, 121208) -- need correct icon
+	AddQuestStepKill(Quest, 3, "I must kill seven darkclaw crabs on the shores of Antonica.", 7, 100, "I must destroy seven darkclaw crabs on the shores of Antonica.", 77, 120118, 120762, 121265) -- need correct icon
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")

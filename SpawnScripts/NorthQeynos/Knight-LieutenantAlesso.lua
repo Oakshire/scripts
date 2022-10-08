@@ -34,7 +34,9 @@ function hailed(NPC, Spawn)
 	end
 
 function dlg1_2(NPC, Spawn)
-        SetStepComplete(Spawn, QeynosianCivilService, 4)
+     	FaceTarget(NPC, Spawn)
+       	conversation = CreateConversation()
+       SetStepComplete(Spawn, QeynosianCivilService, 4)
 		PlayFlavor(NPC, "voiceover/english/sir_alesso/qey_north/sir_alesso003.mp3", "", "", 4137826818, 1228273355, Spawn)
 		AddConversationOption(conversation, "Thanks.")
 		StartConversation(conversation, NPC, Spawn, "You served Qeynos well and shall be rewarded.")

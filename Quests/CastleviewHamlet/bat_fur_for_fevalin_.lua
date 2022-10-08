@@ -14,7 +14,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to obtain the albino fur of the cave bats.", 5, 100, "I need to gather the rare albino fur of the bats from the Caves near the Baubbleshire.", 126, 1970014,1970023,8260073)
+	AddQuestStepKill(Quest, 1, "I need to obtain the albino fur of the cave bats.", 5, 80, "I need to gather the rare albino fur of the bats from the Caves near the Baubbleshire.", 126, 1970014,1970023,8260073)
 	AddQuestStepCompleteAction(Quest, 1, "Bats1")
 	UpdateQuestZone(Quest,"The Caves")
 end
@@ -72,14 +72,11 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Bats1(Quest, QuestGiver, Player)
-	end
-		if Step == 2 then
+	elseif Step == 2 then
 		BatsReturn1(Quest, QuestGiver, Player)
-	end
-		if Step == 3 then
+	elseif Step == 3 then
 		Bats2(Quest, QuestGiver, Player)
-	end
-		if Step == 4 then
+	elseif Step == 4 then
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end

@@ -17,11 +17,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-  conversation = CreateConversation()
-      PlayFlavor(QuestGiver,"","","thank",0,0,Player)
-  AddConversationOption(conversation, "I will return!")
-    AddConversationOption(conversation, "...I'll be going now.")
-  StartConversation(conversation, QuestGiver, Player, "Oh, please do I hurry. I wish to sing for the whole world to hear! FORAK!")
+    FaceTarget(QuestGiver, Player)
+    conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "","","no",0,0,Player)
+    AddConversationOption(conversation, "I hope it isn`t too heavy.")
+    StartConversation(conversation, QuestGiver, Player, "Many thanks unto thee.  Here is the bill of sale for the order.  Just take this to Bizrinn Clamorclang in the Baubbleshire and he'll give thou the order.  I cannot wait for it to get here!")
 end   
 
 

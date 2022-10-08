@@ -13,7 +13,12 @@ local PeppermintsAndPotions = 5359
 local SongToPrexus = 5360
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange")    
+SetPlayerProximityFunction(NPC, 10, "InRange")   
+ProvidesQuest(NPC,UnderAShadyTree)
+ProvidesQuest(NPC,ABowForABeauty)
+ProvidesQuest(NPC,SheWillBeAShiningPetal)
+ProvidesQuest(NPC,PeppermintsAndPotions)
+ProvidesQuest(NPC,SongToPrexus)
 end
 
 function InRange(NPC, Spawn)

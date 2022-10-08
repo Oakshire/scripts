@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to find Holly Windstalker's grave in Antonica.", 4, "I should go to Holly Windstalker's grave to see if there is any truth to the rumor.", 2339,-1855.35 -2.78 -624.56)
+	 AddQuestStepZoneLoc(Quest, 1, "I need to find Holly Windstalker's grave in Antonica.", 10, "I should go to Holly Windstalker's grave to see if there is any truth to the rumor.", 2339,-1854.52, -2.89, -624.46,12)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 

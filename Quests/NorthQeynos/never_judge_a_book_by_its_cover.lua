@@ -9,6 +9,7 @@
         Preceded by: The Scholar's Search
         Followed by: Flight of the Sage
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -17,7 +18,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	PlayFlavor(QuestGiver,"","","nod",0,0,Player)
+    Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Well, I've read that some of the bandits out in the wilds hide their ill-gotten gains inside the animal dens.  If you can find the den where they hid their loot, maybe you can find out if the Sage of Ages is still alive.")
+	Dialog.AddOption("Right!  I'm off at once!")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

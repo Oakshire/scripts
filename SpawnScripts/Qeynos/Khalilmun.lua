@@ -67,7 +67,7 @@ function hailed(NPC, Spawn)
       	    if not HasQuest(Spawn,potion) and not HasCompletedQuest(Spawn, potion) then
           	Dialog.AddOption("I would like to know if you have any insights on potion making.", "Potion1")
             end
-            if GetQuestStep(Spawn,potion)==2 then
+            if GetQuestStep(Spawn,potion)==4 then
           	Dialog.AddOption("I've gathered all the ingredients you requested from the Peat Bog.", "PotionDone")
             end
             if not HasQuest(Spawn,wings) and not HasCompletedQuest(Spawn, wings) then
@@ -77,7 +77,7 @@ function hailed(NPC, Spawn)
           	Dialog.AddOption( "Take a look at these shriller wings. Do they work for what you need?", "WingsDone")
             end
             if GetQuestStep(Spawn,dyes)==1 then
-        	Dialog.AddOption("Daniell Clothspinner said you had an order she needed picked up?", "Pickup")
+        	Dialog.AddOption("Danielle Clothspinner said you had an order she needed picked up?", "Pickup")
         	end
     Dialog.AddOption("Actually, I'm just browsing.")
 	Dialog.Start()
@@ -90,7 +90,7 @@ function Pickup(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
-    Dialog.AddDialog("Ah, yes.  Dyes.  Always dyes.  Well, she is one of my best customers!  Here.  Take these two tubs.  That looks like Daniell's coin pouch- I'll empty that.  Are you sure you can't use an alembic or two?  They're on sale!")
+    Dialog.AddDialog("Ah, yes.  Dyes.  Always dyes.  Well, she is one of my best customers!  Here.  Take these two tubs.  That looks like Danielle's coin pouch- I'll empty that.  Are you sure you can't use an alembic or two?  They're on sale!")
 	Dialog.AddVoiceover("voiceover/english/merchant_khalil_mun/qey_south/khalilmun000.mp3", 938827221, 1172248850)
 	Dialog.AddOption( "This will do just fine.  Thanks.", "DyeUpdate")
 	Dialog.Start()
@@ -131,12 +131,12 @@ end
 
 function FinishQuest1(NPC,Spawn)
  	FaceTarget(NPC, Spawn)
-    SetStepComplete(Spawn,potion, 2)
+    SetStepComplete(Spawn,potion, 4)
 end 
 function FinishQuest2(NPC,Spawn)
     PlayFlavor(NPC, "", "", "chuckle", 0, 0, Spawn)
  	FaceTarget(NPC, Spawn)
-    SetStepComplete(Spawn,potion, 2)
+    SetStepComplete(Spawn,potion, 4)
 end 
 
 

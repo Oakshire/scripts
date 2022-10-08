@@ -91,11 +91,8 @@ end
 function DoneDeer (NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "I am glad to have played my part.", "QuestDone")
+    AddConversationOption(conversation, "I am glad to have played my part.")
     StartConversation(conversation, NPC, Spawn, "Splendid! You did a good job.  Thank you for your help!")
  	PlayFlavor(NPC, "", "", "thank", 0,0 , Spawn)
-end
-
-function QuestDone(NPC, Spawn)
     SetStepComplete(Spawn, Deer, 2)
-   end
+end
