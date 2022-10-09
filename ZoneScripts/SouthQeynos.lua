@@ -1,4 +1,3 @@
-SendPopUpMessage(Spawn, "Qeynos Harbor", 230, 230, 230)   
 --[[
     Script Name    : ZoneScripts/SouthQeynos.lua
     Script Author  : Dorbin
@@ -12,8 +11,8 @@ function init_zone_script(Zone)
 
 end
 
-function player_entry(Zone, Spawn)
-SendPopUpMessage(Spawn, "South Qeynos", 230, 230, 230)   
+function player_entry(Zone, Player)
+SendPopUpMessage(Player, "South Qeynos", 230, 230, 230)   
 end
 
 function dawn(Zone)

@@ -19,7 +19,7 @@ end
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/proprietor_blagard/qey_village02/blagard000.mp3", "", "", 3622450968, 3253656744, Spawn)
+	PlayFlavor(NPC, "voiceover/english/proprietor_blagard/qey_village02/blagard000.mp3", "", "nod", 3622450968, 3253656744, Spawn)
 	if GetQuestStep(Spawn, AnIntriguingEye) == 7 then
 	AddConversationOption(conversation, "I am looking for the coin you swiped from Penwiggle.  ", "Option1")
 	elseif GetQuestStep(Spawn, TheMotleyMerchantManifest) == 4 then
@@ -32,14 +32,14 @@ end
 function Option1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/proprietor_blagard/qey_village02/blagard001.mp3", "", "", 1118118280, 1928490568, Spawn)
+    PlayFlavor(NPC, "voiceover/english/proprietor_blagard/qey_village02/blagard001.mp3", "", "stare", 1118118280, 1928490568, Spawn)
 	AddConversationOption(conversation, "I earned that coin. Where is it? ", "Option2")
 	AddConversationOption(conversation, "What coin? Farewell.")
 	StartConversation(conversation, NPC, Spawn, "You'd be wise to forget about that coin. It'll lead you to nothing but trouble and a one-way ticket to the tower of Ethernere. ")
 end
 
 
-function Option3(NPC, Spawn)
+function Option2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/proprietor_blagard/qey_village02/blagard002.mp3", "", "", 2782696877, 1213798417, Spawn)

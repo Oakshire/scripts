@@ -5,7 +5,7 @@
     Script Purpose : 
 
         Zone       : QeynosHarbor
-        Quest Giver: 
+        Quest Giver: Cordun Brenland
         Preceded by: None
         Followed by: 
 --]]
@@ -17,6 +17,7 @@ function Init(Quest)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step2Complete")
+    UpdateQuestZone(Quest,"Antonica")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -56,6 +57,7 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5585, 1) and QuestStepIsComplete(Player, 5585, 2)  and QuestStepIsComplete(Player, 5585, 3)  then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've killed the two barracuda, a manta ray and two sea turtles as Cordun requested.")
+    UpdateQuestZone(Quest,"Qeynos Harbor")
 	AddQuestStepChat(Quest, 4, "I need to deliver this sea food to Cordun Brenland.", 1, "Cordun Brenland in Qeynos Harbor is waiting for this sea food delivery.", 2541, 2210501)
     AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
@@ -73,10 +75,10 @@ function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Step1Complete(Quest, QuestGiver, Player)
 	elseif Step == 2 then
-		Step1Complete(Quest, QuestGiver, Player)
+		Step2Complete(Quest, QuestGiver, Player)
 	elseif Step == 3 then
-		Step1Complete(Quest, QuestGiver, Player)
+		Step3Complete(Quest, QuestGiver, Player)
 	elseif Step == 4 then
-		QuestComplete(Quest, QuestGiver, Player)
+		CheckProgress(Quest, QuestGiver, Player)
 	end
 end

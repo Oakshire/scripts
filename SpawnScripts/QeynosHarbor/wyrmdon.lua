@@ -9,7 +9,7 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+--	waypoints(NPC)
 end
 
 function hailed(NPC, Spawn)

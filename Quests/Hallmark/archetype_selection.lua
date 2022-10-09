@@ -11,8 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I need to talk to Garven Tralk", 1, "I need to talk to Garven Tralk", 11, 3250020)
+    AddQuestStepChat(Quest, 1, "I need to talk to Garven Tralk", 1, "I need to talk to Garven Tralk", 11, 3250020)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
+    QuestReturnNPC(Quest, 3250020)
 end
 
 function Accepted(Quest, QuestGiver, Player)

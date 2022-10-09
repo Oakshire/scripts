@@ -43,16 +43,13 @@ end
 
 function  CheckProgress(Quest, QuestGiver, Player)
         if QuestStepIsComplete(Player, 5516, 1) and QuestStepIsComplete(Player, 5517, 2) then
-    QuestStep3(Quest, QuestGiver, Player)
-    end
-end
-
-function QuestStep3(Quest, QuestGiver, Player)
         UpdateQuestZone(Quest,"The Elddar Grove")
     	UpdateQuestTaskGroupDescription(Quest, 1, "I've settled decaying skeleton's and risen protector's as Lookout Venylle had requested.")
     	AddQuestStepChat(Quest, 3, "I must speak to Lookout Venylle in The Elddar Grove.", 1, "I must go to the Elddar Grove to inform Lookout Venylle about my success against the undead.", 0, 2070049)
     	AddQuestStepCompleteAction(Quest, 3, "QuestComplete") 
-    end
+    	end
+end
+
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
@@ -68,6 +65,6 @@ function Reload(Quest, QuestGiver, Player, Step)
 	elseif Step == 2 then
 	    Step2Complete(Quest, QuestGiver, Player)
 	elseif Step ==3 then   
-		QuestStep3(Quest, QuestGiver, Player)
+		CheckProgress(Quest, QuestGiver, Player)
     end
 end
