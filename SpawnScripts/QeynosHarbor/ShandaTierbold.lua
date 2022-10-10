@@ -32,11 +32,11 @@ end
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/shanda_tierbold/qey_harbor/shandatierbold000.mp3", "", "shakefist",3116352069, 1617706288, Spawn)
     local conversation = CreateConversation()
-    if not HasQuest(Spawn,delivery) and not HasCompletedQuest(Spawn, delivery) then
+    if not HasQuest(Spawn,delivery) and not HasCompletedQuest(Spawn, delivery) and GetFactionAmount(Spawn,11) >=1 then
 	AddConversationOption(conversation, "What is behind that door anyway?", "Door")
 	end	
-    if HasCompletedQuest(Spawn, delivery) then
-	AddConversationOption(conversation, "Hey, I met your boss.  Can I enter now?","Boss")
+    if HasCompletedQuest(Spawn, delivery) and GetFactionAmount(Spawn,11) >=1 then
+	AddConversationOption(conversation, "Hey, I did a job for your boss.  Can I enter now?","Boss")
     end        
 	AddConversationOption(conversation, "Alright!  I didn't want in there anyway.")
 	StartConversation(conversation, NPC, Spawn, "Stop right there! No one goes through this door without explicit permission.")
@@ -45,8 +45,7 @@ end
   function Door(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
      PlayFlavor(NPC, "", "", "glare",0, 0, Spawn)
-   local conversation = CreateConversation()
-	AddConversationOption(conversation, "[This quest text is fabricated.  Let EmemJR on EMU Discord know this NPC needs the dialog]")
+    local conversation = CreateConversation()
 	AddConversationOption(conversation, "Well, how can I get in touch with your boss?  Perhaps I have business in places like this.","Quest1")
 	AddConversationOption(conversation, "Fine fine.  I'm going.")
 	StartConversation(conversation, NPC, Spawn, "That is for me and the boss to know and for you to scram!  I'm not allowed to let anyone in here that the boss doesn't authorize.  You best be off!")
@@ -54,7 +53,7 @@ end
 
   function Quest1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-     PlayFlavor(NPC, "", "", "glare",0, 0, Spawn)
+     PlayFlavor(NPC, "", "", "tapfoot",0, 0, Spawn)
    local conversation = CreateConversation()
 	AddConversationOption(conversation, "How about I take the letter for you?","StartQuest")
 	AddConversationOption(conversation, "Fine fine.  I'm going.")

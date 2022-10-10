@@ -40,6 +40,7 @@ end
 function Collections(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+	PlayFlavor(NPC, "", "", "nod", 0,0, Spawn)
 	Dialog.AddDialog("Why, any sort of collection. There's so much out there to find! Just open your eyes and peek under the rocks.  If you find anything interesting, let me have a look. Collecting is the only way I seem to relive my youth!")
 	Dialog.AddOption("I'll keep that in mind.")
 	Dialog.Start()

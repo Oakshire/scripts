@@ -68,8 +68,8 @@ function Step1Complete(Quest, QuestGiver, Player)
     UpdateQuestZone(Quest, "Castleview")
 
 
-    -- Half Elf / Wood Elf
-    elseif Race == 6 or Race == 15 then
+    -- Half Elf / Wood Elf / Fae
+    elseif Race == 6 or Race == 15 or Race == 16 then
 	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2370111)
     UpdateQuestZone(Quest, "Willow Wood")
 

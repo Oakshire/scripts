@@ -13,8 +13,9 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to recover illicit plans from a Bloodsaber fanatic in the Vermins' Snye.", 1, 100, "I need to recover a set of the Bloodsaber plans from the Vermins' Snye.", 185, 2000023)
+	AddQuestStepKill(Quest, 1, "I need to recover illicit plans from a Bloodsaber fanatic in the Vermin's Snye.", 1, 100, "I need to recover a set of the Bloodsaber plans from the Vermin's Snye.", 185, 2000023)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Vermin's Snye")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -37,7 +38,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I recovered a set of the Bloodsaber plans.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I recovered a set of the Bloodsaber plans.")
-
+    UpdateQuestZone(Quest,"The Eldarr Grove")
 	AddQuestStepChat(Quest, 2, "I must speak with Wesaelan Brookshadow in the Elddar Grove.", 1, "I need to speak with Wesaelan Brookshadow about the plans I found.", 11, 2070043, 6600365) -- ID's both for old and new areas.
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
@@ -47,7 +48,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I spoke with Wesaelan Brookshadow.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I spoke with Wesaelan about the plans.")
 
-	UpdateQuestDescription(Quest, "I managed to recover a set of the plans from the Bloodsabers in the Vermins' Snye.  When I returned to Wesaelan with the letter I'd found, he told me to seek out Captain Eitoa, and give her the information that I have so far.")
+	UpdateQuestDescription(Quest, "I managed to recover a set of the plans from the Bloodsabers in the Vermin's Snye.  When I returned to Wesaelan with the letter I'd found, he told me to seek out Captain Eitoa, and give her the information that I have so far.")
 	GiveQuestReward(Quest, Player)
 end
 

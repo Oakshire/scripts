@@ -16,7 +16,7 @@ end
 
 
 function InRange(NPC, Spawn)
-		CheckFaction(NPC, Spawn, "Qeynos")
+--		CheckFaction(NPC, Spawn, "Qeynos")
 	end
 
 function hailed(NPC, Spawn)

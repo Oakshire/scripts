@@ -9,6 +9,13 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+    if GetFactionID(Spawn) ==1 then 
+        Attack(NPC,Spawn)
+    end
 end
 
 function respawn(NPC)

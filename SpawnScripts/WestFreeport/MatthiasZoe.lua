@@ -1,9 +1,9 @@
 --[[
-	Script Name	: SpawnScripts/QeynosHarbor/DevonaIronforge.lua
-	Script Purpose	: Devona Ironforge <Crafting Trainer>
-	Script Author	: Dorbin
-	Script Date	: 2022.10.08
-	Script Notes	: 
+    Script Name    : SpawnScripts/WestFreeport/MatthiasZoe.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.10.09 01:10:32
+    Script Purpose : 
+                   : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
 
@@ -12,13 +12,12 @@ function spawn(NPC)
 end
 
 function InRange(NPC,Spawn)
-if GetFactionAmount(Spawn, 11) <0 then
-    FaceTarget(NPC,Spawn)
-    PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
+if GetFactionAmount(Spawn, 12) <0 then
+    PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 elseif GetTradeskillLevel(Spawn)==19 then
     if GetTradeskillClass(Spawn)== 2 or GetTradeskillClass(Spawn)== 6 or GetTradeskillClass(Spawn)== 10 then
     FaceTarget(NPC,Spawn)
- 	PlayFlavor(NPC, "", "Please form a line to my left if you need to be certified.", "bye", 0, 0, Spawn)
+ 	PlayFlavor(NPC, "voiceover/english/alfred_ironforge/qey_harbor/100_trd_alfred_ironforge_callout_b5408196.mp3", "Please form a line to my left if you need to be certified.", "tapfoot", 3630438710, 674962613, Spawn)
     end
     end
 end
@@ -26,7 +25,7 @@ end
    
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-if GetFactionAmount(Spawn, 11) <0 then
+if GetFactionAmount(Spawn, 12) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 elseif GetTradeskillLevel(Spawn)<19 then
     if GetTradeskillClass(Spawn)~= 2 or GetTradeskillClass(Spawn)~= 6 or GetTradeskillClass(Spawn)~= 10 or GetTradeskillClass(Spawn)~= 1 then
@@ -49,7 +48,7 @@ function NotSkilled(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Hello, friend. You're not skilled enough to receive certification in a tradesman specialty. Practice your skills and return to me after you gain more experience.")
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1033.mp3", "", "hello", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3", "", "hello", 0, 0, Spawn)
 	Dialog.AddOption("Ok I will do.")
 	Dialog.Start()
 end
@@ -59,9 +58,8 @@ function AlreadySkilled(NPC,Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("You're certified already friend.")
     PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
-	Dialog.AddVoiceover("voiceover/english/alethea_augustine/fprt_west/alethea_augustine001.mp3", 462001478, 657343064)
+	Dialog.AddVoiceover("voiceover/english/alfred_ironforge/qey_harbor/alfred_ironforge001.mp3",2173353496, 3693694171)
 	Dialog.AddOption("Oh yes I forgot.")
-	Dialog.AddOption("Just saying hello!")
 	Dialog.Start()
 end
 
@@ -71,7 +69,7 @@ end
 function Craftsman(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I'm glad that you continued on as an Craftsman and came back to The Ironforge Exchange. My name is Devona Ironforge, and I can certify you in your chosen trade specialty. I need your name and specialty before I can start your paperwork.")
+	Dialog.AddDialog("I'm glad that you continued on as an Craftsman and came back to The Coalition of Tradesfolk. My name is Matthias Zoe, and I can certify you in your chosen trade specialty. I need your name and specialty before I can start your paperwork.")
 --	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_1_1033.mp3", 0, 0)
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1033.mp3", "", "hello", 0, 0, Spawn)
 	Dialog.AddOption("My name is "..GetName(Spawn)..", a Provisioner.", "Provisioner")
@@ -181,7 +179,7 @@ end
 function Outfitter(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I'm glad that you continued on as an Outfitter and came back to The Ironforge Exchange. My name is Devona Ironforge, and I can certify you in your chosen trade specialty. I need your name and specialty before I can start your paperwork.")
+	Dialog.AddDialog("I'm glad that you continued on as an Outfitter and came back to The Coalition of Tradesfolk. My name is Matthias Zoe, and I can certify you in your chosen trade specialty. I need your name and specialty before I can start your paperwork.")
 --	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_1_1033.mp3", 0, 0)
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1031.mp3", "", "hello", 0, 0, Spawn)
 	Dialog.AddOption("My name is "..GetName(Spawn)..", a Weaponsmith.", "Weaponsmith")
@@ -292,7 +290,7 @@ end
 function Scholar(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I'm glad that you continued on as an Scholar and came back to The Ironforge Exchange. My name is Devona Ironforge, and I can certify you in your chosen trade specialty. I need your name and specialty before I can start your paperwork.")
+	Dialog.AddDialog("I'm glad that you continued on as an Scholar and came back to The Coalition of Tradesfolk. My name is Matthias Zoe, and I can certify you in your chosen trade specialty. I need your name and specialty before I can start your paperwork.")
 --	Dialog.AddVoiceover("voiceover/english/voice_emotes/greetings/greetings_1_1033.mp3", 0, 0)
     PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1033.mp3", "", "hello", 0, 0, Spawn)
 	Dialog.AddOption("My name is "..GetName(Spawn)..", a Jeweler.", "Jeweler")
@@ -401,7 +399,7 @@ end
 
 function FinalHail(NPC,Spawn)
 	Dialog.AddDialog("Okay. Now you're certified in your chosen tradesman specialty. I'm glad I could serve you. We always need skilled tradesman in the city.")
-	Dialog.AddVoiceover("voiceover/english/alethea_augustine/fprt_west/alethea_augustine008.mp3", 1879179238, 3019465921)
+	Dialog.AddVoiceover("voiceover/english/alfred_ironforge/qey_harbor/alfred_ironforge008.mp3",3289915162, 765479278)
 	PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
 	Dialog.AddOption("Many thanks, friend.")
 	Dialog.Start()
@@ -416,17 +414,3 @@ end
 function respawn(NPC)
 	spawn(NPC)
 end
-
-
---[[]
-	local choice = math.random(1,2)
-
-	if choice == 1 then
-		PlayFlavor(NPC, "", "I have nothing else to teach you for the moment.  Please return to me when you have earned enough experience to choose your profession.", "", 1689589577, 4560189, Spawn)
-	elseif choice == 2 then
-		PlayFlavor(NPC, "", "You have learned everything I have to teach.  You are free to use our crafting facilities to hone your skills and master your craft.", "", 1689589577, 4560189, Spawn)
-	else
-	end
-
-end]]--
-

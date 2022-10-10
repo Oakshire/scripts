@@ -30,8 +30,8 @@ end
 function wakeup(NPC)
 		local players = GetPlayersInZone(GetZone(NPC))              --zone callout and activation
 		for index, player in pairs(players) do
-		SendPopUpMessage(player, "Grinding of stone can be heard as something ancient stirs in the ruins.", 255, 255, 0)
-		SendMessage(player, "Grinding of stone can be heard as something ancient stirs in the ruins.")
+		SendPopUpMessage(player, "Grinding stone can be heard as something ancient stirs in the ruins.", 255, 255, 0)
+		SendMessage(player, "Grinding stone can be heard as something ancient stirs in the ruins.")
     end
     SpawnSet(NPC, "show_name", "1")
     SpawnSet(NPC, "targetable", "1")    

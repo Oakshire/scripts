@@ -95,7 +95,7 @@ function CrafterYes2(NPC, Spawn)
 	SetTradeskillClass(Spawn,2)
     SendMessage(Spawn, "Congratulations!  You have chosen the path of the Craftsman.","yellow")
     SendPopUpMessage(Spawn, "Congratulations!  You have chosen the path of the Craftsman.",250,250,200)
---  PlaySound(Spawn,"sounds/ui/tradeskills_lvl_up.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn))
+    PlaySound(Spawn, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)
 	end
     FinalHail(NPC,Spawn)
 end
@@ -127,7 +127,7 @@ function OutfitterYes2(NPC, Spawn)
 	SetTradeskillClass(Spawn,6)
      SendMessage(Spawn, "Congratulations!  You have chosen the path of the Outfitter.","yellow")
     SendPopUpMessage(Spawn, "Congratulations!  You have chosen the path of the Outfitter.",250,250,200)
---    PlaySound(Spawn,"sounds/ui/tradeskill_dev_lvl_up.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn))
+    PlaySound(Spawn, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)
 	end
     FinalHail(NPC,Spawn)
 end
@@ -158,7 +158,7 @@ function ScholarYes2(NPC, Spawn)
 	SetTradeskillClass(Spawn,10)
     SendMessage(Spawn, "Congratulations!  You have chosen the path of the Scholar.","yellow")
     SendPopUpMessage(Spawn, "Congratulations!  You have chosen the path of the Scholar.",250,250,200)
---    PlaySound(Spawn,"sounds/ui/tradeskill_dev_lvl_up.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn))
+    PlaySound(Spawn, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)
     end
     FinalHail(NPC,Spawn)
 end
@@ -173,6 +173,7 @@ function FinalHail(NPC,Spawn)
 	PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
 	Dialog.AddOption("Many thanks, friend.")
 	Dialog.Start()
+    ApplySpellVisual(Spawn, 324)
 end
 
 

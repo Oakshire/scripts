@@ -41,7 +41,7 @@ function step1_toxicCrawlers(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've cleared out many spiders and as a result found an unusual item.")
 	
-    if Player ~= nil then
+    if Player ~= nil and not HasItem(Player,10317) then
 	GiveQuestItem(Quest, Player, "I've cleared out many spiders and as a result found an unusual item.", 10317)
 	end	
 	-- SPAWN Parchment Scrap (right-click this item to Examine it), spawn this in the Quest Reward window
@@ -152,7 +152,7 @@ end
 
 function completed(Quest, QuestGiver, Player)
     UpdateQuestStepDescription(Quest, 9, "I've spoken with Deianeira.")
-    	UpdateQuestTaskGroupDescription(Quest, 9, "I've spoken with Deianeira.")
+    UpdateQuestTaskGroupDescription(Quest, 9, "I've spoken with Deianeira.")
 	UpdateQuestDescription(Quest, "While killing toxic crawlers to test Deianeira's theory on poison, I found a piece of parchment hinting that someone had influenced the toxic crawlers by hiding some kind of totem in their main nest. After I removed Direspike from the lair, the totem shattered on its own. The poison theory seems shattered as well.")
 	GiveQuestReward(Quest, Player)
 end

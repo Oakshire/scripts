@@ -62,11 +62,11 @@ function hailed(NPC, Spawn)
 	           AddConversationOption(conversation, "Here is the book you wanted me to find. It was stored on the shelves at the inn.", "DoneBook")
 	        end
 	       if GetQuestStep(Spawn, Leaves)==2 then
-	           AddConversationOption(conversation, "I've returned with the Eldarr leaves you asked for.", "DoneLeaves")
+	           AddConversationOption(conversation, "I've brought back the leaves for Yanari.", "DoneLeaves")
 	        end
 
 	  AddConversationOption(conversation, "I'm just browsing. Thank you.")
-	 StartConversation(conversation, NPC, Spawn, "If thou art interested... of items of a scholarly nature. Thou should take a look around. Just don't disturb Yanari! She is busy with her research.")
+	 StartConversation(conversation, NPC, Spawn, "If thou art interested in items of a scholarly nature, thou should take a look around... just don't disturb Yanari; she is busy with her research.")
     PlayFlavor(NPC, "voiceover/english/scribe_bleemeb/qey_village04/qst_scribebleemeb000.mp3", "", "", 4182629486, 2797643210, Spawn)
 	        end
 
@@ -90,9 +90,9 @@ end
 
  function DoneLeaves(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "Thank you.", "RewardLeaves")
+    AddConversationOption(conversation, "Thank you scribe.", "RewardLeaves")
     PlayFlavor(NPC, "voiceover/english/scribe_bleemeb/qey_village04/qst_scribebleemeb002.mp3","","thank",2698466863,3996998508,Spawn)
-    StartConversation(conversation, NPC, Spawn, "By the valor of Marr! Tis quite a bundle of them thou has. I am sure they will do nicely for her. I'm in the habbit of paying for services, so please take these coins. frooAK!")
+    StartConversation(conversation, NPC, Spawn, "By the valor of Marr! 'Tis quite a bundle of them thou hast. I am sure they wilt do nicely for her.  I'm in the habit of paying for services ... so please, take these coins.  FroooOOOooaak!")
 end   
 
  function BookStart(NPC, Spawn)
@@ -100,7 +100,7 @@ end
     AddConversationOption(conversation, "Certainly, I will go get the book.", "QuestBegin1")
     AddConversationOption(conversation, "I can't right now. I appologize.")
     PlayFlavor(NPC, "voiceover/english/scribe_bleemeb/qey_village04/qst_scribebleemeb005.mp3","","bow",360212567,1854076529,Spawn)
-    StartConversation(conversation, NPC, Spawn, "Ahh, a newcomer! Tis grand to meet thee! I have a bit a bit of a task for thou. A resident named Faeadaen hath not returned our Book of Arobos. Privy, could'st thou retrive it from her?")
+    StartConversation(conversation, NPC, Spawn, "Ahh, a newcomer! 'Tis grand to meet thee! I have a bit a bit of a task for thou. A resident named Faeadaen hath not returned our Book of Arobos. Privy, could'st thou retrive it from her?")
 end   
 
 

@@ -98,13 +98,11 @@ function Step8Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 8, "I spoke with Assistant Dreak.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I told Assistant Dreak that the cellar is clean.")
     UpdateQuestZone(Quest,"Mizan's Cellar")
-    if GetTradeskillLevel(Player)<2 then
-        SetTradeskillLevel(Player,2)
-    end
-    if not HasItem(Player,20708) then
+    if not HasItem(Player,20708) and GetTradeskillLevel(Player)<2 then
+    SetTradeskillLevel(Player,2)
     GiveQuestItem(Quest, Player, "", 20708,4142,4142,4142,7391,7391,7391)
-    end
-    SummonItem(Player,1030001,1)
+     SummonItem(Player,1030001,1)
+   end
 --    GiveQuestItem(Quest, Player, "", 4142)
 --   GiveQuestItem(Quest, Player, "", 4142)
 --    GiveQuestItem(Quest, Player, "", 4142)

@@ -71,16 +71,16 @@ function hailed(NPC, Spawn)
             FaceTarget(NPC, Spawn)
                 conversation = CreateConversation()   
             if not HasQuest(Spawn, Badgers) and not HasCompletedQuest (Spawn, Badgers) then       
-                AddConversationOption(conversation, "What are you doing?", "BadgerStart")
+                AddConversationOption(conversation, "Don't worry, I'm not going to touch anything.  I'm just interested in your work.", "BadgerStart")
             end
             if not HasQuest(Spawn, Slime) and not HasCompletedQuest (Spawn, Slime) then       
-                AddConversationOption(conversation, "I don't mean to bother you, but I overheard you needed something?", "SlimeStart")
+                AddConversationOption(conversation, "I do not care to be a goo.", "SlimeStart")
             end
             if GetQuestStep(Spawn, Badgers)==2 then
 	           AddConversationOption(conversation, "I brought the claws that you asked for.", "DoneBadger")
 	        end
 	        if GetQuestStep(Spawn, Slime)==2 then
-	           AddConversationOption(conversation, "I've returned with your bag of daggers.", "DoneSlime")
+	           AddConversationOption(conversation, "I have collected your substance extract.", "DoneSlime")
 	        end
 	        
 	            AddConversationOption(conversation, "You seem to be a bit busy at the moment.  I'll leave you alone.")
@@ -92,7 +92,7 @@ end
 
  function BadgerStart(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "I can gather those for you.", "BadgerBegin2")
+    AddConversationOption(conversation, "I can do that for you.  A few badgers shouldn`t be a problem for me.", "BadgerBegin2")
     AddConversationOption(conversation, "I wouldn't even touch a regular badger, let alone a vicious one!")
     PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan000.mp3","","ponder",913747199,2909702718,Spawn)
     StartConversation(conversation, NPC, Spawn, "Interested, are you? Well, I am trying to make my spells and items more potent. Unfortunately I ran out of volatility components. Would you do me a favor and collect some vicious badger claws?")
@@ -120,7 +120,7 @@ end
 
  function SlimeStart(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "What do you need?", "SlimeNeed")
+    AddConversationOption(conversation, "I can do your task.", "SlimeNeed")
     AddConversationOption(conversation, "...I must be going!")
     PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan004.mp3","","no",2138601896,740497069,Spawn)
     StartConversation(conversation, NPC, Spawn, "Then keep your hands away from my experiments! Since you've wasted my precious time with your insistent babbling, I believe you owe me a bit of your own time. I need your help with a task.")
@@ -128,7 +128,7 @@ end
 
  function SlimeNeed(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "I will return with some crypt gunk.", "QuestBegin2")
+    AddConversationOption(conversation, "I will be back with your substance extract.", "QuestBegin2")
     AddConversationOption(conversation, "Crypt gunk? I think I'll pass. Sorry")
     PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan005.mp3","","tap",3750763447,1479813412,Spawn)
     StartConversation(conversation, NPC, Spawn, "Go to the Down Below in the catacombs. In the Down Below, you must slay several gunks and fill my vials with their extract. Leave immediately! I need these ingredients to complete my research.")
@@ -136,9 +136,9 @@ end
 
  function DoneSlime(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "Thank you.", "RewardSlime")
+    AddConversationOption(conversation, "Have fun with that gunk.", "RewardSlime")
     AddConversationOption(conversation, "Yeesh, okay. I'm going now.", "RewardSlime")
-    PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan006.mp3","","tap",3747403661,785681662,Spawn)
+    PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan006.mp3","","tapfoot",3747403661,785681662,Spawn)
     StartConversation(conversation, NPC, Spawn, "Its about time! I almost sent Bleemeb up to go get my extract. I thought the gunks made a meal out of you. Take this pay for your task and leave me with my research.")
 end   
 
