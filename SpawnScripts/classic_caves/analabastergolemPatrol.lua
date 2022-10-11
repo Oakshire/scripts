@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
@@ -27,10 +28,6 @@ function spawn(NPC)
     SpawnSet(NPC, "power", power2)
     end
 	waypoints(NPC)
-end
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)

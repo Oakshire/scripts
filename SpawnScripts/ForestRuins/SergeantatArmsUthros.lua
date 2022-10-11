@@ -9,6 +9,7 @@
 function spawn(NPC)
 	ProvidesQuest(NPC, 5486)
 	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")	
+    waypoints(NPC)
 end
 
 function InRange(NPC, Spawn) 
@@ -86,4 +87,29 @@ end
 function dlg_0_2 (NPC, Spawn)
     FaceTarget(NPC, Spawn)
   OfferQuest(NPC, Spawn, 5486)
+end
+
+
+function waypoints(NPC)
+    if GetSpawnLocationID(NPC)==133777752 then
+        	MovementLoopAddLocation(NPC, 898.56, -15.35, -572.21, 2, 0)
+	MovementLoopAddLocation(NPC, 901.94, -16.04, -569.54, 2, 0)
+	MovementLoopAddLocation(NPC, 907.79, -17.07, -564.93, 2, 0)
+	MovementLoopAddLocation(NPC, 913.01, -18.62, -562.48, 2, 0)
+	MovementLoopAddLocation(NPC, 921.17, -20.85, -562.89, 2, 0)
+	MovementLoopAddLocation(NPC, 926.05, -21.07, -563.82, 2, 15)
+	MovementLoopAddLocation(NPC, 927.38, -21.09, -564.07, 2, 0)
+	MovementLoopAddLocation(NPC, 927.21, -21, -562.63, 2, 0)
+	MovementLoopAddLocation(NPC, 923.29, -20.84, -560.9, 2, 0)
+	MovementLoopAddLocation(NPC, 914.8, -19.08, -561.61, 2, 0)
+	MovementLoopAddLocation(NPC, 908.12, -17.14, -563.96, 2, 0)
+	MovementLoopAddLocation(NPC, 901.46, -15.95, -569.31, 2, 0)
+	MovementLoopAddLocation(NPC, 898.81, -15.28, -573.93, 2, 15)
+	MovementLoopAddLocation(NPC, 897.44, -15.07, -573.54, 2, 0)
+	MovementLoopAddLocation(NPC, 896.75, -14.98, -572.09, 2, 0)
+	MovementLoopAddLocation(NPC, 893.36, -13.91, -566.7, 2, 0)
+	MovementLoopAddLocation(NPC, 891.35, -13.05, -561.21, 2, 15)
+	MovementLoopAddLocation(NPC, 896.42, -14.91, -572.29, 2, 0)
+	MovementLoopAddLocation(NPC, 897.13, -14.97, -573.72, 2, 15)
+end
 end

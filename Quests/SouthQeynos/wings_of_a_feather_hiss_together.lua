@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must hunt flying snakes to get six wings.", 6, 60, "I've been charged to recover no less than six flying snake wings from the cave serpents in the Caves.", 140, 1970008)
+	AddQuestStepKill(Quest, 1, "I must hunt flying snakes to get six wings.", 6, 60, "I've been charged to recover no less than six flying snake wings from the cave serpents in the Caves.", 140, 1970008,8260003,8260074)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	UpdateQuestZone(Quest,"The Caves")
 end

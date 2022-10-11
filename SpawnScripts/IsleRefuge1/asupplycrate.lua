@@ -3,7 +3,7 @@
     Script Author  : LordPazuzu
     Script Date    : 2022.09.05 04:09:53
     Script Purpose : 
-                   : 
+    Note: Gave crates each their own goblin protector and a replacement if theirs is gone. - Dorbin
 --]]
 local Healing = true
 
@@ -14,6 +14,7 @@ function spawn(NPC)
 	-- give the spawn a crap load of hp so we can't one hit kill
 	SetHP(NPC, 1000000)
     SetRequiredQuest(NPC,5736,1)
+--    SetInvulnerable(NPC)
 end
 
 function casted_on(NPC, Spawn, Message)
@@ -36,7 +37,7 @@ function Think(NPC,Target)
 end
 
 function healthchanged(NPC, Spawn)
-	-- insta heal so should be impossible to kill without the /kill command
+	-- insta heal, so should be impossible to kill without the /kill command
 	SetHP(NPC, GetMaxHP(NPC))
 end
 

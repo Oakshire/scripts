@@ -15,8 +15,13 @@ require "SpawnScripts/Generic/DialogModule"
 local GEOLOGIST_QUARDIFLE_ID = 2380036
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "Find a mine in the Caves to obtain a windspirit crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1159, 58.11, 2.93, -119.94)
+	AddQuestStepZoneLocation(Quest, 1, "Find a mine in the Caves to obtain a windspirit crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1159, 58.11, 2.93, -119.94,826)
+	AddQuestStepZoneLocation(Quest, 2, "Find a mine in the Caves to obtain an elddar spark crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1168, 66.73, 12.41, -70.69,826)
+	AddQuestStepZoneLocation(Quest, 3, "Find a mine in the Caves to obtain a prexus tear crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1177, -49.35, 16.59, -133.75,826)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+    UpdateQuestZone(Quest,"Caves")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -32,25 +37,26 @@ function Accepted(Quest, QuestGiver, Player)
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found a windpsirit sample.")
-
-	AddQuestStepLocation(Quest, 2, "Find a mine in the Caves to obtain an elddar spark crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1168, 66.73, 12.41, -70.69)
-	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+    QuestCheck(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I found an elddar spark crystal formation.")
-
-	AddQuestStepLocation(Quest, 3, "Find a mine in the Caves to obtain a prexus tear crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1177, -49.35, 16.59, -133.75)
-	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+    QuestCheck(Quest, QuestGiver, Player)
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I found a prexus tear sample.")
+    QuestCheck(Quest, QuestGiver, Player)
+end
+
+function QuestCheck(Quest, QuestGiver, Player)
+if QuestStepIsComplete(Player,504,1) ==true and QuestStepIsComplete(Player,504,2) ==true and QuestStepIsComplete(Player,504,3) ==true then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I gathered the three samples from the different parts of the caves.")
-    
     UpdateQuestZone(Quest, "Baubbleshire")
 	AddQuestStepChat(Quest, 4, "I need to speak with Geologist Quardifle.", 1, "I need to give the samples I gathered to Geologist Quardifle.", 11, GEOLOGIST_QUARDIFLE_ID)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
+end
 end
 
 function QuestComplete(Quest, QuestGiver, Player)

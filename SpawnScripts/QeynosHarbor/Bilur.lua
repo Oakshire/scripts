@@ -5,9 +5,11 @@
 	Script Date		:	04/09/2020 01:10:38 AM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function hailed(NPC, Spawn)
@@ -24,16 +26,16 @@ local Oakhall = GetSpawn(NPC,2210072)
     FaceTarget(Oakhall,Spawn)
  	PlayFlavor(Oakhall, "", "", "attention", 0, 0, Spawn)
    end	    
-    
-	local choice = math.random(1,2)
 
-	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/service/guard/dwarf_guard_service_good_1_hail_gm_76da37c9.mp3", "I hate working this shift!  If the gnolls don't attack now I may die of boredom.", "grumble", 31199107, 4082603014, Spawn)
-	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/dwarf_eco_good_1/ft/service/guard/dwarf_guard_service_good_1_hail_gm_c865a827.mp3", "Duty above all else citizen, except honor!", "scold", 3958491070, 1651361777, Spawn)
-	else
-	end
     end
+end
+
+
+function InRange(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) >0 then
+	if math.random(1,100)<25 then
+    end
+end
 end
 
 function respawn(NPC)

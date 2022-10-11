@@ -29,7 +29,7 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-    AttackRocks(NPC)
+    AddTimer(NPC,math.random(2500,6000),"AttackRocks")
 
 end
 
@@ -40,17 +40,22 @@ end
 
 
 function AttackRocks(NPC)
-
+    if not IsInCombat(NPC) then
+    PlayAnimation(NPC,10783)
+    end
+    AddTimer(NPC, math.random(7000,8500), "AttackRocks")
+end     
+     --[[
     local rockattack = math.random (1, 4)
 
             if rockattack == 1 then
                     AddTimer(NPC, 100, "stop_attack")  
             else
                     AddTimer(NPC, 100, "Rocks") 	
-            end 
-end
+            end ]]--
 
-function Rocks(NPC)
+
+--[[function Rocks(NPC)
     if not IsInCombat(NPC) then
     SpawnSet(NPC, "visual_state", "10783")	-- Start attacking
     end
@@ -61,6 +66,6 @@ end
 function stop_attack(NPC)
     SpawnSet(NPC, "visual_state", "0") 	        -- Stop attacking
     AddTimer(NPC, 8000, "AttackRocks")
-end
+end]]--
 
 

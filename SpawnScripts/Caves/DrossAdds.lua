@@ -8,15 +8,21 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
-AttackRocks(NPC)
+    AddTimer(NPC,math.random(2500,6000),"AttackRocks")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
+function AttackRocks(NPC)   --Simplified the below version to this version for attacking rocks.
+    if not IsInCombat(NPC) then
+    PlayAnimation(NPC,10783) --attack
+    end
+    AddTimer(NPC, math.random(7000,8500), "AttackRocks")
+end  
 
-
+--[[
 function AttackRocks(NPC)
 
     local rockattack = math.random (1, 4)
@@ -41,4 +47,4 @@ function stop_attack(NPC)
     AddTimer(NPC, 8000, "AttackRocks")
 end
 
-
+]]--

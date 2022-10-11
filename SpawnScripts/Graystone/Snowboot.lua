@@ -23,7 +23,7 @@ if math.random(1, 100) <= 80 then
             if choice ==1 then
             PlayFlavor(NPC, "", "", "square", 0, 0, Spawn)
             elseif choice ==2 then
-            PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)            
+            PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)            
             else
             PlayFlavor(NPC, "", "", "woo", 0, 0, Spawn)
             

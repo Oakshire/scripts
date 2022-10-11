@@ -366,7 +366,7 @@ function aggro(NPC, Spawn, Faction)
 				elseif gender == FEMALE then
 					local choice = math.random(1, 4)
 						PlayFlavor(NPC, "", "For the glory of Qeynos!", "", 0, 0, Spawn)
-
+                end
 			elseif race == FROGLOK then
 				if gender == MALE then
 				elseif gender == FEMALE then
@@ -463,4 +463,4 @@ end
 
 
 
-end
+

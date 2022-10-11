@@ -24,7 +24,9 @@ end
 
 function hailed(NPC, Spawn)
     conversation = CreateConversation()    
+    SetTarget(NPC,Spawn) 
     FaceTarget(NPC, Spawn)
+    AddTimer(NPC,30000,"RemoveTarget",1,Spawn)    
     PlayFlavor(NPC, "voiceover/english/watcher_curmogliel_kar_thal/qey_village03/watchercurmogliel000.mp3", "", "", 1545523898, 2801793023, Spawn)
  if not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) and GetLevel(Spawn) >=6 then 
     AddConversationOption(conversation, "Haven't the gods been quiet since The Shattering?", "Gods")
@@ -37,7 +39,12 @@ if not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) then
     AddConversationOption(conversation, "I don't need faith telling me what to do.","NoFaith")
 end
     StartConversation(conversation, NPC, Spawn, "The Celestial Watch is ever vigilant. Rest will come only after the tyranny of evil can be undone.")
-    
+end
+
+function RemoveTarget(NPC,Spawn)
+if GetTarget(NPC)==Spawn then
+    SetTarget(NPC,nil)
+end
 end
 
  function NoFaith(NPC, Spawn)

@@ -5,11 +5,10 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
-
 AttackRocks(NPC)
-
 end
 
 function respawn(NPC)

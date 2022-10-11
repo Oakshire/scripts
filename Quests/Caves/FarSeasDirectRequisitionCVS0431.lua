@@ -15,7 +15,7 @@ local A_CAVE_SERPENT_ID = 1970008
 local ALCHEMIST_GARION_DUNAM_ID = 2330027
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Collect cave serpent dorsal fins.", 10, 100, "I must hunt down the creatures in the Caves to fill the requisition.", 11, A_CAVE_SERPENT_ID)
+	AddQuestStepKill(Quest, 1, "Collect cave serpent dorsal fins.", 10, 100, "I must hunt down the creatures in the Caves to fill the requisition.", 11, A_CAVE_SERPENT_ID,8260074,8260003)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

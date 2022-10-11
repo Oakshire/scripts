@@ -16,7 +16,7 @@ local AN_ALABASTER_GOLEM_ID_2 = 1970022
 local ELSPETH_ASTLEY_ID = 2310087
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather chunks of alabaster", 5, 66, "I need to gather up five more blocks of alabaster. Should I need to leave the Caves, I may return via any mariner bell within the City of Qeynos.", 1170, AN_ALABASTER_GOLEM_ID_1, AN_ALABASTER_GOLEM_ID_2)
+	AddQuestStepKill(Quest, 1, "Gather chunks of alabaster", 5, 66, "I need to gather up five more blocks of alabaster. Should I need to leave the Caves, I may return via any mariner bell within the City of Qeynos.", 1170, AN_ALABASTER_GOLEM_ID_1, AN_ALABASTER_GOLEM_ID_2, 8260020,8260021,8260022,8260086,8260093,8260094,8260031,8260025,8260078)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

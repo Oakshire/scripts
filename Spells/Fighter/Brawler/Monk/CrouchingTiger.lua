@@ -6,9 +6,9 @@
                    : 
 --]]
 
-function cast(Caster, Target, DmgReduction, Avoid, Deflect, DefSkills, OffSkills, Agg, ArcaneMit, Armor)
+function cast(Caster, Target, Avoid, Deflect, DefSkills, OffSkills, Agg, ArcaneMit, Armor)
     -- Reduces physical damage done to caster by 5%
-    AddSpellBonus(Target, 313, DmgReduction) -- Not sure on the stat
+    AddSpellBonus(Target, 313, 5) -- Not sure on the stat
 
     -- Adds 1.3% to base avoidance.
     AddSpellBonus(Target, 696, Avoid)
