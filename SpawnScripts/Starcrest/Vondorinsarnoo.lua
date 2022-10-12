@@ -41,6 +41,7 @@ end
 
 function hailed(NPC, Spawn)
  FaceTarget(NPC,Spawn) 
+PlayAnimation(NPC,539)
 if GetFactionAmount(Spawn,11) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 else

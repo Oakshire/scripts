@@ -17,7 +17,10 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+if GetFactionAmount(Spawn,11)>0 then
 Dialog2(NPC, Spawn)
+PlayAnimation(NPC,539)
+end
 end
 
 function Dialog1(NPC, Spawn)
@@ -29,6 +32,7 @@ function Dialog1(NPC, Spawn)
     if not HasQuest(Spawn,5545) and not HasCompletedQuest(Spawn,5545) and GetLevel(Spawn) >= 10 then  
 	Dialog.AddOption("Maybe I can help you.", "Dialog4")
     end
+    
 	Dialog.AddOption("Good luck with your research.")
 	Dialog.Start()
 end
@@ -36,11 +40,18 @@ end
 function Dialog2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1021.mp3", "", "no", 0, 0, Spawn)
+    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1021.mp3", "", "", 0, 0, Spawn)
 	Dialog.AddDialog("Forgive me but I must return to my work.  Please speak with one of the other priests.  I'm certain they will be more than happy to assist you.")
 --	Dialog.AddVoiceover("voiceover/english/optional5/elsabethia_hartsunder/qey_north/elsabethia_hartsunder000.mp3", 2808880606, 3373507880)
+    if not HasQuest(Spawn,5545) and not HasCompletedQuest(Spawn,5545) and GetLevel(Spawn) >= 10 then  
 	Dialog.AddOption("What is your work?", "Dialog3")
-	Dialog.AddOption("I didn't mean to intrude.  Good day.")
+    end
+    if  HasCompletedQuest(Spawn,5545)then
+	Dialog.AddOption("How is your research going?", "DoneDialog")
+    end
+    if GetQuestStep(Spawn,5545)==4 then	
+	Dialog.AddOption("I have the diseaed materials you requested.","QuestTurnIn")
+	end
 	Dialog.Start()
 end
 
@@ -77,3 +88,23 @@ function Dialog5(NPC, Spawn)
 	Dialog.Start()
 end
 
+function QuestTurnIn(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    SetStepComplete(Spawn,5545,4)
+    PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Ahh ... You have a good soul, child. You performed a brave and merciful act down in the sewers. Remember, sometimes death is the only cure, no matter how much it hurts you. Though we couldn't save those poor diseased creatures, we can try to stop the illness from spreading by finding its source.")
+	Dialog.AddVoiceover("voiceover/english/optional5/elsabethia_hartsunder/qey_north/elsabethia_hartsunder005.mp3", 1012652125, 593920710)
+	Dialog.AddOption("Thank you.  I'm glad I could help.")
+	Dialog.Start()
+end
+
+function DoneDialog(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("The specimens you brought me have helped immensely. Hopefully, I'm on the cusp of a breakthrough and will be able to better help the infected here in the city.")
+	Dialog.AddVoiceover("voiceover/english/optional5/elsabethia_hartsunder/qey_north/elsabethia_hartsunder006.mp3", 1012652125, 593920710)
+	Dialog.AddOption("I'm glad to hear it. Good luck!")
+	Dialog.Start()
+end

@@ -17,7 +17,7 @@ function hailed(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("No one in this world can you trust.  Not men, not women, not beasts.  But steel ... Steel, now steel you can trust.")
 	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1002.mp3", "", "frustrated", 0, 0, Spawn)
-    if  GetQuestStep(Spawn,5585)== 2 then 
+    if  GetQuestStep(Spawn,5585)== 4 then 
     Dialog.AddOption("I've returned with the catch.", "FishDelivery")
     end
     if not HasCompletedQuest(Spawn,5585) and not HasQuest(Spawn,5585) then

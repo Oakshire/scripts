@@ -11,8 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Hunt white spiders in the Caves for undamaged venom sacs.", 5, 100, "I need to go to the Caves by mariner bell within the City of Qeynos and slay spiders for their venom sacs, but I must be careful not to damage them.", 109, 1970012)
+	AddQuestStepKill(Quest, 1, "Hunt white spiders in the Caves for undamaged venom sacs.", 3, 60, "I need to go to the Caves by mariner bell within the City of Qeynos and slay spiders for their venom sacs, but I must be careful not to damage them.", 109, 1970012,8260019)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Caves")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -33,7 +34,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've gathered the undamaged venom sacs.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered all of the venom sacs Feodra wanted.")
-
+    UpdateQuestZone(Quest,"South Qeynos")
 	AddQuestStepChat(Quest, 2, "Return to Feodra Iceslayer.", 1, "I should return to Feodra Iceslayer with the undamaged venom sacs I've gathered.  I last saw Feodra in Qeynos South.", 109, 2310100, 5890328)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end

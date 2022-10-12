@@ -15,7 +15,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to gather cave snake skins from the Caves.", 10, 80, "I must hunt down ten cave serpents in the Caves.", 129, 1970008,1970009,1970012,8260003,8260024,8260030,8260074,8260082)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-	UpdateQuestZone(Quest, "The Caves")
+	UpdateQuestZone(Quest, "Caves")
 end
 
 function Accepted(Quest, QuestGiver, Player)

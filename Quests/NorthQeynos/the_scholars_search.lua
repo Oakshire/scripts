@@ -14,6 +14,7 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "I need to find and search the area around the Bells of Vhalen.", 6, "According to Demini, the scholar to the Sage of Ages was last seen at the Bells of Vhalen out in Antonica.  Perhaps I can find him there.", 11, -1300, 38 ,45)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Antonica")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -87,7 +88,7 @@ end
 function Step8Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 8, "I've searched the Keep of the Gnollslayers, but found no trace of the pair")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I found no trace of either the scholar or the Sage of Ages.  It seems that the bandits have done away with them.")
-
+    UpdateQuestZone(Quest,"North Qeynos")
 	AddQuestStepChat(Quest, 9, "I need to speak to Demini in North Qeynos.", 1, "I should bring these pages back to Demini for my reward that he promised me.", 11, 2220086)
 	AddQuestStepCompleteAction(Quest, 9, "QuestComplete")
 end

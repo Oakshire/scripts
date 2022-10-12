@@ -15,7 +15,7 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     end
 
     if not IsEpic(Target) then
-        Knocback(Caster, Target, 4000)
+        Knockback(Caster, Target, 4000)
         BlurVision(Target, 1.0)
         AddControlEffect(Target, 4)
         AddSpellTimer(1500, "RemoveKnockback")

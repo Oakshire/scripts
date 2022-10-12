@@ -94,5 +94,7 @@ function Reload(Quest, QuestGiver, Player, Step)
 		Step4Complete(Quest, QuestGiver, Player)
 	elseif step == 5 then
 		Step5Complete(Quest, QuestGiver, Player)
-	end
+	elseif step == 6 then
+		QuestComplete(Quest, QuestGiver, Player)
+		end
 end

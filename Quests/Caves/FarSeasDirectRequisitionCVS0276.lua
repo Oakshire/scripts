@@ -36,7 +36,7 @@ end
 function QuestCheck(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player,502,1) == true and QuestStepIsComplete(Player,502,2) == true then
     UpdateQuestTaskGroupDescription(Quest, 1, "I have hunted down all the resources to fill the requisition.")
-	
+    UpdateQuestZone(Quest, "Nettleville")	
 	AddQuestStepChat(Quest, 3, "I must talk to Garion Dunam.", 1, "I must go to Nettleville to seek out Alchemist Garion Dunam.", 11, ALCHEMIST_GARION_DUNAM_ID)
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end

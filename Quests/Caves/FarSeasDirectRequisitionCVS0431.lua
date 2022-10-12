@@ -22,7 +22,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found a cave serpent dorsal fin.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have hunted down all the resources to fill the requisition.")
-	
+    UpdateQuestZone(Quest, "Nettleville")	
 
 	AddQuestStepChat(Quest, 2, "I must talk to Garion Dunam.", 1, "I must go to Nettleville to seek out Alchemist Garion Dunam.", 11, ALCHEMIST_GARION_DUNAM_ID)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

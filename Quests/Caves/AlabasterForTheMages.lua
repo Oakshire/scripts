@@ -23,7 +23,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "You have gathered all five chunks of alabaster.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered up all five blocks of alabaster.")
-
+    UpdateQuestZone(Quest,"South Qeynos")
 	AddQuestStepChat(Quest, 2, "I need to speak with a mage at the Concordium who is interested in the alabaster", 1, "I need to speak with a mage in the Concordium who will buy the alabaster.", 1170, ELSPETH_ASTLEY_ID)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end

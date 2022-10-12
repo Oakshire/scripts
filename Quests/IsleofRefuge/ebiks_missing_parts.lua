@@ -82,5 +82,7 @@ function Reload(Quest, QuestGiver, Player, Step)
 	   step2_complete(Quest, QuestGiver, Player)
 	elseif Step == 3 then
 	   step3_complete(Quest, QuestGiver, Player)
-	end
+	elseif Step == 4 then
+	   givePartsToEbik(Quest, QuestGiver, Player)
+		end
 end
