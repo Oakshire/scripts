@@ -22,21 +22,24 @@ function casted_on(NPC, Spawn, Message)
     SpawnSet(NPC,"visual_state",4164)
 
     local choice = MakeRandomInt(100,100)
+    SendMessage(Spawn,"You've found something inside the chest!")
     if choice == 100 then
     local LootChoice = MakeRandomInt(1,5)
     if LootChoice == 1 then
-    AddLootItem(NPC,1667,1) --Finely crafted mask
+    SummonItem(Spawn,1667,1) --Finely crafted mask
     elseif  LootChoice == 2 then
-    AddLootItem(NPC,13585,1) -- sundered obsidian
+    SummonItem(Spawn,13585,1) -- sundered obsidian
     elseif  LootChoice == 3 then
-    AddLootItem(NPC,155583,1) -- Gnollish chainmail tunic
+    SummonItem(Spawn,155583,1) -- Gnollish chainmail tunic
     elseif  LootChoice == 4 then
-    AddLootItem(NPC,4963,1) -- Gnoll language threat totem
+    SummonItem(Spawn,4963,1) -- Gnoll language threat totem
     elseif  LootChoice == 5 then
-    AddLootItem(NPC,15572,1) --worthless junk
+    SummonItem(Spawn,15572,1) --worthless junk
     elseif  LootChoice == 6 then
-    AddLootItem(NPC,164540,1) --miner's ring
+    SummonItem(Spawn,164540,1) --miner's ring
     end
+else
+    SendMessage(Spawn,"The chest smashes into tiny pieces, but there is nothing inside.")
     end
 
     AddTimer(NPC,500,"Collapse")    
