@@ -23,6 +23,7 @@ function ChooseMovement(NPC)
 	    RouteFour(NPC, Spawn)
 	end
 end
+end
 
 function RouteOne(NPC, Spawn)
     local X = GetX(NPC)

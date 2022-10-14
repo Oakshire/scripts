@@ -77,8 +77,9 @@ function waypoints(NPC) --Movements based on CLASSIC
 	MovementLoopAddLocation(NPC, 1023.53, -20.75, -807.7, 2, 0)
 	MovementLoopAddLocation(NPC, 1039.93, -20.76, -810.76, 2, 0)
 	MovementLoopAddLocation(NPC, 1054.71, -19.08, -814.31, 2, 0)
+	MovementLoopAddLocation(NPC, 1075.61, -20.51, -814.23, 2, 0)
  end
- 
+
 function Action(NPC,Spawn)
             local choice = math.random(1,4)
             

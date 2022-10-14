@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/Classic_forest/TheBasaltWatcher.lua
     Script Author  : Dorbin
     Script Date    : 2022.10.11 04:10:38
-    Script Purpose : 
+    Script Purpose : Classic Version of the basalt watcher
                    : 
 --]]
 
@@ -29,13 +29,13 @@ function wakeup(NPC)
 		local players = GetPlayersInZone(GetZone(NPC))              --zone callout and activation
 		for index, player in pairs(players) do
 		SendPopUpMessage(player, "Grinding stone can be heard as something ancient stirs in the ruins.", 255, 255, 0)
-		SendMessage(player, "Grinding stone can be heard as something ancient stirs in the ruins.")
+		SendMessage(player, "Grinding stone can be heard as something ancient stirs in the ruins.","yellow")
     end
     SpawnSet(NPC, "show_name", "1")
     SpawnSet(NPC, "targetable", "1")    
     SpawnSet(NPC, "attackable", "1")
     SpawnSet(NPC, "show_level", "1")
-    SpawnSet(NPC, "faction", "357")
+    SpawnSet(NPC, "faction", "1")
     AddTimer(NPC,900000,"sleep")                                   --sleep timer if not attacked after 15 min
     
 end
