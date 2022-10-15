@@ -5,8 +5,6 @@
     Script Purpose : 
                    : 
 --]]
-local HealthCallout = false --REDUCES Half-Health Spam
-local CalloutTimer = false --REDUCES Callout Spam
 
 function ResetTimer(NPC) -- 7 SECOND PAUSE BETWEEN VOs
     SetTempVariable(NPC, "CalloutTimer", "false")
@@ -19,7 +17,6 @@ end
 
 function Garbled(NPC,Player)
   	local choice = MakeRandomInt(1,8)
- 	    if choice == 1 then
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/golem_base_1/ft/golem/golem_base_1_1_garbled_7c1e7a03.mp3", "Oerbet aertres nuavalen sulana", "", 294229851, 323943279, Player, 27)
 	elseif choice == 2 then
@@ -38,12 +35,12 @@ function Garbled(NPC,Player)
 		PlayFlavor(NPC, "voiceover/english/optional5/golem_base_2/ft/golem/golem_base_2_1_garbled_ba1c8454.mp3", "Ervmenta oolaves kor'tenza", "", 888692198, 2015697711, Player, 27)
      end     
 end
-end
+
 
  function aggro(NPC,Player)   
     SpawnSet(NPC, "visual_state", 0)
     SetTempVariable(NPC, "CalloutTimer", "false")
-if  GetTempVariable(NPC, "CalloutTimer")== "false" and math.random(0,100) <=33 and IsPlayer(Player) then
+if  GetTempVariable(NPC, "CalloutTimer")== "false" and math.random(0,100) <=33 and IsPlayer(Player)==true then
     SetTempVariable(NPC, "CalloutTimer", "true")
     AddTimer(NPC,10000,"ResetTimer")
     if not HasLanguage(Player,27 )then
@@ -112,20 +109,3 @@ function healthchanged(NPC, Player)
 end
 end
 
-
-
---[[
-function victory(NPC,Player)
-     if IsPlayer(Player)and  not HasLanguage(Player,27 )then
-        Garbled(NPC,Player)
-    elseif  IsPlayer(Player) and HasLanguage(Player,27 )then
-        local choice = MakeRandomInt(1,3)
-	    if choice == 1 then
-	    PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_3_victory_e4520926.mp3", "Packmate not happy with scrawny catch.", "", 1321865956, 173648139, Player, 18)
-        elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/optional5/gnoll_base_2/ft/gnoll/gnoll_base_2_1_victory_8e18fe38.mp3", "Your fight is hopeless!", "", 2306110016, 2442076674, Player, 18)
-        elseif choice == 3 then
-    	PlayFlavor(NPC, "voiceover/english/gnoll_base_1/ft/gnoll/gnoll_base_1_1_victory_f225e591.mp3", "One to bring back to lair!", "", 3397285495, 2608729760,Player,18)
-    end
-end
-end]]--

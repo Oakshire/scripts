@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
 waypoints(NPC)
