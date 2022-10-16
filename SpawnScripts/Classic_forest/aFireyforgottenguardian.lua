@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC) 
-   
+   local Level = GetLevel(NPC)
     local level1 = 9
     local level2 = 10
     local level3 = 11

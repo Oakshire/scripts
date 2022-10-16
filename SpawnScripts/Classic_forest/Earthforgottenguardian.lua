@@ -8,14 +8,20 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)-- FRONT GATE SPAWNS FIRST VV
+
+AddTimer(NPC,4000,"ResetAnimation",1)
+
     if  GetSpawnLocationID(NPC)== 133778059 or GetSpawnLocationID(NPC)== 133778061 or GetSpawnLocationID(NPC)== 133778062 or  GetSpawnLocationID(NPC)== 133778060 or  GetSpawnLocationID(NPC)== 133778065 or  GetSpawnLocationID(NPC)== 133778066 or  GetSpawnLocationID(NPC)== 133778063 then
     AddTimer(NPC,math.random(100),"Easy",1,NPC)
     else    -- INSIDE SPAWNS VV
-    AddTimer(NPC,math.random(2000,5500),"ChooseMovement")
+    AddTimer(NPC,math.random(4000,6000),"ChooseMovement")
     AddTimer(NPC,math.random(100),"Harder",1,NPC)
     end 
 end
 
+function ResetAnimation(NPC)
+ SpawnSet(NPC,"mood_state",0)
+end  
 
 function Easy(NPC)
     local level1 = 9

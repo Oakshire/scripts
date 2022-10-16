@@ -1,12 +1,15 @@
 --[[
-    Script Name    : SpawnScripts/Classic_forest/aFireyforgottenguardianSTATIC.lua
+    Script Name    : SpawnScripts/Classic_forest/EarthforgottenguardianSTATIC.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.10.14 09:10:22
+    Script Date    : 2022.10.15 08:10:54
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
+    AddTimer(NPC,4000,"ResetAnimation",1)
+
     local Level = GetLevel(NPC)
     local level1 = 9
     local level2 = 10
@@ -35,8 +38,16 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp3)
     SpawnSet(NPC, "power", power3)
     end
+    
+    AddTimer(NPC,4000,"ResetAnimation",1)
+
 
 end
+
+
+function ResetAnimation(NPC)
+ SpawnSet(NPC,"mood_state",0)
+end   
 
 
 function respawn(NPC)

@@ -11,6 +11,6 @@ function init_zone_script(Zone)
 end
 
 function player_entry(Zone, Player)
-
+      SendPopUpMessage(Player, "The Forest Ruins", 255, 255, 255)
 end
 
