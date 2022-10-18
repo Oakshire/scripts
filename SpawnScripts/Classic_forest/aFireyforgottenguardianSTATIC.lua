@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseFireElemental1.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
@@ -37,7 +38,6 @@ function spawn(NPC)
     end
 
 end
-
 
 function respawn(NPC)
 	spawn(NPC)

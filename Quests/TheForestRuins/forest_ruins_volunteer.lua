@@ -17,29 +17,33 @@ function Init(Quest)
 	SetQuestFeatherColor(Quest, 3)
 	SetQuestRepeatable(Quest)
 	if RandomChoice == 1 then
-	AddQuestStepKill(Quest, 1, "Hunt badgers.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960017,1960011)
+	AddQuestStepKill(Quest, 1, "Hunt badgers.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960017,1960011,8270016,8270025)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	elseif RandomChoice == 2 then
-	AddQuestStepKill(Quest, 1, "Hunt turtles.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960012,1960009)
+	AddQuestStepKill(Quest, 1, "Hunt turtles.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960012,1960009,8270014,8270019)
 	AddQuestStepCompleteAction(Quest, 1, "Step2Complete")    
 	elseif RandomChoice == 3 then
-	AddQuestStepKill(Quest, 1, "Hunt snakes.", MakeRandomInt(6, 7), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960018,1960122)
+	AddQuestStepKill(Quest, 1, "Hunt snakes.", MakeRandomInt(6, 7), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960018,1960122,8270002,8270017)
 	AddQuestStepCompleteAction(Quest, 1, "Step3Complete") 
 	elseif RandomChoice == 4 then
-	AddQuestStepKill(Quest, 1, "Hunt beetles.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960034)
+	AddQuestStepKill(Quest, 1, "Hunt beetles.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960034,8270020)
 	AddQuestStepCompleteAction(Quest, 1, "Step4Complete") 
 	elseif RandomChoice == 5 then
-	AddQuestStepKill(Quest, 1, "Hunt spiders.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960022,1960031,1960033,1960082)
+	AddQuestStepKill(Quest, 1, "Hunt spiders.", MakeRandomInt(6, 9), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960022,1960031,1960033,1960082,8270037,8270015)
 	AddQuestStepCompleteAction(Quest, 1, "Step5Complete") 
     elseif RandomChoice == 6 then
-	AddQuestStepKill(Quest, 1, "Hunt centipedes.", MakeRandomInt(6, 8), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960026)
+	AddQuestStepKill(Quest, 1, "Hunt centipedes.", MakeRandomInt(6, 8), 100, "I'm supposed to reduce the local population of vermin here in the Forest Ruins.", 611, 1960026,8270006)
 	AddQuestStepCompleteAction(Quest, 1, "Step6Complete") 
    end
 end
 
 
 function Accepted(Quest, QuestGiver, Player)
-
+	FaceTarget(QuestGiver, Player)
+	conversation = CreateConversation()
+    PlayFlavor(QuestGiver, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros003.mp3", "", "salute", 827162019, 3003960469,Player)
+	AddConversationOption(conversation, "You bet.")
+	StartConversation(conversation, QuestGiver, Player, "Great! Then go and kill more vermin.")
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -79,7 +83,7 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
 if QuestStepIsComplete(Player, 5486, 1)  then
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've slain many of the local vermin in the area, I should report back to the Sergeant.")
-	AddQuestStepChat(Quest, 2, "I need to report to Sergeant Uthros.", 1, "I should report back to Sergeant at Arms Uthros.", 11, 1960004)
+	AddQuestStepChat(Quest, 2, "I need to report to Sergeant Uthros.", 1, "I should report back to Sergeant at Arms Uthros.", 11, 1960004,8270030)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
    end
@@ -109,7 +113,7 @@ function Reload(Quest, QuestGiver, Player, Step)
 	    elseif RandomChoice == 6 then
 		Step6Complete(Quest, QuestGiver, Player)		
 		end
-	elseif Step == 2 then
+    elseif Step == 2 then
 		CheckProgress(Quest, QuestGiver, Player)
     end
 end

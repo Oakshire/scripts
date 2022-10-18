@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
-    AddTimer(NPC,4000,"ResetAnimation",1)
+    SetSpawnAnimation(NPC, 13016)
 
     local Level = GetLevel(NPC)
     local level1 = 9
@@ -44,10 +44,6 @@ function spawn(NPC)
 
 end
 
-
-function ResetAnimation(NPC)
- SpawnSet(NPC,"mood_state",0)
-end   
 
 
 function respawn(NPC)

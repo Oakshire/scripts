@@ -11,8 +11,8 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must collect four Antonican hawk feathers.", 4, 100, " To fill the requisition, I must hunt down the creatures in the Forest Ruins, reachable by mariner bell in the City of Qeynos.", 150, 1960034)
-	AddQuestStepKill(Quest, 2, "I must collect six stoneshell snapper tails.", 6, 100, " To fill the requisition, I must hunt down the creatures in the Forest Ruins, reachable by mariner bell in the City of Qeynos.", 172, 1960034)
+	AddQuestStepKill(Quest, 1, "I must collect four Antonican hawk feathers.", 4, 100, " To fill the requisition, I must hunt down the creatures in the Forest Ruins, reachable by mariner bell in the City of Qeynos.", 150, 1960034,8270026)
+	AddQuestStepKill(Quest, 2, "I must collect six stoneshell snapper tails.", 6, 100, " To fill the requisition, I must hunt down the creatures in the Forest Ruins, reachable by mariner bell in the City of Qeynos.", 172, 1960034,8270019)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end

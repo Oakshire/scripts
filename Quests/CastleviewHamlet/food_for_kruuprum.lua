@@ -11,9 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill some insects such as the centipedes in the Forest Ruins.", 6, 100, "I need to gather food for Merchant Kruuprum in Castleview. Apparently he eats insects such as the centipedes in the Forest Ruins.", 135, 1960026)
+	AddQuestStepKill(Quest, 1, "I must kill some insects such as the centipedes in the Forest Ruins.", 6, 100, "I need to gather food for Merchant Kruuprum in Castleview. Apparently he eats insects such as the centipedes in the Forest Ruins.", 135, 1960026, 8270006)
 	AddQuestStepCompleteAction(Quest, 1, "KilledBugs")
-	UpdateQuestZone(Quest, "The Forest Ruins")
+	UpdateQuestZone(Quest, "Forest Ruins")
 end
 
 function Accepted(Quest, QuestGiver, Player)

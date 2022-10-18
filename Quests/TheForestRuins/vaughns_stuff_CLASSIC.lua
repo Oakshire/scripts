@@ -1,20 +1,20 @@
 --[[
-    Script Name    : Quests/TheForestRuins/vaughns_stuff.lua
+    Script Name    : Quests/TheForestRuins/vaughns_stuff_CLASSIC.lua
     Script Author  : Dorbin
-    Script Date    : 2022.02.21 02:02:37
-    Script Purpose : 
+    Script Date    : 2022.10.17 04:10:45
+    Script Purpose : CLASSIC version of this quest
 
         Zone       : TheForestRuins
-        Quest Giver: Outrider Vaughn
+        Quest Giver: Outlander Vaughn (8270029)
         Preceded by: None
         Followed by: Letter for Hunter Forestdeep (5484)
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Recover the satchel.", 1, 15, " I need to recover the Outlander's satchel and the items that were in it. The Blackfurl deckhands were the ones that stole the Outlanders gear, I'll start with them.", 399, 1960060,8270058, 8270059, 8270060)
-	AddQuestStepKill(Quest, 2, "Recover the journal.", 1, 30, " I need to recover the Outlander's satchel and the items that were in it. The Blackfurl deckhands were the ones that stole the Outlanders gear, I'll start with them.", 195, 1960060 ) -- need correct icon
-	AddQuestStepKill(Quest, 3, "Recover the ring.", 1, 20, " I need to recover the Outlander's satchel and the items that were in it. The Blackfurl deckhands were the ones that stole the Outlanders gear, I'll start with them.", 596, 1960060 ) -- need correct icon
-	AddQuestStepKill(Quest, 4, "Recover the sealed letter.", 1, 25, " I need to recover the Outlander's satchel and the items that were in it. The Blackfurl deckhands were the ones that stole the Outlanders gear, I'll start with them.", 1223, 1960060) -- need correct icon
+	AddQuestStepKill(Quest, 1, "Recover the satchel.", 1, 15, " I need to recover the Outlander's satchel and the items that were in it. The Ruins Skulkers were the ones that stole the Outlanders gear, I'll start with them.", 399, 1960060,8270058, 8270059, 8270060)
+	AddQuestStepKill(Quest, 2, "Recover the journal.", 1, 20, " I need to recover the Outlander's satchel and the items that were in it. The Ruins Skulkers were the ones that stole the Outlanders gear, I'll start with them.", 195, 1960060,8270058, 8270059, 8270060) -- need correct icon
+	AddQuestStepKill(Quest, 3, "Recover the ring.", 1, 13, " I need to recover the Outlander's satchel and the items that were in it. The Ruins Skulkers were the ones that stole the Outlanders gear, I'll start with them.", 596, 1960060,8270058, 8270059, 8270060)
+	AddQuestStepKill(Quest, 4, "Recover the sealed letter.", 1, 20, " I need to recover the Outlander's satchel and the items that were in it. The Ruins Skulkers were the ones that stole the Outlanders gear, I'll start with them.", 1223, 1960060,8270058, 8270059, 8270060)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
@@ -47,7 +47,7 @@ end
 
 
 function CheckProgress(Quest, QuestGiver, Player)
- if QuestStepIsComplete(Player, 5483, 1) and QuestStepIsComplete(Player, 5483, 2)  and QuestStepIsComplete(Player, 5483, 3) and QuestStepIsComplete(Player, 5483, 4) then
+ if QuestStepIsComplete(Player, 5759, 1) and QuestStepIsComplete(Player, 5759, 2)  and QuestStepIsComplete(Player, 5759, 3) and QuestStepIsComplete(Player, 5759, 4) then
 	UpdateQuestTaskGroupDescription(Quest,2, "I've recovered all of the Outlander's gear.")
 	
 	AddQuestStepChat(Quest, 5, "I should return to Outlander Vaughn.", 1, "I need to return to Outlander Vaughn and give him back his items.", 399, 1960053,8270029)

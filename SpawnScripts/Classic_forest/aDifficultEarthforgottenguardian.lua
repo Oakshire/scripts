@@ -8,14 +8,11 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 function spawn(NPC)
-    AddTimer(NPC,4000,"ResetAnimation",1)
+    SetSpawnAnimation(NPC, 13016)
     AddTimer(NPC,math.random(4100,6000),"ChooseMovement")
     Harder(NPC)
 end 
 
-function ResetAnimation(NPC)
- SpawnSet(NPC,"mood_state",0)
-end   
 
 
 

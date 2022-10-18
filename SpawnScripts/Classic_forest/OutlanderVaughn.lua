@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	ProvidesQuest(NPC, 5483)
+	ProvidesQuest(NPC, 5759)
 	ProvidesQuest(NPC, 5484)
     waypoints(NPC)	
 end
@@ -100,31 +100,31 @@ function Action(NPC,Spawn)
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-if not HasCompletedQuest(Spawn, 5483) and not HasQuest(Spawn, 5483) then
-	PlayFlavor(NPC, "voiceover/english/outlander_vaughn/qey_adv02_ruins/quests/outlander_dakota/outlander_dakota.mp3", "", "facepalm", 2613853514, 75460760, Spawn)
-
+if not HasCompletedQuest(Spawn, 5483) and not HasQuest(Spawn, 5483) and not HasCompletedQuest(Spawn, 5759) and not HasQuest(Spawn, 5759)   then
+	PlayFlavor(NPC, "voiceover/english/outlander_vaughn/qey_adv02_ruins/quests/outlander_dakota/outlander_dakota.mp3", "", "doh", 2613853514, 75460760, Spawn)
 	    if GetLevel(Spawn)>=6 then
 		AddConversationOption(conversation, "What is it you need?", "dlg_4_1")
 		end
 		AddConversationOption(conversation, "No time for charity. ")
 		StartConversation(conversation, NPC, Spawn, "Am I ever in a bind! Will you please help me?")
-elseif HasQuest(Spawn, 5483) then
+
+elseif HasQuest(Spawn, 5483) or HasQuest(Spawn, 5759) then
         PlayFlavor(NPC, "voiceover/english/outlander_vaughn/qey_adv02_ruins/quests/outlander_dakota/outlander_dakota001.mp3", "", "", 2350706866, 1692101884, Spawn)
-		if GetQuestStep (Spawn,5483)== 5 then
+		if GetQuestStep (Spawn,5483)== 5 or GetQuestStep (Spawn, 5759)==5 then
 		AddConversationOption(conversation, "Here are your things you were looking for.", "HandIn")
         end		    
 		AddConversationOption(conversation, "I'm working on it.", "dlg_1_1")
 		StartConversation(conversation, NPC, Spawn, "I thought you said you'd  help me!  Do what you can, okay?")
 
 
-elseif  HasCompletedQuest(Spawn, 5483) and not HasCompletedQuest(Spawn, 5484) then
+elseif  HasCompletedQuest(Spawn, 5759) and not HasCompletedQuest(Spawn, 5759) then
     	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/outlander_vaughn/qey_adv02_ruins/quests/outlander_dakota/outlander_dakota003.mp3", "", "thank", 3067693779, 1933175006, Spawn)
-		AddConversationOption(conversation, "What else do you need?","Letter")
+		AddConversationOption(conversation, "What else do you need?","dlg_4_3")
 		AddConversationOption(conversation, "I don't have the time, sorry. ")
-	StartConversation(conversation, NPC, Spawn, "Thank you so very much for finding my dear possessions! Can you help me with one more small favor?")
+	    StartConversation(conversation, NPC, Spawn, "Thank you so very much for finding my dear possessions! Can you help me with one more small favor?")
 	
 else
 	PlayFlavor(NPC, "", "Be careful around these ruins. The nights bring out some of the magic in this place.", "hello", 0, 0, Spawn)
@@ -138,7 +138,8 @@ function dlg_4_1(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/outlander_vaughn/qey_adv02_ruins/quests/outlander_dakota/outlander_dakota000.mp3", "", "sigh", 2228081863, 624137908, Spawn)
 	AddConversationOption(conversation, "I'll see what I can do.", "StuffStart")
 	AddConversationOption(conversation, "Sorry. This isn't my problem.")
-	StartConversation(conversation, NPC, Spawn, "Those wretched Blackfurl deckhands stole my satchel!  It had everything that was important to me. Please, recover my satchel!")
+    StartConversation(conversation, NPC, Spawn, "Those wretched skulkers stole my satchel!  It had everything that was important to me. Please, recover my satchel!")
+
 end
 
 function Letter(NPC, Spawn)
@@ -160,19 +161,21 @@ function HandIn (NPC,Spawn)
 
 function StuffStart (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, 5483)
+    OfferQuest(NPC, Spawn, 5759)
 end
 
 function dlg_4_3 (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, 5484)
+    OfferQuest(NPC, Spawn, 5484)
 end
 
 function Reward1(NPC, Spawn)
-    	SetStepComplete(Spawn, 5483, 5)
+    if HasQuest(Spawn, 5759) then
+     	SetStepComplete(Spawn, 5759, 5)
+    end      
     	conversation = CreateConversation()	
     PlayFlavor(NPC, "voiceover/english/outlander_vaughn/qey_adv02_ruins/quests/outlander_dakota/outlander_dakota003.mp3", "", "thank", 3067693779, 1933175006, Spawn)
-	AddConversationOption(conversation, "What else do you need?","Letter")
+	AddConversationOption(conversation, "What else do you need?","dlg_4_3")
 	AddConversationOption(conversation, "I don't have the time, sorry. ")
 	StartConversation(conversation, NPC, Spawn, "Thank you so very much for finding my dear possessions! Can you help me with one more small favor?")
     end

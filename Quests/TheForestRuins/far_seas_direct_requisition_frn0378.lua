@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill some sun beetles.", 10, 100, " To fill the requisition, I must hunt down the creatures in the Forest Ruins, reachable by mariner bell in the City of Qeynos.", 164, 1960034)
+	AddQuestStepKill(Quest, 1, "I must kill some sun beetles.", 10, 100, " To fill the requisition, I must hunt down the creatures in the Forest Ruins, reachable by mariner bell in the City of Qeynos.", 164, 1960034, 8270020)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

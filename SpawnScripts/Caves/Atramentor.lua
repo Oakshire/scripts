@@ -6,13 +6,12 @@
                    : 
 --]]
 
-dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
-
 function spawn(NPC)
 end
 
 function aggro(NPC,Spawn)
     SpawnSet(NPC, "visual_state", 0)
+    PlayAnimation(NPC, 13016)
 end
 
 function respawn(NPC)

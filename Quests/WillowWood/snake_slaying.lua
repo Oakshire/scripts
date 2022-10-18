@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1,  "I must kill some rock adders.", 8, 100,  "I need to kill eight rock adders in the Forest Ruins.", 611, 1960018)
+	AddQuestStepKill(Quest, 1,  "I must kill some rock adders.", 8, 100,  "I need to kill eight rock adders in the Forest Ruins.", 611, 1960018,8270017,8270002)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledSnakes")
     UpdateQuestZone(Quest,"Forest Ruins")
 end

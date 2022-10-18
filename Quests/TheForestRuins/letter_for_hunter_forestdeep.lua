@@ -19,7 +19,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	conversation = CreateConversation()
+
+	PlayFlavor(QuestGiver, "voiceover/english/outlander_vaughn/qey_adv02_ruins/quests/outlander_dakota/outlander_dakota004.mp3", "", "", 3189315384, 2954944318, Player)
+	AddConversationOption(conversation, "I'll deliver this letter for you to the Willow Wood.")
+	StartConversation(conversation, QuestGiver, Player, "I need you to take this letter to Hunter Forestdeep. You'll find him in the Willow Wood village.")
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -13,8 +13,9 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need ten badger pelts.", 10, 100, "I must collect ten badger pelts in the Forest Ruins or Oakmyst Forest.", 93, 1960011, 1960017, 1950035, 1950039)
+	AddQuestStepKill(Quest, 1, "I need ten badger pelts.", 10, 100, "I must collect ten badger pelts in the Forest Ruins or Oakmyst Forest.", 93, 1960011, 1960017, 1950035, 1950039, 8270025,8270016)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_killedBadgers")
+    UpdateQuestZone(Quest,"Multiple Zones")
 end
 
 function Accepted(Quest, QuestGiver, Player)

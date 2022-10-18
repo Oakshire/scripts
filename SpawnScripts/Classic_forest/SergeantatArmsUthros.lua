@@ -26,7 +26,7 @@ function hailed(NPC, Spawn)
 
     if GetQuestStep(Spawn,5486) ==2 then
     SetStepComplete(Spawn, 5486, 2)
-	PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "hello", 1245586444, 1008307013)
+	PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "hello", 1245586444, 1008307013,Spawn)
 	    if count <= 5 then
 	    AddConversationOption(conversation, "Sure.", "dlg_14_2")
 	    end
@@ -34,7 +34,7 @@ function hailed(NPC, Spawn)
 	StartConversation(conversation, NPC, Spawn, "Hey! Great work on the vermin.  Can you spare more time to help Qeynos?")
      
 	elseif not HasCompletedQuest(Spawn, 5486) then
-		PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros.mp3", "", "salute", 2454266022, 3710462328)
+		PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros.mp3", "", "salute", 2454266022, 3710462328,Spawn)
     
 	    if not HasQuest(Spawn, 5486) then
 		AddConversationOption(conversation, "I'm intent on staying.", "dlg_0_1")
@@ -44,9 +44,9 @@ function hailed(NPC, Spawn)
 	
 
     else	    
-        PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "", 1245586444, 1008307013)
+        PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros002.mp3", "", "", 1245586444, 1008307013,Spawn)
         if not HasQuest(Spawn, 5486) and count <= 5 then
-	    AddConversationOption(conversation, "Sure.", "dlg_14_2")
+	    AddConversationOption(conversation, "Sure.", "dlg_0_2")
 	    end
 	    if not HasQuest(Spawn, 5486) then
 	    AddConversationOption(conversation, "Not right now. ")
@@ -61,20 +61,13 @@ end
 function dlg_0_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros000.mp3", "", "", 1978368877, 3695152842)
+    PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros000.mp3", "", "", 1978368877, 3695152842,Spawn)
 
 	AddConversationOption(conversation, "Sounds good.", "dlg_0_2")
 	StartConversation(conversation, NPC, Spawn, "Well, then, make yourself useful and kill some of the nasty vermin who live in this area.   And if you need something to do later, come on back, I always need help!")
 end
 
 
-function dlg_14_2(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/sergeant_at_arms_uthros/qey_adv02_ruins/quests/sergeant_uthros/sergeant_uthros003.mp3", "", "salute", 827162019, 3003960469)
-	AddConversationOption(conversation, "You bet.", "dlg_0_2")
-	StartConversation(conversation, NPC, Spawn, "Great! Then go and kill more vermin.")
-end
 
 function dlg_0_2 (NPC, Spawn)
     FaceTarget(NPC, Spawn)

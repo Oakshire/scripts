@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to gather coals from the fiery forgotten guardians in the Forest Ruins.", 2, 70, "I need to gather an everburning coal from the fiery forgotten guardians in the Forest Ruins.", 183, 1960019)
+	AddQuestStepKill(Quest, 1, "I need to gather coals from the fiery forgotten guardians in the Forest Ruins.", 2, 70, "I need to gather an everburning coal from the fiery forgotten guardians in the Forest Ruins.", 183, 1960019, 8270009,8270062)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_gotGoal")
 end
 

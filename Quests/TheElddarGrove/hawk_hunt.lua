@@ -11,9 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to gather some hawks for Gregor Earthstride.", 5, 100, "I need to kill five hawks in the Forest ruins for Gregor Earthstride in the Elddar Grove.", 80, 1960013)
+	AddQuestStepKill(Quest, 1, "I need to gather some hawks for Gregor Earthstride.", 5, 100, "I need to kill five hawks in the Forest ruins for Gregor Earthstride in the Elddar Grove.", 80, 1960013,8270026)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-    UpdateQuestZone(Quest,"The Forest Ruins")
+    UpdateQuestZone(Quest,"Forest Ruins")
 end
 
 function Accepted(Quest, QuestGiver, Player)

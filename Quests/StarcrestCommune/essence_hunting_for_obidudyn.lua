@@ -13,7 +13,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must gather the essence of forgotten guardians in the forest ruins.", 6, 85, "I need to collect six Essence of Elemental for Scholar Obidudyn. To do this I need to crush forgotten guardians in the Forest Ruins.", 2515, 1960038, 1960058)
+	AddQuestStepKill(Quest, 1, "I must gather the essence of forgotten guardians in the forest ruins.", 6, 85, "I need to collect six Essence of Elemental for Scholar Obidudyn. To do this I need to crush forgotten guardians in the Forest Ruins.", 2515, 1960038, 1960058,8270056,8270011,8270009,8270061,8270062,8270063)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_killedGuardians")
 	UpdateQuestZone(Quest, "Forest Ruins")	
 end

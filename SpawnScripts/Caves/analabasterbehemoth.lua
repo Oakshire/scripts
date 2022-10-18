@@ -9,7 +9,7 @@ dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 
 function spawn(NPC)
-	
+	SetSpawnAnimation(NPC, 13016)
 end
 
 function respawn(NPC)

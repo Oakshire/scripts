@@ -10,6 +10,7 @@ dofile("SpawnScripts/Generic/MonsterCallouts/BaseGolem1.lua")
 
 
 function spawn(NPC)
+    SetSpawnAnimation(NPC, 13016)
     local Level = GetLevel(NPC)
     local level1 = 7
     local level2 = 8
