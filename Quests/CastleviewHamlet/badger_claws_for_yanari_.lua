@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to collect claws from some vicious badgers.", 4, 75, "I need to collect four vicious badger claws for Yanari Cyellann in Castleview.", 174, 1950039)
+	AddQuestStepKill(Quest, 1, "I need to collect claws from some vicious badgers.", 4, 75, "I need to collect four vicious badger claws for Yanari Cyellann in Castleview.", 174, 1950039,8300008)
 	AddQuestStepCompleteAction(Quest, 1, "Turnin")
 	UpdateQuestZone(Quest,"Oakmyst Forest")
 end

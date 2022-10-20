@@ -50,7 +50,7 @@ function Dialog3(Item,Player)
     SetStepComplete(Player,BoneShard,2)
     end    
     AddConversationOption(conversation, "[Put the Piece Away]", "CloseItemConversation")
-    StartDialogConversation(conversation, 2, Item, Player, "As you assemble the pieces of the taken the intricate carving of a ship becomes clear. The pieces can be repaired but some sort of glue will be needed to hold them together again. Fish skin may be a good start to create the glue.")
+    StartDialogConversation(conversation, 2, Item, Player, "As you assemble the pieces of the takon the intricate carving of a ship becomes clear. The pieces can be repaired but some sort of glue will be needed to hold them together again. Fish skin may be a good start to create the glue.")
 end
 
 function Dialog4(Item,Player)

@@ -9,6 +9,7 @@
 	Preceded by: None
 	Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -17,12 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-	
-	PlayFlavor(QuestGiver, "voiceover/english/optional1/steward_tredo/qey_adv01_oakmyst/stewardtredo001.mp3", "", "", 3490306942, 2253910242, Player)
-	AddConversationOption(conversation, "I'll keep my eyes out at night.")
-	StartConversation(conversation, QuestGiver, Player, "A new defender of Oakmyst? Grand! Tracker Galera seeks proof of the poachers' existence. They say they lurk the shadows at night. Bring her proof, and I'm sure she'll be grateful.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("A new defender of Oakmyst? Grand! Tracker Galera seeks proof of the poachers' existence. They say they lurk the shadows at night. Bring her proof, and I'm sure she'll be grateful.")
+    PlayFlavor(NPC,"","","smile",0,0,Spawn)
+	Dialog.AddVoiceover("voiceover/english/optional1/steward_tredo/qey_adv01_oakmyst/stewardtredo001.mp3", 3490306942, 2253910242)
+	Dialog.AddOption("I'll keep my eyes out at night.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

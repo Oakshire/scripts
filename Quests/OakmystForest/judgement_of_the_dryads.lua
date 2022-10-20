@@ -9,6 +9,7 @@
 	Preceded by: Feed the Sapling (feed_the_sapling.lua)
 	Followed by: Destroy the Corruption (destroy_the_corruption.lua)
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,11 +19,11 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-	
-	PlayFlavor(QuestGiver, "voiceover/english/judge_eunomia/qey_adv01_oakmyst/judgeeunomia002.mp3", "", "", 2678200574, 3115032598, Player)
-	AddConversationOption(conversation, "I shall do my best to lower their numbers.")
-	StartConversation(conversation, QuestGiver, Player, "They're corrupted fayfolke--bright with beauty but twisted and corrupted to the core. They're called the sunshimmer sprites.  You must destroy them.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("They're corrupted fayfolke--bright with beauty but twisted and corrupted to the core. They're called the sunshimmer sprites.  You must destroy them.")
+	Dialog.AddVoiceover("voiceover/english/judge_eunomia/qey_adv01_oakmyst/judgeeunomia002.mp3", 2678200574, 3115032598)
+	Dialog.AddOption("I shall do my best to lower their numbers.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

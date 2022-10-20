@@ -1,10 +1,9 @@
 --[[
-	Script Name	: SpawnScripts/Oakmyst/EmpressAnassa.lua
-	Script Purpose	: Empress Anassa 
-	Script Author	: scatman
-	Script Date	: 2009.05.09
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
-	Update Notes    : 2022.01.17 Added final quest dialog, but missing MP3 Keys. - Dorbin
+    Script Name    : SpawnScripts/Oakmyst_Classic/EmpressAnassa.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.10.19 01:10:53
+    Script Purpose : 
+                   : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
 

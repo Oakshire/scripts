@@ -1,9 +1,9 @@
 --[[
-	Script Name	: SpawnScripts/Oakmyst/ScholarNeola.lua
-	Script Purpose	: Scholar Neola 
-	Script Author	: scatman
-	Script Date	: 2009.05.08
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+    Script Name    : SpawnScripts/Oakmyst_Classic/ScholarNeola.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.10.19 01:10:48
+    Script Purpose : 
+                   : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
 
@@ -58,5 +58,7 @@ function SavedSapling(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/scholar_neola/qey_adv01_oakmyst/scholarneola003.mp3", 1414143988, 1696039201)
 	Dialog.AddOption("I will speak to the judge.")
 	Dialog.Start()
-	SetStepComplete(Spawn, QUEST_1, 3)
+if HasQuest(Spawn,QUEST_1)then
+    SetStepComplete(Spawn, QUEST_1, 3)
+    end
 end

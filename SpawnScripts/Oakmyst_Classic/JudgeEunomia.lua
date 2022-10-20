@@ -1,9 +1,9 @@
 --[[
-	Script Name	: SpawnScripts/Oakmyst/JudgeEunomia.lua
-	Script Purpose	: Judge Eunomia 
-	Script Author	: scatman
-	Script Date	: 2009.05.09
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+    Script Name    : SpawnScripts/Oakmyst_Classic/JudgeEunomia.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.10.19 01:10:41
+    Script Purpose : 
+                   : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
 
@@ -52,7 +52,7 @@ function OfferQuest1(NPC, Spawn)
 end
 
 function Dialog2(NPC, Spawn)
-if HasCompletedQuest(Spawn,QUEST_1)then
+if HasQuest(Spawn,QUEST_1)then
     SetStepComplete(Spawn, QUEST_1, 2)
     end
 	FaceTarget(NPC, Spawn)
