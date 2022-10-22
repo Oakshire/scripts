@@ -13,9 +13,9 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must gather some mystail yearling tails.", 4, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 172, 1950009)
-	AddQuestStepKill(Quest, 2, "I must gather tongues from clearwater frogs.", 3, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 1104, 1950020)
-	AddQuestStepKill(Quest, 3, "I must get the hide from one Oakmyst great bear.", 1, 70, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 127, 1950023)
+	AddQuestStepKill(Quest, 1, "I must gather some mystail yearling tails.", 4, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 172, 1950009,8300035)
+	AddQuestStepKill(Quest, 2, "I must gather tongues from clearwater frogs.", 3, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 1104, 1950020.8300003)
+	AddQuestStepKill(Quest, 3, "I must get the hide from one Oakmyst great bear.", 1, 70, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 127, 1950023,8300016)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")

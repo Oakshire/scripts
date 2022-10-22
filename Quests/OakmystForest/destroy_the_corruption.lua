@@ -13,7 +13,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Find and defeat Rotweed.", 1, 100, "I must slay Rotweed. This being can be found in the Teardrop Cave in Oakmyst Forest.", 611, 1950029)
+	AddQuestStepKill(Quest, 1, "Find and defeat Rotweed.", 1, 100, "I must slay Rotweed. This being can be found in the Teardrop Cave in Oakmyst Forest.", 611, 1950029,8300027)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledRotweed")
 end
 
@@ -34,7 +34,7 @@ function Step1_Complete_KilledRotweed(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found and defeated Rotweed .")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain the many creatures that made up Rotweed the plant fiend.")
 
-	AddQuestStepChat(Quest, 2, "Speak to Empress Anassa.", 1, "I must return to speak to Empress Anassa in Oakmyst Forest.", 0, 1950050) 
+	AddQuestStepChat(Quest, 2, "Speak to Empress Anassa.", 1, "I must return to speak to Empress Anassa in Oakmyst Forest.", 0, 1950050,8300021) 
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

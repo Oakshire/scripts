@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to find the tree on the island in the stream.", 3, "I must find the tree that the druid spoke of in his note.  It should be on an island in the stream.", 185, 924, 2.22, -273)
+	AddQuestStepZoneLoc(Quest, 1, "I need to find the tree on the island in the stream.", 3, "I must find the tree that the druid spoke of in his note.  It should be on an island in the stream.", 185, 924, 2.22, -273,830)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -34,7 +34,7 @@ end
 function Step1Complete(Quest)
 	UpdateQuestStepDescription(Quest, 1, "I've found the tree on the island in the stream.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the tree the druid spoke of and it looks like he had a map hidden there.")
-	AddQuestStepLocation(Quest, 2, "I need to find the tree overlooking the waterfall.", 3, "I must find the tree overlooking the waterfall where the druid buried the token he left behind.", 199, 914, 15, -199)
+	AddQuestStepZoneLoc(Quest, 2, "I need to find the tree overlooking the waterfall.", 3, "I must find the tree overlooking the waterfall where the druid buried the token he left behind.", 199, 914, 15, -199,830)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 function QuestComplete(Quest, QuestGiver, Player)
@@ -42,7 +42,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "	I've found the tree overlooking the waterfall.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I found the token buried among the roots of a tree overlooking the waterfall.")
 
-	UpdateQuestDescription(Quest, "After following a couple of clues, I was able to find the tree that the druid, Phyndin Silverystream, marked on the map he left in the tree.  It seems the token he left behind was an earring he used to wear. <br> <br>")
+	UpdateQuestDescription(Quest, "After following a couple of clues, I was able to find the tree that the druid, Phyndin Silverystream, marked on the map he left in the tree.  It seems the token he left behind was an earring he used to wear.")
 	GiveQuestReward(Quest, Player)
 end
 

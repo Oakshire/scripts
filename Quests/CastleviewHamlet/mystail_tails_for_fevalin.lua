@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill some mystail yearlings.", 6, 80, "I must collect tails from mystail yearlings.", 172, 1950009)
+	AddQuestStepKill(Quest, 1, "I must kill some mystail yearlings.", 6, 80, "I must collect tails from mystail yearlings.", 172, 1950009,8300035)
 	AddQuestStepCompleteAction(Quest, 1, "RatsDead")
 	UpdateQuestZone(Quest, "Oakmyst Forest")
 end

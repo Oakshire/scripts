@@ -26,11 +26,22 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
+end
 
+function aggro(NPC, Spawn)
+    aggrotimer(NPC)
+end
+
+function aggrotimer(NPC)
+    AddTimer(NPC,600000,"aggrotimer") -- Check is Thistles and Cube are up
+local Rotweed = GetSpawnByLocationID(zone, 133779140)
+    if IsInCombat(Rotweed) and Rotweed ~=nil then
+    else
+    Despawn(Rotweed) --Despawns Thistles and Cube, which disables update
+end
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
 end
 
 function respawn(NPC)

@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill three corrupted dryads.", 3, 100, "Corrupted dryads often hide in dark, dank places such as water-filled caverns.", 611, 1950013, 1950070)
+	AddQuestStepKill(Quest, 1, "I need to kill three corrupted dryads.", 3, 100, "Corrupted dryads often hide in dark, dank places such as water-filled caverns.", 611, 1950013, 1950070,8300004)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 

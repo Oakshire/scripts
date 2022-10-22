@@ -13,7 +13,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-AddQuestStepLocation(Quest, 1, "I need to find the picnic spot near the waterfall in Oakmyst Forest.", 6, "I need to find the spot near the waterfall in Oakmyst Forest and see if it is a good site for a picnic.", 185, 976.82, 2.23, -209.86)
+AddQuestStepZoneLoc(Quest, 1, "I need to find the picnic spot near the waterfall in Oakmyst Forest.", 6, "I need to find the spot near the waterfall in Oakmyst Forest and see if it is a good site for a picnic.", 185, 976.82, 2.23, -209.86, 830)
 AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 UpdateQuestZone(Quest, "Oakmyst Forest")
 end

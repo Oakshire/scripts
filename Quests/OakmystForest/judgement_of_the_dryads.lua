@@ -13,7 +13,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Slay five Sunshimmer Sprites.", 5, 100, "I must hunt down and slay five Sunshimmer Sprites in Oakmyst Forest.", 611, 1950034, 1950036, 1950054, 1950031)
+	AddQuestStepKill(Quest, 1, "Slay five Sunshimmer Sprites.", 5, 100, "I must hunt down and slay five Sunshimmer Sprites in Oakmyst Forest.", 611, 1950034, 1950036, 1950054, 1950031,8300052,8300053,8300006,8300012)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KillSprites")
 end
 
@@ -33,7 +33,7 @@ function Step1_Complete_KillSprites(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have slain five Sunshimmer Sprites.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain five Sunshimmer Sprites in Oakmyst Forest.")
 
-	AddQuestStepChat(Quest, 2, "Speak to Judge Eunomia.", 1, "I must speak to Judge Eunomia in Oakmyst Forest.", 0, 1950049) 
+	AddQuestStepChat(Quest, 2, "Speak to Judge Eunomia.", 1, "I must speak to Judge Eunomia in Oakmyst Forest.", 0, 1950049,8300009) 
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

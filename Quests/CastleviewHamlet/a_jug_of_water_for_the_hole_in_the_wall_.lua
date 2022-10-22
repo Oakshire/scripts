@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to get near the Oakmyst falls.", 3, "I must go into Oakmyst Forest and find the waterfall. There I will fill the jug.", 310, 993.6, 0.9, -203.21)
+	AddQuestStepZoneLoc(Quest, 1, "I need to get near the Oakmyst falls.", 3, "I must go into Oakmyst Forest and find the waterfall. There I will fill the jug.", 310, 993.6, 0.9, -203.21,830)
 	AddQuestStepCompleteAction(Quest, 1, "FoundWater")
 	UpdateQuestZone(Quest, "Oakmyst Forest")
 end

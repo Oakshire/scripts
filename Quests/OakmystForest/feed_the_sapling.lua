@@ -35,7 +35,7 @@ function Step1_Complete_FoundNutrients(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found Smitelin's Excel-o-gro in Nettleville.")
 	UpdateQuestZone(Quest, "Oakmyst Forest")
 
-	AddQuestStepChat(Quest, 2, "Find the treant sapling.", 1, "I must sprinkle Smitelin's Excel-o-gro into the treant sapling of Oakmyst Forest.", 0, 1950052) 
+	AddQuestStepChat(Quest, 2, "Find the treant sapling.", 1, "I must sprinkle Smitelin's Excel-o-gro into the treant sapling of Oakmyst Forest.", 0, 1950052,8300007) 
 	AddQuestStepCompleteAction(Quest, 2, "Step2_Complete_SpokeToSapling")
 end
 
@@ -43,7 +43,7 @@ function Step2_Complete_SpokeToSapling(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I poured the nutrient on the treant sapling.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I sprinkled the magical nutrient, Smitelin's Excel-o-gro onto the treant sapling.")
 
-	AddQuestStepChat(Quest, 3, "Speak to Scholar Neola.", 1, "I should inform Scholar Neola that I saved the treant sapling.", 0, 1950051) 
+	AddQuestStepChat(Quest, 3, "Speak to Scholar Neola.", 1, "I should inform Scholar Neola that I saved the treant sapling.", 0, 1950051,8300030) 
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end
 

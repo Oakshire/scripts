@@ -49,7 +49,7 @@ function QuestStep3(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I've spoken with Aundor Singingsword.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "Aundor Singingsword revealed some of Pelle's exaggerations.")
     UpdateQuestZone(Quest, "The Elddar Forest")
-	AddQuestStepChat(Quest, 3, "I need to deliver this book to Pelle Shinkicker in the Elddar Grove", 1, "Pelle Shinkicker is waiting for his book to be returned in the Elddar Grove.", 720, 2070067)
+	AddQuestStepChat(Quest, 3, "I need to deliver this book to Pelle Shinkicker in the Elddar Grove", 1, "Pelle Shinkicker is waiting for his book to be returned in the Elddar Grove.", 720, 2070067,8300020)
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end
 

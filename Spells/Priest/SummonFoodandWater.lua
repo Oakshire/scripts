@@ -33,6 +33,7 @@ function cast(Caster, Target, MinQty, MaxQty, Item1, Item2)
 			SummonItem(Target, 36885, 0)
 			SummonItem(Target, 36885, 0)
 			SummonItem(Target, 36885, 0)
+			
 	    SendMessage(Target, "5 Sacred Food and Water have been provided to you.")
    
 

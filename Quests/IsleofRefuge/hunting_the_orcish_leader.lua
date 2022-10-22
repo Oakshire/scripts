@@ -9,6 +9,7 @@
         Preceded by: Striking Back at the Goblins
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)

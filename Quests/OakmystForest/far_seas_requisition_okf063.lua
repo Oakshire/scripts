@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must collect five Oakmyst deer pelts.", 5, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 138, 1950001, 1950007)
+	AddQuestStepKill(Quest, 1, "I must collect five Oakmyst deer pelts.", 5, 80, "To fill the requisition, I must hunt down the creatures in Oakmyst Forest, reachable by any number of mariner bells in the City of Qeynos.", 138, 1950001, 1950007, 8300015,8300013)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

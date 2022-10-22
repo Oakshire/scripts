@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must slay some Oakmyst spiders in Oakmyst Forest", 8, 100, "I must slay Oakmyst spiders and collect their silk in the local Oakmyst Forest, reachable by any mariner bell within the City of Qeynos.", 354,1950014)
+	AddQuestStepKill(Quest, 1, "I must slay some Oakmyst spiders in Oakmyst Forest", 8, 100, "I must slay Oakmyst spiders and collect their silk in the local Oakmyst Forest, reachable by any mariner bell within the City of Qeynos.", 354,1950014,8300018)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 

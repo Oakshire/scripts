@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must slay three corrupted dryads.", 3, 100, "I must go into the Oakmyst Forest and slay three of the corrupted dryads that plague the area.", 611, 1950013,1950131,1950070,1950131)
+	AddQuestStepKill(Quest, 1, "I must slay three corrupted dryads.", 3, 100, "I must go into the Oakmyst Forest and slay three of the corrupted dryads that plague the area.", 611, 8300004)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Oakmyst Forest")
 end

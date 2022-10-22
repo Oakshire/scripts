@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need four fine pelts from Oakmyst great bears.", 4, 75, "I need to get four fine pelts from Oakmyst great bears.", 124, 1950023)
+	AddQuestStepKill(Quest, 1, "I need four fine pelts from Oakmyst great bears.", 4, 75, "I need to get four fine pelts from Oakmyst great bears.", 124, 8300016,8300023)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Compelte")
     UpdateQuestZone(Quest,"Oakmyst Forest")
 end

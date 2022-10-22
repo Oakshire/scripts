@@ -10,7 +10,7 @@
         Followed by: 
 --]]
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to hunt Oakmyst royal defenders in Oakmyst Forest.", 3, 60, "I need to go to the Oakmyst Forest and slay some Oakmyst royal defenders to try to find some type of mineral.", 187, 1950047)
+	AddQuestStepKill(Quest, 1, "I need to hunt Oakmyst royal defenders in Oakmyst Forest.", 3, 75, "I need to go to the Oakmyst Forest and slay some Oakmyst royal defenders to try to find some type of mineral.", 187, 8300017)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Oakmyst Forest")
 end

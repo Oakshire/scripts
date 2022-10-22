@@ -18,7 +18,7 @@ function hailed(NPC, Spawn)
         PlayFlavor(NPC,"","Did you just drop off the boat here or something? I'm not making money by giving it away. I'd like to retire someday, you know.","no",50468124,3582989183,Spawn)
     end
 	if GetQuestStep(Spawn, 5758)==2 then
-	    SetStepComplete(Spwan, 5758,2)
+	    SetStepComplete(Spawn, 5758,2)
 	end
 end
 

@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to find a pristine Mystail rat tail.", 1, 65, "I need to hunt down Mystail matriarch in the Oakmyst forest until I can find a suitable tail.", 172, 1950017)
+	AddQuestStepKill(Quest, 1, "I need to find a pristine Mystail rat tail.", 1, 35, "I need to hunt down Mystail matriarch in the Oakmyst forest until I can find a suitable tail.", 172, 8300036)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_Matriarchs")
 		UpdateQuestZone(Quest, "Oakmyst Forest")
 end

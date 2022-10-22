@@ -14,7 +14,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must gather glowmyst from the beetles in Oakmyst Forest", 10, 100, "I need to gather up glowmyst juice from Oakmyst Forest, reachable by any number of mariner bells within Qeynos, by hunting down glowmyst beetles.", 1204, 1950002)
+	AddQuestStepKill(Quest, 1, "I must gather glowmyst from the beetles in Oakmyst Forest", 10, 100, "I need to gather up glowmyst juice from Oakmyst Forest, reachable by any number of mariner bells within Qeynos, by hunting down glowmyst beetles.", 1204, 8300034)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Oakmyst Forest")
 end
