@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseFairy1.lua")
 
 function spawn(NPC)
 

@@ -74,7 +74,7 @@ end
 
 function LeaveIslandQ(NPC, Spawn)
     PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_005.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
-    Race = GetRace(Spawn)
+    local Race = GetRace(Spawn)
     
     
     -- Human / Kerra

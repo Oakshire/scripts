@@ -40,7 +40,7 @@ function QuestStep2(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've spoken with Rune Shimmerstar.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "Rune Shimmerstar has laid an enchantment on the book to preserve it.")
     UpdateQuestZone(Quest, "Oakmyst Forest")
-	AddQuestStepChat(Quest, 2, "I need to deliver this book to Aundor Singingsword in the Oakmyst Forest", 1, "Rune Shimmerstar asked me to show Aundor Singingsword the newly bound book.", 720, 1950021)
+	AddQuestStepChat(Quest, 2, "I need to deliver this book to Aundor Singingsword in the Oakmyst Forest", 1, "Rune Shimmerstar asked me to show Aundor Singingsword the newly bound book.", 720, 1950021,8300020)
 	AddQuestStepCompleteAction(Quest, 2, "QuestStep3")
 end
 
@@ -49,7 +49,7 @@ function QuestStep3(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I've spoken with Aundor Singingsword.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "Aundor Singingsword revealed some of Pelle's exaggerations.")
     UpdateQuestZone(Quest, "The Elddar Forest")
-	AddQuestStepChat(Quest, 3, "I need to deliver this book to Pelle Shinkicker in the Elddar Grove", 1, "Pelle Shinkicker is waiting for his book to be returned in the Elddar Grove.", 720, 2070067,8300020)
+	AddQuestStepChat(Quest, 3, "I need to deliver this book to Pelle Shinkicker in the Elddar Grove", 1, "Pelle Shinkicker is waiting for his book to be returned in the Elddar Grove.", 720, 2070067)
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 end
 

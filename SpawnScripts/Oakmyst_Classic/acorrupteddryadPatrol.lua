@@ -5,21 +5,20 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/Dryad_Corrupt1.lua")
 
 function spawn(NPC)
-
 waypoints(NPC)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
+
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
 function waypoints(NPC)
+    if GetSpawnLocationID(NPC)==133778971 then
 	MovementLoopAddLocation(NPC, 910.3, 14.75, -177.67, 1, 6)
 	MovementLoopAddLocation(NPC, 909.7, 15.67, -185.22, 1, 0)
 	MovementLoopAddLocation(NPC, 913.95, 16.44, -188.68, 1, 0)
@@ -44,5 +43,5 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 916.18, 16.22, -190.65, 1, 0)
 	MovementLoopAddLocation(NPC, 909.86, 15.72, -186.03, 1, 0)
 	MovementLoopAddLocation(NPC, 910.3, 14.75, -177.67, 1, 6)
+    end
 end
-

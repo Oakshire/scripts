@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-    AddQuestStepChat(Quest, 1, " I must go to Innkeeper Valean.", 1, "I must find Innkeeper Valean in Castleview Hamlet.", 53227, 2360024)
+    AddQuestStepChat(Quest, 1, " I need to deliver this note to Tara Ironforge.", 1, " I must deliver a note to Tara Ironforge in the Jewel Box located in North Qeynos.", 53227, 2360024)
     AddQuestStepCompleteAction(Quest, 1, "Delivery")
     	UpdateQuestZone(Quest, "Castleview Hamlet")
 end

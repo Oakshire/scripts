@@ -47,8 +47,7 @@ function death(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional3/fairy_bog/ft/fairy/fairy_bog_1_death_657a37e2.mp3", "Poor fairy! Look what you did!", "", 2424549341, 3564174816, Spawn, 23)
         elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/optional3/fairy_bog/ft/fairy/fairy_bog_1_death_d53356c.mp3", "Now who will I play pranks on?", "", 3358518096, 3592956278, Spawn, 23)
-end
-       AddTimer(NPC,15000,"FifteenCall")
+    end
     end
 end
 end
