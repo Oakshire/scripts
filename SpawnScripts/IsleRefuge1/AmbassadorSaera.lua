@@ -64,8 +64,8 @@ end
 
 function hailed(NPC, Spawn)
 if GetClass(Spawn)>0 then
-if not HasQuest(Spawn,5758) and not HasQuest(Spawn,5717) and not HasCompletedQuest(Spawn,5758)  and not HasCompletedQuest(Spawn,5717) then
-    if GetRace(Spawn) == BARBARIAN or GetRace(Spawn) == DWARF or GetRace(Spawn) == ERUDITE or GetRace(Spawn) ==GNOME or GetRace(Spawn) == HALF_ELF or GetRace(Spawn) == HUMAN or GetRace(Spawn) == FROGLOK or GetRace(Spawn) == KERRA or GetRace(Spawn) == HIGH_ELF or GetRace(Spawn) == HALFLING or GetRace(Spawn) == WOOD_ELF or GetRace(Spawn) == FAE or GetRace(Spawn) == AERAKYN then
+if not HasQuest(Spawn,5758) and not HasQuest(Spawn,5717) and not HasCompletedQuest(Spawn,5758)  and not HasCompletedQuest(Spawn,5717) and not  HasItem(Spawn, 1413,1) then
+   if GetRace(Spawn) == BARBARIAN or GetRace(Spawn) == DWARF or GetRace(Spawn) == ERUDITE or GetRace(Spawn) ==GNOME or GetRace(Spawn) == HALF_ELF or GetRace(Spawn) == HUMAN or GetRace(Spawn) == FROGLOK or GetRace(Spawn) == KERRA or GetRace(Spawn) == HIGH_ELF or GetRace(Spawn) == HALFLING or GetRace(Spawn) == WOOD_ELF or GetRace(Spawn) == FAE or GetRace(Spawn) == AERAKYN then
         Dialog1(NPC, Spawn)
         else
         NotRace(NPC, Spawn)

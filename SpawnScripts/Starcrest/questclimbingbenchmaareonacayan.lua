@@ -7,6 +7,9 @@
 --]]
 
 function spawn(NPC)
+    SetRequiredQuest(NPC,316,1,0,0,1)
+    SetRequiredQuest(NPC,321,1,0,0,1)
+    SetRequiredQuest(NPC,321,2,0,0,1)
 end
 
 function respawn(NPC)
@@ -14,7 +17,6 @@ function respawn(NPC)
 end
 
 function casted_on(NPC, Spawn, Message)
-	Say(Spawn, Message)
 	if Message == "Climb the Bench" then
 		SetPosition(Spawn, 762.11, -20.38, 315.01, 68.11)
 	end

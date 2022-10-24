@@ -54,7 +54,7 @@ function Done(NPC, Spawn)
 	Dialog.AddDialog("What is this?  A missing piece? And from my color?!  Hey!  I've been playing without this piece!  No wonder I've been doing so badly!")
 	Dialog.AddVoiceover("voiceover/english/vandis/qey_village02/vandis000.mp3", 1565383947, 2869392251)
 	Dialog.AddOption("Well, I hope it helps!")
-	Dialog.AddOption("There may be more than just that piece enflucing your game.")
+	Dialog.AddOption("There may be more than just that piece influcing your game.")
 	Dialog.Start()
 end
 

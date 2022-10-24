@@ -13,7 +13,7 @@
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I need to locate the mage tower ruins.", 6, "I need to locate the mage tower ruins in the Forest Ruins.", 0, 1117.56, -9.25, -760.03, 827)
 	AddQuestStepCompleteAction(Quest, 1, "TowerRuins")
-	UpdateQuestZone(Quest, "The Forest Ruins")
+	UpdateQuestZone(Quest, "Forest Ruins")
 end
 
 function Accepted(Quest, QuestGiver, Player)

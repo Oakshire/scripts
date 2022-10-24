@@ -13,6 +13,7 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I've heard that the glowmyst beetles in Oakmyst Forest will sometimes dig up Oro roots.", 10, 90, "I need to find oro root that glowmyst beetles have dug up. I'll probably have to kill the beetles to get their treasured roots!", 197, 8300034)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_beetles")
+    UpdateQuestZone(Quest,"Oakmyst Forest")
 end
 
 function Accepted(Quest, QuestGiver, Player)

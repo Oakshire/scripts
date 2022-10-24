@@ -14,12 +14,12 @@
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill some forgotten guardians.", 5, 100, "I need to slay five Forgotten Guardians in the Forest Ruins.", 611, 1960038, 1960058, 8270062,8270009,8270061,8270011,8270056,8270063,8270064,8270003)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_killedGuardians")
+    UpdateQuestZone(Quest,"Forest Ruins")
 end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	conversation = CreateConversation()
-	UpdateQuestZone(Quest, "Forest Ruins")	
 
 	AddConversationOption(conversation, "I will return victorious!")
 	StartConversation(conversation, QuestGiver, Player, "Good! Return when you've bested them!")
@@ -31,7 +31,7 @@ end
 function step1_complete_killedGuardians(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed some forgotten guardians")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain five Forgotten Guardians.")
-	UpdateQuestZone(Quest, "The Baubbleshire")	
+	UpdateQuestZone(Quest, "Baubbleshire")	
 
 	AddQuestStepChat(Quest, 2, "I must return to Marshal Surefoot.", 1, "I need to return to Marshal Surefoot in Baubbleshire.", 0, 2380044)
 	AddQuestStepCompleteAction(Quest, 2, "quest_complete")

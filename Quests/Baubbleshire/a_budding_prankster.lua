@@ -1,7 +1,7 @@
 --[[
 	Script Name	: Quests/Baubbleshire/a_budding_prankster.lua
 	Script Purpose	: Handles the quest, "A Budding Prankster"
-	Script Author	: Scatman is a gangsta
+	Script Author	: Scatman is a gangsta!
 	Script Date	: 2009.09.27
 	
 	Zone       : The Baubbleshire
@@ -13,6 +13,7 @@
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to speak to Remmy Tumbub.", 1, "I need to find Remmy in the Forest Ruins and pretend to be from the Qeynos guard.", 0, 1960016)
 	AddQuestStepCompleteAction(Quest, 1, "quest_complete")
+    UpdateQuestZone(Quest,"Forest Ruins")
 end
 
 function Accepted(Quest, QuestGiver, Player)

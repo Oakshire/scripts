@@ -40,7 +40,7 @@ function hailed(NPC, Spawn)
  	    FaceTarget(NPC, Spawn)
 	    Dialog.New(NPC, Spawn)
 
-        Dialog.AddDialog("Well hello, friend. I do hate rushin' ya, but I must have that oro root! Bregun's itchin' to make the next batch of brew!")
+        Dialog.AddDialog("You're looking a might shabby there.  You could use some fine armor from Diggs' inventory.  I carry only the finest quality and sell at outrageously low, low prices!  I live for the community.")
 	    Dialog.AddVoiceover("voiceover/english/merchant_diggin_diggs/qey_village06/merchantdiggindiggs000.mp3", 96188472, 2463646265)
 
         if GetQuestStep(Spawn, FarSeas_SixtyThree) == 4 or GetQuestStep(Spawn, FarSeas_Fifty) == 4 then
