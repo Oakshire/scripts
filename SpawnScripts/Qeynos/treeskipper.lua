@@ -26,7 +26,8 @@ function InRange(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
     else
-    if math.MakeRandomInt(1,100) <=25 then
+    chance = MakeRandomInt(1,100)
+    if chance <=25 then
     SaySomething(NPC, Spawn)
     end
     end

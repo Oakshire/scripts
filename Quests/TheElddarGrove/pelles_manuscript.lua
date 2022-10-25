@@ -11,6 +11,7 @@
 	Followed by		:	None
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to speak with Rune Shimmerstar in South Qeynos.", 1, "I must give this manuscript to Rune Shimmerstar at the mage's tower in South Qeynos.", 711, 2310081)
@@ -19,12 +20,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-    local conversation = CreateConversation()
-    PlayFlavor(QuestGiver, "voiceover/english/pelle_shinkicker/qey_elddar/pelleshinkicker003.mp3", "", "thank", 2052304892, 1411111467, Player)	
 	FaceTarget(QuestGiver, Player)
-	AddConversationOption(conversation, "I'll be back shortly.")
-	AddConversationOption(conversation, "If we don't stop talking now I may never get there!")
-	StartConversation(conversation, QuestGiver, Player, "Great news!  Best I've had all day really.  Now, make certain it is a human by the name of Rune Shimmerstar who recieves this.  He's the only one at the Three Towers I'll trust!  Hehe, never made it much of a habbit to put much faith in those magi-folk.  You know, we had quite a number of adventures together, Rune and me!  Quite a nice chap once you get to know him.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Great news!  Best I've had all day really.  Now, make certain it is a human by the name of Rune Shimmerstar who recieves this.  He's the only one at the Three Towers I'll trust!  Hehe, never made it much of a habbit to put much faith in those magi-folk.  You know, we had quite a number of adventures together, Rune and me!  Quite a nice chap once you get to know him.")
+	Dialog.AddVoiceover("voiceover/english/pelle_shinkicker/qey_elddar/pelleshinkicker003.mp3", 2052304892, 1411111467)
+    PlayFlavor(QuestGiver, "", "", "smile", 0, 0, Player)	
+	Dialog.AddOption("I'll be back shortly.")
+	Dialog.AddOption("If we don't stop talking now I may never get there!")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

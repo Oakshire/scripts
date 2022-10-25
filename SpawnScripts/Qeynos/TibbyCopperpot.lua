@@ -35,7 +35,6 @@ function hailed(NPC, Spawn)
         end
     else
     Dialog1(NPC, Spawn)
---    RandomGreeting(NPC, Spawn)
 end
 end
 
@@ -62,7 +61,7 @@ function Dialog2(NPC, Spawn)
     if HasQuest(Spawn,5527) or HasCompletedQuest(Spawn,5527) then --Extra fluff if player met Tara in Elddar Grove
 	Dialog.AddOption("I've actually met Tara.  She seemed a bit homesick, but steadfast in her training.  I would gladly help in her stead.","Job")
 	end
-	Dialog.AddOption("I would be happy to.","Job2")
+	Dialog.AddOption("I would be happy to.","Job")
 	Dialog.AddOption("Another time, perhaps.")
 	Dialog.Start()
 end
