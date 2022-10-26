@@ -2710,6 +2710,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
                                 	PlayFlavor(NPC, "voiceover/english/optional2/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_gnome_gf_8e6f2cee.mp3", "What're you working on now, hmm?  Hope this one works out!", "", 1396523759, 1857436654, Spawn)
                                     end                                    
                             elseif spawnRace == HALFLING then
+                                local level = GetLevel(Spawn)
                                 if level >=50 then	                            
 	                              check = MakeRandomInt(1,4) 
                                    else	                            
@@ -6700,6 +6701,7 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 					                PlayFlavor(NPC, "voiceover/english/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_gnome_gm_94bf9271.mp3", "Have you considered making an ale-tanker that never empties?  That's a worthy project!", "smile", 1657569571, 2283552256)
                                     end                                    
                             elseif spawnRace == HALFLING then
+                                local level =GetLevel(Spawn)
                                 if level >=50 then	                            
 	                             check = MakeRandomInt(1,4) 
                                 else	                            

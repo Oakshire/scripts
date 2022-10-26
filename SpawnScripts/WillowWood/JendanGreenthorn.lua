@@ -70,7 +70,7 @@ end
   conversation = CreateConversation()
   AddConversationOption(conversation, "I'll take the note to Yeoni for you.", "TakeNote")
   AddConversationOption(conversation, "Sorry, I'm too busy.")
-  StartConversation(conversation, NPC, Spawn, "I am hoping he comes this way. He left the Queen's Colony one boat ahead of me and told me to meet him here. Would you run this note to Innkeeper Yeoni? Maybe Serian left a note with her earlier today.")
+  StartConversation(conversation, NPC, Spawn, "I am hoping he comes this way. He left the Isle of Refuge one boat ahead of me and told me to meet him here. Would you run this note to Innkeeper Yeoni? Maybe Serian left a note with her earlier today.")
 end   
 
  function TakeNote(NPC, Spawn)

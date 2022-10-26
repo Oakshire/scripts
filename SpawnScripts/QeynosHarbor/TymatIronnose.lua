@@ -18,6 +18,6 @@ function hailed(NPC, Spawn)
 end
 
 function InRange(NPC,Spawn)
-    FactionCheckCallout(NPC, Spawn, faction)
+    FactionCheckingCallout(NPC, Spawn, faction)
     end
    

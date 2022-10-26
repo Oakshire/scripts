@@ -223,7 +223,7 @@ function zone_to_isle(NPC, player)
           ZoneRef = GetZone("IsleRefuge1")
             Zone(ZoneRef,player)  
 		
-		elseif alignment == 1 then
+		elseif alignment == 0 then
 			Zone(GetZone(278), player) -- outpost of overlord
 		else
 			Zone(GetZone(253), player) -- queens colony

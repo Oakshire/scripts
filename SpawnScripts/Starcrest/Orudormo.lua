@@ -18,10 +18,10 @@ if GetFactionAmount(Spawn,11) <0 then
     PlayFlavor(NPC, "", "", "heckno", 0, 0, Player)	
     else    
 	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Player)
+	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Don't worry about the safety of your assets. We meticulously manage our accounts and currancy.")
 	Dialog.AddVoiceover("voiceover/english/banker_orudormo/qey_village02/bankerorudormo.mp3", 3443069835,648383583)
-    PlayFlavor(NPC, "", "", "smile", 0, 0, Spawn)	
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)	
     if GetQuestStep(Spawn, Deposit)==1 then     
 	Dialog.AddOption("I'm here to make a deposit for Grekin.", "Deposit1")
     end

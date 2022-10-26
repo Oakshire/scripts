@@ -22,12 +22,12 @@ function hailed(NPC, Spawn)
     AddConversationOption(conversation, "I have questions about houses.", "Housing")
 	AddConversationOption(conversation, "Nothing right now.")
 	StartConversation(conversation, NPC, Spawn, "So, your bank is overflowing, is it?  Sure, I'd be happy to take any excess coin off your hands.")
-	PlayFlavor(NPC, "", "", "hello", 3113863761, 2642679335, Spawn)
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1002.mp3", "", "hello", 0, 0, Spawn)
 end
 
 
 function Housing(NPC, Spawn)
-
+	conversation = CreateConversation()
     if GetQuestStep(Spawn,5586)==1 then
 	AddConversationOption(conversation, "I've got a letter for you from Shanda.  She wanted to make sure you got it right away.", "Delivered")
     end
@@ -100,6 +100,7 @@ end
 function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
+    PlayFlavor(NPC,"","","thanks",0,0,Spawn)
 	AddConversationOption(conversation, "Here's the letter, maybe I will have a look at your selection.")
 	AddConversationOption(conversation, "Are you... the boss?","Boss")
     SetStepComplete(Spawn,5586,1)
@@ -109,7 +110,7 @@ end
 function Boss(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+    PlayFlavor(NPC,"","","chuckle",0,0,Spawn)
 	AddConversationOption(conversation, "Thanks, I guess.")
     QuestStepIsComplete(Spawn,5586,1)
 	StartConversation(conversation, NPC, Spawn, "Boss? Me?  Heavens no!  I try to keep my hands clean as it is of these sort of dealings.  You just delivered a letter 'from' the boss.  You best keep your nose clean if you know what's good for you.")

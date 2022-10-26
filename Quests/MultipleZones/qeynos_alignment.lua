@@ -47,7 +47,7 @@ function Step1Complete(Quest, QuestGiver, Player)
     
     -- Human / Kerra
     if Race == 9 or Race == 11 then
-	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2330168)
+	AddQuestStepChat(Quest, 2, "I must find the Steward", 1, "I have been instructed to seek out the Steward when I arrive in Qeynos.  I should ring the bell on the docks to book passage to the city.", 11, 2330170)
     UpdateQuestZone(Quest, "Nettleville")
 
     -- Erudite

@@ -93,7 +93,7 @@ function Stamping(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/tinkerer_spindlecog/qey_village06/tinkererspindlecog002.mp3", 233880122, 4191683346)
 	Dialog.AddLanguage(6)
 
-	AddConversationOption(conversation, "Well, all right, I'll help you.  Have you thought about doing it manually?", "Dialog3")
+	Dialog.AddOption("Well, all right, I'll help you.  Have you thought about doing it manually?", "Dialog3")
 	Dialog.AddOptionRequirement(REQ_LEVEL_GREATER_OR_EQUAL, 20)	
 
 	Dialog.AddOption("I'm afraid I can't right now.  Good luck getting it fixed. ")
