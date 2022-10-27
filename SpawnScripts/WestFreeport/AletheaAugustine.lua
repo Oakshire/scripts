@@ -21,7 +21,7 @@ end
     
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-if GetFactionAmount(Spawn, 11) <0 then
+if GetFactionAmount(Spawn, 12) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 elseif GetTradeskillLevel(Spawn)<9 and GetTradeskillClass(Spawn)== 1 then
     NotSkilled(NPC,Spawn)

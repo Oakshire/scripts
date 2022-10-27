@@ -1,0 +1,86 @@
+--[[
+    Script Name    : SpawnScripts/Baubbleshire/aduck_water.lua
+    Script Author  : Dorbin
+    Script Date    : 2022.10.26 05:10:11
+    Script Purpose : 
+                   : 
+--]]
+
+function spawn(NPC)
+	waypoints(NPC)
+end
+
+
+function respawn(NPC)
+	spawn(NPC)
+end
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 842.19, -20.5, -494.94, 1, 8)
+	MovementLoopAddLocation(NPC, 841.41, -20.5, -490.43, 1, 0)
+	MovementLoopAddLocation(NPC, 844.6, -20.5, -486.47, 1, 8)
+	MovementLoopAddLocation(NPC, 849.27, -20.5, -479.67, 1, 0)
+	MovementLoopAddLocation(NPC, 851.82, -20.5, -473.28, 1, 0)
+	MovementLoopAddLocation(NPC, 850.92, -20.5, -480.1, 1, 8)
+	MovementLoopAddLocation(NPC, 850.64, -20.5, -475.81, 1, 8)
+	MovementLoopAddLocation(NPC, 850.64, -20.5, -475.81, 1, 8)
+	MovementLoopAddLocation(NPC, 857.95, -20.5, -474.27, 1, 0)
+	MovementLoopAddLocation(NPC, 859.3, -20.5, -474.61, 1, 0)
+	MovementLoopAddLocation(NPC, 869.41, -20.5, -470.16, 1, 0)
+	MovementLoopAddLocation(NPC, 869.41, -20.5, -470.16, 1, 0)
+	MovementLoopAddLocation(NPC, 871.55, -20.5, -470.6, 1, 0)
+	MovementLoopAddLocation(NPC, 877.37, -20.5, -464.65, 1, 0)
+	MovementLoopAddLocation(NPC, 879.84, -20.5, -460.01, 1, 8)
+	MovementLoopAddLocation(NPC, 874, -20.5, -455.53, 1, 0)
+	MovementLoopAddLocation(NPC, 865.97, -20.5, -456.03, 1, 0)
+	MovementLoopAddLocation(NPC, 871.31, -20.5, -457.12, 1, 8)
+	MovementLoopAddLocation(NPC, 875.53, -20.5, -461.97, 1, 0)
+	MovementLoopAddLocation(NPC, 875.85, -20.5, -472.41, 1, 0)
+	MovementLoopAddLocation(NPC, 876.32, -20.5, -477.81, 1, 0)
+	MovementLoopAddLocation(NPC, 879.13, -20.5, -489.35, 1, 8)
+	MovementLoopAddLocation(NPC, 884.64, -20.5, -493.51, 1, 8)
+	MovementLoopAddLocation(NPC, 884.86, -20.5, -498.75, 1, 0)
+	MovementLoopAddLocation(NPC, 878.26, -20.5, -499.47, 1, 8)
+	MovementLoopAddLocation(NPC, 870.04, -20.5, -503.83, 1, 0)
+	MovementLoopAddLocation(NPC, 871.41, -20.5, -503.42, 1, 0)
+	MovementLoopAddLocation(NPC, 866.09, -20.5, -499.69, 1, 8)
+	MovementLoopAddLocation(NPC, 859.99, -20.5, -496.64, 1, 0)
+	MovementLoopAddLocation(NPC, 848.28, -20.5, -495.95, 1, 0)
+	MovementLoopAddLocation(NPC, 840.56, -20.5, -489.45, 1, 8)
+	MovementLoopAddLocation(NPC, 853.99, -20.5, -476.38, 1, 0)
+	MovementLoopAddLocation(NPC, 854.25, -20.5, -475.43, 1, 0)
+	MovementLoopAddLocation(NPC, 853.99, -20.5, -476.38, 1, 8)
+	MovementLoopAddLocation(NPC, 840.56, -20.5, -489.45, 1, 0)
+	MovementLoopAddLocation(NPC, 848.28, -20.5, -495.95, 1, 8)
+	MovementLoopAddLocation(NPC, 859.99, -20.5, -496.64, 1, 0)
+	MovementLoopAddLocation(NPC, 866.09, -20.5, -499.69, 1, 0)
+	MovementLoopAddLocation(NPC, 871.41, -20.5, -503.42, 1, 8)
+	MovementLoopAddLocation(NPC, 870.04, -20.5, -503.83, 1, 8)
+	MovementLoopAddLocation(NPC, 878.26, -20.5, -499.47, 1, 0)
+	MovementLoopAddLocation(NPC, 884.86, -20.5, -498.75, 1, 0)
+	MovementLoopAddLocation(NPC, 884.64, -20.5, -493.51, 1, 0)
+	MovementLoopAddLocation(NPC, 879.13, -20.5, -489.35, 1, 8)
+	MovementLoopAddLocation(NPC, 876.32, -20.5, -477.81, 1, 8)
+	MovementLoopAddLocation(NPC, 875.85, -20.5, -472.41, 1, 0)
+	MovementLoopAddLocation(NPC, 875.53, -20.5, -461.97, 1, 0)
+	MovementLoopAddLocation(NPC, 871.31, -20.5, -457.12, 1, 8)
+	MovementLoopAddLocation(NPC, 865.97, -20.5, -456.03, 1, 0)
+	MovementLoopAddLocation(NPC, 874, -20.5, -455.53, 1, 0)
+	MovementLoopAddLocation(NPC, 879.84, -20.5, -460.01, 1, 0)
+	MovementLoopAddLocation(NPC, 877.37, -20.5, -464.65, 1, 8)
+	MovementLoopAddLocation(NPC, 871.55, -20.5, -470.6, 1, 8)
+	MovementLoopAddLocation(NPC, 869.41, -20.5, -470.16, 1, 0)
+	MovementLoopAddLocation(NPC, 869.41, -20.5, -470.16, 1, 0)
+	MovementLoopAddLocation(NPC, 859.3, -20.5, -474.61, 1, 0)
+	MovementLoopAddLocation(NPC, 857.95, -20.5, -474.27, 1, 8)
+	MovementLoopAddLocation(NPC, 850.64, -20.5, -475.81, 1, 0)
+	MovementLoopAddLocation(NPC, 850.64, -20.5, -475.81, 1, 0)
+	MovementLoopAddLocation(NPC, 850.92, -20.5, -480.1, 1, 8)
+	MovementLoopAddLocation(NPC, 851.82, -20.5, -473.28, 1, 0)
+	MovementLoopAddLocation(NPC, 849.27, -20.5, -479.67, 1, 0)
+	MovementLoopAddLocation(NPC, 844.6, -20.5, -486.47, 1, 8)
+	MovementLoopAddLocation(NPC, 841.41, -20.5, -490.43, 1, 0)
+	MovementLoopAddLocation(NPC, 842.19, -20.5, -494.94, 1, 5)
+end
+
+

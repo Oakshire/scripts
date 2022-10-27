@@ -5,32 +5,56 @@
 	Script Date	: 2020.04.12
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-end
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
-function InRange(NPC, Spawn)
-	if math.random(0, 100) <= 25 then
-		FaceTarget(NPC, Spawn)
-		GenericGuardHail(NPC, Spawn)
-	else
-		CheckFaction(NPC, Spawn, "Qeynos")
-	end
-end
-
-function LeaveRange(NPC, Spawn)
+	AddTimer(NPC, 1900, "follow_Erwin")
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-		GenericGuardHail(NPC, Spawn)
-
---	PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/service/guard/barbarian_guard_service_good_1_hail_gm_ee473c11.mp3", "Good day to you, citizen. All preserve Queen Antonia.", "salute", 2268064933, 2349331472, Spawn)
+    if GetFactionAmount(Spawn,11)<0 then
+        else
+    FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
+    end
 end
 
+function respawn(NPC)
+spawn(NPC)
+end
+
+
+function follow_Erwin(NPC)
+	local zone = GetZone(NPC)
+	local Erwin_location = GetSpawnByLocationID(zone, 133779451)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Erwin_location)
+    local leaderY = GetY(Erwin_location)
+    local leaderZ = GetZ(Erwin_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Erwin_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 415227 then --Galla
+		if GetDistance(NPC, Erwin_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		end 
+	elseif sli == 415226 then --Gavinfell
+		if GetDistance(NPC, Erwin_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY, 1+ leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY, 1+ leaderZ, speed)
+		end 
+        end
+    end
+        speed = 2
+	AddTimer(NPC, 2000, "follow_Erwin")	
+end

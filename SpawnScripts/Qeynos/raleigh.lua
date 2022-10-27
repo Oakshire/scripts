@@ -5,6 +5,7 @@
 	Script Date		:	04/11/2020 06:51:30 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
@@ -12,7 +13,11 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_c865a827.mp3", "Duty above all else, citizen, except honor!", "scold", 4141262779, 4227030045, Spawn, 0)
+    if GetFactionAmount(Spawn,11)<0 then
+        else
+    FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_c865a827.mp3", "Duty above all else, citizen, except honor!", "scold", 4141262779, 4227030045, Spawn, 0)
+    end
 end
 
 function respawn(NPC)

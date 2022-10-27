@@ -5,23 +5,56 @@
     Script Purpose : 
                    : 
 --]]
+
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	AddTimer(NPC, 1900, "follow_Erwin")
 end
 
-function InRange(NPC, Spawn)
-		CheckFaction(NPC, Spawn, "Qeynos")
-	end	
-
-
-
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-		GenericGuardHail(NPC, Spawn)
-	end
+    if GetFactionAmount(Spawn,11)<0 then
+        else
+    FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
+    end
+end
 
 function respawn(NPC)
-	spawn(NPC)
+spawn(NPC)
+end
+
+
+function follow_Erwin(NPC)
+	local zone = GetZone(NPC)
+	local Erwin_location = GetSpawnByLocationID(zone, 133779451)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Erwin_location)
+    local leaderY = GetY(Erwin_location)
+    local leaderZ = GetZ(Erwin_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Erwin_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 415227 then --Galla
+		if GetDistance(NPC, Erwin_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		end 
+	elseif sli == 415226 then --Gavinfell
+		if GetDistance(NPC, Erwin_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		end 
+        end
+    end
+        speed = 2
+	AddTimer(NPC, 2000, "follow_Erwin")	
 end

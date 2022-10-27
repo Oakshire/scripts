@@ -27,20 +27,20 @@ function follow_Barron(NPC)
     if sli == 407115 then
 		if GetDistance(NPC, Barron_location) >= 8 then
 			speed = 5
-			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+			MoveToLocation(NPC, leaderX - 4, leaderY, leaderZ, speed)
 		else
 			speed = 2
-			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+			MoveToLocation(NPC, leaderX - 4, leaderY, leaderZ, speed)
 		end 
 	elseif sli == 407155 then
 		if GetDistance(NPC, Barron_location) >= 8 then
 			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
 			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
 			speed = 5
-			MoveToLocation(NPC, leaderX, leaderY, leaderZ - 2, speed)
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
 		else
 			speed = 2
-			MoveToLocation(NPC, leaderX, leaderY, leaderZ - 2, speed)
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
 		end 
     end
         speed = 2

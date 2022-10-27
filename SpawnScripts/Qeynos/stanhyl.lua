@@ -8,31 +8,57 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-end
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
-function InRange(NPC, Spawn)
-	if math.random(0, 100) <= 25 then
-		GenericGuardHail(NPC, Spawn)
-		CheckFaction(NPC, Spawn, "Qeynos")
-	else
-		CheckFaction(NPC, Spawn, "Qeynos")
-	end
+	AddTimer(NPC, 1900, "follow_Raleigh")
 end
 
 function hailed(NPC, Spawn)
-    FaceTarget(NPC,Spawn)
-	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/service/guard/highelf_guard_service_good_1_hail_gm_ee473c11.mp3", "Good day to you, citizen. All preserve Queen Antonia.", "salute", 2088886924, 3736631596, Spawn)
+    if GetFactionAmount(Spawn,11)<0 then
+        else
+    FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
+    end
 end
 
-function LeaveRange(NPC, Spawn)
+function respawn(NPC)
+spawn(NPC)
 end
 
+
+function follow_Raleigh(NPC)
+	local zone = GetZone(NPC)
+	local Raleigh_location = GetSpawnByLocationID(zone, 415331)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Raleigh_location)
+    local leaderY = GetY(Raleigh_location)
+    local leaderZ = GetZ(Raleigh_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Raleigh_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 415322 then --Lanalie
+		if GetDistance(NPC, Raleigh_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		end 
+	elseif sli == 415313 then --Stanhyl
+		if GetDistance(NPC, Raleigh_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		end 
+        end
+    end
+        speed = 2
+	AddTimer(NPC, 2000, "follow_Raleigh")	
+end
+
+--[[Raleigh's Patrol
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 518.13, -10.48, 148.06, 2, 1.5)
 	MovementLoopAddLocation(NPC, 546.76, -10.58, 151.7, 2, 0)
@@ -66,5 +92,5 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 546.76, -10.58, 151.7, 2, 0)
 	MovementLoopAddLocation(NPC, 518.13, -10.48, 148.06, 2, 0)
 end
-
+]]--
 

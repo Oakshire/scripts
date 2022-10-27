@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC, 1900, "follow_Enursin")
 SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
@@ -21,9 +21,31 @@ local Enursin = GetSpawn(NPC,2220118)
     GenericEcologyHail(NPC, Spawn, faction)
 end
 
-function InRange(NPC,Spawn)
+function follow_Enursin(NPC)
+	local zone = GetZone(NPC)
+	local Enursin_location = GetSpawnByLocationID(zone, 379944)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Enursin_location)
+    local leaderY = GetY(Enursin_location)
+    local leaderZ = GetZ(Enursin_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Enursin_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 379936 then
+		if GetDistance(NPC, Enursin_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 1, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 1, leaderY, leaderZ, speed)
+		end 
+    end
+    end
+        speed = 2
+	AddTimer(NPC, 3000, "follow_Enursin")	
 end
 
+--[[Enursin's Patrol
 function waypoints(NPC) --(following  Enursin Nightstalker)
  	MovementLoopAddLocation(NPC, 441.68, -20.33, -318.13, 2, 0)
 	MovementLoopAddLocation(NPC, 447.68, -20.33, -324.06, 2, 0)
@@ -109,7 +131,7 @@ function waypoints(NPC) --(following  Enursin Nightstalker)
 	MovementLoopAddLocation(NPC, 447.68, -20.33, -324.06, 2, 0)
 	MovementLoopAddLocation(NPC, 441.68, -20.33, -318.13, 2, 0)
 end   
-    
+ ]]--   
     
     --[[ DevNoob's Creation. 
 math.randomseed(os.clock()*100000000000)

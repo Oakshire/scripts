@@ -8,16 +8,14 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC, 1900, "follow_Bilur")
 end
-
-
 
 function hailed(NPC, Spawn)
     if GetFactionAmount(Spawn,11)<0 then
         else
     FaceTarget(NPC, Spawn)
-
+    GenericGuardHail(NPC,Spawn)
 local Bilur = GetSpawn(NPC,2210071)    
 	if Bilur ~=nil then
     FaceTarget(Bilur,Spawn)
@@ -28,8 +26,6 @@ local Oakhall = GetSpawn(NPC,2210072)
     FaceTarget(Oakhall,Spawn)
 	PlayFlavor(Oakhall, "", "", "attention", 0, 0, Spawn)
     end	   
-
-
     end
 end
 
@@ -37,6 +33,44 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
+
+function follow_Bilur(NPC)
+	local zone = GetZone(NPC)
+	local Bilur_location = GetSpawnByLocationID(zone, 379004)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Bilur_location)
+    local leaderY = GetY(Bilur_location)
+    local leaderZ = GetZ(Bilur_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Bilur_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 379172 then
+		if GetDistance(NPC, Bilur_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 3, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 3, leaderY, leaderZ, speed)
+		end 
+	elseif sli == 133773368 then
+		if GetDistance(NPC, Bilur_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		end 
+        end
+    end
+        speed = 2
+	AddTimer(NPC, 3000, "follow_Bilur")	
+end
+
+
+
+--[[ COPY OF BILUR  - PRE FOLLOW
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 898.99, -23.89, -31.94, 2, 0)
 	MovementLoopAddLocation(NPC, 902.63, -25.37, -24.9, 2, 0)
@@ -93,9 +127,9 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 891.75, -25.36, -54.96, 2, 0)
 	MovementLoopAddLocation(NPC, 897, -23.45, -40.35, 2, 0)
 end
+]]--
 
-
---[[
+--[[ OLD DEVNOOB
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 874.28, -25.36, -62.98, 2, 0)
 	MovementLoopAddLocation(NPC, 894.59, -25.36, -50.05, 2, 0)

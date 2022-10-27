@@ -5,18 +5,63 @@
 	Script Date		:	04/15/2020 04:56:57 PM
 	Script Notes	:	Locations collected from Live
 --]]
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC, 1900, "follow_Stoutiron")
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+    if GetFactionAmount(Spawn,11)<0 then
+        else
+    FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
+    end
 end
 
 function respawn(NPC)
+spawn(NPC)
 end
 
+
+function follow_Stoutiron(NPC)
+	local zone = GetZone(NPC)
+	local Stoutiron_location = GetSpawnByLocationID(zone, 379768)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Stoutiron_location)
+    local leaderY = GetY(Stoutiron_location)
+    local leaderZ = GetZ(Stoutiron_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Stoutiron_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 379983 then --Feeyord
+		if GetDistance(NPC, Stoutiron_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		end 
+	elseif sli == 379972 then --Johannus
+		if GetDistance(NPC, Stoutiron_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		end 
+        end
+    end
+        speed = 2
+	AddTimer(NPC, 2000, "follow_Stoutiron")	
+end
+
+
+
+
+--[[Stoutiron's Patrol
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 366.02, -18.33, -272.16, 2, 0)
 	MovementLoopAddLocation(NPC, 431.6, -20.85, -268.87, 2, 0)
@@ -99,4 +144,4 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 366.02, -18.33, -272.16, 2, 0)
 end
 
-
+]]--

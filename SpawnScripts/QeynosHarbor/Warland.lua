@@ -11,7 +11,7 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+    AddTimer(NPC,1900,"waypoints")
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
@@ -37,6 +37,7 @@ function hailed(NPC, Spawn)
     if GetFactionAmount(Spawn,11)<0 then
         else
     FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
 local Groban = GetSpawn(NPC,2210088)    
 	if Groban ~=nil then
     FaceTarget(Groban,Spawn)
@@ -74,7 +75,7 @@ end
 
 
 function waypoints(NPC)
-	MovementLoopAddLocation(NPC, 794.25, -21, -60.3, 2, 0)
+	MovementLoopAddLocation(NPC, 794.25, -21, -60.3, 2, 2)
 	MovementLoopAddLocation(NPC, 772.27, -21.61, -59.66, 2, 0)
 	MovementLoopAddLocation(NPC, 760.59, -21.7, -58.92, 2, 0)
 	MovementLoopAddLocation(NPC, 739.71, -21.37, -57.96, 2, 0)

@@ -8,13 +8,14 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC, 1900, "follow_Warland")
 end
 
 function hailed(NPC, Spawn)
     if GetFactionAmount(Spawn,11)<0 then
         else
     FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
 local Warland = GetSpawn(NPC,2210266)    
 	if Warland ~=nil then
     FaceTarget(Warland,Spawn)
@@ -34,6 +35,43 @@ function respawn(NPC)
 	spawn(NPC)
 	end
 
+
+
+function follow_Warland(NPC)
+	local zone = GetZone(NPC)
+	local Warland_location = GetSpawnByLocationID(zone, 379451)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Warland_location)
+    local leaderY = GetY(Warland_location)
+    local leaderZ = GetZ(Warland_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Warland_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 379226 then
+		if GetDistance(NPC, Warland_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 4, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 4, leaderY, leaderZ, speed)
+		end 
+	elseif sli == 379228 then
+		if GetDistance(NPC, Warland_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY,  (leaderZ +2), speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY,  (leaderZ +2), speed)
+		end 
+    end
+    end
+        speed = 2
+	AddTimer(NPC, 3000, "follow_Warland")	
+end
+
+--[[WARLAND'S PATROL
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 794.25, -21, -60.3, 2, 0)
 	MovementLoopAddLocation(NPC, 772.27, -21.61, -59.66, 2, 0)

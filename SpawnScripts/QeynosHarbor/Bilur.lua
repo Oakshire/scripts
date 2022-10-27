@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC,1900,"waypoints")
 	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
@@ -16,6 +16,7 @@ function hailed(NPC, Spawn)
     if GetFactionAmount(Spawn,11)<0 then
         else
     FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
 local Hanstock = GetSpawn(NPC,2210073)    
 	if Hanstock ~=nil then
     FaceTarget(Hanstock,Spawn)
