@@ -17,8 +17,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("That wouldst be most kind.  Take this jug and then venture into Oakmyst Forest.  This is where thou willst find a waterfall.  Enter the waterfall and fill thine jug with this fall water before it toucheth the pond water.")
+	Dialog.AddVoiceover("voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg002.mp3",2371403827,3750341640)
+ 	PlayFlavor(QuestGiver, "", "", "thanks", 0,0 , Player)
+   Dialog.AddOption("I shall return with your jug of fall water.")
+   Dialog.Start()
+  end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

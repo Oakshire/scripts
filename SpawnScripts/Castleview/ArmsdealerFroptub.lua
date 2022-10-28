@@ -5,7 +5,7 @@
 	Script Date	: 2022.01.26
 	Script Notes	: 
 --]]
-
+require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericWeaponsmithVoiceOvers.lua")
 
 local SwordPickup = 5455
@@ -22,7 +22,7 @@ end
 
 function InRange(NPC, Spawn)
         if not HasCompletedQuest (Spawn, EtchingTool) and not HasQuest (Spawn, EtchingTool) then 
-            if math.random(1, 100) <= 70 then
+            if math.random(1, 100) <= 70 and GetFactionAmount(Spawn,11) >0 then
             local choice = math.random(1,2)
                 if choice == 1 then
                 FaceTarget(NPC,Spawn)
@@ -47,53 +47,71 @@ end
 ]]--
 
 function hailed(NPC, Spawn)
+        if GetFactionAmount(Spawn,11) <0 then
+        FactionChecking(NPC, Spawn, faction)
+        else  
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Welcome to my shop adventurer! My orders seem to be backing up, but I can help you out if you are looking to make a quick purchase!")
+	Dialog.AddVoiceover("voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub.mp3", 293364037, 660411644)
+	PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
+ 
     if  GetQuestStep(Spawn, SwordPickup) == 1 then
-    AddConversationOption(conversation, "I am here to see after Aadalian's sword", "OrderUp")
+    Dialog.AddOption("I'm here to see about the sword for Aadalian.", "OrderUp")
     end
     if not HasCompletedQuest (Spawn, EtchingTool) and not HasQuest (Spawn, EtchingTool) then 
-    AddConversationOption(conversation, "You seem frustrated. Do you need anything?", "Frustrated")
+    Dialog.AddOption("Why are your orders backing up?", "Frustrated")
     end
     if GetQuestStep (Spawn, EtchingTool)==2 then 
-    AddConversationOption(conversation, "Here is your new etching tool, but Boggi is 'indisposed'.", "Delivery3")
+    Dialog.AddOption("I have your etching tool.  Your apprentice seemed to have dozed off.'.", "Delivery3")
     end
-	PlayFlavor(NPC, "voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub.mp3", "", "happy", 293364037, 660411644, Spawn)
-	AddConversationOption(conversation, "I'm just browsing. Thank you.")
-	StartConversation(conversation, NPC, Spawn, "Welcome to my shop adventurer! My orders seem to be backing up, but I can help you out if you are looking to make a quick purchase!")
+        Dialog.AddOption("I'm just browsing. Thank you.")	
+        Dialog.Start()
 end
+end
+
 
 function OrderUp(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub004.mp3", "", "thank", 1054889156, 2742619000, Spawn)
-    AddConversationOption(conversation, "Is it available to give to him?", "Delivery")
-	StartConversation(conversation, NPC, Spawn, "FROOAK! Yes! I etched the mark he wished into the blade! I'm not much for ornimental marks, I prefer to leave the weapons I make in their pure form. One that calls to mind is that the weapon is an extension of the wielder's ability.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Froooaak!  Yes, I etched the mark he wished into the blade.  I'm not much for ornamental marks.  I prefer leaving the weapons I make in their pure form -- one that calls to mind  that the weapon is only an extension of the wielder's ability.")
+	Dialog.AddVoiceover("voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub004.mp3",1054889156, 2742619000)
+ 	PlayFlavor(NPC, "", "", "thanks", 0,0 , Spawn)
+   Dialog.AddOption("Understandable. May I take the sword to him?", "Delivery")
+   Dialog.Start()
 end
 
 function Delivery(NPC, Spawn)
+    SetStepComplete(Spawn, SwordPickup, 1)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub005.mp3", "", "shrug", 2831616586, 2870409180, Spawn)
-    AddConversationOption(conversation, "I'll take it to him right away", "Delivery2")
-	StartConversation(conversation, NPC, Spawn, "I don't see why not. Here it is! I hope he is pleased with the work. Though, I understand the elven smiths are surpassed by none in this craft. He did come to me! I could only assume he wanted my craftsmanship.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I don't see why not.  Here it is ... I hope he is pleased with the work. Though I understand the elven smiths are surpassed by none in this craft; he did come to me.  I can only assume that he specifically wanted my craftsmanship. ")
+	Dialog.AddVoiceover("voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub005.mp3",2831616586, 2870409180)
+ 	PlayFlavor(NPC, "", "", "shrug", 0,0 , Spawn)
+   Dialog.AddOption("I am certain it will be fine.")
+   Dialog.Start()
 end
 
 function Frustrated(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub000.mp3", "", "pout", 3893983417, 1741346046, Spawn)
-    AddConversationOption(conversation, "I can search for your apprentice, Boggi", "Boggi")
-    AddConversationOption(conversation, "You'll need to find him on your own time. Sorry.")
-	StartConversation(conversation, NPC, Spawn, "Alack! The high elves all wish special symbols etched into their blades! The problem is I broke'th my etching tool from overuse, and my lazy apprentice, Boggi, has not returned with my new tool! If thou hath time, could'st thou find'th him and tell him to get back here right away?")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Alack!  The high elves within this village all wisheth special symbols etched into their blades.  The problem is I broketh mine etching tool from overuse and mine lazy apprentice, Boggi, hath not returned with mine new tool.  If thou hath time, couldst thou findeth him and tell him to get back here right away?")
+	Dialog.AddVoiceover("voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub000.mp3",3893983417, 1741346046)
+ 	PlayFlavor(NPC, "", "", "pout", 0,0 , Spawn)
+   Dialog.AddOption("I`m not too busy at the moment.  I`ll see if I can find him for you.", "Boggi")
+   Dialog.AddOption("Best of luck with all that.")
+   Dialog.Start()
 end
 
 function Delivery3(NPC, Spawn)
+    SetStepComplete(Spawn,EtchingTool , 2)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	PlayFlavor(NPC, "voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub002.mp3", "", "clap", 3509055396, 574937181, Spawn)
-    AddConversationOption(conversation, "Thank you.", "Completed")
-	StartConversation(conversation, NPC, Spawn, "Great! Now I can'st complete these orders. Privy, accept these meger coins in payment for thyn effort.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Great!  Now I canst complete these orders.  Prithee, accept these meager coins in payment for thine effort.")
+	Dialog.AddVoiceover("voiceover/english/armsdealer_froptub/qey_village04/armsdealerfroptub002.mp3",3509055396, 574937181)
+ 	PlayFlavor(NPC, "", "", "thanks", 0,0 , Spawn)
+   Dialog.AddOption("Thank you for the payment.  If I ever need a new weapon I know where to come.")
+   Dialog.Start()
 end
 
 

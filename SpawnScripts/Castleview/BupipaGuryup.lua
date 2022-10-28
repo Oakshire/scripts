@@ -104,43 +104,23 @@ end
  function Voice(NPC, Spawn)
     FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
-    AddConversationOption(conversation, "I should be able to do that for you.", "Sing")
-    AddConversationOption(conversation, "Your froak doesn't bring all the boys to the terrace anymore?", "Sing")
+    AddConversationOption(conversation, "I should be able to do that for you.", "QuestBegin")
+    AddConversationOption(conversation, "Perhaps another time then.")
     StartConversation(conversation, NPC, Spawn, "Why, thank you very much!  I couldst use thy help if thou art so willing.  I need an order picked up from some gnome tinkerers, but I really need to stay and practice.  Wouldst thou be so kind to get the item for me?")
-  --StartConversation(conversation, NPC, Spawn, "You see... my voice is not what it once was. I use to sing across our bog for the whole world to hear. Revelers flocked to my seranade!")
 end   
-
- function Sing(NPC, Spawn)
-              FaceTarget(NPC, Spawn)
-  conversation = CreateConversation()
-    PlayFlavor(NPC, "","","no",0,0,Spawn)
-  AddConversationOption(conversation, "I hope it isn`t too heavy.", "QuestBegin")
-    StartConversation(conversation, NPC, Spawn, "Many thanks unto thee.  Here is the bill of sale for the order.  Just take this to Bizrinn Clamorclang in the Baubbleshire and he'll give thou the order.  I cannot wait for it to get here!")
---  StartConversation(conversation, NPC, Spawn, "Unfortunately, no... but a gnome came to me the other day and offered a new device. An Amplificator! He promised it would allow the whole city to love my music! Ahhh, how I miss the flocking adulation.")
-end   
-
---[[ This was Fabricated until actual dialgue was found
- function QuestAlmost(NPC, Spawn)
-              FaceTarget(NPC, Spawn)
-  conversation = CreateConversation()
-    PlayFlavor(NPC, "","","agree",0,0,Spawn)
-  AddConversationOption(conversation, "I'll pick it up for you.", "QuestBegin")
-  StartConversation(conversation, NPC, Spawn, "Why, yes! I've already paid for the new device... would you pick it up for me from Bizrinn Clamorclang in the Baubbleshire? I have the recipt for it right here.")
-end   
-]]--
 
 function QuestBegin (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, PickUp)
+    OfferQuest(NPC, Spawn, PickUp)
 end
 
  function PickedUp(NPC, Spawn)
-  conversation = CreateConversation()
-  AddConversationOption(conversation, "Be sure to try it out!", "Reward")
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "Be sure to try it out!", "Reward")
     AddConversationOption(conversation, "Good, that gives me enough time to get to a good distance away.", "Reward")
     AddConversationOption(conversation, "Oh, I'm sorry. This is the wrong device.")
     PlayFlavor(NPC, "","","confused",0,0,Spawn)
-  StartConversation(conversation, NPC, Spawn, "Bravo!  Here is thy payment I promised thee.  Hmm ... it lookest like it will take a while to set up.")
+    StartConversation(conversation, NPC, Spawn, "Bravo!  Here is thy payment I promised thee.  Hmm ... it lookest like it will take a while to set up.")
 end   
 
  function DuetOffer(NPC, Spawn)

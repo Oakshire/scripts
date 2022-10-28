@@ -19,10 +19,10 @@ function InRange(NPC, Spawn)
 	if GetFactionAmount(Spawn,11) <0 then
      	FaceTarget(NPC, Spawn)
         FactionChecking(NPC, Spawn, faction)
-        else       
-	if math.random(0, 100) <= 25 then
-		Talk(NPC, Spawn)
-	end
+--        else       
+--	if math.random(0, 100) <= 25 then
+--		Talk(NPC, Spawn)
+--	end
 end
 end
 

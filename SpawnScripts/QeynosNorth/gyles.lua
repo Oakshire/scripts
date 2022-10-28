@@ -5,32 +5,72 @@
 	Script Date		:	04/15/2020 02:45:21 PM
 	Script Notes	:	Locations collected from Live
 --]]
-
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
+
 function spawn(NPC)
+	AddTimer(NPC, 1900, "follow_Icebear")
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
-	waypoints(NPC)
-end
-
-function respawn(NPC)
-	spawn(NPC)
-end
-
-
-function InRange(NPC, Spawn)
-		CheckFaction(NPC, Spawn, "Qeynos")
-	end
-
-
-function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-		GenericGuardHail(NPC, Spawn)
-	end
+    if GetFactionAmount(Spawn,11)<0 then
+        else
+    FaceTarget(NPC, Spawn)
+    GenericGuardHail(NPC,Spawn)
+    end
+end
 
+function respawn(NPC)
+spawn(NPC)
+end
+
+
+function follow_Icebear(NPC)
+	local zone = GetZone(NPC)
+	local Icebear_location = GetSpawnByLocationID(zone, 379862)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Icebear_location)
+    local leaderY = GetY(Icebear_location)
+    local leaderZ = GetZ(Icebear_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Icebear_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 379841 then --Illervo
+		if GetDistance(NPC, Icebear_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		end 
+	elseif sli == 379868 then --Milton
+		if GetDistance(NPC, Icebear_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY, 3+ leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY, 3+ leaderZ, speed)
+		end 
+	elseif sli == 379822 then --Gyles
+		if GetDistance(NPC, Icebear_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, 2+ leaderX, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, 2 + leaderX, leaderY, leaderZ, speed)
+		end 
+		end
+    end
+        speed = 2
+	AddTimer(NPC, 2000, "follow_Icebear")	
+end
+
+--[[ICEBEAR PATROL
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 337.5, -21.62, -17.84, 2, 0)
 	MovementLoopAddLocation(NPC, 327.95, -21.47, -18.3, 2, 0)
@@ -53,5 +93,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 369.04, -20.37, -19.09, 2, 0)
 	MovementLoopAddLocation(NPC, 338.76, -21.66, -18.13, 2, 0)
 end
+]]--
+
 
 

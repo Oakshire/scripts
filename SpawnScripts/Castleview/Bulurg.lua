@@ -5,6 +5,7 @@
 	Script Date	: 2022.01.25
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 --dofile("SpawnScripts/Generic/GenericBartenderVoiceOvers.lua")
 
@@ -12,7 +13,7 @@ local Water = 5456
 
 function spawn(NPC)
 ProvidesQuest(NPC,Water)
-SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 9, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -57,56 +58,47 @@ end
 end
 
     function QuestStart(NPC, Spawn, conversation)
-    FaceTarget(NPC,Spawn)
-    if not HasQuest (Spawn, Water) and not HasCompletedQuest(Spawn, Water) then
-         conversation = CreateConversation()
-        PlayFlavor(NPC, "voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg000.mp3", "", "hello", 1246934802, 3942849521, Spawn)
-        AddConversationOption(conversation, "Have anything... less swampy?", "Swampy")
-        AddConversationOption(conversation, "Do you think elves enjoy swamp water?", "Swampy")
-        AddConversationOption(conversation, "I'm good for now, thanks.")
-        StartConversation(conversation, NPC, Spawn, "Good to see you found my Hole-in-the-Wall Tavern! Taste my brews made with real swamp water, now with more flies!")
-       elseif HasQuest (Spawn, Water) then
-         conversation = CreateConversation()
-        if GetQuestStep(Spawn, Water) == 2 then
-        AddConversationOption(conversation, "Here is a full jug of water from Oakmyst falls.", "FullJug")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Good to see you found my Hole-in-the-Wall Tavern! Taste my brews made with real swamp water, now with more flies!")
+	Dialog.AddVoiceover("voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg000.mp3", 1246934802, 3942849521)
+        if not HasQuest (Spawn, Water) and not HasCompletedQuest(Spawn, Water) then    
+        Dialog.AddOption( "Have anything... less swampy?", "Swampy")
+        Dialog.AddOption( "Do the locals drink your bog spirits?", "Swampy")
+        end 
+        if HasQuest (Spawn, Water) and GetQuestStep(Spawn, Water) == 2 then
+        Dialog.AddOption("Here is a full jug of water from the Oakmyst falls.", "FullJug")
         end
-    AddConversationOption(conversation, "I'm still looking.")
-    StartConversation(conversation, NPC, Spawn, "How goes searching for that water? The elves keep their nose too high amongst my normal libations.")
-        end
+        Dialog.AddOption("I'm good for now, thanks.")	
+        Dialog.Start()
     end
+    
 
 
  function Swampy(NPC, Spawn)
-    FaceTarget(NPC,Spawn)
-  conversation = CreateConversation()
-  PlayFlavor(NPC, "voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg001.mp3", "", "ponder", 3151049449,2885168239, Spawn)
-  AddConversationOption(conversation, "I could fetch some water for you.", "GetWater")
-  AddConversationOption(conversation, "Unfortunately, I don't have time to help.")
-  StartConversation(conversation, NPC, Spawn, "My fellow frogloks woulds't drink any other libation. Alas, I confess, the high elf pallet is most more finicky to such a natural intoxicant. I have been experimenting with a drink they perhaps prefer, but I need'st a jug of fall water for the first batch.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Mine fellow Frogloks wouldst not drink any other libation.  Alas, I confess, the high elf palate is most finicky for such a natural intoxication.  I'th been experimenting with a drink they may perhaps prefer, but I needst a jug of fall water for the first batch.")
+	Dialog.AddVoiceover("voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg001.mp3",3151049449,2885168239)
+ 	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
+   Dialog.AddOption("I could fetch some water for you.", "TakeJug")
+   Dialog.AddOption("Unfortunately, I don't have time to help.")
+   Dialog.Start()
 end   
 
- function GetWater(NPC, Spawn)
-    FaceTarget(NPC,Spawn)
-     PlayFlavor(NPC, "voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg002.mp3", "", "", 2371403827,3750341640, Spawn)
-  conversation = CreateConversation()
-  AddConversationOption(conversation, "Alright, I'll take the jug and head that way.", "TakeJug")
-  AddConversationOption(conversation, "I prefer not to get wet. Sorry.")
-  StartConversation(conversation, NPC, Spawn, "That would'st be most kind. Take this jug and then venture into the Oakmyst Forest. This is where thou will find a waterfall. Enter the waterfall and fill thyne jug with this fall water before touch'th the pond water.")
-end   
 
  function FullJug(NPC, Spawn)
-    FaceTarget(NPC,Spawn)
-  conversation = CreateConversation()
-   PlayFlavor(NPC, "voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg003.mp3", "", "happy", 2084504638, 1586575604, Spawn)
-  AddConversationOption(conversation, "Glad I could help.", "Reward")
-  StartConversation(conversation, NPC, Spawn, "Oh! Excellent work! Now I can create Tunare's Finest. It is taken from a recipe I purchased from a traveling merchant. With such a noble name, I cannot forsee the high elves resisting its sweet nectar.")
-end   
+    SetStepComplete(Spawn, Water, 2)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Oh! Excellent work! Now I can create Tunare's Finest. It is taken from a recipe I purchased from a traveling merchant. With such a noble name, I cannot forsee the high elves resisting its sweet nectar.")
+	Dialog.AddVoiceover("voiceover/english/bartender_bulurg/qey_village04/bartenderbulurg003.mp3",2084504638, 1586575604)
+ 	PlayFlavor(NPC, "", "", "happy", 0,0 , Spawn)
+   Dialog.AddOption("Glad I could help.")
+   Dialog.Start()
+   end   
 
 function TakeJug (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, Water)
+    OfferQuest(NPC, Spawn, Water)
 end
-
-function Reward(NPC, Spawn)
-    	SetStepComplete(Spawn, Water, 2)
-    end

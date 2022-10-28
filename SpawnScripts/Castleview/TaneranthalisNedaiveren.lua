@@ -28,7 +28,7 @@ function InRange (NPC,Spawn)
         local choice = math.random(1, 3)
         if choice == 1 then
             FaceTarget(NPC,Spawn)
-	        PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+	       	PlayFlavor(NPC, "voiceover/english/taneranthalis_nedaiveren/qey_village04/100_park_taneranthalis_callout_b8c9bef.mp3", "Please be at ease. Though we stand outside the great gates of the city proper, you are as safe in Castleview as anywhere in Norrath!", "agree", 4095321012, 2558651917, Spawn)
 	   elseif choice == 2 then
 	        FaceTarget(NPC,Spawn)
 	       	PlayFlavor(NPC, "voiceover/english/taneranthalis_nedaiveren/qey_village04/100_park_taneranthalis_callout_b8c9bef.mp3", "Please be at ease. Though we stand outside the great gates of the city proper, you are as safe in Castleview as anywhere in Norrath!", "agree", 4095321012, 2558651917, Spawn)

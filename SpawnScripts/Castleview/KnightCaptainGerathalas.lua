@@ -5,13 +5,13 @@
 	Script Date	: 2022.01.27
 	Script Notes	: 
 --]]
-
+require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
 
 local Rats = 5460
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 ProvidesQuest(NPC, Rats)
 end
 
@@ -19,7 +19,8 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn) --Quest Callout
-if math.random(1, 100) <= 60 then
+if MakeRandomInt(1, 100) <= 70 then
+    if GetFactionAmount(Spawn,11)>0 then
     if GetLevel(Spawn) <5 then
             FaceTarget(NPC, Spawn)
             PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/100_guard_captain_gerathalas_multhail1_a85f56d8.mp3", "Good day adventurer! I hope you are staying safe on your arduous journey. Please move on. I must'nt bother you with the unpleasant mission at hand.", "attention", 4040681686, 1885342319, Spawn)
@@ -41,7 +42,7 @@ if math.random(1, 100) <= 60 then
     end
     end
 end
-
+end
 
 --[[function dawn(NPC,Spawn)  -- Playing with leaving during the night and returning in the day. Faaaaailure.
     if not IsNight(GetZone(NPC))  then
@@ -79,39 +80,31 @@ function hailed(NPC, Spawn)
             FaceTarget(NPC, Spawn)
             PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/100_guard_captain_gerathalas_multhail1_a85f56d8.mp3", "Good day adventurer! I hope you are staying safe on your arduous journey. Please move on. I must'nt bother you with the unpleasant mission at hand.", "attention", 4040681686, 1885342319, Spawn)
     else
-    	FaceTarget(NPC, Spawn)
-
-        PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas.mp3", "", "", 3830137539, 3865597694, Spawn)
-        conversation = CreateConversation()  
+     	FaceTarget(NPC, Spawn)
+    	Dialog.New(NPC, Spawn)
+    	Dialog.AddDialog("Good day to you, adventurer.  I hope you have been keeping yourself safe.")
+    	Dialog.AddVoiceover("voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas.mp3", 3830137539, 3865597694)
+ 	    PlayFlavor(NPC, "", "", "attention", 0,0 , Spawn)
 	    if GetQuestStep(Spawn, Rats)==2 then
-	    AddConversationOption(conversation, "I've reduced the number of putrid vermin in the catacombs.", "DoneRats")
+	    Dialog.AddOption("I have your tails right here.  I told you I could handle it.", "DoneRats")
 	    end 
         if not HasQuest(Spawn, Rats) and not HasCompletedQuest(Spawn, Rats) then	    
-        AddConversationOption(conversation, "I can provide assistance if needed.", "ICan")
+        Dialog.AddOption("Yes, I can take care of myself quite well.", "ICan")
         end
-	    AddConversationOption(conversation, "Good day to you too!")
-	    StartConversation(conversation, NPC, Spawn, "Good day to you, adventurer.  I hope you have been keeping yourself safe.")
-    end   
+        Dialog.AddOption("Good day to you too!")	
+        Dialog.Start()
+        end   
 end
 
 function ICan(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I can deal with whatever you need exterminating.", "Exterminate")
-    AddConversationOption(conversation, "I'd rather not get my hands dirty. Sorry.")
-    StartConversation(conversation, NPC, Spawn, "Oh, you can, can you? Some vermin are eating the food supply. Can you handle... an extermination mission?")
- 	PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas000.mp3", "", "ponder", 261740052,1158019812 , Spawn)
-
-end
-
-
-function Exterminate(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I'll deal with them.", "QuestStart")
-    AddConversationOption(conversation, "In the catacombs? I'll stay up here thank you very much!")
-    StartConversation(conversation, NPC, Spawn, "Good, good! The vermin live in the catacombs. Bring me back some of those putrid rat's tails and I'll reward you with a piece of armor.")
- 	PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas001.mp3", "", "agree", 1809197225,35106101 , Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Oh, you can, can you? Some vermin are eating the food supply. Can you handle... an extermination mission?")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas000.mp3",261740052,1158019812)
+ 	PlayFlavor(NPC, "", "", "sniff", 0,0 , Spawn)
+   Dialog.AddOption("I'm not scared of a few little mice.  I'll take care of the problem for you.", "QuestStart")
+   Dialog.AddOption("I'd rather not get my hands THAT dirty. Sorry.")
+   Dialog.Start()
 end
 
 function QuestStart (NPC, Spawn)
@@ -120,13 +113,12 @@ function QuestStart (NPC, Spawn)
 end
 
 function DoneRats(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "Thank you.", "QuestDone")
-    StartConversation(conversation, NPC, Spawn, "Ah, you did. These look like they came off some big vermin. No easy pray for you, I see. Here is the piece of armor I promised you. May it protect you against a more dangerous foe.")
- 	PlayFlavor(NPC, "voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas002.mp3", "", "agree", 2969029986,2406700241 , Spawn)
-end
-
-function QuestDone(NPC, Spawn)
     SetStepComplete(Spawn, Rats, 2)
-   end
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Aye, you did!  These look like they came off some big vermin.  No easy prey for you I see.  Here is the piece of armor I promised you.  May it help protect you against more dangerous foes.")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas002.mp3",2969029986,2406700241)
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+   Dialog.AddOption("Thank you.  It should come in very handy.")
+   Dialog.Start()
+end

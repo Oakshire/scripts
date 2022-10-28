@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC, 1900, "follow_Oakheart")
 SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
@@ -38,6 +38,43 @@ local Edwar = GetSpawn(NPC,2070025)
     end	    
 end
 
+
+
+function follow_Oakheart(NPC)
+	local zone = GetZone(NPC)
+	local Oakheart_location = GetSpawnByLocationID(zone, 413212)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Oakheart_location)
+    local leaderY = GetY(Oakheart_location)
+    local leaderZ = GetZ(Oakheart_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Oakheart_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 413162 then --Ly`stan
+		if GetDistance(NPC, Oakheart_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, 1+ leaderX , leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, 1+ leaderX , leaderY, leaderZ, speed)
+		end 
+	elseif sli == 413011 then --Edward
+		if GetDistance(NPC, Oakheart_location) >= 8 then
+			-- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. "")
+			-- Say(NPC, "My location is: " .. GetX(NPC) .. "")
+			speed = 5
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX, leaderY, 2+ leaderZ, speed)
+		end 
+        end
+    end
+        speed = 2
+	AddTimer(NPC, 2000, "follow_Oakheart")	
+end
+
+--[[OAKHEART PATROL
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 651.62, -18.52, -216.74, 2, 0)
 	MovementLoopAddLocation(NPC, 651.2, -19.11, -228.47, 2, 0)
@@ -90,10 +127,10 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 650.17, -18.2, -211.09, 2, 0)
 	MovementLoopAddLocation(NPC, 652.65, -18.09, -211.48, 2, 0)
 end
+]]--
 
 
-
---[[
+--[[OLD DEVNOOB PATROL
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 643.88, -19.24, -320.76, 2, math.random(0,8))
 	MovementLoopAddLocation(NPC, 644.69, -13.13, -364.87, 2, math.random(0,8))

@@ -5,6 +5,8 @@
 	Script Date	: 2022.01.20
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Quest = 238
@@ -44,52 +46,59 @@ function hailed(NPC, Spawn)
         if GetFactionAmount(Spawn,11) <0 then
         FactionChecking(NPC, Spawn, faction)
         else  
-    local con = CreateConversation()
+
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Come closer and watch as I make lights dance and coins disapear into thin air!")
+	Dialog.AddVoiceover("voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen.mp3", 2289708399, 1034577130)
     if Timer == false then
-    FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen.mp3", "", "orate", 2289708399, 1034577130, Spawn)
-    AddConversationOption(con, "I would love a performance. [ 2 Silver ]", "Perforamnce")    
+    PlayFlavor(NPC, "", "", "orate",0,0, Spawn)
+    Dialog.AddOption("I would love a performance. [ 2 Silver ]", "Perforamnce")    
     else
-    PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen.mp3", "", "", 2289708399, 1034577130, Spawn)
-    end    
+    end
     if not HasQuest (Spawn, Quest) and not HasCompletedQuest (Spawn, Quest) then
-    AddConversationOption(con, "You must be quite the entertainer. Need any help?", "NeedHelp")
+    Dialog.AddOption("That's a pretty good trick.  Does it work to attract customers?", "GiveQuest")
     end
     if GetQuestStep(Spawn, Quest)==2 then
-    AddConversationOption(con, "I told Valean you wouldn't be able to make it to dinner tonight.", "NoDinner")
+    Dialog.AddOption("I let Valean know you won't be able to make it.  He took it well.", "NoDinner")
     end
     if GetQuestStep(Spawn, Book)==1 then
-    AddConversationOption(con, "Bleemeb tasked me with retrieving the book you borrowed.", "NoBook")
+    Dialog.AddOption("I was sent to get the Book of Arbos.", "NoBook")
     end
-    AddConversationOption(con, "I'll keep my coins, thank you.")
-    StartConversation(con, NPC, Spawn, "Come closer and watch as I make lights dance and coins disapear into thin air! ")
+	Dialog.AddOption("I hope the drinks inside are as good as the entertainment.")
+	Dialog.Start()
 end
 end
 
 function NoBook(NPC,Spawn)
-    FaceTarget(NPC, Spawn)
-    		PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen002.mp3", "", "ponder", 386324181, 1757469505, Spawn)
-    local con = CreateConversation()
-    AddConversationOption(con, "Alright, I'll check at the inn. Thank you.", "BookUpdate")
-    StartConversation(con, NPC, Spawn, "The book on the great tree, Arbos? I'm afraid I left the book somewhere at the local inn. You'll have to search for it there.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("The book on the great tree Arbos? I am afraid I left the book somewhere in the local inn. You will have to search for it there.")
+	Dialog.AddVoiceover("voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen002.mp3", 386324181, 1757469505)
+ 	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
+    Dialog.AddOption( "Alright, I'll check at the inn. Thank you.", "BookUpdate")
+	Dialog.Start()
 end
 
 function NeedHelp(NPC,Spawn)
-    FaceTarget(NPC, Spawn)
-    		PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen000.mp3", "", "agree", 3630263809, 612433831, Spawn)
-    local con = CreateConversation()
-    AddConversationOption(con, "I'll deliver the message for you.", "GiveQuest")
-    AddConversationOption(con, "I'm busy. Sorry.")
-    StartConversation(con, NPC, Spawn, "Customers love my magic tricks! Actually, a little too much. Bulurg asked me to work late tonight. Could you ask Valean at the inn and let me know I can't dine with him tonight? I appreciate your help.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Customers love my magic tricks! Actually, a little too much. Bulurg asked me to work late tonight. Could you ask Valean at the inn and let me know I can't dine with him tonight? I appreciate your help.")
+	Dialog.AddVoiceover("voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen000.mp3", 3630263809, 612433831)
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+    Dialog.AddOption( "I will let Valean know that you can't make it.", "GiveQuest")
+	Dialog.Start()
 end
 
 function NoDinner(NPC,Spawn)
-    FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen001.mp3", "", "thank", 1133009328, 1111624722, Spawn)
     SetStepComplete(Spawn, Quest, 2)
-    local con = CreateConversation()
-    AddConversationOption(con, "I just might.")
-    StartConversation(con, NPC, Spawn, "Thank you for telling him. If you have a moment, step inside and try one of Bulurg's special brews.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Thank you for telling him. If you have a moment, step inside and try one of Bulurg's special brews.")
+	Dialog.AddVoiceover("voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen001.mp3", 1133009328, 1111624722)
+ 	PlayFlavor(NPC, "", "", "curtsey", 0,0 , Spawn)
+    Dialog.AddOption( "Yes, I think I'll try one of her drinks.")
+	Dialog.Start()
 end
 
 function BookUpdate(NPC,Spawn)
@@ -104,6 +113,7 @@ function Perforamnce(NPC,Spawn)
         if Timer == false then 
             Timer = true
     RemoveCoin(Spawn, 200)
+    SendMessage(Spawn,"You give Entertainer Faeadaen 2 silver.")
     FaceTarget(NPC, Spawn)
     		PlayFlavor(NPC, "", "With pleasure.", "nod", 0, 0, Spawn)
     	
@@ -148,12 +158,4 @@ end
 
 function GiveQuest(NPC, Spawn)
 	OfferQuest(NPC, Spawn, Quest)
-end
-
-function AcceptedQuest(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "", "", "thank", 0, 0, Spawn)
-	local con = CreateConversation()
-	AddConversationOption(con, "My pleasure.")
-	StartConversation(con, NPC, Spawn, "Oh, thank you! I just can't break away to deliver it myself.")
 end

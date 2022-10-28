@@ -17,8 +17,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Good, good! The vermin live in the catacombs. Bring me back some of those putrid rat's tails and I'll reward you with a piece of armor.")
+	Dialog.AddVoiceover("voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas001.mp3",1809197225,35106101)
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+   Dialog.AddOption("Great, I'll be right back to prove how well I can take care of myself.")
+   Dialog.Start()
+  end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

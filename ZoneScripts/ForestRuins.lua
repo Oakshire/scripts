@@ -53,7 +53,7 @@ function dawn(zone)
 		SendPopUpMessage(player, "As dawn breaks, the undead retreat to the shadows as the Blackfurl forces flood the castle.", 255, 0, 0)
 		SendMessage(player, "As dawn breaks, the undead retreat to the shadows as the Blackfurl forces flood the castle.")
 	end
-    	if GetSpawnLocationID (zone, 133772890) ~= nil then
+    	if GetSpawnByLocationID (zone, 133772890) ~= nil then
 	    Despawn (NPC, 133772890)
 end
 end

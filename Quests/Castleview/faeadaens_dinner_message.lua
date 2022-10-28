@@ -9,6 +9,7 @@
     Preceded by: None
     Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
     AddQuestStepChat(Quest, 1, "I must speak with Innkeeper Valean.", 1, "I need to deliver Faeadaen's message to Innkeeper Valean.", 11, 2360024)
@@ -18,7 +19,13 @@ end
 
 
 function Accepted(Quest, QuestGiver, Player)
-
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Customers love my magic tricks! Actually, a little too much. Bulurg asked me to work late tonight. Could you ask Valean at the inn and let me know I can't dine with him tonight? I appreciate your help.")
+	Dialog.AddVoiceover("voiceover/english/entertainer_faeadaen/qey_village04/entertainerfaeadaen000.mp3", 3630263809, 612433831)
+ 	PlayFlavor(QuestGiver, "", "", "agree", 0,0 , Player)
+    Dialog.AddOption( "I will let Valean know that you can't make it.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

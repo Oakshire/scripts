@@ -27,10 +27,11 @@ function followsentry(NPC)
         local leaderY = GetY(sentry_location)
         local leaderZ = GetZ(sentry_location)
         local speed = 2
-    
+    if  sentry_location ~=nil and not IsInCombat(NPC) then   
 	if GetDistance(NPC, sentry_location) >= 2 then
 		speed = 2
                 MoveToLocation(NPC, leaderX, leaderY, leaderZ, speed)
 	end 
+	end
 	AddTimer(NPC, 1500, "followsentry")	
 end

@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC,2000,"waypoints")
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
@@ -28,7 +28,41 @@ end
 function respawn(NPC)
 		spawn(NPC)
 	end
-	
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, 456.43, -21.01, 215.59, 2, 0)
+	MovementLoopAddLocation(NPC, 456.63, -21.75, 229.75, 2, 0)
+	MovementLoopAddLocation(NPC, 452.71, -21.92, 243.31, 2, 0)
+	MovementLoopAddLocation(NPC, 447.6, -21.83, 254.94, 2, 6)
+	MovementLoopAddLocation(NPC, 450.17, -21.77, 248.25, 2, 0)
+	MovementLoopAddLocation(NPC, 457.59, -21.63, 228.65, 2, 0)
+	MovementLoopAddLocation(NPC, 472.52, -21.05, 193.91, 2, 0)
+	MovementLoopAddLocation(NPC, 489.21, -13.79, 154.34, 2, 0)
+	MovementLoopAddLocation(NPC, 486.95, -11.61, 147.57, 2, 6)
+	MovementLoopAddLocation(NPC, 488.3, -13.58, 153.83, 2, 0)
+	MovementLoopAddLocation(NPC, 474.7, -20.59, 187.88, 2, 0)
+	MovementLoopAddLocation(NPC, 473.42, -20.94, 192.16, 2, 0)
+	MovementLoopAddLocation(NPC, 476.75, -20.94, 195.61, 2, 0)
+	MovementLoopAddLocation(NPC, 514.13, -15.61, 206.43, 2, 0)
+	MovementLoopAddLocation(NPC, 535.08, -15.41, 209.16, 2, 0)
+	MovementLoopAddLocation(NPC, 571.87, -15.69, 207.42, 2, 0)
+	MovementLoopAddLocation(NPC, 606.84, -15.73, 203.11, 2, 0)
+	MovementLoopAddLocation(NPC, 650.97, -16.96, 191.6, 2, 0)
+	MovementLoopAddLocation(NPC, 680.39, -19.44, 185.63, 2, 6)
+	MovementLoopAddLocation(NPC, 655.94, -17.33, 190.57, 2, 0)
+	MovementLoopAddLocation(NPC, 595.2, -15.89, 204.5, 2, 0)
+	MovementLoopAddLocation(NPC, 558.82, -15.42, 208.86, 2, 0)
+	MovementLoopAddLocation(NPC, 506.33, -15.57, 205.78, 2, 0)
+	MovementLoopAddLocation(NPC, 492.54, -17.13, 202.42, 2, 0)
+	MovementLoopAddLocation(NPC, 473.19, -21.14, 195.01, 2, 0)
+	MovementLoopAddLocation(NPC, 470.75, -21.14, 196.68, 2, 0)
+	MovementLoopAddLocation(NPC, 463.51, -21.2, 209.14, 2, 0)
+end
+
+
+
+
+--[[Attempt1 of Patrol (too broad)
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 454.74, -20.93, 213.81, 2, 0)
 	MovementLoopAddLocation(NPC, 466.9, -21.19, 202.46, 2, 0)
@@ -90,8 +124,8 @@ end
 
 
 
---[[
-function waypoints(NPC)
+
+function waypoints(NPC) DEVNOOB PATROL
 	MovementLoopAddLocation(NPC, 698.34, -19.9, 131.15, 2, 0)
 	MovementLoopAddLocation(NPC, 677.48, -21.02, 142.28, 2, 0)
 	MovementLoopAddLocation(NPC, 680.55, -20.76, 155.63, 2, 0)

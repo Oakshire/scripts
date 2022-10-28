@@ -5,13 +5,13 @@
 	Script Date	: 2022.01.15
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 local Books = 5453
 local Delivery = 5443
 local Dinner = 238
 local Reservation = 5452
 local LostBook = 5468
---dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
 
 function spawn(NPC)
 ProvidesQuest(NPC,Books)
@@ -29,49 +29,48 @@ function InRange (NPC,Spawn)
         PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/100_innkeeper_valean_callout_9071232c.mp3", "Welcome to the Bed and Book Inn. A fine establishment for recuperating a body and expanding a mind.", "hello", 1080804291, 518202081, Spawn)
         end
     else
-     if math.random(1, 100) <= 50 then
-	    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+     if math.random(1, 100) <= 60 then
+	local choice = MakeRandomInt(1,5)
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/optional2/highelf_eco_good_1/ft/service/innkeeper/highelf_innkeeper_service_good_1_hail_gm_ff8f2e0b.mp3", "Is there something I can get for you.  Do you need extra towels or a new set of sheets?", "shrug", 3357488044, 3163163637, Spawn, 0)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/100_innkeeper_valean_callout_9071232c.mp3", "Welcome to the Bed and Book Inn, a fine establishment for recuperating the body and expanding the mind.  ", "bow", 1080804291, 518202081, Spawn, 0)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/optional2/highelf_eco_good_1/ft/service/innkeeper/highelf_innkeeper_service_good_1_hail_gm_df81b278.mp3", "Will you be needing a room for the evening?", "hello", 3897504580, 3514026923, Spawn, 0)
+	elseif choice == 4 then
+		PlayFlavor(NPC, "voiceover/english/optional2/highelf_eco_good_1/ft/service/innkeeper/highelf_innkeeper_service_good_1_hail_gm_f9f93f86.mp3", "Many adventurers fresh from the road, head straight in to have a hot bath.  Shall I prepare one for you?", "wink", 2107402357, 2798748961, Spawn, 0)    end
     end
     end
 end
         --
     
 function hailed(NPC, Spawn)
-    --GenericHail(NPC, Spawn)
---[[    local choice = math.random(1,3)
-    if choice == 1 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1012.mp3", "", "hello", 0, 0, Spawn)
-    elseif choice==2 then
-    PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1012.mp3", "", "bow", 0, 0, Spawn)
-    else]]--
-
-
-
-    PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean.mp3", "", "bow",3631971111,2641145010, Spawn)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Welcome to the Bed and Book Inn. A fine establishment for recuperating a body and expanding a mind. We have many fine rooms available. Interested, traveler?")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean.mp3", 3631971111,2641145010)
+    PlayFlavor(NPC, "", "", "bow",0,0, Spawn)
 	if GetQuestStep (Spawn, Delivery) == 1 then 
-	AddConversationOption(conversation, "Ganla Dindlenod wants you to take a look at this book.", "BookDelivery")
+    Dialog.AddOption("Ganla Dindlenod wants you to take a look at this book.", "BookDelivery")
 	end
 	if GetQuestStep (Spawn, Dinner) == 1 then 
-	AddConversationOption(conversation, "Faeadaen says she must work late tonight and can't make it back for dinner.", "NoDinner")
+	Dialog.AddOption("Faeadaen says she must work late tonight and can't make it back for dinner.", "NoDinner")
 	end
 	if GetQuestStep (Spawn, Reservation) == 1 then 
-	AddConversationOption(conversation, "I need to make a room reservation for Taneran.", "KnowTaneran")
+	Dialog.AddOption("I need to make a room reservation for Taneran.", "KnowTaneran")
 	end
 	if not HasQuest(Spawn,Books) and not HasCompletedQuest(Spawn,Books) then
-	AddConversationOption(conversation, "You have a great number of books in your collection.", "BookCollection")
+	Dialog.AddOption("You have a great number of books in your collection.", "BookCollection")
 	end
 	if GetQuestStep (Spawn, Books) == 2 then 
-	AddConversationOption(conversation, "I found your books being sold in the catacombs.", "FoundBooks")
+	Dialog.AddOption("I found your books being sold in the catacombs.", "FoundBooks")
 	end
 	if GetQuestStep (Spawn, LostBook) == 2 then 
-	AddConversationOption(conversation, "Faeadaen mentioned she left a book of Arbos here. Have you seen it?", "Arbos")
+	Dialog.AddOption("Faeadaen mentioned she left a book of Arbos here. Have you seen it?", "Arbos")
 	end
-	AddConversationOption(conversation, "I would like to know about a room.", "dlg_2_1")
-	AddConversationOption(conversation, "No thanks.")
-	StartConversation(conversation, NPC, Spawn, "Welcome to the Bed and Book Inn. A fine establishment for recuperating a body and expanding a mind. We have many fine rooms available. Interested, traveler?")
---	StartConversation(conversation, NPC, Spawn, "Hello " .. GetName(Spawn) .. ", I am the Innkeeper for this village. We have received word of your arrival and have a room prepared for you. Would you like to know more about housing?")
+	Dialog.AddOption("Yes.", "dlg_2_1")
+	Dialog.AddOption("No thanks.")
+	Dialog.Start()
 end
 
 function Arbos(NPC, Spawn)
@@ -83,91 +82,100 @@ function Arbos(NPC, Spawn)
 end
 
 function BookDelivery(NPC, Spawn)
+    SetStepComplete(Spawn, Delivery, 1)
 	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I'll let Ganla know. I hope it contains something good!", "UpdateDelivery")
-    StartConversation(conversation, NPC, Spawn, "Ah, Yes! Ganla's treasure! I was expecting this. I shall decipher it, but it will take some time. Please inform Ganla I will return the journal as soon as possible.")
- 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean005.mp3", "", "agree", 3924782316,102930417 , Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Ah, Yes! Ganla's treasure! I was expecting this. I shall decipher it, but it will take some time. Please inform Ganla I will return the journal as soon as possible.")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean005.mp3", 3924782316,102930417)
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+    Dialog.AddOption( "I'll let Ganla know. I hope it contains something good!")
+	Dialog.Start()
 end
 
 function NoDinner(NPC, Spawn)
+    SetStepComplete(Spawn, Dinner, 1)
 	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean000.mp3", "", "sigh",4169629165,2563079815, Spawn)
-    AddConversationOption(conversation, "I'm sorry to have to deliver the news.", "UpdateDinner")
-    StartConversation(conversation, NPC, Spawn, "Again?! That froglok should hire more people so Faeadaen isn't worked to the bone. Thanks for letting me know. I guess I'll dine alone tonight.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Again?! That froglok should hire more people so Faeadaen isn't worked to the bone. Thanks for letting me know. I guess I'll dine alone tonight.")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean000.mp3", 4169629165,2563079815)
+ 	PlayFlavor(NPC, "", "", "sigh", 0,0 , Spawn)
+    Dialog.AddOption( "I'm sorry to have to deliver the news.")
+	Dialog.Start()
 end
 
 function KnowTaneran(NPC, Spawn)
+    SetStepComplete(Spawn, Dinner, 1)
 	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I wan't aware they were to be wed.", "UpdateReservation")
-    AddConversationOption(conversation, "I don't really know either of them.", "UpdateReservation")
-    StartConversation(conversation, NPC, Spawn, "Ah! Taneran! I know him well! It seems he's in town quite often visiting Listalania. They're quite a pair, arn't they? I suppose when they wed I'll lose his loyal patronage at my inn.")
- 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean001.mp3", "", "agree", 3017286284,4228062292 , Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Ah! Taneran! I know him well! It seems he's in town quite often visiting Listalania. They're quite a pair, arn't they? I suppose when they wed I'll lose his loyal patronage at my inn.")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean001.mp3", 3017286284,4228062292)
+ 	PlayFlavor(NPC, "", "", "nod", 0,0 , Spawn)
+    Dialog.AddOption("That seems like their business, not mine.", "UpdateReservation")
+    Dialog.AddOption("I don't really know them well.", "UpdateReservation")
+    Dialog.Start()
 end
 
 function UpdateReservation(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I will let her know.", "ReservationMade")
-    AddConversationOption(conversation, "I must congratulation them!", "ReservationMade")
-    AddConversationOption(conversation, "Perhaps don't assume next time. Thank you.", "ReservationMade")
-    StartConversation(conversation, NPC, Spawn, "Pardon my indiscretion, friend. I assumed... because you're making his reservation that... you were a close friend of Taneran's. He and I speak sometimes when he retires for the night. Please don't mention this to the Lady. I will see that his room is ready.")
- 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean002.mp3", "", "boggle", 1569016427,2379789272 , Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Pardon my indiscretion, friend. I assumed... because you're making his reservation that... you were a close friend of Taneran's. He and I speak sometimes when he retires for the night. Please don't mention this to the Lady. I will see that his room is ready.")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean002.mp3", 1569016427,2379789272)
+ 	PlayFlavor(NPC, "", "", "boggle", 0,0 , Spawn)
+    Dialog.AddOption( "I will let her know.", "ReservationMade")
+    Dialog.AddOption( "I must congratulation them!", "ReservationMade")
+    Dialog.AddOption( "Perhaps don't assume next time. Thank you.", "ReservationMade")
+	Dialog.Start()
 end
 
 function BookCollection(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "If I see them down there, I'll let you know.", "BookLook")
-    AddConversationOption(conversation, "The catacombs? Ew. No.")
-    StartConversation(conversation, NPC, Spawn, "I do have many, but I use to have more before hoodlums pilfered my shelves. I heard tales of a merchant in the Down Below selling books... MY BOOKS! I must confirm this before I approach the Qeynos guard.")
- 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean003.mp3", "", "agree", 1990579767,1971786194 , Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I do have many, but I use to have more before hoodlums pilfered my shelves. I heard tales of a merchant in the Down Below selling books... MY BOOKS! I must confirm this before I approach the Qeynos guard.")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean003.mp3", 1990579767,1971786194)
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+    Dialog.AddOption( "If I see them down there, I'll let you know.", "BookLook")
+    Dialog.AddOption( "The catacombs? Ew. No.")
+	Dialog.Start()
 end
 
 function BookLook (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, Books)
+    OfferQuest(NPC, Spawn, Books)
 end
 
 function FoundBooks(NPC, Spawn)
+    SetStepComplete(Spawn, Books, 2)
 	FaceTarget(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I'm glad I could help.", "BooksDone")
-    StartConversation(conversation, NPC, Spawn, "I'll report this to the Qeynos guard! Hopefully they'll lock these criminals up and throw away the key. Thank you for relaying this information. Please, take this small token of my appreciation.")
- 	PlayFlavor(NPC, "voiceover/english/innkeeper_valean/qey_village04/innkeepervalean004.mp3", "", "boggle", 4073559800,1910490855 , Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I'll report this to the Qeynos guard! Hopefully they'll lock these criminals up and throw away the key. Thank you for relaying this information. Please, take this small token of my appreciation.")
+	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean004.mp3", 4073559800,1910490855)
+ 	PlayFlavor(NPC, "", "", "shakefist", 0,0 , Spawn)
+    Dialog.AddOption( "I'm glad I could help.")
+	Dialog.Start()
 end
 
 function ShelfUpdate(NPC, Spawn)
     SetStepComplete(Spawn, LostBook, 2)
    end
 
-function UpdateDelivery(NPC, Spawn)
-    SetStepComplete(Spawn, Delivery, 1)
-   end
-
-function UpdateDinner(NPC, Spawn)
-    SetStepComplete(Spawn, Dinner, 1)
-   end
    
 function ReservationMade(NPC, Spawn)
     SetStepComplete(Spawn, Reservation, 1)
    end
 
-function BooksDone(NPC, Spawn)
-    SetStepComplete(Spawn, Books, 2)
-   end
 
 function dlg_2_1(NPC, Spawn)
-    	FaceTarget(NPC, Spawn)
-    	conversation = CreateConversation()
-    	PlayFlavor(NPC, "innkeeper_millbanks/qey_village06/innkeeper001.mp3", "", "", 4001228290, 3829134373, Spawn)
-        AddConversationOption(conversation, "Are there other places I can live in the city?", "dlg_2_4")
-         AddConversationOption(conversation, "What can I use my house for?", "dlg_2_3")
-        AddConversationOption(conversation, "How do I place furniture in my home?", "dlg_2_2")
-    	AddConversationOption(conversation, "Nevermind for right now, thanks.")
-    	StartConversation(conversation, NPC, Spawn, "What would you like to know?")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("What would you like to hear about?")
+	Dialog.AddVoiceover("innkeeper_valean/qey_village04/innkeeper001.mp3", 1533786955, 1790782886)
+	Dialog.AddOption("How can I place an item in my house?", "dlg_2_2")
+	Dialog.AddOption("What kind of housing is available to me?", "dlg_2_4")
+	Dialog.AddOption("What is the marketboard for?")
+	Dialog.AddOption("What is my house for?", "dlg_2_3")
+	Dialog.AddOption("I see you have many books. ")
+	Dialog.AddOption("Nothing right now.")
+	Dialog.Start()
     end
 
 function dlg_2_2(NPC, Spawn)

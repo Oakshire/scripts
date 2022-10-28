@@ -46,7 +46,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 
-function QuestComplete(Quest)
+function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have returned to Dirk Vargin.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I delivered ten Albino Snake Skins for Dirk Vagrin.")
    

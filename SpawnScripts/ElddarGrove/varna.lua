@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC, 1900, "follow_Fanthis")
 SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
@@ -30,6 +30,31 @@ function respawn(NPC)
 end
 
 
+function follow_Fanthis(NPC)
+	local zone = GetZone(NPC)
+	local Fanthis_location = GetSpawnByLocationID(zone, 413146)
+	local sli = GetSpawnLocationID(NPC)
+    local leaderX = GetX(Fanthis_location)
+    local leaderY = GetY(Fanthis_location)
+    local leaderZ = GetZ(Fanthis_location)
+    local speed = 2
+       -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
+    if  Fanthis_location ~=nil and not IsInCombat(NPC) then   
+    if sli == 413216 then --Varna
+		if GetDistance(NPC, Fanthis_location) >= 8 then
+			speed = 5
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		else
+			speed = 2
+			MoveToLocation(NPC, leaderX - 2, leaderY, leaderZ, speed)
+		end 
+        end
+        end
+        speed = 2
+	AddTimer(NPC, 2000, "follow_Fanthis")	
+end	
+
+--[[ FANTHIS PATROL
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 652.61, -12.3, -363.84, 2, 0)
 	MovementLoopAddLocation(NPC, 662.62, -11.36, -366.19, 2, 0)
@@ -74,7 +99,7 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 648.31, -13.03, -361.11, 2, 0)
 end
 
-
+]]--
 
 
 
