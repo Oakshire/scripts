@@ -5,6 +5,7 @@
 	Script Date	: 2022.01.28
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Badgers = 5465
@@ -22,9 +23,9 @@ function respawn(NPC)
 end
 
 --[[ CLASS(?) Quest material not currently used
-    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan007.mp3", "If Nixa sent you, then that's another story! I've done well with his teachings. What do you want to know about sorcery?", "ponder", 1398879355, 1149892616, Spawn)
-    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan008.mp3", "I draw from unstable ether and turn it into different types of fire. Ignitizing a brazier with a simple incantation is easier than rubbing two sticks together.", "ponder", 3056968266, 3365736320, Spawn)
-    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan009.mp3", "Ah, of course! Back in the day I was quite the fire-magi. Firestorms here, explosions there, that kind of thing. I retired from the battlefield before it was too late. You know what they say about playing with fire and all. I hope this helps you.", "ponder", 1034698890, 3446841302, Spawn)
+    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan007.mp3", "If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?", "ponder", 1398879355, 1149892616, Spawn)
+    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan008.mp3", "I draw from unstable ether and turn it into different types of fire. Igniting a brazier with a simple incantation is easier than rubbing two sticks together.", "ponder", 3056968266, 3365736320, Spawn)
+    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan009.mp3", "Oh, of course ... Back in the day, I was quite the Fire Magi ... firestorms here, explosions there, that kind of thing.  I retired from the battlefield before it was too late.  You know what they say about playing with fire and all.  I hope this helps you.", "ponder", 1034698890, 3446841302, Spawn)
 ]]--
 
 
@@ -63,84 +64,91 @@ end
 
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
     if GetFactionAmount(Spawn,11) <0 then
+	FaceTarget(NPC, Spawn)
         FactionChecking(NPC, Spawn, faction)
         else  	
-            if not HasCompletedQuest (Spawn, Badgers) or not HasCompletedQuest (Spawn, Slime) then
-            FaceTarget(NPC, Spawn)
-                conversation = CreateConversation()   
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Do not touch anything!  You could turn yourself into a goo or destroy the entire building.  What do you need?")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan.mp3", 3613336528, 1736617695)
+	PlayFlavor(NPC, "", "", "", 0, 0, Spawn)
             if not HasQuest(Spawn, Badgers) and not HasCompletedQuest (Spawn, Badgers) then       
-                AddConversationOption(conversation, "Don't worry, I'm not going to touch anything.  I'm just interested in your work.", "BadgerStart")
+                Dialog.AddOption("Don't worry, I'm not going to touch anything.  I'm just interested in your work.", "BadgerStart")
             end
             if not HasQuest(Spawn, Slime) and not HasCompletedQuest (Spawn, Slime) then       
-                AddConversationOption(conversation, "I do not care to be a goo.", "SlimeStart")
+                Dialog.AddOption("I do not care to be a goo.", "SlimeStart")
             end
             if GetQuestStep(Spawn, Badgers)==2 then
-	           AddConversationOption(conversation, "I brought the claws that you asked for.", "DoneBadger")
+	           Dialog.AddOption("I brought the claws that you asked for.", "DoneBadger")
 	        end
 	        if GetQuestStep(Spawn, Slime)==2 then
-	           AddConversationOption(conversation, "I have collected your substance extract.", "DoneSlime")
+	           Dialog.AddOption("I have collected your substance extract.", "DoneSlime")
 	        end
 	        
-	            AddConversationOption(conversation, "You seem to be a bit busy at the moment.  I'll leave you alone.")
-                PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan.mp3", "", "", 3613336528, 1736617695, Spawn)
-	           StartConversation(conversation, NPC, Spawn, "Do not touch anything!  You could turn yourself into a goo or destroy the entire building.  What do you need?")
-	          end
+        Dialog.AddOption("You seem to be a bit busy at the moment.  I'll leave you alone.")	
+        Dialog.Start()
+        end
     end
-end
+
 
  function BadgerStart(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I can do that for you.  A few badgers shouldn`t be a problem for me.", "BadgerBegin2")
-    AddConversationOption(conversation, "I wouldn't even touch a regular badger, let alone a vicious one!")
-    PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan000.mp3","","ponder",913747199,2909702718,Spawn)
-    StartConversation(conversation, NPC, Spawn, "Interested, are you? Well, I am trying to make my spells and items more potent. Unfortunately I ran out of volatility components. Would you do me a favor and collect some vicious badger claws?")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Interested, are you? Well, I am trying to make my spells and items more potent. Unfortunately I ran out of volatility components. Would you do me a favor and collect some vicious badger claws?")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan000.mp3",913747199,2909702718)
+ 	PlayFlavor(NPC, "", "", "sniff", 0,0 , Spawn)
+    Dialog.AddOption("I can do that for you.  A few badgers shouldn`t be a problem for me.", "BadgerStarting")
+    Dialog.AddOption("I wouldn't even touch a regular badger, let alone a vicious one!")
+    Dialog.Start()
 end   
 
- function BadgerBegin2(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I'll bring them back once I gather them.", "BadgerStarting")
-    AddConversationOption(conversation, "On second thought, I better not.")
-    PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan001.mp3","","thank",1380358614,4188270121,Spawn)
-    StartConversation(conversation, NPC, Spawn, "Splended! You'll find the badgers in the Oakmyst Forest. Please be swift! Badger claws lose their inate furiocity rather quickly!")
-end   
 
  function DoneBadger(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I'll just be under this very thick table.","BadgerFinish")
-	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan002.mp3", "", "happy", 3385634498, 2633500192)
-	StartConversation(conversation, NPC, Spawn, "Marvelous! I shall use one of the claws to imbue a wand for you. Um ... just take a few steps back, safety and all.")end   
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Marvelous! I shall use one of the claws to imbue a wand for you. Um ... just take a few steps back, safety and all.")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan002.mp3",3385634498, 2633500192)
+ 	PlayFlavor(NPC, "", "", "happy", 0,0 , Spawn)
+    Dialog.AddOption("I'll just be under this very thick table.","BadgerFinish")
+    Dialog.Start()
+end
 
  function BadgerFinish(NPC, Spawn)
-    conversation = CreateConversation()
-	AddConversationOption(conversation, "I plan to be very careful with it.", "RewardBadgers")
-	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan003.mp3", "", "boggle", 3490869984, 2394433819, Spawn)
-	StartConversation(conversation, NPC, Spawn, "It worked!  I mean ... here is a wand for you.  Use it well.")end   
+    SetStepComplete(Spawn, Badgers, 2)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("It worked!  I mean ... here is a wand for you.  Use it well.")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan003.mp3", 3490869984, 2394433819)
+ 	PlayFlavor(NPC, "", "", "boggle", 0,0 , Spawn)
+ 	Dialog.AddOption("I plan to be very careful with it.")
+    Dialog.AddOption("...I could have been blown up!  Thanks, but I'm getting out of here.")
+    Dialog.Start()
+end
 
  function SlimeStart(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I can do your task.", "SlimeNeed")
-    AddConversationOption(conversation, "...I must be going!")
-    PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan004.mp3","","no",2138601896,740497069,Spawn)
-    StartConversation(conversation, NPC, Spawn, "Then keep your hands away from my experiments! Since you've wasted my precious time with your insistent babbling, I believe you owe me a bit of your own time. I need your help with a task.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Then keep your hands away from my experiments! Since you've wasted my precious time with your incessant babbling, I believe you owe me a bit of your own time. I need your help with a task.")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan004.mp3", 2138601896,740497069)
+ 	PlayFlavor(NPC, "", "", "no", 0,0 , Spawn)
+ 	Dialog.AddOption("I can do your task.", "QuestBegin2")
+    Dialog.AddOption("...I must be going!")
+    Dialog.Start()
 end   
 
- function SlimeNeed(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "I will be back with your substance extract.", "QuestBegin2")
-    AddConversationOption(conversation, "Crypt gunk? I think I'll pass. Sorry")
-    PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan005.mp3","","tap",3750763447,1479813412,Spawn)
-    StartConversation(conversation, NPC, Spawn, "Go to the Down Below in the catacombs. In the Down Below, you must slay several gunks and fill my vials with their extract. Leave immediately! I need these ingredients to complete my research.")
-end   
-
+ 
  function DoneSlime(NPC, Spawn)
-    conversation = CreateConversation()
-    AddConversationOption(conversation, "Have fun with that gunk.", "RewardSlime")
-    AddConversationOption(conversation, "Yeesh, okay. I'm going now.", "RewardSlime")
-    PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan006.mp3","","tapfoot",3747403661,785681662,Spawn)
-    StartConversation(conversation, NPC, Spawn, "Its about time! I almost sent Bleemeb up to go get my extract. I thought the gunks made a meal out of you. Take this pay for your task and leave me with my research.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Its about time! I almost sent Bleemeb up to go get my extract. I thought the gunks made a meal out of you. Take this pay for your task and leave me with my research.")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan006.mp3", 3747403661,785681662)
+ 	PlayFlavor(NPC, "", "", "tapfoot", 0,0 , Spawn)
+ 	Dialog.AddOption("Have fun with that gunk.", "RewardSlime")
+    Dialog.AddOption("Yeesh, okay. I'm going now.", "RewardSlime")
+    Dialog.Start()
 end   
+
 
 function BadgerStarting (NPC, Spawn)
     FaceTarget(NPC, Spawn)
@@ -152,9 +160,6 @@ function QuestBegin2 (NPC, Spawn)
     OfferQuest(NPC, Spawn, Slime)
 end
 
-function RewardBadgers(NPC, Spawn)
-    SetStepComplete(Spawn, Badgers, 2)
-end
 
 function RewardSlime(NPC, Spawn)
     SetStepComplete(Spawn, Slime, 2)

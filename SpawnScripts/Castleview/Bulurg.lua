@@ -13,7 +13,7 @@ local Water = 5456
 
 function spawn(NPC)
 ProvidesQuest(NPC,Water)
-SetPlayerProximityFunction(NPC, 9, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)

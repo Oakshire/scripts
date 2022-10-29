@@ -104,7 +104,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	
 	if TimeCheck == false then                                              -- checks timer
      TimeCheck = true                                                        -- turns on timer to stop player spamming
-	AddTimer(NPC,2000,"ResetTimer")                                         -- starts reset clock
+	AddTimer(NPC,2500,"ResetTimer")                                         -- starts reset clock
 	if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verifies NPC race/gender fits expected
 
 		if race == BARBARIAN then                                           -- begins NPC race check
@@ -4299,9 +4299,9 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 				    else
 				    if CalloutTimeCheck == false then
                         if math.random(1, 100) <= 20 then
-			            FaceTarget(NPC,Spawn)
                         CalloutTimeCheck = true
-			            AddTimer(NPC,30000,"ResetCalloutTimer")   				        
+			            FaceTarget(NPC,Spawn)
+			            AddTimer(NPC,30000,"ResetCalloutTimer")  				        
             	local choice = math.random(1,13)
 
                 	if choice == 1 then

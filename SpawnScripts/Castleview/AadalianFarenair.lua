@@ -5,6 +5,7 @@
 	Script Date	: 2022.01.25
 	Script Notes	: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 
@@ -12,7 +13,7 @@ local Sword = 5455
 
 function spawn(NPC)
 ProvidesQuest(NPC,Sword)
-SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 waypoints(NPC)
 end
 
@@ -27,12 +28,6 @@ function InRange(NPC, Spawn)
     if not HasLanguage(Spawn, 9) then
         	 if math.random(1, 100) <= 70 then
                 Garbled(NPC, Spawn, Faction)
-           --[[ local choice = math.random(1,2)
-            if choice == 1 then
-	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_755db2c3.mp3", "Castleview is beautiful this time of year.", "tap", 2766992983, 3224256482, Spawn, 9)
-    	    elseif choice == 2 then
-	        PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gm_d396c4fc.mp3", "Oh dont look at me that way. Speak my language!.", "", 3403333804, 3641522203, Spawn, 9)
-    	    end]]--
     	end
 	elseif
         not HasCompletedQuest (Spawn, Sword) and not HasQuest (Spawn, Sword) then 
@@ -42,13 +37,14 @@ function InRange(NPC, Spawn)
                 if choice == 1 then
                  PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail1_489c1202.mp3", "Ah, a busy adventurer like you has no time to run errands. Farewell!", "tap", 1714607542, 3679115405, Spawn)
                 elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "hello", 2059471651, 1229334005, Spawn)
+		        PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.", "hello", 2059471651, 1229334005, Spawn)
                 else
                 PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_callout_357f6ef7.mp3", "Can you spare a moment?", "hello", 4143835238, 3043367579, Spawn)
                 end
         
-            elseif HasCompletedQuest (Spawn, Sword) and math.random(1, 100) <= 50 then
-		PlayFlavor(NPC, "","", "tap", 0, 0, Spawn)
+            elseif HasCompletedQuest (Spawn, Sword) and MakeRandomInt(1, 100) <= 60 then
+		    PlayFlavor(NPC, "","", "hello", 0, 0, Spawn)
+            FaceTarget(NPC,Spawn)
              end
     end
 end
@@ -87,61 +83,52 @@ end
 
 
 function QuestStart(NPC, Spawn, conversation)
-    FaceTarget(NPC,Spawn)
-    if not HasQuest (Spawn, Sword) then
-         conversation = CreateConversation()
-        PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3", "", "hello", 2059471651, 1229334005, Spawn)
-        AddConversationOption(conversation, "What are you waiting for?", "Waitting")
-         StartConversation(conversation, NPC, Spawn, "Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I can't show you more of our village, for I am in wait.")
-       elseif HasQuest (Spawn, Sword) then
-         conversation = CreateConversation()
-        if GetQuestStep(Spawn, Sword) == 2 then
-        AddConversationOption(conversation, "Here is your sword. What do you think?", "SwordReturned")
-        end
-    AddConversationOption(conversation, "I'm heading there soon.")
-    StartConversation(conversation, NPC, Spawn, "Have you heard from Froptub about my sword?")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Well met! I am Aadalian, son of Ethralin.  Welcome to Castleview!  I'm sorry I do not have the time to show you more of our village, for I am in wait.")
+	Dialog.AddVoiceover("voiceover/english/aadalian_farenair/qey_village04/100_customer_aadalian_multhail2_b98a70c.mp3",2059471651, 1229334005)
+ 	PlayFlavor(NPC, "", "", "hello", 0,0 , Spawn)
+    if not HasQuest (Spawn, Sword) and not HasCompletedQuest(Spawn,Sword)then
+    Dialog.AddOption("What are you waiting for?", "Waitting")
     end
+    if HasQuest (Spawn, Sword) and GetQuestStep(Spawn, Sword) == 2  then
+    Dialog.AddOption("I've returned with the sword.", "SwordReturned")
+    end
+    Dialog.AddOption("Greetings Aadalian.")
+    Dialog.Start()
 end
 
 
- function Waitting(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair000.mp3","", "brandish", 2830176428, 3645028717, Spawn)
-    FaceTarget(NPC,Spawn)
-  conversation = CreateConversation()
-  AddConversationOption(conversation, "What etching have you decided on?", "Decoration")
-  AddConversationOption(conversation, "Fascinating, but I must be off.")
-  StartConversation(conversation, NPC, Spawn, "I wait for my sword. You see, I've asked Froptub to etch an inscription along the blade. For generations, each elf in my family has placed a unique mark along his blade. Now, I must follow this tradition. ")
-end   
+ 
 
- function Decoration(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair001.mp3","", "brandish", 1068773246, 2639950014, Spawn)
-    FaceTarget(NPC,Spawn)
-  conversation = CreateConversation()
-  AddConversationOption(conversation, "I'll go speak with Froptub.", "Froptub")
-  AddConversationOption(conversation, "Sorry, I'm busy.")
-  StartConversation(conversation, NPC, Spawn, "My design is not mere decoration, friend. The inscription chronicals the cohabitation of our two races. Would you be kind, and see what is keeping the sword at Froptub's smithy? ")
+function Waitting(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I wait for my sword.  You see, I've asked Froptub to etch an inscription along the blade.  For generations each elf in my family has placed a unique mark along his blade.  Now I must follow this tradition.")
+	Dialog.AddVoiceover("voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair000.mp3",2830176428, 3645028717)
+    PlayFlavor(NPC, "", "", "shrug", 0,0 , Spawn)
+    Dialog.AddOption("I'd thought frogloks weren't much for ornamentation.", "Froptub")
+    Dialog.AddOption("Fascinating, but I must be off.")
+    Dialog.Start()
 end   
 
 function Froptub (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, Sword)
+    OfferQuest(NPC, Spawn, Sword)
 end
 
 
 function SwordReturned(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair002.mp3","", "brandish", 1199681985, 2816919734, Spawn)
+    SetStepComplete(Spawn, Sword, 2)
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	AddConversationOption(conversation, "I'm glad I could assist.", "Payment")
-	AddConversationOption(conversation, "As long as you're happy with it. Good luck.", "Payment")
-	PlayFlavor(NPC, "","", "brandish", 0, 0, Spawn)
-	StartConversation(conversation, NPC, Spawn, "Hmm, this inscription is far more rudimentary than I expected. Though, it does fit perfectly with what I imagined. Forever more, this blade shall bare the union of our races. May the story of this sword carry on for generations.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Hmmm ... this inscription is far more rudimentary than I expected ... Though it does fit perfectly with what I imagined.  Forevermore this blade shall bear the union of our races. May the story of this sword carry on for generations!")
+	Dialog.AddVoiceover("voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair002.mp3",1199681985, 2816919734)
+    PlayFlavor(NPC, "", "", "brandish", 0,0 , Spawn)
+    Dialog.AddOption("I'm sure Froptub would be happy to hear that.")
+    Dialog.AddOption("As long as you're happy with it. Good luck.")
+    Dialog.Start()
 end   
-
-        
-function Payment(NPC, Spawn)
-    	SetStepComplete(Spawn, Sword, 2)
-    end
 
 
 function hailed(NPC, Spawn)

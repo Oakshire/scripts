@@ -9,18 +9,22 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
    	AddQuestStepChat(Quest, 1, "I must speak with innkeeper Valean.", 1, "I must speak with innkeeper Valean about reservations for Taneran.", 11, 2360024)
 	AddQuestStepCompleteAction(Quest, 1, "CheckIn")
 end
 
---[[function Accepted(Quest, QuestGiver, Player)
-  conversation = CreateConversation()
-      PlayFlavor(QuestGiver,"","","",0,0,Player)
-  AddConversationOption(conversation, "")
-  StartConversation(conversation, QuestGiver, Player, "")
-end   ]]--
+function Accepted(Quest, QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("You see, I invited Taneran for a visit, but my house is too small for both of us. Would you be kind and reserve a room at the inn for him?")
+	Dialog.AddVoiceover("voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian001.mp3",2137369666, 3214169291)
+ 	PlayFlavor(QuestGiver, "", "", "sniff", 0,0 , Player)
+    Dialog.AddOption("I will do so immediately.")
+    Dialog.Start()
+end  
 
 
 

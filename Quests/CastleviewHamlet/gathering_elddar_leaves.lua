@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "I need to gather Elddar leaves for Scribe Bleemeb.", 14, "I need to gather leaves from the base of the greatest Elddar tree in the grove.", 199, 663.74 -9.72 -373.53)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("It is, it is! FrroOAK! She needs someone to fetch some leaves from the base of the tallest Eldarr tree. Say! I figured thou would'st do nicely for that. Why doth thou head over to the Eldarr grove and pick her up some leaves. Thou'st can't miss the tree! It has elves in it.")
+	Dialog.AddVoiceover("voiceover/english/scribe_bleemeb/qey_village04/qst_scribebleemeb002.mp3",1766321211,1856541681)
+ 	PlayFlavor(QuestGiver, "", "", "agree", 0,0 , Player)
+    Dialog.AddOption("I'll return with some of the Elddar leaves.")
+    Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

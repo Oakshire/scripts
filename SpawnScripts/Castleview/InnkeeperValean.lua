@@ -54,7 +54,7 @@ function hailed(NPC, Spawn)
     Dialog.AddOption("Ganla Dindlenod wants you to take a look at this book.", "BookDelivery")
 	end
 	if GetQuestStep (Spawn, Dinner) == 1 then 
-	Dialog.AddOption("Faeadaen says she must work late tonight and can't make it back for dinner.", "NoDinner")
+	Dialog.AddOption("Actually, I am here to deliver a message to you from Faeadaen.  She has to work late and won't be able to dine with you tonight.", "NoDinner")
 	end
 	if GetQuestStep (Spawn, Reservation) == 1 then 
 	Dialog.AddOption("I need to make a room reservation for Taneran.", "KnowTaneran")
@@ -69,15 +69,15 @@ function hailed(NPC, Spawn)
 	Dialog.AddOption("Faeadaen mentioned she left a book of Arbos here. Have you seen it?", "Arbos")
 	end
 	Dialog.AddOption("Yes.", "dlg_2_1")
-	Dialog.AddOption("No thanks.")
+	Dialog.AddOption("I am not interested in a room at this time.")
 	Dialog.Start()
 end
 
 function Arbos(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "Alright. I'll check the shelves for the book.", "ShelfUpdate")
-    StartConversation(conversation, NPC, Spawn, "Yes! I've just recently shelved the book on the great tree. Unfortunately, I don't recall where it is amongst my other books. You're welcome to look at my collections upstairs for it.")
+    AddConversationOption(conversation, "Alright. I'll check the shelves for the book.")
+    StartConversation(conversation, NPC, Spawn, "Yes! I've just recently shelved the book on the Great Tree. Unfortunately, I don't recall where it is amongst my other books. You're welcome to look at my collections upstairs for it.")
  	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
 end
 
@@ -99,12 +99,11 @@ function NoDinner(NPC, Spawn)
 	Dialog.AddDialog("Again?! That froglok should hire more people so Faeadaen isn't worked to the bone. Thanks for letting me know. I guess I'll dine alone tonight.")
 	Dialog.AddVoiceover("voiceover/english/innkeeper_valean/qey_village04/innkeepervalean000.mp3", 4169629165,2563079815)
  	PlayFlavor(NPC, "", "", "sigh", 0,0 , Spawn)
-    Dialog.AddOption( "I'm sorry to have to deliver the news.")
+    Dialog.AddOption( "There is always tomorrow.")
 	Dialog.Start()
 end
 
 function KnowTaneran(NPC, Spawn)
-    SetStepComplete(Spawn, Dinner, 1)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Ah! Taneran! I know him well! It seems he's in town quite often visiting Listalania. They're quite a pair, arn't they? I suppose when they wed I'll lose his loyal patronage at my inn.")
@@ -153,10 +152,6 @@ function FoundBooks(NPC, Spawn)
     Dialog.AddOption( "I'm glad I could help.")
 	Dialog.Start()
 end
-
-function ShelfUpdate(NPC, Spawn)
-    SetStepComplete(Spawn, LostBook, 2)
-   end
 
    
 function ReservationMade(NPC, Spawn)

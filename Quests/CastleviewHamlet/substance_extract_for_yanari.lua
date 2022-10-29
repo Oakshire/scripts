@@ -17,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Go to the Down Below in the catacombs. In the Down Below, you must slay several gunks and fill my vials with their extract. Leave immediately! I need these ingredients to complete my research.")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan005.mp3",3750763447,1479813412)
+ 	PlayFlavor(QuestGiver, "", "", "tapfoot", 0,0 , Player)
+    Dialog.AddOption("I will be back with your substance extract.")
+    Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

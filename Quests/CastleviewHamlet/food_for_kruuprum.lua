@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill some insects such as the centipedes in the Forest Ruins.", 6, 100, "I need to gather food for Merchant Kruuprum in Castleview. Apparently he eats insects such as the centipedes in the Forest Ruins.", 135, 1960026, 8270006)
@@ -17,8 +18,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Praise Marr! Thou would'st be so kind! The meaty part of any insect would rightly do. That should tide me for at least a few days. I would happily pay thee some coin upon thy return.")
+	Dialog.AddVoiceover("voiceover/english/merchant_kruuprum/qey_village04/merchantkruuprum001.mp3",3403348691,1398407939)
+ 	PlayFlavor(QuestGiver, "", "", "boggle", 0,0 , Player)
+    Dialog.AddOption("Hold out for a bit longer. I'll return as soon as I've found some.")
+    Dialog.Start()
+    end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

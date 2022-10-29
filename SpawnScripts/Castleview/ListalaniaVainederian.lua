@@ -5,7 +5,9 @@
 	Script Date	: 2022.01.25
 	Script Notes	: Speak Koada'Dal
 --]]
+require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 
 local Reservation = 5452
 
@@ -23,39 +25,27 @@ function InRange(NPC, Spawn)
         FactionChecking(NPC, Spawn, faction)
         else
     if not HasLanguage(Spawn, 9) then
-        	 if math.random(1, 100) <= 60 then
-            local choice = math.random(1,2)
-            if choice == 1 then
-		    PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_a002225a.mp3", "Castleview is beautiful this time of year.", "royalwave", 3121965781, 2073270812, Spawn, 9)
-    	    elseif choice == 2 then
-		    PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_fde7b8f7.mp3", "The high elves have the best of life here.", "", 595061935, 2035542297, Spawn, 9)
-    	    end
+        	 if MakeRandomInt(1, 100) <= 66 then
+            Garbled(NPC, Spawn, Faction)
+            
     	end
-	elseif
-        not HasCompletedQuest (Spawn, Reservation) and not HasQuest (Spawn, Reservation) then 
-            if math.random(1, 100) <= 70 then
-            local choice = math.random(1,3)
-                if choice == 1 then
+	else
+        if MakeRandomInt(1, 100) <= 70 then
+          if not HasCompletedQuest (Spawn, Reservation) and not HasQuest (Spawn, Reservation) then 
                 FaceTarget(NPC,Spawn)
                 PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail1_b993e1.mp3", "Sorry friend, I have no time for chatting. I must get to the inn.", "", 2101590645, 2348500153, Spawn)
+          local choice = math.random(1,2)
+            else
+            
+                if choice == 1 then
+                PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me...", "curstey", 1634717602, 1906674926, Spawn)
+                FaceTarget(NPC,Spawn)
                 elseif choice == 2 then
                 FaceTarget(NPC,Spawn)
                 PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)    end
-                elseif choice ==3 then
-                PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me...", "", 1634717602, 1906674926, Spawn)
-                FaceTarget(NPC,Spawn)
                 end
-        
-    elseif HasCompletedQuest (Spawn, Reservation) and math.random(1, 100) <= 50 then
-        local choice = math.random(1,2)
-        if choice == 1 then
-        FaceTarget(NPC,Spawn)
-        PlayFlavor(NPC, "", "", "royalwave", 0, 0, Spawn)
-        else
-        FaceTarget(NPC,Spawn)
-        PlayFlavor(NPC, "", "", "curtsey", 0, 0, Spawn)
-        end    
-    end
+            end        
+        end
     end
 end
 
@@ -64,60 +54,55 @@ end
 
 
 function QuestStart(NPC, Spawn, conversation)
-    FaceTarget(NPC,Spawn)
-    if not HasQuest (Spawn, Reservation) then
-        conversation = CreateConversation()
-        AddConversationOption(conversation, "Have you been in Qeynos long?", "Long")
-        PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_multhail2_86f538b6.mp3", "", "", 1634717602, 1906674926, Spawn)
-       StartConversation(conversation, NPC, Spawn, "What a glorious day!  Castleview is lovely this time of year, isn't it?  Though the beauty of Qeynos herself calls me..")
-       elseif HasQuest (Spawn, Reservation) then
-    conversation = CreateConversation()
-        if GetQuestStep(Spawn, Reservation) == 2 then
-        AddConversationOption(conversation, "I've spoken to Valean at the inn and made your reservation.", "ReservationMade")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("What a glorious day!  Castleview is lovely this time of year, isn't it?  The beauty of Qeynos herself calls me though...")
+	Dialog.AddVoiceover("voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian.mp3", 2220724575, 2462118771)
+	PlayFlavor(NPC, "", "", "curtsey", 0, 0, Spawn)
+     if not HasQuest (Spawn, Reservation) and not HasCompletedQuest(Spawn, Reservation) then
+        Dialog.AddOption("Have you been inside Qeynos?", "Long")
+     elseif HasQuest (Spawn, Reservation) and GetQuestStep(Spawn, Reservation) == 2 then
+        Dialog.AddOption("Innkeeper Valean has a room ready for your friend.", "ReservationMade")
         end
-    AddConversationOption(conversation, "I'm heading there soon.")
-    StartConversation(conversation, NPC, Spawn, "Have you made that reservation at the inn for me?")
+        Dialog.AddOption("I understand your desire.  Good day to you.")	
+        Dialog.Start()
     end
-end
+
 
 
  function Long(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian000.mp3", "", "", 3000457446, 1615662591, Spawn)
-    FaceTarget(NPC,Spawn)
-  conversation = CreateConversation()
-  AddConversationOption(conversation, "What do you need?", "Moment")
-  AddConversationOption(conversation, "Sorry, I'm busy.")
-  StartConversation(conversation, NPC, Spawn, "I've stayed in the city with my friend Taneran, and once I become I become a full citizen I'd like to move there. Though, Felwithe and Kelethin are lost to us, I hear the druid and ranger's work in the Eldarr Grove is remarkable. Say, could you spare a moment friend?")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("I've stayed in the city with my friend Taneran, and once I become a full citizen, I'd like to move there. Though Felwithe and Kelethin are lost to us, I hear the druid's and ranger's work in the Elddar Grove is truly remarkable. Say, could you spare a moment, friend?")
+	Dialog.AddVoiceover("voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian000.mp3",3000457446, 1615662591)
+ 	PlayFlavor(NPC, "", "", "nod", 0,0 , Spawn)
+    Dialog.AddOption("I can indeed.", "Valean")
+    Dialog.AddOption("Sorry, I just stopped by to chat.")
+    Dialog.Start()
 end   
 
- function Moment(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian001.mp3", "", "", 2137369666, 3214169291, Spawn)     
-    FaceTarget(NPC,Spawn)
-  conversation = CreateConversation()
-  AddConversationOption(conversation, "I'll go speak to Valean about a reservation.", "Valean")
-  AddConversationOption(conversation, "Sorry, I'm busy.")
-  StartConversation(conversation, NPC, Spawn, "You see, I invited Taneran for a visit, but my house is too small for both of us. Would you be kind and reserve a room at the inn for me?")
-end   
 
 function Valean (NPC, Spawn)
     FaceTarget(NPC, Spawn)
-  OfferQuest(NPC, Spawn, Reservation)
+    OfferQuest(NPC, Spawn, Reservation)
 end
 
 
 function ReservationMade(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian002.mp3", "", "thank", 1021398410, 333389770, Spawn)      
 	FaceTarget(NPC, Spawn)
-	conversation = CreateConversation()
-	AddConversationOption(conversation, "It was my pleasure.", "Payment")
-	AddConversationOption(conversation, "Congratulations on your... ", "Payment1")
-	StartConversation(conversation, NPC, Spawn, "Lovely! Thank you for taking care of this matter. I just couldn't make poor Taneran sleep on the floor. It would be terrible manners on my part. Please, I insit you take some coins for your kind deed.")
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Lovely! Thank you for taking care of this matter! I just couldn't make poor Taneran sleep on the floor, it would be terrible manners on my part. Please, I insist you take some coins for your kind deed.")
+	Dialog.AddVoiceover("voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian002.mp3",1021398410, 333389770)
+ 	PlayFlavor(NPC, "", "", "fullcurtsey", 0,0 , Spawn)
+    Dialog.AddOption("Thank you, milady.", "Payment")
+    Dialog.AddOption("Congratulations on your... ", "Payment1")
+    Dialog.Start()
 end   
 
 function Payment1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-	PlayFlavor(NPC, "","", "ponder", 0, 0, Spawn)
+	PlayFlavor(NPC, "","", "doubletake", 0, 0, Spawn)
 	AddConversationOption(conversation, "Err... nevermind. Take care.", "Payment")
 	StartConversation(conversation, NPC, Spawn, "My what?")
 end   
@@ -132,31 +117,16 @@ function hailed(NPC, Spawn)
 if GetFactionAmount(Spawn, 11) <0 then
     FactionChecking(NPC, Spawn, faction)
     else
-local Taner = GetSpawn(NPC,2360012)    
-	FaceTarget(NPC, Spawn)
-	if Taner ~=nil then
-    FaceTarget(Taner,Spawn)
-    end	
+    local Taner = GetSpawn(NPC,2360012)    
+	    FaceTarget(NPC, Spawn)
+	    if Taner ~=nil then
+        FaceTarget(Taner,Spawn)
+        end	
     if not HasLanguage(Spawn, 9) then -- Language Check for KoaDal (9)
-	local choice = math.random(1,2)
-         if choice == 1 then
-      	PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_a002225a.mp3", "Castleview is beautiful this time of year.", "", 3121965781, 2073270812, Spawn, 9)
-    	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/highelf_base_1/ft/highelf/highelf_base_1_1_garbled_gf_fde7b8f7.mp3", "The high elves have the best of life here.", "", 595061935, 2035542297, Spawn, 9)
-    	end
+        Garbled(NPC, Spawn, Faction)
     else
-        if not HasCompletedQuest(Spawn, Reservation) then 
         QuestStart(NPC, Spawn)
-  
-        elseif HasCompletedQuest (Spawn, Reservation) then
-	    local choice = math.random(1,2)
-            if choice == 1 then
-            PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/listalaniavainederian.mp3", "What a glorious day!  Castleview is lovely this time of year, isn't it?  The beauty of Qeynos herself calls me though...", "", 2220724575, 2462118771, Spawn)
-            elseif choice == 2 then
-            FaceTarget(NPC,Spawn)
-            PlayFlavor(NPC, "voiceover/english/listalania_vainederian/qey_village04/100_park_listalania_callout_e55949cd.mp3", "Ah ... another beautiful day in Castleview! Good day! What do you need, traveler?", "royalwave", 3712216844, 54205705, Spawn)    end
-            end                        
-        end
+
    end
 end 
-
+end

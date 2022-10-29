@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,7 +19,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Thanks for pitching in. Every bundle of tails helps! You'll' find the mystail rats within Oakmyst Forest. Happy hunting!")
+	Dialog.AddVoiceover("voiceover/english/merchant_fevalin/qey_village04/merchantfevalin005.mp3",25404249,2050252222)
+ 	PlayFlavor(QuestGiver, "", "", "smile", 0,0 , Player)
+    Dialog.AddOption("I'm off to Oakmyst Forest shortly!")
+    Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

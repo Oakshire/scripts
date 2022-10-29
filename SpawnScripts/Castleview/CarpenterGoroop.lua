@@ -20,8 +20,9 @@ function hailed(NPC, Spawn)
         FactionChecking(NPC, Spawn, faction)
         else 
 	conversation = CreateConversation()
+		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1018.mp3", 0, 0, Spawn)
 
-	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/carpenter_goroop/qey_village04/newbie_path_froglok/carpentergoroop007.mp3", "", "", 437901215, 87177442)
+--	PlayFlavor(NPC, "voiceover/english/tutorial_revamp/carpenter_goroop/qey_village04/newbie_path_froglok/carpentergoroop007.mp3", "", "", 437901215, 87177442)
 	AddConversationOption(conversation, "Indeed.  I hope you enjoy it!")
 	AddConversationOption(conversation, "I have no time to talk, as I am on a task.")
 	StartConversation(conversation, NPC, Spawn, "Hail!  'Tis a great day!")

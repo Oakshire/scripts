@@ -14,14 +14,14 @@ local WWQCitizen = 5723
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 6
-    local level2 = 7
+    local level1 = 5
+    local level2 = 6
     local difficulty1 = 6
-    local hp1 = 150
-    local power1 = 80
+    local hp1 = 130
+    local power1 = 65
     local difficulty2 = 6
-    local hp2 = 200
-    local power2 = 90
+    local hp2 = 150
+    local power2 = 80
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)

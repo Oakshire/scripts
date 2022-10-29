@@ -32,7 +32,7 @@ function FaeTalked(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found Faeadaen in Castleview Hamlet.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found Faeadaen in Castleview Hamlet.")
 
-	AddQuestStepChat(Quest, 2, "I must find Innkeeper Valean.", 1, "I must search Castleview Hamlet for Valean.", 0, 2360024)
+	AddQuestStep(Quest, 2, "I must search for the book at the inn in Castleview.", 1, "I must search for The Book of Arbos at the Bed and Book Inn in Castleview Hamlet.", 0)
 	AddQuestStepCompleteAction(Quest, 2, "BookshelfTalk")
 end
 

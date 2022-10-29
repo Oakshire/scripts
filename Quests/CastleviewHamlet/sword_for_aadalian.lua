@@ -9,7 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
-
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to speak with Froptub.", 1, "I must see about Aadalian's sword at Froptub's smithy in Castleview.", 11, 2360018)
@@ -17,8 +17,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("My design is not mere decoration, friend. The inscription chronicles the cohabitation of our two races. Would you be kind and see what's keeping the sword at Froptub's smithy?")
+	Dialog.AddVoiceover("voiceover/english/aadalian_farenair/qey_village04/aadalianfarenair001.mp3",1068773246, 2639950014)
+ 	PlayFlavor(QuestGiver, "", "", "shrug", 0,0 , Player)
+   Dialog.AddOption("I suppose I can do that.")
+   Dialog.Start()
+  end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

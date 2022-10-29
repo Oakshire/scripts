@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to collect claws from some vicious badgers.", 4, 75, "I need to collect four vicious badger claws for Yanari Cyellann in Castleview.", 174,8300008)
@@ -17,8 +18,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
-end
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Splended! You'll find the badgers in the Oakmyst Forest. Please be swift! Badger claws lose their inate furiocity rather quickly!")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan001.mp3",1380358614,4188270121)
+ 	PlayFlavor(QuestGiver, "", "", "agree", 0,0 , Player)
+    Dialog.AddOption("I'll bring them back once I gather them.")
+    Dialog.Start()
+    end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined

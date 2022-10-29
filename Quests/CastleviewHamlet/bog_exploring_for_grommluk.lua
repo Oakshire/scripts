@@ -19,7 +19,13 @@ UpdateQuestZone(Quest, "The Peat Bog")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Great! Take'st this jar and bring me some water from the middle of the Peat Bog. Make'th sure thou gets plenty of muck in there too.")
+	Dialog.AddVoiceover("voiceover/english/grommluk_oognee/qey_village04/grommlukoognee001.mp3",753284600, 2887327469)
+ 	PlayFlavor(QuestGiver, "", "", "smile", 0,0 , Player)
+    Dialog.AddOption("Swamp water in the jar.  Got it!")
+    Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
