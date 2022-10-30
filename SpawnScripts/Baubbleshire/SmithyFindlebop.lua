@@ -61,17 +61,13 @@ else
 end
 
 function Callout(NPC,Spawn)
-	    local randomCall2 = MakeRandomInt(1, 4)
+	    local randomCall2 = MakeRandomInt(1, 2)
 	    FaceTarget(NPC, Spawn)
         if randomCall2 == 1 then
         PlayFlavor(NPC, "voiceover/english/smithy_findlebop/qey_village06/100_smithy_findlebop_multhail1_aa73007b.mp3", "Now, if I can only figure out how the sprocket will fit in this device, I'll be set! Why are you interrupting my work?  Can't you see I'm busy? Go away!", "scream", 3823811804, 70891212, Spawn)
         elseif randomCall2 == 2 then
         PlayFlavor(NPC, "voiceover/english/smithy_findlebop/qey_village06/100_smithy_findlebop_multhail2_5d0f29cb.mp3", "Now, if I can only figure out how the sprocket will fit in this device, I'll be set! Why are you interrupting my work?  Can't you see I'm busy?", "frustrated", 446470782, 3454872230, Spawn)
-        elseif randomCall2 == 3 then
-		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/weaponsmith/gnome_weaponsmith_service_good_1_hail_gm_37dbcab8.mp3", "Welcome to my humble shop.  We have quite a selection of weapons to choose from.  See for yourself...", "salute", 1420367370, 281045768, Spawn, 0)
-        elseif randomCall2 == 4 then
-		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/weaponsmith/gnome_weaponsmith_service_good_1_hail_gm_1248b278.mp3", "I just got a shipment in from the Far Sea's Trading Company.  I don't just show anybody this stuff so, shhhh!  ", "wink", 2730095756, 1896311415, Spawn, 0)
-    	end
+   	end
     end
 
 
@@ -99,7 +95,7 @@ function Begin(NPC, Spawn)
     PlayFlavor(NPC, "","","frustrated",0,0, Spawn)
 	Dialog.AddVoiceover("voiceover/english/smithy_findlebop/qey_village06/smithyfindlebop000.mp3",1173629486, 2280866988)
 	if not HasQuest(Spawn, MystratTails) and not HasCompletedQuest(Spawn, MystratTails) then
-	Dialog.AddOption("You seem very busy.  Need any help around here?", "GotAnyWork")
+	Dialog.AddOption("You seem very preoccupied.  Need any help around here?", "GotAnyWork")
 	elseif HasQuest(Spawn, MystratTails) and GetQuestStep(Spawn, MystratTails) == 2 then
 	Dialog.AddOption("Here is a nice Mystrat tail for you.", "RatTail_Handin")
 	end

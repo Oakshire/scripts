@@ -32,7 +32,7 @@ waypoints(NPC)
 end
 
 function respawn(NPC)
-	Spawn(NPC)
+	spawn(NPC)
 end
 
 function waypoints(NPC)

@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn)
@@ -21,16 +21,16 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-	local choice = math.random(1,4)
+	local choice = MakeRandomInt(1,4)
 
 	if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/merchant/halfling_merchant_service_good_1_hail_gm_45d92a75.mp3", "Welcome! What can I help you with?", "bow", 1035878974, 1582137754, Spawn)
+		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/weaponsmith/gnome_weaponsmith_service_good_1_hail_gm_37dbcab8.mp3", "Welcome to my humble shop.  We have quite a selection of weapons to choose from.  See for yourself...", "salute", 1420367370, 281045768, Spawn, 0)
 	elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/merchant/halfling_merchant_service_good_1_hail_gm_24322c5d.mp3", "Greetings, friend traveler! We have the finest supplies to fill your adventuring needs.", "smile", 3623244639, 2766324485, Spawn)
+		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/weaponsmith/gnome_weaponsmith_service_good_1_hail_gm_48594671.mp3", "Is there something you need to have custom made?  I can see if I can get one of my lads to look into it!", "smile", 990534064, 1871659860, Spawn)
 	elseif choice == 3 then
-		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/merchant/halfling_merchant_service_good_1_hail_gm_e4fa2bd8.mp3", "Confound it! Where did I put that ledger?  It must be around here somewhere!", "confused", 1122140911, 2707150069, Spawn)
+		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/weaponsmith/gnome_weaponsmith_service_good_1_hail_gm_46ed66f6.mp3", "Never go into battle without a tried and trusted weapon. Take a look at what we have in stock.", "brandish", 3060803810, 2289579153, Spawn)
 	elseif choice == 4 then
-		PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/merchant/halfling_merchant_service_good_1_hail_gm_ae84abf9.mp3", "Go on, take a look at the stock.  You'll never beat this price in the city.  I guarantee it!", "wink", 41344948, 2516334772, Spawn)
+		PlayFlavor(NPC, "voiceover/english/gnome_eco_good_1/ft/service/weaponsmith/gnome_weaponsmith_service_good_1_hail_gm_1248b278.mp3", "I just got a shipment in from the Far Sea's Trading Company.  I don't just show anybody this stuff so, shhhh!  ", "wink", 2730095756, 1896311415, Spawn, 0)
 	else
 	end
 end

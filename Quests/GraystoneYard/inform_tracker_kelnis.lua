@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "I must speak to Kelnis in Oakmyst Forest.", 1, "I must find Tracker Kelnis somewhere in Oakmyst Forest.", 11, 1950042)
+	AddQuestStepChat(Quest, 1, "I must speak to Kelnis in Oakmyst Forest.", 1, "I must find Tracker Kelnis somewhere in Oakmyst Forest.", 11, 8300033)
     UpdateQuestZone(Quest,"Oakmyst Forest")
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end

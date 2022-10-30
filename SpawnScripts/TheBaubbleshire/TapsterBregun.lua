@@ -39,7 +39,7 @@ if GetFactionAmount(Spawn,11) <0 then
 else    
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Greetings, traveler. Is there something I can get ya today?")
+	Dialog.AddDialog("Welcome to the Deepmug Tavern!  I'm Bregun, and I'm the guy you'll be wanting to talk to if you feel the need to lift a pint!  What'll ya be havin'?")
 	Dialog.AddVoiceover("voiceover/english/tapster_bregun/qey_village06/tapsterbregun000.mp3", 3026913164, 1235641856)
 	PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
 	

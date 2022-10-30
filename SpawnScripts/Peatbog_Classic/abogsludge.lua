@@ -1,12 +1,33 @@
 --[[
-	Script Name	: SpawnScripts/Generic/random_pattern_small_short_delay.lua
-	Script Purpose	: chooses a random route of a particular pattern
-	Script Author	: theFoof with delay modifications by LordPazuzu
-	Script Date	: 2013.5.16
-	Script Notes	: If the coords are out of bounds then the spawn will still go there.
+    Script Name    : SpawnScripts/Peatbog_Classic/abogsludge.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.10.30 04:10:02
+    Script Purpose : 
+                   : 
 --]]
+
 function spawn(NPC)
-    ChooseMovement(NPC)
+    local Level = GetLevel(NPC)
+    local level1 =3
+    local level2 = 4
+    local difficulty1 = 6
+    local hp1 = 75
+    local power1 = 45
+    local difficulty2 = 6
+    local hp2 = 110
+    local power2 = 55
+    if Level == level1 then
+    SpawnSet(NPC, "difficulty", difficulty1)
+    SpawnSet(NPC, "hp", hp1)
+    SpawnSet(NPC, "power", power1)
+    elseif Level == level2
+        then
+    SpawnSet(NPC, "difficulty", difficulty2)
+    SpawnSet(NPC, "hp", hp2)
+    SpawnSet(NPC, "power", power2)
+    end
+
+ChooseMovement(NPC)
 end
 
 function ChooseMovement(NPC)

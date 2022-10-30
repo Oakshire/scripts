@@ -49,7 +49,7 @@ function Turnin(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("I would assume she wishes to debate religion.  I will make my way over to her soon enough.  Here, let me at least tip you with some of the money I've taken from poor Vandis.")
- 	Dialog.AddOption("[I will report on Discord to EmemJR that you need your final dialog.]")
+ 	Dialog.AddOption("Thanks for the tip.")
  	SetStepComplete(Spawn, 247,1)
 	Dialog.Start()
 end

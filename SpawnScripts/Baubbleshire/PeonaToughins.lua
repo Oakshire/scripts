@@ -19,15 +19,15 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-	if math.random(0, 100) <= 25 then
+	if MakeRandomInt(0, 100) <= 22 then
 		FaceTarget(NPC, Spawn)
 					local choice = math.random(1, 3)
 					if choice == 1 then
-						Say(NPC, "You can never be too careful when it comes to protecting yourself. Why not try something new?", Spawn)
+						PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/merchant/halfling_merchant_service_good_1_hail_gf_ae84abf9.mp3", "Go on, take a look at the stock.  You'll never beat this price in the city.  I guarantee it! ", "wink", 2106259105, 3779666567, Spawn)
 					elseif choice == 2 then
-						PlayFlavor(NPC, "", "Your garb looks a mite worn. Can I interest you in a fine new set of armor?", "", 1689589577, 4560189, Spawn)
+						PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/armorsmith/halfling_armorsmith_service_good_1_hail_gf_bb02310.mp3", "Coin is no object when gaining protection from your enemies.  What price can be put on your safety? ", "no", 2117849076, 1311257210, Spawn)
 					else
-						PlayFlavor(NPC, "", "Hello there! Can I interest you in some of the finest merchandise this side of Norrath?", "wave", 1689589577, 4560189, Spawn)
+						PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/armorsmith/halfling_armorsmith_service_good_1_hail_gf_58a92b79.mp3", "You can never be too careful when it comes to protection.  Here, try on one of these.", "beckon", 1344167789, 3405057634, Spawn)
 					end
 					end
 end

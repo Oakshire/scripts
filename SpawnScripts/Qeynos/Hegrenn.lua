@@ -49,7 +49,7 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC,Spawn)
    	    PlayFlavor(NPC, "voiceover/english/blacksmith_hegrenn/qey_south/blacksmithhegrenn000.mp3", "", "bye", 3860553311, 50224137, Spawn, 0)
         if not HasQuest(Spawn,Stones) and not HasCompletedQuest(Spawn, Stones)then
-        AddConversationOption(conversation, "I'm actually looking for work.  Have anything that needs doing?","QuestStart")
+        AddConversationOption(conversation, "I'm actually looking for work.  Have anything that needs doing?","Offer")
         end
         if GetQuestStep(Spawn, Stones) ==2 then
         AddConversationOption(conversation, "Seems the rumors were true.  Here are three samples of the mineral you were looking for.","Delivered2")
@@ -57,7 +57,7 @@ function hailed(NPC, Spawn)
         if GetQuestStep(Spawn, Sneed) ==1 then
         AddConversationOption(conversation, "I am here to pick up the supplies that Sneed Galliway has ordered from you.","Delivered")
         end        
-        AddConversationOption(conversation, "I will browse what you have.  Thank you.")
+        AddConversationOption(conversation, "I'm not looking for anything at this time.")
     	StartConversation(conversation, NPC, Spawn, "What are ya need'n?  If its made of iron you'll find it here.  I'm the best and only blacksmith in this part of town.  Are ya going to stand there, or browse my wares?")
     end
 end
@@ -92,9 +92,9 @@ function Offer(NPC, Spawn)
     OfferQuest(NPC,  Spawn,Stones)
     end
     
-function Delivered2(NPC, Spawn)
+function Delivered2(NPC, Spawn) --NOT ACCURATE DIALOG
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/blacksmith_hegrenn/qey_south/blacksmithhegrenn001.mp3", "", "boggle", 1598192026, 512466525, Spawn)
+    PlayFlavor(NPC, "voiceover/english/blacksmith_hegrenn/qey_south/blacksmithhegrenn003.mp3", "", "boggle", 1598192026, 512466525, Spawn)
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Just between us.  Got it.  Thank you!", "FinishQuest2")
 	StartConversation(conversation, NPC, Spawn, "Praise Brell!  These are quite the find!... but I must be ask'n ya to keep this little secret between us.  We wouldn't want the dryads of the forest come'n back for some revenge, now would we? Haha.  Please take one of these weapons I've been working on!  I insist.")
