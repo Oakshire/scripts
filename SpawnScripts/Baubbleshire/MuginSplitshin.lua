@@ -11,7 +11,7 @@ function spawn(NPC)
 end
 
 function InRange(NPC, Spawn)
- if math.random(1,100) <22 then
+ if math.random(1,100) <15 then
     if GetFactionAmount(Spawn,11) >0 then
 	PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/service/weaponsmith/halfling_weaponsmith_service_good_1_aoi_gm_cc3887ba.mp3", "It's the duty of all citizens to protect the innocent.  Purchase your weapons here for the honor of Qeynos.", "brandish", 259815311, 2474436962, Spawn)
     end

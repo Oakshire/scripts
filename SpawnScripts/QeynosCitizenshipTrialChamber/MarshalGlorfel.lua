@@ -40,10 +40,13 @@ if  GetQuestStep (Spawn,BQCitizen)==3 or GetQuestStep (Spawn,CVQCitizen)==3 or G
     Dialog1(NPC,Spawn)
 elseif  GetQuestStep (Spawn,BQCitizen)==8 or GetQuestStep (Spawn,CVQCitizen)==8 or GetQuestStep (Spawn,GQCitizen)==8 or GetQuestStep (Spawn,NQCitizen)==8 or GetQuestStep (Spawn,SCQCitizen)==8 or GetQuestStep (Spawn,WWQCitizen)==8  then
     Dialog2(NPC,Spawn)
-elseif GetQuestStep(Spawn,BQCitizen)<=5 and GetQuestStep(Spawn,BQCitizen)>=3 or GetQuestStep(Spawn,CVQCitizen)<=5 and GetQuestStep(Spawn,CVQCitizen)>=3 or GetQuestStep(Spawn,GQCitizen)<=5 and GetQuestStep(Spawn,GQCitizen)>=3 or GetQuestStep(Spawn,NQCitizen)<=5 and GetQuestStep(Spawn,NQCitizen)>=3 or GetQuestStep(Spawn,SCQCitizen)<=5 and GetQuestStep(Spawn,SCQCitizen)>=3 or GetQuestStep(Spawn,WWQCitizen)<=5 and GetQuestStep(Spawn,WWQCitizen)>=3 then
+elseif GetQuestStep(Spawn,BQCitizen)<=5 and GetQuestStep(Spawn,BQCitizen)>3 or GetQuestStep(Spawn,CVQCitizen)<=5 and GetQuestStep(Spawn,CVQCitizen)>3 or GetQuestStep(Spawn,GQCitizen)<=5 and GetQuestStep(Spawn,GQCitizen)>3 or GetQuestStep(Spawn,NQCitizen)<=5 and GetQuestStep(Spawn,NQCitizen)>3 or GetQuestStep(Spawn,SCQCitizen)<=5 and GetQuestStep(Spawn,SCQCitizen)>3 or GetQuestStep(Spawn,WWQCitizen)<=5 and GetQuestStep(Spawn,WWQCitizen)>3 then
+--elseif GetQuestStep(Spawn,BQCitizen)>=4 or GetQuestStep(Spawn,CVQCitizen)>=4 or GetQuestStep(Spawn,GQCitizen)>=4 or GetQuestStep(Spawn,NQCitizen)>=4 or GetQuestStep(Spawn,SCQCitizen)>=4 or GetQuestStep(Spawn,WWQCitizen)>=4 then
+--    if GetQuestStep(Spawn,BQCitizen)<=5  or GetQuestStep(Spawn,CVQCitizen)<=5 or GetQuestStep(Spawn,GQCitizen)<=5  or GetQuestStep(Spawn,NQCitizen)<=5 or GetQuestStep(Spawn,SCQCitizen)<=5 or GetQuestStep(Spawn,WWQCitizen)<=5 then
     Dialog3(NPC,Spawn)
     DoorCheck(NPC,Spawn)
-elseif HasCompletedQuest(Spawn,QCitizen) then
+--    end
+elseif HasCompletedQuest(Spawn,BQCitizen) or HasCompletedQuest(Spawn,CVQCitizen) or HasCompletedQuest(Spawn,GQCitizen) or HasCompletedQuest(Spawn,NQCitizen) or HasCompletedQuest(Spawn,SCQCitizen) or HasCompletedQuest(Spawn,WWQCitizen) then
      Dialog2(NPC,Spawn)
 else
 	FaceTarget(NPC, Spawn)
@@ -171,7 +174,7 @@ function Option1F(NPC,Spawn)
 end	
 
 function DoorCheck(NPC,Spawn)
-     Door = GetSpawn(NPC,22101355)
+    Door = GetSpawn(NPC,22101355)
     if Door ~= nil then
     Despawn(Door)
     end
