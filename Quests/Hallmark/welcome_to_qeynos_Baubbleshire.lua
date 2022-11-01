@@ -62,7 +62,7 @@ end
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I've returned to my room and spoken with caretaker Fairlee.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I've returned to my room and spoken with caretaker Fairlee.  She gave me a painting of hers to place on my walls.")
-	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new painting and then speak with the caretaker.", 1, "Caretake Fairlee has suggested that I place the painting on my walls to liven up the place.  I should place the painting and then ask her about The Baubbleshire.",0)
+	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new painting and then speak with the caretaker.", 1,100, "Caretake Fairlee has suggested that I place the painting on my walls to liven up the place.  I should place the painting and then ask her about The Baubbleshire.",0)
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")   
 end
 
@@ -76,7 +76,7 @@ end
 function Step7Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "I've found the gates to the Forest Ruins.")
 	UpdateQuestTaskGroupDescription(Quest, 7, "I've visisted one of four locations Ms. Fairlee has told me about.")
-	AddQuestStepChat(Quest, 8, "I need to locate introduce myself to the Baubbleshire crafting trainer.",1,"\"Not all coin gained by refugees comes from battling vermin. Crafting is a great opportunity for some refugees to become skilled in a tradeskill.  You should meet with the crafting trainer outside the Deductive Directory so you become familiar with where to begin a tradeskill if you so desire.\" - Ms. Fairlee", 11,2380025)
+	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Baubbleshire crafting trainer, Rala Eurocarry.",1,"\"Not all coin gained by refugees comes from battling vermin. Crafting is a great opportunity for some refugees to become skilled in a tradeskill.  You should meet with the crafting trainer outside the Deductive Directory so you become familiar with where to begin a tradeskill if you so desire.\" - Ms. Fairlee", 11,2380025)
 	AddQuestStepCompleteAction(Quest, 8, "Step8Complete")   
 end
 
@@ -96,15 +96,15 @@ end
 
 function Step10Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 10, "I've visited the inner city gates but was not allowed access.")
-	UpdateQuestTaskGroupDescription(Quest, 10, "I should return back to my room and ask Ms. Fairlee why the guard didn't allow me to enter into the city.  Hopefully she might know why.")
-	AddQuestStepChat(Quest, 11, "I need to return to my room and ask Ms. Fairlee why I can't enter the city.", 1, "I should return back to my room and ask Ms. Fairlee why the guard didn't allow me to enter into the city.  Hopefully she might know why.",11,2230785)
+	UpdateQuestTaskGroupDescription(Quest, 10, "I've visisted all four locations Ms. Fairlee has told me about.")
+	AddQuestStepChat(Quest, 11, "I need to return to my room and ask Ms. Fairlee why I can't enter the city.", 1, 100, "I should return back to my room and ask Ms. Fairlee why the guard didn't allow me to enter into the city.  Hopefully she might know why.",11,2230785)
 	AddQuestStepCompleteAction(Quest, 11, "Step11Complete")   
 end
 
 function Step11Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 11, "I've spoken with Ms. Fairlee and have been given another piece of furniture, this time a chandelier.")
 	UpdateQuestTaskGroupDescription(Quest, 11, "I've spoken with Ms. Fairlee and have been given another piece of furniture, this time a chandelier.")
-	AddQuestStep(Quest, 12, "Open your inventory.  \"Place\" your new chandelier and then speak with the caretaker.", 1, 100, "As if two pieces of furniture weren't enough, I now have a chandelier some neighbors brought by.  I should place this on my ceiling for better lighting and then ask Ms. Fairlee why the guard said only \"citizens\" were allowed into the city.",11)
+	AddQuestStep(Quest, 12, "Open your inventory.  \"Place\" your new chandelier and then speak with the caretaker.", 1, 100,"As if two pieces of furniture weren't enough, I now have a chandelier some neighbors brought by.  I should place this on my ceiling for better lighting and then ask Ms. Fairlee why the guard said only \"citizens\" were allowed into the city.",11)
 	AddQuestStepCompleteAction(Quest, 12, "Step12Complete")   
 end
 

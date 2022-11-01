@@ -19,36 +19,43 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function casted_on(NPC, Spawn,SpellName)
-
+function casted_on(NPC, Player,SpellName)
  if SpellName == 'Enter Qeynos' then  
-    if GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then -- Gnomes/Halflings
+    local con = CreateConversation()
+    AddConversationOption(con, "Yes", "Leave")
+    AddConversationOption(con, "No","CloseConversation")
+    StartDialogConversation(con, 1, NPC, Player, "Do you wish to enter the city of Qeynos?")
+end
+end
+
+function Leave(NPC,Player)
+    CloseConversation(NPC,Player)
+    if GetRace(Player)== 7 or GetRace(Player)== 5 then -- Gnomes/Halflings
       EG_BB = GetZone("elddargrove")
-       Zone(EG_BB,Spawn,813.68,-20.95,-531.66,81.23)
+       Zone(EG_BB,Player,813.68,-20.95,-531.66,81.23)
        
-    elseif GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then -- Dwarves/Barbarians
+    elseif GetRace(Player)== 0 or GetRace(Player)== 2 then -- Dwarves/Barbarians
         QH_Gray = GetZone("qeynosharbor")
-       Zone(QH_Gray,Spawn,861.05, -25.42, -84.63, 185.23)
+       Zone(QH_Gray,Player,861.05, -25.42, -84.63, 185.23)
        
-    elseif GetRace(Spawn)== 4 or GetRace(Spawn)== 8 then -- Highelves, Froglocks
+    elseif GetRace(Player)== 4 or GetRace(Player)== 8 then -- Highelves, Froglocks
         QH_CV = GetZone("qeynosharbor")
-       Zone(QH_CV,Spawn,718.28, -20.87, -114.23, 154.22)
+       Zone(QH_CV,Player,718.28, -20.87, -114.23, 154.22)
        
-    elseif GetRace(Spawn)== 9 or GetRace(Spawn)== 11 then -- Humans, Kerra
+    elseif GetRace(Player)== 9 or GetRace(Player)== 11 then -- Humans, Kerra
         SQ_Net = GetZone("southqeynos")
-       Zone(SQ_Net,Spawn,680.79, -20.56, 270.90, 297.71)
+       Zone(SQ_Net,Player,680.79, -20.56, 270.90, 297.71)
         
-    elseif GetRace(Spawn)== 3  then -- Erudites
+    elseif GetRace(Player)== 3  then -- Erudites
         SQ_SC = GetZone("southqeynos")
-       Zone(SQ_SC,Spawn,693.67, -20.47, 267.62, 96.96)
+       Zone(SQ_SC,Player,693.67, -20.47, 267.62, 96.96)
         
-    elseif GetRace(Spawn)== 15 or GetRace(Spawn)== 16 or GetRace(Spawn)== 6 then -- Woodelves, Halfelves, Fae
+    elseif GetRace(Player)== 15 or GetRace(Player)== 16 or GetRace(Player)== 6 then -- Woodelves, Halfelves, Fae
         EG_WW = GetZone("elddargrove")
-       Zone(EG_WW,Spawn,808.49, -21.59, -560.27, 162.00)
+       Zone(EG_WW,Player,808.49, -21.59, -560.27, 162.00)
        
     else
         SQ_Net = GetZone("southqeynos")
        Zone(SQ_Net,Spawn,680.79, -20.56, 270.90, 297.71)
     end
-end
 end

@@ -38,7 +38,6 @@ if GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
     PlayFlavor(NPC,"","","hello",0,0,Spawn)
 	Dialog.AddOption("It feel good to have land under my feet again!","Dialog1")
 	Dialog.Start()
---        SetStepComplete(Spawn,5717,2)
     else
     Talk(NPC,Spawn)
     end
@@ -50,8 +49,6 @@ end
 
 function Talk(NPC,Spawn)
         FaceTarget(NPC, Spawn)
-        Quest = GetQuest(Spawn,5760) 
-        GiveQuestItem(Quest, Spawn, "A welcome gift from The Ironforge Exchange. Decorate your inn room with it.", 61915)
         local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
         PlayFlavor(NPC,"voiceover/english/steward_leon/qey_village06/qst_steward_leon_callout1_454cfdb9.mp3","This day would be perfect if, only I had a cool mug of jum-jum.  Oh well.","agree",251868759,1191048205,Spawn)

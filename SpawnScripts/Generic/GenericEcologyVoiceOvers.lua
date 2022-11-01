@@ -667,7 +667,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	            	    elseif choice == 11 then
 	            	    PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_hail_gf_892152e8.mp3", "Me and my friends have all agreed to be non-conformists.", "agree", 2451936333, 2413299209, Spawn)
 	                    elseif choice == 12 then
-	            	    PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_aoi_gf_f8dd15ce.mp3", " Got any coin?", "beg", 3660925534, 3735346681, Spawn)
+	            	    PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_aoi_gf_f8dd15ce.mp3", "So ... You got any coin?", "beg", 3660925534, 3735346681, Spawn)
 		                end
 	               end
 				end
@@ -741,7 +741,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 			        if Qfaction <0 then
                     FactionChecking(NPC, Spawn, faction)
 				    else			    
-            	local choice = math.random(1,13)
+            	    local choice = MakeRandomInt(1,13)
 
                 	if choice == 1 then
 	            	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gm_eb4f8f5d.mp3", "I hope you have been sent by someone of importance. I'm quite busy.", "yawn", 111891212, 1507953677, Spawn)
@@ -4199,7 +4199,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 	            	    elseif choice == 11 then
 	            	    PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_hail_gf_892152e8.mp3", "Me and my friends have all agreed to be non-conformists.", "agree", 2451936333, 2413299209)
 	                    elseif choice == 12 then
-	            	    PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_aoi_gf_f8dd15ce.mp3", " Got any coin?", "beg", 3660925534, 3735346681)
+	            	    PlayFlavor(NPC, "voiceover/english/halfelf_eco_good_1/ft/halfelf/halfelf_eco_good_1_aoi_gf_f8dd15ce.mp3", "So ... You got any coin?", "beg", 3660925534, 3735346681)
 		                end
 	               end
 				end
@@ -4289,7 +4289,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 		
 		elseif race == HIGH_ELF then
 			if gender == MALE then
-			        if Qfaction <0 then
+			    if Qfaction <0 then
 			    	    if FactionCalloutTimeCheck == false then 
 			            FactionCalloutTimeCheck = true
 			            FaceTarget(NPC,Spawn)

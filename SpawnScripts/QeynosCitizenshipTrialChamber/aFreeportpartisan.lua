@@ -6,7 +6,7 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
-local BBQCitizen = 5718
+local BQCitizen = 5718
 local CVQCitizen = 5719
 local GQCitizen = 5720
 local NQCitizen = 5721

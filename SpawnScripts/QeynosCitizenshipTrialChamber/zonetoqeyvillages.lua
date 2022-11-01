@@ -12,36 +12,43 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function casted_on(NPC, Spawn,SpellName)
-
+function casted_on(NPC, Player,SpellName)
  if SpellName == 'Return Home' then  
-    if GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
-      BBShire = GetZone("Baubbleshire")
-       Zone(BBShire,Spawn,819.46, -20.60, -525.61, 200.47)
+    local con = CreateConversation()
+    AddConversationOption(con, "Yes", "Leave")
+    AddConversationOption(con, "No","CloseItemConversation")
+    StartDialogConversation(con, 1, NPC, Player, "Do you wish to leave the trial chamber?")
+end
+end
+
+function Leave(NPC,Player)
+    CloseItemConversation(NPC,Player)
+    if GetRace(Player)== 7 or GetRace(Player)== 5 then
+    BBShire = GetZone("Baubbleshire")
+       Zone(BBShire,Player,819.46, -20.60, -525.61, 200.47)
        
-    elseif GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
+    elseif GetRace(Player)== 0 or GetRace(Player)== 2 then
         Gray = GetZone("graystone")
-        Zone(Gray,Spawn,865.03, -25.45, -97.91, 357.68)
+        Zone(Gray,Player,865.03, -25.45, -97.91, 357.68)
         
-    elseif GetRace(Spawn)== 4 or GetRace(Spawn)== 8 then
+    elseif GetRace(Player)== 4 or GetRace(Player)== 8 then
         CV = GetZone("castleview")
-        Zone(CV,Spawn,729.01, -21.10, -124.36, 290.81)
+        Zone(CV,Player,729.01, -21.10, -124.36, 290.81)
         
-    elseif GetRace(Spawn)== 9 or GetRace(Spawn)== 11 then
+    elseif GetRace(Player)== 9 or GetRace(Player)== 11 then
         Net = GetZone("nettleville")
-        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
+        Zone(Net,Player,670.07, -20.39, 273.85, 114.78)
         
-    elseif GetRace(Spawn)== 3 or GetRace(Spawn)== 8 then
-        SC = GetZone("starcrest",704.07, -20.38, 264.40, 269.84)
-        Zone(SC,Spawn)
+    elseif GetRace(Player)== 3 or GetRace(Player)== 8 then
+        SC = GetZone("starcrest")
+        Zone(SC,Player,704.07, -20.38, 264.40, 269.84)
         
-    elseif GetRace(Spawn)== 15 or GetRace(Spawn)== 16 or GetRace(Spawn)== 6 then
+    elseif GetRace(Player)== 15 or GetRace(Player)== 16 or GetRace(Player)== 6 then
         WW = GetZone("willowwood")
-        Zone(WW,Spawn,809.96, -21.30, -566.02, 323.13)
+        Zone(WW,Player,809.96, -21.30, -566.02, 323.13)
         
     else
         Net = GetZone("nettleville")
-        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
+        Zone(Net,Player,670.07, -20.39, 273.85, 114.78)
     end
-end
 end

@@ -5,7 +5,6 @@
     Script Purpose : 
                    : 
 --]]
---\\\\##FFFF00You pull an application for citizenship from the wall.
 
 function spawn(NPC)
 SetRequiredQuest(NPC, 5760, 13)
@@ -31,12 +30,24 @@ function casted_on(NPC, Spawn,SpellName)
         SendPopUpMessage(Spawn, "I must complete my citizenship task before performing the Citizenship Trial.", 200, 200, 200)        
 	    
     elseif HasQuest(Spawn, 5718) and GetQuestStep(Spawn,5718)>=2 or HasQuest(Spawn, 5718) and GetQuestStep(Spawn,5718)<=8 then
+    local con = CreateConversation()
+    AddConversationOption(con, "Yes", "Leave")
+    AddConversationOption(con, "No","CloseConversation")
+    StartDialogConversation(con, 1, NPC, Player, "You have all the tokens required to enter the Trial Chamber.  Do you wish to begin the trial?")
+end
+end 
+end
+
+ function Leave(NPC,Spawn)       
+        CloseConversation(NPC,Player)
+        if GetQuestStep(Spawn,5718)==2 then
         SetStepComplete(Spawn,5718,2)
+        end
         ZoneRef = GetZone("QeynosCitizenshipTrialChamber")
         Zone(ZoneRef,Spawn)      
     end
-end
-end
+
+
 
 function respawn(NPC)
 	spawn(NPC)

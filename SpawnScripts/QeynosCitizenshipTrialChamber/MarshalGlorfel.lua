@@ -7,7 +7,7 @@
 --]]
 require "SpawnScripts/Generic/DialogModule"
 
-local BBQCitizen = 5718
+local BQCitizen = 5718
 local CVQCitizen = 5719
 local GQCitizen = 5720
 local NQCitizen = 5721
@@ -40,12 +40,15 @@ if  GetQuestStep (Spawn,BQCitizen)==3 or GetQuestStep (Spawn,CVQCitizen)==3 or G
     Dialog1(NPC,Spawn)
 elseif  GetQuestStep (Spawn,BQCitizen)==8 or GetQuestStep (Spawn,CVQCitizen)==8 or GetQuestStep (Spawn,GQCitizen)==8 or GetQuestStep (Spawn,NQCitizen)==8 or GetQuestStep (Spawn,SCQCitizen)==8 or GetQuestStep (Spawn,WWQCitizen)==8  then
     Dialog2(NPC,Spawn)
-elseif GetQuestStep(Spawn,BQCitizen)<=5 and GetQuestStep(Spawn,BQCitizen)>3 or GetQuestStep(Spawn,CVQCitizen)<=5 and GetQuestStep(Spawn,CVQCitizen)>3 or GetQuestStep(Spawn,GQCitizen)<=5 and GetQuestStep(Spawn,GQCitizen)>3 or GetQuestStep(Spawn,NQCitizen)<=5 and GetQuestStep(Spawn,NQCitizen)>3 or GetQuestStep(Spawn,SCQCitizen)<=5 and GetQuestStep(Spawn,SCQCitizen)>3 or GetQuestStep(Spawn,WWQCitizen)<=5 and GetQuestStep(Spawn,WWQCitizen)>3 then
---elseif GetQuestStep(Spawn,BQCitizen)>=4 or GetQuestStep(Spawn,CVQCitizen)>=4 or GetQuestStep(Spawn,GQCitizen)>=4 or GetQuestStep(Spawn,NQCitizen)>=4 or GetQuestStep(Spawn,SCQCitizen)>=4 or GetQuestStep(Spawn,WWQCitizen)>=4 then
---    if GetQuestStep(Spawn,BQCitizen)<=5  or GetQuestStep(Spawn,CVQCitizen)<=5 or GetQuestStep(Spawn,GQCitizen)<=5  or GetQuestStep(Spawn,NQCitizen)<=5 or GetQuestStep(Spawn,SCQCitizen)<=5 or GetQuestStep(Spawn,WWQCitizen)<=5 then
+elseif GetQuestStep(Spawn,BQCitizen)<=7 and GetQuestStep(Spawn,BQCitizen)>=4 or 
+    GetQuestStep(Spawn,CVQCitizen)<=7 and GetQuestStep(Spawn,CVQCitizen)>=4 or 
+    GetQuestStep(Spawn,GQCitizen)<=7 and GetQuestStep(Spawn,GQCitizen)>=4 or 
+    GetQuestStep(Spawn,NQCitizen)<=7 and GetQuestStep(Spawn,NQCitizen)>=4 or 
+    GetQuestStep(Spawn,SCQCitizen)<=7 and GetQuestStep(Spawn,SCQCitizen)>=4 or 
+    GetQuestStep(Spawn,WWQCitizen)<=7 and GetQuestStep(Spawn,WWQCitizen)>=4 then
     Dialog3(NPC,Spawn)
     DoorCheck(NPC,Spawn)
---    end
+
 elseif HasCompletedQuest(Spawn,BQCitizen) or HasCompletedQuest(Spawn,CVQCitizen) or HasCompletedQuest(Spawn,GQCitizen) or HasCompletedQuest(Spawn,NQCitizen) or HasCompletedQuest(Spawn,SCQCitizen) or HasCompletedQuest(Spawn,WWQCitizen) then
      Dialog2(NPC,Spawn)
 else
@@ -153,7 +156,7 @@ function Option1F(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("I think ya got it!  Let it be known, you got the full backing of the law, if push comes to shove.  We'll understand if you can't make them see the light of reason, just so long as ya give it a shot.  If you can prove yourself here, we'll welcome you, with open arms,  into the city as a citizen!")
-	Dialog.AddVoiceover("voiceover/english/marshal_glorfel/qey_catacomb_epic01/marshalglorfel009.mp3", 3980894706, 4254118210)
+	Dialog.AddVoiceover("voiceover/english/marshal_glorfel/qey_catacomb_epic01/marshalglorfel009.mp3", 882916375, 603737297)
     PlayFlavor(NPC,"","","nod",0,0,Spawn)
 	Dialog.AddOption("Let us begin, Marshal.")
 	Dialog.Start()
@@ -191,19 +194,52 @@ function Dialog2(NPC,Spawn)
 	Dialog.Start()
 	if HasQuest(Spawn,BQCitizen) then
 	SetStepComplete(Spawn,BQCitizen,8)
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,CVQCitizen) then
  	SetStepComplete(Spawn,CVQCitizen,8)
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,GQCitizen) then
  	SetStepComplete(Spawn,GQCitizen,8)
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,NQCitizen) then
  	SetStepComplete(Spawn,NQCitizen,8)
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,SCQCitizen) then
  	SetStepComplete(Spawn,SCQCitizen,8)
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+       AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,WWQCitizen) then
  	SetStepComplete(Spawn,WWQCitizen,8)
- 	end
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddTimer(NPC,500,"Citizen",1,Spawn)
+	end
+
+    if HasQuest(Spawn,5760) and GetQuestStep(Spawn,5760)==13 then
+    SetStepComplete(Spawn,5760,13)
+    elseif HasQuest(Spawn,5761) and GetQuestStep(Spawn,5761)==13 then
+    SetStepComplete(Spawn,5761,13)
+    elseif HasQuest(Spawn,5762) and GetQuestStep(Spawn,5762)==13 then
+    SetStepComplete(Spawn,5762,13)
+    elseif HasQuest(Spawn,5763) and GetQuestStep(Spawn,5763)==13 then
+    SetStepComplete(Spawn,5763,13)
+    elseif HasQuest(Spawn,5764) and GetQuestStep(Spawn,5764)==13 then
+    SetStepComplete(Spawn,5764,13)
+    elseif HasQuest(Spawn,5765) and GetQuestStep(Spawn,5765)==13 then
+    SetStepComplete(Spawn,5765,13)
+    end
 end	
  
+ function Citizen(NPC,Spawn)
+    SendMessage(Spawn, "You are now a Citizen of Qeynos!","yellow")
+    SendPopUpMessage(Spawn, "You are now a Citizen of Qeynos!",250,250,250)
+    PlaySound(Spawn, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)
+    ApplySpellVisual(Spawn, 323)
+end
+
 function Option2A(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
@@ -245,8 +281,8 @@ function FailureExit(NPC,Spawn)
         Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
         
     elseif GetRace(Spawn)== 3 or GetRace(Spawn)== 8 then
-        SC = GetZone("starcrest",704.07, -20.38, 264.40, 269.84)
-        Zone(SC,Spawn)
+        SC = GetZone("starcrest")
+        Zone(SC,Spawn,704.07, -20.38, 264.40, 269.84)
         
     elseif GetRace(Spawn)== 15 or GetRace(Spawn)== 16 or GetRace(Spawn)== 6 then
         WW = GetZone("willowwood")

@@ -20,6 +20,13 @@ end
 
 
 function Accepted(Quest, QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Make sure Robert Newbury recieves this tally directly.  You'll find him in the Qeynos Exchange at the harbor. Now, this needs to be delivered right away, so no dawdling!")
+	Dialog.AddVoiceover("voiceover/english/banker_dori/qey_village03/bankerdori001.mp3", 161424087,848076549)
+	PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+    Dialog.AddOption("You got it, Dori.")
+    Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
