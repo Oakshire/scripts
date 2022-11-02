@@ -20,7 +20,7 @@ end
 
 function casted_on(NPC, Spawn,SpellName)
  if SpellName == 'Use citizenship sign' then  
- if HasQuest(Spawn,5760) and GetQuestStep(Spawn,5760)==13 and not HasItem(Spawn, 13942,1) and not HasCompletedQuest(Spawn,5718) then
+ if HasQuest(Spawn,5760) and GetQuestStep(Spawn,5760)==13 and not HasItem(Spawn, 13942,1) and not HasCompletedQuest(Spawn,5718) and not HasItem(Spawn, 13942,1) then
 	    SendMessage(Spawn, "You pull an application for citizenship from the wall.")
         Quest = GetQuest(Spawn,5760)
         GiveQuestItem(Quest, Spawn, "I must complete this task to become a Citizen of Qeynos.", 13942)

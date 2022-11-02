@@ -8,7 +8,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
-    SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")		
+    SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
     SetRequiredQuest(NPC, 5760, 1, 1) --BAUBBLESHIRE
     SetRequiredQuest(NPC, 5760, 2, 1)   
     SetRequiredQuest(NPC, 5760, 3, 1)   

@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Oakmyst Forest.", 5, 20, "The local forests have been seeded with tokens for the citizens of Castleview Hamlet to gather. These tokens may be found on any creatures in the Caves.", 1334, 1950000, 1950001, 1950002, 1950006, 1950007, 1950009, 1950010, 1950013, 1950014, 1950015, 1950016, 1950017, 1950018, 1950019, 1950020, 1950023, 1950026, 1950028, 1950029, 1950032, 1950033, 1950034 , 1950035, 1950036, 1950039, 1950046, 1950047, 1950054, 1950056, 1950057, 1950062, 1950064, 1950065, 1950066, 1950067, 1950070, 1950074, 1950124, 1950125, 1950126, 1950131)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Oakmyst Forest.", 5, 25, "The local forests have been seeded with tokens for the citizens of Castleview Hamlet to gather. These tokens may be found on any creatures in the Caves.", 1334, 1950000, 1950001, 1950002, 1950006, 1950007, 1950009, 1950010, 1950013, 1950014, 1950015, 1950016, 1950017, 1950018, 1950019, 1950020, 1950023, 1950026, 1950028, 1950029, 1950032, 1950033, 1950034 , 1950035, 1950036, 1950039, 1950046, 1950047, 1950054, 1950056, 1950057, 1950062, 1950064, 1950065, 1950066, 1950067, 1950070, 1950074, 1950124, 1950125, 1950126, 1950131)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Oakmyst Forest")
 end

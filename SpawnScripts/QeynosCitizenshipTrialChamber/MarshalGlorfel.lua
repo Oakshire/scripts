@@ -173,6 +173,20 @@ function Option1F(NPC,Spawn)
 	elseif HasQuest(Spawn,WWQCitizen) then
  	SetStepComplete(Spawn,WWQCitizen,3)
  	end
+     if HasQuest(Spawn,5760) and GetQuestStep(Spawn,5760)==13 then
+    SetStepComplete(Spawn,5760,13)
+    elseif HasQuest(Spawn,5761) and GetQuestStep(Spawn,5761)==13 then
+    SetStepComplete(Spawn,5761,13)
+    elseif HasQuest(Spawn,5762) and GetQuestStep(Spawn,5762)==13 then
+    SetStepComplete(Spawn,5762,13)
+    elseif HasQuest(Spawn,5763) and GetQuestStep(Spawn,5763)==13 then
+    SetStepComplete(Spawn,5763,13)
+    elseif HasQuest(Spawn,5764) and GetQuestStep(Spawn,5764)==13 then
+    SetStepComplete(Spawn,5764,13)
+    elseif HasQuest(Spawn,5765) and GetQuestStep(Spawn,5765)==13 then
+    SetStepComplete(Spawn,5765,13)
+    end
+ 
  	DoorCheck(NPC,Spawn)
 end	
 
@@ -218,18 +232,18 @@ function Dialog2(NPC,Spawn)
         AddTimer(NPC,500,"Citizen",1,Spawn)
 	end
 
-    if HasQuest(Spawn,5760) and GetQuestStep(Spawn,5760)==13 then
-    SetStepComplete(Spawn,5760,13)
-    elseif HasQuest(Spawn,5761) and GetQuestStep(Spawn,5761)==13 then
-    SetStepComplete(Spawn,5761,13)
-    elseif HasQuest(Spawn,5762) and GetQuestStep(Spawn,5762)==13 then
-    SetStepComplete(Spawn,5762,13)
-    elseif HasQuest(Spawn,5763) and GetQuestStep(Spawn,5763)==13 then
-    SetStepComplete(Spawn,5763,13)
-    elseif HasQuest(Spawn,5764) and GetQuestStep(Spawn,5764)==13 then
-    SetStepComplete(Spawn,5764,13)
-    elseif HasQuest(Spawn,5765) and GetQuestStep(Spawn,5765)==13 then
-    SetStepComplete(Spawn,5765,13)
+    if HasQuest(Spawn,5760) and GetQuestStep(Spawn,5760)==14 then
+    SetStepComplete(Spawn,5760,14)
+    elseif HasQuest(Spawn,5761) and GetQuestStep(Spawn,5761)==14 then
+    SetStepComplete(Spawn,5761,14)
+    elseif HasQuest(Spawn,5762) and GetQuestStep(Spawn,5762)==14 then
+    SetStepComplete(Spawn,5762,14)
+    elseif HasQuest(Spawn,5763) and GetQuestStep(Spawn,5763)==14 then
+    SetStepComplete(Spawn,5763,14)
+    elseif HasQuest(Spawn,5764) and GetQuestStep(Spawn,5764)==14 then
+    SetStepComplete(Spawn,5764,14)
+    elseif HasQuest(Spawn,5765) and GetQuestStep(Spawn,5765)==14 then
+    SetStepComplete(Spawn,5765,14)
     end
 end	
  

@@ -77,7 +77,7 @@ function CanDo2(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-	Dialog.AddDialog("Our society also has our very own Broker, who you can talk to in order to buy and sell items from other players.  A very handy connection, indeed!")
+	Dialog.AddDialog("Our society also has our very own Broker, who you can talk to in order to buy and sell items from other in the city.  A very handy connection, indeed!")
 	Dialog.AddOption("Thank you for all the information!")
     if GetTradeskillLevel(Spawn)<2 then
 	Dialog.AddOption("I'm rather new at crafting. Can you help me?", "HelpMe")

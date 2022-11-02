@@ -111,15 +111,22 @@ end
 function Step12Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 12, "I've placed the chandelier on the ceiling and spoke with Ms. Fairlee.")
 	UpdateQuestTaskGroupDescription(Quest, 12, "I've placed the chandelier on the ceiling and spoke with Ms. Fairlee.")
-	AddQuestStep(Quest, 13, "I need to get the Citizenship Application off the inner city gate and complete its task.", 1, 100,"\"If you want to deal with all the hub-bub of city life, then you'll want to go to the citizenship sign at the city gates.  Pull an application from the wall and fulfill the application task, afterwards return to the sign and use it to speak with Marshal Glorfel about becoming a citizen.  If you ask me, I don't know what's wrong with settling down here.  It's a nice sleepy village, not troubled with excitement and danger and all that.  But then again, you kids like that kind of thing.  Well, good luck to you!\" - Ms. Fairlee",11)
-	AddQuestStepCompleteAction(Quest, 13, "QuestComplete")   
+	AddQuestStep(Quest, 13, "Take an application from the citizenship sign, complete the task, then speak with Marshal Glorfel by using the citizenship sign again.", 1, 100,"\"If you want to deal with all the hub-bub of city life, then you'll want to go to the citizenship sign at the city gates.  Pull an application from the wall and fulfill the application task, afterwards return to the sign and use it to speak with Marshal Glorfel about becoming a citizen.  If you ask me, I don't know what's wrong with settling down here.  It's a nice sleepy village, not troubled with excitement and danger and all that.  But then again, you kids like that kind of thing.  Well, good luck to you!\" - Ms. Fairlee",11)
+	AddQuestStepCompleteAction(Quest, 13, "Step13Complete")   
+end
+
+function Step13Complete(Quest, QuestGiver, Player)
+	UpdateQuestStepDescription(Quest, 13, "I've spoken with Marshal Glorfel and have been told how to become a citizen.")
+	UpdateQuestTaskGroupDescription(Quest, 13, "I've spoken with Marshal Glorfel and have been told how to become a citizen.")
+	AddQuestStepChat(Quest, 14, "Judge the traitors individually and prove your loyalty to Qeynos.", 1, 100,"Marshal Glorfel has tasked me with rendering judgment upon some treasonous residents in order to gain citizenship.  He has pointed out that there are those who would betray our great city to that wretch Lucan.  To prove myself, I will have to render final judgment on all of them.",11,22101350)
+	AddQuestStepCompleteAction(Quest, 14, "QuestComplete")   
 end
 
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 13, "I have completed the Citizenship Trial and am now a citizen of Qeynos.")
-	UpdateQuestTaskGroupDescription(Quest, 13, "I have completed the Citizenship Trial and am now a citizen of Qeynos.")
+	UpdateQuestStepDescription(Quest, 14, "I have completed the Citizenship Trial and am now a citizen of Qeynos.")
+	UpdateQuestTaskGroupDescription(Quest, 14, "I am now a citizen of Qeynos!")
 
 	UpdateQuestDescription(Quest, "Thanks to the help of the inn's caretaker, I've been able to familiarize myself with the Baubbleshire.  Not only did she show me the way around, she also let me know who to speak to in order to become a citizen.")
 	GiveQuestReward(Quest, Player)
@@ -151,6 +158,8 @@ function Reload(Quest, QuestGiver, Player, Step)
 	elseif Step == 12 then
 		Step12Complete(Quest, QuestGiver, Player)
 	elseif Step == 13 then
+		Step13Complete(Quest, QuestGiver, Player)
+	elseif Step == 14 then
 		QuestComplete(Quest, QuestGiver, Player)
 		end
 end

@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")		
+SetPlayerProximityFunction(NPC, 11, "InRange", "LeaveRange")		
  waypoints(NPC)
  end
 
@@ -21,7 +21,7 @@ function InRange(NPC,Spawn)
 		PlayFlavor(NPC, "", "", "heckno", 1584866727, 581589457, Spawn)
         end
    else 
-     if math.random(1, 100) <= 25 then
+     if math.random(1, 100) <= 65 then
  	FaceTarget(NPC,Spawn)
 	RandomGreeting(NPC, Spawn)
     end

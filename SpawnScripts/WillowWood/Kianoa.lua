@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
 ProvidesQuest(NPC,5761)

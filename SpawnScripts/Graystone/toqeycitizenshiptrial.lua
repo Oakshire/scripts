@@ -20,12 +20,12 @@ end
 
 function casted_on(NPC, Spawn,SpellName)
  if SpellName == 'Use citizenship sign' then  
- if HasQuest(Spawn,5764) and GetQuestStep(Spawn,5764)==13 and not HasItem(Spawn, 13942,1) and not HasCompletedQuest(Spawn,5720) then
+ if HasQuest(Spawn,5764) and GetQuestStep(Spawn,5764)==13 and not HasCompletedQuest(Spawn,5720) and not HasItem(Spawn, 7906,1) then
 	    SendMessage(Spawn, "You pull an application for citizenship from the wall.")
         Quest = GetQuest(Spawn,5764)
         GiveQuestItem(Quest, Spawn, "I must complete this task to become a Citizen of Qeynos.", 7906)
         
-    elseif not HasQuest(Spawn, 5720) and HasItem(Spawn, 13942,1) or  GetQuestStep(Spawn,5720)==1 and HasItem(Spawn, 7906,1) then
+    elseif not HasQuest(Spawn, 5720) and HasItem(Spawn, 7906,1) or  GetQuestStep(Spawn,5720)==1 and HasItem(Spawn, 7906,1) then
 	    SendMessage(Spawn, "I must complete my citizenship task before performing the Citizenship Trial.")
         SendPopUpMessage(Spawn, "I must complete my citizenship task before performing the Citizenship Trial.", 200, 200, 200)        
 	    
@@ -33,13 +33,13 @@ function casted_on(NPC, Spawn,SpellName)
     local con = CreateConversation()
     AddConversationOption(con, "Yes", "Leave")
     AddConversationOption(con, "No","CloseConversation")
-    StartDialogConversation(con, 1, NPC, Player, "You have all the tokens required to enter the Trial Chamber.  Do you wish to begin the trial?")
+    StartDialogConversation(con, 1, NPC, Spawn, "You have all the tokens required to enter the Trial Chamber.  Do you wish to begin the trial?")
 end
 end 
 end
 
  function Leave(NPC,Spawn)       
-        CloseConversation(NPC,Player)
+        CloseConversation(NPC,Spawn)
         if GetQuestStep(Spawn,5720)==2 then
         SetStepComplete(Spawn,5720,2)
         end
