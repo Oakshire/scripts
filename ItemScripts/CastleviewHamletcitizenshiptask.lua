@@ -30,7 +30,7 @@ if HasQuest(Player,5719) or  HasCompletedQuest(Player,5719) then
 AddConversationOption(conversation, "[continue]","StartQuest")
 end
 AddConversationOption(conversation, "[put the note away]","CloseItemConversation")
-StartDialogConversation(conversation, 2, Item, Player, "Castleview Hamlet residents must gather five tokens from the Oakmyst Forest.")
+StartDialogConversation(conversation, 2, Item, Player, "Castleview Hamlet residents must gather five tokens from the Down Below.")
 end
 
 function StartQuest(Item,Player)

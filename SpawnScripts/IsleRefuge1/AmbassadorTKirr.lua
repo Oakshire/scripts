@@ -40,7 +40,7 @@ end
 
 function hailed(NPC, Spawn)
 if GetClass(Spawn)>0 then
-if not HasQuest(Spawn,5758) and not HasQuest(Spawn,5717) and not HasCompletedQuest(Spawn,5758)  and not HasCompletedQuest(Spawn,5717) and not HasItem(Spawn, 1414,1) then
+if not HasQuest(Spawn,5758) and not HasQuest(Spawn,5717) and not HasCompletedQuest(Spawn,5758)  and not HasCompletedQuest(Spawn,5717) and not HasItem(Spawn, 1414,1) and GetFactionAmount(Spawn,12) >=0 then
     if GetRace(Spawn) == BARBARIAN or GetRace(Spawn) == DARK_ELF or GetRace(Spawn) == ERUDITE or GetRace(Spawn) ==GNOME or GetRace(Spawn) == HALF_ELF or GetRace(Spawn) == HUMAN or GetRace(Spawn) == IKSAR or GetRace(Spawn) == KERRA or GetRace(Spawn) == OGRE or GetRace(Spawn) == RATONGA or GetRace(Spawn) == TROLL or GetRace(Spawn) == ARASAI or GetRace(Spawn) == SARNAK or GetRace(Spawn) == VAMPIRE or GetRace(Spawn) == AERAKYN then
     Dialog1(NPC, Spawn)
     else

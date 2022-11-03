@@ -17,7 +17,7 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-	if math.random(0, 100) <= 25 then
+	if math.random(0, 100) <= 20 then
 		FaceTarget(NPC, Spawn)
 		GenericGuardHail(NPC, Spawn)
 	else

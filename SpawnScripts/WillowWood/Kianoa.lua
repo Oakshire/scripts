@@ -6,23 +6,32 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
+local CalloutTimer = false
 
 function spawn(NPC)
 ProvidesQuest(NPC,5761)
-SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn) --Quest Callout
 if GetFactionAmount(Spawn,11)<0 then
 PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 FaceTarget(NPC, Spawn)
-else   
- if GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
+elseif GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
     if not HasQuest(Spawn,5760) and not HasCompletedQuest(Spawn, 5760)then   
     Talk(NPC,Spawn)
     end
+elseif CalloutTimer == false then
+    CalloutTimer = true
+    AddTimer(NPC,90000,"ResetCallout",1,Spawn)
+    Talk(NPC,Spawn)
     end
 end
+
+
+
+function ResetCallout(NPC,Spawn)
+    CalloutTimer = false
 end
 
 
@@ -36,6 +45,7 @@ if GetRace(Spawn)== 15 or GetRace(Spawn)== 6 or GetRace(Spawn)== 16 then
 	Dialog.AddVoiceover("voiceover/english/steward_kianoa/qey_village05/steward_kianoa001.mp3", 763946476, 363644920)
     PlayFlavor(NPC,"","","nod",0,0,Spawn)
 	Dialog.AddOption("Thank you for the welcome.","Dialog1")
+	Dialog.AddOption("I'll have to continue this conversation a bit later.")
 	Dialog.Start()    
     else
     Talk(NPC,Spawn)

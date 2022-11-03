@@ -30,33 +30,38 @@ UnequipSlot(player,22)
 UnequipSlot(player, 23) 
 
 
---[[Qeynos = GetFactionAmount(player, 11)
+Qeynos = GetFactionAmount(player, 11)
 Freeport = GetFactionAmount(player, 12)
 Neriak = GetFactionAmount(player, 13)
 Kelethin = GetFactionAmount(player, 14)
 Halas = GetFactionAmount(player, 16)
 Gorowyn = GetFactionAmount(player, 17)
+alignment = GetAlignment(player)
 
-
-if Qeynos >0 then Changefaction(player, 11, -Qeynos)
-    else Changefaction(player, 11, (Qeynos*-1))
-end
-if Freeport >0 then Changefaction(player, 12, -Freeport)
-    else Changefaction(player, 12, (Freeport*-1))
-end
-if Neriak >0 then Changefaction(player, 13, -Neriak)
-    else Changefaction(player, 13, (Neriak*-1))
-end
-if Kelethin >0 then Changefaction(player, 14, -Kelethin)
-    else Changefaction(player, 14, (Kelethin*-1))
-end
-if Halas >0 then Changefaction(player, 16, -Halas)
-    else Changefaction(player, 16, (Halas*-1))
-end
-if Gorowyn >0 then Changefaction(player, 17, -Gorowyn)
-    else Changefaction(player, 17, (Gorowyn*-1))
+if GetRace(player) == 0 or GetRace(player) == 3 or GetRace(player) == 5 or GetRace(player) == 6 or GetRace(player) == 9 or GetRace(player) == 11 or GetRace(player) == 20 then
+SetAlignment(player, 2)
 end
 
+if Qeynos >0 then ChangeFaction(player, 11, -Qeynos)
+    elseif Qeynos <0 then ChangeFaction(player, 11, (Qeynos*-1))
+end
+if Freeport >0 then ChangeFaction(player, 12, -Freeport)
+    elseif Freeport <0 then ChangeFaction(player, 12, (Freeport*-1))
+end
+if Neriak >0 then ChangeFaction(player, 13, -Neriak)
+    elseif Neriak <0 then ChangeFaction(player, 13, (Neriak*-1))
+end
+if Kelethin >0 then ChangeFaction(player, 14, -Kelethin)
+    elseif Kelethin <0 then  ChangeFaction(player, 14, (Kelethin*-1))
+end
+if Halas >0 then ChangeFaction(player, 16, -Halas)
+    elseif Halas <0 then ChangeFaction(player, 16, (Halas*-1))
+end
+if Gorowyn >0 then ChangeFaction(player, 17, -Gorowyn)
+    elseif Gorowyn <0 then ChangeFaction(player, 17, (Gorowyn*-1))
+end
+
+--[[
 Qfighters = GetFactionAmount(player,214)
 Qpriests = GetFactionAmount(player,155)
 Qscouts = GetFactionAmount(player, 243)
@@ -67,29 +72,29 @@ FPpriests = GetFactionAmount(player,105)
 FPscouts = GetFactionAmount(player, 103)
 FPmages = GetFactionAmount(player, 104)
 
-if Qfighters >0 then Changefaction(player, 214, -Qfighters)
-    else Changefaction(player, 214, (Qfighters*-1))
+if Qfighters >0 then ChangeFaction(player, 214, -Qfighters)
+    else ChangeFaction(player, 214, (Qfighters*-1))
 end
-if Qpriests >0 then Changefaction(player, 155, -Qpriests)
-    else Changefaction(player, 155, (Qpriests*-1))
+if Qpriests >0 then ChangeFaction(player, 155, -Qpriests)
+    else ChangeFaction(player, 155, (Qpriests*-1))
 end
-if Qscouts >0 then Changefaction(player, 243, -Qscouts)
-    else Changefaction(player, 243, (Qscouts*-1))
+if Qscouts >0 then ChangeFaction(player, 243, -Qscouts)
+    else ChangeFaction(player, 243, (Qscouts*-1))
 end
-if Qmages >0 then Changefaction(player, 102, -Qmages)
-    else Changefaction(player, 102, (Qmages*-1))
+if Qmages >0 then ChangeFaction(player, 102, -Qmages)
+    else ChangeFaction(player, 102, (Qmages*-1))
 end
-if FPfighters >0 then Changefaction(player, 16, -FPfighters)
-    else Changefaction(player, 16, (FPfighters*-1))
+if FPfighters >0 then ChangeFaction(player, 16, -FPfighters)
+    else ChangeFaction(player, 16, (FPfighters*-1))
 end
-if FPpriests >0 then Changefaction(player, 105, -FPpriests)
-    else Changefaction(player, 105, (FPpriests*-1))
+if FPpriests >0 then ChangeFaction(player, 105, -FPpriests)
+    else ChangeFaction(player, 105, (FPpriests*-1))
 end
-if FPscouts >0 then Changefaction(player, 103, -FPscouts)
-    else Changefaction(player, 103, (FPscouts*-1))
+if FPscouts >0 then ChangeFaction(player, 103, -FPscouts)
+    else ChangeFaction(player, 103, (FPscouts*-1))
 end
-if FPmages >0 then Changefaction(player, 104, -FPmages)
-    else Changefaction(player, 104, (FPmages*-1))
+if FPmages >0 then ChangeFaction(player, 104, -FPmages)
+    else ChangeFaction(player, 104, (FPmages*-1))
 end
 ]]--
 AddTimer(NPC,500,"Removal",1,player)
@@ -477,6 +482,9 @@ end
 if HasSkill(player, 540022425) then -- Parry
     RemoveSkill(player, 540022425)
 end
+if HasSkill(player, 1852383242) then -- Dual Wield
+    RemoveSkill(player, 1852383242)
+end
 
 if HasSkill(player, 3421494576) then -- Crushing
     RemoveSkill(player, 3421494576)
@@ -528,6 +536,10 @@ end
 if HasSkill(player, 1970131346) then -- Transmuting
     RemoveSkill(player, 1970131346)
 end
+if HasSkill(player, 3429135390) then -- Mystical Destruction
+    RemoveSkill(player, 3429135390)
+end
+
 
 --COMMONER GAINED SKILLS
 if not HasSkill(player, 2072844078) then -- Magic Affinity

@@ -6,24 +6,33 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
+local CalloutTimer = false
 
 function spawn(NPC)
 ProvidesQuest(NPC,5764)
-SetPlayerProximityFunction(NPC, 12, "InRange", "LeaveRange")
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn) --Quest Callout
 if GetFactionAmount(Spawn,11)<0 then
 PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 FaceTarget(NPC, Spawn)
-else   
- if GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
+elseif GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
     if not HasQuest(Spawn,5764) and not HasCompletedQuest(Spawn, 5764)then   
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC,"voiceover/english/steward_sal/qey_village03/qst_steward_sal_callout1_46762b99.mp3","No time for talkin', friend!  I gotta keep an eye out for new refugees.","bye",1387716528,1390458474,Spawn)
     end
+elseif CalloutTimer == false then
+    CalloutTimer = true
+    AddTimer(NPC,90000,"ResetCallout",1,Spawn)
+    Talk(NPC,Spawn)
     end
 end
+
+
+
+function ResetCallout(NPC,Spawn)
+    CalloutTimer = false
 end
 
 
@@ -40,6 +49,7 @@ if GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
 	Dialog.AddVoiceover("voiceover/english/steward_sal/qey_village03/steward_sal001.mp3", 3208153307, 1430720634)
     PlayFlavor(NPC,"","","hello",0,0,Spawn)
 	Dialog.AddOption("No offense taken, friend.  It's nice to laugh again.","Dialog1")
+	Dialog.AddOption("I'll have to continue this conversation a bit later.")
 	Dialog.Start()
     else
     Talk(NPC,Spawn)

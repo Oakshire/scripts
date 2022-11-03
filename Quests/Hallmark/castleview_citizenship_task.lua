@@ -12,9 +12,9 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Oakmyst Forest.", 5, 25, "The local forests have been seeded with tokens for the citizens of Castleview Hamlet to gather. These tokens may be found on any creatures in the Caves.", 1334, 1950000, 1950001, 1950002, 1950006, 1950007, 1950009, 1950010, 1950013, 1950014, 1950015, 1950016, 1950017, 1950018, 1950019, 1950020, 1950023, 1950026, 1950028, 1950029, 1950032, 1950033, 1950034 , 1950035, 1950036, 1950039, 1950046, 1950047, 1950054, 1950056, 1950057, 1950062, 1950064, 1950065, 1950066, 1950067, 1950070, 1950074, 1950124, 1950125, 1950126, 1950131)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Down Below.", 5, 30, "The local forests have been seeded with tokens for the citizens of Castleview Hamlet to gather. These tokens may be found on any creatures in the Caves.", 1334, 1990001, 1990002, 1990003, 1990004, 1990005, 1990006, 1990007, 1990008, 1990009, 1990010, 1990012, 1990013, 1990014, 1990015, 1990016, 1990017, 1990018, 1990019, 1990020, 1990021, 1990022, 1990023, 1990024, 1990025, 1990026, 1990027, 1990028, 1990029, 1990030, 1990031, 1990032, 1990033, 1990034, 1990035, 1990036, 1990037, 1990038, 1990039, 1990041, 1990042, 1990043, 1990044, 1990045, 1990054, 1990056, 1990096, 1990097, 1990098, 1990099, 1990100, 1990101, 1990102, 1990103, 1990104)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-    UpdateQuestZone(Quest,"Oakmyst Forest")
+    UpdateQuestZone(Quest,"Down Below")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -30,7 +30,7 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the Oakmyst Forest.")
+	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the Down Below.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the tokens required to prove my worth as a citizen.")
     UpdateQuestZone(Quest,"Castleview Hamlet")
 	AddQuestStep(Quest, 2, "I need to enter the citizenship trial.", 1, 100, "I must perform the citizenship trial by returning to the Citizenship Sign and entering the trial chamber",1334)

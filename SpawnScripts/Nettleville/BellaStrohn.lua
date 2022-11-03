@@ -17,6 +17,7 @@ GenericEcologyHail(NPC,Spawn,faction)
 end
 
 function InRange(NPC,Spawn)
+local Qfaction = GetFactionAmount(Spawn,11)
 	if Qfaction < 0 then  
         FactionCheckingCallout(NPC, Spawn, faction)
     end

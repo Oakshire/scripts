@@ -53,6 +53,10 @@ function Dialog1(NPC, Spawn)
 		AddConversationOption(conversation, "Sure.[STARTS QUEST]", "Dialog2")
 		AddConversationOption(conversation, "I don't know Fritz.")
 		StartConversation(conversation, NPC, Spawn, "Kill them!  I want you to kill those lousy, stinking, yellow fairies! You'll do this for me, right? You'll do this for Fritz! ")     --Required to start a dialogue
+    if GetFactionAmount(Spawn,12) <0 then
+        ChangeFaction(Spawn,12,5000)
+    end
+
 end
 
 
