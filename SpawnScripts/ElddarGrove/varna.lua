@@ -6,10 +6,12 @@
 	Script Notes	:	Dialogue updated 5.1.2022 Dorbin
 --]]
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 function spawn(NPC)
 	AddTimer(NPC, 1900, "follow_Fanthis")
-SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")		
 end
 
 function hailed(NPC, Spawn)
@@ -22,8 +24,9 @@ local Fanthis = GetSpawn(NPC,2070080)
 GenericEcologyHail(NPC, Spawn, faction)
 end
 
-function InRange(NPC,Spawn)
-    end
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
+end
 
 function respawn(NPC)
 	spawn(NPC)
@@ -39,7 +42,7 @@ function follow_Fanthis(NPC)
     local leaderZ = GetZ(Fanthis_location)
     local speed = 2
        -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
-    if  Fanthis_location ~=nil and not IsInCombat(NPC) then   
+    if  Fanthis_location ~=nil then   
     if sli == 413216 then --Varna
 		if GetDistance(NPC, Fanthis_location) >= 8 then
 			speed = 5

@@ -5,7 +5,8 @@
 	Script Date		:	07/31/2020 07:33:41 PM
 	Script Notes	:	Dialogue updated 5.1.2022 Dorbin
 --]]
-
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 function spawn(NPC)
@@ -20,6 +21,7 @@ Attention(NPC,Spawn)
 end
 
 function InRange(NPC,Spawn)
+    NonCitizen(NPC,Spawn)    
 end
 
 function respawn(NPC)
@@ -48,7 +50,7 @@ function follow_Oakheart(NPC)
     local leaderZ = GetZ(Oakheart_location)
     local speed = 2
        -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
-    if  Oakheart_location ~=nil and not IsInCombat(NPC) then   
+    if  Oakheart_location ~=nil then   
     if sli == 413162 then --Ly`stan
 		if GetDistance(NPC, Oakheart_location) >= 8 then
 			speed = 5

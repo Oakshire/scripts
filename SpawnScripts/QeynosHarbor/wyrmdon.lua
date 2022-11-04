@@ -7,14 +7,20 @@
 --]]
 
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 function spawn(NPC)
---	waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
 end
 
 function hailed(NPC, Spawn)
+    if GetFactionAmount(Spawn,11) >0 then
 	FaceTarget(NPC, Spawn)
-
+    
 	local choice = MakeRandomInt(1,4)
 
 	if choice == 1 then
@@ -27,15 +33,13 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_ee473c11.mp3", "Good day to you, citizen. All preserve Queen Antonia.", "salute", 2997871263, 2912813719, Spawn, 0)
 	end
 end
+end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
 
-function respawn(NPC)
-	spawn(NPC)
-	end
 --[[
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 936.72, -25.56, 72.05, 2, 30)

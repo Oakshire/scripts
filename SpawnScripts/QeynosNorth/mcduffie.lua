@@ -6,15 +6,21 @@
 	Script Notes	:	Locations collected from Live
 --]]
 
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
+
 function spawn(NPC)
-	waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+    waypoints(NPC)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
 end
+
 
 function respawn(NPC)
+spawn(NPC)
 end
 
 function waypoints(NPC)

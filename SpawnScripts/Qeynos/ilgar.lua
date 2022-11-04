@@ -6,12 +6,19 @@
 	Script Notes	:	Locations collected from Live
 --]]
 local Fairies = 5558
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
 	waypoints(NPC)
 ProvidesQuest(NPC,Fairies)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
+
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
+end
 
 function hailed(NPC, Spawn)
      if GetFactionAmount(Spawn,11) <0 then

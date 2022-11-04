@@ -6,19 +6,21 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
+
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
-function InRange(NPC, Spawn)
-end
-
-function LeaveRange(NPC, Spawn)
-end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

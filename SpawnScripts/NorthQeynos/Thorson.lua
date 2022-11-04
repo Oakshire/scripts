@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/NorthQeynos/Bauer.lua
+    Script Name    : SpawnScripts/NorthQeynos/Thorson.lua
     Script Author  : Dorbin
-    Script Date    : 2022.04.23 11:04:15
+    Script Date    : 2022.11.04 03:11:19
     Script Purpose : 
                    : 
 --]]

@@ -54,7 +54,7 @@ function hailed(NPC, Spawn)
     end
     
     AddConversationOption(conversation, "Keep your place in line.")
-    StartConversation(conversation, NPC, Spawn, "If you think I'm going to give up my place in line for a few coins, think again! Everyday it is the same long long. When will they hire new help?!")
+    StartConversation(conversation, NPC, Spawn, "If you think I am going to give up my place in line for a few coins, think again. Every day it is the same long line. When will they hire new help? ")
     
 end
 
@@ -63,7 +63,7 @@ end
   PlayFlavor(NPC, "voiceover/english/barry_viceheart/qey_village03/barryviceheart001.mp3","","",544720212,2865021326,Spawn)
   AddConversationOption(conversation, "This line seems to be your only crusade?", "QuestBegin1")
   AddConversationOption(conversation, "Alright then. Good luck with that.")
-  StartConversation(conversation, NPC, Spawn, "By this time tomorrow I'll be marching across the fields of Antonica on a crusade to rid the land of the remaining gnolls.  This shall prove the might and worth of Viceheart.  The Qeynos Guard will be begging me to join their ranks.")
+  StartConversation(conversation, NPC, Spawn, "By this time tomorrow I'll be marching across the fields of Antonica on a crusade to rid the land of the remaining gnolls.  This shall prove the might and worth of Viceheart.  The Qeynos Guard will be begging me to join their ranks. ")
 end   
 
  function QuestBegin1(NPC, Spawn)
@@ -79,7 +79,7 @@ end
   PlayFlavor(NPC, "voiceover/english/barry_viceheart/qey_village03/barryviceheart003.mp3","","agree",1066723073,3215544160,Spawn)
   AddConversationOption(conversation, "I'll return the book to Bleemeb.", "QuestBegin")
   AddConversationOption(conversation, "On second thought, I'm busy. Sorry.")
-  StartConversation(conversation, NPC, Spawn, "Carry this tome to Castleview Hamlet. There you will find a Scribe's shop. Be sure that Bleemeb recieves the tome. Do this, and I'll shall reward you with coin.")
+  StartConversation(conversation, NPC, Spawn, "Carry this tome to Castleview Hamlet. There you will find a scribe's shop. Be sure that Bleemeb receives the tome. Do this and I shall reward you with coin.")
 end   
 
 function QuestBegin (NPC, Spawn)

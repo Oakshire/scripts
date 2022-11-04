@@ -1,10 +1,11 @@
 --[[
-    Script Name    : SpawnScripts/SouthQeynos/Ulir.lua
+    Script Name    : SpawnScripts/SouthQeynos/Marla.lua
     Script Author  : Dorbin
-    Script Date    : 2022.06.12 01:06:14
+    Script Date    : 2022.11.04 12:11:49
     Script Purpose : 
                    : 
 --]]
+
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
@@ -14,11 +15,6 @@ end
 
 function InRange(NPC, Spawn)
     NonCitizen(NPC,Spawn)    
-end
-
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-	GenericGuardHail(NPC, Spawn)
 end
 
 function respawn(NPC)

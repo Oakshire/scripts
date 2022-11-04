@@ -34,7 +34,9 @@ StartDialogConversation(conversation, 2, Item, Player, "Castleview Hamlet reside
 end
 
 function StartQuest(Item,Player)
- if not HasQuest(Player,5719) and not HasCompletedQuest(Player,5719)then
+ if GetLevel(Player)<6 then
+ AddConversationOption(conversation, "[I need more experience to pursue Citizenship]","CloseItemConversation")
+ elseif not HasQuest(Player,5719) and not HasCompletedQuest(Player,5719)then
    OfferQuest(Item,Player,5719)
 end
 conversation = CreateConversation()

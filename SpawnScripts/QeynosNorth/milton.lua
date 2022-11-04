@@ -6,6 +6,7 @@
 	Script Notes	:	Locations collected from Live
 --]]
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 
 function spawn(NPC)
@@ -19,6 +20,10 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
     GenericGuardHail(NPC,Spawn)
     end
+end
+
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
 end
 
 function respawn(NPC)
@@ -35,7 +40,7 @@ function follow_Icebear(NPC)
     local leaderZ = GetZ(Icebear_location)
     local speed = 2
        -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
-    if  Icebear_location ~=nil and not IsInCombat(NPC) then   
+    if  Icebear_location ~=nil then   
     if sli == 379841 then --Illervo
 		if GetDistance(NPC, Icebear_location) >= 8 then
 			speed = 5

@@ -7,9 +7,15 @@
 --]]
 
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 function spawn(NPC)
 	AddTimer(NPC, 1900, "follow_Erwin")
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
 end
 
 function hailed(NPC, Spawn)

@@ -7,11 +7,15 @@
 --]]
 
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+
+
 local report = 5531
 
 function spawn(NPC)
 	waypoints(NPC)
-SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")		
 ProvidesQuest(NPC,report)
 end
 
@@ -33,9 +37,10 @@ local Edwar = GetSpawn(NPC,2070025)
 end
 
 function InRange(NPC,Spawn)
+    NonCitizen(NPC,Spawn)    
 if GetFactionAmount(Spawn, 11) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-else
+elseif GetFactionAmount(Spawn,11) >20000 then
     if not HasCompletedQuest (Spawn, report) and not HasQuest (Spawn, report) then 
 	    	if math.random(1, 100) <= 80 then
              FaceTarget(NPC, Spawn)

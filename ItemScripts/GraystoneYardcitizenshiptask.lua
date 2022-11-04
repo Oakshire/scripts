@@ -40,7 +40,9 @@ StartDialogConversation(conversation, 2, Item, Player, "Graystone Yard residents
 end
 
 function StartQuest(Item,Player)
- if not HasQuest(Player,5720) and not HasCompletedQuest(Player,5720)then
+  if GetLevel(Player)<6 then
+ AddConversationOption(conversation, "[I need more experience to pursue Citizenship]","CloseItemConversation")
+ elseif not HasQuest(Player,5720) and not HasCompletedQuest(Player,5720)then
    OfferQuest(Item,Player,5720)
 end
 conversation = CreateConversation()

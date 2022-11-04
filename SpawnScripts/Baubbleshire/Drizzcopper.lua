@@ -35,10 +35,10 @@ end
 end
 
 function Dialog1(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("The answer to your question is no. I'm afraid we don't extend lines of credit at this time.")
-	Dialog.AddVoiceover("voiceover/english/banker_drizzcopper/qey_village06/banker_drizzcopper001.mp3", 2748969711, 2912964073)
+    Dialog.AddVoiceover("voiceover/english/banker_drizzcopper/qey_village06/banker_drizzcopper001.mp3", 2748969711, 2912964073)
 	PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
 	Dialog.AddOption("Oh.  Thank you anyway.")
 	Dialog.Start()

@@ -6,12 +6,14 @@
 	Script Notes	:	
 --]]
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
     if GetFactionAmount(Spawn,11) >0 then
 	if math.random(1,100)<25 then
 	   	FaceTarget(NPC, Spawn)

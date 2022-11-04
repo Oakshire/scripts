@@ -6,11 +6,11 @@
                    : 
 --]]
 
-
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
 end
 
 function respawn(NPC)
@@ -19,6 +19,7 @@ end
 
 
 function InRange(NPC, Spawn)
+        NonCitizen(NPC,Spawn) 
 		CheckFaction(NPC, Spawn, "Qeynos")
 	end
 

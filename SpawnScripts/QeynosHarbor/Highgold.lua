@@ -6,6 +6,7 @@
 	Script Notes	:	Locations collected from Live
 --]]
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
@@ -18,6 +19,7 @@ end
 
 
 function InRange(NPC, Spawn)
+        NonCitizen(NPC,Spawn)    
 		CheckFaction(NPC, Spawn, "Qeynos")
 	end
 
@@ -54,7 +56,7 @@ function follow_Warland(NPC)
     local leaderZ = GetZ(Warland_location)
     local speed = 2
        -- Say(NPC, "Leader location is: " .. GetX(guard_A_placement) .. ", " .. GetY(guard_A_placement) .. ", " .. GetZ(guard_A_placement))
-    if  Warland_location ~=nil and not IsInCombat(NPC) then   
+    if  Warland_location ~=nil then   
     if sli == 379226 then
 		if GetDistance(NPC, Warland_location) >= 8 then
 			speed = 5

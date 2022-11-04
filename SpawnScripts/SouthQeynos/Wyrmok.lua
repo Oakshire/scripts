@@ -7,6 +7,7 @@
 --]]
 
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange")
@@ -18,8 +19,10 @@ function respawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
+
 	CheckFaction(NPC, Spawn, "Qeynos")
-  	 if math.random(1, 100) <= 20 then
+  	 if math.random(1, 100) <= 20 and GetFactionAmount(Spawn,11) >20000 then
 	GenericGuardHail(NPC,Spawn)
 	end
 end

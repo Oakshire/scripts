@@ -6,16 +6,38 @@
 	Script Notes	:	Locations collected from Live
 --]]
 
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
+
 function spawn(NPC)
-	waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
+    waypoints(NPC)
+end
+
+function respawn(NPC)
+	spawn(NPC)
+end
+
+
+function InRange(NPC, Spawn)
+    NonCitizen(NPC,Spawn)    
+	if math.random(0, 100) <= 25 and GetFactionAmount(Spawn,11)> 20000 then
+		FaceTarget(NPC, Spawn)
+		GenericGuardHail(NPC, Spawn)
+		CheckFaction(NPC, Spawn, "Qeynos")
+		
+	else
+		CheckFaction(NPC, Spawn, "Qeynos")
+	end
+end
+
+function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-end
-
-function respawn(NPC)
-end
+		GenericGuardHail(NPC, Spawn)
+	end
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 416.76, -19.18, -272.59, 2, 0)

@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
 
@@ -14,7 +15,8 @@ function spawn(NPC)
 end
 
 function InRange(NPC, Spawn)
-	if math.random(0, 100) <= 25 then
+    NonCitizen(NPC,Spawn)    
+	if math.random(0, 100) <= 25 and GetFactionAmount(Spawn,11) >20000 then
 	PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/service/guard/human_guard_service_good_1_hail_gm_c865a827.mp3", "Duty above all else, citizen, except honor!", "scold", 4141262779, 4227030045, Spawn, 0)
 	else
 		CheckFaction(NPC, Spawn, "Qeynos")

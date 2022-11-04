@@ -64,7 +64,7 @@ end
   PlayFlavor(NPC, "voiceover/english/captain_salomar/qey_village03/captainsalomar002.mp3","","",78744458,3687664161,Spawn)
   AddConversationOption(conversation, "Can I join them?","JoinWatch")
   AddConversationOption(conversation, "They do what they must. Good day.") 
-  StartConversation(conversation, NPC, Spawn, "The Watch are the local malitia here in Graystone. They're suppose to handle all the village disputes, but they are an undisciplined lot.")
+  StartConversation(conversation, NPC, Spawn, "The Watch are the local militia here in Graystone.  They're supposed to handle all the village disputes, but they're an undisciplined lot.")
 end   
 
 function JoinWatch(NPC, Spawn)
@@ -73,7 +73,7 @@ function JoinWatch(NPC, Spawn)
   PlayFlavor(NPC, "voiceover/english/captain_salomar/qey_village03/captainsalomar003.mp3","","",977812867,1076147271,Spawn)
   AddConversationOption(conversation, "What can I do for the Qeynos Guard?","QGuard")
   AddConversationOption(conversation, "I don't have time to help either. Good day.") 
-  StartConversation(conversation, NPC, Spawn, "Join them?!  Are you mad?  I heard their recruiting rituals are a terrible ordeal.  Besides, you look too civilized to join their ranks.  If you really want to help and you really want to help, do the Qeynos Guard a favor instead.  We need you.")
+  StartConversation(conversation, NPC, Spawn, "Join them!  Are you mad?  I heard their recruiting rituals are a terrible ordeal.  Besides, you look too civilized to join their ranks.  If you really want to help, do the Qeynos Guard a favor instead.  We need you.")
 end   
 
 function QGuard(NPC, Spawn)
@@ -83,7 +83,7 @@ function QGuard(NPC, Spawn)
   AddConversationOption(conversation, "I will go check the gate and report back.","QuestStart")
   AddConversationOption(conversation, "I've heard that too! I'm not going anywhere near it. Goodbye.")  
   AddConversationOption(conversation, "I'm too busy. Sorry.") 
-  StartConversation(conversation, NPC, Spawn, "The tavern patrons are all abuzz about the Oakmyst Forest gate being toppled. Now mabye its true, or mabye its just skuttlebutt. Would you go to the gate and see for yourself? Report back to me and I'll reward you with coin of the realm.")
+  StartConversation(conversation, NPC, Spawn, "The tavern patrons are all a-buzz about the Oakmyst Forest gate being toppled.  Now, maybe it's true and maybe it's just scuttlebutt.  Would you go to the gate and see for yourself?  Report back to me and I'll reward you with coin of the realm.")
 end   
 
 function QuestStart(NPC,Spawn)
@@ -97,7 +97,7 @@ end
   PlayFlavor(NPC, "voiceover/english/captain_salomar/qey_village03/captainsalomar005.mp3","","thank",1841540516,576734016,Spawn)
   AddConversationOption(conversation, "Glad to assist.","Finished2")
   AddConversationOption(conversation, "Enjoy your pint!","Finished2")  
-  StartConversation(conversation, NPC, Spawn, "Intact is it? Good! That's one less worry on my mind. Perhaps I'll relax with a pint at the tavern. Please accept this reward for assisting the kingdom of Qeynos. I'm ever greatful to you.")
+  StartConversation(conversation, NPC, Spawn, "Intact, is it?  Good.  That's one less worry on my mind.  Perhaps I'll relax with a pint at the tavern now. Please accept this reward for assisting the Kingdom of Qeynos.  I am ever grateful to you.")
 end 
 
 function Finished2(NPC,Spawn)

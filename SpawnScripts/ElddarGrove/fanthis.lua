@@ -5,14 +5,15 @@
 	Script Date		:	07/31/2020 07:33:49 PM
 	Script Notes	:	Locations collected from Live
 --]]
-
+dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local arrows = 5521
 
 function spawn(NPC)
 	waypoints(NPC)
-SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
+SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")		
 ProvidesQuest(NPC,arrows)
 
 end
@@ -46,9 +47,10 @@ local Vera = GetSpawn(NPC,2070081)
 end
 
 function InRange(NPC,Spawn)
+    NonCitizen(NPC,Spawn)    
 if GetFactionAmount(Spawn, 11) <0 then
     PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
-  else
+  elseif GetFactionAmount(Spawn,11) >20000 then
      if not HasCompletedQuest (Spawn, arrows) and not HasQuest (Spawn, arrows) then 
 	    	if math.random(1, 100) <= 80 then
             PlayFlavor(NPC, "voiceover/english/patrolman_fanthis/qey_elddar/100_patrolman_halfelf_fanthis_callout1_9ff23be1.mp3", "Greetings!  I am Patrolman Fanthis.  I wish I had time to chat, but duty calls.", "attention", 2986438322, 1619790403, Spawn)
