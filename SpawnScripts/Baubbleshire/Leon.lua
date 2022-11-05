@@ -20,6 +20,10 @@ FaceTarget(NPC, Spawn)
 elseif GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
     if not HasQuest(Spawn,5760) and not HasCompletedQuest(Spawn, 5760)then   
     Talk(NPC,Spawn)
+    elseif CalloutTimer == false then
+    CalloutTimer = true
+    AddTimer(NPC,90000,"ResetCallout",1,Spawn)
+    Talk(NPC,Spawn)
     end
 elseif CalloutTimer == false then
     CalloutTimer = true

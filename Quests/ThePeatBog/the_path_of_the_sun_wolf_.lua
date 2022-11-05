@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "Find the Qeynos drain.", 4, "Visit the Qeynos Drain to the north in the Peat Bog.", 11, 666.14, -32.67, 396.23)
+	AddQuestStepZoneLoc(Quest, 1, "Find the Qeynos drain.", 4, "Visit the Qeynos Drain to the north in the Peat Bog.", 11, 666.14, -32.67, 396.23,829)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -32,7 +32,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have visited the Qeynos drain.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I visited the Qeynos Drain in the Peat Bog.")
 
-	AddQuestStepLocation(Quest, 2, "Find and enter the hollow tree by the pond.", 8, "Investigate the hollow tree at the pond south of the Qeynos drain.", 11, 652.73, -32.04, 477.94 )
+	AddQuestStepZoneLoc(Quest, 2, "Find and enter the hollow tree by the pond.", 8, "Investigate the hollow tree at the pond south of the Qeynos drain.", 11, 652.73, -32.04, 477.94,829 )
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
@@ -40,7 +40,7 @@ function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "Entered the hollow tree at the pond.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I visited the hollow tree at the pond.")
 
-	AddQuestStepLocation(Quest, 3, "Go to the hollowed stump.", 5, "Travel to the south of the Bog and find the hollowed stump in a corner of rock.", 11, 768.09, -31.64, 627.86)
+	AddQuestStepZoneLoc(Quest, 3, "Go to the hollowed stump.", 5, "Travel to the south of the Bog and find the hollowed stump in a corner of rock.", 11, 768.09, -31.64, 627.86,829)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
@@ -48,7 +48,7 @@ function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I have found the hollowed stump.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I investigated the hollowed stump at the southern end of the bog.")
 
-	AddQuestStepLocation(Quest, 4, "Go to the Lone Stump.", 8, "Travel north west of the hollowed stump and visit the Lone Stump Ring.", 11, 775.73, -31.64, 511.85)
+	AddQuestStepZoneLoc(Quest, 4, "Go to the Lone Stump.", 8, "Travel north west of the hollowed stump and visit the Lone Stump Ring.", 11, 775.73, -31.64, 511.85,829)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
@@ -56,7 +56,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "Went to the Lone Stump.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "Visited the ancient wood ring called the Lone Stump Ring and investigate the stump.")
 
-	AddQuestStepLocation(Quest, 5, "Go to the Deadend Niche.", 7, "Travel north a short distance from the Lone Stump Ring to find Deadend Niche.", 11, 757.73, -32.70, 489.06)
+	AddQuestStepZoneLoc(Quest, 5, "Go to the Deadend Niche.", 7, "Travel north a short distance from the Lone Stump Ring to find Deadend Niche.", 11, 757.73, -32.70, 489.06,829)
 	AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
 end
 
@@ -65,8 +65,8 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "Went to the Deadend Niche.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I found the Deadend Niche outside of the Lone Stump Ring in the Peat Bog.")
         local zone = GetZone(Player)
-		local Dog = GetSpawnByLocationID(zone, 133773176, false)
-        local SpawnDog = SpawnByLocationID(zone, 133773176,false)
+		local Dog = GetSpawnByLocationID(zone, 133779907, false)
+        local SpawnDog = SpawnByLocationID(zone, 133779907,false)
         AddHate(Player, SpawnDog, 100)    
 	UpdateQuestDescription(Quest, "I followed the path of the mythical Sun Wolf in the Peat Bog. At the end of my search the beast appeared, giving me an opportunity to face the creature in combat and emerge victorious.")
 	GiveQuestReward(Quest, Player)

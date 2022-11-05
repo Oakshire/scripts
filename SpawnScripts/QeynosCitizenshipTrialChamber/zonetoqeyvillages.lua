@@ -22,7 +22,7 @@ end
 end
 
 function Leave(NPC,Player)
-    CloseItemConversation(NPC,Player)
+    CloseConversation(NPC,Player)
     if GetRace(Player)== 7 or GetRace(Player)== 5 then
     BBShire = GetZone("Baubbleshire")
        Zone(BBShire,Player,819.46, -20.60, -525.61, 200.47)

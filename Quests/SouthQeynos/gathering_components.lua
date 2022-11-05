@@ -11,9 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Hunt bog faeries in the Peat Bog.", 1, 60, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 110, 1980052,1980010,1980007,1980008,1980002)
-	AddQuestStepKill(Quest, 2, "Hunt bog slugs in the Peat Bog.", 1, 60, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 83, 1980018,1980006)
-	AddQuestStepKill(Quest, 3, "Hunt bog sludges in the Peat Bog.", 1, 60, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 178, 1980002)
+	AddQuestStepKill(Quest, 1, "Hunt bog faeries in the Peat Bog.", 1, 33, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 110, 8290002,8290003,8290052,8290008,8290009,8290010,8290013,8290014,8290011,8290012,8290017,8290018,8290019,8290053,8290044)
+	AddQuestStepKill(Quest, 2, "Hunt bog slugs in the Peat Bog.", 1, 25, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 83, 8290005,8290006,8290031,8290027)
+	AddQuestStepKill(Quest, 3, "Hunt bog sludges in the Peat Bog.", 1, 33, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 178, 8290004)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")

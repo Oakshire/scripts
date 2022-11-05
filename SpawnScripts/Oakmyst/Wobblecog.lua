@@ -114,5 +114,13 @@ function Teleport2(NPC,Spawn)
         
         elseif GetZoneID(zone) == 197 then --Caves       
         ZoneRef = GetZone("Caves_Classic")
-        Zone(ZoneRef,Spawn) end
+        Zone(ZoneRef,Spawn) 
+        
+        elseif GetZoneID(zone) == 198 then --Caves       
+        ZoneRef = GetZone("PeatBog_Classic")
+        Zone(ZoneRef,Spawn)        
+        end
+
+
+
 end

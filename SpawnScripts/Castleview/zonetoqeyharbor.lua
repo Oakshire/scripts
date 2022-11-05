@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Baubbleshire/zonetoqeyelddar.lua
+    Script Name    : SpawnScripts/Castleview/zonetoqeyharbor.lua
     Script Author  : Dorbin
-    Script Date    : 2022.11.01 05:11:46
+    Script Date    : 2022.11.04 01:11:12
     Script Purpose : 
                    : 
 --]]
@@ -15,6 +15,8 @@ function spawn(NPC)
     SetRequiredQuest(NPC,5723,14,0,1,1)
 end
 
+function hailed(NPC, Spawn)
+end
 
 function respawn(NPC)
 	spawn(NPC)

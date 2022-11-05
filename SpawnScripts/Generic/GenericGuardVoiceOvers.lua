@@ -313,10 +313,14 @@ function CheckFaction(NPC, Spawn, City)
 		elseif City == "Freeport" then
 			faction_amount = GetFactionAmount(Spawn, FREEPORT)
 		end
-		if faction_amount >= 20000 then
-			FaceTarget(NPC, Spawn)
+		if faction_amount >= 40000 then
+--			FaceTarget(NPC, Spawn)
 			PlayFlavor(NPC, "", "", "cheer", 0, 0, Spawn)
 			SendMessage(Spawn, GetName(NPC) .. " cheers at you.")
+		elseif faction_amount >= 30000 then
+--			FaceTarget(NPC, Spawn)
+			PlayFlavor(NPC, "", "", "salute", 0, 0, Spawn)
+			SendMessage(Spawn, GetName(NPC) .. " salutes you.")
 		elseif faction_amount <= -20000 then
 			--FaceTarget(NPC, Spawn)
 			--PlayFlavor(NPC, "", "", "cheer", 0, 0, Spawn)

@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must slay some bog faeries in the Peat Bog.", 10, 100, "I haven't quite driven the malicious faeries of the Peat Bog back yet.", 611, 1980052,1980010,1980007,1980008,1980002)
+	AddQuestStepKill(Quest, 1, "I must slay some bog faeries in the Peat Bog.", 10, 100, "I haven't quite driven the malicious faeries of the Peat Bog back yet.", 611, 8290002,8290003,8290052,8290008,8290009,8290010,8290013,8290014,8290011,8290012,8290017,8290018,8290019,8290053,8290044)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"The Peat Bog")
 end

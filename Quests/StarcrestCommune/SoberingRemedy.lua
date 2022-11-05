@@ -17,9 +17,9 @@ local SOBERING_REMEDY = 246
 
 function Init(Quest)
     UpdateQuestZone(Quest,"Peat Bog")
-	AddQuestStepKill(Quest, 1, "I must gather pieces from bog slugs", 1, 100, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 289, 1980018)
-	AddQuestStepKill(Quest, 2, "I must gather whiskers from large scavengers", 1, 100, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 2123, 1980017)
-	AddQuestStepKill(Quest, 3, "I must gather bile from bog sludges", 1, 100, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 1162, 1980002)
+	AddQuestStepKill(Quest, 1, "I must gather pieces from bog slugs", 1, 33, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 289, 8290005,8290006,8290031,8290027)
+	AddQuestStepKill(Quest, 2, "I must gather whiskers from large scavengers", 1, 33, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 2123, 8290021)
+	AddQuestStepKill(Quest, 3, "I must gather bile from bog sludges", 1, 40, "I need to gather the components for Vondorinsarnoo's concoction from the Peat Bog, reachable by mariner bell within the City of Qeynos.", 1162, 8290004)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")

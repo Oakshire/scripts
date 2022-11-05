@@ -22,7 +22,9 @@ end
 
 function Dialog4(Item, Player)
 conversation = CreateConversation()
-if not HasQuest(Player,5721) and not HasCompletedQuest(Player,5721)then
+if GetLevel(Player)<6 then
+ AddConversationOption(conversation, "[I need more experience to pursue Citizenship]","CloseItemConversation")
+elseif not HasQuest(Player,5721) and not HasCompletedQuest(Player,5721)then
 AddConversationOption(conversation, "[write this in your quest journal]","StartQuest")
 end
 if HasQuest(Player,5721) or  HasCompletedQuest(Player,5721) then
@@ -33,9 +35,7 @@ StartDialogConversation(conversation, 2, Item, Player, "Nettleville Hovel reside
 end
 
 function StartQuest(Item,Player)
- if GetLevel(Player)<6 then
- AddConversationOption(conversation, "[I need more experience to pursue Citizenship]","CloseItemConversation")
-elseif not HasQuest(Player,5721) and not HasCompletedQuest(Player,5721)then
+if not HasQuest(Player,5721) and not HasCompletedQuest(Player,5721)then
    OfferQuest(Item,Player,5721)
 end
 AddConversationOption(conversation, "[put the note away]","CloseItemConversation")

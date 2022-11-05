@@ -16,7 +16,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill several bog sludges", 10, 100, "I need to kill Bog Sludges in the Peat Bog.", 346, 1980002)
+	AddQuestStepKill(Quest, 1, "I must kill several bog sludges", 10, 100, "I need to kill Bog Sludges in the Peat Bog.", 346, 1980002,8290004)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Peat Bog")
 end

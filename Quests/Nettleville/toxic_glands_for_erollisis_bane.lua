@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill some toxic bog slugs.", 6, 100, "I must slay six toxic bog slugs for their poison glands.", 2515, 1980006) 
+	AddQuestStepKill(Quest, 1, "I must kill some toxic bog slugs.", 6, 100, "I must slay six toxic bog slugs for their poison glands.", 2515, 1980006,8290031) 
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KilledSlugs")
 end
 

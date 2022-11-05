@@ -13,8 +13,8 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must gather five bog faerie wings for Sean.", 5, 80, "I need to head over to the Peat Bog and get five pieces of bog slug meat and five bog faerie wings.", 110, 1980010,1980007,1980052,1980008)
-	AddQuestStepKill(Quest, 2, "I must gather five bog slug meat for Sean.", 5, 80, "I need to head over to the Peat Bog and get five pieces of bog slug meat and five bog faerie wings.", 133, 1980018,1980021,1980006)
+	AddQuestStepKill(Quest, 1, "I must gather five bog faerie wings for Sean.", 5, 80, "I need to head over to the Peat Bog and get five pieces of bog slug meat and five bog faerie wings.", 110, 8290002,8290003,8290052,8290008,8290009,8290010,8290013,8290014,8290011,8290012,8290017,8290018,8290019,8290053,8290044)
+	AddQuestStepKill(Quest, 2, "I must gather five bog slug meat for Sean.", 5, 80, "I need to head over to the Peat Bog and get five pieces of bog slug meat and five bog faerie wings.", 133, 8290005,8290006,8290031,8290027)
     UpdateQuestZone(Quest, "The Peat Bog")
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")

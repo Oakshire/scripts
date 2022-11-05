@@ -13,9 +13,9 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill some juvenile shrillers.", 5, 100, "I must slay five juvenile shrillers to obtain their wings for Tillheel.", 140, 1990004,1990022,1990001)
+	AddQuestStepKill(Quest, 1, "I must kill some juvenile shrillers.", 5, 100, "I must slay five juvenile shrillers to obtain their wings for Tillheel.", 140, 1990004,1990022,1990001,8290020)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-	UpdateQuestZone(Quest,"The Down Below")
+	UpdateQuestZone(Quest,"Multiple Zones")
 end
 
 function Step1Complete(Quest,QuestGiver,Player)

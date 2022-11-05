@@ -2779,7 +2779,9 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_dwarf_gf_35729e65.mp3", "No, I won't go out for a dwarven ale with you.  Elven wine tastes better anyway.", "no", 266246440, 1778311218, Spawn)
                             elseif spawnRace == ERUDITE then
 					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_erudite_gf_cfbdf659.mp3", "That ensom' is quite becoming to you.  Almost as good as my own.", "agree", 1652655342, 62284543, Spawn)
-                            elseif spawnRace == GNOME then
+                            elseif spawnRace == FROGLOK then
+					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_froglok_gf_d4e1c221.mp3", "Your sense of justice is highly valuable in these degenerated days.", "hello", 1880520908, 1662106306, Spawn)
+                           elseif spawnRace == GNOME then
 					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_gnome_gf_6a2b567f.mp3", "Your little gears and gizmos are amusing, but I have no interest in them.", "no", 667401607, 3295814491, Spawn)
                             elseif spawnRace == HALF_ELF then
                             PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_halfelf_gf_1635ab67.mp3", "Hmm.  By the look in your eyes you had potentional, but one of your parents made a poor choice in life.", "nod", 3335501764, 2059212963, Spawn)
@@ -6787,6 +6789,8 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_dwarf_gf_35729e65.mp3", "No, I won't go out for a dwarven ale with you.  Elven wine tastes better anyway.", "no", 266246440, 1778311218)
                             elseif spawnRace == ERUDITE then
 					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_erudite_gf_cfbdf659.mp3", "That ensom' is quite becoming to you.  Almost as good as my own.", "agree", 1652655342, 62284543)
+                            elseif spawnRace == FROGLOK then
+					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_froglok_gf_d4e1c221.mp3", "Your sense of justice is highly valuable in these degenerated days.", "hello", 1880520908, 1662106306, Spawn)
                             elseif spawnRace == GNOME then
 					        PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_gnome_gf_6a2b567f.mp3", "Your little gears and gizmos are amusing, but I have no interest in them.", "no", 667401607, 3295814491)
                             elseif spawnRace == HALF_ELF then

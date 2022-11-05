@@ -21,6 +21,10 @@ elseif GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
     if not HasQuest(Spawn,5764) and not HasCompletedQuest(Spawn, 5764)then   
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC,"voiceover/english/steward_sal/qey_village03/qst_steward_sal_callout1_46762b99.mp3","No time for talkin', friend!  I gotta keep an eye out for new refugees.","bye",1387716528,1390458474,Spawn)
+    elseif CalloutTimer == false then
+    CalloutTimer = true
+    AddTimer(NPC,90000,"ResetCallout",1,Spawn)
+    Talk(NPC,Spawn)
     end
 elseif CalloutTimer == false then
     CalloutTimer = true
