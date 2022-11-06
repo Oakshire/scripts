@@ -5,7 +5,7 @@
 	Script Date		: 2022.04.19
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
-
+dofile("SpawnScripts/Generic/UnknownLanguage.lua")
 require "SpawnScripts/Generic/DialogModule"
 
 function spawn(NPC)
@@ -16,6 +16,9 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+    if not HasLanguage(Spawn,5)then
+        Garbled(NPC,Spawn)
+    else
 	RandomGreeting(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn, 0)
 	FaceTarget(NPC, Spawn)
@@ -23,6 +26,7 @@ function hailed(NPC, Spawn)
 	Dialog.AddDialog("Frooooaaaak! Have you seen any of my brothers?")
 	Dialog.AddOption("I'm not sure I've seen them.", "Dialog4")
 	Dialog.Start()
+end
 end
 
 function RandomGreeting(NPC, Spawn)

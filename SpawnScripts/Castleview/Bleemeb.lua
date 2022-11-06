@@ -58,7 +58,7 @@ function hailed(NPC, Spawn)
             if not HasQuest(Spawn, Book) then       
                 Dialog.AddOption("I'm not from around here. Anything I should know?", "BookStart")
             end
-            if not HasQuest(Spawn, Leaves) then       
+            if not HasQuest(Spawn, Leaves) and GetLevel(Spawn)>=7 then       
                 Dialog.AddOption("What is Yanari doing?", "LeavesStart")
             end
 	         if GetQuestStep(Spawn, Book)==3 then

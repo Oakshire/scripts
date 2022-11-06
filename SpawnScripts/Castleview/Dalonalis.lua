@@ -36,10 +36,11 @@ end
 function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Good day to you, adventurer. Your valuables will be safe in our vaults, I promise you that.")
-	Dialog.AddVoiceover("voiceover/english/banker_drizzcopper/qey_village06/banker_drizzcopper001.mp3", 2748969711, 2912964073)
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..MakeRandomInt(1,3).."_1022.mp3", "", "hello", 0, 0, Spawn)
-	Dialog.AddOption("I have all the trust in you.")
+	Dialog.AddDialog("If you're opening a new account, I can help you over here.")
+	Dialog.AddVoiceover("voiceover/english/banker_dalonalis/qey_village04/100_banker_dalonalis_housing_quest_1_53e2b5fb.mp3", 626240462, 2916710020)
+	PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+--	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_"..MakeRandomInt(1,3).."_1022.mp3", "", "hello", 0, 0, Spawn)
+	Dialog.AddOption("I'm just working with my current account today.")
 	Dialog.Start()
 end
 

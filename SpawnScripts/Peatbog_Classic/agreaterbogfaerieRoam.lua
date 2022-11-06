@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/Fairy_PeatBog.lua")
 
 
 function spawn(NPC)

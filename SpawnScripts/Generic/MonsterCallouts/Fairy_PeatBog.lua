@@ -5,8 +5,17 @@
     Script Purpose : 
                    : 
 --]]
-local HealthCallout = false
-    
+local HealthCallout = false --REDUCES Half-Health Spam
+local CalloutTimer = false --REDUCES Callout Spam
+
+function ResetTimer(NPC) -- 7 SECOND PAUSE BETWEEN VOs
+    SetTempVariable(NPC, "CalloutTimer", "false")
+end
+
+function HealthReset (NPC)  --SO HALF HEALTH DOESN'T SPAM
+    SetTempVariable(NPC, "HealthCallout", "false")
+end
+
 function Garbled(NPC,Spawn)
   	local choice = MakeRandomInt(1,4)
  	    if choice == 1 then
@@ -20,9 +29,13 @@ function Garbled(NPC,Spawn)
  end     
 end
 
- function aggro(NPC,Spawn)   
-    if not HasLanguage(Spawn,23 )then
-    Garbled(NPC,Spawn)
+ function aggro(NPC,Player)   
+    SetTempVariable(NPC, "CalloutTimer", "false")
+if  GetTempVariable(NPC, "CalloutTimer")== "false" and math.random(0,100) <=33 and IsPlayer(Player) then
+    SetTempVariable(NPC, "CalloutTimer", "true")
+    AddTimer(NPC,10000,"ResetTimer")
+    if not HasLanguage(Player,23 )then
+    Garbled(NPC,Player)
     else
  	local choice = MakeRandomInt(1,3)
  	    if choice == 1 then
@@ -34,13 +47,14 @@ end
     end
     end
 end   
+end
 
 
-
-function death(NPC,Spawn)
-    if math.random(0,100)<=75 then
-    if not HasLanguage(Spawn,23 )then
-    Garbled(NPC,Spawn)
+function death(NPC,Player)
+ if  GetTempVariable(NPC, "CalloutTimer")== "false" and IsPlayer(Player) then
+    if math.random(0,100)<=35 then
+    if not HasLanguage(Player,23 )then
+    Garbled(NPC,Player)
     else
         local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
@@ -51,17 +65,19 @@ function death(NPC,Spawn)
     end
 end
 end
+end
 
-
-function healthchanged(NPC, Spawn)  
-    if HealthCallout == false then
-    if GetHP(NPC) < GetMaxHP(NPC) * 0.55 then
-     if GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
-        HealthCallout = true
-        AddTimer(NPC,10000,"HealthReset")
+function healthchanged(NPC, Player)  
+ if GetTempVariable(NPC, "CalloutTimer") == "false" and IsPlayer(Player) and IsAlive(NPC)==true then
+    if GetTempVariable(NPC, "HealthCallout") == "false" then
+    if GetHP(NPC) < GetMaxHP(NPC) * 0.55 and GetHP(NPC) > GetMaxHP(NPC) * 0.45 then
+    SetTempVariable(NPC, "HealthCallout", "true")
+    SetTempVariable(NPC, "CalloutTimer", "true")
+        AddTimer(NPC,10000,"ResetTimer")
+        AddTimer(NPC,12500,"HealthReset")
     if not HasLanguage(Spawn,23 )then
-        Garbled(NPC,Spawn)
-    else    
+        Garbled(NPC,Player)
+    else        
   local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
 	    PlayFlavor(NPC, "voiceover/english/optional3/fairy_bog/ft/fairy/fairy_bog_1_halfhealth_841ee3bc.mp3", "Oh, ouch! Stop it!", "", 2860422216, 4276234744, Spawn, 23)
@@ -80,7 +96,9 @@ end
 
 
 function victory(NPC,Spawn)
-        if  HasLanguage(Spawn,23 )then
+        if  not HasLanguage(Player,23 )then
+         Garbled(NPC,Player)
+         else
   local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/fairy_bog/ft/fairy/fairy_bog_1_victory_8ccf44c3.mp3", "Ouch, I bet that hurt!", "", 1460203198, 2879371625, Spawn, 23)

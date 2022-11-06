@@ -43,10 +43,10 @@ StartDialogConversation(conversation, 2, Item, Player, "Castleview Hamlet reside
 end
 
 function StartQuest(Item,Player)
-if not HasQuest(Player,5719) and not HasCompletedQuest(Player,5719)then
-   OfferQuest(Item,Player,5719)
-end
 conversation = CreateConversation()
+if not HasQuest(Player,5719) and not HasCompletedQuest(Player,5719)then
+   OfferQuest(nil,Player,5719)
+end
 AddConversationOption(conversation, "[put the note]","CloseItemConversation")
 StartDialogConversation(conversation, 2, Item, Player, "After you complete your task, report to Marshal Glorfel using the citizenship sign.")
 end
