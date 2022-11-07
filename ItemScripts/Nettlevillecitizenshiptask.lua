@@ -43,8 +43,9 @@ StartDialogConversation(conversation, 2, Item, Player, "Nettleville Hovel reside
 end
 
 function StartQuest(Item,Player)
+conversation = CreateConversation()
 if not HasQuest(Player,5721) and not HasCompletedQuest(Player,5721)then
-   OfferQuest(Item,Player,5721)
+   OfferQuest(nil,Player,5721)
 end
 AddConversationOption(conversation, "[put the note away]","CloseItemConversation")
 StartDialogConversation(conversation, 2, Item, Player, "After you complete your task, report to Marshal Glorfel using the citizenship sign.")

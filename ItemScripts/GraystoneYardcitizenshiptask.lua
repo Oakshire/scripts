@@ -43,7 +43,7 @@ end
 
 function StartQuest(Item,Player)
 if not HasQuest(Player,5720) and not HasCompletedQuest(Player,5720)then
-   OfferQuest(Item,Player,5720)
+   OfferQuest(nil,Player,5720)
 end
 conversation = CreateConversation()
 AddConversationOption(conversation, "[put the note]","CloseItemConversation")
