@@ -10,6 +10,7 @@ dofile("SpawnScripts/Generic/GenericEcologyVoiceOvers.lua")
 
 local Badgers = 5465
 local Slime = 5466
+local Mage1 = 5767
 
 
 function spawn(NPC)
@@ -22,11 +23,7 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
---[[ CLASS(?) Quest material not currently used
-    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan007.mp3", "If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?", "ponder", 1398879355, 1149892616, Spawn)
-    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan008.mp3", "I draw from unstable ether and turn it into different types of fire. Igniting a brazier with a simple incantation is easier than rubbing two sticks together.", "ponder", 3056968266, 3365736320, Spawn)
-    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan009.mp3", "Oh, of course ... Back in the day, I was quite the Fire Magi ... firestorms here, explosions there, that kind of thing.  I retired from the battlefield before it was too late.  You know what they say about playing with fire and all.  I hope this helps you.", "ponder", 1034698890, 3446841302, Spawn)
-]]--
+
 
 
 function InRange(NPC, Spawn) --Quest Callout
@@ -85,6 +82,9 @@ function hailed(NPC, Spawn)
 	        if GetQuestStep(Spawn, Slime)==2 then
 	           Dialog.AddOption("I have collected your substance extract.", "DoneSlime")
 	        end
+            if GetQuestStep(Spawn,Mage1)==3 then
+	           Dialog.AddOption("The Magister suggested I asked you about what you use your sorcery for.", "MageTraining1")
+            end                
 	        
         Dialog.AddOption("You seem to be a bit busy at the moment.  I'll leave you alone.")	
         Dialog.Start()
@@ -165,4 +165,39 @@ function RewardSlime(NPC, Spawn)
     SetStepComplete(Spawn, Slime, 2)
 end
 
+--[[ CLASS Quest material
+    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan007.mp3", "If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?", "ponder", 1398879355, 1149892616, Spawn)
+    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan008.mp3", "I draw from unstable ether and turn it into different types of fire. Igniting a brazier with a simple incantation is easier than rubbing two sticks together.", "ponder", 3056968266, 3365736320, Spawn)
+    	PlayFlavor(NPC, "voiceover/english/yanari_cyellann/qey_village04/yanaricyellan009.mp3", "Oh, of course ... Back in the day, I was quite the Fire Magi ... firestorms here, explosions there, that kind of thing.  I retired from the battlefield before it was too late.  You know what they say about playing with fire and all.  I hope this helps you.", "ponder", 1034698890, 3446841302, Spawn)
+]]--
 
+ function MageTraining1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan007.mp3", 1398879355, 1149892616)
+ 	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
+ 	Dialog.AddOption("What methods do you use elementals in your magic?", "MageTraining1a")
+    Dialog.Start()
+end  
+
+ function MageTraining1(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan008.mp3", 3056968266, 3365736320)
+    CastSpell(NPC,19)
+ 	Dialog.AddOption("No doubt you've used your magic for other purposes outside of your laboratory?", "MageTraining1a")
+    Dialog.Start()
+end  
+
+ function MageTraining1(NPC, Spawn)
+    SetStepComplete(Spawn,Mage1,3)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("Oh, of course ... Back in the day, I was quite the Fire Magi ... firestorms here, explosions there, that kind of thing.  I retired from the battlefield before it was too late.  You know what they say about playing with fire and all.  I hope this helps you.")
+	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan009.mp3", 1034698890, 3446841302)
+ 	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
+ 	Dialog.AddOption("Thank you. It was most helpful.")
+    Dialog.Start()
+end  

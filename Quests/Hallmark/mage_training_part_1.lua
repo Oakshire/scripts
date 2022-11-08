@@ -14,6 +14,7 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill five bog slugs in the Peat Bog.", 5, 100, "The Magister has sent me to the bog to kill five (5) bog things", 91, 8290005)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Peat Bog")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -38,6 +39,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed five bog slugs in the Peat Bog.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've killed the bog things and paid attention to what they looked like.")
+    UpdateQuestZone(Quest,"South Qeynos")
 
 	AddQuestStepChat(Quest, 2, "I need to speak with Magister Niksel in South Qeynos.", 1, "I should let Niksel, in South Qeynos, know that the bog things didn't have much of a shape.", 11, 2310376)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
@@ -46,6 +48,7 @@ end
 function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I spoke with Magister Niksel.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "Niksel has let me know what the bog things really were.")
+    UpdateQuestZone(Quest,"Multiple Zones")
 
 	AddQuestStepChat(Quest, 3, "I need to speak with Yanari in Castleview.", 1, "Niksel has now directed me to other students to hear more about sorcery.", 11, 2360047)
 	AddQuestStepChat(Quest, 4, "I need to find Zipiff Clamorclang.", 1, "Niksel has now directed me to other students to hear more about sorcery.", 11, 2380010	)
@@ -76,8 +79,8 @@ end
 
 function  QuestCheck(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player,5767,3) and QuestStepIsComplete(Player,5767,4) and QuestStepIsComplete(Player,5767,5) then
-    UpdateQuestTaskGroupDescription(Quest, 1, "I have learned much from Niksel's former students about sorcery.")
-
+    UpdateQuestTaskGroupDescription(Quest, 3, "I have learned much from Niksel's former students about sorcery.")
+    UpdateQuestZone(Quest,"South Qeynos")
 	AddQuestStepChat(Quest, 6, "I need to tell Magister Niksel what I've learned.", 1, "I should give Niksel, in South Qeynos, a summary of what I learned from his students", 11, 2310376)
 	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
 	end
@@ -93,11 +96,6 @@ end
 --I need to speak with Magister Niksel outside the mage tower in South Qeynos.
 --I should give Niksel, in South Qeynos, a summary of what I learned from his students
 
-
---The Magister suggested I asked you about what you use your sorcery for.
---I take it you're one of his students. You should be honored that he chose you.  Not many are worthy of garnering his valuable time.  Now, it's my duty to offer you the same kindness.  What do you want to know about sorcery, truth seeker?
---A sorcerer taps into the mana flow and draws the hidden energies that swirl within that maelstrom of forces.  By taking these energies, sorcerers simplify their lives, and make their opponent's lives a heck of a lot harder. But along with sorcery's incredible power, comes incredible responsibility. Can you handle this?
---Good, good, good.  I hope you learned the many uses of sorcery's power--just remember to respect this power.
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around

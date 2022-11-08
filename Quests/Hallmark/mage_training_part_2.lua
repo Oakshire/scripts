@@ -9,13 +9,21 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to speak with Willim in Nettleville.", 1, "I need to speak with Willim in Nettleville and try to cheer him up.", 11, 2330036)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("I got it!  I know a lad named Willim Barclay who lives in Nettleville. The other day, I noticed he was in a dismal mood, but I don't know why. Go talk with him and see if you can cheer him up.")
+	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel015.mp3", 2423582680, 3203696326)
+    PlayFlavor(QuestGiver, "", "", "doh", 0, 0, Player)
+    Dialog.AddOption("I suppose I can try my own \"charm\". I'll go speak with Willim.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
