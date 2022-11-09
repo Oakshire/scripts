@@ -46,7 +46,7 @@ function ChooseMovement(NPC)
 end
 
 function respawn(NPC)
-	ChooseMovement(NPC)
+	spawn(NPC)
 end
 
 function clockwise1(NPC)

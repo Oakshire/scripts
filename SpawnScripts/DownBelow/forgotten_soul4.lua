@@ -34,7 +34,7 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
- waypoints(NPC)
+ spawn(NPC)
 end
 
 function waypoints(NPC)

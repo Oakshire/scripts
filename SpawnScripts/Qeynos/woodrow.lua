@@ -5,33 +5,33 @@
 	Script Date		:	04/11/2020 06:13:14 PM
 	Script Notes	:	Locations collected from Live
 --]]
+
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
+
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
---waypoints(NPC)	
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
-
 function InRange(NPC, Spawn)
-if GetFactionAmount(Spawn,11) >20000 then
-	if math.random(0, 100) <= 25 then
-		FaceTarget(NPC, Spawn)
-	PlayFlavor(NPC, "voiceover/english/barbarian_eco_good_1/ft/service/guard/barbarian_guard_service_good_1_hail_gm_ee473c11.mp3", "Good day to you, citizen. All preserve Queen Antonia.", "salute", 2268064933, 2349331472, Spawn)
-	else
-		CheckFaction(NPC, Spawn, "Qeynos")
-	end	
-	end
+    NonCitizen(NPC,Spawn)    
+end
+
+function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-		GenericGuardHail(NPC, Spawn)
-	end
+	GenericGuardHail(NPC, Spawn)
+
+
+end
+
 	
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 673.7, -21.14, 144.6, 2, 0)

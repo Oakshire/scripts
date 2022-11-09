@@ -7,15 +7,15 @@
 --]]
 
 function spawn(NPC)
-        local Level = GetLevel(NPC)
-    local level1 = 6
-    local level2 = 5
+    local Level = GetLevel(NPC)
+    local level1 = 5
+    local level2 = 6
     local difficulty1 = 6
-    local hp1 = 150
-    local power1 = 150
+    local hp1 = 130
+    local power1 = 65
     local difficulty2 = 6
-    local hp2 = 130
-    local power2 = 130
+    local hp2 = 150
+    local power2 = 80
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -34,7 +34,7 @@ function hailed(NPC, Spawn)
 end
 
 function respawn(NPC)
- waypoints(NPC)
+ spawn(NPC)
 end
 
 function waypoints(NPC)
