@@ -1,13 +1,13 @@
 --[[
-    Script Name    : SpawnScripts/DownBelow_Classic/acryptsubstanceRail1.lua
+    Script Name    : SpawnScripts/DownBelow_Classic/adustcrawlerhatchlingRail1.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.11.10 06:11:28
+    Script Date    : 2022.11.10 08:11:23
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-    local Level = GetLevel(NPC)
+local Level = GetLevel(NPC)
     local level1 = 5
     local level2 = 6
     local difficulty1 = 6
@@ -27,7 +27,7 @@ function spawn(NPC)
     SpawnSet(NPC, "power", power2)
     end
 
-    --AddTimer(NPC,(MakeRandomInt(5000,6000)),"ChooseMovement")
+    --AddTimer(NPC,(MakeRandomInt(0,4000)),"ChooseMovement")
     ChooseMovement(NPC)
 end
 
