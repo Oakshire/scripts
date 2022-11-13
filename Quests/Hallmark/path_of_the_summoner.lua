@@ -31,6 +31,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I've passed Magister Niksel's trial.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've passed Magister Niksel's trial.")
+	if GetClass(Spawn)== 21 then
+	SetAdventureClass(Spawn,28)
+    SendMessage(Spawn, "Congratulations! You are Summoner.","yellow")
+    SendPopUpMessage(Spawn, "Congratulations! You are Summoner.",250,250,200)
+    PlaySound(Spawn, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)
+	end
+
 
 	UpdateQuestDescription(Quest, "Having completed my trial as a summoner, I will be focusing my studies in magic down the path I've chosen.  I am well on my way in Norrath - and have learned valuable lessons in responsible summoning.")
 	GiveQuestReward(Quest, Player)

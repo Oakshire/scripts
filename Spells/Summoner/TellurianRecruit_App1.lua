@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Spells/Commoner/Pets.lua
-    Script Author  : John Adams
-    Script Date    : 2013.11.20 06:11:19
+    Script Name    : Spells/Summoner/TellurianRecruit_App1.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.11.12 09:11:37
     Script Purpose : 
                    : 
 --]]
@@ -10,13 +10,14 @@ function cast(Caster, Target, PetID)
    -- Summons a pet
    SummonPet(Caster, PetID)
    
-   -- Basic fomula for hp/power-LordPazuzu
+   -- Basic fomula for hp/power
     pet = GetPet(Caster)
     local Level = GetLevel(pet)
-    local power = Level *10 +10
-    local hp = Level*10 +10
+    local power = Level *10 + Level*2
+    local hp = Level*10 + Level*2
     SpawnSet(pet, "hp", hp)
     SpawnSet(pet, "power", power)
+    
 end
 
 function remove(Caster, Target)
@@ -25,3 +26,6 @@ function remove(Caster, Target)
       DismissPet(pet)
    end
 end
+--]]
+ 
+
