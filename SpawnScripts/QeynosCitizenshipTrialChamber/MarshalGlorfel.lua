@@ -60,7 +60,7 @@ end
 function Dialog1(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Ya see, we got a problem with a group who decided to break away from Qeynos, and I heard of the fine things ya did  on the Island of Refuge.")
+	Dialog.AddDialog("Ya see, we got a problem with a group who decided to break away from Qeynos, and I heard of the fine things ya did on the Island of Refuge.")
 	Dialog.AddVoiceover("voiceover/english/marshal_glorfel/qey_catacomb_epic01/marshalglorfel001.mp3", 1972383345, 185623710)
     PlayFlavor(NPC,"","","nod",0,0,Spawn)
     Dialog.AddOption("Who would want to do that?", "Option1A")

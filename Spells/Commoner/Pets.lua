@@ -9,14 +9,6 @@
 function cast(Caster, Target, PetID)
    -- Summons a pet
    SummonPet(Caster, PetID)
-   
-   -- Basic fomula for hp/power-LordPazuzu
-    pet = GetPet(Caster)
-    local Level = GetLevel(pet)
-    local power = Level *10 +10
-    local hp = Level*10 +10
-    SpawnSet(pet, "hp", hp)
-    SpawnSet(pet, "power", power)
 end
 
 function remove(Caster, Target)

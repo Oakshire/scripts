@@ -30,7 +30,12 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I've passed Magister Niksel's trial.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've passed Magister Niksel's trial.")
-
+	if GetClass(Player)== 21 then
+	SetAdventureClass(Player,29)
+    SendMessage(Player, "Congratulations! You are a Sorcerer.","yellow")
+    SendPopUpMessage(Player, "Congratulations! You are a Sorcerer.",250,250,200)
+ -- PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+	end
 	UpdateQuestDescription(Quest, "I passed the trial and will continue on my path as a sorcerer.  I know that I cannot be reckless with my power, or these forces may overwhelm me.")
 	GiveQuestReward(Quest, Player)
 end

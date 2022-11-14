@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/SummonersTest/bookshelfrules.lua
+    Script Name    : SpawnScripts/SorcerersTrial/bookshelfrules.lua
     Script Author  : Dorbin
-    Script Date    : 2022.11.12 02:11:51
+    Script Date    : 2022.11.13 01:11:19
     Script Purpose : 
                    : 
 --]]

@@ -49,7 +49,7 @@ end
 function Stage2 (NPC,Spawn)
     local zone = GetZone(Spawn)
     local SummonRing = GetSpawnByLocationID(zone,133780576)
-    ApplySpellVisual(SummonRing, 165)
+    ApplySpellVisual(SummonRing, 124)
     local Pet = GetSpawn(Spawn,8350001)
     if Pet == nil or not IsAlive(Pet) then
     CastSpell(Spawn,280024)
@@ -67,7 +67,7 @@ end
 function Stage3 (NPC,Spawn)
     local zone = GetZone(Spawn)
     local SummonRing = GetSpawnByLocationID(zone,133780576)
-    ApplySpellVisual(SummonRing, 165)
+    ApplySpellVisual(SummonRing, 571)
     local Pet = GetSpawn(Spawn,8350001)
     if Pet == nil or not IsAlive(Pet) then
     CastSpell(Spawn,280024)
@@ -78,7 +78,7 @@ function Trial3 (NPC,Spawn)
     local zone = GetZone(Spawn)
     local Pet = GetSpawn(Spawn,8350001)
     if GetSpawnByLocationID(zone,133780601) == nil then
-    local TestofWater = SpawnByLocationID(zone,133780601)
+    local TestofAir = SpawnByLocationID(zone,133780601)
     end
 end
 
@@ -148,9 +148,9 @@ function Ring(NPC, Spawn)
     local zone = GetZone(Spawn)
     local SummonRing = GetSpawnByLocationID(zone,133780576)
     SpawnSet(SummonRing,"visual_state",34342)
-    Despawn(SummonRing)
+    SpawnSet(SummonRing,"model_type",0)
     local Ringlight = GetSpawnByLocationID(zone,133780625)
-    Despawn(SummonRing)
+    Despawn(Ringlight)
     if Pet ~= nil or  IsAlive(Pet) then
     Despawn(Pet)
     end
