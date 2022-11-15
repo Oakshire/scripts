@@ -6,6 +6,7 @@
 	Script Notes	:	Locations collected from Live
 --]]
 dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
 
 function spawn(NPC)
 	AddTimer(NPC, 1900, "follow_Raleigh")
