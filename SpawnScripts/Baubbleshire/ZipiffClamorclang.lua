@@ -30,9 +30,9 @@ else
 	Dialog.AddOption("I'm checking on Lolla Cotgrove's kegs.", "TheOrder")
 	Dialog.AddOptionRequirement(REQ_QUEST_ON_STEP, Delivery , 1)
 
-	Dialog.AddOption("The Magister suggested I asked you about what you use your sorcery for.", "TheOrder")
-	Dialog.AddOptionRequirement(REQ_QUEST_ON_STEP, Mage1 , 4)
-
+    if GetQuestStep(Spawn,Mage1) >=3 and GetQuestStep(Spawn,Mage1) <=5 then
+	Dialog.AddOption("The Magister suggested I asked you about what you use your sorcery for.", "Sorcery1")
+    end
 	
 	Dialog.AddOption("I think I'll move back.  It sounds like I really don't want to crimp a cog. ")
 	Dialog.Start()

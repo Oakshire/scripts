@@ -15,11 +15,11 @@ function spawn(NPC)
 end
 
 function casted_on(NPC, Spawn, SpellName)
-  if SpellName == 'Enter the trial' then
-    if HasQuest(Spawn,5769) and not HasCompletedQuest(Spawn,5769) then
+  if SpellName == 'Enter the Trial' then
+    if HasQuest(Spawn,5770) and not HasCompletedQuest(Spawn,5770) then
          Summoner = GetZone("Summonerstest")
         Zone(Summoner,Spawn)
-    elseif HasQuest(Spawn,5770) and not HasCompletedQuest(Spawn,5770) then
+    elseif HasQuest(Spawn,5769) and not HasCompletedQuest(Spawn,5769) then
          Sorcerer = GetZone("Sorcererstrial")
         Zone(Sorcerer,Spawn)      
     end

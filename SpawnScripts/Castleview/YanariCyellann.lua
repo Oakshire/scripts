@@ -181,17 +181,17 @@ end
     Dialog.Start()
 end  
 
- function MageTraining1(NPC, Spawn)
+ function MageTraining1a(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?")
 	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan008.mp3", 3056968266, 3365736320)
     CastSpell(NPC,19)
- 	Dialog.AddOption("No doubt you've used your magic for other purposes outside of your laboratory?", "MageTraining1a")
+ 	Dialog.AddOption("No doubt you've used your magic for other purposes outside of your laboratory?", "MageTraining1b")
     Dialog.Start()
 end  
 
- function MageTraining1(NPC, Spawn)
+ function MageTraining1b(NPC, Spawn)
     SetStepComplete(Spawn,Mage1,3)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)

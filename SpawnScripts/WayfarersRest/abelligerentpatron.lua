@@ -14,6 +14,8 @@ local zone = GetZone(NPC)
 local Darkelf = GetSpawnByLocationID(zone, 133780688)   
 if not IsInCombat(NPC) and IsAlive(NPC)then
 if IsAlive(Darkelf) then
+    SpawnSet(NPC, "attackable", 1)
+    SpawnSet(NPC, "show_level", 1)
     SpawnSet(NPC,"mood_state",11852)
     choice = MakeRandomInt(1,5)
     if choice ==1 then
@@ -29,6 +31,8 @@ if IsAlive(Darkelf) then
     end
     AddTimer(NPC,4000,"EmoteLoop")
 elseif not IsAlive(Darkelf) then
+    SpawnSet(NPC, "attackable", 0)
+    SpawnSet(NPC, "show_level", 0)
     AddTimer(NPC,7000,"EmoteLoop")
     SpawnSet(NPC,"mood_state",0)
     SpawnSet(NPC,"name","a recovered patron")
@@ -54,6 +58,14 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
---		PlayFlavor(NPC, "voiceover/english/halfling_corrupted/ft/halfling/halfling_corrupted_1_garbled_gf_54e55451.mp3", "Lilleee  mabee   tarrah roo  sakdooo", "", 3766403918, 1171422621, Spawn, 8)
+function aggro(NPC,Spawn)
+local zone = GetZone(NPC)
+local Darkelf = GetSpawnByLocationID(zone, 133780688)  
+if IsAlive(Darkelf) and not HasLanguage(Spawn,8) then
+	PlayFlavor(NPC, "voiceover/english/halfling_crazed/ft/halfling/halfling_crazed_1_garbled_gm_823f1021.mp3", "Lilleee  mabee   tarrah roo  sakdooo", "", 374813993, 4058118752, Spawn, 8)
+    else
+	PlayFlavor(NPC, "voiceover/english/halfling_crazed/ft/halfling/halfling_crazed_1_aggro_gm_37efc560.mp3", "This place will be your tomb!", "", 4006552847, 41198957, Spawn, 8)
+end
+end
 
 

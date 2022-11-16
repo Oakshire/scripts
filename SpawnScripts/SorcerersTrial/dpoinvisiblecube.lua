@@ -88,5 +88,11 @@ function RingDone(NPC, Spawn)
     local zone = GetZone(Spawn)
     local SummonRing = GetSpawnByLocationID(zone,133780600)
     SpawnSet(SummonRing,"visual_state",34341)
-    
+    AddTimer(NPC,3000,"DespawnRing")    
+end
+
+function DespawnRing(NPC, Spawn)
+    local zone = GetZone(Spawn)
+    local SummonRing = GetSpawnByLocationID(zone,133780600)
+    Despawn(NPC)
 end

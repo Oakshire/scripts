@@ -30,7 +30,7 @@ function hailed(NPC, Spawn)
     DoneToday(NPC,Spawn)   
     elseif GetLevel(Spawn) ==8 and HasCompletedQuest(Spawn,Mage2) then
     DoneToday(NPC,Spawn)   
-    elseif GetLevel(Spawn) ==9 and HasCompletedQuest(Spawn,Mage2) and GetClass(Spawn)==21 then
+    elseif GetLevel(Spawn) ==9 and HasCompletedQuest(Spawn,Mage2) and GetClass(Spawn)==21 and not HasQuest(Spawn, Ench) and not HasQuest(Spawn, Sorc) and not HasQuest(Spawn, Summ) then
     FinalClassTest(NPC,Spawn)
     else
     FaceTarget(NPC, Spawn)
@@ -41,21 +41,24 @@ function hailed(NPC, Spawn)
     if GetClass(Spawn)== 21 and GetLevel(Spawn)>=7 and not HasQuest(Spawn,Mage1) and not HasCompletedQuest(Spawn,Mage1) then
     Dialog.AddOption("No, but I would be honored to have someone as famed and skilled as you help me advance my magic abilities.","Dialog1")	
     end
-    if HasCompletedQuest(Spawn,Mage1) and GetQuestStep(Spawn,Mage1)==2 then 
+    if HasQuest(Spawn,Mage1) and GetQuestStep(Spawn,Mage1)==2 then 
     Dialog.AddOption("I've dispersed the bog slugs.  They seemed to be rather malformed.","Dialog2")	
     end
-    if HasCompletedQuest(Spawn,Mage1) and GetQuestStep(Spawn,Mage1)==6 then 
+    if HasQuest(Spawn,Mage1) and GetQuestStep(Spawn,Mage1)==6 then 
     Dialog.AddOption("I've gained some useful insight from your former students about sorcery and weaving of elements.","Dialog3")	
     end  
     if GetClass(Spawn)== 21 and GetLevel(Spawn)>=8 and not HasQuest(Spawn,Mage2) and not HasCompletedQuest(Spawn,Mage2) and HasCompletedQuest(Spawn,Mage1) then
     Dialog.AddOption("Do you have time to continue my training today?","Dialog4")	
     end  
-    if HasCompletedQuest(Spawn,Mage2) and GetQuestStep(Spawn,Mage2)==2 then 
+    if HasQuest(Spawn,Mage2) and GetQuestStep(Spawn,Mage2)==2 then 
     Dialog.AddOption("I've \"convinced\" Willim to have a little more confidence.","Dialog5")	
     end  
-    if HasCompletedQuest(Spawn,Mage2) and GetQuestStep(Spawn,Mage2)==4 then 
+    if HasQuest(Spawn,Mage2) and GetQuestStep(Spawn,Mage2)==4 then 
     Dialog.AddOption("I've brought you an eyeball from a Klicnik.","Dialog6")	
     end  
+    if HasCompletedQuest(Spawn,Ench) or HasCompletedQuest(Spawn,Sorc) or HasCompletedQuest(Spawn,Summ) then
+    Dialog.AddOption("Still at it Niksel? Just wanted to say hello.")	
+    end
     Dialog.AddOption("Um, ok.  Thank you for that.  Good luck with your students.")	
     Dialog.Start()
 end
@@ -146,7 +149,7 @@ function Dialog3(NPC,Spawn)
  	Dialog.AddDialog("Good, good, good.  I hope you learned the many uses of sorcery's power--just remember to respect this power.")
 	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel009.mp3", 3515068214, 3688909586)
     PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
-    Dialog.AddOption("It was enlightening to hear how elemental magics can be destructive, but also deadly.","DoneToday")	
+    Dialog.AddOption("It was enlightening to hear how elemental magics can be destructive, but also has utility.","DoneToday")	
 	Dialog.Start()
 end
 
@@ -169,7 +172,7 @@ function Dialog4(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("For you? Of course I do! Your last visit inspired me to solve my Theory of Elementary--perhaps you can help me work on it a bit later. Now, if you recall, in our last lesson, you learned the skills of a sorcerer and a summoner. Today, you shall learn the skills of an enchanter. Shall we begin?")
-	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel011.mp3", 2118767322, 484427585)
+	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel011.mp3", 3711475963, 1487434543)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
     Dialog.AddOption("Yes, I am ready.","Dialog4a")	
 	Dialog.Start()
@@ -179,7 +182,7 @@ function Dialog4a(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("Let's pick up where we left off.  I can summarize an enchanter's philosophy in one phrase: \"I think, therefore you should too.\"")
-	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel012.mp3", 3711475963, 1487434543)
+	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel012.mp3", 1678627858, 4071988215)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
     Dialog.AddOption("[Listen]","Dialog4b")	
 	Dialog.Start()
@@ -206,8 +209,8 @@ function Dialog4c(NPC,Spawn)
 	Dialog.Start()
 end
 
-function OfferMage1(NPC,Spawn)
-    OfferQuest(NPC,Spawn,Mage1)
+function OfferMage2(NPC,Spawn)
+    OfferQuest(NPC,Spawn,Mage2)
     FaceTarget(NPC,Spawn)
 end
 
@@ -274,9 +277,9 @@ function FinalClassTest(NPC,Spawn)
  	Dialog.AddDialog("What field of arcane studies do you want to pursue? You showed great aptitude in all three schools, but you must focus your studies.  So what's your choice?")
 	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel021.mp3", 167518160, 503095515)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
-    Dialog.AddOption("Summoning [WORK-IN-PROGRESS]","Summoner")	
-    Dialog.AddOption("Sorcery [WORK-IN-PROGRESS]","Sorcery")	
-    Dialog.AddOption("Enchanting [WORK-IN-PROGRESS]","Enchanter")	
+    Dialog.AddOption("Enchanting","Enchanter")	
+    Dialog.AddOption("Sorcery","Sorcery")	
+    Dialog.AddOption("Summoning","Summoner")	
 	Dialog.Start()
 end
 --I feel the destructive arts are to my liking. I shall study to be a sorcerer.
@@ -286,33 +289,75 @@ function Summoner(NPC,Spawn)
  	Dialog.AddDialog("By peering into the unseen, summoners use magic to create matter from nothing. A summoner never wants for anything -- companions, food, or even a nice fluffy pillow to snuggle up with when it gets cold at night ... er, where was I? Ah, yes, do you want to study summoning?")
 	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel023.mp3", 990225084, 344110692)
     PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
-    Dialog.AddOption("I will never again be without anything I need.  I am a summoner.")	
+    Dialog.AddOption("I will never again be without anything I need.  I am a summoner.","Summoner2")	
     Dialog.AddOption("Actually, I better rethink this.","FinalClassTest")	
 	Dialog.Start()
 end
 
+function Summoner2(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Soon you will be ... yes ... I can see it now ... but no, first you must prove to me that you can handle things that you summon.  Do you think that I will simply let you move on without the wisdom to temper the knowledge of summoning?")
+	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel029.mp3", 3974213015, 2576820907)
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddOption("Then I must prove my skill.","Summoner2a")	
+    Dialog.AddOption("On second thought, what were my options again?","FinalClassTest")	
+	Dialog.Start()
+end
+
+function Summoner2a(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Summ)
+end
 
 function Sorcery(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("A sorcerer taps into the mana flow and draws the hidden energies that swirl within that maelstrom of forces.  By taking these energies, sorcerers simplify their lives, and make their opponent's lives a heck of a lot harder. But along with sorcery's incredible power, comes incredible responsibility. Can you handle this?")
     PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
-    Dialog.AddOption("The forces of the arcane will be at my beck and call.  I am a sorcerer.")	
+    Dialog.AddOption("The forces of the arcane will be at my beck and call.  I am a sorcerer.","Sorcery2")	
     Dialog.AddOption("Actually, I better rethink this.","FinalClassTest")	
 	Dialog.Start()
 end
 
+function Sorcery2(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Sorc)
+end
 
 function Enchanter(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("Enchanters love hearing people say, \"I'll believe it when I see it.\"  Using their magic, enchanters make people believe in all matter of things! Illusionary dragons are just as threatening as real ones to the common enemy, if you \"see\" what I'm saying.  So, will you focus your studies on enchanting?")
     PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
-    Dialog.AddOption("I prefer to see what is real and what isn't.  I am an enchanter.")	
+    Dialog.AddOption("I prefer to see what is real and what isn't.  I am an enchanter.","Enchanter2")	
     Dialog.AddOption("Actually, I better rethink this.","FinalClassTest")	
 	Dialog.Start()
 end
 
+function Enchanter2(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Ench)
+end
+
+function GoodbyeSumm(NPC,Spawn) -- ALSO SORC
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("You don't need to return to me. You'll have proved your worth and readiness.  Take care, though.  You'll be alone and these elementals will not go down without a fight.  I hope to see you again one day.")
+  	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel031.mp3", 980785219, 3713600865)
+  PlayFlavor(NPC, "", "", "bye", 0, 0, Spawn)
+    Dialog.AddOption("Thank you Magister Niksel.")	
+	Dialog.Start()
+end
+
+
+function GoodbyeEnch(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Once you've quelled the crowd you'll have more than proven yourself to be a capable enchanter. You won't need to return to me, but I hope to see you again. Take care, and good luck!")
+    PlayFlavor(NPC, "", "", "bye", 0, 0, Spawn)
+    Dialog.AddOption("Thank you Magister Niksel.")	
+	Dialog.Start()
+end
 --Now, now, there's no one thing that gives you the power to become a sorcerer, but this should help you get a better grasp on how to use your sorcery power. No need to return to me afterwards, I've taught you as much as I can.
---I feel the destructive arts are to my liking. I shall study to be a sorcerer.
 --You'll be an enchanter... yes... perhaps ... First, let's see how you deal with an angry crowd.  Not everyone is cut out to deal with the thought required behind this choice ... we need to make sure that you are.

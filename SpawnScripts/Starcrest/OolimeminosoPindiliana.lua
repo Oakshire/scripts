@@ -19,8 +19,8 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1008.mp3", "", "nod", 0, 0, Spawn)
-    if GetQuestStep(Spawn,Mage1) ==5 then	
+	PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1008.mp3", "", "", 0, 0, Spawn)
+    if GetQuestStep(Spawn,Mage1) <=5 and GetQuestStep(Spawn,Mage1) >=3 then	
 	AddConversationOption(conversation, "The Magister suggested I asked you about what you use your sorcery for.","MageTraining1")
 	end
 	AddConversationOption(conversation, "Ok.")
@@ -37,7 +37,7 @@ function MageTraining1(NPC, Spawn)
 end
 
 function MageTraining1a(NPC, Spawn)
-    SetStepComplete(NPC,Mage1,5)
+    SetStepComplete(Spawn,Mage1,5)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

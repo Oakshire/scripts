@@ -9,14 +9,21 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to pass Magister Niksel's trial.", 1, 100, "I must pass Magister Niksel's trial in the testing room south of the mage tower in South Qeynos.", 11,22105121)
+	AddQuestStepKill(Quest, 1, "I need to pass Magister Niksel's trial.", 1, 100, "I must pass Magister Niksel's trial in the testing room south of the mage tower in South Qeynos. The chamber is located at the top of the tower.", 11,22105121)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Then I suggest you prepare yourself.  The trial you will face places you against the mighty beings you will one day summon on your own.  One from each element will be represented. Destroy them all, and you will be ready to move on in your new role as a summoner.")
+	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel030.mp3", 4260640044, 118480964)
+    PlayFlavor(QuestGiver, "", "", "scold", 0, 0, Player)
+    Dialog.AddOption("Should I return to you once I've completed the trial?","GoodbyeSumm")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -35,6 +42,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	SetAdventureClass(Player,28)
     SendMessage(Player, "Congratulations! You are a Summoner.","yellow")
     SendPopUpMessage(Player, "Congratulations! You are a Summoner.",250,250,200)
+    ApplySpellVisual(Player, 324)
     --PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
 	end
 
