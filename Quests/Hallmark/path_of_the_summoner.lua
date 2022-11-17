@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to pass Magister Niksel's trial.", 1, 100, "I must pass Magister Niksel's trial in the testing room south of the mage tower in South Qeynos. The chamber is located at the top of the tower.", 11,22105121)
+	AddQuestStepKill(Quest, 1, "I need to pass Magister Niksel's trial using a summoned creature.", 1, 100, "I must pass Magister Niksel's trial in the testing room south of the mage tower in South Qeynos. The chamber is located at the top of the tower.", 11,22105121)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -43,13 +43,15 @@ function QuestComplete(Quest, QuestGiver, Player)
     SendMessage(Player, "Congratulations! You are a Summoner.","yellow")
     SendPopUpMessage(Player, "Congratulations! You are a Summoner.",250,250,200)
     ApplySpellVisual(Player, 324)
-    --PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
 	end
 
 
 	UpdateQuestDescription(Quest, "Having completed my trial as a summoner, I will be focusing my studies in magic down the path I've chosen.  I am well on my way in Norrath - and have learned valuable lessons in responsible summoning.")
 	GiveQuestReward(Quest, Player)
 end
+
+
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then

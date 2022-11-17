@@ -6,16 +6,16 @@
                    : 
 --]]
 
-function cast(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, VisState, Sz)
+function cast(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, Sz)
     
    -- Summons a pet
    SummonPet(Caster, PetID)
    
-    setstats(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, VisState, Sz)
+    setstats(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, Sz)
    
   end
 
-function setstats(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, VisState, Sz)
+function setstats(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, Sz)
       -- Set stats
    pet = GetPet(Caster)
    local Level = GetLevel(pet)
@@ -26,15 +26,12 @@ function setstats(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, VisState, S
    SpawnSet(pet, "difficulty", difficulty)
    SpawnSet(pet, "hp", hp)
    SpawnSet(pet, "power", pw)
-   SpawnSet(pet, "visual_state", VisState)
    SpawnSet(pet, "size", Sz)
    SetInfoStructFloat(pet, "str", newStr)
+   SetStrBase(pet, newStr)
    
-  
  end
     
-
-
 
 function remove(Caster, Target)
    pet = GetPet(Caster)

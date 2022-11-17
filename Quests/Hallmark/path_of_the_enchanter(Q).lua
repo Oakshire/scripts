@@ -49,7 +49,7 @@ function QuestComplete(Quest, QuestGiver, Player)
     SendMessage(Player, "Congratulations! You are an Enchanter.","yellow")
     SendPopUpMessage(Player, "Congratulations! You are an Enchanter.",250,250,200)
     ApplySpellVisual(Player, 324)
- -- PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
 	end
 	UpdateQuestDescription(Quest, "After thinking about it rationally, I realized that there was no way for those tavern patrons to have been so upset.  So naturally, I went to find the root of their animosity.  Having done so, I find myself in a new role as an enchanter.  I suppose I'll have much to learn.")
 	GiveQuestReward(Quest, Player)

@@ -25,7 +25,7 @@ if  not IsAlive(Darkelf) then
     elseif choice ==4 then
     PlayFlavor(NPC,"","","thanks",0,0)   
     elseif choice ==5 then
-    PlayFlavor(NPC,"","","glare",0,0) 
+    PlayFlavor(NPC,"","","scold",0,0) 
     end
 end
     AddTimer(NPC,7000,"EmoteLoop")
