@@ -106,7 +106,10 @@ function Trial4Done(NPC,Spawn)
     AddTimer(NPC,2500,"Ring",1,Spawn)   
     AddTimer(NPC,4500,"Light2",1,Spawn)   
     AddTimer(NPC,6500,"Light1",1,Spawn)   
- end  
+    if Pet ~= nil or  IsAlive(Pet) then
+    Despawn(Pet)
+    end
+end  
  
 function Light1(NPC, Spawn)
     local zone = GetZone(Spawn)
@@ -151,8 +154,6 @@ function Ring(NPC, Spawn)
     SpawnSet(SummonRing,"model_type",0)
     local Ringlight = GetSpawnByLocationID(zone,133780625)
     Despawn(Ringlight)
-    if Pet ~= nil or  IsAlive(Pet) then
-    Despawn(Pet)
-    end
+
 end
 

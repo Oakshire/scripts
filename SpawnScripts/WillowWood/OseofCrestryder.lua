@@ -21,7 +21,7 @@ end
 function hailed(NPC, Spawn)
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    if HasQuest(Spawn,5760) and GetQuestStep(Spawn,5760) == 8 then
+    if HasQuest(Spawn,5761) and GetQuestStep(Spawn,5761) == 8 then
     Dialog1(NPC,Spawn)
     elseif GetTradeskillLevel(Spawn)<=3 then
 	GenericHail(NPC, Spawn)
@@ -30,7 +30,7 @@ function hailed(NPC, Spawn)
 	conversation = CreateConversation()
 
 	-- artisan essentials volume 2
-	if not HasItem(Spawn, 31373, 1) then
+	if not HasItem(Spawn, 31373, 1) and GetTradeskillLevel(Spawn) <2 then
 		AddConversationOption(conversation, "Yes, please teach me.", "dlg_14_1")
 	end
 	AddConversationOption(conversation, "No, not at the moment.")

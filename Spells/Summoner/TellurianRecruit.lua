@@ -30,6 +30,7 @@ function setstats(Caster, Target, PetID, Dif, BaseStr, HPMod, PWMod, Sz)
    SetInfoStructFloat(pet, "str", newStr)
    SetStrBase(pet, newStr)
    
+   
  end
     
 
