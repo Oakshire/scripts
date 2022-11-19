@@ -12,7 +12,7 @@
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Gather a cave serpent venom sac.", 1, 25, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 1161, 1970008,8260002,	8260019	,8260023)
-	AddQuestStepKill(Quest, 2, "Gather white spider venom sacs.", 4, 30, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 413, 1970012,8260003,8260024,8260030,8260074,8260082)
+	AddQuestStepKill(Quest, 2, "Gather white spider venom sacs.", 4, 20, "I need to gather poison sacs from the snakes and spiders that live in the Caves.  I can reach the Caves via mariner bell within the City of Qeynos.", 413, 1970012,8260003,8260024,8260030,8260074,8260082)
     UpdateQuestZone(Quest,"Caves")
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")

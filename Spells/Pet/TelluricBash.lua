@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Spells/Mage/LightningBurst.lua
-    Script Author  : Ememjr
-    Script Date    : 2017.11.11 03:11:14
+    Script Name    : Spells/Pet/TelluricBash.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2022.11.19 06:11:15
     Script Purpose : 
                    : 
 --]]

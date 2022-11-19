@@ -37,7 +37,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.AddDialog("Rodcet's blessings upon you. How may the Temple of Life assist you today?")
 	Dialog.AddVoiceover("voiceover/english/medic_rowena/qey_north/medicrowena000.mp3", 59000523, 1158708704)
     if GetQuestStep(Spawn,Delivery)==1 then
-	Dialog.AddOption("I have a delivery for you from The Jewel Box.","Delivered")
+	Dialog.AddOption("Gavin Ironforge has sent me here to deliver a box to you for the Temple.","Delivered")
     end
     Dialog.AddOption("Nothing at the moment.")
 	Dialog.Start()
@@ -49,9 +49,9 @@ function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "boggle", 0, 0, Spawn)
-	Dialog.AddDialog("We were not expecting this package so soon!  High Preistess Kassandra will be most pleased!  We can use these silver etchings in channeling the Prime Healer's power.  Please accept our thanks for their early delivery.")
+	Dialog.AddDialog("We were not expecting this package so soon. High Priestess Cassondra will be most pleased. We can use these silver etchings in channeling the Prime Healer's power. Please accept our thanks for their early delivery.")
 	Dialog.AddVoiceover("voiceover/english/medic_rowena/qey_north/medicrowena001.mp3", 3448930744, 2802964919)
-	Dialog.AddOption("Glad I could be of assistance.","FinishQuest")
+	Dialog.AddOption("Praise be to Rodcet! I'll return to the Jewel Box to inform Gavin of the delivery.","FinishQuest")
 	Dialog.Start()
 end
 

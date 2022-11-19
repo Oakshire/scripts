@@ -57,10 +57,10 @@ function hailed(NPC, Spawn)
         	PlayFlavor(NPC, "voiceover/english/gavin_ironforge/qey_north/gavinironforge000.mp3", "", "hello", 57706546, 3929365008, Spawn)
 	        local conversation = CreateConversation()
     	    if not HasQuest(Spawn,Delivery) and not HasCompletedQuest(Spawn, Delivery) then
-        	AddConversationOption(conversation, "Is there anything you need doing?", "Delivery1")
+        	AddConversationOption(conversation, "What is it that you can't get to today?", "Delivery1")
             end
             if GetQuestStep(Spawn,Delivery)==2 then
-        	AddConversationOption(conversation, "Rowena seemed quite pleased with your craftsmanship.", "Delivered")
+        	AddConversationOption(conversation, "The Temple of Life was most pleased with Tara's etchings.", "Delivered")
         	end
         	AddConversationOption(conversation, "Just browsing your wares.")
     	StartConversation(conversation, NPC, Spawn, "A hail and well met!  Welcome to the Jewel Box.  I am Gavin Ironforge, an apprentice in this shop. I help Tara with her duties, but we're unusually busy today.")
@@ -72,9 +72,9 @@ function Delivery1(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/gavin_ironforge/qey_north/gavinironforge001.mp3", "", "", 3182974274, 1240192562, Spawn)
     local conversation = CreateConversation()
-	AddConversationOption(conversation, "Sure thing.  What needs delivering?", "Delivery2")
+	AddConversationOption(conversation, "If the priests of Rodcet Nife need a delivery, then they'll get one!", "Delivery2")
 	AddConversationOption(conversation, "Sounds too important for me.  I'll leave it for someone else.")
-	StartConversation(conversation, NPC, Spawn, "I must send a package to the Temple of Life.  The priests are eagerly waiting for it!  I could use someone to deliver it for me if you have any free time.  We will both benefit.")
+	StartConversation(conversation, NPC, Spawn, "I must send a package to the Temple of Life. The priests are eagerly waiting for it. I could use someone to deliver it for me, if you've any free time. We will both benefit!")
 end	 
 
 function Delivery2(NPC, Spawn)
@@ -87,8 +87,8 @@ function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/gavin_ironforge/qey_north/gavinironforge003.mp3", "", "thanks", 1393179376, 3856557471, Spawn)
     local conversation = CreateConversation()
-	AddConversationOption(conversation, "Think nothing of it.", "FinishQuest")
-	StartConversation(conversation, NPC, Spawn, "You preserve my faith in Qeynos!  Qeynos citizens continue to be the most trustworthy citizens in all of Norrath.")
+	AddConversationOption(conversation, "And thank you for adding a bit more jingle to my coin pouch!", "FinishQuest")
+	StartConversation(conversation, NPC, Spawn, "You preserve my faith in Qeynos. Qeynosians continue to be the most trustworthy citizens in all of Norrath! Thank you!")
 end	
 
 function FinishQuest(NPC, Spawn)

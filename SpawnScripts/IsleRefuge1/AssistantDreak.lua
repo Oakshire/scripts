@@ -107,12 +107,15 @@ function QuestUpdate8(NPC, Player)
 		Dialog.AddOption("All right, I'll be back with your lock.")
 		Dialog.Start()
         SetStepComplete(Player, Cellar,8)
-        if GetTradeskillLevel(Player)<2 then
+    if GetTradeskillLevel(Player) <2  then
+        Quest = GetQuest(Player,5749)
+        SummonItem(Player,1030001,1)
+        GiveQuestItem(Quest, Player, "", 20708,4142,4142,4142,7391,7391,7391)
         SetTradeskillLevel(Player,2)
         SetTradeskillClass(Player,1)
 	    SendMessage(Player, "You are now an Artisan!")
         SendPopUpMessage(Player, "You are now an Artisan!", 200, 200, 200)            
-        end
+    end
 end
 
 function respawn(NPC)

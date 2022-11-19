@@ -23,7 +23,7 @@ function hailed(NPC, Spawn)
 	AddConversationOption(conversation, "I was wondering if you had any odd tasks that needed to be done.","Jobs")
 	end
     if GetQuestStep (Spawn,Fhara)==1 then
-	AddConversationOption(conversation, "I have a pastry delivery for you from Voleen.","Delivery")
+	AddConversationOption(conversation, "I've brought over your order from Baker Voleen!","Delivery")
     end
 	AddConversationOption(conversation, "I'll look around.  Thank you.")
 	StartConversation(conversation, NPC, Spawn, "Good day! Please take a look around my shop. My fine furniture spruces up any home.")
@@ -54,9 +54,9 @@ function Delivery(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 	PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
-	AddConversationOption(conversation, "Enjoy!","Delivered")
+	AddConversationOption(conversation, "I certainly will! Good day to you!","Delivered")
 	AddConversationOption(conversation, "Try not to eat them all in one sitting.","Delivered2")
-	StartConversation(conversation, NPC, Spawn, "Oh, praise the gods!  I've been craving these delectible treats all day.  Tell Voleen thank you for me.")
+	StartConversation(conversation, NPC, Spawn, "Mmmm ... Mmmmm ... These pastries smell delicious! Voleen's delicacies always brighten my day. If you see her again, please, give her my thanks.")
 end  
 
 function Delivered(NPC, Spawn)

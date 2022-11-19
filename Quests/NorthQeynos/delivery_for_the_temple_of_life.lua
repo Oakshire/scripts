@@ -20,8 +20,8 @@ function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	local conversation = CreateConversation()
     PlayFlavor(QuestGiver, "voiceover/english/gavin_ironforge/qey_north/gavinironforge002.mp3", "", "smile", 2486535171, 583526887, Player)
-	AddConversationOption(conversation, "I'll make sure Rowena receives this.")
-	StartConversation(conversation, QuestGiver, Player, "Wonderful!  Take this small box to Medic Rowena in the temple.  Tell her the Jewel Box sent you.  She'll be very pleased as she is not expecting it until tomorrow!  You will have some coin upon your return.")
+	AddConversationOption(conversation, "I'll be off now!")
+	StartConversation(conversation, QuestGiver, Player, "Wonderful! Take this small box to Medic Rowena in the temple. Tell her the Jewel Box sent you. She'll be very pleased, as she's not expecting it until the morrow. You will have some coin upon your return.")
 end
 
 function Declined(Quest, QuestGiver, Player)
