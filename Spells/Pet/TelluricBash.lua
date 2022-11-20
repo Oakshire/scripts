@@ -13,4 +13,5 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     else
         SpellDamage(Target, DmgType, MinVal)
     end
+        CastSpell(Target, 5001, GetSpellTier())
 end

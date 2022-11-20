@@ -12,6 +12,13 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     else
         SpellDamage(Target, DmgType, MinVal)
     end
-    Knockback(Caster, Target, 4000)
+       AddControlEffect(Target, 4)
+
 end
+    
+function remove(Caster, Target)
+    RemoveControlEffect(Target, 4)
+end
+
+    
 
