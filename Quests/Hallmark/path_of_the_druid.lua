@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "I must complete the trial Aldalad has set forth for me.", 1, 100, "I must complete Aldalad's trial in the elddar grove in order to become a druid.", 11)
@@ -16,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-DruidAccept(QuestGiver,Player)
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("I cannot tell you exactly what you will face - only that you must use the skills and spells you have learned up to this point in order to win your way past it and become a druid.  Remember that you will be alone with this.  Are you ready to begin?")
+	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad030.mp3", 110213528, 850594761)
+    PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+    Dialog.AddOption("Thank you, Aldalad." )	
+	Dialog.Start()   
 end
 
 function Declined(Quest, QuestGiver, Player)

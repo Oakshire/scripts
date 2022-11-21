@@ -21,9 +21,7 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    if GetLevel(Spawn) ==9 and HasCompletedQuest(Spawn,Quest2) and GetClass(Spawn)==11 and not HasQuest(Spawn, Cleric) and not HasQuest(Spawn, Druid) and not HasQuest(Spawn, Shaman) then
-    FinalClassTest(NPC,Spawn)
-    else
+ 
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Blessings to you and yours, child.  Qeynos is gladdened by your presence this fine day!  Sharing a few kind words can lift one's spirit, yes?")
@@ -59,10 +57,13 @@ function hailed(NPC, Spawn)
     if HasCompletedQuest(Spawn,Cleric) or HasCompletedQuest(Spawn,Druid) or HasCompletedQuest(Spawn,Shaman) then
     Dialog.AddOption("May your blessings continue to provide, Aldalad. It is good to see you again.")	
     end
+    if GetLevel(Spawn) ==9 and HasCompletedQuest(Spawn,Quest2) and GetClass(Spawn)==11 and not HasQuest(Spawn, Cleric) and not HasQuest(Spawn, Druid) and not HasQuest(Spawn, Shaman) then
+    Dialog.AddOption("I want to learn even more!  What is my next lesson?","FinalClassTest")	
+    end
     Dialog.AddOption("Thank you for your blessing.  I wish you a good day as well, Hierophant")
 	Dialog.Start()
 end
-end
+
 
 function respawn(NPC)
 	spawn(NPC)
@@ -146,7 +147,7 @@ function Dialog2b(NPC,Spawn)
 end
 
 function Dialog2c(NPC,Spawn)
-    QuestStepIsComplete(Spawn,Quest1,3)
+    SetStepComplete(Spawn,Quest1,3)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("Travel to the Oakmyst Forest, and you will see some of these errant spirits.  But do not try to communicate with them!  Dispatch five of them, and send them back to the dark realms from whence they came.  Then return to me.")
@@ -157,7 +158,7 @@ function Dialog2c(NPC,Spawn)
 end
 
 function Dialog3(NPC,Spawn)
-    QuestStepIsComplete(Spawn,Quest1,5)
+    SetStepComplete(Spawn,Quest1,5)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("So you have!  For a time, at least.  But the druids understand that, no matter what is accomplished by mortal hands, Nature will have her final say.  You must learn to respect her, and she will reward you with increased powers.  Now, go apply what you have learned to your own life.")
@@ -207,18 +208,18 @@ function Dialog5(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("For now you have, but only time will tell.  The druid understands that no matter what is done by mortal hands, nature has the final say.  Learn to respect the world and the world will offer back that same respect in the way of granted powers.  Now it is time for you to take what you have learned and apply it to your own life.")
-	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad016.mp3", 3124149580, 1197890726)
+	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad016.mp3", 2729819197, 1238324646)
     PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
     Dialog.AddOption("What do you mean by that?","Dialog5a")	
 	Dialog.Start()
 end
 
 function Dialog5a(NPC,Spawn)
-    QuestStepIsComplete(Spawn,Quest2,2)
+    SetStepComplete(Spawn,Quest2,2)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("I want you to go out to into the world and let your heart guide you.  Some of those who help defend Qeynos from danger have found themselves in some of their own.  Use the faith within you to help them prevail today.  I will write in your journal where you can find these brave men and women.  Come back when they are safe.")
-	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad017.mp3", 2729819197, 1238324646)
+	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad017.mp3", 937883467, 3105057313)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
     Dialog.AddOption("Believe in your heart that it will be done.")	
 	Dialog.Start()
@@ -226,7 +227,7 @@ end
 
 
 function Dialog6(NPC,Spawn)
-    QuestStepIsComplete(Spawn,Quest2,6)
+    SetStepComplete(Spawn,Quest2,6)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("It is enough, my child.  You were brave and true, and risked your own life to save others.  I am proud of you.  Your faith has made you strong.")

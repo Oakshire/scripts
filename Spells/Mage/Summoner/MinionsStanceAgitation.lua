@@ -6,17 +6,9 @@
                    : 
 --]]
 
---[[ Info from spell_display_effects (remove from script when done)
 
-*Increases INT of target by 21.8
-*Increases Haste of target by 16.5
-*Decreases Defense and Parry of target by 4.9
-*Increases Slashing, Crushing and Piercing of target by 3.0
 
---]]
-
-    
-function cast(Caster, Target, IntMod, HstMod, DefMod, OffMod)
+function cast(Caster, Target, IntMod, HstMod, DefMod, OffMod, Pet)
     Pet = GetPet(Caster)
     AddSpellBonus(Pet, 4, IntMod) --Intelligence
     AddSpellBonus(Pet, 617, HstMod) -- Attack Speed
@@ -29,11 +21,11 @@ function cast(Caster, Target, IntMod, HstMod, DefMod, OffMod)
 end
 
 
-function remove(Caster, Target)
-        Pet = GetPet(Caster)
-        RemoveSpellBonus(Pet)
-        RemoveSkillBonus(Pet)
-
+function remove(Caster, Target, Pet)
+    Pet = GetPet(Caster)
+    RemoveSpellBonus(Pet)
+    RemoveSkillBonus(Pet)
+   
 end
 
 

@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "I need to complete the trial.", 1, 100, "I must complete Aldalad's trial in order to become a cleric.", 11)
@@ -16,7 +17,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Then I will facilitate a prayer trance for you.  You will experience a struggle unlike any you've known before... but upon exiting the trance, should you prove successful, you will emerge with the emotional strength to survive and prosper in the re-forged Norrath.  Are you ready?")
+	--Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad017.mp3", 2729819197, 1238324646) WE DON"T HAVE THE VO FOR THIS
+    PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+    Dialog.AddOption("I am.","OfferCleric [WORK IN PROGRESS]","ClericPort" )	
+    Dialog.AddOption("I will be shortly. I will return.")	
+	Dialog.Start()    
 end
 
 function Declined(Quest, QuestGiver, Player)

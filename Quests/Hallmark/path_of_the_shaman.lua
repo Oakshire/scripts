@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must subdue the first spirit.", 1, 100, "I must venture into the house in South Qeynos, located among the middle row of buildings, and subdue the spirits within.", 11, 0)
@@ -20,8 +21,14 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
- ShamanAccept(QuestGiver,Player)
- end
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Then you must travel to the Southern part of the city where a home has reportedly become a site of restless spirits. Use the skills you have gained to unshackle them from this world and you will have proven yourself as a shaman.  There will be no need to return to me, but be wary, spirits have powers even they can fathom.")
+--	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad030.mp3", 110213528, 850594761)
+    PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+    Dialog.AddOption("Thank you, Aldalad. I will pass this trial." )	
+	Dialog.Start()  
+end
 
 function Declined(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is declined
