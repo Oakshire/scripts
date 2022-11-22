@@ -10,6 +10,7 @@
 -- Increases power of caster by 29
 
 function cast(Caster, Target, DmgType, MinVal, Pwr)
-	SpellDamage(Target, DmgType, MinVal)
+    Pet=GetPet(Caster)
+	SpellDamage(Pet, DmgType, MinVal, MinVal)
 	SpellHeal("Power", Pwr, Pwr, Caster)
 end

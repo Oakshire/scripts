@@ -51,7 +51,7 @@ function hailed(NPC, Spawn)
     if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)==6 then 
     Dialog.AddOption("I healed those three soldiers, but ... I regret I couldn't save the rest.","Dialog6")	
     end  
-    if HasQuest(Spawn,Cleric) and GetQuestStep(Spawn,Cleric)==2 then
+    if HasQuest(Spawn,Cleric) and GetQuestStep(Spawn,Cleric)==1 then
     Dialog.AddOption("Sadly, I was not successful, Aldalad.","ClericFail")
     end
     if HasCompletedQuest(Spawn,Cleric) or HasCompletedQuest(Spawn,Druid) or HasCompletedQuest(Spawn,Shaman) then
@@ -287,7 +287,7 @@ function ClericAccept(NPC,Spawn)
  	Dialog.AddDialog("Then I will facilitate a prayer trance for you.  You will experience a struggle unlike any you've known before... but upon exiting the trance, should you prove successful, you will emerge with the emotional strength to survive and prosper in the re-forged Norrath.  Are you ready?")
 	--Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad017.mp3", 2729819197, 1238324646) WE DON"T HAVE THE VO FOR THIS
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    Dialog.AddOption("I am.","OfferCleric [WORK IN PROGRESS]","ClericTrial" )	
+    Dialog.AddOption("I am.","OfferCleric [WORK IN PROGRESS]","ClericPort" )	
     Dialog.AddOption("I will be shortly. I will return.")	
 	Dialog.Start()    
 end
@@ -298,14 +298,16 @@ function ClericFail(NPC,Spawn)
  	Dialog.AddDialog("Though you were not successful in your previous attempt, one of the most valuable lessons an aspiring cleric can learn is perseverance.  Are you ready to attempt the trial again?")
 	--Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad017.mp3", 2729819197, 1238324646) WE DON"T HAVE THE VO FOR THIS
     PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
-    Dialog.AddOption("Yes, Aldalad, I am.","ClericTrial" )	
+    Dialog.AddOption("Yes, Aldalad, I am.","ClericPort" )	
     Dialog.AddOption("I will be shortly. I will return.")	
 	Dialog.Start()    
 end
 
-function ClericTrial(NPC,Spawn)
-end
 
+function ClericPort(NPC,Spawn)
+    Trial = GetZone("TheDisconcertingMeditation")
+    Zone(Trial,Spawn,-47.02, -45.79, -49.3, 272)
+end
 
 --DRUID
 function Druid1(NPC,Spawn)
@@ -395,6 +397,7 @@ function ShamanAccept(NPC,Spawn)
     Dialog.AddOption("Thank you, Aldalad. I will pass this trial." )	
 	Dialog.Start()    
 end
+
 
 --[[
 

@@ -251,7 +251,7 @@ end
     SendMessage(Spawn, "You are now a Citizen of Qeynos!","yellow")
     SendPopUpMessage(Spawn, "You are now a Citizen of Qeynos!",250,250,250)
     PlaySound(Spawn, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)
-    ApplySpellVisual(Spawn, 323)
+    ApplySpellVisual(Spawn, 324)
 end
 
 function Option2A(NPC,Spawn)
