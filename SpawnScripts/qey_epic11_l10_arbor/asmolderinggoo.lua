@@ -23,7 +23,7 @@ function death(NPC,Spawn)
         AddSpawnAccess(new_spawn, Spawn)
     end
 	PerformCameraShake(Spawn, 0.699999988079071)
-    SendMessage(Spawn, "The smoldering ooze exploded!","red")
+    SendMessage(Spawn, "The smoldering goo exploded!","red")
     SendPopUpMessage(Spawn, "The smoldering ooze exploded!",250,0,0)    
 end    
     

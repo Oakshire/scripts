@@ -54,6 +54,9 @@ function hailed(NPC, Spawn)
     if HasQuest(Spawn,Cleric) and GetQuestStep(Spawn,Cleric)==1 then
     Dialog.AddOption("Sadly, I was not successful, Aldalad.","ClericFail")
     end
+    if HasQuest(Spawn,Druid) then
+    Dialog.AddOption("Aldalad, I need to perform my task to become a druid.","DruidAccepted" )	
+    end
     if HasCompletedQuest(Spawn,Cleric) or HasCompletedQuest(Spawn,Druid) or HasCompletedQuest(Spawn,Shaman) then
     Dialog.AddOption("May your blessings continue to provide, Aldalad. It is good to see you again.")	
     end
@@ -303,11 +306,11 @@ function ClericFail(NPC,Spawn)
 	Dialog.Start()    
 end
 
-
 function ClericPort(NPC,Spawn)
     Trial = GetZone("TheDisconcertingMeditation")
     Zone(Trial,Spawn,-47.02, -45.79, -49.3, 272)
 end
+
 
 --DRUID
 function Druid1(NPC,Spawn)
@@ -350,17 +353,22 @@ function OfferDruid(NPC,Spawn)
     FaceTarget(NPC,Spawn)
 end
 
-function DruidAccept(NPC,Spawn)
+
+function DruidAccepted(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
- 	Dialog.AddDialog("I cannot tell you exactly what you will face - only that you must use the skills and spells you have learned up to this point in order to win your way past it and become a druid.  Remember that you will be alone with this.  Are you ready to begin?")
+ 	Dialog.AddDialog("There will be no need to return to me when you have completed this trial, but go forth and put what you have learned into practice.  You will know when you have earned the right to call yourself a druid. I will send you to where you need to go.")
 	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad030.mp3", 110213528, 850594761)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
-    Dialog.AddOption("Thank you, Aldalad." )	
-	Dialog.Start()    
+    Dialog.AddOption("I am ready.","DruidPort" )
+    Dialog.Start()   
 end
 
 
+function DruidPort(NPC,Spawn)
+    Trial = GetZone("qey_epic11_l10_arbor")
+    Zone(Trial,Spawn,6.91, -0.20, 3.77, 348.55)
+end
 --SHAMAN
 function Shaman1(NPC,Spawn)
     FaceTarget(NPC, Spawn)
@@ -399,86 +407,3 @@ function ShamanAccept(NPC,Spawn)
 end
 
 
---[[
-
-(1117902808)[Sat Jun 04 12:33:28 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"Blessings to you and yours, child.  Qeynos is gladdened by your presence this fine day!  Sharing a few kind words can lift one's spirit, yes?"
-(1117902810)[Sat Jun 04 12:33:30 2005] You say to Hierophant Aldalad,"I healed those three soldiers, but ... I regret I couldn't save the rest."
-(1117902810)[Sat Jun 04 12:33:30 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"It is enough, my child.  You were brave and true, and risked your own life to save others.  I am proud of you.  Your faith has made you strong.  "
-(1117902811)[Sat Jun 04 12:33:31 2005] You say to Hierophant Aldalad,"I want to learn even more!  What is my next lesson?"
-(1117902811)[Sat Jun 04 12:33:31 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"That is up to you.  I have taught you all I can for now.  You must continue on the path without me, at least for a while.  Look in your heart, for it holds many answers.  Where do you feel your faith leads you in this world?"
-(1117902815)[Sat Jun 04 12:33:35 2005] You say to Hierophant Aldalad,"My faith is more important than anything to me.  I ... I will be a cleric! "
-(1117902815)[Sat Jun 04 12:33:35 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"Faith in the divine is what empowers a cleric.  You shall heal wounds both corporeal and spiritual.  And you shall be bound to serve, even in the face of mortal danger.  Will you accept such a yoke?"
-(1117902817)[Sat Jun 04 12:33:37 2005] You say to Hierophant Aldalad,"With the help of the gods, I accept.  There is nothing I cannot do as long as they are with me.  I shall become a cleric. "
-(1117902817)[Sat Jun 04 12:33:37 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"To fully realize your own faith, you will need to undergo a trial of your own beliefs.  I cannot assist you with this, beyond pointing out what you must do.  Will you permit such an ordeal? "
-(1117902818)[Sat Jun 04 12:33:38 2005] You say to Hierophant Aldalad,"I stand resolute in the face of any such trial."
-(1117902818)[Sat Jun 04 12:33:38 2005] Your quest journal has been updated.
-(1117902818)[Sat Jun 04 12:33:38 2005] You gain experience!
-(1117902818)[Sat Jun 04 12:33:38 2005] Your quest journal has been updated.
-(1117902818)[Sat Jun 04 12:33:38 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"Then I will facilitate a prayer trance for you.  You will experience a struggle unlike any you've known before... but upon exiting the trance, should you prove successful, you will emerge with the emotional strength to survive and prosper in the re-forged Norrath.  Are you ready?"
-(1117902819)[Sat Jun 04 12:33:39 2005] You say to Hierophant Aldalad,"I am."
-(1117902819)[Sat Jun 04 12:33:39 2005] Your courage fades.
-(1117902822)[Sat Jun 04 12:33:42 2005] You have entered The Disconcerting Meditation.
-(1117902829)[Sat Jun 04 12:33:49 2005] You feel that the meditation will only last a short time. You must hurry!
-(1117902874)[Sat Jun 04 12:34:34 2005] You begin to feel the meditation wane...
-(1117902905)[Sat Jun 04 12:35:05 2005] Only a short time remains before you return to your body...
-(1117902915)[Sat Jun 04 12:35:15 2005] Your vision blurs, and the world begins to shift...
-(1117902920)[Sat Jun 04 12:35:20 2005] The mediation ends.
-(1117902920)[Sat Jun 04 12:35:20 2005] You strike A disturbing shadow with a smiting force!
-(1117902920)[Sat Jun 04 12:35:20 2005] YOUR Smite hits a disturbing shadow for 16 points of divine damage.
-(1117902920)[Sat Jun 04 12:35:20 2005] A disturbing shadow is struck with a smiting force!
-(1117902920)[Sat Jun 04 12:35:20 2005] Your courage fades.
-(1117902922)[Sat Jun 04 12:35:22 2005] You have entered North Qeynos.
-(1117902963)[Sat Jun 04 12:36:03 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"Blessings to you and yours, child.  Qeynos is gladdened by your presence this fine day!  Sharing a few kind words can lift one's spirit, yes?"
-(1117902969)[Sat Jun 04 12:36:09 2005] You say to Hierophant Aldalad,"Sadly, I was not successful, Aldalad."
-(1117902969)[Sat Jun 04 12:36:09 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"Though you were not successful in your previous attempt, one of the most valuable lessons an aspiring cleric can learn is perseverance.  Are you ready to attempt the trial again?"
-(1117902977)[Sat Jun 04 12:36:17 2005] You say to Hierophant Aldalad,"Yes, Aldalad, I am."
-(1117902978)[Sat Jun 04 12:36:18 2005] Your courage fades.
-(1117902980)[Sat Jun 04 12:36:20 2005] You have entered The Disconcerting Meditation.
-(1117902987)[Sat Jun 04 12:36:27 2005] You feel that the meditation will only last a short time. You must hurry!
-(1117902996)[Sat Jun 04 12:36:36 2005] You strike A disturbing shadow with a smiting force!
-(1117902996)[Sat Jun 04 12:36:36 2005] YOUR Smite hits a disturbing shadow for 16 points of divine damage.
-(1117902996)[Sat Jun 04 12:36:36 2005] A disturbing shadow is struck with a smiting force!
-(1117902997)[Sat Jun 04 12:36:37 2005] a disturbing shadow hits YOU for 5 points of crushing damage.
-(1117902999)[Sat Jun 04 12:36:39 2005] a disturbing shadow hits YOU for 3 points of crushing damage.
-(1117903001)[Sat Jun 04 12:36:41 2005] a disturbing shadow tries to crush YOU, but misses.
-(1117903002)[Sat Jun 04 12:36:42 2005] You start fighting.
-(1117903003)[Sat Jun 04 12:36:43 2005] a disturbing shadow hits YOU for 3 points of crushing damage.
-(1117903003)[Sat Jun 04 12:36:43 2005] You strike A disturbing shadow with a smiting force!
-(1117903003)[Sat Jun 04 12:36:43 2005] YOUR Smite hits a disturbing shadow for 17 points of divine damage.
-(1117903003)[Sat Jun 04 12:36:43 2005] A disturbing shadow is struck with a smiting force!
-(1117903003)[Sat Jun 04 12:36:43 2005] YOU hit a disturbing shadow for 5 points of crushing damage.
-(1117903003)[Sat Jun 04 12:36:43 2005] You trigger a starter chain.
-(1117903005)[Sat Jun 04 12:36:45 2005] YOU hit a disturbing shadow for 3 points of crushing damage.
-(1117903005)[Sat Jun 04 12:36:45 2005] a disturbing shadow's Wild Swing hits YOU for 5 points of crushing damage.
-(1117903008)[Sat Jun 04 12:36:48 2005] You strike A disturbing shadow with a smiting force!
-(1117903008)[Sat Jun 04 12:36:48 2005] YOUR Smite hits a disturbing shadow for 18 points of divine damage.
-(1117903008)[Sat Jun 04 12:36:48 2005] A disturbing shadow is struck with a smiting force!
-(1117903008)[Sat Jun 04 12:36:48 2005] You triggered Divine Judgment.
-(1117903008)[Sat Jun 04 12:36:48 2005] You get better at Defense (45/46).
-(1117903008)[Sat Jun 04 12:36:48 2005] a disturbing shadow tries to crush YOU, but misses.
-(1117903008)[Sat Jun 04 12:36:48 2005] YOU hit a disturbing shadow for 5 points of crushing damage.
-(1117903010)[Sat Jun 04 12:36:50 2005] a disturbing shadow hits YOU for 5 points of crushing damage.
-(1117903010)[Sat Jun 04 12:36:50 2005] YOU hit a disturbing shadow for 3 points of crushing damage.
-(1117903012)[Sat Jun 04 12:36:52 2005] a disturbing shadow's Wild Swing hits YOU for 9 points of crushing damage.
-(1117903013)[Sat Jun 04 12:36:53 2005] You strike A disturbing shadow with a smiting force!
-(1117903013)[Sat Jun 04 12:36:53 2005] YOUR Smite hits a disturbing shadow for 18 points of divine damage.
-(1117903013)[Sat Jun 04 12:36:53 2005] A disturbing shadow is struck with a smiting force!
-(1117903013)[Sat Jun 04 12:36:53 2005] You complete Divine Judgment.
-(1117903013)[Sat Jun 04 12:36:53 2005] YOUR Divine Judgment hits a disturbing shadow for 45 points of divine damage.
-(1117903013)[Sat Jun 04 12:36:53 2005] You have killed a disturbing shadow.
-(1117903013)[Sat Jun 04 12:36:53 2005] You stop fighting.
-(1117903013)[Sat Jun 04 12:36:53 2005] You gain experience!
-(1117903013)[Sat Jun 04 12:36:53 2005] A disturbing shadow is struck with great force.
-(1117903023)[Sat Jun 04 12:37:03 2005] Calming yourself after the combat with the shade proves to be difficult.  Looking back on the recent events, you attempt to focus your mind and will yourself into a state of relaxation.
-(1117903026)[Sat Jun 04 12:37:06 2005] The creature you faced seems to bear some significance, for you know you have never faced one. You can think of nothing that you have done to draw the ire of something like this, but it seems to be your destiny to cross paths with them... at least, if this meditation serves its purpose.
-(1117903029)[Sat Jun 04 12:37:09 2005] Your quest journal has been updated.
-(1117903029)[Sat Jun 04 12:37:09 2005] You gain experience!
-(1117903029)[Sat Jun 04 12:37:09 2005] You gain experience!
-(1117903029)[Sat Jun 04 12:37:09 2005] Your quest journal has been updated.
-(1117903029)[Sat Jun 04 12:37:09 2005] You turn your attention back to a more worldly task and begin trying to wake yourself from the state.  Soon, the room fades out, and your body begins to stir.
-(1117903031)[Sat Jun 04 12:37:11 2005] Your courage fades.
-(1117903034)[Sat Jun 04 12:37:14 2005] You have entered North Qeynos.
-(1117903064)[Sat Jun 04 12:37:44 2005] \aNPC 10879 Lilli Anya:Lilli Anya\/a says,"The Celestial Watch preserves the rituals of servitude to the gods so that all might experience through worship the return of the ancient deities."
-(1117903081)[Sat Jun 04 12:38:01 2005] \aNPC 11373 Hierophant Aldalad:Hierophant Aldalad\/a says to you,"Blessings to you and yours, child.  Qeynos is gladdened by your presence this fine day!  Sharing a few kind words can lift one's spirit, yes?"
-(1117903082)[Sat Jun 04 12:38:02 2005] You say to Hierophant Aldalad,"Thank you for your blessing.  I wish you a good day as well, Hierophant"
-]]--

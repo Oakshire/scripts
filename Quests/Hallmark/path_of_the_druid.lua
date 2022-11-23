@@ -19,11 +19,11 @@ end
 function Accepted(Quest, QuestGiver, Player)
     FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)   
- 	Dialog.AddDialog("I cannot tell you exactly what you will face - only that you must use the skills and spells you have learned up to this point in order to win your way past it and become a druid.  Remember that you will be alone with this.  Are you ready to begin?")
+ 	Dialog.AddDialog("There will be no need to return to me when you have completed this trial, but go forth and put what you have learned into practice.  You will know when you have earned the right to call yourself a druid. I will send you to where you need to go.")
 	Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad030.mp3", 110213528, 850594761)
     PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
-    Dialog.AddOption("Thank you, Aldalad." )	
-	Dialog.Start()   
+    Dialog.AddOption("I am ready.","DruidPort" )
+    Dialog.Start()   
 end
 
 function Declined(Quest, QuestGiver, Player)
