@@ -6,14 +6,9 @@
                    : 
 --]]
 
--- Interrupts target
--- Inflicts 4 - 6 magic damage on target
--- Stifles target
---     If Target is not Epic
--- Resistibility increases against targets higher than level 29.
+
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-    Say(Caster, "Resistibility not implemented.")
     Interrupt(Caster, Target)
 	SpellDamage(Target, DmgType, MinVal, MaxVal)
 		if not IsEpic() then

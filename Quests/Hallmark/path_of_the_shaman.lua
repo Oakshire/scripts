@@ -12,9 +12,9 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must subdue the first spirit.", 1, 100, "I must venture into the house in South Qeynos, located among the middle row of buildings, and subdue the spirits within.", 11, 0)
-	AddQuestStepKill(Quest, 2, "I must subdue the second spirit.", 1, 100, "I must venture into the house in South Qeynos, located among the middle row of buildings, and subdue the spirits within.", 11, 0)
-	AddQuestStepKill(Quest, 3, "I must subdue the third spirit.", 1, 100, "I must venture into the house in South Qeynos, located among the middle row of buildings, and subdue the spirits within.", 11, 0)
+	AddQuestStepKill(Quest, 1, "I must subdue the first spirit.", 1, 100, "I must venture into the house in South Qeynos, located among the middle row of buildings, and subdue the spirits within.", 11, 2140028)
+	AddQuestStepKill(Quest, 2, "I must subdue the second spirit.", 1, 100, "I must venture into the house in South Qeynos, located among the middle row of buildings, and subdue the spirits within.", 11, 2140029)
+	AddQuestStepKill(Quest, 3, "I must subdue the third spirit.", 1, 100, "I must venture into the house in South Qeynos, located among the middle row of buildings, and subdue the spirits within.", 11, 2140027)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "QuestComplete")

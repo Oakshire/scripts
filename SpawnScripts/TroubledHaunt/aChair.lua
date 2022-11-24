@@ -19,17 +19,23 @@ function respawn(NPC)
 end
 
 function ChairMove1(NPC)
---    MoveToLocation(NPC,-4.64, 3.50, 0.40, 0.5)
---    MoveToLocation(NPC,-4.64, 3.50, 0.40, 0.5)
+    local zone = GetZone(NPC)
+if IsAlive(GetSpawnByLocationID(zone,133780858))==true then
+
     SpawnSet(NPC,"pitch",MakeRandomInt(40,70))
     SpawnSet(NPC,"roll",MakeRandomInt(130,170))
     Head = GetHeading(NPC)
     SpawnSet(NPC,"Heading",(Head+3))
     AddTimer(NPC,500,"ChairMove1")
+    else
+    if GetSpawnLocationID(NPC)==133780830 then
+        SpawnByLocationID(zone,133780841)
+        Despawn(NPC)
+        PlaySound(NPC,"sounds/ui/place_item.wav",GetX(NPC), GetY(NPC), GetZ(NPC))
+    elseif GetSpawnLocationID(NPC)==133780829 then
+        SpawnByLocationID(zone,133780842)
+         Despawn(NPC)
+        PlaySound(NPC,"sounds/ui/place_item.wav",GetX(NPC), GetY(NPC), GetZ(NPC))
+    end
+    end
 end
---[[
-function ChairMove1a(NPC)
-    MoveToLocation(NPC,-4.64, 5.27, 0.40, 0.5)
-    MoveToLocation(NPC,-4.64, 5.27, 0.40, 0.5)
-    AddTimer(NPC,3500,"ChairMove1")
-end]]--

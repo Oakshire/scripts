@@ -7,16 +7,26 @@
 --]]
 
 function spawn(NPC)
-Spin(NPC)
+local zone = GetZone(NPC)
+if GetSpawnLocationID(NPC)==133780834 then
+AddTimer(NPC,1500,"Spin")
+end
 end
 
 
 
 function Spin(NPC)
-if GetSpawnLocationID(NPC)==133780834 then
+local zone = GetZone(NPC)
+if IsAlive(GetSpawnByLocationID(zone,133780857))==true then
 	Head = GetHeading(NPC)
 	SetHeading(NPC,(Head+5))
 	AddTimer(NPC,100,"Spin")
+
+else
+        SpawnByLocationID(zone,133780854)
+        Despawn(GetSpawnByLocationID(zone,133780834))
+        PlaySound(NPC,"sounds/ui/place_item.wav",GetX(NPC), GetY(NPC), GetZ(NPC))   
+
 end
 end
 
