@@ -8,6 +8,7 @@
 
 function cast(Caster, Target, ProgressAmount)
 	AddSpellBonus(Caster, 802, ProgressAmount)
+	SetPower( Caster, GetPower(Caster) - GetPCTOfPower(Caster,15))
 end
 
 function remove(Caster, Target, ProgressAmount)
