@@ -28,9 +28,16 @@ function waypoints(NPC)
 end
 
 function death(NPC,Spawn)
-		PlayFlavor(NPC, "voiceover/english/ghost_halfling_base_1/ft/ghost/ghost_halfling_base_1_1_death_gm_e09a504d.mp3", "Might there be a release from this ... existence?", "", 2158192373, 320090825, Spawn, 0)
+		PlayFlavor(NPC, "voiceover/english/optional3/halfling_corrupted/ft/halfling/halfling_corrupted_1_death_gm_4c12cb24.mp3", "Free me!", "", 3881759262, 3266522906, Spawn, 8)
+    zone = GetZone(NPC)
+    if not IsAlive(GetSpawnByLocationID(zone,133780857)) and  not IsAlive(GetSpawnByLocationID(zone,133780858)) then
+    SpawnByLocationID(zone,133780861)
+    SpawnByLocationID(zone,133780862)
+    SpawnByLocationID(zone,133780863)
+    end
 end
 
 function aggro(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/ghost_halfling_base_1/ft/ghost/ghost_halfling_base_1_1_aggro_gm_a507a247.mp3", "You'll pay for disturbing me!", "", 4260790933, 1525385880, Spawn, 0)
+
 end

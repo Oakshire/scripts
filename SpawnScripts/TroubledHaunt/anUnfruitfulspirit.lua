@@ -29,3 +29,16 @@ function waypoints(NPC)
 end
 
 
+function aggro(NPC,Spawn)
+		PlayFlavor(NPC, "voiceover/english/optional3/ghost_highelf_base_1/ft/ghost/ghost_highelf_base_1_1_aggro_gm_e15a7031.mp3", "They continue to press. Take them out!", "", 3477800043, 2281180631, Spawn, 0)
+end
+
+function death(NPC,Spawn)
+    		PlayFlavor(NPC, "voiceover/english/optional3/ghost_highelf_base_1/ft/ghost/ghost_highelf_base_1_1_death_gm_3523af72.mp3", "Perhaps now their soul will rest.", "", 2124266274, 395618904, Spawn, 0)
+    zone = GetZone(NPC)
+    if not IsAlive(GetSpawnByLocationID(zone,133780857)) and  not IsAlive(GetSpawnByLocationID(zone,133780858)) and not IsAlive(GetSpawnByLocationID(zone,133780859)) then
+    SpawnByLocationID(zone,133780861)
+    SpawnByLocationID(zone,133780862)
+    SpawnByLocationID(zone,133780863)
+    end
+end

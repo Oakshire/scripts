@@ -24,3 +24,16 @@ function waypoints(NPC)
 end
 
 
+function aggro(NPC,Spawn)
+		PlayFlavor(NPC, "voiceover/english/optional3/ghost_human_base_1/ft/ghost/ghost_human_base_1_1_aggro_gf_821554e3.mp3", "Must you aggravate me so!", "", 735262000, 1417243472, Spawn, 0)
+end
+
+function death(NPC,Spawn)
+    		PlayFlavor(NPC, "voiceover/english/optional3/ghost_erudite_base_2/ft/ghost/ghost_erudite_base_2_1_death_gf_1bcf352c.mp3", "Death never truly comes for the undead.", "", 3894477950, 3388069625, Spawn, 0)
+    zone = GetZone(NPC)
+    if not IsAlive(GetSpawnByLocationID(zone,133780857)) and  not IsAlive(GetSpawnByLocationID(zone,133780858)) and not IsAlive(GetSpawnByLocationID(zone,133780859)) then
+    SpawnByLocationID(zone,133780861)
+    SpawnByLocationID(zone,133780862)
+    SpawnByLocationID(zone,133780863)
+    end
+end
