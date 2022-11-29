@@ -7,18 +7,17 @@
 --]]
 
 function cast(Caster, Target, PowerProc)
-	AddProc(Target, 10) 
+	AddProc(Target, 15, 10) 
 end
 
 function proc(Caster, Target, Type, PowerProc)
 Spell = GetSpell(5499, GetSpellTier())
-	if Type == 3 then
+	if Type == 15 then
 		SetSpellDataIndex(Spell, 0, PowerProc)
 
 			CastCustomSpell(Spell, Caster, Target)
 				end
 end
-
 
 
 
