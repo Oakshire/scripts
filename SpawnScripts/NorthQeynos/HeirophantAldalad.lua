@@ -290,7 +290,7 @@ function ClericAccept(NPC,Spawn)
  	Dialog.AddDialog("Then I will facilitate a prayer trance for you.  You will experience a struggle unlike any you've known before... but upon exiting the trance, should you prove successful, you will emerge with the emotional strength to survive and prosper in the re-forged Norrath.  Are you ready?")
 	--Dialog.AddVoiceover("voiceover/english/hierophant_aldalad/qey_north/hierophant_aldalad017.mp3", 2729819197, 1238324646) WE DON"T HAVE THE VO FOR THIS
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    Dialog.AddOption("I am.","OfferCleric [WORK IN PROGRESS]","ClericPort" )	
+    Dialog.AddOption("I am.","ClericPort" )	
     Dialog.AddOption("I will be shortly. I will return.")	
 	Dialog.Start()    
 end

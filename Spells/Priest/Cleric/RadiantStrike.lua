@@ -12,6 +12,10 @@
 --     If target is undead
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-SpellDamage(Target, DmgType, MinVal, MaxVal)
-    Say(Caster, "Missing undead feature")
+    SpellDamage(Target, DmgType, MinVal, MaxVal)
+    
+    if CheckRaceType(Target, 233) then
+        SpellDamage(Target, DmgType, MinVal, MaxVal)
+        
+    end
 end
