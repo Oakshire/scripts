@@ -6,8 +6,8 @@
                    : 
 --]]
 
--- Dispels 10 levels of noxious hostile effects on target
+
 
 function cast(Caster, Target, Amt)
-    CureByType(1, 3, "Cure", Amt)
+        CureByType(1, 3, "", (GetLevel(Caster) * 1.08) + 1)
 end

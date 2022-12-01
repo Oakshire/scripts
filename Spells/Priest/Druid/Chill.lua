@@ -1,18 +1,18 @@
 --[[
     Script Name    : Spells/Priest/Druid/Chill.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 05:01:28
+    Script Author  : LordPazuzu
+    Script Date    : 11/30/2022
     Script Purpose : 
                    : 
 --]]
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-SpellDamage(Target, Dmgtype, MinVal, MaxVal)
-    Say(Caster, "Elemental not implemented")
+    SpellDamage(Target, Dmgtype, MinVal, MaxVal)
 
+    if GetRaceBaseType(Target) == 250 then
+        SpellDamage(Target, Dmgtype, MinVal, MaxVal)
+    end
+
+ 
 end
 
--- Info from spell_display_effects (remove from script when done)
--- Inflicts 55 - 68 cold damage on target
--- Inflicts 55 - 68 cold damage on target
---     If target is elemental

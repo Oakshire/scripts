@@ -9,6 +9,7 @@
         Preceded by: Scout Training pt. II
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "I need to steal the orders from the safehouse in Qeynos Harbor.", 1, 100, "I need to steal the plans from a lieutenant in the Qeynos harbor.", 75)
@@ -16,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("I'd like you to check in on a new squad of soldiers. Go steal a note from underneath their noses.  If you succeed, then the guards need more training and if you fail, then obviously, you're not ready to be a rogue.")
+ 	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik029.mp3", 2070937138, 2065993519)
+    PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+    Dialog.AddOption("What kind of note am I looking for?","Rogue3")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

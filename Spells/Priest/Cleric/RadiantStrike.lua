@@ -14,8 +14,8 @@
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
     SpellDamage(Target, DmgType, MinVal, MaxVal)
     
-    if CheckRaceType(Target, 233) then
-        SpellDamage(Target, DmgType, MinVal, MaxVal)
-        
+    if GetRaceBaseType(Target) == 333 then
+        SpellDamage(Target, Dmgtype, MinVal, MaxVal)
     end
+
 end

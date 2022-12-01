@@ -1,19 +1,26 @@
 --[[
     Script Name    : Spells/Priest/Cleric/AdmonishingSmite.lua
-    Script Author  : neatz09
-    Script Date    : 2019.08.05 07:08:53
+    Script Author  : LordPazuzu
+    Script Date    : 12/1/2022
     Script Purpose : 
                    : 
 --]]
 
--- Inflicts 25 - 31 divine damage on target
+
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-    Say(Caster, "Resistability and hostile dispell should be hardcoded.. not implemented.")
+   
 	if not IsEpic() then
 		AddControlEffect(Target, 3)
 			end	
 	SpellDamage(Target, DmgType, MinVal, MaxVal)
+	AddProc(Target, 15, 100)
+end
+
+function proc(Caster, Target, Type, DmgType, MinVal)
+	if Type == 15 then
+		CancelSpell()
+	end
 end
 
 function remove(Caster, Target)
