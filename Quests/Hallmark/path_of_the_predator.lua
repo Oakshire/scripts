@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to kill the assassin leader who has holed up in the Qeynos Harbor.", 1, 100, "I need to track down and slay the leader of the assassins. They should be located in one of the buildings in the harbor.", 611, 0)
@@ -16,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Well this is fortunate then! I have just been given news of a group of cutthroats taking up residence inside Qeynos' walls! The group and their leader are holed up down by the docks. Quickly and quietly deal with their leader. Doing so will be like cutting the head off a snake. Leaderless, they should soon disband from the city and you will have proven yourself as a predator!")
+-- 	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik034.mp3", 1060882099, 2285417556)
+    PlayFlavor(QuestGiver, "", "", "smile", 0, 0, Player)
+    Dialog.AddOption("This does sound like a worthy task. My hunt begins.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

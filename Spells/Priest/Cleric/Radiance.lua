@@ -13,13 +13,15 @@
 function cast(Caster, Target, HealMin, HealMax, Triggers)
 	AddProc(Target, 15, 100)
 		SetSpellTriggerCount(Triggers, 1)
-    Say(Caster, "This spell will need a formula")
 
 end
 
 function proc(Caster, Target, Type, HealMin, HealMax, Triggers)
 	if Type == 15 then
-		SpellHeal("Heal", HealMin, HealMax, Target, 0, 0, "Vitae")
+		Spell = GetSpell(5455, GetSpellTier())
+		SetSpellDataIndex(Spell, 0, HealMin)
+		SetSpellDataIndex(Spell, 1, HealMax)
+		CastCustomSpell(Spell, Caster, Target)
 			RemoveTriggerFromSpell()
 		end
 end

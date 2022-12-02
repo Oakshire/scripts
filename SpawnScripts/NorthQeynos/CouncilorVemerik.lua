@@ -306,9 +306,9 @@ function Decide(NPC,Spawn)
  	Dialog.AddDialog("The time for advice is done, friend.  Now it's time for you to take what you learned and use it.  You've learned too much to idle around as a scout.  Where do you plan on taking your talents?")
 	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik023.mp3", 698357632, 1164995124)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    Dialog.AddOption("I enjoyed the stealthy nature of the rogue. [WORK-IN-PROGRESS]","Rogue1")	
-    Dialog.AddOption("I think I'll continue my hand at being a bard.[WORK-IN-PROGRESS]","Bard1")	
-    Dialog.AddOption("I'm too focused to be anything other than a predator.[WORK-IN-PROGRESS]","Predator1")	
+    Dialog.AddOption("I enjoyed the stealthy nature of the rogue.","Rogue1")	
+    Dialog.AddOption("I think I'll continue my hand at being a bard.","Bard1")	
+    Dialog.AddOption("I'm too focused to be anything other than a predator.","Predator1")	
 	Dialog.Start()
 end
 
@@ -379,5 +379,68 @@ end
 
 --BARD CLASS 
 
---So... any more sage advice today, Counselor?
---I think I understand what you're saying.  Sooo... any more advice?
+function Bard1(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Anyone can defeat a mighty adversary in battle, but being remembered for it is an entirely different matter.  A bard regales others with tales of the past through their melodies and stories.  The bard who writes the past is the same one who guides the future.  And don't forget all the attention you get, too!  That's my favorite part!")
+	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik025.mp3", 3456483414, 216988233)
+    PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
+    Dialog.AddOption("Easy! I'll be a world-renowned bard!","Bard2")	
+    Dialog.AddOption("I'm not too sure anymore.  Do you advise I specialize somewhere else?","Decide")	
+	Dialog.Start()
+end
+
+function Bard2(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Perhaps you will, but first we must see how well you perform under pressure. The life of a bard isn't all song and dance, you know.  A great amount of stress is placed upon performers and if you're not up to the task, there's no telling what can happen.")
+	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik032.mp3", 1067830729, 103418166)
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddOption("What must I do to prove myself?","Bard3")	
+	Dialog.Start()
+end
+
+function Bard3(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Are you prepared to see what happens when you perform poorly in front of the wrong audience? We're about to find out!  It so happens, there's a group of rather sour individuals with a performer who... ahhh ... had an off night, so to speak.")
+	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik033.mp3", 1412723823, 1711994068)
+    PlayFlavor(NPC, "", "", "scheme", 0, 0, Spawn)
+    Dialog.AddOption("I suppose a bard should be prepared for anything. What must I do?","BardOffer")	
+    Dialog.AddOption("I'm not too sure anymore.  Do you advise I specialize somewhere else?","Decide")	
+	Dialog.Start()
+end
+
+function BardOffer(NPC,Spawn)
+     FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Bard)
+end
+
+--PREDATOR CLASS
+
+function Predator1(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Predators are only happy when they are pursuing their quarry. Once they catch what they're tracking, well, the game's over, so they say.  Therefore, a smart predator always finds something else to hunt down.  If you've got a big imagination, then being a predator might be for you.")
+--	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik026.mp3", 3456483414, 216988233) UNKNOWN
+    PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+    Dialog.AddOption("I like having something to do at all times.  I'm a predator.","Predator2")	
+    Dialog.AddOption("I'm not too sure anymore.  Do you advise I specialize somewhere else?","Decide")	
+	Dialog.Start()
+end
+
+function Predator2(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("So, a predator? Can you smell your prey far before you see it? If you close your eyes, can you hear the heartbeat of your game and know how many beats are left, yes? Yes ... a stalker's instinct runs in your blood.  You are the top of the food chain.")
+--	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik026.mp3", 3456483414, 216988233) UNKNOWN
+    PlayFlavor(NPC, "", "", "smirk", 0, 0, Spawn)
+    Dialog.AddOption("I revel in the hunt. What must I do to prove my skill?","PredatorOffer")	
+    Dialog.AddOption("Well, when you put it that way...  Do you advise I specialize somewhere else?","Decide")	
+	Dialog.Start()
+end
+
+function PredatorOffer(NPC,Spawn)
+     FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Predator)
+end

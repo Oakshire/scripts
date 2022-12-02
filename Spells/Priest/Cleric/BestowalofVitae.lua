@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Priest/Cleric/BestowalofVitae.lua
-    Script Author  : neatz09
-    Script Date    : 2020.10.27 12:10:59
+    Script Author  : LordPazuzu
+    Script Date    : 12/1/2022
     Script Purpose : 
                    : 
 --]]

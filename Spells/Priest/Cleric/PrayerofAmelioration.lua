@@ -8,6 +8,11 @@
 
 -- Heals group members (AE) for 97 - 119
 
+
 function cast(Caster, Target, MinVal, MaxVal)
-SpellHeal("Heal", MinVal, MaxVal)
+    if MaxVal ~= nil and MinVal < MaxVal then
+        ModifyHP(Target, math.random(MinVal, MaxVal))
+    else
+        ModifyHP(Target, MinVal)
+    end
 end

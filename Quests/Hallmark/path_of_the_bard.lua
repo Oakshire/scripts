@@ -9,6 +9,7 @@
         Preceded by: Scout Training pt. II
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "I need to subdue the mob in the Fermented Grape, a small tavern in South Qeynos.  The tavern is located amongst the southern-most row of buildings.", 1, 100, "I need to save the other bard from an angry crowd.", 11)
@@ -16,7 +17,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Go rescue the poor minstrel from the angry crowd, of course.  Just handle the situation appropriately and make sure the bard is okay.  If you can handle that, then you'll have no problems with the fallout from a bad evening, even under the worst conditions.")
+ 	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik034.mp3", 1060882099, 2285417556)
+    PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+    Dialog.AddOption("Sounds easy enough. I am a bard after all.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
