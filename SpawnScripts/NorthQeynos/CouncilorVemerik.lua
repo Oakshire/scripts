@@ -351,16 +351,6 @@ function Rogue3(NPC,Spawn)
 	Dialog.Start()
 end
 
-function Rogue3(NPC,Spawn)
-    FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)   
- 	Dialog.AddDialog("Grab their mission orders. The lieutenant will have them guarded. Knowing him, he'll keep them behind a locked door guarded by his most brawny men. Return to me when you're done, and I'll verify the orders.")
-	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik030.mp3", 1639577999, 2458872272)
-    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    Dialog.AddOption("Alright. I'll bring you the documents as quick as I can!")	
-	Dialog.Start()
-end
-
 function RogueDone(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   

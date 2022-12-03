@@ -11,7 +11,7 @@
 -- Increases Piercing of target by 4.3
 
 function cast(Caster, Target, HP, OffSkill, Pierce)
-    AddSpellBonus(Target, 600, HP)
+    AddSpellBonus(Target, 500, HP)
     AddSkillBonus(Target, GetSkillIDByName("Slashing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Crushing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Piercing"), Pierce)

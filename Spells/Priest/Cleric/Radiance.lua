@@ -1,22 +1,26 @@
 --[[
     Script Name    : Spells/Priest/Cleric/Radiance.lua
-    Script Author  : neatz09
-    Script Date    : 2020.10.27 12:10:22
+    Script Author  : LordPazuzu
+    Script Date    : 12/2/2022
     Script Purpose : 
                    : 
 --]]
 
 -- When any damage is received this spell will cast Vitae on target.  
---     Heals target for 47 - 58
+--     Heals target based on level.
 --     Grants a total of 5 triggers of the spell.
 
-function cast(Caster, Target, HealMin, HealMax, Triggers)
+function cast(Caster, Target, HeaMinMod, HealMaxMod, Triggers)
+    level= GetLevel(Caster)
+	HealMin = level * HealMinMod
+	HealMax = HealMin  * HealMaxMod
 	AddProc(Target, 15, 100)
-		SetSpellTriggerCount(Triggers, 1)
+		SetSpellTriggerCount(5, 1)
 
 end
 
-function proc(Caster, Target, Type, HealMin, HealMax, Triggers)
+function proc(Caster, Target, Type, HeaMin, HealMax, Triggers)
+
 	if Type == 15 then
 		Spell = GetSpell(5455, GetSpellTier())
 		SetSpellDataIndex(Spell, 0, HealMin)

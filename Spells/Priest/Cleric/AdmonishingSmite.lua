@@ -19,6 +19,7 @@ end
 
 function proc(Caster, Target, Type, DmgType, MinVal)
 	if Type == 15 then
+	    RemoveControlEffect(Target, 3)
 		CancelSpell()
 	end
 end
