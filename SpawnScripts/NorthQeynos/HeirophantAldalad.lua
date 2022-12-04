@@ -58,7 +58,7 @@ function hailed(NPC, Spawn)
     Dialog.AddOption("Aldalad, I need to perform my task to become a druid.","DruidAccepted" )	
     end
     if HasCompletedQuest(Spawn,Cleric) or HasCompletedQuest(Spawn,Druid) or HasCompletedQuest(Spawn,Shaman) then
-    Dialog.AddOption("May your blessings continue to provide, Aldalad. It is good to see you again.")	
+    Dialog.AddOption("May your blessings continue to provide, Aldalad. It is good to see you again.","Thanks")	
     end
     if GetLevel(Spawn) ==9 and HasCompletedQuest(Spawn,Quest2) and GetClass(Spawn)==11 and not HasQuest(Spawn, Cleric) and not HasQuest(Spawn, Druid) and not HasQuest(Spawn, Shaman) then
     Dialog.AddOption("I want to learn even more!  What is my next lesson?","FinalClassTest")	
@@ -67,6 +67,10 @@ function hailed(NPC, Spawn)
 	Dialog.Start()
 end
 
+function Thanks(NPC)
+    FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
+end
 
 function respawn(NPC)
 	spawn(NPC)

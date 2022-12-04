@@ -9,12 +9,7 @@
 
 function cast(Caster, Target, Hate, HealMin, HealMax)
     
-    if HealMax ~= nil and HealMin < HealMin then
-        ModifyHP(Caster, math.random(HealMin, HealMax))
-    else
-        ModifyHP(Caster, HealMin)
-    end
-    
+    SpellHeal("Heal", HealMin, HealMax)
     AddHate(Caster, Target, Hate, 1)
 
 end

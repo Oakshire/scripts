@@ -22,7 +22,7 @@ function Accepted(Quest, QuestGiver, Player)
  	Dialog.AddDialog("Go rescue the poor minstrel from the angry crowd, of course.  Just handle the situation appropriately and make sure the bard is okay.  If you can handle that, then you'll have no problems with the fallout from a bad evening, even under the worst conditions.")
  	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik034.mp3", 1060882099, 2285417556)
     PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
-    Dialog.AddOption("Sounds easy enough. I am a bard after all.")	
+    Dialog.AddOption("Interesting. I suppose I can save your bard friend from the unruly crowd.")	
 	Dialog.Start()
 end
 
@@ -38,7 +38,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I've subdued the mob.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've saved the other bard from the angry crowd.")
-
+	if GetClass(Player)== 31 then
+	SetAdventureClass(Player,35)
+    SendMessage(Player, "Congratulations! You are a Bard.","yellow")
+    SendPopUpMessage(Player, "Congratulations! You are a Bard.",250,250,200)
+    ApplySpellVisual(Player, 324)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+	end
 	UpdateQuestDescription(Quest, "I managed to lay out the entire mob single-handedly.  I've proven that even in the off-chance I give a bad performance, I can handle anything the crowd might throw at me.")
 	GiveQuestReward(Quest, Player)
 end

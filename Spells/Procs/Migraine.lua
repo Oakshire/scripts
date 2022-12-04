@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Spells/Pet/TelluricBash.lua
+    Script Name    : Spells/Procs/Migraine.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.11.19 06:11:15
+    Script Date    : 2022.12.04 07:12:30
     Script Purpose : 
                    : 
 --]]
@@ -13,9 +13,5 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     else
         SpellDamage(Target, DmgType, MinVal)
     end
-    
-    if not IsEpic(Target) then 
-		CastSpell(Target, 5001, GetSpellTier())
-	end
-	
 end
+

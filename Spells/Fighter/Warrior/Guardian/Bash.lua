@@ -13,6 +13,6 @@ function cast(Caster, Target, DDType, MinDmg, MaxDmg)
 	SpellDamage(Target, DDType, math.random(MinDmg, MaxDmg))
     else
 	SpellDamage(Target, DDType, MinDmg)
-    Knockback(Caster, Target, 4000)
+    CastSpell(Target, 5001, GetSpellTier())
     end
 end

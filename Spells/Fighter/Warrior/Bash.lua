@@ -22,6 +22,10 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     else
         SpellDamage(Target, DmgType, MinVal)
     end
-    Say(Caster, "Knockdown not implemented")
+    
+    if not IsEpic(Target) then 
+		CastSpell(Target, 5001, GetSpellTier())
+	end
+    
 
 end

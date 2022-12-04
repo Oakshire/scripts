@@ -46,7 +46,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 2, "I've spoken with Vemerik.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've returned and spoken with Counselor Vemerik.")
-
+	if GetClass(Player)== 31 then
+	SetAdventureClass(Player,32)
+    SendMessage(Player, "Congratulations! You are a Rogue.","yellow")
+    SendPopUpMessage(Player, "Congratulations! You are a Rogue.",250,250,200)
+    ApplySpellVisual(Player, 324)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+	end
 	UpdateQuestDescription(Quest, "I managed to grab the lieutenant's orders out from under the watchful eye of the Qeynos guard.  I'm sure they'll be put through some rigorous training after this to help them keep a sharper eye out in the future, but that's not my concern now!")
 	GiveQuestReward(Quest, Player)
 end

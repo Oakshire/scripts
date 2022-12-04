@@ -38,7 +38,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I've killed the assassin leader.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've killed the leader of the assassins.")
-
+	if GetClass(Player)== 31 then
+	SetAdventureClass(Player,38)
+    SendMessage(Player, "Congratulations! You are a Predator.","yellow")
+    SendPopUpMessage(Player, "Congratulations! You are a Predator.",250,250,200)
+    ApplySpellVisual(Player, 324)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+	end
 	UpdateQuestDescription(Quest, "My skills were up to the task and I have succeeded in killing the leader of the ring without alerting the others.  They will undoubtedly break apart now that their leader has perished... and now I have earned the title of predator.")
 	GiveQuestReward(Quest, Player)
 end

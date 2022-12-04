@@ -8,7 +8,60 @@
 
 function spawn(NPC)
 waypoints(NPC)
+	SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
+	SetTempVariable(NPC, "OnGuard", "true")    
 end
+
+function InRange(NPC,Spawn)
+    if GetTempVariable(NPC,"OnGuard")=="true" and not IsInCombat(NPC) and GetY(Spawn) <=0 then
+    FaceTarget(NPC,Spawn)
+	SetTempVariable(NPC, "OnGuard", "false")    
+    AddTimer(NPC,2500,"Checking",1,Spawn)
+    AddTimer(NPC,6000,"Checking",1,Spawn)
+    AddTimer(NPC,8000,"Checking",1,Spawn)
+    AddTimer(NPC,10000,"ResetGuard",1,Spawn)
+    AddTimer(NPC,9000,"ResetGuardEmote",1,Spawn)
+    choice = MakeRandomInt(1,3)
+    if choice ==1 then
+	PlayFlavor(NPC, "", "What was that?", "peer", 0, 0, Spawn, 0)
+    elseif choice ==2 then
+    PlayFlavor(NPC, "", "", "doubletake", 0, 0, Spawn, 0)
+    SendMessage(Spawn,"The guard heard something.")
+    elseif choice ==3 then
+    PlayFlavor(NPC, "", "Hmm?", "stare", 0, 0, Spawn, 0)
+    end
+end
+end
+
+function LeaveRange(NPC,Spawn)
+    if GetTempVariable(NPC,"OnGuard")=="false" then
+	SetTempVariable(NPC, "OnGuard", "true")
+	end
+end
+
+function Checking(NPC,Spawn)
+    if GetDistance(NPC,Spawn) <=8 and HasMoved(Spawn) then
+    Attack(NPC,Spawn)
+    end
+end
+
+
+function ResetGuardEmote(NPC,Spawn)
+    if not IsInCombat(NPC) then
+    choice = MakeRandomInt(1,2)
+    if choice ==1 then
+	PlayFlavor(NPC, "", "", "confused", 0, 0, Spawn, 0)
+    elseif choice ==2 then
+    PlayFlavor(NPC, "", "", "shrug", 0, 0, Spawn, 0)
+    end
+end 
+end
+
+function ResetGuard(NPC,Spawn)
+    if GetTempVariable(NPC,"OnGuard")=="false" then
+	SetTempVariable(NPC, "OnGuard", "true")
+	end
+end    
 
 function waypoints(NPC)
 zone = GetZone(NPC)
@@ -19,7 +72,7 @@ zone = GetZone(NPC)
 	MovementLoopAddLocation(NPC, -4.92, -0.27, 10.28, 2, 0)
 	MovementLoopAddLocation(NPC, -4, -0.27, 8.64, 2, 0)
 	MovementLoopAddLocation(NPC, -2.29, -0.27, 6.19, 2, 0)
-	MovementLoopAddLocation(NPC, -1.76, -0.27, 5.77, 2, 12)
+	MovementLoopAddLocation(NPC, -1.76, -0.27, 5.77, 2, 12,"Face")
 	MovementLoopAddLocation(NPC, -1.71, -0.27, 6.49, 2, 0)
 	MovementLoopAddLocation(NPC, -4.5, -0.27, 8.27, 2, 0)
     elseif GetSpawnLocationID(NPC)==133780971 then
@@ -57,6 +110,10 @@ zone = GetZone(NPC)
 	end
 end
 
+function Face(NPC)
+    SetHeading(NPC, 230)
+end
+
 function aggro(NPC,Spawn)
     if GetGender(NPC)==1 then
     choice = MakeRandomInt(1,3)
@@ -78,6 +135,8 @@ function aggro(NPC,Spawn)
 end
 end
 end
+
+
 function respawn(NPC)
 	spawn(NPC)
 end

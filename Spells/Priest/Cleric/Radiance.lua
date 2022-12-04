@@ -10,16 +10,17 @@
 --     Heals target based on level.
 --     Grants a total of 5 triggers of the spell.
 
-function cast(Caster, Target, HeaMinMod, HealMaxMod, Triggers)
-    level= GetLevel(Caster)
-	HealMin = level * HealMinMod
-	HealMax = HealMin  * HealMaxMod
+function cast(Caster, Target)
+
 	AddProc(Target, 15, 100)
 		SetSpellTriggerCount(5, 1)
 
 end
 
 function proc(Caster, Target, Type, HeaMin, HealMax, Triggers)
+    local level= GetLevel(Caster)
+	local HealMin = level * 3.825
+	local HealMax = HealMin  * 1.23
 
 	if Type == 15 then
 		Spell = GetSpell(5455, GetSpellTier())

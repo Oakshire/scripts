@@ -9,12 +9,8 @@
 -- Heals target for 91 - 111
 
 
-function cast(Caster, Target, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        ModifyHP(Target, math.random(MinVal, MaxVal))
-    else
-        ModifyHP(Target, MinVal)
-    end
+function cast(Caster, Target, MinHeal, MaxHeal)
+    SpellHeal("Heal", MinHeal, MaxHeal)
         Say(Caster, "Still gathering data on offensive buff.")
 
 end

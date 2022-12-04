@@ -53,7 +53,11 @@ function hailed(NPC, Spawn)
     if HasQuest(Spawn,Rogue) and GetQuestStep(Spawn,Rogue)==2 then 
     Dialog.AddOption("I found a copy of their orders!","RogueDone")	
     end 
+    if not HasCompletedQuest(Spawn, Rogue) and not HasCompletedQuest(Spawn, Predator) and not HasCompletedQuest(Spawn, Bard) then
     Dialog.AddOption("I've got more important things to do than watch people. Good day.")
+    else
+    Dialog.AddOption("Never a dull moment with you, Counselor. Good to see you again.","RogueDone2")
+    end
 	Dialog.AddOption("I'll keep that in mind...")
 	Dialog.Start()
 end
@@ -363,7 +367,9 @@ end
 
 function RogueDone2(NPC,Spawn)
      FaceTarget(NPC, Spawn)
+     if HasQuest(Spawn,Rogue) then
     SetStepComplete(Spawn,Rogue,2)
+    end
     PlayFlavor(NPC, "", "", "wink", 0, 0, Spawn)
 end
 

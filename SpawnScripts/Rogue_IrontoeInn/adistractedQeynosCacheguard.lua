@@ -7,8 +7,52 @@
 --]]
 
 function spawn(NPC)
-
+	SetPlayerProximityFunction(NPC, 4, "InRange", "LeaveRange")
+	SetTempVariable(NPC, "OnGuard", "true")    
+	NPC_Y = GetY(NPC)
 end
+
+function InRange(NPC,Spawn)
+    if GetTempVariable(NPC,"OnGuard")=="true" and not IsInCombat(NPC) and GetY(Spawn) >= 6 then
+    FaceTarget(NPC,Spawn)
+	SetTempVariable(NPC, "OnGuard", "false")    
+    AddTimer(NPC,2500,"Checking",1,Spawn)
+    AddTimer(NPC,6000,"Checking",1,Spawn)
+    AddTimer(NPC,10000,"ResetGuard",1,Spawn)
+    AddTimer(NPC,10000,"ResetGuardEmote",1,Spawn)
+    choice = MakeRandomInt(1,3)
+    if choice ==1 then
+	PlayFlavor(NPC, "", "What was that?", "peer", 0, 0, Spawn, 0)
+    elseif choice ==2 then
+    PlayFlavor(NPC, "", "", "doubletake", 0, 0, Spawn, 0)
+    SendMessage(Spawn,"The guard heard something.")
+    elseif choice ==3 then
+    PlayFlavor(NPC, "", "Hmm?", "stare", 0, 0, Spawn, 0)
+    end
+end
+end
+
+function Checking(NPC,Spawn)
+    if GetDistance(NPC,Spawn) <=6 and HasMoved(Spawn) then
+    Attack(NPC,Spawn)
+    end
+end
+
+
+function ResetGuardEmote(NPC,Spawn)
+    if not IsInCombat(NPC) then
+    choice = MakeRandomInt(1,2)
+    if choice ==1 then
+	PlayFlavor(NPC, "", "", "confused", 0, 0, Spawn, 0)
+    elseif choice ==2 then
+    PlayFlavor(NPC, "", "", "shrug", 0, 0, Spawn, 0)
+    end
+end 
+end
+
+function ResetGuard(NPC,Spawn)
+	SetTempVariable(NPC, "OnGuard", "true")    
+end    
 
 function aggro(NPC,Spawn)
     choice = MakeRandomInt(1,3)
