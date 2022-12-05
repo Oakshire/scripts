@@ -93,7 +93,7 @@ function Action(NPC,Spawn)
     if choice ==1 then
     PlayFlavor(NPC,"","","cheer",0,0)
     elseif choice ==2 then
-    PlayFlavor(NPC,"","","applaud",0,0)
+    PlayFlavor(NPC,"","","applaude",0,0)
     elseif choice ==2 then
     PlayFlavor(NPC,"","","happy",0,0)
     end

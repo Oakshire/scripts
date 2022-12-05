@@ -1,21 +1,14 @@
 --[[
-    Script Name    : SpawnScripts/FermentedGrape/aperplexedbartender.lua
+    Script Name    : SpawnScripts/FermentedGrape/acuriouspatron.lua
     Script Author  : Dorbin
-    Script Date    : 2022.12.04 05:12:55
+    Script Date    : 2022.12.04 03:12:25
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
+
 end
-
-
-
-
-
-   local greetingsTable = { "voiceover/english/voice_emotes/greetings/greetings_1_1012.mp3",
-    						 "voiceover/english/voice_emotes/greetings/greetings_2_1012.mp3",
-    						 "voiceover/english/voice_emotes/greetings/greetings_3_1012.mp3"};
 
 function hailed(NPC, Spawn)
 local zone = GetZone(NPC)
@@ -33,12 +26,16 @@ local Bobick = GetSpawnByLocationID(zone, 133781027)
 
 if not IsAlive(Pirate1) and not IsAlive(Pirate2) and not IsAlive(Pirate3) and not IsAlive(Pirate4) and not IsAlive(Pirate5) and not IsAlive(Pirate6) and not IsAlive(Captain) then
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gm_57b9ce4e.mp3", "I am sorry.  I am burdened with my own thoughts, and haven't a moment to converse.", "no", 1692526278, 2332878998, Spawn)
-else
-	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gm_eb4f8f5d.mp3", "I hope you have been sent by someone of importance. I'm quite busy.", "grumble", 111891212, 1507953677, Spawn)
+    local check = MakeRandomInt(1,2) 
+    if check == 1 then
+    PlayFlavor(NPC, "voiceover/english/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_hail_gm_34b03729.mp3", "I'm sure we've met some place before.  You look so familiar!", "ponder", 1550233671, 4104979611, Spawn)
+    elseif check == 2 then	
+    PlayFlavor(NPC, "voiceover/english/halfling_eco_race_good/ft/eco/good/halfling_eco_race_good_hail_gm_74b0fd50.mp3", "A good joke deserves a good audiance I always say.", "agree", 95315026, 2602312757, Spawn)
+    end
+	else
+   PlayFlavor(NPC, "voiceover/english/halfling_eco_good_1/ft/halfling/halfling_eco_good_1_hail_gm_cf902b40.mp3", "Get on now!  There is plenty of work to be done.  Maybe you should lend a hand if you feel up to it.", "point", 1396062221, 310311489, Spawn)
 end
 end
-
 
 function respawn(NPC)
 	spawn(NPC)

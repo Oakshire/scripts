@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to kill the assassin leader who has holed up in the Qeynos Harbor.", 1, 100, "I need to track down and slay the leader of the assassins. They should be located in one of the buildings in the harbor.", 611, 0)
+	AddQuestStepKill(Quest, 1, "I need to kill the assassin leader who has holed up in the Qeynos Harbor.", 1, 100, "I need to track down and slay the leader of the assassins. They should be located in one of the buildings in the harbor.", 611, 2080023)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 

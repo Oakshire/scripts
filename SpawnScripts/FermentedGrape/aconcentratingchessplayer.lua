@@ -1,21 +1,14 @@
 --[[
-    Script Name    : SpawnScripts/FermentedGrape/aperplexedbartender.lua
+    Script Name    : SpawnScripts/FermentedGrape/aconcentratingchessplayer.lua
     Script Author  : Dorbin
-    Script Date    : 2022.12.04 05:12:55
+    Script Date    : 2022.12.04 03:12:23
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
+
 end
-
-
-
-
-
-   local greetingsTable = { "voiceover/english/voice_emotes/greetings/greetings_1_1012.mp3",
-    						 "voiceover/english/voice_emotes/greetings/greetings_2_1012.mp3",
-    						 "voiceover/english/voice_emotes/greetings/greetings_3_1012.mp3"};
 
 function hailed(NPC, Spawn)
 local zone = GetZone(NPC)
@@ -33,12 +26,11 @@ local Bobick = GetSpawnByLocationID(zone, 133781027)
 
 if not IsAlive(Pirate1) and not IsAlive(Pirate2) and not IsAlive(Pirate3) and not IsAlive(Pirate4) and not IsAlive(Pirate5) and not IsAlive(Pirate6) and not IsAlive(Captain) then
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gm_57b9ce4e.mp3", "I am sorry.  I am burdened with my own thoughts, and haven't a moment to converse.", "no", 1692526278, 2332878998, Spawn)
+	PlayFlavor(NPC, "voiceover/english/scribe_ommanoden/qey_village02/100_scribe_ommanoden_multhail1_becd50b2.mp3", "Can't you see I'm busy organizing my collections of wisdom? I've no time for chatting. Leave me alone!", "no", 3010394589, 1905118172, Spawn)
 else
-	PlayFlavor(NPC, "voiceover/english/highelf_eco_good_1/ft/highelf/highelf_eco_good_1_hail_gm_eb4f8f5d.mp3", "I hope you have been sent by someone of importance. I'm quite busy.", "grumble", 111891212, 1507953677, Spawn)
+SendMessage(Spawn,"The chess player doesn't seem to acknowledge your pressence.")
 end
 end
-
 
 function respawn(NPC)
 	spawn(NPC)

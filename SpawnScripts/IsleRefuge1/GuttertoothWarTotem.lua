@@ -80,54 +80,54 @@ function GoblinRevenge(NPC,Spawn)
         if IsAlive(Goblin1)==true and IsInCombat(Goblin1)==false then
             Attack(Goblin1,Spawn)
             AddHate(Spawn, Goblin1, 50)
-        else GoblinPop = SpawnByLocationID(zone,133775496)
-             Attack(GoblinPop,Spawn)
-             AddHate(Spawn, GoblinPop, 50)
+        else GoblinPopping = SpawnByLocationID(zone,133775496)
+             Attack(GoblinPopping,Spawn)
+             AddHate(Spawn, GoblinPopping, 50)
         end
         
     elseif GetSpawnLocationID(NPC) == 133774886 then
-        if Goblin2 ~=nil then
+        if IsAlive(Goblin2)==true and IsInCombat(Goblin2)==false then
             Attack(Goblin2,Spawn)
             AddHate(Spawn, Goblin2, 50)
         else GoblinPopping = SpawnByLocationID(zone,133775496)
-             Attack(GoblinPop,Spawn)
-             AddHate(Spawn, GoblinPop, 50)
+             Attack(GoblinPopping,Spawn)
+             AddHate(Spawn, GoblinPopping, 50)
         end
         
     elseif GetSpawnLocationID(NPC) == 133774887 then
-        if Goblin3 ~=nil then
+        if IsAlive(Goblin3)==true and IsInCombat(Goblin3)==false then
             Attack(Goblin3,Spawn)
             AddHate(Spawn, Goblin3, 50)
         else GoblinPopping = SpawnByLocationID(zone,133775496)
-             Attack(GoblinPop,Spawn)
-             AddHate(Spawn, GoblinPop, 50)
+             Attack(GoblinPopping,Spawn)
+             AddHate(Spawn, GoblinPopping, 50)
         end
         
     elseif GetSpawnLocationID(NPC) == 133774888 then
-        if Goblin4 ~=nil then
+        if IsAlive(Goblin4)==true and IsInCombat(Goblin4)==false then
             Attack(Goblin4,Spawn)
             AddHate(Spawn, Goblin4, 50)
         else GoblinPopping = SpawnByLocationID(zone,133775496)
-             Attack(GoblinPop,Spawn)
-             AddHate(Spawn, GoblinPop, 50)
+             Attack(GoblinPopping,Spawn)
+             AddHate(Spawn, GoblinPopping, 50)
         end  
         
     elseif GetSpawnLocationID(NPC) == 133774889 then
-        if Goblin5 ~=nil then
+        if IsAlive(Goblin5)==true and IsInCombat(Goblin5)==false then
             Attack(Goblin5,Spawn)
             AddHate(Spawn, Goblin5, 50)
         else GoblinPopping = SpawnByLocationID(zone,133775496)
-             Attack(GoblinPop,Spawn)
-             AddHate(Spawn, GoblinPop, 50)
+             Attack(GoblinPopping,Spawn)
+             AddHate(Spawn, GoblinPopping, 50)
         end  
         
     elseif GetSpawnLocationID(NPC) == 133774880 then
-        if Goblin6 ~=nil then
+        if IsAlive(Goblin6)==true and IsInCombat(Goblin6)==false then
             Attack(Goblin6,Spawn)
             AddHate(Spawn, Goblin6, 50)
         else GoblinPopping = SpawnByLocationID(zone,133775496)
-             Attack(GoblinPop,Spawn)
-             AddHate(Spawn, GoblinPop, 50)
+             Attack(GoblinPopping,Spawn)
+             AddHate(Spawn, GoblinPopping, 50)
         end 
     end
 end

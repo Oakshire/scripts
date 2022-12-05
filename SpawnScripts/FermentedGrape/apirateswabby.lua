@@ -1,41 +1,23 @@
 --[[
-    Script Name    : SpawnScripts/FermentedGrape/apiratecutter.lua
+    Script Name    : SpawnScripts/FermentedGrape/apirateswabby.lua
     Script Author  : Dorbin
-    Script Date    : 2022.12.04 05:12:23
+    Script Date    : 2022.12.04 01:12:40
     Script Purpose : 
                    : 
 --]]
+
 function spawn(NPC)
-AddTimer(NPC,MakeRandomInt(2000,5000),"EmoteLoop")
+
 end
 
-function EmoteLoop(NPC)
-    if not IsInCombat(NPC) then
-    SpawnSet(NPC,"mood_state",11852)
-    choice = MakeRandomInt(1,5)
-    if choice ==1 then
-    PlayFlavor(NPC,"","","threaten",0,0)
-    elseif choice ==2 then
-    PlayFlavor(NPC,"","","taunt",0,0)
-    elseif choice ==3 then
-    PlayFlavor(NPC,"","","neener",0,0)        
-    elseif choice ==4 then
-    PlayFlavor(NPC,"","","swear",0,0)   
-    elseif choice ==5 then
-    PlayFlavor(NPC,"","","violin",0,0) 
-    end
-    end
-    AddTimer(NPC,5000,"EmoteLoop")
+function hailed(NPC, Spawn)
 end
-
-
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
 function aggro(NPC,Spawn)
-   	PlayFlavor(NPC, "voiceover/english/halfelf_eco_evil_1/ft/halfelf/halfelf_eco_evil_1_hail_gm_7344f21b.mp3", "I'm in the mood to kick someone in the teeth.", "kick", 620861878, 995351111, Spawn, 0)
 local zone = GetZone(NPC)
 local Pirate1 = GetSpawnByLocationID(zone, 133781037) --FIRSTMATE  
 local Pirate2 = GetSpawnByLocationID(zone, 133781036) --CUTTER  
@@ -52,6 +34,9 @@ Attack(Pirate4,Spawn)
 Attack(Pirate5,Spawn)
 Attack(Pirate6,Spawn)
 Attack(Captain,Spawn)
+if GetRace(NPC)== 9 and GetGender(NPC)==1 then
+	PlayFlavor(NPC, "voiceover/english/human_eco_farsea_1/ft/service/guard/human_guard_service_farsea_1_hail_gm_990c7e98.mp3", "What do you think you're looking at?", "", 2597948053, 2836713373, Spawn, 0)
+end
 end
 
 

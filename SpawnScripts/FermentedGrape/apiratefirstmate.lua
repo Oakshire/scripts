@@ -1,58 +1,41 @@
 --[[
-    Script Name    : SpawnScripts/FermentedGrape/apiratecutter.lua
+    Script Name    : SpawnScripts/FermentedGrape/apiratefirstmate.lua
     Script Author  : Dorbin
-    Script Date    : 2022.12.04 05:12:23
+    Script Date    : 2022.12.04 01:12:37
     Script Purpose : 
                    : 
 --]]
+
 function spawn(NPC)
 AddTimer(NPC,MakeRandomInt(2000,5000),"EmoteLoop")
 end
 
 function EmoteLoop(NPC)
-    if not IsInCombat(NPC) then
-    SpawnSet(NPC,"mood_state",11852)
+     if not IsInCombat(NPC) then
+   SpawnSet(NPC,"mood_state",11852)
     choice = MakeRandomInt(1,5)
     if choice ==1 then
     PlayFlavor(NPC,"","","threaten",0,0)
     elseif choice ==2 then
     PlayFlavor(NPC,"","","taunt",0,0)
     elseif choice ==3 then
-    PlayFlavor(NPC,"","","neener",0,0)        
+    PlayFlavor(NPC,"","","grumble",0,0)        
     elseif choice ==4 then
-    PlayFlavor(NPC,"","","swear",0,0)   
+    PlayFlavor(NPC,"","","chuckle",0,0)   
     elseif choice ==5 then
-    PlayFlavor(NPC,"","","violin",0,0) 
+    PlayFlavor(NPC,"","","point",0,0) 
     end
     end
-    AddTimer(NPC,5000,"EmoteLoop")
+    AddTimer(NPC,6000,"EmoteLoop")
 end
-
-
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
 function aggro(NPC,Spawn)
-   	PlayFlavor(NPC, "voiceover/english/halfelf_eco_evil_1/ft/halfelf/halfelf_eco_evil_1_hail_gm_7344f21b.mp3", "I'm in the mood to kick someone in the teeth.", "kick", 620861878, 995351111, Spawn, 0)
-local zone = GetZone(NPC)
-local Pirate1 = GetSpawnByLocationID(zone, 133781037) --FIRSTMATE  
-local Pirate2 = GetSpawnByLocationID(zone, 133781036) --CUTTER  
-local Pirate3 = GetSpawnByLocationID(zone, 133781038)   
-local Pirate4 = GetSpawnByLocationID(zone, 133781039)   
-local Pirate5 = GetSpawnByLocationID(zone, 133781035)   
-local Pirate6 = GetSpawnByLocationID(zone, 133781034)   
-local Captain = GetSpawnByLocationID(zone, 133781033)  
-
-Attack(Pirate1,Spawn)
-Attack(Pirate2,Spawn)
-Attack(Pirate3,Spawn)
-Attack(Pirate4,Spawn)
-Attack(Pirate5,Spawn)
-Attack(Pirate6,Spawn)
-Attack(Captain,Spawn)
-end
+	PlayFlavor(NPC, "voiceover/english/halfelf_eco_farsea_1/ft/service/guard/halfelf_guard_service_farsea_1_hail_gf_2b42c14f.mp3", "After twelve weeks at sea, bashing the head of a nosy landlubber sounds quite appealing!", "threaten", 1936614211, 2469553737, Spawn, 0)
+end    
 
 
 function death(NPC,Spawn)
