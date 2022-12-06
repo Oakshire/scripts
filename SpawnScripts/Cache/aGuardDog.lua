@@ -7,15 +7,15 @@
 --]]
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 6, "InRange", "LeaveRange")
+	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 	SetTempVariable(NPC, "OnGuard", "true")  
 end
 
 function InRange(NPC,Spawn)
-    if GetTempVariable(NPC,"OnGuard")=="true" and not IsInCombat(NPC) and GetY(Spawn) <=0 then
+    if GetTempVariable(NPC,"OnGuard")=="true" and not IsInCombat(NPC) and GetY(Spawn) <=2 then
     FaceTarget(NPC,Spawn)
 	SetTempVariable(NPC, "OnGuard", "false")    
-    AddTimer(NPC,2500,"Checking",1,Spawn)
+    AddTimer(NPC,1500,"Checking",1,Spawn)
     AddTimer(NPC,6000,"Checking",1,Spawn)
     AddTimer(NPC,8000,"Checking",1,Spawn)
     AddTimer(NPC,10000,"ResetGuard",1,Spawn)

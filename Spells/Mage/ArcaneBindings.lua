@@ -30,12 +30,12 @@ function cast(Caster, Target)
     SetSpeedMultiplier(Target, 0)
 
     -- 10% chance to dispel when target takes damage
-    AddProc(Target, 2, 10.0)
+    AddProc(Target, 15, 10.0)
 
 end
 
 function proc(Caster, Target, Type)
-    if Type == 2 then
+    if Type == 15 then
         CancelSpell()
     end
 end

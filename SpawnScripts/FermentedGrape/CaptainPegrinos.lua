@@ -73,6 +73,7 @@ function Dialog2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC,"","","stare",0,0,Spawn)
 	local conversation = CreateConversation()
+	AddConversationOption(conversation, "Bully! That's what you are! A big gnoll-kissing meany! ","Boot")
 	AddConversationOption(conversation, "But she`s just a poor, innocent bard!","Dialog2a")
 	AddConversationOption(conversation, "How about you leave her alone and nobody gets hurt...","Attack2")
 	StartConversation(conversation, NPC, Spawn, "Ya weak-bellied scoundrel! We`re not expectin`her to get better, that`s rather the point!")
@@ -102,12 +103,31 @@ Despawn(Pirate5)
 Despawn(Pirate6)
 end
 
+
+function Boot(NPC,Spawn)
+    SendPopUpMessage(Spawn,"The pirates have kicked out!",255,0,0)
+    PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("That's cute... I don't even got 'da heart to rough you up! Boys, carry this one out of here!")
+	PlayFlavor(NPC, "", "", "sigh", 0, 0, Spawn)
+	Dialog.AddOption("Wait...WAIT!")
+	Dialog.Start()
+	AddTimer(NPC,3500,"Kick",1,Spawn)
+end
+
+function Kick(NPC,Spawn)
+        SQ = GetZone("SouthQeynos")
+       Zone(SQ,Spawn,582.89, -17.48, 296.57, 326)
+end
+
 function Dialog3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC,"","","stare",0,0,Spawn)
 	local conversation = CreateConversation()
 	AddConversationOption(conversation, "But she`s just a poor, innocent bard!","Dialog2a")
 	AddConversationOption(conversation, "You want to tumble? I've got your answer right here!","Attack3")
+	AddConversationOption(conversation, "You're just a ... Drunder-headed bully!","Boot")
 	StartConversation(conversation, NPC, Spawn, "'Tis our first landfall in months just to hear this dribble! Give me one reason I shouldn't bash some teeth in...")
 end
 

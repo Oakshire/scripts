@@ -25,7 +25,7 @@ function InRange(NPC,Spawn)
 	PlayFlavor(NPC, "", "What was that?", "peer", 0, 0, Spawn, 0)
     elseif choice ==2 then
     PlayFlavor(NPC, "", "", "doubletake", 0, 0, Spawn, 0)
-    SendMessage(Spawn,"The guard heard something.")
+    SendMessage(Spawn,"The cook heard something.")
     elseif choice ==3 then
     PlayFlavor(NPC, "", "Hmm?", "stare", 0, 0, Spawn, 0)
     end
@@ -36,6 +36,19 @@ function LeaveRange(NPC,Spawn)
     if GetTempVariable(NPC,"OnGuard")=="false" then
 	SetTempVariable(NPC, "OnGuard", "true")
 	end
+end
+
+function aggro(NPC,Spawn)
+    choice = MakeRandomInt(1,4)
+    if choice ==1 then
+		PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_aggro_gf_583690dc.mp3", "Summon help!  We have invaders!", "", 1598905349, 2204481929, Spawn, 0)
+    elseif choice ==2 then
+		PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_halfhealth_gf_8529e507.mp3", "I can't hold them forever!", "", 3371581229, 792393228, Spawn, 0)
+    elseif choice ==3 then
+		PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_aggro_gf_a203c9ec.mp3", "Prepare to face your doom, meddler.", "", 3593389433, 3838830228, Spawn, 0)
+    elseif choice ==4 then
+		PlayFlavor(NPC, "voiceover/english/optional3/barbarian_base_1/ft/barbarian/barbarian_base_1_2_aggro_gf_394a7fe3.mp3", "Not sneaky enough to get past me.", "", 1014195867, 4030043484, Spawn, 0)
+    end
 end
 
 function Checking(NPC,Spawn)
