@@ -1,19 +1,25 @@
-
-
 --[[
     Script Name    : Spells/Priest/MinorHealing.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 04:01:24
+    Script Author  : LordPazuzu
+    Script Date    : 12/6/2022
     Script Purpose : 
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
--- Heals target for 36 - 45
 
-function cast(Caster, Target, MinHeal, MaxHeal)
+function cast(Caster, Target, MinVal, MaxVal, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+
+    HealBonus = LvlBonus + StatBonus
+    MinHeal = MinVal + math.floor(HealBonus)
+    MaxHeal = MaxVal + math.floor(HealBonus)
+    
     SpellHeal("Heal", MinHeal, MaxHeal)
-end
-
-function remove()
 end

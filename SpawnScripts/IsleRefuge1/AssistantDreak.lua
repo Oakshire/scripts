@@ -110,7 +110,7 @@ function QuestUpdate8(NPC, Player)
     if GetTradeskillLevel(Player) <2  then
         Quest = GetQuest(Player,5749)
         SummonItem(Player,1030001,1)
-        GiveQuestItem(Quest, Player, "", 20708,4142,4142,4142,7391,7391,7391)
+        GiveQuestItem(Quest, Player, "", 20708,1001034,1001034,1001034,7391,7391,7391)
         SetTradeskillLevel(Player,2)
         SetTradeskillClass(Player,1)
 	    SendMessage(Player, "You are now an Artisan!")

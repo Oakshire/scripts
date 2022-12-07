@@ -1,15 +1,26 @@
 --[[
     Script Name    : Spells/Priest/Weakness.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 03:01:18
+    Script Author  : LordPazuzu
+    Script Date    : 12/7/2022
     Script Purpose : 
                    : 
 --]]
 
--- Decreases STR of target by 9.6
 
-function cast(Caster, Target, Str)
-    AddSpellBonus(Target, 0, Str)
+function cast(Caster, Target, BasePenalty, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 7
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+            
+    end
+    
+    LvlMod = LvlBonus * 0.1
+    StrMod = BasePenalty - LvlMod
+    
+    AddSpellBonus(Target, 0, StrMod)
 
 end
 

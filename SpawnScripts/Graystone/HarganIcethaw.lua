@@ -26,3 +26,5 @@ end
 function resetVisual(NPC)
 SpawnSet(NPC, "visual_state", 11420)
 end
+
+--Dagorel you say?  HAHA!!! That old dwarf still takes on whelps and turns them into real fighters? Looking at you, I can see he picks students with real potential! So, he wants me to give you some rough-and-tumble, eh?

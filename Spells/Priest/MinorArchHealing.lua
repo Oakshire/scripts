@@ -1,13 +1,30 @@
 --[[
     Script Name    : Spells/Priest/MinorArchHealing.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 04:01:17
+    Script Author  : LordPazuzu
+    Script Date    : 12/6/2022
     Script Purpose : 
                    : 
 --]]
 
--- Heals target for 41 - 50
 
-function cast(Caster, Target, MinVal, MaxVal)
-SpellHeal("Heal", MinVal, MaxVal)
+
+function cast(Caster, Target, MinVal, MaxVal, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+
+    HealBonus = LvlBonus + StatBonus
+    MinHeal = MinVal + math.floor(HealBonus)
+    MaxHeal = MaxVal + math.floor(HealBonus)
+    
+    SpellHeal("Heal", MinHeal, MaxHeal)
+end
+
+
+function remove()
 end
