@@ -27,4 +27,10 @@ function resetVisual(NPC)
 SpawnSet(NPC, "visual_state", 11420)
 end
 
+--Master-at-Arms Dagorel sent me to you for pointers on brawling.
 --Dagorel you say?  HAHA!!! That old dwarf still takes on whelps and turns them into real fighters? Looking at you, I can see he picks students with real potential! So, he wants me to give you some rough-and-tumble, eh?
+--Well, I'm still real sorry.  Now you know how a brawler really fights.  It's not all about using your fists.  You can use other weapons you were born with too!  No hard feelings, eh?
+
+--[punch at his nose]
+--[give a short jab at his ribs]
+--[give him the old one-two]

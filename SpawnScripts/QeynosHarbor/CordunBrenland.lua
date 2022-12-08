@@ -110,4 +110,4 @@ function FishDelivery2(NPC, Spawn)
     SetStepComplete(Spawn,5585, 4)
     end  
 
- 
+ --But while peace with Qeynos may serve my purposes for the moment, never let your guard falter. This shattered world needs strength, not mercy. And until there is but one nation on Norrath, we must always be prepared to strike against the weak.
