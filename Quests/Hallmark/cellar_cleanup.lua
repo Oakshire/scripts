@@ -8,6 +8,7 @@
         Quest Giver: Assistant Dreak (3250167)
         Preceded by: None
         Followed by: 
+        Notes      :  updated coal given to classic version 1001034
 --]]
 require "SpawnScripts/Generic/DialogModule"
 
@@ -100,7 +101,7 @@ function Step8Complete(Quest, QuestGiver, Player)
     UpdateQuestZone(Quest,"Mizan's Cellar")
     if not HasItem(Player,20708,1) and GetTradeskillLevel(Player) <2  then
     SummonItem(Player,1030001,1)
-    GiveQuestItem(Quest, Player, "", 20708,4142,4142,4142,7391,7391,7391)
+    GiveQuestItem(Quest, Player, "", 20708,1001034,1001034,1001034,7391,7391,7391)
     end
     if GetTradeskillLevel(Player) <2 then
     SetTradeskillLevel(Player,2)

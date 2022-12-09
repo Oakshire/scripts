@@ -8,7 +8,7 @@
 
 function cast(Caster, Target, DurabilityAmount, Power)
 	AddSpellBonus(Caster, 801, DurabilityAmount)
-	SetPower( Caster, GetPower(Caster) - GetPCTOfPower(Caster, Power))
+	SetPower( Caster, GetPower(Caster) - GetPCTOfPower(Caster, 15))
 end
 
 function remove(Caster, Target, DurabilityAmount)

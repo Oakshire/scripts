@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must slay three corrupted dryads.", 3, 100, "I must go into the Oakmyst Forest and slay three of the corrupted dryads that plague the area.", 611, 8300004)
@@ -17,7 +18,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	PlayFlavor(QuestGiver,"","","sniff", 0, 0, Player)
+    Dialog.AddDialog( "I love walking through the Oakmyst Forest, but in recent times corrupt dryads have taken over the area.  These cretins love to ruins my walks.  If you could rid the world of these horrid creatures it would be a noble task, indeed!")
+	Dialog.AddVoiceover("voiceover/english/fredrick_losce/qey_south/fredricklosce001.mp3", 2839949411, 2971198506)
+	Dialog.AddOption("Gladly.  I'll take care of these dryads.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

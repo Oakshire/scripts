@@ -17,6 +17,7 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	-- Add dialog here for when the quest is accepted
+--Prove to me that you've got the courage and conviction to stand up for others when they cannot stand up for themselves.  I heard that some outsider thugs are holed up in Qeynos Harbor, and that they've got one of our citizens as a prisoner.  If you can rescue him, you'll earn the title of crusader.
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -43,7 +43,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1005.mp3", 0, 0, Spawn)
 	Dialog.AddDialog("I sure do love to cook.  Yummy baked goods and cakes.  I make my sister do all the selling.  To tell you the truth I think she likes it.")
-    if not HasQuest(Spawn,Cake) then
+    if not HasQuest(Spawn,Cake) and not HasCompletedQuest(Spawn,Cake) then
 	Dialog.AddOption("You must be pretty busy then.  Anything I can help with?", "Dialog2")
     end
     if GetQuestStep(Spawn,Cake)==2 then

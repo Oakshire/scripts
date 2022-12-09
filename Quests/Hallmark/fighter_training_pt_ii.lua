@@ -9,6 +9,8 @@
         Preceded by: Fighter Training, pt I
         Followed by: Path of the (CLASS)
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to speak with Sir Laughlin in North Qeynos", 1, "Dagorel has asked me to inspire three of the guards in Qeynos", 11, 2220024)
@@ -20,7 +22,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("I want you to remind a few of the Qeynos guards that we appreciate what they do for the city.  Go find some of the boys posted around town, and remind them why they work so hard. I'll stop yappin' your ear off and write some of the guards' names in your journal.")
+    PlayFlavor(QuestGiver, "", "", "smile", 0, 0, Player)
+    Dialog.AddOption("Sounds easy enough. I'll let you know once I've met with the other guards.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

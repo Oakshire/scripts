@@ -1,13 +1,11 @@
 --[[
     Script Name    : Spells/Scout/SneakAttack.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.06 07:11:46
+    Script Author  : LordPazuzu
+    Script Date    : 12/8/2022
     Script Purpose : 
                    : 
 --]]
 
--- Inflicts 14 - 24 melee damage on target
--- Must be flanking or behind
 
 function precast(Caster,Target)
 	if not IsFlanking(Caster, Target) and not IsBehind(Caster, Target) then
@@ -17,6 +15,20 @@ function precast(Caster,Target)
 	return true
 end
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal)
-	SpellDamage(Target, DmgType, MinVal, MaxVal)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+ 
 end

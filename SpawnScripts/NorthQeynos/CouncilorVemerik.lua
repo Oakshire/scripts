@@ -51,7 +51,7 @@ function hailed(NPC, Spawn)
     Dialog.AddOption("I think I understand what you're saying.  Sooo... any more advice?","Decide")	
     end       
     if HasQuest(Spawn,Rogue) and GetQuestStep(Spawn,Rogue)==2 then 
-    Dialog.AddOption("I found a copy of their orders!","RogueDone")	
+    Dialog.AddOption("I managed to grab the lieutenant's orders out from under the watchful eye of the Qeynos guard.  I'm sure they'll be put through some rigorous training after this to help them keep a sharper eye out in the future, but that's not my concern now!","RogueDone")	
     end 
     if not HasCompletedQuest(Spawn, Rogue) and not HasCompletedQuest(Spawn, Predator) and not HasCompletedQuest(Spawn, Bard) then
     Dialog.AddOption("I've got more important things to do than watch people. Good day.")
@@ -381,7 +381,7 @@ function Bard1(NPC,Spawn)
  	Dialog.AddDialog("Anyone can defeat a mighty adversary in battle, but being remembered for it is an entirely different matter.  A bard regales others with tales of the past through their melodies and stories.  The bard who writes the past is the same one who guides the future.  And don't forget all the attention you get, too!  That's my favorite part!")
 	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik025.mp3", 3456483414, 216988233)
     PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
-    Dialog.AddOption("Easy! I'll be a world-renowned bard!","Bard2")	
+    Dialog.AddOption("I enjoy being the center of attention. I'm going to love being a bard!","Bard2")	
     Dialog.AddOption("I'm not too sure anymore.  Do you advise I specialize somewhere else?","Decide")	
 	Dialog.Start()
 end
@@ -392,7 +392,7 @@ function Bard2(NPC,Spawn)
  	Dialog.AddDialog("Perhaps you will, but first we must see how well you perform under pressure. The life of a bard isn't all song and dance, you know.  A great amount of stress is placed upon performers and if you're not up to the task, there's no telling what can happen.")
 	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik032.mp3", 1067830729, 103418166)
     PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
-    Dialog.AddOption("What must I do to prove myself?","Bard3")	
+    Dialog.AddOption("I'm ready for anything.","Bard3")	
 	Dialog.Start()
 end
 
@@ -402,7 +402,7 @@ function Bard3(NPC,Spawn)
  	Dialog.AddDialog("Are you prepared to see what happens when you perform poorly in front of the wrong audience? We're about to find out!  It so happens, there's a group of rather sour individuals with a performer who... ahhh ... had an off night, so to speak.")
 	Dialog.AddVoiceover("voiceover/english/counselor_vemerik/qey_north/counselor_vemerik033.mp3", 1412723823, 1711994068)
     PlayFlavor(NPC, "", "", "scheme", 0, 0, Spawn)
-    Dialog.AddOption("I suppose a bard should be prepared for anything. What must I do?","BardOffer")	
+    Dialog.AddOption("Ok, so what do you want me to do about it?","BardOffer")	
     Dialog.AddOption("I'm not too sure anymore.  Do you advise I specialize somewhere else?","Decide")	
 	Dialog.Start()
 end

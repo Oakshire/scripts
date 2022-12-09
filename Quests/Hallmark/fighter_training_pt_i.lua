@@ -9,13 +9,20 @@
         Preceded by: None
         Followed by: Fighter Training, pt II
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill five white spiderlings in the caves.", 5, 100, "I need to travel to the Caves and kill five white spiderlings like a warrior would.", 91, 8260002)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Och!  A bit eager, are we?  You're off to a good start then, you are. A warrior takes the bull by the horns! Let's give you a taste, shall we?  The Council needs help exterminatin' a massive hatching of Ice Spiders in the caves. Go to the caves and destroy some of the spiders. After you get rid of the critters, head back my way.")
+    PlayFlavor(QuestGiver, "", "", "wince", 0, 0, Player)
+    Dialog.AddOption("Right. I'll be back once I've dealt with these spiders.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -59,7 +66,7 @@ function  QuestCheck(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player,5783,3) and QuestStepIsComplete(Player,5783,4) then
 	UpdateQuestTaskGroupDescription(Quest, 3, "I've been given tips on brawling... and a little more, too.")
 
-	AddQuestStepChat(Quest, 5, "I need to speak with Dagorel in South Qeynos.", 1, "I should let Dagorel I've learned my lesson... in more ways than one.", 11, 2310377)
+	AddQuestStepChat(Quest, 5, "I need to speak with Dagorel in South Qeynos.", 1, "I should let Dagorel know I've learned my lesson... in more ways than one.", 11, 2310377)
 	AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
 end
 end
