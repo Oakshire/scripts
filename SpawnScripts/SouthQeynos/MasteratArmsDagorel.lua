@@ -27,7 +27,7 @@ function hailed(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/sergeant-at-arms_ironcast/qey_north/100_soc_dwarf_guard_officer_ironcast_no_181290a1.mp3", 904288338, 3551828428)
     PlayFlavor(NPC,"","","salute",0,0,Spawn)
     if GetClass(Spawn)== 1 and GetLevel(Spawn)>=7 and not HasQuest(Spawn,Quest1) and not HasCompletedQuest(Spawn,Quest1) then
-    Dialog.AddOption("Does the Guard have any jobs where I can rough something up?","Dialog1")	
+    Dialog.AddOption("Greetings! I heard you were skilled in combat and had to come see you for myself.","Dialog1")	
     end
     if HasQuest(Spawn,Quest1) and GetQuestStep(Spawn,Quest1)==2 then 
     Dialog.AddOption("I was victorious against the spiders!","Dialog2")	
@@ -56,9 +56,9 @@ end
 function Dialog1(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
- 	Dialog.AddDialog("More of a fighter? I can respect that. I happen to have some bounties here that I was going to fill for the glory of Qeynos... They are all for criminals or mindless beasts. If you fill them I will return them to the Qeynos Guard for you. I'm sure the act will help your reputation.")
-    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    Dialog.AddOption("Actually, you have most likely seen your fair share of battle. Have any pointers on your fighting style?","Dialog1a")	
+ 	Dialog.AddDialog("So, you came by to wish 'ole Dagorel a good bidding, did ya?  Well, good day to you, friend! Never let anyone say that Dagorel doesn't know his manners.  Lemme look at you ... Hmm ... I bet with a little toughenin' up, you could go toe-to-toe with the best of 'em!")
+    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
+    Dialog.AddOption("Have any tips on fighting styles? I'm ready for anything!","Dialog1a")	
     Dialog.AddOption("I suppose I meant something else. Good luck on those bounties.")	
 	Dialog.Start()
 end
@@ -81,7 +81,7 @@ function Dialog1b(NPC,Spawn)
     if HasCompletedQuest(Spawn, 5751)then --ISLE OF REFUGE ORC LEADER QUEST
     Dialog.AddOption("I toppled the invading leadership on the Isle of Refuge by taking out the orc leader, Grimgash.","Dialog1c1a")
     end
-    Dialog.AddOption("I took out some traitors to Qeynos. Proving my loyalty to Qeynos.","Dialog1c3")	
+    Dialog.AddOption("I took out some traitors to Qeynos. Proving my loyalty to Qeynos.","Dialog1c2")	
     Dialog.AddOption("This and that- just some good ol' rough and tumble.","Dialog1c3")	
 	Dialog.Start()
 end
@@ -136,7 +136,7 @@ function Dialog1d(NPC,Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("Well, then, the first thing you gotta know is that there's not just one way to fight.  S'matter of fact, you gotta discipline yourself in a style of fightin'.  I'll give you a taste of the fighting styles I've come across in me years of battle. Let's start with the fightin' style of a warrior...")
     PlayFlavor(NPC, "", "", "orate", 0, 0, Spawn)
-    Dialog.AddOption("Tell me what I need to do! I'm ready to give something a beating!","Quest1Start")	
+    Dialog.AddOption("Tell me what I need to do! I'm ready to give something a beating!","Quest1Offer")	
     Dialog.AddOption("Actually, I should begin this with you another time.")	
 	Dialog.Start()
 end

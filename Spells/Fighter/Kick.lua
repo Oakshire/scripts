@@ -1,18 +1,25 @@
 --[[
     Script Name    : Spells/Fighter/Kick.lua
-    Script Author  : neatz09
-    Script Date    : 2019.12.09 06:12:01
+    Script Author  : LordPazuzu
+    Script Date    : 12/9/2022
     Script Purpose : 
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
--- Inflicts 7 - 12 crushing damage on target
-
-function cast(Caster, Target, DmgType, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
-    else
-        SpellDamage(Target, DmgType, MinVal)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
     end
+    
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+ 
 end
