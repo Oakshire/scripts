@@ -187,8 +187,19 @@ end
 function Dialog3(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
- 	Dialog.AddDialog("Oh, is that so? Well let's put what ya learned to the test, shall we? [Dagorel prepares up to punch you]")
+ 	Dialog.AddDialog("Oh, is that so? Well let's put what ya learned to the test, shall we?")
     PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+    Dialog.AddOption("Alright.","Dialog3a")	
+	
+	Dialog.Start()
+end
+
+
+function Dialog3a(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("[Dagorel prepares up to punch you]")
+    PlayFlavor(NPC, "", "", "pugilist_idle", 0, 0, Spawn)
     Dialog.AddOption("[Attempt to dodge]","Dodge")	
     Dialog.AddOption("[Take the punch to your gut]","Gut")	
 	Dialog.Start()
@@ -197,10 +208,10 @@ end
 function Dodge(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
- 	Dialog.AddDialog("...[Dagorel's punch grazes you]")
-    PlayFlavor(NPC, "", "", "monk_attack", 0, 0, Spawn)
+ 	Dialog.AddDialog("[Dagorel's punch grazes you]")
+    PlayFlavor(NPC, "", "", "pugilist_wild_swing", 0, 0, Spawn)
     AddTimer(NPC,1300,"Dodge2",1,Spawn)
-    Dialog.AddOption("Ah, you still got me.","Dialog3a")	
+    Dialog.AddOption("Ah, you still got me.","Dialog3c")	
 	Dialog.Start()
 end
 
@@ -212,7 +223,7 @@ function Gut(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
  	Dialog.AddDialog("...")
-    PlayFlavor(NPC, "", "", "monk_attack", 0, 0, Spawn)
+    PlayFlavor(NPC, "", "", "pugilist_attack02", 0, 0, Spawn)
     AddTimer(NPC,1300,"Gut2",1,Spawn)
     Dialog.AddOption("Oof...","Dialog3b")	
 	Dialog.Start()
@@ -226,7 +237,7 @@ return 0
 end
 
 local hp = GetHP(Spawn)
-local damage = GetMaxHP(Spawn)*0.05
+local damage = GetMaxHP(Spawn)*0.1
 local damageToTake = damage * 1
 -- if we don't have enough HP make them die to pain and suffering not self
 if hp <= damageToTake then
@@ -236,13 +247,13 @@ end
 
 end
 
-function Dialog3a(NPC,Spawn)
+function Dialog3c(NPC,Spawn)
     SetStepComplete(Spawn,Quest1,5)  
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
- 	Dialog.AddDialog("Not bad! You did learn a few things, but there is always room for improvement. Perhaps a brawler is a path for you... Even so, you should rest up before we continue looking at other fighting styles. Come back to me after you've taken some time to catch your breath.")
+ 	Dialog.AddDialog("Not bad! You did learn a few things from Luvile, but there is always room for improvement. Perhaps a brawler is a path for you... Even so, you should rest up before we continue looking at other fighting styles. Come back to me after you've taken some time to catch your breath.")
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    Dialog.AddOption("Alright. I'll rest for a while.")	
+    Dialog.AddOption("I like the sounds of that. I'll rest for a while.")	
 	Dialog.Start()
 end
 
@@ -250,9 +261,9 @@ function Dialog3b(NPC,Spawn)
     SetStepComplete(Spawn,Quest1,5)  
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
- 	Dialog.AddDialog("Oi, if you're going to take a blow like that you should have thicker armor! Perhaps brawling isn't your specialty, but who knows... Even so, you should rest up before we continue looking at other fighting styles. Come back to me after you've taken some time to catch your breath.")
+ 	Dialog.AddDialog("Oi, if you're going to take a blow like that you should have thicker armor! You must have taken Hargan's lesson on brawling to heart, Haha!... Even so, you should rest up before we continue looking at other fighting styles. Come back to me after you've taken some time to catch your breath.")
     PlayFlavor(NPC, "", "", "wince", 0, 0, Spawn)
-    Dialog.AddOption("Alright. I'll rest for a while.")	
+    Dialog.AddOption("I like the sounds of that. I'll rest for a while.")	
 	Dialog.Start()
 end
 

@@ -63,7 +63,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 end
 
 function  QuestCheck(Quest, QuestGiver, Player)
-    if QuestStepIsComplete(Player,5783,3) and QuestStepIsComplete(Player,5783,4) then
+    if QuestStepIsComplete(Player,5787,3) and QuestStepIsComplete(Player,5787,4) then
 	UpdateQuestTaskGroupDescription(Quest, 3, "I've been given tips on brawling... and a little more, too.")
 
 	AddQuestStepChat(Quest, 5, "I need to speak with Dagorel in South Qeynos.", 1, "I should let Dagorel know I've learned my lesson... in more ways than one.", 11, 2310377)

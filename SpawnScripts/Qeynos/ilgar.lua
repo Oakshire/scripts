@@ -1,9 +1,9 @@
 --[[
 	Script Name		:	ilgar.lua
 	Script Purpose	:	Waypoint Path for ilgar.lua
-	Script Author	:	Devn00b - Pathing.  Dorbin - Dialogue/Quest
-	Script Date		:	04/11/2020 02:45:39 PM / 05.16.2022
-	Script Notes	:	Locations collected from Live
+	Script Author	:	Dorbin 
+	Script Date		:	05.16.2022
+	Script Notes	:
 --]]
 local Fairies = 5558
 dofile("SpawnScripts/Generic/ExpelNonCitizen.lua")
@@ -85,6 +85,9 @@ end
 function respawn(NPC)
 		spawn(NPC)
 	end
+
+--Really?  Oh.  Well, you know how it is ... you gotta do what you gotta do, you know?  It's not as hard as it looks, all things considered.  I figure I can do my part by keeping an eye out for any gnolls or threats to the city.  Well, hey... thanks for saying something.
+
 
 function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 469.14, -20.96, 194.86, 2, 0)

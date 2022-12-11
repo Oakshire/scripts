@@ -25,7 +25,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("I'm contemplating how this tree symbolizes a person's life ... We all come from a solid trunk grounded in history, and the tree branches represent the random choices we make in life...")
 	Dialog.AddVoiceover("voiceover/english/optional5/luvile_binlee/qey_village02/luvilebinlee000.mp3", 2956622106, 3546014069)
-    if HasQuest(Spawn,Quest1) and GetQuestStep(Spawn,Quest1)>=3 and GetQuestStep(Spawn,Quest1)<=4 then
+    if HasQuest(Spawn,Quest1) and GetQuestStep(Spawn,Quest1)>=3 and GetQuestStep(Spawn,Quest1)<=4 and not QuestStepIsComplete(Spawn,Quest1,3) then
 	Dialog.AddOption("Dagorel said you know how not to get hit.","Dialog2")
     end
 	Dialog.AddOption("That's a bit deep for me.  Sorry for bothering your meditations.")
@@ -93,7 +93,7 @@ end
 function Dialog6a(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Again. Aim carefully.")
+	Dialog.AddDialog("Close! Try again.")
     PlayFlavor(NPC, "", "", "1h_pierce_dodge_thrust", 0, 0, Spawn)
 	Dialog.AddVoiceover("voiceover/english/optional5/luvile_binlee/qey_village02/luvilebinlee004.mp3", 0, 0)
 	Dialog.AddOption("[punch at Luvile's side]","Dialog7")
@@ -117,7 +117,9 @@ function Dialog7a(NPC, Spawn)
 end
 
 function Dialog8(NPC, Spawn)
- SetStepComplete(Spawn,Quest1,3)
+    if HasQuest(Spawn,Quest1) and not QuestStepIsComplete(Spawn,Quest1,3) then
+     SetStepComplete(Spawn,Quest1,3)
+    end
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
 end
