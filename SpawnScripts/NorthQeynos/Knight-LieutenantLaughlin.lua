@@ -9,6 +9,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 local Gnolls = 5543
+local Quest2 = 5788
 
 function spawn(NPC)
 ProvidesQuest(NPC,Gnolls)
@@ -33,12 +34,12 @@ function Dialog2(NPC, Spawn)
 	PlayFlavor(NPC, "","", "shrug", 0, 0,Spawn)
 	Dialog.AddDialog("Famous, eh?  Best keep your feet planted before your head floats off.  Though, if you're looking for some recognition, I've been having some problems with the gnolls outside the gates here.  I can't spare the men to go hunt them down, you wouldn't be interested in helping out, would you?")
 	Dialog.AddVoiceover("voiceover/english/optional1/knight-lieutenant_laughlin/qey_north/quests/sirlaughlin/grd_laughlin_x1_initial.mp3", 2796593065, 1366994589)
-	Dialog.AddOption("I'd be more than happy to carry the banner of Qeynos into battle with the gnolls!", "Dialog1")
+	Dialog.AddOption("I'd be more than happy to carry the banner of Qeynos into battle with the gnolls!", "OfferGnollQuest")
 	Dialog.AddOption("Gnolls?  Send a new recruit out to deal with the problem.")
 	Dialog.Start()
 end
 
-function Dialog1(NPC, Spawn)
+function OfferGnollQuest(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
     OfferQuest(NPC,  Spawn,Gnolls)
     end
@@ -59,7 +60,7 @@ function QuestFinish(NPC, Spawn)
     PlayFlavor(Spawn, "","", "salute", 0, 0)
     end
 
-function Dialog4(NPC, Spawn)
+function Dialog4(NPC, Spawn) --hail
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayFlavor(NPC, "","", "salute", 0, 0,Spawn)
@@ -72,8 +73,36 @@ function Dialog4(NPC, Spawn)
 	Dialog.AddOption("I won't let danger stand in my way.  I'm going to be famous one day!", "Dialog2")
 	Dialog.AddOption("Erk! Dangerous creatures?  I think I'll stay inside the gates!")
     end
-	Dialog.AddOption("Well met to you as well.")
+    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)>=1 and GetQuestStep(Spawn,Quest1)<=3 and not QuestStepIsComplete(Spawn,Quest2,1) then
+	Dialog.AddOption("What made you decide to be a guard?","Dialog1")
+    end
+    Dialog.AddOption("Well met to you as well.")
+	Dialog.Start()
+end
+
+function Dialog1(NPC, Spawn) --NO VOs for the below fighter quest pt2
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC, "","", "ponder", 0, 0,Spawn)
+	Dialog.AddDialog("Hmm, in my younger years I sought adventure like you. I suppose after being picked up a number of times by guards on patrol I thought - \"Hey, I could do that!\". I've enjoyed being able to repay the kindness to citizens of Qeynos.")
+	--Dialog.AddVoiceover("voiceover/english/optional1/knight-lieutenant_laughlin/qey_north/quests/sirlaughlin/grd_laughlin_x1_finish.mp3", 689966140, 111412847)--
+	Dialog.AddOption("We certainly have the guard to thank.","QuestFinish")
 	Dialog.Start()
 end
 
 
+function Dialog1a(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC, "","", "agree", 0, 0,Spawn)
+	Dialog.AddDialog("I believe so as well, but not often do I hear appreciatation like that. Thank you! So many seem to treat the guard as part of the background, but it is us who keep Qeynos safe.")
+	--Dialog.AddVoiceover("voiceover/english/optional1/knight-lieutenant_laughlin/qey_north/quests/sirlaughlin/grd_laughlin_x1_finish.mp3", 689966140, 111412847)
+	Dialog.AddOption("Keep up the great work!","Dialog1b")
+	Dialog.Start()
+end
+
+function Dialog1b(NPC, Spawn)
+ 	FaceTarget(NPC, Spawn)
+    SetStepComplete(Spawn,Quest2, 1)
+    PlayFlavor(Spawn, "","", "salute", 0, 0)
+    end

@@ -7,6 +7,7 @@
 
 --]]
 
+--Good citizens of Qeynos, many brave souls have undertaken the daunting task of expanding our horizons through exploration.  Those of you who helped discover the Feerrott faced dangers of an unearthly and terrifying nature.  Qeynos is enriched by your courageous deeds.  We bow to you in gratitude. However, we have received alarming reports about that most haunted of places in the Feerrott- the Temple of Cazic Thule.  How it appeared in Norrath is yet a mystery.
 
 function spawn(NPC)
 end
