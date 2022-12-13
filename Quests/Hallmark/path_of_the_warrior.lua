@@ -9,6 +9,7 @@
         Preceded by: Fighter Training pt II
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must defeat the bears in the arena.", 2, 100, "I must defeat the challenge set before me in the make-shift arena set up in the warehouse of northern Qeynos.", 11,0)
@@ -18,7 +19,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Whoa, now! Not yet, you're not!  You have to prove you can last in the fray. You didn't think I'd wave a magic wand and make you a warrior, did you?  No, no, we got a make shift arena set up in the warehouse, where you'll prove yourself, a true warrior of Qeynos. No need to return to me, I've taught you all I can.")
+    PlayFlavor(QuestGiver, "", "", "scold", 0, 0, Player)
+    Dialog.AddOption("I will step forth victorious! Wait and see!")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

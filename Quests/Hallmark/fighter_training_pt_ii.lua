@@ -88,7 +88,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	UpdateQuestDescription(Quest, "Dagorel, the Master-at-Arms of Qeynos, has shown me different fighting styles.  Thanks to his training, I've decided which way to direct my future training.  From hereon, I'm no longer just a fighter.  In time, people will associate my name with my style of fighting.")
 	GiveQuestReward(Quest, Player)
 end
-
+--
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Step1Complete(Quest, QuestGiver, Player)

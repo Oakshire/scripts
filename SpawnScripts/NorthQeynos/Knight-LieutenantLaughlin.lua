@@ -3,13 +3,13 @@
 	Script Purpose	: Knight-Lieutenant Laughlin
 	Script Author	: Dorbin
 	Script Date		: 2022.04.23
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+	Script Notes	: 
 --]]
 
 require "SpawnScripts/Generic/DialogModule"
 
 local Gnolls = 5543
-local Quest2 = 5788
+local Quest2 = 5788 --Fighter Quest pt2
 
 function spawn(NPC)
 ProvidesQuest(NPC,Gnolls)
@@ -73,7 +73,7 @@ function Dialog4(NPC, Spawn) --hail
 	Dialog.AddOption("I won't let danger stand in my way.  I'm going to be famous one day!", "Dialog2")
 	Dialog.AddOption("Erk! Dangerous creatures?  I think I'll stay inside the gates!")
     end
-    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)>=1 and GetQuestStep(Spawn,Quest1)<=3 and not QuestStepIsComplete(Spawn,Quest2,1) then
+    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)>=1 and GetQuestStep(Spawn,Quest2)<=3 and not QuestStepIsComplete(Spawn,Quest2,1) then
 	Dialog.AddOption("What made you decide to be a guard?","Dialog1")
     end
     Dialog.AddOption("Well met to you as well.")
@@ -86,7 +86,7 @@ function Dialog1(NPC, Spawn) --NO VOs for the below fighter quest pt2
     PlayFlavor(NPC, "","", "ponder", 0, 0,Spawn)
 	Dialog.AddDialog("Hmm, in my younger years I sought adventure like you. I suppose after being picked up a number of times by guards on patrol I thought - \"Hey, I could do that!\". I've enjoyed being able to repay the kindness to citizens of Qeynos.")
 	--Dialog.AddVoiceover("voiceover/english/optional1/knight-lieutenant_laughlin/qey_north/quests/sirlaughlin/grd_laughlin_x1_finish.mp3", 689966140, 111412847)--
-	Dialog.AddOption("We certainly have the guard to thank.","QuestFinish")
+	Dialog.AddOption("We all certainly have the guard to thank.","Dialog1a")
 	Dialog.Start()
 end
 
@@ -95,7 +95,7 @@ function Dialog1a(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
     PlayFlavor(NPC, "","", "agree", 0, 0,Spawn)
-	Dialog.AddDialog("I believe so as well, but not often do I hear appreciatation like that. Thank you! So many seem to treat the guard as part of the background, but it is us who keep Qeynos safe.")
+	Dialog.AddDialog("I believe so as well, but not often do I hear appreciatation like that. Thank you! So many seem to treat the guard as part of the background, but it our vigilance that keeps Qeynos safe.")
 	--Dialog.AddVoiceover("voiceover/english/optional1/knight-lieutenant_laughlin/qey_north/quests/sirlaughlin/grd_laughlin_x1_finish.mp3", 689966140, 111412847)
 	Dialog.AddOption("Keep up the great work!","Dialog1b")
 	Dialog.Start()
@@ -104,5 +104,5 @@ end
 function Dialog1b(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
     SetStepComplete(Spawn,Quest2, 1)
-    PlayFlavor(Spawn, "","", "salute", 0, 0)
+    PlayFlavor(NPC, "","", "salute", 0, 0)
     end

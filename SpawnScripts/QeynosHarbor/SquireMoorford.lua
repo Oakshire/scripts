@@ -25,7 +25,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Hello!  How can I help you? It's my proud duty to help keep this harbor safe!")
 	Dialog.AddVoiceover("voiceover/english/squire_moorford/qey_harbor/privatemoorford000.mp3", 3116776153, 2836450585)
-    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)>=1 and GetQuestStep(Spawn,Quest1)<=3 and not QuestStepIsComplete(Spawn,Quest2,3) then
+    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)>=1 and GetQuestStep(Spawn,Quest2)<=3 and not QuestStepIsComplete(Spawn,Quest2,3) then
 	Dialog.AddOption("What drives you to be a guard?","Dialog2")
     end
     Dialog.AddOption("Keep up the good work!")

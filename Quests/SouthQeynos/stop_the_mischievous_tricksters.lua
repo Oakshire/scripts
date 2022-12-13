@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -18,7 +19,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+    PlayFlavor(QuestGiver, "","", "agree", 0, 0,Player)
+	Dialog.AddDialog("There's always payment for services rendered to the city.  You needn't worry about that!  We encourage citizens to perform kind acts of their own will, but everyone needs to eat.  Teach those unrly fairies a lesson and keep them away from the locals.  Understand?")
+    Dialog.AddVoiceover("voiceover/english/lieutenant_ilgar/qey_south/lieutenantilgar001.mp3",3441933918, 932340693)
+	Dialog.AddOption("Yes sir!")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

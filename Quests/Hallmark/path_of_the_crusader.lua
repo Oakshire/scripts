@@ -9,6 +9,7 @@
         Preceded by: Fighter Training pt II
         Followed by: None
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "I must defeat the brigands and free the villager from a house in the Harbor.", 1, 100, "I must rescue the villager from the brigands in the Qeynos Harbor.", 11)
@@ -16,8 +17,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
---Prove to me that you've got the courage and conviction to stand up for others when they cannot stand up for themselves.  I heard that some outsider thugs are holed up in Qeynos Harbor, and that they've got one of our citizens as a prisoner.  If you can rescue him, you'll earn the title of crusader.
+    FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)   
+ 	Dialog.AddDialog("Prove to me that you've got the courage and conviction to stand up for others when they cannot stand up for themselves.  I heard that some outsider thugs are holed up in Qeynos Harbor, and that they've got one of our citizens as a prisoner.  If you can rescue him, you'll earn the title of crusader.")
+    PlayFlavor(QuestGiver, "", "", "nod", 0, 0, Player)
+    Dialog.AddOption("Thank you, Dagorel.  I won't forget your lessons.")	
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

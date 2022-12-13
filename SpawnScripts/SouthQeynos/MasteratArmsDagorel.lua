@@ -36,18 +36,27 @@ function hailed(NPC, Spawn)
     Dialog.AddOption("I've been given tips on brawling... and a little more, too.","Dialog3")	
     end
 
-     if GetClass(Spawn)== 1 and GetLevel(Spawn)>=8 and not HasQuest(Spawn,Quest2) and not HasCompletedQuest(Spawn,Quest2) and HasCompletedQuest(Spawn,Quest1) then
+    if GetClass(Spawn)== 1 and GetLevel(Spawn)>=8 and not HasQuest(Spawn,Quest2) and not HasCompletedQuest(Spawn,Quest2) and HasCompletedQuest(Spawn,Quest1) then
     Dialog.AddOption("I feel rested and am ready for more training!","Dialog4")	
     elseif GetClass(Spawn)== 1 and GetLevel(Spawn)<8 and not HasQuest(Spawn,Quest2) and not HasCompletedQuest(Spawn,Quest2) and HasCompletedQuest(Spawn,Quest1) then
     Dialog.AddOption("I'll return once I've had a bit more time to rest on what I've learned.")	
     end  
+    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)==4 then 
+    Dialog.AddOption("I've learned a bit about what drives the guards to do their duty.","Dialog5")	
+    end
+    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2)==6 then 
+    Dialog.AddOption("I've killed the gnoll pup","Dialog6")	
+    end   
+ 
+    if HasCompletedQuest(Spawn,Quest2) and not HasQuest(Spawn,Crusader) and not HasQuest(Spawn,Brawler) and not HasQuest(Spawn,Warrior) and GetClass(Spawn)==1 then
+    Dialog.AddOption("I've proven myself. I'm ready for any other test you can give.","Decide")	
+    end  
     
     Dialog.AddOption("Thank you!")
-	Dialog.Start()end
+	Dialog.Start()
+end
 
---No review of the gnolls is complete without mention of the most famous gnoll in history, Fippy Darkpaw, a member of the Sabertooth Clan of gnolls.  Fippy Darkpaw specialized in planning elaborate attacks on the main gates of Qeynos during the Age of Turmoil.  While his fate is unknown, his descendants formed the base of the numerous Darkpaw gnolls in Antonica.
---We Qeynosians have always been a peaceful people, striving to coexist in harmony with all of nature’s creatures.  But the gnolls are an abomination with no rightful place in this land.  They are a threat that must be eliminated!   Do not pity the gnolls.  They show no pity for their victims.  If allowed, they will multiply and overrun every corner of civilization, leaving a swath of blood in their path.  As citizens, we must protect Qeynos and her outlying regions.  We must slay these curs until none remain! Each one of you who ventures beyond our city gates ... you are duty-bound to draw your sword against the gnolls, and do not lower your blade until it is crimson with gnollish blood!
---I've killed the gnoll pup
+
 function respawn(NPC)
 	spawn(NPC)
 end
@@ -267,6 +276,9 @@ function Dialog3b(NPC,Spawn)
 	Dialog.Start()
 end
 
+-- QUEST 2 --
+
+
 function Dialog4(NPC,Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
@@ -292,21 +304,127 @@ function Quest2Start(NPC,Spawn)
     OfferQuest(NPC,Spawn,Quest2)
 end 
 
+function Dialog5(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("That's good to hear! Our soldiers don't hear enough kind words as it is, but when you can get them to think back on why they decided to protect their city... They certainly start to light up!")
+    PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
+    Dialog.AddOption("Most shared a sense of duty and honor in their work.","Dialog5a")	
+    Dialog.AddOption("Some mentioned it as just a job, but they also felt pride in protecting Qeynos.","Dialog5a")	
+	Dialog.Start()
+end
+
+function Dialog5a(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Aye, that sounds about right. Not everything about duty and honor is glamorous, but when you are responsible for that sort of \"passion\" to succeed... Your convicition will provide that power to accomplish the unthinkable.")
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddOption("I see. What must I do to prove myself a protector?","Dialog5b")	
+	Dialog.Start()
+end
+
+function Dialog5b(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Ahhh... There is the question! Qeynos is under constant threat- even more so ever since the Sundering when the continents were pulled apart! Are you ready to perform a duty for Qeynos and prove yourself a frontline protector?")
+    PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+    Dialog.AddOption("I am ready. Give me a mission!","Dialog5c")	
+	Dialog.Start()
+end
+
+function Dialog5c(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Qeynos thrives in this shattered world only through the efforts of its fine citizens.  Those nasty gnolls want us all dead, and it's our duty to protect our city from these fiends.  You must use your fighting skills to protect Qeynos.  Your first mission is to head out to Antonica and take care of the Darkpaws. Start with a pup and come back to me.")
+    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+    Dialog.AddOption("I'll return when I'm victorious.")
+    SetStepComplete(Spawn,Quest2,4)
+	Dialog.Start()
+end
+
+function Dialog6(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Aye, aye.  The watchmen informed me. They say you held your own. That's what I want to hear! You had to prove your fightin' skills--I don't want anyone accusing ol' Dagorel of sending ill-equipped kids off to their deaths. You proved you got what it takes, kid. Good work.")
+    PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
+    Dialog.AddOption("I'm glad to have had the chance to prove myself.","Decide")
+	Dialog.Start()
+end
+
+--CLASS SELECTION 
+
+function Decide(NPC,Spawn)
+    if HasQuest(Spawn,Quest2) and GetQuestStep(Spawn,Quest2) ==6 then
+    SetStepComplete(Spawn,Quest2,6)
+    end
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Well, then, I showed you three different fighting styles--you know my preferred way of fighting--trusting a good axe and a breastplate. You experienced the raw fighting power of a brawler, and finally, you witnessed the dedication of a crusader. Now it's time to test your knowledge...")
+    PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
+    Dialog.AddOption("I feel naked without a weapon in my hand.  I believe I'm a warrior.","Warrior1")	
+    Dialog.AddOption("Through training, I can make my own body into a weapon.  I'm a brawler.","Brawler1")	
+    Dialog.AddOption("My burning conviction is the only weapon I need.  I know I am a crusader.","Crusader1")	
+	Dialog.Start()
+end
+
+--WARRIOR
+function Warrior1(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("A warrior, are ya? You're sayin' that the best way to fix a problem is with a bit of hammered steel?  Aye, I agree with that!  When you got a slaverin' gnoll runnin' at you, hard bent for leather, well, you'd be a ninny not to draw steel.  So, the life of the warrior is your path in life, is it?")
+    PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
+    Dialog.AddOption("Yes.  I prefer to take care of a problem, rather than let it take care of me.  I am a warrior!","WarriorOffer")
+    Dialog.AddOption("On second thought, what were my options again?","Decide")
+	Dialog.Start()
+end
+
+function WarriorOffer(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Warrior)
+end
+
+--BRAWLER
+
+function Brawler1(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("Brawlers use their brains, they do. They don't need armor if their enemies can't hit 'em.  They also know they can't be disarmed if they have built-in weapons. Well, they can, but that' messy business that we don't need to discuss. So, are ya willin' to push yourself to the limit as a brawler?")
+    PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
+    Dialog.AddOption("Yes.  I will train everyday to master the art of pugilism.  I am a brawler.","BrawlerOffer")
+    Dialog.AddOption("On second thought, what were my options again?","Decide")
+	Dialog.Start()
+end
+
+function BrawlerOffer(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Brawler)
+end
+
+--CRUSADER
+
+function Crusader1(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+ 	Dialog.AddDialog("It's not as easy as that, youngin'.  You don't just declare yourself a crusader, or did you learn nothing from my previous lessons?  No, crusader is a title earned by those with enough heart to consider the fair city of Qeynos and its inhabitants first and themselves a distant second.")
+    PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
+    Dialog.AddOption("I like having a commanding presence in battle. I want to be a crusader.","CrusaderOffer")
+    Dialog.AddOption("On second thought, what were my options again?","Decide")
+	Dialog.Start()
+end
+
+function CrusaderOffer(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+    OfferQuest(NPC,Spawn,Crusader)
+end
 
 --[[
-Brawlers don't waste their time strapping on bulky armor. Sometimes the only weapons they use are their fists, and they dodge their opponent's blows with the swiftness of a hawk.  Do you choose this path?
+Brawlers use their brains, they do. They don't need armor if their enemies can't hit 'em.  They also know they can't be disarmed if they have built-in weapons. Well, they can, but that' messy business that we don't need to discuss. So, are ya willin' to push yourself to the limit as a brawler?
 Warriors run to the front line in battle and care only about slaughtering the enemy and oiling their weapons with their foe's blood.  Warriors know might makes right.  Do you choose this path?
 None matches the conviction of a crusader. Crusaders fight for a cause. This cause gives them the strength to crush their opponents beneath their feet. The last thing that people see when they fight a crusader is a cold, dead look -- their own reflection in the crusader's eyes.  Do you choose this path?
 ]]--
 
---Indeed it is. I do not mean to sound boastful but it is a great honor to serve the Qeynos Guard. There is no honor greater in my mind. This is why I have devoted my life to its cause. You have what is needed to be great within the Guard. All that is needed is some experience under your sword. You are getting there, so it's time to put those skills to the test!
---Indeed it is. I do not mean to sound boastful but it is a great honor to serve the Qeynos Guard. There is no honor greater in my mind. Thus why I have devoted my life to its cause. You have what is needed to be great within the Guard. All that is needed is some experience under your sword. Return to me once you are a bit more experienced and we will get you on the right path to being a true hero among the Qeynos Guard.
---The Qeynos Guard demands from its recruits adherence to a code of honor and justice.
---[QUEST 2] Good!  The guards deserve some words of encouragement. If you use that type of thinking on the battlefield, you'll understand what drives a crusader.
 
-
-
---[FINAL SELECTION] Well, then, I showed you three different fighting styles--you know my preferred way of fighting--trusting a good axe and a breastplate. You experienced the raw fighting power of a brawler, and finally, you witnessed the dedication of a crusader. Now it's time to test your knowledge...
+--[FINAL SELECTION] 
 --You have to make a choice!  You got potential, you do, and it would be a sore shame to see you waste it!  But you can't be a fighter your entire life. You gotta focus on one of the styles I showed you, if you wanna go places.  So what will it be, eh?
 
 
@@ -320,12 +438,16 @@ None matches the conviction of a crusader. Crusaders fight for a cause. This cau
 
 --Yes.  I will train everyday to master the art of pugilism.  I am a brawler.
 --I like relying on my fists in battle. I want to be a brawler.
---Through training, I can make my own body into a weapon.  I'm a brawler.
+--
 --Understand one more thing as well ...  when you defeat your last opponent, meditate at the altar in the dojo.  A brawler is not only strong of body but also of mind.  Strengthening both is mandatory.  Once you do this, you'll have proven yourself.
 
 --BRAWLER ALTAR A cool breeze swirls around you, sending a tingle up the back of your spine.  You arise from the altar and know in your soul that you are a brawler.
 --CRUSADER START It's not as easy as that, youngin'.  You don't just declare yourself a crusader, or did you learn nothing from my previous lessons?  No, crusader is a title earned by those with enough heart to consider the fair city of Qeynos and its inhabitants first and themselves a distant second.
---I feel naked without a weapon in my hand.  I believe I'm a warrior.
+--
 --A warrior, are ya? You're sayin' that the best way to fix a problem is with a bit of hammered steel?  Aye, I agree with that!  When you got a slaverin' gnoll runnin' at you, hard bent for leather, well, you'd be a ninny not to draw steel.  So, the life of the warrior is your path in life, is it?
+--I like having a commanding presence in battle. I want to be a crusader.
+--
+--Though all warriors fight for a cause, none have as strong a conviction as a crusader. Crusaders live to fight another day ... and another ... and another... They never stop, for they know their next opponent waits to take everything they've earned.
+--It's not as easy as that, youngin'.  You don't just declare yourself a crusader, or did you learn nothing from my previous lessons?  No, crusader is a title earned by those with enough heart to consider the fair city of Qeynos and its inhabitants first and themselves a distant second.
 --Yes.  I prefer to take care of a problem, rather than let it take care of me.  I am a warrior!
 --Whoa, now! Not yet, you're not!  You have to prove you can last in the fray. You didn't think I'd wave a magic wand and make you a warrior, did you?  No, no, we got a make shift arena set up in the warehouse, where you'll prove yourself, a true warrior of Qeynos. No need to return to me, I've taught you all I can.
