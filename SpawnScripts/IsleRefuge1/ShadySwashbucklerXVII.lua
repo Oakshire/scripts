@@ -40,9 +40,9 @@ function hailed(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/scribe_duvo/qey_elddar/100_scribe_halfling_duvo_callout1_c6eaefe5.mp3", 3948051330, 1166584264)
     PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
     if GetQuestStep(Spawn,5717)==2 or HasCompletedQuest(Spawn, 5717) then 
-    Dialog.AddOption("Get me out of here! [EMU Test Buff]","QBuff")
+    Dialog.AddOption("Get me out of here! [EMU Test Buff]","Item_Buff1")
     elseif GetQuestStep(Spawn,5758)==2 or HasCompletedQuest(Spawn, 5758) then
-    Dialog.AddOption("Get me out of here! [EMU Test Buff]","FPBuff")
+    Dialog.AddOption("Get me out of here! [EMU Test Buff]","Item_Buff1")
     else
     Dialog.AddOption("Get me out of here! [EMU Test Buff]","Fail")
     end       
@@ -53,12 +53,14 @@ end
 function Fail(NPC,Spawn)
       local con = CreateConversation()
 	    PlayFlavor(NPC, "voiceover/english/scribe_duvo/qey_elddar/100_scribe_halfling_duvo_multhail1_a72f47c8.mp3", "I'm sorry. I cannot help you.", "no", 1448300901, 17119076, Spawn)
-
-        AddConversationOption(con, "Close","CloseConversation")
-        StartDialogConversation(con, 1, NPC, Spawn, "Before you can EMU Test buff you must: \n\n 1. Pick an Archetype class from Garven Tralk at the beach. \n\n 2) Speak with an ambassador and select a city.\n\n 3) Secure a boat off the island with Duke Ferrin.")
+        AddConversationOption(con, "Close window using X above","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "Before you can EMU Test buff you must: \n\n 1) Pick an Archetype class from Garven Tralk at the beach. \n\n 2) Speak with an ambassador and select a city.\n\n 3) Secure a boat off the island with Duke Ferrin.")
 end
 
-function Close(NPC,Spawn)
+
+
+
+function CloseConvo(NPC,Spawn)
     CloseConversation(NPC,Spawn)
 end
 
@@ -67,8 +69,110 @@ function respawn(NPC)
 end
 
 
+function Item_Buff1(NPC,Spawn)
+	window = CreateOptionWindow(); 
+	AddOptionWindowOption(window, " EMU Buff and Leave Island", "Buff Includes:                                                                                           Level to 6 // Solo Quested Gear  //  6 silver // Port to Racial Hood     [ Complete Citizenship once in the city ]", 0, 2297, "Item_Buff2")
+	AddOptionWindowOption(window, "Refuse Buff", "Stay on the island and continue playing here.", 0, 2296, "Cancel")
+	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
+end
+
+function Item_Buff2(NPC,Spawn)
+    AddTimer(NPC,1500,"Trip",1,Spawn)
+local Class = GetClass(Spawn)
+
+if GetLevel(Spawn) <=5 then
+    SetPlayerLevel(Spawn,6)
+end
+
+AddCoin(Spawn,600)
+
+if not HasItem(Spawn,20728)then --Goblin Satchle
+    SummonItem(Spawn,20728,1)
+end
+if not HasItem(Spawn,1130007)then --Scrimshaw Necklace
+    SummonItem(Spawn,1130007,1)
+end
+if not HasItem(Spawn,140253)then --Constructed Wrist Spanner
+    SummonItem(Spawn,140253,1)
+end
+if not HasItem(Spawn,137914)then --Castaway Sash
+    SummonItem(Spawn,137914,1)
+end
+if not HasItem(Spawn,136170)then --Bone Bracelet
+    SummonItem(Spawn,136170,1)
+end
+
+if Class == 1 then
+    
+if not HasItem(Spawn,152754)then --Boots
+    SummonItem(Spawn,152754,1)
+end
+if not HasItem(Spawn,152756)then --Legs
+    SummonItem(Spawn,152756,1)
+end
+if not HasItem(Spawn,152757)then --Chest
+    SummonItem(Spawn,152757,1)
+end
+if not HasItem(Spawn,152755)then --Gloves
+    SummonItem(Spawn,152755,1)
+end
 
 
+elseif Class == 11 then
+if not HasItem(Spawn,130119)then --Boots
+    SummonItem(Spawn,130119,1)
+end
+if not HasItem(Spawn,130121)then --Legs
+    SummonItem(Spawn,130121,1)
+end
+if not HasItem(Spawn,130122)then --Chest
+    SummonItem(Spawn,130122,1)
+end
+if not HasItem(Spawn,130120)then --Gloves
+    SummonItem(Spawn,130120,1)
+end
+
+
+elseif Class == 21 then
+if not HasItem(Spawn,132364)then --Boots
+    SummonItem(Spawn,132364,1)
+end
+if not HasItem(Spawn,132366)then --Legs
+    SummonItem(Spawn,132366,1)
+end
+if not HasItem(Spawn,132367)then --Chest
+    SummonItem(Spawn,132367,1)
+end
+if not HasItem(Spawn,132365)then --Gloves
+    SummonItem(Spawn,132365,1)
+end
+
+
+elseif Class == 31 then
+if not HasItem(Spawn,158693)then --Boots
+    SummonItem(Spawn,158693,1)
+end
+if not HasItem(Spawn,158695)then --Legs
+    SummonItem(Spawn,158695,1)
+end
+if not HasItem(Spawn,158696)then --Chest
+    SummonItem(Spawn,158696,1)
+end
+if not HasItem(Spawn,158694)then --Gloves
+    SummonItem(Spawn,158694,1)
+end
+
+
+end
+end
+
+function Trip(NPC,Spawn)
+    if GetQuestStep(Spawn,5717)==2 or HasCompletedQuest(Spawn, 5717) then 
+    LeaveIslandQ(NPC, Spawn)
+    elseif GetQuestStep(Spawn,5758)==2 or HasCompletedQuest(Spawn, 5758) then
+    LeaveIslandFP(NPC, Spawn)
+end
+end
 
 
 function LeaveIslandQ(NPC, Spawn)

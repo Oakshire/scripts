@@ -42,7 +42,7 @@ function Discord(NPC,Spawn)
     AddConversationOption(con, "[ Content Status ]", "ContentStatus")
     AddConversationOption(con, "[ Bugs! ]", "Bugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "There are 2 EQ2EMU test servers in the production process, EQ2EMU (Discord Channel: EQ2Emu) and Zeklabs (Discord Channel: EQ2EQ2 & EQ2PVP).                                                                                     Both have distinct Discord channels that generally share information.  EQ2EMU handles most Content updates & related bug reports. Zeklabs handles hard coding / server stability.  Both servers exchange data frequently to coordinate the best testing server experiences.                                                                                                      Choose your test server accordingly.")
+    StartDialogConversation(con, 1, NPC, Spawn, "There are 2 EQ2EMU test servers in the production process, EQ2EMU (Discord Channel: EQ2Emu) and Zeklabs (Discord Channel: EQ2EQ2 & EQ2PVP).\n\n Both have distinct Discord channels that generally share information.  EQ2EMU handles most Content updates & related bug reports. Zeklabs handles hard coding / server stability.  Both servers exchange data frequently to coordinate the best testing server experiences.\n\nChoose your test server accordingly.")
  end   
  
  function Goal(NPC,Spawn)
@@ -53,7 +53,7 @@ function Discord(NPC,Spawn)
     AddConversationOption(con, "[ Content Status ]", "ContentStatus")
     AddConversationOption(con, "[ Bugs! ]", "Bugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "Goal: The ability to take what is developed here and apply it to a custom server.  Content across the EMU is focused from Classic to Alter of Malice (AoM) in various states. A future server opporator can take the EQ2EMU tools and apply their own rulesets with the content foundation here.                                                                                                               Currently, the AOM client has had the most stability work completed, but other clients, such as Desert of Flames (DoF) have some minor support until they recieve additional attention.")
+    StartDialogConversation(con, 1, NPC, Spawn, "Goal: The ability to take what is developed here and apply it to a custom server.  Content across the EMU is focused from Classic to Alter of Malice (AoM) in various states. A future server opporator can take the EQ2EMU tools and apply their own rulesets with the content foundation here.\n\n Currently, the AOM client has had the most stability work completed, but other clients, such as Desert of Flames (DoF) have some minor support until they recieve additional attention.")
  end   
  
 function CurrentStatus(NPC,Spawn)
@@ -64,7 +64,7 @@ function CurrentStatus(NPC,Spawn)
     AddConversationOption(con, "[ Content Status ]", "ContentStatus")
     AddConversationOption(con, "[ Bugs! ]", "Bugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "Server Status: The EQ2EMU is in Pre-Alpha, meaning there are many areas with some work done but far from what is expected for the \'True Experience\'.                                                                                      NOTE: Character Stats are using the OLD system, where each stat is used by all characters (e.g. Scouts use Wisdom for resistance)                                                                                                                        Refer to the other portions on this board for Zone / Content specific information.")
+    StartDialogConversation(con, 1, NPC, Spawn, "Server Status: The EQ2EMU is in Pre-Alpha, meaning there are many areas with some work done but far from what is expected for the \'True Experience\'.\n\n NOTE: Character Stats are using the OLD system, where each stat is used by all characters (e.g. Scouts use Wisdom for resistance)\n\n Refer to the other portions on this board for Zone / Content specific information.")
     end  
 
 function ContentStatus(NPC,Spawn)
@@ -76,7 +76,7 @@ function ContentStatus(NPC,Spawn)
     AddConversationOption(con, "[ Quests ]","Quests")
     AddConversationOption(con, "[ Player Housing ]","PlayerHouse")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-   StartDialogConversation(con, 1, NPC, Spawn, "Content Status: Content is broken into subcategories: Zones, Combat, Tadeskill, Quests, Player Housing.                                                                                                   These are just basic content areas with general descriptions of their states.")
+   StartDialogConversation(con, 1, NPC, Spawn, "Content Status: Content is broken into subcategories: Zones, Combat, Tadeskill, Quests, Player Housing.\n\n These are just basic content areas with general descriptions of their states.")
 end  
 
 function Zones(NPC,Spawn)
@@ -88,7 +88,7 @@ function Zones(NPC,Spawn)
     AddConversationOption(con, "[ Quests ]","Quests")
     AddConversationOption(con, "[ Player Housing ]","PlayerHouse")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-   StartDialogConversation(con, 1, NPC, Spawn, "Zones: Classic Content zones have received the most attention.  Isle of Refuge is nearly 90%, Queen's Colony is nearly 90%, Outpost of the Overlord is roughly 80%.  Classic Qeynos and all of its \'hoods\' are the most complete.   Freeport is roughly 50% complete with an Ecology pass still needing completed.  Frostfang Sea is mostly complete.  Various other zones, such as Nek Castle, and Tier 5 raid zones have had unique attention.  NOTE: EVERYTHING is a work in progress!")
+   StartDialogConversation(con, 1, NPC, Spawn, "Zones: Classic Content zones have received the most attention.\n\n Isle of Refuge is nearly 90%,\n\n Queen's Colony is nearly 90%,\n\n Outpost of the Overlord is roughly 80%.\n\n  Classic Qeynos and all of its \'hoods\' are the most complete.\n\n Freeport is roughly 50% complete with an Ecology pass still needing completed.\n\n Frostfang Sea is mostly complete.\n\n Various other zones, such as Nek Castle, and Tier 5 raid zones have had unique attention.\n\n NOTE: EVERYTHING is a work in progress!")
 end  
  
 function Combat(NPC,Spawn)
@@ -100,7 +100,7 @@ function Combat(NPC,Spawn)
     AddConversationOption(con, "[ Quests ]","Quests")
     AddConversationOption(con, "[ Player Housing ]","PlayerHouse")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-   StartDialogConversation(con, 1, NPC, Spawn, "Combat: Combat is under constant adjustment. Many areas still need attention, such as Heroic Opportunties, Rebuilding Classic spells, and balance passes.  Resistance rates for spells and expected melee output need continual tweaking.  The classic system has the fewest variables, and is currently the easiest to modify.                                                                                                              NOTE: Character Stats are using the OLD system, where each stat is used by all characters (e.g. Scouts use Wisdom for resistance)")
+   StartDialogConversation(con, 1, NPC, Spawn, "Combat: Combat is under constant adjustment. Many areas still need attention, such as Heroic Opportunties, Rebuilding Classic spells, and balance passes.  Resistance rates for spells and expected melee output need continual tweaking.  The classic system has the fewest variables, and is currently the easiest to modify.\n\n NOTE: Character Stats are using the OLD system, where each stat is used by all characters (e.g. Scouts use Wisdom for resistance)")
 end
 
 function Tradeskill(NPC,Spawn)
@@ -148,7 +148,7 @@ function Bugs(NPC,Spawn)
     AddConversationOption(con, "[ Quest Bugs ]", "QuesttBugs")
     AddConversationOption(con, "[ Tradeskill Bugs ]", "TradeskillBugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "Bugs: Post new Bugs on the EQ2EMU Discord channel!                                                                                                                    The following are some major bugs known to the EMU team. There are more, and please feel free to share them on Discord.")
+    StartDialogConversation(con, 1, NPC, Spawn, "Bugs: Post new Bugs on the EQ2EMU Discord channel! \n\n The following are some major bugs known to the EMU team. There are more, and please feel free to share them on Discord.")
  end  
  
 function CombatBugs(NPC,Spawn)
@@ -159,7 +159,7 @@ function CombatBugs(NPC,Spawn)
     AddConversationOption(con, "[ Quest Bugs ]", "QuesttBugs")
     AddConversationOption(con, "[ Tradeskill Bugs ]", "TradeskillBugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "Combat Bugs:                                                          -Class changes do not apply appropriate skills. Result can cause some equipment to be unusable.                                                                                                   -In-Combat regen for NPCs has spikes after initiating combat.                                                                                                          -Heroic Opportunity Mechanic needs extreme attention.                                                                                                                    -Agro mechanics occasionally happen through walls.                                                                                                                        -Encounter-lock & Yell systems are not implemented.                                                                                                                         -Breath meter and In-Combat runspeed need attention.                                                                                                                        -Fighting aquatic targets near shore needs attention.                                                                                                                                  -Damage immunity mechanics are not currently functional.")
+    StartDialogConversation(con, 1, NPC, Spawn, "Combat Bugs:\n\n -Class changes do not apply appropriate skills. Result can cause some equipment to be unusable.\n\n -In-Combat regen for NPCs has spikes after initiating combat.\n\n -Heroic Opportunity Mechanic needs extreme attention.\n\n -Agro mechanics occasionally happen through walls.\n\n -Encounter-lock & Yell systems are not implemented.\n\n -Breath meter and In-Combat runspeed need attention.\n\n -Fighting aquatic targets near shore needs attention.\n\n -Damage immunity mechanics are not currently functional.")
  end
  
 function QuesttBugs(NPC,Spawn)
@@ -170,7 +170,7 @@ function QuesttBugs(NPC,Spawn)
     AddConversationOption(con, "[ Quest Bugs ]", "QuesttBugs")
     AddConversationOption(con, "[ Tradeskill Bugs ]", "TradeskillBugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "Quest Bugs:                                                     -Non-deletable quests can currently be deleted. Function needs implementation.                                                                            -Multiple Quest Offer Windows can occur and causes content flow issues.                                                                                               -Updating Current Zone is not behaving appropriately.                                                                                                                          -Not all currently active quests can be completed. Highlighting those will bring focus to them for later modification. ")
+    StartDialogConversation(con, 1, NPC, Spawn, "Quest Bugs:\n\n -Non-deletable quests can currently be deleted. Function needs implementation.\n\n -Multiple Quest Offer Windows can occur and causes content flow issues.\n\n -Updating Current Zone is not behaving appropriately.\n\n -Not all currently active quests can be completed. Highlighting those will bring focus to them for later modification. ")
  end
  
 function TradeskillBugs(NPC,Spawn)
@@ -192,5 +192,5 @@ function TradeskillBugs(NPC,Spawn)
     AddConversationOption(con, "[ Quest Bugs ]", "QuesttBugs")
     AddConversationOption(con, "[ Tradeskill Bugs ]", "TradeskillBugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "General Bugs:  - Banking system, from shared bank to stack management, needs attention.                                                        -Follow, Pet follow, and mob stacking are works in progress.                                           -Waypoint system is very basic right now.                                                                  -Location Point of Interest isn't completely implemented yet.                         -Achievements are not active.")
+    StartDialogConversation(con, 1, NPC, Spawn, "General Bugs:  - Banking system, from shared bank to stack management, needs attention.\n\n -Follow, Pet follow, and mob stacking are works in progress.\n\n -Waypoint system is very basic right now.\n\n -Location Point of Interest isn't completely implemented yet.\n\n -Achievements are not active.")
  end 

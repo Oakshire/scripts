@@ -10,7 +10,7 @@
 -- Grants Ultravision to caster
 
 function cast(Caster, Target)
-SetVision(Target, 1)
+    SetVision(Target, 255)
     Say(Caster, "may be the wrong vision set")
 
 end
