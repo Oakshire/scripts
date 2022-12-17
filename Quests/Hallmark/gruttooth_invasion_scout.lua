@@ -34,9 +34,7 @@ function Deleted(Quest, QuestGiver, Player)
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
-    if not HasItem(Player, 1001011,1) and not HasItem(Player, 73896,1) then
-    GiveQuestItem(Quest,Player,"You found some items that suit you on the weapon rack.",1001011,73896)
-    end
+
 	UpdateQuestStepDescription(Quest, 1, "Got my weapon, now to kill some goblins.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've got my weapon and am ready to do my part defending the outpost.")
 

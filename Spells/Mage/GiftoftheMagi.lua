@@ -10,7 +10,7 @@
 -- Increases Mitigation of group members (AE) vs arcane damage by 123
 
 function cast(Caster, Target, Pwr, Mit)
-    AddSpellBonus(Target, 619, Pwr)
+    AddSpellBonus(Target, 501, Pwr)
     AddSpellBonus(Target, 203, Mit)
 end
 

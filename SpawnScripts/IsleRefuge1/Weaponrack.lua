@@ -21,15 +21,24 @@ function casted_on(NPC, Player, Message)
     if Message == "Search weapon rack" then
         if GetQuestStep(Player,FighterGI)==1 then
             SetStepComplete(Player,FighterGI,1)
-            
+            if not HasItem(Player, 1001011,1) and not HasItem(Player, 75057,1) then
+            GiveQuestItem(FighterGI,Player,"You found some items that suit you on the weapon rack.",1001011, 75057)
+            end            
         elseif GetQuestStep(Player,PriestGI)==1 then
             SetStepComplete(Player,PriestGI,1)
-            
+            if not HasItem(Player, 1001011,1) and not HasItem(Player, 73731,1) then
+            GiveQuestItem(PriestGI,Player,"You found some items that suit you on the weapon rack.",1001011, 73731)
+            end           
         elseif GetQuestStep(Player,MageGI)==1 then
             SetStepComplete(Player,MageGI,1)
-        
+            if not HasItem(Player, 1001011,1) and not HasItem(Player, 73899,1) then
+            GiveQuestItem(MageGI,Player,"You found some items that suit you on the weapon rack.",1001011,73899)
+            end        
         elseif GetQuestStep(Player,ScoutGI)==1 then
             SetStepComplete(Player,ScoutGI,1)
+            if not HasItem(Player, 1001011,1) and not HasItem(Player, 73896,1) then
+            GiveQuestItem(ScoutGI,Player,"You found some items that suit you on the weapon rack.",1001011,73896)
+            end
         end
     end
 end
