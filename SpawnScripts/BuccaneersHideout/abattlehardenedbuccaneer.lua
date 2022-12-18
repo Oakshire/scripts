@@ -23,14 +23,28 @@ function aggro(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional3/barbarian_base_1/ft/barbarian/barbarian_base_1_2_aggro_gf_394a7fe3.mp3", "Not sneaky enough to get past me.", "", 1014195867, 4030043484, Spawn, 0)
     end
 else
-    local choice = MakeRandomInt(1,2)
+    local choice = MakeRandomInt(1,3)
 
 	if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/human_dervish/ft/human/human_dervish_1_aggro_gm_5431aa20.mp3", "There they are! Get them!", "", 2165643563, 2117457907, Spawn, 0)
 	elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/human_dervish/ft/human/human_dervish_1_aggro_gm_5a34aed6.mp3", "Make sure they die quietly!", "", 3777681635, 634895945, Spawn, 0)
+	elseif choice == 3 then
+		PlayFlavor(NPC, "voiceover/english/human_dervish/ft/human/human_dervish_1_halfhealth_gm_b1dc44d0.mp3", "It's been awhile since anyone fought back!", "", 1623736591, 2832676927, Spawn, 0)
 	end
 
+end
+end
+
+function death(NPC,Spawn)
+    if GetGender(NPC)==1 then    
+    local choice = MakeRandomInt(1,2)
+
+	if choice == 1 then
+		PlayFlavor(NPC, "voiceover/english/human_dervish/ft/human/human_dervish_1_halfhealth_gm_b1dc44d0.mp3", "It's been awhile since anyone fought back!", "", 1623736591, 2832676927, Spawn, 0)
+	elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/human_dervish/ft/human/human_dervish_1_death_gm_94279fc3.mp3", "Someone get some help, fast!", "", 2213603766, 3071153854, Spawn, 0)
+	end
 end
 end
 

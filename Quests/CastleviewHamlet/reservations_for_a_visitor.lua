@@ -33,7 +33,7 @@ function Declined(Quest, QuestGiver, Player)
 end
 
 function CheckIn(Quest, QuestGiver, Player)
-UpdateQuestStepDescription(Quest, 1, "I've made reservations with innkeeper Valean.")
+    UpdateQuestStepDescription(Quest, 1, "I've made reservations with innkeeper Valean.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've spoken with innkeeper Valean and made reservations for Taneran.")
 
 	AddQuestStepChat(Quest, 2, "I need to return to Listalania.", 1, "Listalania should know Taneran's reservation is set at the inn.", 0, 2360011)
@@ -50,7 +50,7 @@ end
 
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
-		Delivery(Quest, QuestGiver, Player)
+		CheckIn(Quest, QuestGiver, Player)
 	elseif Step == 2 then
 		QuestComplete(Quest, QuestGiver, Player)
     end

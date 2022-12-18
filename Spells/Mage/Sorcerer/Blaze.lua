@@ -7,26 +7,41 @@
 --]]
 
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DotMinVal, DotMaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
-    else
-        SpellDamage(Target, DmgType, MinVal)
+function cast(Caster, Target, DoTType, MinVal, MaxVal, DotMin, DotMax, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
     end
+
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    
+    
+    SpellDamage(Target, DoTType, MinDmg, MaxDmg)
+    
 end
 
 
-function tick(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DotMinVal, DotMaxVal)
-    if DotMaxVal ~= nil and DotMinVal < DotMaxVal then
-        SpellDamage(Target, DoTType, math.random(DotMinVal, DotMaxVal))
-    else
-        SpellDamage(Target, DoTType, DotMinVal)
+function tick(Caster, Target, DoTType, MinVal, MaxVal, DotMin, DotMax, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
     end
+
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = DotMax + math.floor(DmgBonus)
+    MinDmg = DotMin + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DoTType, MinDmg, MaxDmg)
 end
-
-
-function remove(Caster, Target, DmgType, MinVal, MaxVal, DoTType, DotMinVal, DotMaxVal)
-
-end
-
 

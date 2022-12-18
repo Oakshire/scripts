@@ -20,7 +20,7 @@ if not IsAlive(Pirate1) then
 	Dialog.AddDialog("Stand away or I ...I ... I'll stick you!")
 	Dialog.AddVoiceover("voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_notcitizen_gf_2de63779.mp3",600715331, 1815533033)
     PlayFlavor(NPC, "", "", "cringe",0,0 , Spawn, 0)
-	Dialog.AddOption("You're safe now. The path should be clear enough for you to escape.","Dialog1")
+	Dialog.AddOption("You're safe now. The path should be clear enough to escape.","Dialog1")
 	Dialog.Start()
 end
 end
