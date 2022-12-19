@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-
+    SetRequiredQuest(NPC,5774,1,0,0,1)
 end
 
 function casted_on(NPC, Spawn, SpellName)

@@ -12,8 +12,8 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must defeat the bears in the arena.", 2, 100, "I must defeat the challenge set before me in the make-shift arena set up in the warehouse of northern Qeynos.", 11,0)
-	AddQuestStepKill(Quest, 2, "I must defeat the lions in the arena.", 3, 100, "I must defeat the challenge set before me in the make-shift arena set up in the warehouse of northern Qeynos.", 11, 0)
+	AddQuestStepKill(Quest, 1, "I must defeat the bears in the arena.", 2, 100, "I must defeat the challenge set before me in the make-shift arena set up in the warehouse of northern Qeynos.", 11,8320025)
+	AddQuestStepKill(Quest, 2, "I must defeat the lions in the arena.", 3, 100, "I must defeat the challenge set before me in the make-shift arena set up in the warehouse of northern Qeynos.", 11, 8320024)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end

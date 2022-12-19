@@ -165,7 +165,6 @@ function YesP(NPC, Spawn)
  	SetStepComplete(Spawn,IsleIntro,1)
     SendMessage(Player, "Congratulations!  You have chosen the path of the Priest.","yellow")
 	OfferQuest(NPC,Spawn,PriestGI)
-    SetStepComplete()
 	if GetLevel(Spawn)<3 then
 	SetPlayerLevel(Spawn,3)
 	end

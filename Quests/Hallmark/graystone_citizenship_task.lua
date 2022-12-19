@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Oakmyst Forest.", 5, 30, "The local forests have been seeded with tokens for the citizens of Graystone Yard to gather. These tokens may be found on any creatures in the Oakmyst Forest.", 1333,8300001, 8300002, 8300003, 8300004, 8300005, 8300006, 8300008, 8300010, 8300013, 8300014, 8300015, 8300016, 8300017, 8300018, 8300019, 8300022, 8300023, 8300026, 8300027, 8300034, 8300035, 8300036, 8300048, 8300049, 8300050, 8300051, 8300052, 8300053, 8300064)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Oakmyst Forest.", 5, 34, "The local forests have been seeded with tokens for the citizens of Graystone Yard to gather. These tokens may be found on any creatures in the Oakmyst Forest.", 1333,8300001, 8300002, 8300003, 8300004, 8300005, 8300006, 8300008, 8300010, 8300013, 8300014, 8300015, 8300016, 8300017, 8300018, 8300019, 8300022, 8300023, 8300026, 8300027, 8300034, 8300035, 8300036, 8300048, 8300049, 8300050, 8300051, 8300052, 8300053, 8300064)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Oakmyst Forest")
 end

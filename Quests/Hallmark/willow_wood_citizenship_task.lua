@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Forest Ruins.", 5, 30, "The local ruins have been seeded with tokens for the citizens of the Willow Wood to gather. These tokens may be found on any creatures in the Forest Ruins.", 1322,  8270002	,8270003 ,8270005,8270006,8270007,8270008,8270009,8270010,8270011,8270012,8270013,8270014,8270015,8270016,8270017,8270018,8270019,8270020,8270021,8270024,8270025,8270026,8270027,8270028,8270031,8270034,8270045,8270056,8270058,8270059,8270060,8270061,8270062,8270063,8270064,8270065,8270075,8270076)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Forest Ruins.", 5, 34, "The local ruins have been seeded with tokens for the citizens of the Willow Wood to gather. These tokens may be found on any creatures in the Forest Ruins.", 1322,  8270002	,8270003 ,8270005,8270006,8270007,8270008,8270009,8270010,8270011,8270012,8270013,8270014,8270015,8270016,8270017,8270018,8270019,8270020,8270021,8270024,8270025,8270026,8270027,8270028,8270031,8270034,8270045,8270056,8270058,8270059,8270060,8270061,8270062,8270063,8270064,8270065,8270075,8270076)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Forest Ruins")
 end
