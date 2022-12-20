@@ -75,7 +75,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 5, "I must meditate at the altar.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have passed the trial and become a brawler.")
-
+	if GetClass(Player)== 1 then
+	SetAdventureClass(Player,5)
+    SendMessage(Player, "Congratulations! You are a Brawler.","yellow")
+    SendPopUpMessage(Player, "Congratulations! You are a Brawler.",250,250,200)
+    ApplySpellVisual(Player, 324)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+	end
 	UpdateQuestDescription(Quest, "One by one, I've faced the opponents brought before me.  One by one, they have fallen before me.  I have proved myself worthy of becoming a brawler.")
 	GiveQuestReward(Quest, Player)
 end

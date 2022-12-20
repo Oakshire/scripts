@@ -15,8 +15,9 @@ function InRange(NPC,Spawn,Zone)
 if GetTempVariable(NPC,"Enter")=="true" then
    SetTempVariable(NPC, "Enter", "false")
       local con = CreateConversation()
-      AddConversationOption(con, "I will purge the anger from these tormented souls.","Close")
-        StartDialogConversation(con, 1, NPC, Spawn, "As you enter the home, fridged air causes you to shiver. Listless souls parade about haunting furniture in their anguish. Perhaps conquering their anger will calm them.")
+      AddConversationOption(con, "I must purge the anger from these tormented souls.","Close")
+        StartDialogConversation(con, 1, NPC, Spawn, "The cold air of this home seeps under your skin. A chill travels up your spine as you witness listless souls parading about in apparent anguish. Perhaps conquering their anger will calm them.")
+        PlayFlavor(Spawn,"","","shiver",0,0)
 end
 end
 

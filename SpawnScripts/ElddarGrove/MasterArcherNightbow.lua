@@ -17,7 +17,7 @@ ProvidesQuest(NPC,deposit)
 end
 
 function InRange(NPC,Spawn)
---    if not HasCompletedQuest (Spawn, deposit) and not HasQuest (Spawn, deposit) then 
+ --   if not HasCompletedQuest (Spawn, deposit) and not HasQuest (Spawn, deposit) then 
  	if MakeRandomInt(1, 100) <= 60 and GetFactionAmount(Spawn,11)>0 then
     	FaceTarget(NPC, Spawn)
 	    choice = math.random(1,2)
@@ -49,7 +49,7 @@ function hailed(NPC, Spawn)
     if HasCompletedQuest(Spawn, arrows) and not HasQuest(Spawn,deposit) and not HasCompletedQuest(Spawn, deposit) then
 	Dialog.AddOption("How is business?", "Delivery")
     end
-    if GetQuestStepProgress(Spawn,Priest1,1)==0 then
+    if HasQuest(Spawn,Priest1) and GetQuestStepProgress(Spawn,Priest1,1)==0 then
     Dialog.AddOption("I hear you have lately been injured.", "Priest")
     end       
     if GetQuestStep(Spawn,arrows)==1 then

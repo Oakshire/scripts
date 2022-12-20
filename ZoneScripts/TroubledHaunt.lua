@@ -11,6 +11,5 @@ function init_zone_script(Zone)
 end
 
 function player_entry(Zone, Player)
-    SendMessage(Player,"The chilled air of this home causes you to shiver. Listless souls parade about haunting furniture in their anguish. Perhaps conquring their anger will calm them.")
 end
 

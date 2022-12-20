@@ -59,7 +59,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 3, "I declared myself victorious.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've declared my victory.")
-
+	if GetClass(Player)== 1 then
+	SetAdventureClass(Player,2)
+    SendMessage(Player, "Congratulations! You are a Warrior.","yellow")
+    SendPopUpMessage(Player, "Congratulations! You are a Warrior.",250,250,200)
+    ApplySpellVisual(Player, 324)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+	end
 	UpdateQuestDescription(Quest, "I managed to defeat the creatures brought before me in the arena that was set up, and have proved myself worthy of being a warrior. Forever shall I wear this as a badge of courage and honor.")
 	GiveQuestReward(Quest, Player)
 end

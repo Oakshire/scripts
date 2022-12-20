@@ -34,7 +34,8 @@ function aggro(NPC,Spawn)
 end
 
 function death(NPC,Spawn)
-    		PlayFlavor(NPC, "voiceover/english/optional3/ghost_highelf_base_1/ft/ghost/ghost_highelf_base_1_1_death_gm_3523af72.mp3", "Perhaps now their soul will rest.", "", 2124266274, 395618904, Spawn, 0)
+	PerformCameraShake(Spawn, 0.20000000298023224)	
+    PlayFlavor(NPC, "voiceover/english/optional3/ghost_highelf_base_1/ft/ghost/ghost_highelf_base_1_1_death_gm_3523af72.mp3", "Perhaps now their soul will rest.", "", 2124266274, 395618904, Spawn, 0)
     zone = GetZone(NPC)
     if not IsAlive(GetSpawnByLocationID(zone,133780857)) and  not IsAlive(GetSpawnByLocationID(zone,133780858)) and not IsAlive(GetSpawnByLocationID(zone,133780859)) then
     SpawnByLocationID(zone,133780861)

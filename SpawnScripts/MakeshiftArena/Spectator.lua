@@ -10,14 +10,14 @@ function spawn(NPC)
 SetTempVariable(NPC,"Starting","false")
 SetTempVariable(NPC,"Bears","false")
 SetTempVariable(NPC,"Lions","false")
-AddTimer(NPC,(MakeRandomInt(2500,7000)),"EmoteLoop1")
+AddTimer(NPC,(MakeRandomInt(2000,7000)),"EmoteLoop1")
 SetPlayerProximityFunction(NPC, 15, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn)
 if IsPlayer(Spawn)==true then
     SetTarget(NPC,Spawn)
-    AddTimer(NPC,MakeRandomInt(1500,4500),"Turning",1,Spawn)
+    AddTimer(NPC,MakeRandomInt(1500,5000),"Turning",1,Spawn)
 end
 end
 
@@ -101,8 +101,8 @@ if GetTempVariable(NPC,"Bears")=="false"  then
                 AddTimer(NPC,(MakeRandomInt(4000,7000)),"EmoteLoop2",1,Spawn)
                 AddTimer(NPC,MakeRandomInt(1500,4500),"Turning",1,Spawn)
        else
-            SetTempVariable(NPC,"Bears","true")
-              local choice = math.random(1,4)
+                SetTempVariable(NPC,"Bears","true")
+                local choice = math.random(1,4)
             
                 if choice == 1 then
 	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
@@ -112,10 +112,8 @@ if GetTempVariable(NPC,"Bears")=="false"  then
                 PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_clap001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
                 elseif choice == 3 then
 	            PlayFlavor(NPC, "", "", "happy", 0, 0)
-                PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_clap001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
                 elseif choice == 4 then
 	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
-                PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_cheer001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
                 end
                 AddTimer(NPC,(MakeRandomInt(8000,9500)),"EmoteLoop3",1,Spawn)
     end
@@ -150,11 +148,56 @@ if GetTempVariable(NPC,"Lions")=="false"  then
                 elseif choice == 9 then
 	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
                 end
-                AddTimer(NPC,(MakeRandomInt(4000,7000)),"EmoteLoop2",1,Spawn)
+                AddTimer(NPC,(MakeRandomInt(4000,7000)),"EmoteLoop3",1,Spawn)
                 AddTimer(NPC,MakeRandomInt(1500,4500),"Turning",1,Spawn)
        else
            SetTempVariable(NPC,"Lions","true")
-              local choice = math.random(1,4)
+                local choice = math.random(1,4)
+            
+                if choice == 1 then
+	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
+                PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_cheer001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+	            elseif choice == 2 then
+	            PlayFlavor(NPC, "", "", "applaude", 0, 0)
+                PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_clap001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+                elseif choice == 3 then
+	            PlayFlavor(NPC, "", "", "happy", 0, 0)
+                elseif choice == 4 then
+	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
+                end
+                AddTimer(NPC,(MakeRandomInt(4000,7000)),"EmoteLoop4",1,Spawn)
+end
+end
+end
+
+function EmoteLoop4(NPC,Spawn)
+zone = GetZone(NPC)
+GoodbyeMaker = GetSpawnByLocationID(zone,133781404)    
+if GetTempVariable(NPC,"Lions")=="true" and GoodbyeMaker~=nil then
+                local choice = math.random(1,9)
+                if choice == 1 then
+	            PlayFlavor(NPC, "", "", "snicker", 0, 0)
+	            elseif choice == 2 then
+	            PlayFlavor(NPC, "", "", "peer", 0, 0)
+                elseif choice == 3 then
+	            PlayFlavor(NPC, "", "", "ponder", 0, 0)
+	            elseif choice == 4 then
+	            PlayFlavor(NPC, "", "", "happy", 0, 0)
+                elseif choice == 5 then
+	            PlayFlavor(NPC, "", "", "confused", 0, 0)
+                elseif choice == 6 then
+	            PlayFlavor(NPC, "", "", "peer", 0, 0)
+	            elseif choice == 7 then
+	            PlayFlavor(NPC, "", "", "stare", 0, 0)
+	            elseif choice == 8 then
+	            PlayFlavor(NPC, "", "", "applaude", 0, 0)
+                elseif choice == 9 then
+	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
+                end
+                AddTimer(NPC,(MakeRandomInt(4000,7000)),"EmoteLoop4",1,Spawn)
+                AddTimer(NPC,MakeRandomInt(1500,4500),"Turning",1,Spawn)
+       else
+                local choice = math.random(1,4)
             
                 if choice == 1 then
 	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
@@ -167,9 +210,24 @@ if GetTempVariable(NPC,"Lions")=="false"  then
                 PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_clap001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
                 elseif choice == 4 then
 	            PlayFlavor(NPC, "", "", "cheer", 0, 0)
-                PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_cheer001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
                 end
-                AddTimer(NPC,(MakeRandomInt(4000,7000)),"EmoteLoop3",1,Spawn)
+                AddTimer(NPC,(MakeRandomInt(9000,15000)),"DespawnLoop",1,Spawn)
+
 end
 end
+
+function DespawnLoop(NPC,Spawn)
+               local choice = math.random(1,9)
+            
+                if choice == 1 then
+	            PlayFlavor(NPC, "", "", "bye", 0, 0)
+	            elseif choice == 2 then
+	            PlayFlavor(NPC, "", "", "smile", 0, 0)
+                elseif choice == 3 then
+	            PlayFlavor(NPC, "", "", "wave", 0, 0)
+	            elseif choice == 4 then
+	            PlayFlavor(NPC, "", "", "happy", 0, 0)
+                end
+	            Despawn(NPC)
+
 end

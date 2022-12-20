@@ -8,7 +8,7 @@
 
 function spawn(NPC)
     SetPlayerProximityFunction(NPC, 8, "InRange", "LeaveRange")
-SetTempVariable(NPC, "Enter", "true")
+    SetTempVariable(NPC, "Enter", "true")
 end
 
 function InRange(NPC,Spawn,Zone)
@@ -27,6 +27,7 @@ function FirstWarning(Zone,Spawn)
     SendMessage(Spawn, "You begin to feel the meditation wane...","yellow")
     SendPopUpMessage(Spawn, "You begin to feel the meditation wane...",250,250,250)
     zone = GetZone(Spawn)
+	PerformCameraShake(Spawn, 0.10000000149011612)
     SpawnByLocationID(zone,133780775)
     SpawnByLocationID(zone,133780776)
 end
@@ -35,7 +36,8 @@ function SecondWarning(Zone,Spawn)
     SendMessage(Spawn, "Only a short time remains before you return to your body...","yellow")
     SendPopUpMessage(Spawn, "Only a short time remains before you return to your body...",250,250,250)
     zone = GetZone(Spawn)
-    SpawnByLocationID(zone,133780777)
+ 	PerformCameraShake(Spawn, 0.20000000298023224)	
+   SpawnByLocationID(zone,133780777)
     SpawnByLocationID(zone,133780778)
     PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn))
 end
@@ -43,6 +45,7 @@ end
 function ThirdWarning(Zone,Spawn)
     SendMessage(Spawn, "Only a short time remains before you return to your body...","yellow")
     SendPopUpMessage(Spawn, "Only a short time remains before you return to your body...",250,250,250)
+	PerformCameraShake(Spawn, 0.699999988079071)
     zone = GetZone(Spawn)
     SpawnByLocationID(zone,133780779)
     SpawnByLocationID(zone,133780780)
@@ -52,10 +55,12 @@ end
 function FourthWarning(Zone,Spawn)
     SendMessage(Spawn, "The mediation ends.","yellow")
     SendPopUpMessage(Spawn, "The mediation ends.",250,250,250)
+	PerformCameraShake(Spawn, 0.699999988079071)
 end
 
 function Ending(NPC,Spawn)
     NQ = GetZone("northqeynos")
+	PerformCameraShake(Spawn, 0.10000000149011612)
        Zone(NQ,Spawn,281.55, -13.58, 97.29, 283.43)
         SpawnSet(Player,"visual_state",0)
 end

@@ -37,7 +37,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I've defeated the brigands and freed the villager.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've defeated the thugs holding the villager hostage and set her free.")
-
+	if GetClass(Player)== 1 then
+	SetAdventureClass(Player,8)
+    SendMessage(Player, "Congratulations! You are a Crusader.","yellow")
+    SendPopUpMessage(Player, "Congratulations! You are a Crusader.",250,250,200)
+    ApplySpellVisual(Player, 324)
+    PlaySound(Player, "sounds/test/endquest.wav", GetX(Player), GetY(Player), GetZ(Player), Player)
+	end
 	UpdateQuestDescription(Quest, "I have rescued the frightened villager from the hands of a dangerous band of brigands, in the process proving to both myself and others that I fight for others and for what I believe in.  I am now worthy of becoming a crusader.")
 	GiveQuestReward(Quest, Player)
 end

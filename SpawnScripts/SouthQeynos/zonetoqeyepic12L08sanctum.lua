@@ -7,11 +7,11 @@
 --]]
 
 function spawn(NPC)
-    SetRequiredQuest(NPC,5780,1,0,0,1)
-    SetRequiredQuest(NPC,5780,2,0,0,1)
-    SetRequiredQuest(NPC,5780,3,0,0,1)
-    SetRequiredQuest(NPC,5780,4,0,0,1)
-    SetRequiredQuest(NPC,5780,5,0,0,1)
+    SetRequiredQuest(NPC,5790,1,0,0,1)
+    SetRequiredQuest(NPC,5790,2,0,0,1)
+    SetRequiredQuest(NPC,5790,3,0,0,1)
+    SetRequiredQuest(NPC,5790,4,0,0,1)
+    SetRequiredQuest(NPC,5790,5,0,0,1)
 end
 
 

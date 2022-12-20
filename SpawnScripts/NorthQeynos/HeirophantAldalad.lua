@@ -370,7 +370,7 @@ end
 
 
 function DruidPort(NPC,Spawn)
-    Trial = GetZone("qey_epic11_l10_arbor")
+    Trial = GetZone("BurningAbode")
     Zone(Trial,Spawn,6.91, -0.20, 3.77, 348.55)
 end
 --SHAMAN

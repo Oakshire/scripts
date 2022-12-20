@@ -21,7 +21,7 @@ function hailed(NPC, Spawn)
 	Dialog.AddDialog("A good day's work is the measure of worth!")
 	Dialog.AddVoiceover("voiceover/english/carpenter_jorgie_icearmor/qey_harbor/jorgieicearmor000.mp3", 2791551387, 1030675041)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-    if GetQuestStepProgress(Spawn,Priest1,2)==0 and GetQuestStep(Spawn,Priest1) <=2 then
+    if HasQuest(Spawn,Priest1) and GetQuestStepProgress(Spawn,Priest1,2)==0 and GetQuestStep(Spawn,Priest1) <=2 then
     Dialog.AddOption("I understand you're not feeling well.", "Priest")
     end           
 	Dialog.AddOption("I fully agree.  I'll let you get back to work!")

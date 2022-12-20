@@ -28,7 +28,8 @@ function waypoints(NPC)
 end
 
 function death(NPC,Spawn)
-		PlayFlavor(NPC, "voiceover/english/optional3/halfling_corrupted/ft/halfling/halfling_corrupted_1_death_gm_4c12cb24.mp3", "Free me!", "", 3881759262, 3266522906, Spawn, 8)
+	PerformCameraShake(Spawn, 0.20000000298023224)	
+	PlayFlavor(NPC, "voiceover/english/optional3/halfling_corrupted/ft/halfling/halfling_corrupted_1_death_gm_4c12cb24.mp3", "Free me!", "", 3881759262, 3266522906, Spawn, 8)
     zone = GetZone(NPC)
     if not IsAlive(GetSpawnByLocationID(zone,133780857)) and  not IsAlive(GetSpawnByLocationID(zone,133780858)) then
     SpawnByLocationID(zone,133780861)
