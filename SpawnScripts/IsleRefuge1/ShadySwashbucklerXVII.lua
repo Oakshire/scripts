@@ -102,7 +102,7 @@ if not HasItem(Spawn,136170)then --Bone Bracelet
     SummonItem(Spawn,136170,1)
 end
 
-if Class == 1 then
+if Class == 1 then -- FIGHTER
     
 if not HasItem(Spawn,152754)then --Boots
     SummonItem(Spawn,152754,1)
@@ -118,7 +118,7 @@ if not HasItem(Spawn,152755)then --Gloves
 end
 
 
-elseif Class == 11 then
+elseif Class == 11 then -- PRIEST
 if not HasItem(Spawn,130119)then --Boots
     SummonItem(Spawn,130119,1)
 end
@@ -133,7 +133,7 @@ if not HasItem(Spawn,130120)then --Gloves
 end
 
 
-elseif Class == 21 then
+elseif Class == 21 then --MAGE
 if not HasItem(Spawn,132364)then --Boots
     SummonItem(Spawn,132364,1)
 end
@@ -148,7 +148,14 @@ if not HasItem(Spawn,132365)then --Gloves
 end
 
 
-elseif Class == 31 then
+elseif Class == 31 then --SCOUT
+if not HasItem(Spawn,40984)then --Bow
+    SummonItem(Spawn,40984,1)
+end
+if not HasItem(Spawn,20528)then --Arrows
+    SummonItem(Spawn,20528,20)
+end
+
 if not HasItem(Spawn,158693)then --Boots
     SummonItem(Spawn,158693,1)
 end

@@ -11,7 +11,7 @@
 function cast(Caster, Target, HateLow, HateHigh)
     Hate = math.random(HateHigh, HateLow)
     AddHate(Caster, Target, Hate, 1)
-    Say(Caster, "Missing Reposte Immunity")
+    Say(Caster, "Missing Riposte Immunity")
 end
 
 function remove(Caster, Target)
