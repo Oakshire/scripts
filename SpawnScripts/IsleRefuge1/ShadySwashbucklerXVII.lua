@@ -153,7 +153,26 @@ if not HasItem(Spawn,40984)then --Bow
     SummonItem(Spawn,40984,1)
 end
 if not HasItem(Spawn,20528)then --Arrows
-    SummonItem(Spawn,20528,20)
+    SummonItem(Spawn,20528,1)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
+    SummonItem(Spawn,20528,0)
 end
 
 if not HasItem(Spawn,158693)then --Boots
