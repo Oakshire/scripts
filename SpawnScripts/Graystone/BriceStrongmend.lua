@@ -86,7 +86,7 @@ function Returned(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/brice_strongmend/qey_village03/bricestrongmend003.mp3", "", "agree", 3257008842, 2595858488, Spawn)
 	AddConversationOption(conversation, "I don't need the pole, but I'll take the money!","Done")
 	AddConversationOption(conversation, "Your old fishing pole has seen better days. Good luck.","Done")
-	StartConversation(conversation, NPC, Spawn, "An honest one you are! I can see you'll fit in well in Qeynos! Please, take the leftover money. With this new pole I'm sure to catch more than my share and I can sell the rest! Say, would you like my old fishing pole?")
+	StartConversation(conversation, NPC, Spawn, "An honest one you are! I can see you'll fit in well in Qeynos! Please, take the leftover money. With this new pole I'm sure to catch more than my share of fish. Then I can sell the rest. Say, would you like my old fishing pole?")
 end
 
 function Done(NPC,Spawn)

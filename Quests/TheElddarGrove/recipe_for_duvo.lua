@@ -22,7 +22,7 @@ function Accepted(Quest, QuestGiver, Player)
 	local conversation = CreateConversation()
     PlayFlavor(QuestGiver, "voiceover/english/scribe_duvo/qey_elddar/scribeduvo001.mp3", "", "", 2070584741, 1381928487, Player)
 	AddConversationOption(conversation, "Okay!  I'll find Penny for you.")
-	StartConversation(conversation, QuestGiver, Player, "You must visit the Ironforge family and inquire about the recipie of Penny Goodhearth's.  Miss Goodhearth promised me a recipie for the most scrumptious muffins, and I'm burried under a mountain of papers to scribe! Please pick up the recipie for me immediately!")
+	StartConversation(conversation, QuestGiver, Player, "You must visit the IronForge family and inquire about a recipe of Penny Goodhearth's. Miss Goodhearth promised me a recipe for the most scrumptious muffins, and I'm buried under a mound of papers to scribe! Please, pick up the recipe for me immediately. Now, be on your way!")
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -55,7 +55,7 @@ function hailed(NPC, Spawn)
     	   if GetQuestStep(Spawn, Delivery)==1 then
 	           Dialog.AddOption("I'm returning a book from Barry Viceheart.", "DeliveryReturn")
 	        end
-            if not HasQuest(Spawn, Book) then       
+            if not HasQuest(Spawn, Book) and not HasCompletedQuest(Spawn, Book) then       
                 Dialog.AddOption("I'm not from around here. Anything I should know?", "BookStart")
             end
             if not HasQuest(Spawn, Leaves) and GetLevel(Spawn)>=7 then       

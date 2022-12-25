@@ -43,7 +43,7 @@ function hailed(NPC, Spawn)
         else  
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Welcome to my store. You'll notice merchant Kruuprum has setup shop next door. We've actually been working to provide you, the customer, a greater a varaity of wares.")
+	Dialog.AddDialog("Welcome to my store. You'll notice merchant Kruuprum has setup shop next door. We've actually been working to bring you, the customer, a greater a varaity of wares.")
 	Dialog.AddVoiceover("voiceover/english/merchant_fevalin/qey_village04/merchantfevalin.mp3", 2353063125, 3076810683)
 	PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
             if not HasQuest(Spawn, Rats) and not HasCompletedQuest(Spawn,Rats) then       
@@ -53,7 +53,7 @@ function hailed(NPC, Spawn)
               Dialog.AddOption("You and Kruuprum have a decent selection! Need any help?", "BatsStart")
             end
             if GetQuestStep(Spawn, Rats)==2 then
-	           Dialog.AddOption("Here are some bugs for you to munch on.", "RatsDone")
+	           Dialog.AddOption("Here are the tails you requested from Oakmyst.", "RatsDone")
 	        end
 	        if GetQuestStep(Spawn, Bats)==2 then
 	           Dialog.AddOption("Here are your five albino pelts.", "BatsStep2")

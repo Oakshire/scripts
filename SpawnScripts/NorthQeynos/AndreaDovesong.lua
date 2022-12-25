@@ -144,7 +144,7 @@ function Work2(NPC, Spawn)
     end
 	AddConversationOption(conversation, "Gladly.  I'll be back with the parchment", "StartPapers")
 	AddConversationOption(conversation, "Parchment?  Afraid I don't have the time.", "shrug")
-	StartConversation(conversation, NPC, Spawn, "Looking for work are you?  I could use some parchment to transcribe my sonnta.  Scribe Duvo always has pleanty.  You'll find him at the Elddar Grove.  Bring me the parchment and I'll pay you for your troubles.")
+	StartConversation(conversation, NPC, Spawn, "Looking for work are you?  I could use some parchment to transcribe my sonata.  Scribe Duvo always has pleanty.  You'll find him at the Elddar Grove.  Bring me the parchment and I'll pay you for your troubles.")
 end	    
 
  function shrug(NPC,Spawn)

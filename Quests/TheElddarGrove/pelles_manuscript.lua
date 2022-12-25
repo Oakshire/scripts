@@ -22,7 +22,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
-	Dialog.AddDialog("Great news!  Best I've had all day really.  Now, make certain it is a human by the name of Rune Shimmerstar who recieves this.  He's the only one at the Three Towers I'll trust!  Hehe, never made it much of a habbit to put much faith in those magi-folk.  You know, we had quite a number of adventures together, Rune and me!  Quite a nice chap once you get to know him.")
+	Dialog.AddDialog("Great news!  Best I've had all day, really.  Now, make certain that it is a human by the name of Rune Shimmerstar who receives this!  He's the only one over there at the Three Towers I'll trust!  Never made it a habit to put much faith in those magey folk.  You know, we had quite a few adventures together, Rune and me!  Quite a nice chap once you get to know him, really.")
 	Dialog.AddVoiceover("voiceover/english/pelle_shinkicker/qey_elddar/pelleshinkicker003.mp3", 2052304892, 1411111467)
     PlayFlavor(QuestGiver, "", "", "smile", 0, 0, Player)	
 	Dialog.AddOption("I'll be back shortly.")

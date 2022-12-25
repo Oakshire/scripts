@@ -96,7 +96,7 @@ end
 function Helping(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I apologize for my rude behaviour, friend.  I'm wound up tighter than an ogre's bootstraps because the tavern isn't built yet!  Until construction is complete, I'm stuck outside.  S-say, could you help me?  I need to check on a order I placed for some special gnome kegs.")
+	Dialog.AddDialog("I apologize for my rude behaviour, friend.  I'm wound up tighter than an ogre's bootstraps because the tavern isn't built yet!  Until construction is complete, I'm stuck outside.  S-say, would you help me?  I need to check on a order I placed for some special gnome kegs.")
 	Dialog.AddVoiceover("voiceover/english/lolla_cotgrove/qey_village01/lollacotgrove001.mp3", 1554521756, 1693439173)
 	Dialog.AddOption("I'm guessing a gnome has the order?", "Helping2")
 	Dialog.AddOption("Sorry, I can't help right now.")

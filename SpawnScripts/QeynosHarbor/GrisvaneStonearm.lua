@@ -38,7 +38,7 @@ end
     PlayFlavor(NPC, "voiceover/english/banker_grisvane_stonearm/qey_harbor/bankergrisvanestonearm000.mp3", "", "ponder", 959700799, 1039182816, Spawn)	
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Thank you.", "FinishQuest")
-	StartConversation(conversation, NPC, Spawn, "Well then why didn't you just say so.  Miss Nightbow is always first on my list!  Let's see what we have here... hrmm- excellent!  I'm glad to see she's done well this week!  I can't say the same for last week.  Let me write a recipt.  I know she'll want one... Here you are!  Good day.  ")
+	StartConversation(conversation, NPC, Spawn, "Well then why didn't you just say so.  Miss Nightbow is always first on my list!  Let's see what we have here... hrmm- excellent!  I'm glad to see she's done well this week!  I can't say the same for last week.  Let me write a receipt.  I know she'll want one... Here you are!  Good day.  ")
 end  
 
 function FinishQuest(NPC, Spawn)

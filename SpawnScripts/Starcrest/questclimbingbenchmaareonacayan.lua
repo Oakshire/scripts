@@ -10,6 +10,7 @@ function spawn(NPC)
     SetRequiredQuest(NPC,316,1,0,0,1)
     SetRequiredQuest(NPC,321,1,0,0,1)
     SetRequiredQuest(NPC,321,2,0,0,1)
+    SetRequiredQuest(NPC,321,3,0,0,1)
 end
 
 function respawn(NPC)

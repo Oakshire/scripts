@@ -56,7 +56,7 @@ function hailed(NPC, Spawn)
     Dialog.AddOption("I'm here to pick up arrows for Patrolman Fanthis.", "Pickup")
     end	
     if GetQuestStep(Spawn,deposit)==2 then
-    Dialog.AddOption("Here is the recipt for your deposit to the Qeynos Exchange.", "Delivered")
+    Dialog.AddOption("Here is the receipt for your deposit to the Qeynos Exchange.", "Delivered")
     end
     Dialog.AddOption("I appreciate it.  Thank you.")
 	Dialog.Start()

@@ -20,8 +20,8 @@ function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	local conversation = CreateConversation()
     PlayFlavor(QuestGiver, "voiceover/english/master_archer_nightbow/qey_elddar/armsdealernightbow002.mp3", "", "agree", 2931514549, 74273653, Player)
-	AddConversationOption(conversation, "I'll bring you back the recipt.")
-	StartConversation(conversation, QuestGiver, Player, "A dwarf named Grisvane Stonearm will take the deposit.  You need to peek over the Exchange's counter to find him.  He's been doing the figures for this shop for nearly twenty years, and it just wouldn't do to go to someone else.  Bring a recipt for the deposit when you're done please!")
+	AddConversationOption(conversation, "I'll bring you back the receipt.")
+	StartConversation(conversation, QuestGiver, Player, "A dwarf named Grisvane Stonearm will take the deposit.  You need to peek over the Exchange's counter to find him.  He's been doing the figures for this shop for nearly twenty years, and it just wouldn't do to go to someone else.  Bring a receipt for the deposit when you're done please!")
 
 end
 

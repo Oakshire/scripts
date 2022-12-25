@@ -102,10 +102,10 @@ end
  function Deposit1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I thought he'd make the deposit, but I suppose it doesn't matter who does it as long as it gets to the bank. Do you need anything else?")
+	Dialog.AddDialog("I thought he'd make the deposit, but I suppose it makes no difference who does it as long as it gets to the bank. Do you need anything else?")
 	Dialog.AddVoiceover("voiceover/english/banker_orudormo/qey_village02/bankerorudormo000.mp3", 3783803084,3333586894)
     PlayFlavor(NPC, "", "", "shrug", 0, 0, Spawn)	
-	Dialog.AddOption("I need the recpit. Thank you.", "Deposit2")
+	Dialog.AddOption("I need the receipt. Thank you.", "Deposit2")
 	Dialog.Start()
 end 
 

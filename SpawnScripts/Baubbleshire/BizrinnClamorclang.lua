@@ -30,7 +30,7 @@ function Dialog1(NPC, Spawn)
 	Dialog.AddDialog("Oh! Why hello there!  I am so behind on tinker work that I am not taking anymore orders at the moment ... What is it you want?")
 	Dialog.AddVoiceover("voiceover/english/bizrinn_clamorclang/qey_village06/bizrinnclamorclang.mp3", 3866517974, 2558850199)
 
-	Dialog.AddOption("I actually have a recipt to pick up a device for Bupipa Guryup.","Device1")
+	Dialog.AddOption("I actually have a receipt to pick up a device for Bupipa Guryup.","Device1")
 	Dialog.AddOptionRequirement(REQ_QUEST_ON_STEP, PickUp , 1)
 
 	Dialog.AddOption("Ah, that's too bad.  I guess I'll get my thingamajig whatchamacalit made somewhere else")
