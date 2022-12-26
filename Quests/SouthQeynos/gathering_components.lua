@@ -56,8 +56,8 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player, 5555, 1) and QuestStepIsComplete(Player, 5555, 2) and QuestStepIsComplete(Player, 5555, 3) then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered the components Khalil'Mun needs for his potion.")
-	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 	AddQuestStepChat(Quest, 4, "I need return to Khalil'Mun.", 1, "Khalil'Mun is waiting for these ingredients in his shop in South Qeynos.", 10, 2310048)
+	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
     end
 end
 

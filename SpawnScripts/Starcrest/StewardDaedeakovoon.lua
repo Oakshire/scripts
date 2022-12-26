@@ -45,7 +45,7 @@ function hailed(NPC, Spawn)
         PlayFlavor(NPC,"","","shakefist",0,0,Spawn)
     else        
 if GetRace(Spawn)== 9 or GetRace(Spawn)== 3 or GetRace(Spawn)== 20 then
-    if not HasQuest(Spawn,5762) and not HasCompletedQuest(Spawn, 5762) and HasQuest(Spawn, 5763) and not HasCompletedQuest(Spawn, 5763)then
+    if not HasQuest(Spawn,5762) and not HasCompletedQuest(Spawn, 5762) and not HasQuest(Spawn, 5763) and not HasCompletedQuest(Spawn, 5763)then
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("On behalf of Qeynos, we open our arms to you, friend.  Your journey is over, and now you dwell among friends.")

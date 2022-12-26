@@ -46,6 +46,6 @@ if not HasQuest(Player,5720) and not HasCompletedQuest(Player,5720)then
    OfferQuest(nil,Player,5720)
 end
 conversation = CreateConversation()
-AddConversationOption(conversation, "[put the note]","CloseItemConversation")
+AddConversationOption(conversation, "[put the note away]","CloseItemConversation")
 StartDialogConversation(conversation, 2, Item, Player, "After you complete your task, report to Marshal Glorfel using the citizenship sign.")
 end

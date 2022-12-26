@@ -33,7 +33,7 @@ function casted_on(NPC, Spawn,SpellName)
     local con = CreateConversation()
     AddConversationOption(con, "Yes", "Leave")
     AddConversationOption(con, "No","CloseConversation")
-    StartDialogConversation(con, 1, NPC, Player, "You have all the tokens required to enter the Trial Chamber.  Do you wish to begin the trial?")
+    StartDialogConversation(con, 1, NPC, Spawn, "You have all the tokens required to enter the Trial Chamber.  Do you wish to begin the trial?")
 end
 end 
 end
