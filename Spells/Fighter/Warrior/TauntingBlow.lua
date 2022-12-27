@@ -6,9 +6,25 @@
                    : 
 --]]
 
-function cast(Caster, Target, DmgType, DmgLow, DmgHigh, MinTauntVal, MaxTauntVal)
--- Inflicts 7 - 11 melee damage on target
-SpellDamage(Target, DmgType, DmgLow, DmgHigh)
+function cast(Caster, Target, DmgType, DmgLow, DmgHigh, MinTauntVal, MaxTauntVal, SpellLevel)
+    
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = DmgHigh + math.floor(DmgBonus)
+    MinDmg = DmgLow + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+
+
+
 -- Increases Threat to target by 435 - 531 
     
 if MaxTauntVal ~= nil and MinTauntVal < MaxTauntVal then

@@ -48,7 +48,7 @@ end
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I've placed the table and spoken with the caretaker.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I've placed the table and spoken with the caretaker.")
-	AddQuestStepChat(Quest, 4, "Speak with the Banker Orudormo in Nettleville Hovel.", 1, "Ms. Fairlee has informed me that I have a bank account waiting for me.  I need to speak with the Banker Caroline to open the account.",11,2340031)
+	AddQuestStepChat(Quest, 4, "Speak with the Banker Orudormo in Starcrest Commune.", 1, "Ms. Fairlee has informed me that I have a bank account waiting for me.  I need to speak with the Banker Caroline to open the account.",11,2340031)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")   
 end
 

@@ -117,7 +117,7 @@ elseif HasQuest(Spawn, 5483) or HasQuest(Spawn, 5759) then
 		StartConversation(conversation, NPC, Spawn, "I thought you said you'd  help me!  Do what you can, okay?")
 
 
-elseif  HasCompletedQuest(Spawn, 5759) and not HasCompletedQuest(Spawn, 5759) then
+elseif  HasCompletedQuest(Spawn, 5759) and not HasCompletedQuest(Spawn, 5784) then
     	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 

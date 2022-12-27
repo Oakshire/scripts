@@ -51,7 +51,7 @@ end
 
 function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5571, 1) and QuestStepIsComplete(Player, 5571, 2) then
-    UpdateQuestStepDescription(Quest, "I've gathered the bait supplies Sean needs.")
+    UpdateQuestStepDescription(Quest, 2,"I've gathered the bait supplies Sean needs.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've collected the five pieces of slug meat and five bog faerie wings.")
     UpdateQuestZone(Quest, "Qeynos Harbor")
 	AddQuestStepChat(Quest, 3, "I need to return to Sean Wellfayer on the docks of Qeynos Harbor.", 1, "Sean Wellfayer Should be pleased with this bait once I get it back to him at the harbor.", 11, 2210065)

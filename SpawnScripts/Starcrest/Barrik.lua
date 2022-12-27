@@ -90,7 +90,7 @@ function Delivered(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
     SetStepComplete(Spawn, 5603, 2)
     PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-	Dialog.AddDialog("Aye, she was rude when she ordered the blade!  Heh.  It will be a real treat if she graces my shop with her pressence again.  Anyway, here's the coin I promised you.")
+	Dialog.AddDialog("Aye, she was rude when she ordered the blade!  Heh.  It will be a real treat if she graces my shop with her presence again.  Anyway, here's the coin I promised you.")
 	Dialog.AddVoiceover("voiceover/english/armsdealer_barrik/qey_village02/armsdealerbarrik003.mp3", 3828124252, 308902726)
     if GetQuestStep (Spawn, 243)==1 then 
 	Dialog.AddOption("Oh, Farnsbey asked me to pick the axe he ordered if it is ready.","Pickup")
