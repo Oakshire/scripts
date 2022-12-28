@@ -59,8 +59,10 @@ function Dialog2a(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/banker_caroline_copperstone/qey_village01/banker_carolyn_copperstone003.mp3", 1449224739, 333296052)
 	Dialog.AddOption("Adventurer","Dialog2b")
 	Dialog.AddOption("Crafter","Dialog2b")
+	Dialog.AddOption(""..GetClassName(Spawn).."","Dialog2b")
     if GetRace(Spawn)==9 then
-	Dialog.AddOption("Formly a used horse salesperson before the cataclysm.","Dialog2b")
+	Dialog.AddOption("Formerly a used horse salesperson before the cataclysm.","Dialog2b")
+	Dialog.AddOption("Jack-of-all-trades?","Dialog2b")
     elseif GetRace(Spawn)==11 then
 	Dialog.AddOption("I'd say box inspector, but I guess I should just put down Adventurer.","Dialog2b")
     end
@@ -85,7 +87,7 @@ if HasQuest(Spawn,5763) and GetQuestStep(Spawn,5763)==4 then
 end
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Excellent! Your account is open, and a spot is reserved for you in the vaults. Please visit us anytime with your banking needs. Do you need anything else?")
+	Dialog.AddDialog("Excellent!  Your account with our bank is open. We've reserved a spot in the vault for you. Please feel free to visit us anytime with your banking needs.  Do you need anything else?")
 	Dialog.AddVoiceover("voiceover/english/banker_caroline_copperstone/qey_village01/banker_carolyn_copperstone005.mp3", 2301459090, 3948003852)
 	PlayFlavor(NPC, "", "", "smile", 0, 0, Spawn)
 	Dialog.AddOption("Not right now.")

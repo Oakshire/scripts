@@ -76,7 +76,7 @@ end
 function Step7Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "I've found the gates to the Peat Bog.")
 	UpdateQuestTaskGroupDescription(Quest, 7, "I've visisted one of four locations Ms. Fairlee has told me about.")
-	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Nettleville crafting trainer, Nawal Tahri.",1,"\"Not all coin gained by refugees comes from battling vermin. Crafting is a great opportunity for some refugees to become skilled in a tradeskill.  You should meet with the crafting trainer outside The Elsuive Commonwealth so you become familiar with where to begin a tradeskill if you so desire.\" - Ms. Fairlee", 11,2350050)
+	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Nettleville crafting trainer, Nawal Tahri.",1,"\"Not all coin gained by refugees comes from battling vermin. Crafting is a great opportunity for some refugees to become skilled in a tradeskill.  You should meet with the crafting trainer outside The Elsuive Commonwealth so you become familiar with where to begin a tradeskill if you so desire.\" - Ms. Fairlee", 11,2330044)
 	AddQuestStepCompleteAction(Quest, 8, "Step8Complete")   
 end
 

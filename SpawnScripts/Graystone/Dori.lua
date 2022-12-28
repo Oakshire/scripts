@@ -94,6 +94,7 @@ function Dialog2a(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/banker_dori/qey_village03/bankerdori004.mp3", 2681845326,423161298)
 	Dialog.AddOption("Adventurer","Dialog2b")
 	Dialog.AddOption("Crafter","Dialog2b")
+	Dialog.AddOption(""..GetClassName(Spawn).."","Dialog2b")
     if GetRace(Spawn)==0 then
 	Dialog.AddOption("Tarven brawling counts if you win, right?","Dialog2b")
     elseif GetRace(Spawn)==2 then

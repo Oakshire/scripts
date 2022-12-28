@@ -40,7 +40,7 @@ function hailed(NPC, Spawn)
         AddConversationOption(conversation, "Can I assist you with anything around the shop?", "Snakes")
         end
         if GetQuestStep(Spawn, Delivery)==2 then  
-        AddConversationOption(conversation, "Here are the snake skins you asked for.", "SnakesFinish")
+        AddConversationOption(conversation, "I'm back! I've got the skins you requested!", "SnakesFinish")
         end
         AddConversationOption(conversation, "I'm just looking around.")
         StartConversation(conversation, NPC, Spawn, "If steel is what you seek traveler, then look no further!")
@@ -77,11 +77,11 @@ function QuestBegin (NPC, Spawn)
 end
 
  function SnakesFinish(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/blacksmith_baynor/qey_village05/blacksmithbaynor003.mp3", "", "thank", 4052925746, 2525148033, Spawn)
+    PlayFlavor(NPC, "voiceover/english/weaponsmith_soulforge/qey_village03/weaponsmithsoulforge005.mp3", "", "ponder", 3067377267, 3322501955, Spawn) --DOESN'T WORK (Wrong key)
     FaceTarget(NPC, Spawn)
   conversation = CreateConversation()
-  AddConversationOption(conversation, "Thanks, and be careful with those tongs.", "Reward")
-  StartConversation(conversation, NPC, Spawn, "Thank you, friend! Ah, yes. These tongs work as well as the day Ironmallet gave them to me! Please, take a bit of coin for your trouble. Farewell.")
+  AddConversationOption(conversation, "Ok, well, I'll have to make due with that.", "Reward")
+  StartConversation(conversation, NPC, Spawn, "Let's have a look, shall we?  Hmm ... These skins are damaged. I can't pay you as much as I'd like.  This will have to do.")
 end   
 
 
