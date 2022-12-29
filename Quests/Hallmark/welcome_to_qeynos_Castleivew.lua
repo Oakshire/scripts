@@ -23,7 +23,7 @@ function Accepted(Quest, QuestGiver, Player)
 	Dialog.AddDialog("This is the village of Castleview, one of several villages surrounding Qeynos. Within our hamlet, both Koada'Dal like me, and Frogloks, live side by side.  I digress. The caretaker of your home awaits you, and it is impolite to keep her waiting.")
     PlayFlavor(QuestGiver,"","","orate",0,0,Player)
 	Dialog.AddVoiceover("voiceover/english/steward_quyntar/qey_village04/steward_quyntar004.mp3", 2072542675, 3706058762)
-	Dialog.AddOption("I thank your for your assistance.  I shall meet with the caretaker at once.")
+	Dialog.AddOption("I thank you for your assistance.  I shall meet with the caretaker at once.")
 	Dialog.Start()
     if HasQuest(Player,5717) and GetQuestStep(Player,5717)==2 then
         SetStepComplete(Player,5717,2)

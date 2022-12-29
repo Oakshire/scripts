@@ -12,7 +12,7 @@
 require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to gather Elddar leaves for Scribe Bleemeb.", 14, "I need to gather leaves from the base of the greatest Elddar tree in the grove.", 199, 663.74 -9.72 -373.53)
+	AddQuestStepLocation(Quest, 1, "I need to gather Elddar leaves for Scribe Bleemeb.", 18, "I need to gather leaves from the base of the greatest Elddar tree in the grove.", 199, 663.74 -9.72 -373.53)
 	AddQuestStepCompleteAction(Quest, 1, "LeavesGathered")
 	UpdateQuestZone(Quest, "The Eldarr Grove")
 end

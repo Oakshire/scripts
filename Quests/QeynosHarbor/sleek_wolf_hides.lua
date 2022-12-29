@@ -34,7 +34,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have gone out and gathered sleek wolf hides.")
     UpdateQuestZone(Quest,"Qeynos Harbor")
 
-	AddQuestStepChat(Quest, 2, "I must speak with Erwin in Qeynos Harbor.", 1, "I should take the sleek wolf hides back to Erwin in Qeynos Harbor so he can sell them soon.", 160, 2210153)
+	AddQuestStepChat(Quest, 2, "I must speak with Erwin in Qeynos Harbor.", 1, "I should take the sleek wolf hides back to Erwin in Qeynos Harbor so he can sell them soon.", 160, 2210124)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

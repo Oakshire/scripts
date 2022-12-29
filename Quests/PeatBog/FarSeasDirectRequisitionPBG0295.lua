@@ -51,8 +51,8 @@ end
 function CheckProgress(Quest, QuestGiver, Player)
 	if QuestStepIsComplete(Player, FAR_SEAS_DR_PBG0295_QUEST_ID, 1) and QuestStepIsComplete(Player, FAR_SEAS_DR_PBG0295_QUEST_ID, 2) then
 		UpdateQuestTaskGroupDescription(Quest, 1, "I have hunted down all the resources to fill the requisition.")
-
-		AddQuestStepChat(Quest, 3, "I must speak with Tanaira", 1, "I must seek out Tanaira here in the Peat Bog.", 11, TANAIRA_ID)
+        UpdateQuestZone(Quest,"Starcrest")
+		AddQuestStepChat(Quest, 3, "I must speak with Tanaira", 1, "I must seek out Tanaira here in  Starcrest Commune.", 11, TANAIRA_ID)
 		AddQuestStepCompleteAction(Quest, 3, "QuestComplete")
 	end
 end

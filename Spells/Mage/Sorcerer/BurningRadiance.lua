@@ -22,7 +22,7 @@ function proc(Caster, Target, Type, DmgType, MinVal, MaxVal, SpellLevel)
         else LvlBonus = Mastery - SpellLevel
     end
 
-    DmgBonus = LvlBonus + StatBonus
+    DmgBonus = LvlBonus * 2 + StatBonus
     MaxDmg = MaxVal + math.floor(DmgBonus)
     MinDmg = MinVal + math.floor(DmgBonus)
 

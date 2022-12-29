@@ -11,6 +11,7 @@
 --]]
 
 function Init(Quest)
+    UpdateQuestZone(Quest,"Peat Bog")
 	AddQuestStepKill(Quest, 1, "Hunt bog faeries in the Peat Bog.", 1, 33, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 110, 8290002,8290003,8290052,8290008,8290009,8290010,8290013,8290014,8290011,8290012,8290017,8290018,8290019,8290053,8290044)
 	AddQuestStepKill(Quest, 2, "Hunt bog slugs in the Peat Bog.", 1, 25, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 83, 8290005,8290006,8290031,8290027)
 	AddQuestStepKill(Quest, 3, "Hunt bog sludges in the Peat Bog.", 1, 33, "I must gather up the rare components Khalil'Mun needs for his potion. I will find them in the Peat Bog.", 178, 8290004)
@@ -55,7 +56,8 @@ end
 
 function CheckProgress(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player, 5555, 1) and QuestStepIsComplete(Player, 5555, 2) and QuestStepIsComplete(Player, 5555, 3) then
-	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered the components Khalil'Mun needs for his potion.")
+	UpdateQuestTaskGroupDescription(Quest, 3, "I've gathered the components Khalil'Mun needs for his potion.")
+    UpdateQuestZone(Quest,"South Qeynos")
 	AddQuestStepChat(Quest, 4, "I need return to Khalil'Mun.", 1, "Khalil'Mun is waiting for these ingredients in his shop in South Qeynos.", 10, 2310048)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
     end

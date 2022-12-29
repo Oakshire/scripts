@@ -59,7 +59,7 @@ function Dialog1(NPC, Spawn)
  	if not HasCompletedQuest (Spawn, 5364) and not HasQuest (Spawn, 5364) then 
 	Dialog.AddOption("I think I could help you out there.", "Dialog2")
     end
-    if GetQuestStep (Spawn, 5346)==2 then 
+    if GetQuestStep (Spawn, 5364)==2 then 
 	Dialog.AddOption("I've returned with the wings you needed, but they don't look very tasty.","Delivered")
     end
     Dialog.AddOption("Gee, that's a shame.")

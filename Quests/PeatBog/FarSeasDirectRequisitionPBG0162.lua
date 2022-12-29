@@ -45,8 +45,8 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 2, "I spoke to Tanaira.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have delivered the goods to Tanaira.")
-
-	UpdateQuestDescription(Quest, "I filled the Far Seas Requisition and delivered the goods to the client in the Peat Bog. I have been paid in full for this work, but the order was late.")
+    UpdateQuestZone(Quest,"Starcrest")
+	UpdateQuestDescription(Quest, "I filled the Far Seas Requisition and delivered the goods to the client in Starcrest Commune. I have been paid in full for this work, but the order was late.")
 	GiveQuestReward(Quest, Player)
 end
 

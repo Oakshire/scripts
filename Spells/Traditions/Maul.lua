@@ -16,3 +16,7 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
    SpellDamage(Target, DmgType, MinVal, MaxVal)
 end
 
+
+function tick(Caster, Target, DmgType, Minval, MaxVal)
+    SpellDamage(Target, DmgType, MinVal, MaxVal)
+end
