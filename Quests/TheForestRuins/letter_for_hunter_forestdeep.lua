@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepChat(Quest, 1, "Deliver the letter to hunter Forestdeep", 1, "I need to deliver a letter to a hunter named Forestdeep in the Qeynos Province District.", 1223, 2370002)
+	AddQuestStepChat(Quest, 1, "Deliver the letter to hunter Forestdeep", 1, "I need to deliver a letter to a hunter named Forestdeep in Qeynos.", 1223, 2370002)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 	UpdateQuestZone(Quest, "The Willow Wood")
 end

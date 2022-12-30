@@ -57,7 +57,7 @@ function hailed(NPC, Spawn)
     Dialog.AddOption("Why are your orders backing up?", "Frustrated")
     end
     if GetQuestStep (Spawn, EtchingTool)==2 then 
-    Dialog.AddOption("I have your etching tool.  Your apprentice seemed to have dozed off.'.", "Delivery3")
+    Dialog.AddOption("I have your etching tool.  Your apprentice seemed to have dozed off..", "Delivery3")
     end
         Dialog.AddOption("I'm just browsing. Thank you.")	
         Dialog.Start()

@@ -13,7 +13,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Slay five Sunshimmer Sprites.", 5, 100, "I must hunt down and slay five Sunshimmer Sprites in Oakmyst Forest.", 611, 1950034, 1950036, 1950054, 1950031,8300052,8300053,8300006,8300012)
+	AddQuestStepKill(Quest, 1, "Slay five Sunshimmer Sprites.", 5, 100, "I must hunt down and slay five Sunshimmer Sprites in Oakmyst Forest.", 611, 1950034, 1950036, 1950054, 1950031,8300051, 8300052,8300053,8300006,8300012)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_KillSprites")
 end
 

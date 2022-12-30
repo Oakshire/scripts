@@ -65,7 +65,7 @@ function Dialog1(NPC, Spawn)
     Dialog.AddDialog("I see you enjoying my pastries.  Perhaps you can do me a small favor in exchange for a treat?")
 	Dialog.AddVoiceover("voiceover/english/baker_voleen/qey_north/mer_bakervoleen.mp3", 1488479390, 237480726)
     if not HasQuest(Spawn,Fhara) and not HasCompletedQuest(Spawn,Fhara) then  
-	Dialog.AddOption("Sure, that sounds great. What can i help you with?","Dialog2")
+	Dialog.AddOption("Sure, that sounds great. What can I help you with?","Dialog2")
     end
     if GetQuestStep(Spawn,Fhara)==2 then  
 	Dialog.AddOption("Fhara wanted to let you know that she loved the pastries!","Dialog3")

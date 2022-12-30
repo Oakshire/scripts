@@ -6,7 +6,7 @@
                    : 
 --]]
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, SkillAmt, SpellLevel)
+function cast(Caster, Target, MinVal, MaxVal, SkillAmt, SpellLevel)
     
     Level = GetLevel(Caster)
     Mastery = SpellLevel + 10
@@ -17,14 +17,11 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, SkillAmt, SpellLevel)
         else LvlBonus = Mastery - SpellLevel
     end
     
-    DmgBonus = LvlBonus + StatBonus
+    DmgBonus = LvlBonus * 1.5 + StatBonus
     MaxDmg = MaxVal + math.floor(DmgBonus)
     MinDmg = MinVal + math.floor(DmgBonus)
     
-    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
-
-
-
+    SpellDamage(Target, 0, MinDmg, MaxDmg)
 
 -- Decreases Slashing, Crushing and Piercing of target by 1.5
 if LastSpellAttackHit() then

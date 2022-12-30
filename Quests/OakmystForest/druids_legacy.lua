@@ -34,7 +34,7 @@ end
 function Step1Complete(Quest)
 	UpdateQuestStepDescription(Quest, 1, "I've found the tree on the island in the stream.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the tree the druid spoke of and it looks like he had a map hidden there.")
-	AddQuestStepZoneLoc(Quest, 2, "I need to find the tree overlooking the waterfall.", 3, "I must find the tree overlooking the waterfall where the druid buried the token he left behind.", 199, 914, 15, -199,830)
+	AddQuestStepZoneLoc(Quest, 2, "I need to find the tree overlooking the waterfall.", 7, "I must find the tree overlooking the waterfall where the druid buried the token he left behind.", 199, 914, 15, -199,830)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 function QuestComplete(Quest, QuestGiver, Player)

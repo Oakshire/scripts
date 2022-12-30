@@ -56,7 +56,7 @@ end
 
 function Page6(Item, Player)
 conversation = CreateConversation()
-if not HasQuest(Spawn,SunWolf) and not HasCompletedQuest(Spawn,Sunwolf)then
+if not HasQuest(Player,SunWolf) and not HasCompletedQuest(Player,Sunwolf)then
 AddConversationOption(conversation, "Attempt to determine the path of the Sun Wolf.","QuestStart")
 end
 AddConversationOption(conversation, "Turn back to previous entry.","Page5")
