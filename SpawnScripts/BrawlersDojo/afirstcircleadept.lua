@@ -69,7 +69,6 @@ function end2(NPC,Spawn)
 end   
 
 function bow(NPC,Spawn)
-	PlayFlavor(NPC, "", "", "grubmle", 0, 0, Spawn, 0)
     SetStepComplete(Spawn,5790,3)
 	PlayFlavor(NPC, "", "","bow",0, 0)
 end
@@ -124,4 +123,8 @@ if GetTempVariable(NPC,"Talking")== "false"then
 end
     local timer = MakeRandomInt(1500,2500)
     AddTimer(NPC, timer, "EmoteLoop")
+end
+
+function death(NPC,Spawn)
+    Despawn(NPC)
 end

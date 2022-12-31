@@ -7,8 +7,8 @@
 --]]
 
 function spawn(NPC)
-    AddTimer(NPC,5000,"Doors",1,Spawn)
-    AddTimer(NPC,7000,"Pop")
+    AddTimer(NPC,9000,"Doors",1,Spawn)
+    AddTimer(NPC,12000,"Pop")
     SpawnSet(NPC,"show_name",0)
     SpawnSet(NPC,"faction",0)
     SpawnSet(NPC,"model_type",0)
@@ -26,13 +26,9 @@ Lion3 = GetSpawnByLocationID(zone,133781387)
                 PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_clap001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
                 elseif not IsAlive(Bear1) and not IsAlive(Bear2) then
                 PlaySound(NPC,"sounds/widgets/ecology_city_sounds/ecology_crowd_cheer001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
-                StartPodium = GetSpawnByLocationID(zone,133781327)
                 VictorPodium = GetSpawnByLocationID(zone,133781407)
                  if VictorPodium ==nil then
                     SpawnByLocationID(zone,133781407)
-                end
-                if StartPodium ~=nil then
-                    Despawn(StartPodium)
                 end
                 end
 end

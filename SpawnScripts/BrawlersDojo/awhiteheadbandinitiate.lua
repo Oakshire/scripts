@@ -16,7 +16,7 @@ function hailed(NPC, Spawn)
     if HasQuest(Spawn,5790) and GetQuestStep(Spawn,5790)>=1 and GetQuestStep(Spawn,5790)<=4 and not QuestStepIsComplete(Spawn,5790,4) then
     SpawnSet(NPC,"mood_state",0)
     SpawnSet(NPC,"visual_state",0)
-    PlayAnimation(NPC,10871)
+--  PlayAnimation(NPC,10871)
     SetTempVariable(NPC,"Talking","true")
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
@@ -146,5 +146,9 @@ function resetdummy(NPC)
     local zone = GetZone(NPC)
     local dummy = GetSpawnByLocationID(zone,133781308)
     SpawnSet(dummy, "visual_state", 0)
+end
+
+function death(NPC,Spawn)
+    Despawn(NPC)
 end
    

@@ -76,4 +76,9 @@ end
 
 function respawn(NPC)
 	spawn(NPC)
+	PlayFlavor(NPC, "", "", "confused", 0, 0, Spawn, 0)
+end
+
+function death(NPC,Spawn)
+    Despawn(NPC)
 end

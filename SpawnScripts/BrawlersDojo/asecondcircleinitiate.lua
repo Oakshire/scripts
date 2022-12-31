@@ -13,7 +13,7 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
---    if HasQuest(Spawn,5790) and GetQuestStep(Spawn,5790)>=1 and GetQuestStep(Spawn,5790)<=4 and not QuestStepIsComplete(Spawn,5790,3) then
+    if HasQuest(Spawn,5790) and GetQuestStep(Spawn,5790)>=1 and GetQuestStep(Spawn,5790)<=4 and not QuestStepIsComplete(Spawn,5790,2) then
     SetTempVariable(NPC,"Talking","true")
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
@@ -22,7 +22,7 @@ function hailed(NPC, Spawn)
     PlayFlavor(NPC, "", "", "nod",0,0 , Spawn, 0)
 	Dialog.AddOption("I wish to spar with you.","Dialog1")
 	Dialog.Start()
---end
+end
 end
 
 function Dialog1(NPC, Spawn)
@@ -114,4 +114,7 @@ function resetdummy(NPC)
     SpawnSet(dummy, "visual_state", 0)
 end   
            
+function death(NPC,Spawn)
+    Despawn(NPC)
+end
         
