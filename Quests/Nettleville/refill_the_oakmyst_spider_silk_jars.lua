@@ -21,7 +21,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have slain some Oakmyst spiders.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have refilled the Oakmyst spider silk jars.")
 
-	AddQuestStepChat(Quest, 2, "I must return to Varion Smitelin", 1, "I must return the spider silk jars to Varion Smitelin, a sage within the Concordium in the Qeynos Capitol District", 354, 2330056)
+	AddQuestStepChat(Quest, 2, "I must return to Varion Smitelin", 1, "I must return the spider silk jars to Varion Smitelin, a sage within the Nettleville Quill.", 354, 2330056)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end
 

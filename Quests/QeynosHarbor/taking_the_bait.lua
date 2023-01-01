@@ -71,10 +71,10 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Step1Complete(Quest, QuestGiver, Player)
-	elseif Step == 1 then
-		Step2Complete(Quest, QuestGiver, Player)
-	elseif Step == 3 then
-		CheckProgress(Quest, QuestGiver, Player)
-	end
+	elseif Step == 2 then
+	    Step2Complete(Quest, QuestGiver, Player)
+	elseif Step ==3 then   
+		QuestComplete(Quest, QuestGiver, Player)
+    end
 end
 
