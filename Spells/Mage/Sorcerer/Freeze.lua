@@ -11,12 +11,26 @@
 --     If Target is not Epic
 -- Resistibility increases against targets higher than level 29.
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, SpellLevel)
     Say(Caster, "Resistability not implemented.")
 	if not IsEpic() then
 		AddControlEffect(Target, 4)
-			end
-	SpellDamage(Target, DmgType, MinVal, MaxVal)
+		end
+		
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus * 1.5 + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
 end
 
 function remove(Caster, Target)

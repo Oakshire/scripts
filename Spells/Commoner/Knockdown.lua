@@ -6,14 +6,18 @@
                    : 
 --]]
 
+
 -- Apply Knockdown
 --     Throws target back
 --     Stuns target
 --     Blurs vision of target
 --     Except Epic
+
+
 function cast(Caster, Target, Timer)
 if not IsEpic(Target) then
-        Knockback(Caster, Target, Timer)
+        --Knockback(Caster, Target, Timer)
+        PlayAnimation(Target, 72)
 		AddControlEffect(Target, 4)
         BlurVision(Target, 1.0)
         AddSpellTimer(Timer, "RemoveStunBlur")

@@ -16,6 +16,8 @@ function precast(Caster, Target)
 end
 
 function cast(Caster, Target, Snare)
+        Say(Caster, "Damage component not implemented.  Values not yet available.")
+
     -- Roots target
     SetSpeedMultiplier(Target, 0)
 

@@ -8,6 +8,18 @@
 
 -- Increases power of caster by 29
 
-function cast(Caster, Target, Amount)
-    SpellHeal("Power", Amount)
+function cast(Caster, Target, Amount, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    PowBonus = LvlBonus + StatBonus
+    PowHealg = Amount + math.floor(PowBonus)
+    
+    SpellHeal("Power", PowHeal)
 end

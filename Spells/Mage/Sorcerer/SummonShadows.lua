@@ -17,6 +17,8 @@ end
 
 function cast(Caster, Target)
     Stealth(2)
+    Say(Caster, "Movement reduction not yet implemented.")
+
 end
 
 function remove(Caster, Target)
