@@ -8,15 +8,15 @@
 
 
 function cast(Caster, Target, HasteMod, SelfSnare, Mit, TargetSnare, SpellLevel)
-        Say(Caster, "This spell is a work in progress, you probably shouldn't use it.")
+        Say(Caster, "Self snare not yet implemented.")
 
 
 -- Decreases Haste of caster by 11.3
     AddSpellBonus(Caster, 617, HasteMod)
 
 -- Slows caster by 32.6%
-    local Slow = 100.0 - SelfSnare
-    SetSpeedMultiplier(Caster, Slow)
+   -- local Slow = 1.0 - SelfSnare
+   -- SetSpeedMultiplier(Caster, Slow)
 
 -- Increases Mitigation of caster vs physical damage by 133
     Level = GetLevel(Caster)    
@@ -40,19 +40,9 @@ end
 
 function proc(Caster, Target, Type, TargetSnare, SpellLevel)
     Spell = GetSpell(5431, GetSpellTier())
-    Level = GetLevel(Caster)
-    Mastery = SpellLevel + 10
 
-    if Level < Mastery then
-        LvlBonus = Level - SpellLevel
-        else LvlBonus = Mastery - SpellLevel
-    end
-    
-    SnareBonus = LvlBonus * 0.5
-    MaxSnare = TargetSnare + math.floor(SnareBonus)
-    
     if Type == 3 then
-		SetSpellDataIndex(Spell, 0, MaxSnare)
+		SetSpellDataIndex(Spell, 0, TargetSnare)
 		    CastCustomSpell(Spell, Caster, Target)
     end
     

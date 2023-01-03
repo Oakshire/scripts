@@ -6,8 +6,9 @@
                    : 
 --]]
 
-function cast(Caster, Target, SlowMod)
-	SetSpeedMultiplier(Target, SlowMod)
+function cast(Caster, Target, Snare)
+    local Slow = 1.0 - Snare
+	SetSpeedMultiplier(Target, Slow)
 	AddProc(Target, 1, 5)
 	AddProc(Target, 15, 5)
 end
