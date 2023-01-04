@@ -1,19 +1,31 @@
 --[[
     Script Name    : Spells/Scout/Rogue/Bludgeon.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.10 11:11:32
+    Script Author  : LordPazuzu
+    Script Date    : 1/3/2023
     Script Purpose : 
                    : 
 --]]
 
--- Inflicts 27 - 46 crushing damage on target
--- Decreases Haste of target by 10.3
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    Level = GetLevel(Caster)
+    SpellLevel = 15
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus *2 + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+    
+    if not IsEpic(Target) then 
+		CastSpell(Target, 5001, GetSpellTier())
+	end
+    
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, Haste)
-	SpellDamage(Target, DmgType, MinVal, MaxVal)
-	AddSpellBonus(Target, 617, Haste)
-end
-
-function remove(Caster, Target)
-	RemoveSpellBonus(Target)
 end

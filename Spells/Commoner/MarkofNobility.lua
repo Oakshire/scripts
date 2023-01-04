@@ -8,10 +8,10 @@
 
 -- Heals Target for X
 
-function cast(Caster, Target, Healz)
-SpellHeal("Heal", Healz)
+function cast(Caster, Target, TotalHeal)
+SpellHeal("Heal", TotalHeal)
 end
 
-function tick(Caster, Target, Healz)
-SpellHeal("Heal", Healz)
+function tick(Caster, Target, TotalHeal)
+SpellHeal("Heal", TotalHeal)
 end

@@ -9,16 +9,31 @@
 -- When any damage is received this spell will cast Vitae on target, which can be triggered up to 9 times across all targets.  
 --     Heals target for 40 - 49
 
-function cast(Caster, Target, HealMin, HealMax, Triggers)
+function cast(Caster, Target, MinVal, MaxVal, Triggers)
 	AddProc(Target, 15, 100)
 		SetSpellTriggerCount(Triggers, 1)
 end
 
-function proc(Caster, Target, Type, HealMin, HealMax, Triggers)
+function proc(Caster, Target, Type, MinVal, MaxVal, Triggers)
+    Level = GetLevel(Caster)
+    SpellLevel = 14
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+
+    HealBonus = LvlBonus * 2 + StatBonus
+    MinHeal = MinVal + math.floor(HealBonus)
+    MaxHeal = MaxVal + math.floor(HealBonus)
+    
+    
 	if Type == 15 then
 		Spell = GetSpell(5455, GetSpellTier())
-		SetSpellDataIndex(Spell, 0, HealMin)
-		SetSpellDataIndex(Spell, 1, HealMax)
+		SetSpellDataIndex(Spell, 0, MinHeal)
+		SetSpellDataIndex(Spell, 1, MaxHeal)
 		CastCustomSpell(Spell, Caster, Target)
 			RemoveTriggerFromSpell()
 		end

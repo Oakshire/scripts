@@ -10,9 +10,22 @@
 -- Increases Max Health of group members (AE) by 30.4
 -- Increases Mitigation of group members (AE) vs arcane damage by 156
 
-function cast(Caster, Target, HP, Mit)
-    AddSpellBonus(Target, 606, HP)
-    AddSpellBonus(Target, 203, Mit)
+function cast(Caster, Target, HP, Mit, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    TotalBonus =  LvlBonus * 2 + StatBonus
+    HpBuff = HP +  math.floor(TotalBonus)
+    MitBuff = Mit + math.floor(TotalBonus)
+    
+    AddSpellBonus(Target, 500, HpBuff)
+    AddSpellBonus(Target, 203, MitBuff)
 
 end
 

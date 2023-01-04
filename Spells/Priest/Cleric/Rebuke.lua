@@ -7,8 +7,18 @@
 --]]
 
 -- Decreases Mitigation of target vs physical damage by 108
-function cast(Caster, Target, Mit)
-    AddSpellBonus(Target, 200, Mit)
+function cast(Caster, Target, Mit, SpellLevel)
+    Level = GetLevel(Caster)
+    Mastery = SpellLevel + 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    MitDebuff = LvlBonus  + Mit
+    
+    AddSpellBonus(Target, 200, math.floor (MitDebuff))
 end
 
 function remove(Caster, Target)

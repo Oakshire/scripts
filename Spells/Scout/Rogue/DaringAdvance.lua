@@ -1,13 +1,13 @@
 --[[
     Script Name    : Spells/Scout/Rogue/DaringAdvance.lua
-    Script Author  : Jabantiz
-    Script Date    : 2013.12.16 03:12:33
+    Script Author  : LordPazuzu
+    Script Date    : 1/3/2023
     Script Purpose : 
                    : 
 --]]
 
 function cast(Caster, Target, DefAmt, SkillAmt, DmgType, DmgAmt)
-        Say(Caster, "Fervor not Implemented")
+
 
 -- Decreases Defense of caster by 3.9
     AddSkillBonus(Target, GetSkillIDByName("Defense"), DefAmt)
@@ -23,11 +23,21 @@ function cast(Caster, Target, DefAmt, SkillAmt, DmgType, DmgAmt)
 end
 
 function proc(Caster, Target, Type, DefAmt, SkillAmt, DmgType, DmgAmt)
-    -- On a melee hit this spell may cast Interrupt on target of attack.  Triggers about 6.0 times per minute. 
-    --     Inflicts 19 melee damage on target
-    --     Interrupts target
+    Level = GetLevel(Caster)
+    SpellLevel = 13
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus *2 + StatBonus
+    TotalDmg = DmgAmt + math.floor(DmgBonus)
+
     if Type == 3 then
-        ProcDamage(Caster, Target, "Interrupt", DmgType, DmgAmt)
+        ProcDamage(Caster, Target, "Interrupt", DmgType, TotalDmg)
         Interrupt(Caster, Target)
     end
 end

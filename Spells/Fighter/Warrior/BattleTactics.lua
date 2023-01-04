@@ -9,7 +9,7 @@
 -- Increases Max Health of group members (AE) by 73.3
 
 function cast(Caster, Target, HP)
-	AddSpellBonus(Target, 606, HP)
+	AddSpellBonus(Target, 500, HP)
 end
 
 function remove(Caster, Target)

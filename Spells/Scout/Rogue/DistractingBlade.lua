@@ -1,24 +1,38 @@
 --[[
     Script Name    : Spells/Scout/Rogue/DistractingBlade.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.10 11:11:34
+    Script Author  : LordPazuzu
+    Script Date    : 1/3/2023
     Script Purpose : 
                    : 
 --]]
 
--- Interrupts target
--- Inflicts 52 - 87 melee damage on target
--- Must be flanking or behind
 
-function precast(Caster, Target)
-	if not IsFlanking(Target, Caster) then
-		SendMessage(Caster, "Must be flanking or behind", "yellow")
-			return false
+function precast(Caster,Target)
+	if not IsFlanking(Caster, Target) and not IsBehind(Caster, Target) then
+        SendMessage(Caster, "Must be flanking or behind", "yellow")
+        return false
 				end
 	return true
 end
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    Level = GetLevel(Caster)
+    SpellLevel = 19
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus *2 + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
     Interrupt(Caster, Target)
-	SpellDamage(Target, DmgType, MinVal, MaxVal)
 end
+
+
+

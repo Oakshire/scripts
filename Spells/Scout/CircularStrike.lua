@@ -1,5 +1,5 @@
 --[[
-    Script Name    : Spells/Scout/Rogue/CircularStrike.lua
+    Script Name    : Spells/Scout/CircularStrike.lua
     Script Author  : LordPazuzu
     Script Date    : 1/3/2023
     Script Purpose : 

@@ -9,12 +9,28 @@
 
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
+    Level = GetLevel(Caster)
+    SpellLevel = 18
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
    
 	if not IsEpic() then
 		AddControlEffect(Target, 3)
-			end	
-	SpellDamage(Target, DmgType, MinVal, MaxVal)
+	end	
+
 	AddProc(Target, 15, 100)
+	
 end
 
 function proc(Caster, Target, Type, DmgType, MinVal)

@@ -1,26 +1,22 @@
 --[[
-    Script Name    : Spells/Scout/Rogue/Backstab.lua
+    Script Name    : Spells/Scout/Rogue/Gouge.lua
     Script Author  : LordPazuzu
-    Script Date    : 1/3/2023
+    Script Date    : 2023.01.04 12:01:52
     Script Purpose : 
                    : 
 --]]
 
--- Inflicts 46 - 78 melee damage on target
--- Decreases AGI of target by 7.2
--- Must be flanking or behind
-
 function precast(Caster,Target)
-	if not IsFlanking(Caster, Target) and not IsBehind(Caster, Target) then
-        SendMessage(Caster, "Must be flanking or behind", "yellow")
+	if IsBehind(Caster, Target) then
+        SendMessage(Caster, "Must be in front or flanking.", "yellow")
         return false
 				end
 	return true
 end
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, Agi)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, Parry)
     Level = GetLevel(Caster)
-    SpellLevel = 10
+    SpellLevel = 15
     Mastery = SpellLevel + 10
     StatBonus = GetStr(Caster) / 10
         
@@ -34,9 +30,14 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, Agi)
     MinDmg = MinVal + math.floor(DmgBonus)
     
     SpellDamage(Target, DmgType, MinDmg, MaxDmg)
-	AddSpellBonus(Target, 2, Agi)
+    AddSkillBonus(Target, GetSkillIDByName("Parry"), Parry)
+
 end
 
+
 function remove(Caster, Target)
-	RemoveSpellBonus(Target)
+    RemoveSkillBonus(Target)
+
 end
+
+

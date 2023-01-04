@@ -1,25 +1,28 @@
 --[[
     Script Name    : Spells/Scout/Rogue/FancyFootwork.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.10 11:11:26
+    Script Author  : LordPazuzu
+    Script Date    : 1/3/2023
     Script Purpose : 
                    : 
 --]]
 
--- Decreases Slashing, Piercing and Crushing of caster by 13.8
--- Increases Defense and Parry of caster by 4.9
--- Increases the caster's effectiveness of worn armor vs physical damage by 10%
 
-function cast(Caster, Target, OffSkills, DefSkills, Armor)
-    AddSkillBonus(Target, GetSkillIDByName("Slashing"), OffSkills)
-    AddSkillBonus(Target, GetSkillIDByName("Piercing"), OffSkills)
-    AddSkillBonus(Target, GetSkillIDByName("Crushing"), OffSkills)
-    AddSkillBonus(Target, GetSkillIDByName("Defense"), DefSkills)
-    AddSkillBonus(Target, GetSkillIDByName("Parry"), DefSkills)
-    AddSpellBonus(Target, 678, Armor)
+
+function cast(Caster, Target, Parry)
+    Level = GetLevel(Caster)
+    SpellLevel = 18
+    Mastery = SpellLevel + 4
+
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    ParryMod = LvlBonus + Parry
+    
+    AddSkillBonus(Target, GetSkillIDByName("Parry"), ParryMod)
 end
 
 function remove(Caster, Target)
     RemoveSkillBonus(Target)
-	RemoveSpellBonus(Target)   
 end

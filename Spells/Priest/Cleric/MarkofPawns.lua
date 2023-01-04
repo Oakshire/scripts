@@ -15,13 +15,30 @@ function cast(Caster, Target, Mit, Healz, Chance)
 	AddProc(Target, 16, Chance)
 end
 
+
+
 function proc(Caster, Target, Type, Mit, Healz, Chance)
+    Level = GetLevel(Caster)
+    SpellLevel = 18
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+
+    HealBonus = LvlBonus + StatBonus
+    TotalHeal = Healz + math.floor(HealBonus)
+    
 	Spell = GetSpell(5449, GetSpellTier())
 		if Type == 16 then
-			SetSpellDataIndex(Spell, 0, Healz)
+			SetSpellDataIndex(Spell, 0, TotalHeal)
 				CastCustomSpell(Spell, Caster, Target)
 					end
 end
+
+
 
 function remove(Caster, Target)
 	RemoveSpellBonus(Target)

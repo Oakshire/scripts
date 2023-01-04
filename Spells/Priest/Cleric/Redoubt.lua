@@ -11,7 +11,20 @@
 -- Increases Piercing of target by 4.3
 
 function cast(Caster, Target, HP, OffSkill, Pierce)
-    AddSpellBonus(Target, 500, HP)
+    Level = GetLevel(Caster)
+    SpellLevel = 16
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end    
+    
+    TotalBonus = LvlBonus *2 + StatBonus
+    HpBonus = HP + math.floor(TotalBonus)
+    
+    AddSpellBonus(Target, 500, HpBonus)
     AddSkillBonus(Target, GetSkillIDByName("Slashing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Crushing"), OffSkill)
     AddSkillBonus(Target, GetSkillIDByName("Piercing"), Pierce)

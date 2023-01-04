@@ -11,8 +11,22 @@
 -- Increases Mitigation of group members (AE) vs physical damage by 131
 
 function cast(Caster, Target, Sta, Mit)
-    AddSpellBonus(Target, 1, Sta)
-    AddSpellBonus(Target, 200, Mit)
+    Level = GetLevel(Caster)
+    SpellLevel =  19
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    StaBonus= LvlBonus * 0.5 + Sta
+    MitBonus = LvlBonus + StatBonus
+    TotalMit = Mit + math.floor(MitBonus)
+    
+    AddSpellBonus(Target, 1, StaBonus)
+    AddSpellBonus(Target, 200, TotalMit)
 
 end
 

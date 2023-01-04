@@ -10,8 +10,19 @@
 -- Increases STR of caster by 15.0
 
 function cast(Caster, Target, Agi, Str)
-    AddSpellBonus(Target, 2, Agi)
-    AddSpellBonus(Target, 0, Str)
+    Level = GetLevel(Caster)
+    SpellLevel = 13
+    Mastery = SpellLevel + 6
+
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end   
+    StatMod = LvlBonus * 0.5
+    AgiMod = Agi + StatMod
+    StrMod = Str + StatMod
+    AddSpellBonus(Caster, 2, AgiMod)
+    AddSpellBonus(Caster, 0, StrMod)
 
 end
 
