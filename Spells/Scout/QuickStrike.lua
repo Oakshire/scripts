@@ -6,9 +6,10 @@
                    : 
 --]]
 
-function cast(Caster, Target, DmgType, MinVal, MaxVal, SpellLevel)
+function cast(Caster, Target, DmgType, MinVal, MaxVal)
     Level = GetLevel(Caster)
-    Mastery = SpellLevel + 7
+    SpellLevel = 1
+    Mastery = SpellLevel + 10
     StatBonus = GetStr(Caster) / 10
         
     if Level < Mastery then
