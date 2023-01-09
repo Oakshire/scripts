@@ -9,9 +9,10 @@
 -- Decreases Threat to target
 
 function cast(Caster, Target, HateLow, HateHigh)
-    Hate = math.random(HateHigh, HateLow)
+    
+    Hate = math.random(HateHigh, HateLow) / 2
     AddHate(Caster, Target, Hate, 1)
-    Say(Caster, "Missing Riposte Immunity")
+    
 end
 
 function remove(Caster, Target)
