@@ -10,8 +10,9 @@
 
 function cast(Caster, Target, HateLow, HateHigh)
     
-    Hate = math.random(HateHigh, HateLow) / 2
-    AddHate(Caster, Target, Hate, 1)
+    Hate = math.random(HateHigh, HateLow) * 0.25
+    HateMod = math.floor(Hate)
+    AddHate(Caster, Target, HateMod, 1)
     
 end
 

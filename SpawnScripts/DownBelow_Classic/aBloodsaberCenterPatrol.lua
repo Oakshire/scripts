@@ -7,8 +7,9 @@
 --]]
 
 function spawn(NPC)
-
-waypoints(NPC)
+    SetSeeHide(NPC,1)
+    SetSeeInvis(NPC,1)
+    waypoints(NPC)
 end
 
 function hailed(NPC, Spawn)
