@@ -32,6 +32,7 @@ function spawn(NPC)
 end
 
 function ChooseMovement(NPC)
+  
 	local route = math.random(1,3)
 	if route == 1 then
 	    RouteOne(NPC, Spawn)
