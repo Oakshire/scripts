@@ -33,12 +33,12 @@ end
 
 function ChooseMovement(NPC)
     
-	local route = math.random(1,3)
+	local route = math.random(1,2)
 	if route == 1 then
 	    RouteOne(NPC, Spawn)
+	--elseif route == 2 then
+	    --RouteTwo(NPC, Spawn)
 	elseif route == 2 then
-	    RouteTwo(NPC, Spawn)
-	elseif route == 3 then
 	    RouteThree(NPC, Spawn)
 	end
 end
