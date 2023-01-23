@@ -10,6 +10,7 @@
 function cast(Caster, Target)
     AddProc(Caster, 1, 100)
 
+
 end
 
 function proc(Caster, Target, Type)
