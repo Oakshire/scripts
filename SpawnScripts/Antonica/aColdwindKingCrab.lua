@@ -1,13 +1,13 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/apondbeaver.lua
+    Script Name    : SpawnScripts/Antonica/aColdwindKingCrab.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.09 01:07:08
+    Script Date    : 2023.01.24 04:01:55
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-   
+
 ChooseMovement(NPC)
 end
 
