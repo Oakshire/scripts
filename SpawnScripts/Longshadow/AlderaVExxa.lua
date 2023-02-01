@@ -142,7 +142,7 @@ function KoadaDalShouldPay(NPC, Spawn)
 	conversation = CreateConversation()
 
 	AddConversationOption(conversation, "Revenge can be sweet.", "RevengeSweet")
-	StartConversation(conversation, NPC, Spawn, "And someday, they will. Remember: we are the patient ones. Though fruit may rippen off the vine, it is much tastier when picked at its ripest. So is with our opportunities for revenge. When they are ripe, we shall pluck them.")
+	StartConversation(conversation, NPC, Spawn, "And someday, they will. Remember: we are the patient ones. Though fruit may ripen off the vine, it is much tastier when picked at its ripest. So is with our opportunities for revenge. When they are ripe, we shall pluck them.")
 end
 
 function RevengeSweet(NPC, Spawn, conversation)

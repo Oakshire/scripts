@@ -27,7 +27,7 @@ if math.random(1, 100) <= 70 then
         choice = math.random(1,2)
         FaceTarget(NPC, Spawn)
         if choice ==1 then
-        PlayFlavor(NPC, "voiceover/english/merchant_fevalin/qey_village04/100_merchant_right_fevalin_callout_7243eb33.mp3", "Step up. Don't be shy. I know an adventurer like you needs something. A lantern. Boots! Perhaps a sword, friend.", "beckon", 2065968741, 2942201215, Spawn)
+        PlayFlavor(NPC, "voiceover/english/merchant_fevalin/qey_village04/100_merchant_right_fevalin_callout_7243eb33.mp3", "Step up. Don't be shy. I know an adventurer like you needs something. A new lantern. Boots! Perhaps a sword, friend.", "beckon", 2065968741, 2942201215, Spawn)
     	elseif choice ==2 then
 	    PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)        
         end
@@ -43,7 +43,7 @@ function hailed(NPC, Spawn)
         else  
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Welcome to my store. You'll notice merchant Kruuprum has setup shop next door. We've actually been working to bring you, the customer, a greater a varaity of wares.")
+	Dialog.AddDialog("Welcome to my store. You'll notice merchant Kruuprum has setup shop next door. We've actually been working to bring you, the customer, a greater a variety of wares.")
 	Dialog.AddVoiceover("voiceover/english/merchant_fevalin/qey_village04/merchantfevalin.mp3", 2353063125, 3076810683)
 	PlayFlavor(NPC, "", "", "bow", 0, 0, Spawn)
             if not HasQuest(Spawn, Rats) and not HasCompletedQuest(Spawn,Rats) then       

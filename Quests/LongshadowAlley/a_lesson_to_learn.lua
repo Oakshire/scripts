@@ -14,7 +14,7 @@
 local SHADOWS_KISS = 12113
 
 function Init(Quest)
-	AddQuestStepObtainItem(Quest, 1,  "I need to retrieve a few clumps of Shadows' Kiss for Alders.", 5, 100,  "Aldera has sent me to collect Shadows' Kiss - a small flowery fungus near the sewer.", 318,  SHADOWS_KISS)
+	AddQuestStepObtainItem(Quest, 1,  "I need to retrieve a few clumps of Shadows' Kiss for Aldera.", 5, 100,  "Aldera has sent me to collect Shadows' Kiss - a small flowery fungus near the sewer.", 318,  SHADOWS_KISS)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_Complete_GotFungus")
 end
 

@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to find all of Drem Drem's bones in the Down Below.", 6, 100, "Drem Drem's bones have been strewn throughout the Down Below, I should collect them and lay him to rest.", 91, 1990027)
+	AddQuestStepKill(Quest, 1, "I need to find all of Drem Drem's bones in the Down Below.", 6, 100, "Drem Drem's bones have been strewn throughout the Down Below, I should collect them and lay him to rest.", 91, 1990027,1990102,1990103,8340048,8340029)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
