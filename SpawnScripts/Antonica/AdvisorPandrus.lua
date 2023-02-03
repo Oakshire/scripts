@@ -1,14 +1,15 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/aCaltorsisknight.lua
-    Script Author  : theFoof
-    Script Date    : 2022.08.09 11:08:14
+    Script Name    : SpawnScripts/Antonica/AdvisorPandrus.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2023.02.02 09:02:30
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
+    AddTimer(NPC, 10000, "ChooseMovement")
 
-ChooseMovement(NPC)
+    
 end
 
 function ChooseMovement(NPC)
