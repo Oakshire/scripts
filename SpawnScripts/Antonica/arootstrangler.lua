@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/agiantbear.lua
+    Script Name    : SpawnScripts/Antonica/arootstrangler.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.11 04:07:28
+    Script Date    : 2023.02.03 10:02:40
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 19
-    local level2 = 20
+    local level1 = 17
+    local level2 = 18
     local difficulty1 = 6
-    local hp1 = 1440
-    local power1 = 425
+    local hp1 = 1180
+    local power1 = 360
     local difficulty2 = 6
-    local hp2 = 1930
-    local power2 = 475
+    local hp2 = 1290
+    local power2 = 410
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
@@ -26,8 +26,8 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-   
-     ChooseMovement(NPC)
+
+ChooseMovement(NPC)
 end
 
 function ChooseMovement(NPC)
@@ -48,10 +48,10 @@ function RouteOne(NPC, Spawn)
 	local Y = GetY(NPC)
 	local Z = GetZ(NPC)
     MovementLoopAddLocation(NPC, X, Y, Z, 2, 0)
-    MovementLoopAddLocation(NPC, X + 50, Y, Z, 2,0)
-	MovementLoopAddLocation(NPC, X + 50, Y, Z + 50, 2, 5)
-	MovementLoopAddLocation(NPC, X - 25, Y, Z, 2, 0)
-	MovementLoopAddLocation(NPC, X , Y, Z + 50, 2, 0)
+    MovementLoopAddLocation(NPC, X + 14, Y, Z, 2,0)
+	MovementLoopAddLocation(NPC, X + 14, Y, Z + 4, 2, 5)
+	MovementLoopAddLocation(NPC, X + 20, Y, Z, 2, 0)
+	MovementLoopAddLocation(NPC, X + 14, Y, Z + 4, 2, 0)
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10), "ChooseMovement")
 end
 
@@ -60,11 +60,11 @@ function RouteTwo(NPC, Spawn)
 	local Y = GetY(NPC)
 	local Z = GetZ(NPC)
     MovementLoopAddLocation(NPC, X, Y, Z, 2, 0)
-    MovementLoopAddLocation(NPC, X - 50, Y, Z, 2, 0)
-	MovementLoopAddLocation(NPC, X - 50, Y, Z - 50, 2, 5)
-	MovementLoopAddLocation(NPC, X - 50, Y, Z +10, 2, 0)
-	MovementLoopAddLocation(NPC, X , Y, Z - 50, 2, 0)
-	MovementLoopAddLocation(NPC, X, Y, Z, 1, 0,  "ChooseMovement")
+    MovementLoopAddLocation(NPC, X - 14, Y, Z, 2, 0)
+	MovementLoopAddLocation(NPC, X - 14, Y, Z - 4, 2, 5)
+	MovementLoopAddLocation(NPC, X - 20, Y, Z, 2, 0)
+	MovementLoopAddLocation(NPC, X - 14, Y, Z - 4, 2, 0)
+	MovementLoopAddLocation(NPC, X, Y, Z, 1, 0, "ChooseMovement")
 end
 
 function RouteThree(NPC, Spawn)
@@ -72,10 +72,10 @@ function RouteThree(NPC, Spawn)
 	local Y = GetY(NPC)
 	local Z = GetZ(NPC)
     MovementLoopAddLocation(NPC, X, Y, Z, 2, 0)
-	MovementLoopAddLocation(NPC, X + 50, Y, Z +50, 2, 0)
-	MovementLoopAddLocation(NPC, X + 50, Y, Z - 50, 2, 5)
-	MovementLoopAddLocation(NPC, X - 50, Y, Z, 2, 0)
-	MovementLoopAddLocation(NPC, X + 50, Y, Z - 25, 2, 0)
+	MovementLoopAddLocation(NPC, X + 14, Y, Z, 2, 0)
+	MovementLoopAddLocation(NPC, X + 14, Y, Z - 4, 2, 5)
+	MovementLoopAddLocation(NPC, X + 20, Y, Z, 2, 0)
+	MovementLoopAddLocation(NPC, X + 14, Y, Z - 4, 2, 0)
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10), "ChooseMovement")
 end
 
@@ -84,10 +84,10 @@ function RouteFour(NPC, Spawn)
 	local Y = GetY(NPC)
 	local Z = GetZ(NPC)
     MovementLoopAddLocation(NPC, X, Y, Z, 2, 0)
-	MovementLoopAddLocation(NPC, X - 50, Y, Z +30, 2, 0)
-	MovementLoopAddLocation(NPC, X - 50, Y, Z, 2, 5)
-	MovementLoopAddLocation(NPC, X - 50, Y, Z -25, 2, 0)
-	MovementLoopAddLocation(NPC, X - 50, Y, Z + 10, 2, 0)
+	MovementLoopAddLocation(NPC, X - 14, Y, Z, 2, 0)
+	MovementLoopAddLocation(NPC, X - 14, Y, Z + 4, 2, 5)
+	MovementLoopAddLocation(NPC, X - 20, Y, Z, 2, 0)
+	MovementLoopAddLocation(NPC, X - 14, Y, Z + 4, 2, 0)
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10), "ChooseMovement")
 end
 
