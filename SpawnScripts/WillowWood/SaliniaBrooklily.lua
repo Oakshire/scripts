@@ -25,7 +25,7 @@ if math.random(1, 100) <= 75 then
     	end
 	elseif not HasCompletedQuest (Spawn, Rats) and not HasQuest (Spawn, Rats) then 
             if math.random(1, 100) <= 60 then
-            PlayFlavor(NPC, "", "The balance of nature is delecate, but all these newcomers...", "ponder", 0, 0, Spawn, 16)
+            PlayFlavor(NPC, "", "The balance of nature is delicate, but all these newcomers...", "ponder", 0, 0, Spawn, 16)
             elseif HasCompletedQuest (Spawn, Rats) and math.random(1, 100) <= 30 then
             FaceTarget(NPC,Spawn)
             PlayFlavor(NPC, "voiceover/english/salinia_brooklily/qey_village05/100_salinia_brooklily_callout_b524f5d0.mp3", "Hello friend! Please, take your time and browse at your leisure.", "hello", 996096760, 49604074, Spawn, 16)

@@ -32,7 +32,7 @@ end
 function Step1_Complete_GotFlowers(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have picked the flowers.")
 
-	AddQuestStepChat(Quest, 2, "I need to take these flowers Aelis in the Willow Wood.", 1, "I need to collect some flowers for Davyn's tribute and return them to Aelis.", 0, 2370038)
+	AddQuestStepChat(Quest, 2, "I need to take these flowers to Aelis in the Willow Wood.", 1, "I need to collect some flowers for Davyn's tribute and return them to Aelis.", 0, 2370038)
 	AddQuestStepCompleteAction(Quest, 2, "Step2_Complete_TalkedToAelis")
 end
 

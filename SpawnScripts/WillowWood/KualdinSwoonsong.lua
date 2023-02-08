@@ -108,10 +108,10 @@ end
  function Delivered(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Wonderful! I'll add Buipia to my concert plans. I'll fit her in somewhere between my second and fifth solo. Thanks for your help. Take this coin for your time. You MUST save it and buy a concert ticket!")
+	Dialog.AddDialog("Wonderful! I'll add Bupipa to my concert plans. I'll fit her in somewhere between my second and fifth solo. Thanks for your help. Take this coin for your time. You MUST save it and buy a concert ticket!")
 	Dialog.AddVoiceover("voiceover/english/kualdin_swoonsong/qey_village05/kualdinswoonsong003.mp3", 2468409303, 338695465)
 	PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
-	Dialog.AddOption("I'll concider it. Glad I could help.", "Reward")
+	Dialog.AddOption("I'll consider it. Glad I could help.", "Reward")
 	Dialog.Start()
 end   
 
