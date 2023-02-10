@@ -59,7 +59,6 @@ function Dialog2a(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/banker_caroline_copperstone/qey_village01/banker_carolyn_copperstone003.mp3", 1449224739, 333296052)
 	Dialog.AddOption("Adventurer","Dialog2b")
 	Dialog.AddOption("Crafter","Dialog2b")
-	Dialog.AddOption(""..GetClassName(Spawn).."","Dialog2b")
     if GetRace(Spawn)==9 then
 	Dialog.AddOption("Formerly a used horse salesperson before the cataclysm.","Dialog2b")
 	Dialog.AddOption("Jack-of-all-trades?","Dialog2b")

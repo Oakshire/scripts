@@ -60,7 +60,6 @@ function Dialog2a(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/banker_drizzcopper/qey_village06/banker_drizzcopper003.mp3", 1581259590, 1356751138)
 	Dialog.AddOption("Adventurer","Dialog2b")
 	Dialog.AddOption("Crafter","Dialog2b")
-	Dialog.AddOption(""..GetClassName(Spawn).."","Dialog2b")
     if GetRace(Spawn)==7 then
 	Dialog.AddOption("Very hungry?","Dialog2b")
     elseif GetRace(Spawn)==5 then

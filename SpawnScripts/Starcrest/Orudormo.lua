@@ -63,7 +63,6 @@ function Dialog2a(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/banker_orudormo/qey_village02/bankerorudormo003.mp3", 1158160371,116927725)
 	Dialog.AddOption("Adventurer","Dialog2b")
 	Dialog.AddOption("Crafter","Dialog2b")
-	Dialog.AddOption(""..GetClassName(Spawn).."","Dialog2b")
     if GetRace(Spawn)==3 then
 	Dialog.AddOption("Metaphysical Phylosopher and part-time Adventurer","Dialog2b")
     elseif GetRace(Spawn)==9 then

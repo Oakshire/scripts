@@ -60,7 +60,6 @@ function Dialog2a(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/banker_dalonalis/qey_village04/banker_dalonalis003.mp3", 84065886, 2587274709)
 	Dialog.AddOption("Adventurer","Dialog2b")
 	Dialog.AddOption("Crafter","Dialog2b")
-	Dialog.AddOption(""..GetClassName(Spawn).."","Dialog2b")
     if GetRace(Spawn)==4 then
 	Dialog.AddOption("Fly catcher doesn't seem right... Harvester?","Dialog2b")
     elseif GetRace(Spawn)==8 then
