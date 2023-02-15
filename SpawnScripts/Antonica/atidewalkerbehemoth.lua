@@ -11,10 +11,10 @@ function spawn(NPC)
     local Level = GetLevel(NPC)
     local level1 = 19
     local level2 = 20
-    local difficulty1 = 9
+    local difficulty1 = 8
     local hp1 = 3080
     local power1 = 905
-    local difficulty2 = 9
+    local difficulty2 = 8
     local hp2 = 4025
     local power2 = 965
     if Level == level1 then
