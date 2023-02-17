@@ -7,13 +7,15 @@
 --]]
 
 function cast(Caster, Target, MinVal, MaxVal, DmgType, DmgLow, DmgHigh)
-    if DmgHigh ~= nil and DmgLow < DmgHigh then
-        SpellDamage(Target, DmgType, math.random(DmgLow, DmgHigh))
-    else
-        SpellDamage(Target, DmgType, DmgLow)
-        
-    end
-    AddHate(Caster, Target, math.random(MinVal, MaxVal), 1)
+  local IntBonus = GetInt(Caster) / 10
+  local MinDmg = DmgLow + IntBonus
+  local MaxDmg = DmgHigh + IntBonus
+  local MinHate = MinVal + IntBonus
+  local MaxHate = MaxVal + IntBonus
+  
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+
+    AddHate(Caster, Target, math.random(MinHate, MaxHate), 1)
     
 end
 

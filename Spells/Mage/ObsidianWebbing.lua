@@ -16,11 +16,11 @@ function precast(Caster, Target)
 end
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
-    else
-        SpellDamage(Target, DmgType, MinVal)
-    end
+  local IntBonus = GetInt(Caster) / 10
+  local MinDmg = MinVal + IntBonus
+  local MaxDmg = MaxVal + IntBonus
+  
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
         AddControlEffect(Target, 5)
         AddProc(Target, 2, 10.0)
 

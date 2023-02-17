@@ -8,11 +8,11 @@
 
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-    if MaxVal ~= nil and MinVal < MaxVal then
-        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
-    else
-        SpellDamage(Target, DmgType, MinVal)
-    end
+  local StrBonus = GetStr(Caster) / 10
+  local MinDmg = MinVal + StrBonus
+  local MaxDmg = MaxVal + StrBonus
+  
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
     
     if not IsEpic(Target) then 
 		CastSpell(Target, 5001, GetSpellTier())
