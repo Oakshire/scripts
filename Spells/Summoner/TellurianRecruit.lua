@@ -13,7 +13,8 @@ function cast(Caster, Target, PetID, Dif, NotUsed, HPMod, PWMod, Sz, SList)
    local pw = Level * PWMod
    local difficulty = Dif
    local CasterInt = GetInt(Caster)
-   local str = CasterInt + Dif
+   local StrMod = Dif * 3
+   local str = CasterInt + StrMod
   
    SpawnSet(pet, "difficulty", difficulty)
    SpawnSet(pet, "size", Sz)
@@ -28,13 +29,13 @@ function cast(Caster, Target, PetID, Dif, NotUsed, HPMod, PWMod, Sz, SList)
 
    
    local NewPW = math.floor(pw)
-   SetMaxPower = NewPW
-   ModifyPower = NewPW
+   SetMaxPower(pet, NewPW)
+   ModifyPower(pet, NewPW)
 
    
    --Set Pet Attributes
    SetInfoStructFloat(pet, "str", str)
-   SetStrBase(pet, CasterInt)
+   SetStrBase(pet, str)
    SetInfoStructFloat(pet, "agi", CasterInt)
    SetAgiBase(pet, CasterInt)
    SetInfoStructFloat(pet, "sta", CasterInt)
