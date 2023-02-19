@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/SummonerPets/TelliruanRecruitApprentice1.lua
+    Script Name    : SpawnScripts/SummonerPets/TellurianScarab.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.11.12 08:11:52
+    Script Date    : 2023.02.18 11:02:38
     Script Purpose : 
                    : 
 --]]

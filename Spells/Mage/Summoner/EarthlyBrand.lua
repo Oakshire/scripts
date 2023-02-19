@@ -15,11 +15,23 @@
 
 function cast(Caster, Target, DefMod, MitMod)
     Pet=GetPet(Caster)
-    AddSkillBonus(Pet, 609880714, DefMod)
-    AddSpellBonus(Target, 200, MitMod)
-    AddSpellBonus(Target, 201, MitMod)
-    AddSpellBonus(Target, 202, MitMod)
-    AddSpellBonus(Target, 203, MitMod)
+    Level = GetLevel(Caster)
+    SpellLevel = 12
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    DefBonus = DefMod + LvlBonus
+    MitBonus = MitMod + LvlBonus
+    
+    AddSkillBonus(Pet, 609880714, DefBonus)
+    AddSpellBonus(Target, 200, MitBonus)
+    AddSpellBonus(Target, 201, MitBonus)
+    AddSpellBonus(Target, 202, MitBonus)
+    AddSpellBonus(Target, 203, MitBonus)
 
 end
 

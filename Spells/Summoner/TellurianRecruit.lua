@@ -7,44 +7,36 @@
 --]]
 
 function cast(Caster, Target, PetID, Dif, NotUsed, HPMod, PWMod, Sz, SList)
-   pet = SummonPet(Caster, PetID)
-   local Level = GetLevel(pet)
-   local hp = Level * HPMod
-   local pw = Level * PWMod
-   local difficulty = Dif
+   Pet = SummonPet(Caster, PetID)
+   local Level = GetLevel(Pet)
+   local HP = Level * HPMod
+   local PW = Level * PWMod
    local CasterInt = GetInt(Caster)
    local StrMod = Dif * 3
-   local str = CasterInt + StrMod
-  
-   SpawnSet(pet, "difficulty", difficulty)
-   SpawnSet(pet, "size", Sz)
-   SetSpellList(pet, SList)
+   local Str = CasterInt + StrMod
+   local NewHP = math.floor(HP)
+   local NewPW = math.floor(PW)
    
-   --SpawnSet(pet, "hp", hp)
-   --SpawnSet(pet, "power", pw)
-   
-   local NewHP = math.floor(hp)
-   SetMaxHP(pet, NewHP)
-   ModifyHP(pet, NewHP)
-
-   
-   local NewPW = math.floor(pw)
-   SetMaxPower(pet, NewPW)
-   ModifyPower(pet, NewPW)
-
+   SpawnSet(Pet, "difficulty", Dif)
+   SpawnSet(Pet, "size", Sz)
+   SetSpellList(Pet, SList)
+   SetMaxHP(Pet, NewHP)
+   ModifyHP(Pet, NewHP)
+   SetMaxPower(Pet, NewPW)
+   ModifyPower(Pet, NewPW)
    
    --Set Pet Attributes
-   SetInfoStructFloat(pet, "str", str)
-   SetStrBase(pet, str)
-   SetInfoStructFloat(pet, "agi", CasterInt)
-   SetAgiBase(pet, CasterInt)
-   SetInfoStructFloat(pet, "sta", CasterInt)
-   SetStaBase(pet, CasterInt)
-   SetInfoStructFloat(pet, "intel", CasterInt)
-   SetIntBase(pet, CasterInt)
-   SetInfoStructFloat(pet, "wis", CasterInt)
-   SetWisBase(pet, CasterInt)
-
+   SetInfoStructFloat(Pet, "str", Str)
+   SetStrBase(Pet, Str)
+   SetInfoStructFloat(Pet, "agi", CasterInt)
+   SetAgiBase(Pet, CasterInt)
+   SetInfoStructFloat(Pet, "sta", CasterInt)
+   SetStaBase(Pet, CasterInt)
+   SetInfoStructFloat(Pet, "intel", CasterInt)
+   SetIntBase(Pet, CasterInt)
+   SetInfoStructFloat(Pet, "wis", CasterInt)
+   SetWisBase(Pet, CasterInt)
+   
  end
 
 
