@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-	waypoints(NPC)
+	AddTimer(NPC, 6000, "waypoints")
 end
 
 function hailed(NPC, Spawn)
