@@ -14,19 +14,23 @@
 --                     Grants 8 triggers of the spell.
 
 function cast(Caster, Target, Power, Triggers)
-    AddSpellBonus(Target, 620, Power)
-AddProc(Caster, 15, 50)
-SetSpellTriggerCount(Triggers, 1)
+    MaxPow = GetMaxPower(Caster)
+    PowHeal = math.floor(MaxPow * 0.2)
+    SpellHeal("Power", PowHeal, PowHeal, Caster)
+    
+--AddSpellBonus(Target, 620, Power)
+--AddProc(Caster, 15, 50)
+--SetSpellTriggerCount(Triggers, 1)
 end
 
-function proc(Caster, Target, Type, Power, Triggers)
+--[[function proc(Caster, Target, Type, Power, Triggers)
     Say(Caster, "this casts a test spell")
 
 CastSpell(Caster, 22, 1)
 RemoveTriggerFromSpell()
-end
+end --]]
 
-function remove(Caster, Target)
+--[[function remove(Caster, Target)
 RemoveSpellBonus(Target)
 RemoveProc(Target)
-end
+end--]]

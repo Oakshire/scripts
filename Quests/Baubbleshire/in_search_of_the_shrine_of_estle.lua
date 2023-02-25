@@ -12,7 +12,7 @@
 
 function Init(Quest)
     UpdateQuestZone(Quest, "Down Below")	
-	AddQuestStepLocation(Quest, 1, "I will find the shrine in the Down Below.", 5, "I need to locate the Shrine of Estle in the Down Below.", 0, 7.12, 0.3, -137.86, 199)
+	AddQuestStepLocation(Quest, 1, "I will find the shrine in the Down Below.", 5, "I need to locate the Shrine of Estle in the Down Below.", 0, 7.12, 0.3, -137.86, 834)
 	AddQuestStepCompleteAction(Quest, 1, "FoundTemple")
 end
 

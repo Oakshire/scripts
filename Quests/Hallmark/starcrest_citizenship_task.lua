@@ -13,7 +13,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Down Below.", 5, 34, "The catacombs have been seeded with tokens for the citizens of the Starcrest Commune to gather. These tokens may be found on any creatures in the Down Below.", 1342, 1990001, 1990002, 1990003, 1990004, 1990005, 1990006, 1990007, 1990008, 1990009, 1990010, 1990012, 1990013, 1990014, 1990015, 1990016, 1990017, 1990018, 1990019, 1990020, 1990021, 1990022, 1990023, 1990024, 1990025, 1990026, 1990027, 1990028, 1990029, 1990030, 1990031, 1990032, 1990033, 1990034, 1990035, 1990036, 1990037, 1990038, 1990039, 1990041, 1990042, 1990043, 1990044, 1990045, 1990054, 1990056, 1990096, 1990097, 1990098, 1990099, 1990100, 1990101, 1990102, 1990103, 1990104)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Down Below.", 5, 34, "The catacombs have been seeded with tokens for the citizens of the Starcrest Commune to gather. These tokens may be found on any creatures in the Down Below.", 1342, 8340015, 8340016, 8340017, 8340018, 8340019, 8340020, 8340021, 8340022, 8340023, 8340025, 8340026, 8340027, 8340028, 8340029, 8340030, 8340031, 8340032, 8340033, 8340034, 8340035, 8340036, 8340037, 8340038, 8340039, 8340040, 8340041, 8340042, 8340043, 8340044, 8340045, 8340046, 8340047, 8340048, 8340049, 8340050, 8340051, 8340052, 8340053, 8340054, 8340055)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Down Below")
 end

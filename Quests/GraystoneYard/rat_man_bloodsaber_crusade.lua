@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill four ratonga Bloodsabers.", 4, 100, "I need to slay four ratonga Bloodsabers in the Down Below.", 611, 1990025,1990026,1990027,1990023)
+	AddQuestStepKill(Quest, 1, "I must kill four ratonga Bloodsabers.", 4, 100, "I need to slay four ratonga Bloodsabers in the Down Below.", 611, 8340015,8340016,8340017,8340018, 8340019, 8340055)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	UpdateQuestZone(Quest,"The Down Below")
 end

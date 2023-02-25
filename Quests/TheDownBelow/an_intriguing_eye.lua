@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Slay Bloodsaber meddlers", 1, 30, "Writing on the book states that rat men, possibly the Bloodsabers of the Down Below carry information I need. I will hack through their ranks until I find a clue about the symbol.", 374, 1990027)
+	AddQuestStepKill(Quest, 1, "Slay Bloodsaber meddlers", 1, 30, "Writing on the book states that rat men, possibly the Bloodsabers of the Down Below carry information I need. I will hack through their ranks until I find a clue about the symbol.", 374, 8340019)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -49,14 +49,14 @@ function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I've spoken to Gornit Penwiggle.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I spoke to Gornit Penwiggle about the coin.")
 
-	AddQuestStepKill(Quest, 4, "Slay some coiled burrowers", 3, 100, "I need to fill the hunting list for Gornit Penwiggle.  I should be able to find these critters in the Down Below.", 109, 1990009)
+	AddQuestStepKill(Quest, 4, "Slay some coiled burrowers", 3, 100, "I need to fill the hunting list for Gornit Penwiggle.  I should be able to find these critters in the Down Below.", 109, 8340020)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I killed some coiled burrowers.")
 
-	AddQuestStepKill(Quest, 5, "Slay some rabid shrillers", 4, 100, "I need to fill the hunting list for Gornit Penwiggle.  I should be able to find these critters in the Down Below.", 178, 1990001)
+	AddQuestStepKill(Quest, 5, "Slay some rabid shrillers", 4, 100, "I need to fill the hunting list for Gornit Penwiggle.  I should be able to find these critters in the Down Below.", 178, 8340035)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
@@ -88,7 +88,7 @@ function Step8Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 8, "I've spoken to Constable Arathur.")
 	UpdateQuestTaskGroupDescription(Quest, 7, "I spoke to Constable Arathur in the Qeynos Province District.")
 
-	AddQuestStepKill(Quest, 9, "Slay a fallen noble.", 1, 100, "I need to slay a fallen noble in the deep depths of the Down Below.", 11, 1990017, 1990018)
+	AddQuestStepKill(Quest, 9, "Slay a fallen noble.", 1, 100, "I need to slay a fallen noble in the deep depths of the Down Below.", 11, 1990017, 8340026, 8340027)
 	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")
 end
 

@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill some crypt substances.", 6, 80, "I need to slay six crypt substances in the Down Below.", 329, 1990003)
+	AddQuestStepKill(Quest, 1, "I must kill some crypt substances.", 6, 80, "I need to slay six crypt substances in the Down Below.", 329, 8340022)
 	AddQuestStepCompleteAction(Quest, 1, "Turnin")
 	UpdateQuestZone(Quest,"The Down Below")
 end

@@ -68,7 +68,7 @@ function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I've spoken with Dagorel")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've let Dagorel know that I spoke with the soldiers")
 
-	AddQuestStepKillByRace(Quest, 5, "I must kill one gnoll", 1, 100, "Dagorel has charged me with finding and killing a Darkpaw Gnoll Pup in Antonica", 1220, 298)
+	AddQuestStepKillByRace(Quest, 5, "I must kill one gnoll", 1, 100, "Dagorel has charged me with finding and killing a Darkpaw Gnoll Pup in Antonica", 1220, 298, 120065)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 

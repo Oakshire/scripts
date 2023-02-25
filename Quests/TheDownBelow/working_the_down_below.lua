@@ -16,25 +16,25 @@ function Init(Quest)
 	SetQuestFeatherColor(Quest, 3)
 	SetQuestRepeatable(Quest)
 	if RandomChoice == 1 then
-	AddQuestStepKill(Quest, 1, "Get four forgotten soul rib cages.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 90, 1990032)
+	AddQuestStepKill(Quest, 1, "Get four forgotten soul rib cages.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 90, 8340029)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-	AddQuestStepKill(Quest, 2, "Get four tortured soul rib cages.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 90, 1990038)
+	AddQuestStepKill(Quest, 2, "Get four tortured soul rib cages.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 90, 8340048)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
-	AddQuestStepKill(Quest, 3, "Get four venomous watcher fangs.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 163, 1990036)
+	AddQuestStepKill(Quest, 3, "Get four venomous watcher fangs.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 163, 8340051)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")  
 	elseif RandomChoice == 2 then
-	AddQuestStepKill(Quest, 1, "Get four venomous keeper fangs.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 163, 1990037)
+	AddQuestStepKill(Quest, 1, "Get four venomous keeper fangs.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 163, 8340050)
 	AddQuestStepCompleteAction(Quest, 1, "Step1_1Complete")    
-	AddQuestStepKill(Quest, 2, "Get four frenzied watcher fangs.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 163, 1990039)
+	AddQuestStepKill(Quest, 2, "Get four frenzied watcher fangs.", 4, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 163, 8340030)
 	AddQuestStepCompleteAction(Quest, 2, "Step1_2Complete")  
-	AddQuestStepKill(Quest, 3, "Get five vials of venom from frenzied watchers.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 1990039)
+	AddQuestStepKill(Quest, 3, "Get five vials of venom from frenzied watchers.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 8340030)
 	AddQuestStepCompleteAction(Quest, 3, "Step1_3Complete")   
 	elseif RandomChoice == 3 then
-	 AddQuestStepKill(Quest, 1, "Get five vials of venom from frenzied watchers.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 1990039)
+	 AddQuestStepKill(Quest, 1, "Get five vials of venom from frenzied watchers.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 8340030)
 	AddQuestStepCompleteAction(Quest, 1, "Step3_1Complete") 
-	 AddQuestStepKill(Quest, 2, "Get five vials of venom from rabid shrillers.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 1990001)
+	 AddQuestStepKill(Quest, 2, "Get five vials of venom from rabid shrillers.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 8340035)
 	AddQuestStepCompleteAction(Quest, 2, "Step3_2Complete")
-	AddQuestStepKill(Quest, 3, "Get five vials of venom from putrid vermin.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 1990008, 1990010)
+	AddQuestStepKill(Quest, 3, "Get five vials of venom from putrid vermin.", 5, 100, "I've agreed to help merchant Adair Barnes gather items she intends on selling to her buyers in the Down Below.", 178, 1990008, 1990010, 8340033)
 	AddQuestStepCompleteAction(Quest, 3, "Step3_3Complete")    
     end
 end
@@ -105,7 +105,7 @@ end
 function Progress(Quest, QuestGiver, Player)
 if QuestStepIsComplete(Player, 5365, 1)  and QuestStepIsComplete(Player, 5365, 2) and QuestStepIsComplete(Player, 5365, 3) then
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've got all of the items merchant Barnes asked me to obtain.  I should get them back to her as soon as possible.")
-	AddQuestStepChat(Quest, 4, "I need to get this stuff to merchant Barnes.", 1, "I need to get these items back to merchant Barnes, here in the Down Below.", 11, 1990011)
+	AddQuestStepChat(Quest, 4, "I need to get this stuff to merchant Barnes.", 1, "I need to get these items back to merchant Barnes, here in the Down Below.", 11, 8340001)
 	AddQuestStepCompleteAction(Quest, 4, "QuestComplete")
 end
    end
