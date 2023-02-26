@@ -1119,7 +1119,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	                    elseif choice == 5 then
                 		PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_4424ae28.mp3", "How sweet my Tom is to leave such a gift at my doorstep.", "giggle", 206344530, 3671427567, Spawn)
 	                    elseif choice == 6 then
-	                	PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_eabd8556.mp3", "I heard the Rotanga play it for fun.", "shrug", 1671177, 4253987454, Spawn)
+	                	PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_eabd8556.mp3", "I heard the Ratonga play it for fun.", "shrug", 1671177, 4253987454, Spawn)
 	                    elseif choice == 7 then
                 		PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_b155e999.mp3", "You won't see me near any of those fountains!", "no", 2380586558, 4131988901, Spawn)
 	                    elseif choice == 8 then
@@ -1312,7 +1312,7 @@ function GenericEcologyHail(NPC, Spawn, faction)
 	                elseif choice == 5 then
 	        	    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_67432087.mp3", "We must remain steady against the influence of evil.  Only with perseverance will Qeynos survive!", "shakefist", 927768431, 1576503790, Spawn)
         	        elseif choice == 6 then
-        		    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_646dc5ff.mp3", "I've found that the right ammount of patients and enthusiasm can open almost any door.", "agree", 1063360943, 3481586683, Spawn)
+        		    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_646dc5ff.mp3", "I've found that the right amount of patience and enthusiasm can open almost any door.", "agree", 1063360943, 3481586683, Spawn)
             	    elseif choice == 7 then
 	           	    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_414392d4.mp3", "As with all relationships in life, sometimes desire can lead to misfortune.  I strive to temper love and discipline.", "ponder", 2120229696, 432481455, Spawn)
 	                elseif choice == 8 then
@@ -4793,7 +4793,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 	                    elseif choice == 5 then
                 		PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_4424ae28.mp3", "How sweet my Tom is to leave such a gift at my doorstep.", "scheme", 206344530, 3671427567)
 	                    elseif choice == 6 then
-	                	PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_eabd8556.mp3", "I heard the Rotanga play it for fun.", "shrug", 1671177, 4253987454)
+	                	PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_eabd8556.mp3", "I heard the Ratonga play it for fun.", "shrug", 1671177, 4253987454)
 	                    elseif choice == 7 then
                 		PlayFlavor(NPC, "voiceover/english/kerran_eco_good_1/ft/kerran/kerran_eco_good_1_hail_gf_b155e999.mp3", "You won't see me near any of those fountains!", "no", 2380586558, 4131988901)
 	                    elseif choice == 8 then
@@ -5050,7 +5050,7 @@ if race >= 0 and race <= 18 and gender >= 1 and gender <= 2 then        -- verif
 	                elseif choice == 5 then
 	        	    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_67432087.mp3", "We must remain steady against the influence of evil.  Only with perseverance will Qeynos survive!", "shakefist", 927768431, 1576503790)
         	        elseif choice == 6 then
-        		    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_646dc5ff.mp3", "I've found that the right ammount of patients and enthusiasm can open almost any door.", "agree", 1063360943, 3481586683)
+        		    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_646dc5ff.mp3", "I've found that the right amount of patience and enthusiasm can open almost any door.", "agree", 1063360943, 3481586683)
             	    elseif choice == 7 then
 	           	    PlayFlavor(NPC, "voiceover/english/woodelf_eco_good_1/ft/woodelf/woodelf_eco_good_1_hail_gf_414392d4.mp3", "As with all relationships in life, sometimes desire can lead to misfortune.  I strive to temper love and discipline.", "ponder", 2120229696, 432481455)
 	                elseif choice == 8 then

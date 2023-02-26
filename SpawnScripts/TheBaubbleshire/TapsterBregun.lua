@@ -77,7 +77,7 @@ end
     SetStepComplete(Spawn, YolaPicnic, 2)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("So ya are!  I hope she enjoys her lunch. I gave her my best breads and cheeses!  Mmmm ... makes me hungry thinkin' about it!  Here are the coins I promised.")
+	Dialog.AddDialog("Hehe. So ya are!  I hope she enjoys her lunch. I gave her my best breads and cheeses!  Mmmm ... makes me hungry thinkin' about it! Haha! Oh, as promised, here's your coin!")
 	Dialog.AddVoiceover("voiceover/english/tapster_bregun/qey_village06/tapsterbregun003.mp3",1121129450,2689540838)
 	PlayFlavor(NPC, "", "", "thanks", 0, 0, Spawn)
 	Dialog.AddOption("Thanks, Bregun")

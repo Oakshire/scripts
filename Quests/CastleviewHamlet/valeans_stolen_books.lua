@@ -12,7 +12,7 @@
 
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "I must search for Valean's books.", 2, "I need to seek out the stolen books within the Down Below section of the catacombs. ", 11, -13,0.8, -5.93)
-	AddQuestStepCompleteAction(Quest, 1, "DownBelow_Classic")
+	AddQuestStepCompleteAction(Quest, 1, "DownBelow")
 	UpdateQuestZone(Quest, "The Down Below")
 end
 

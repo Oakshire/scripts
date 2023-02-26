@@ -177,14 +177,14 @@ end
 	Dialog.AddDialog("If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?")
 	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan007.mp3", 1398879355, 1149892616)
  	PlayFlavor(NPC, "", "", "ponder", 0,0 , Spawn)
- 	Dialog.AddOption("What methods do you use elementals in your magic?", "MageTraining1a")
+ 	Dialog.AddOption("How do you use the elements in your magic?", "MageTraining1a")
     Dialog.Start()
 end  
 
  function MageTraining1a(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("If Niksel sent you to me, then that's another story.  I have done well by his teachings.  What do you want to know about sorcery?")
+	Dialog.AddDialog("I draw from unstable ether and turn it into different types of fire. Igniting a brazier with a simple incantation is easier than rubbing two sticks together.")
 	Dialog.AddVoiceover("voiceover/english/yanari_cyellann/qey_village04/yanaricyellan008.mp3", 3056968266, 3365736320)
     CastSpell(NPC,19)
  	Dialog.AddOption("No doubt you've used your magic for other purposes outside of your laboratory?", "MageTraining1b")

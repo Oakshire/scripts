@@ -149,7 +149,7 @@ function Dialog3(NPC,Spawn)
  	Dialog.AddDialog("Good, good, good.  I hope you learned the many uses of sorcery's power--just remember to respect this power.")
 	Dialog.AddVoiceover("voiceover/english/magister_niksel/qey_south/magister_niksel009.mp3", 3515068214, 3688909586)
     PlayFlavor(NPC, "", "", "happy", 0, 0, Spawn)
-    Dialog.AddOption("It was enlightening to hear how elemental magics can be destructive, but also has utility.","DoneToday")	
+    Dialog.AddOption("It was enlightening to hear how elemental magics can be destructive, but also have utility.","DoneToday")	
 	Dialog.Start()
 end
 

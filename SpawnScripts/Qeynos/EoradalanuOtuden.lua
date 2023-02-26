@@ -26,7 +26,7 @@ function hailed(NPC, Spawn)
         AddConversationOption(conversation, "The tower is quite the sight!","QuestStart")
         end
         AddConversationOption(conversation, "Alright.")
-    	StartConversation(conversation, NPC, Spawn, "Welcome to the grounds of the Tree Towers.  Walk... lightly.  Speak... quietly.  The mages within are deep in concentration.  Disruptions can cause impediments to progress.  Please move along.")
+    	StartConversation(conversation, NPC, Spawn, "Welcome to the grounds of the Three Towers. Walk lightly, speak quietly. The mages within are deep in concentration, disruptions can cause impediments to progress. Please, move along.")
     end
 end
 
