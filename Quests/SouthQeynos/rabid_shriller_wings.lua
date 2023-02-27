@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Hunt rabid shrillers in the Down Below.", 8, 100, "I must go into the Down Below and collect eight pairs of rabid shriller wings.", 140, 1990001)
+	AddQuestStepKill(Quest, 1, "Hunt rabid shrillers in the Down Below.", 8, 100, "I must go into the Down Below and collect eight pairs of rabid shriller wings.", 140, 8340035)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"The Down Below")
 end
