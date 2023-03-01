@@ -6,7 +6,7 @@
 	Script Notes	: If the coords are out of bounds then the spawn will still go there.
 --]]
 function spawn(NPC)
-    ChooseMovement(NPC)
+    AddTimer(NPC, 6000,  "ChooseMovement")
 end
 
 function ChooseMovement(NPC)
