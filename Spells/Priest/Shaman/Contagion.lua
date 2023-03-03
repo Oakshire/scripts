@@ -9,13 +9,38 @@
 -- Info from spell_display_effects (remove from script when done)
 -- Inflicts 12 disease damage on target instantly and every 4 seconds
 
-function cast(Caster, Target, DoTType, MinVal)
-    Say(Caster, "Race check bonuses not implemented.")
-SpellDamage(Target, DoTType, MinVal)
+function cast(Caster, Target, DmgType, MinVal)
+ Level = GetLevel(Caster)
+    SpellLevel = 11
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+
+    DmgBonus = LvlBonus * 2 + StatBonus
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MinDmg)
 end
 
-function tick(Caster, Target, DoTType, MinVal)
-SpellDamage(Target, DoTType, MinVal)
+function tick(Caster, Target, DmgType, MinVal)
+ Level = GetLevel(Caster)
+    SpellLevel = 11
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+
+    DmgBonus = LvlBonus * 2 + StatBonus
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MinDmg)
 end
 
 
