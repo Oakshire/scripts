@@ -8,6 +8,10 @@
 
 seen_step_45 = false
 
+
+    
+
+
 function signal_changed(zone, player, signal)
 	if signal == "sys_client_avatar_ready" and HasQuest(player, 524) == false and HasCompletedQuest(player, 524) == false then
 		i = 1
