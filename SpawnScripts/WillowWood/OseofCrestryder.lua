@@ -19,7 +19,6 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     if HasQuest(Spawn,5761) and GetQuestStep(Spawn,5761) == 8 then
     Dialog1(NPC,Spawn)
@@ -29,32 +28,37 @@ function hailed(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	-- artisan essentials volume 2
-	if not HasItem(Spawn, 31373, 1) and GetTradeskillLevel(Spawn) <2 then
-		AddConversationOption(conversation, "Yes, please teach me.", "dlg_14_1")
-	end
-	AddConversationOption(conversation, "No, not at the moment.")
-	StartConversation(conversation, NPC, Spawn, "You show interest in the crafting trade, good.  We can always use talented artisans.  I can help you get started, would you be interested?")
+	if GetTradeskillLevel(Spawn) <2 then
+	conversation = CreateConversation()
+	    --not HasItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1) then
+		AddConversationOption(conversation, "Yes, please teach me.", "dlg_39_1")
+		AddConversationOption(conversation, "No, not at the moment.")
+		StartConversation(conversation, NPC, Spawn, "You show interest in the crafting trade, good.  We can always use talented artisans.  I can help you get started, would you be interested?")
 	else
-		Say(NPC, "I have nothing else to teach you for the moment. Please return to me when you have earned enough experience to choose your profession.", Spawn)
+        Say(NPC,"Good day! If you are looking for more crafting training, seek out the trainers in Qeynos Harbor. They can help you beyond the basics I provide.","Spawn")
+--		Say(NPC, "I have nothing else to teach you for the moment. Please return to me when you have earned enough experience to choose your profession.", Spawn)
 	end
 end
 end
 
-
-
-function dlg_14_1(NPC, Spawn)
+function dlg_39_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
-	-- artisan essentials volume 2
-	SummonItem(Spawn, 31373, 1)
-	if GetTradeskillLevel(Spawn) < 2 then
-		SetTradeskillLevel(Spawn, 2)
-	end
-
-	AddConversationOption(conversation, "I will start on that now.")
+if GetTradeskillLevel(Spawn) <2  then
+        Quest = GetQuest(Spawn,5749)
+        SummonItem(Spawn,1030001,1)
+        SetTradeskillLevel(Spawn,2)
+        SetTradeskillClass(Spawn,1)
+	    SendMessage(Spawn, "You are now an Artisan!")
+        SendPopUpMessage(Spawn, "You are now an Artisan!", 200, 200, 200)            
+    end
+--[[	Revamped
+    -- artisan essentials volume 2
+	SummonItem(Spawn, ARTISAN_ESSENTIALS_VOLUME_2, 1)
+]]--
+    AddConversationOption(conversation, "I will start on that now.")
 	StartConversation(conversation, NPC, Spawn, "There, you now have knowledge required to begin crafting.  Speak to the Tradeskill Tutor for more detailed guidance on learning to craft, if you are interested in more information.  Return to me when you are ready to select a crafting specialty.")
+
 end
 
 
