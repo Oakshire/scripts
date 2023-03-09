@@ -32,10 +32,12 @@ function NonCitizen(NPC,Spawn)
 
 	if GOOD and GetFactionAmount(Spawn,11) >0 and invul == false then                                                
 	    if not HasCompletedQuest(Spawn,5718) and not HasCompletedQuest(Spawn,5719) and not HasCompletedQuest(Spawn,5720) and not HasCompletedQuest(Spawn,5721) and not HasCompletedQuest(Spawn,5722) and not HasCompletedQuest(Spawn,5723) then
+        if GetClass(Spawn) ==1 or GetClass(Spawn)==11 or GetClass(Spawn)==21 or GetClass(Spawn)==31 then --CLASS(Archetype) CHECK.
         Attack(NPC,Spawn)
         AddTimer(NPC,500,"Expel",1,Spawn)
         SendMessage(Spawn,"A guard has spotted you!","red")
         PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+        end
         end
     end
 end
