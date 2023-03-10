@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-     local Level = GetLevel(NPC)
+    local Level = GetLevel(NPC)
     local level1 = 4
     local level2 = 5
     local difficulty1 = 6
@@ -26,6 +26,8 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructSInt(NPC, "hp_regen", 0)
 
 ChooseMovement(NPC)
 end

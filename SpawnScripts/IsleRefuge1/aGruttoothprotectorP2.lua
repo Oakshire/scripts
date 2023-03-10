@@ -8,7 +8,8 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/BaseGoblin2.lua")
 
 function spawn(NPC)
-  
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructSInt(NPC, "hp_regen", 0)  
 waypoints(NPC)
 end
 

@@ -6,6 +6,8 @@
 	Script Notes	: If the coords are out of bounds then the spawn will still go there.
 --]]
 function spawn(NPC)
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructSInt(NPC, "hp_regen", 0)
     AddTimer(NPC, 6000,  "ChooseMovement")
 end
 

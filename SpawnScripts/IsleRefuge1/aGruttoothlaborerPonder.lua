@@ -28,7 +28,8 @@ function spawn(NPC)
     SpawnSet(NPC, "power", power2)
     end
     SpawnSet(NPC, "visual_state", 12030)
-
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructSInt(NPC, "hp_regen", 0)
 end
 
 function aggro(NPC,Spawn)

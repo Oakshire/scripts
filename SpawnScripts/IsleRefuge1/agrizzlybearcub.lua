@@ -7,7 +7,8 @@
 --]]
 
 function spawn(NPC)
-
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructSInt(NPC, "hp_regen", 0)
 ChooseMovement(NPC)
 end
 

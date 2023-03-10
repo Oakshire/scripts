@@ -7,6 +7,8 @@
 --]]
 
 function spawn(NPC)
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructSInt(NPC, "hp_regen", 0)
 AddTimer(NPC,5000,"Callout")
 AddTimer(NPC,6000,"AliveCheck")
 end

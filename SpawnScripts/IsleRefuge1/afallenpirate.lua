@@ -29,6 +29,8 @@ function spawn(NPC)
     SpawnSet(NPC, "power", power2)
     end
     SetSpawnAnimation(NPC, 13016)
+    SetInfoStructUInt(NPC, "hp_regen_override", 1)
+    SetInfoStructSInt(NPC, "hp_regen", 0)    
 end
 
 function hailed(NPC, Spawn)
