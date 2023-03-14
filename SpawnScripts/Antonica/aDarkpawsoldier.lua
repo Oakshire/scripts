@@ -1,21 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/asogboneskeleton.lua
+    Script Name    : SpawnScripts/Antonica/aDarkpawsoldier.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.07.27 08:07:35
+    Script Date    : 2023.03.13 03:03:36
     Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
     local Level = GetLevel(NPC)
-    local level1 = 12
-    local level2 = 13
-    local difficulty1 = 7
+    local level1 = 14
+    local level2 = 15
+    local difficulty1 = 6
     local hp1 = 795
-    local power1 = 270
-    local difficulty2 = 7
-    local hp2 = 980
-    local power2 = 310
+    local power1 = 240
+    local difficulty2 = 6
+    local hp2 = 920
+    local power2 = 270
     if Level == level1 then
     SpawnSet(NPC, "difficulty", difficulty1)
     SpawnSet(NPC, "hp", hp1)
