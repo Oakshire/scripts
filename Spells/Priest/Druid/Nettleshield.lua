@@ -15,7 +15,23 @@ end
 
 function proc(Caster, Target, Type, DmgType, MinVal)
 	if Type == 16 then
-		ProcDamage(Caster, Target, "Nettleshield Thorns", DmgType, MinVal)
+	Level = GetLevel(Caster)
+    SpellLevel = 10
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus * 0.5 + StatBonus
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+  
+	    
+	    
+		ProcDamage(Caster, Target, "Nettleshield Thorns", DmgType, MinDmg)
 			end
 end
 
