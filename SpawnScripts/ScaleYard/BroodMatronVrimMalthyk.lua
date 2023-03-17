@@ -79,7 +79,7 @@ function hailed(NPC, Spawn)
 			AddConversationOption(conversation, "My name is my own, witch. Leave me be!", "dlg_end")
 			StartConversation(conversation, NPC, Spawn, "Mmmm. Something wicked this way comes... Why hello there young broodling, I've not seen you here before. Tell me your name.")
 		else
-			Say(NPC, "You're not an Iksar!", Spawn)
+			Say(NPC, "S-s-step away! I only deal with those of my brood.", Spawn)
 		end
 	end
 end

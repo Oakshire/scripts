@@ -173,8 +173,8 @@ function LeaveIslandFP(NPC, Spawn)
         ZoneRef = GetZone("Longshadow")
         Zone(ZoneRef,Spawn)
 
-    -- Barbarian / Iksar
-    elseif Race == 0 or Race == 10 then
+    -- Barbarian / Iksar / Sarnak
+    elseif Race == 0 or Race == 10 or Race == 18 then
 --        AddSpellBookEntry(Spawn, 8057, 1)
         ZoneRef = GetZone("ScaleYard")
         Zone(ZoneRef,Spawn)

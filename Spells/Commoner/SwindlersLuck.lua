@@ -10,10 +10,10 @@ function cast(Caster, Target, MinVal, MaxVal)
 	local Val1 = (GetLevel(Caster) * 1.08) * MinVal
 	local Val2 =  (GetLevel(Caster) * 1.08) * MaxVal    
 	local SkillAmt = randomFloat(Val1, Val2)
-		AddSkillBonus(Target, GetSkillIDByName("Slashing"), SkillAmt)
-		AddSkillBonus(Target, GetSkillIDByName("Ranged"), SkillAmt)
-		AddSkillBonus(Target, GetSkillIDByName("Piercing"), SkillAmt)
-		AddSkillBonus(Target, GetSkillIDByName("Crushing"), SkillAmt)
+		AddSkillBonus(Caster, GetSkillIDByName("Slashing"), SkillAmt)
+		AddSkillBonus(Caster, GetSkillIDByName("Ranged"), SkillAmt)
+		AddSkillBonus(Caster, GetSkillIDByName("Piercing"), SkillAmt)
+		AddSkillBonus(Caster, GetSkillIDByName("Crushing"), SkillAmt)
 end
 
 function randomFloat(Val1, Val2)
@@ -21,5 +21,5 @@ return Val1 + math.random()  * (Val2 - Val1);
 end
 
 function remove(Caster, Target)
-    RemoveSkillBonus(Target)
+    RemoveSkillBonus(Caster)
 end

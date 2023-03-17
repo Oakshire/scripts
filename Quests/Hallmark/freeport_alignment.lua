@@ -98,7 +98,7 @@ function Step1Complete(Quest, QuestGiver, Player)
     UpdateQuestZone(Quest, "Longshadow Alley")
 
     -- Barbarian / Iksar / Sarnak
-    elseif Race == 0 or Race == 10 or Race == 19 then
+    elseif Race == 0 or Race == 10 or Race == 18 then
 	AddQuestStepChat(Quest, 2, "I must find the Overseer", 1, "I have been instructed to seek out the Overseer when I arrive in Freeport.   I should ring the bell on the docks to book passage to the city.", 11, 1390126)
     UpdateQuestZone(Quest, "Scale Yard")
 
