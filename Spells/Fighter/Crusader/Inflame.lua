@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Fighter/Crusader/Inflame.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.05 04:11:16
+    Script Author  : LordPazuzu
+    Script Date    : 3/17/2023
     Script Purpose : 
                    : 
 --]]
@@ -9,17 +9,27 @@
 -- Increases Threat to target by 651 - 977  instantly and by 130 - 195  every 3 seconds thereafter
 
 function cast(Caster, Target, MinVal, MaxVal, TickMin, TickMax)
-   if MaxVal ~= nil and MinVal < MaxVal then
-        AddHate(Caster, Target, math.random(MaxVal, MinVal), 1)
-    else
-        AddHate(Caster, Target, MinVal, 1)
+    Level = GetLevel(Caster)
+    SpellLevel = 18
+    Mastery = SpellLevel + 10
+
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
     end
+
+    MinHate = LvlBonus * 2 + MinVal
+    MaxHate = LvlBonus * 2 + MaxVal
+    
+    AddHate(Caster, Target, math.random(MinHate, MaxHate), 1)
+
 end
 
-function tick(Caster, Target)
-   if TickMax ~= nil and TickMin < TickMax then
-        AddHate(Caster, Target, math.random(TickMax, TickMin), 1)
-    else
-        AddHate(Caster, Target, TickMin, 1)
-    end
+function tick(Caster, Target, TickMin, TickMax, LvlBonus)
+
+    MinTick = LvlBonus * 2 + TickMin
+    MaxTick = LvlBonus * 2 + TickMax
+ 
+    AddHate(Caster, Target, math.random(MinTick, MaxTick), 1)
+
 end

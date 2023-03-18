@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Fighter/Crusader/PledgeofArmament.lua
-    Script Author  : neatz09
-    Script Date    : 2020.02.24 08:02:11
+    Script Author  : LordPazuzu
+    Script Date    : 3/17/2023
     Script Purpose : 
                    : 
 --]]
@@ -10,8 +10,19 @@
 -- Decreases Mitigation of caster vs physical damage by 162
 
 function cast(Caster, Target, TgtMit, CastMit)
-    AddSpellBonus(Target, 200, TgtMit)
-    AddSpellBonus(Caster, 200, CastMit)
+    Level = GetLevel(Caster)
+    SpellLevel = 15
+    Mastery = SpellLevel + 10
+   
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    TargetMit = TgtMit + LvlBonus
+    CasterMit = CastMit + LvlBonus
+    
+    AddSpellBonus(Target, 200, TargetMit)
+    AddSpellBonus(Caster, 200, CasterMit)
 
 end
 

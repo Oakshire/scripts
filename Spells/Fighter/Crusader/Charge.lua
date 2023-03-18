@@ -1,27 +1,31 @@
 --[[
-    Script Name    : Spells/Fighter/Crusader/CryofConviction.lua
+    Script Name    : Spells/Fighter/Crusader/Charge.lua
     Script Author  : LordPazuzu
-    Script Date    : 3/17/2023
+    Script Date    : 2023.03.17 08:03:43
     Script Purpose : 
                    : 
 --]]
 
--- Inflicts 34 - 57 divine damage on targets in Area of Effect
-
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-        Level = GetLevel(Caster)
-    SpellLevel = 14
+    Level = GetLevel(Caster)
+    SpellLevel = 19
     Mastery = SpellLevel + 10
-    StatBonus = GetInt(Caster) / 10
+    StatBonus = GetStr(Caster) / 10
         
     if Level < Mastery then
         LvlBonus = Level - SpellLevel
         else LvlBonus = Mastery - SpellLevel
     end
     
-    DmgBonus = LvlBonus + StatBonus
+    DmgBonus = LvlBonus *2 + StatBonus
     MaxDmg = MaxVal + math.floor(DmgBonus)
     MinDmg = MinVal + math.floor(DmgBonus)
     
-	SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+    
+    if not IsEpic(Target) then 
+		CastSpell(Target, 5001, GetSpellTier())
+	end
+    
+
 end

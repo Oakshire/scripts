@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Fighter/Crusader/RighteousAnger.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.05 04:11:37
+    Script Author  : LordPazuzu
+    Script Date    : 3/17/2023
     Script Purpose : 
                    : 
 --]]
