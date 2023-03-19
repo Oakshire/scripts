@@ -26,36 +26,36 @@ Race = GetRace(Player)
 
      -- Kerra
     elseif Race == 11 then
-	AddQuestStepChat(Quest, 2, "I must find the Steward in Nettleville Hovel", 1, "I have been instructed to seek out a Steward in Qeynos where I arrived.", 11, 2330170)
+	AddQuestStepChat(Quest, 2, "I must find the Steward in Nettleville Hovel", 1, "I must find the Steward in Nettleville Hovel", 11, 2330170)
     UpdateQuestZone(Quest, "Nettleville")
 
     -- Erudite
     elseif Race == 3 then
-	AddQuestStepChat(Quest, 2, "I must find the Steward in Starcrest Commune", 1, "I have been instructed to seek out a Steward in Qeynos where I arrived.", 11, 2340166)
+	AddQuestStepChat(Quest, 2, "I must find the Steward in Starcrest Commune", 1, "I must find the Steward in Starcrest Commune", 11, 2340166)
     UpdateQuestZone(Quest, "Starcrest")
 
 
     -- Barbarian / Dwarf
     elseif Race == 0 or Race == 2 then
-	AddQuestStepChat(Quest, 2, "I must find the Steward in Graystone Yard", 1, "I have been instructed to seek out a Steward in Qeynos where I arrived.", 11, 2350184)
+	AddQuestStepChat(Quest, 2, "I must find the Steward in Graystone Yard", 1, "I must find the Steward in Graystone Yard", 11, 2350184)
     UpdateQuestZone(Quest, "Graystone Yard")
 
 
     -- High Elf / Froglok
     elseif Race == 4 or Race == 8 then
-	AddQuestStepChat(Quest, 2, "I must find the Steward Castleview Hamlet", 1, "I have been instructed to seek out a Steward in Qeynos where I arrived.", 11, 2360174)
+	AddQuestStepChat(Quest, 2, "I must find the Steward Castleview Hamlet", 1, "I must find the Steward Castleview Hamlet", 11, 2360174)
     UpdateQuestZone(Quest, "Castleview")
 
 
     -- Half Elf / Wood Elf / Fae
     elseif Race == 6 or Race == 15 or Race == 16 then
-	AddQuestStepChat(Quest, 2, "I must find the Steward in The Willow Wood", 1, "I have been instructed to seek out a Steward in Qeynos where I arrived.", 11, 2370111)
+	AddQuestStepChat(Quest, 2, "I must find the Steward in The Willow Wood", 1, "I must find the Steward in The Willow Wood", 11, 2370111)
     UpdateQuestZone(Quest, "Willow Wood")
 
 
     -- Gnome / Halfling
     elseif Race == 5 or Race == 7 then
-	AddQuestStepChat(Quest, 2, "I must find the Steward in The Baubbleshire", 1, "I have been instructed to seek out a Steward in Qeynos where I arrived.", 11, 2380173)
+	AddQuestStepChat(Quest, 2, "I must find the Steward in The Baubbleshire", 1, "I must find the Steward in The Baubbleshire", 11, 2380173)
     UpdateQuestZone(Quest, "Baubbleshire")
 end
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

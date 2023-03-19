@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Priest/Druid/StingingSwarm.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 06:01:52
+    Script Author  : LordPazuzu
+    Script Date    : 3/18/2023
     Script Purpose : 
                    : 
 --]]
@@ -11,12 +11,41 @@
 -- Decreases Defense of target by 2.7
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal, SkillAmt)
-SpellDamage(Target, DmgType, MinVal, MaxVal)
+    Level = GetLevel(Caster)
+    SpellLevel = 14
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus *2 + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
+    
     AddSkillBonus(Target, GetSkillIDByName("Defense"), SkillAmt)
 end
 
 function tick(Caster, Target, DmgType, MinVal, MaxVal, SkillAmt)
-SpellDamage(Target, DmgType, MinVal, MaxVal)
+    Level = GetLevel(Caster)
+    SpellLevel = 14
+    Mastery = SpellLevel + 10
+    StatBonus = GetInt(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus *2 + StatBonus
+    MaxDmg = MaxVal + math.floor(DmgBonus)
+    MinDmg = MinVal + math.floor(DmgBonus)
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
 end
 
 function remove(Caster, Target)
