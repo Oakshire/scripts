@@ -19,7 +19,7 @@ function cast(Caster, Target, Sta, Mit)
         else LvlBonus = Mastery - SpellLevel
     end
     
-    StaBonus= LvlBonus * 0.5 + Sta
+    StaBonus= LvlBonus * 0.1 + Sta
     MitBonus = LvlBonus + StatBonus
     TotalMit = Mit + math.floor(MitBonus)
     

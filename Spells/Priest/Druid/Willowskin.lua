@@ -6,17 +6,31 @@
                    : 
 --]]
 
--- Info from spell_display_effects (remove from script when done)
--- Increases Combat Health Regen of group members (AE) by 11.9
--- Increases Mitigation of group members (AE) vs physical damage by 131
+function cast(Caster, Target, Stat, Mit)
+    Level = GetLevel(Caster)
+    SpellLevel =  16
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    StaBonus= LvlBonus * 0.1 + Stat
+    MitBonus = LvlBonus + StatBonus
+    TotalMit = Mit + math.floor(MitBonus)
+    
+    AddSpellBonus(Target, 1, StaBonus)
+    AddSpellBonus(Target, 2, StaBonus)
+    AddSpellBonus(Target, 3, StaBonus)
+    AddSpellBonus(Target, 200, TotalMit)
+    
 
-function cast(Caster, Target, HP, Mit)
-    AddSpellBonus(Target, 604, HP)
-    AddSpellBonus(Target, 200, Mit)
 
 end
 
 function remove(Caster, Target)
     RemoveSpellBonus(Target)
-end
 
+end

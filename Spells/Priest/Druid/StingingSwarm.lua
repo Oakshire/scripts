@@ -24,10 +24,11 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, SkillAmt)
     DmgBonus = LvlBonus *2 + StatBonus
     MaxDmg = MaxVal + math.floor(DmgBonus)
     MinDmg = MinVal + math.floor(DmgBonus)
-    
+    DebuffBonus = LvlBonus * 0.1
+    TotalDebuff = SkillAmt - DebuffBonus
     SpellDamage(Target, DmgType, MinDmg, MaxDmg)
     
-    AddSkillBonus(Target, GetSkillIDByName("Defense"), SkillAmt)
+    AddSkillBonus(Target, GetSkillIDByName("Defense"), TotalDebuff)
 end
 
 function tick(Caster, Target, DmgType, MinVal, MaxVal, SkillAmt)
