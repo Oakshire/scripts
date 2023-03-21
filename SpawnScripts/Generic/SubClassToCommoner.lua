@@ -42,6 +42,9 @@ if GetRace(player) == 0 or GetRace(player) == 3 or GetRace(player) == 5 or GetRa
 SetAlignment(player, 2)
 end
 
+DeleteSpellBook(player, 6)
+
+
 if Qeynos >0 then ChangeFaction(player, 11, -Qeynos)
     elseif Qeynos <0 then ChangeFaction(player, 11, (Qeynos*-1))
 end

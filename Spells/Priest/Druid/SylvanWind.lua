@@ -11,7 +11,7 @@
 
 function cast(Caster, Target, HealMin, HealMax, TickMin, TickMax)
 	Level = GetLevel(Caster)
-    SpellLevel = 14
+    SpellLevel = 16
     Mastery = SpellLevel + 10
     StatBonus = GetWis(Caster) / 10
     
@@ -21,15 +21,15 @@ function cast(Caster, Target, HealMin, HealMax, TickMin, TickMax)
     end
 
     HealBonus = LvlBonus + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    MinHeal = HealMin + math.floor(HealBonus)
+    MaxHeal = HealMax + math.floor(HealBonus)
     
     SpellHeal("Heal", MinHeal, MaxHeal)
 end
 
 function tick(Caster, Target, HealMin, HealMax, TickMin, TickMax)
 	Level = GetLevel(Caster)
-    SpellLevel = 14
+    SpellLevel = 16
     Mastery = SpellLevel + 10
     StatBonus = GetWis(Caster) / 10
     

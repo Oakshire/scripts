@@ -1,16 +1,30 @@
 --[[
     Script Name    : Spells/Priest/Druid/WildSpirit.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 06:01:05
+    Script Author  : LordPazuzu     
+    Script Date    : 3/20/2023
     Script Purpose : 
                    : 
 --]]
 
--- Increases AGI and WIS of group members (AE) by 13.1
+function cast(Caster, Target, Agi, Arcane)
+    Level = GetLevel(Caster)
+    SpellLevel = 17
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+    
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
 
-function cast(Caster, Target, BonusAmt)
-    AddSpellBonus(Target, 2, BonusAmt)
-    AddSpellBonus(Target, 3, BonusAmt)
+    AgiBonus = LvlBonus * 0.1
+    ArcaneBonus = LvlBonus + StatBonus
+    TotalAgi = Agi + AgiBonus
+    TotalArcane = Arcane + ArcaneBonus
+    
+    
+    AddSpellBonus(Target, 2, TotalAgi)
+    AddSpellBonus(Target, 203, TotalArcane)
 
 end
 

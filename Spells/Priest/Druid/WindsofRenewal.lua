@@ -20,8 +20,8 @@ function cast(Caster, Target, HealMin, HealMax)
     end
 
     HealBonus = LvlBonus + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    MinHeal = HealMin + math.floor(HealBonus)
+    MaxHeal = HealMax + math.floor(HealBonus)
     
     SpellHeal("Heal", MinHeal, MaxHeal)
 end
@@ -38,8 +38,8 @@ function tick(Caster, Target, HealMin, HealMax)
     end
 
     HealBonus = LvlBonus + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    MinHeal = HealMin + math.floor(HealBonus)
+    MaxHeal = HealMax + math.floor(HealBonus)
     
     SpellHeal("Heal", MinHeal, MaxHeal)
 end

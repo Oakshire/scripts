@@ -8,6 +8,9 @@
 
 seen_step_45 = false
 
+function player_entry(Zone, player)
+    SetHeading(player,180)
+end
 
     
 

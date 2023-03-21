@@ -1,17 +1,26 @@
 --[[
     Script Name    : Spells/Priest/Druid/Vigor.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 05:01:25
+    Script Author  : LordPazuzu
+    Script Date    : 3/20/2023
     Script Purpose : 
                    : 
 --]]
 
--- Increases WIS of target by 17.8
--- Increases Max Power of target by 68.8
+function cast(Caster, Target, Power)
+    Level = GetLevel(Caster)
+    SpellLevel = 16
+    Mastery = SpellLevel + 10
+    StatBonus = GetWis(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    PowerBonus = LvlBonus + StatBonus
+    TotalPower = Power + math.floor(PowerBonus)
 
-function cast(Caster, Target, Wis, Pwr)
-    AddSpellBonus(Target, 3, Wis)
-    AddSpellBonus(Target, 619, Pwr)
+    AddSpellBonus(Target, 501, TotalPower)
 
 end
 
