@@ -42,6 +42,10 @@ end
 function hailed(NPC, Spawn)
 end
 
+function aggro(NPC, Spawn)
+    
+end
+
 function respawn(NPC)
 	spawn(NPC)
 end

@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I must find Faeadaen.", 1, "I must search Castleview Hamlet for Faeadaen.", 0, 2360022)
@@ -16,7 +17,7 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+ 	PlayFlavor(QuestGiver, "", "", "thanks", 0,0 , Player)
 end
 
 function Declined(Quest, QuestGiver, Player)

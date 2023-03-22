@@ -2796,7 +2796,7 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 	                           	    if check == 1 then
                                     PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_highelf_gf_601050b5.mp3", "May Tunare's blessings be with you and yours.", "hello", 781331093, 1715342825, Spawn)
                                     elseif check == 2 then
-                                    PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_highelf_gf_b32f3d7a.mp3", "I am pleased to see other Koad'Dal trying to keep up with this wretched neighborhood.", "agree", 235834078, 3543793461, Spawn)
+                                    PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_highelf_gf_b32f3d7a.mp3", "I am pleased to see other Koad'Dal trying to keep up with this wretched neighborhood.", "agree", 235834078, 2649903486, Spawn)
                                     elseif check == 3 then
                                     PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_status_gf_1a72199d.mp3", "You're a credit to all Koad'Dal.  With your example, Qeynos will see the Koad'Dal as true born leaders.", "thank", 2790557627, 1438660086, Spawn)
                                     elseif check == 4 then
@@ -6806,7 +6806,7 @@ function GenericRaceCheckCallout(NPC, Spawn, faction)
 	                           	    if check == 1 then
                                     PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_highelf_gf_601050b5.mp3", "May Tunare's blessings be with you and yours.", "hello", 781331093, 1715342825)
                                     elseif check == 2 then
-                                    PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_highelf_gf_b32f3d7a.mp3", "I am pleased to see other Koad'Dal trying to keep up with this wretched neighborhood.", "agree", 235834078, 3543793461)
+                                    PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_highelf_gf_b32f3d7a.mp3", "I am pleased to see other Koad'Dal trying to keep up with this wretched neighborhood.", "agree", 235834078, 2649903486)
                                     elseif check == 3 then
                                     PlayFlavor(NPC, "voiceover/english/highelf_eco_race_good/ft/eco/good/highelf_eco_race_good_status_gf_1a72199d.mp3", "You're a credit to all Koad'Dal.  With your example, Qeynos will see the Koad'Dal as true born leaders.", "thank", 2790557627, 1438660086)
                                     elseif check == 4 then

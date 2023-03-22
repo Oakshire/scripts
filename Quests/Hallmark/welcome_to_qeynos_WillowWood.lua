@@ -28,6 +28,9 @@ function Accepted(Quest, QuestGiver, Player)
     if HasQuest(Player,5717) and GetQuestStep(Player,5717)==2 then
         SetStepComplete(Player,5717,2)
     end        
+    if HasQuest(Player,5792) and GetQuestStep(Player,5792)==2 then
+        SetStepComplete(Player,5792,2)
+    end        
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
