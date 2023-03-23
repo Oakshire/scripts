@@ -33,7 +33,7 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp3)
     SpawnSet(NPC, "power", power3)
     end
-ChooseMovement(NPC)
+    AddTimer(NPC, 6000, "ChooseMovement")
 end
 
 function ChooseMovement(NPC)
