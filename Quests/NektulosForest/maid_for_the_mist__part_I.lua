@@ -19,7 +19,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	 Dialog.AddVoiceover("voiceover/english/daisy_winterhope/hallmark/sea_of_mist/winterhope_dialog006.mp3", 4126545806, 2664999676)
+	Dialog.AddOption("I'll be back.")
+	Dialog.AddDialog("Great!  What I need first off are some ironshell carapaces.  You can get them off them Nerius crabs.  About twenty-five would protect the hull.  Let me know when you've got those, and then we'll see if we need anything else.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

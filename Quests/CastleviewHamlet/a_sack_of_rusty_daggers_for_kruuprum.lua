@@ -49,8 +49,7 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		IronmalletChat(Quest, QuestGiver, Player)
-	end
-		if Step == 2 then
+    elseif Step == 2 then
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end
