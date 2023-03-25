@@ -7,7 +7,7 @@
 --]]
 
 function spawn(NPC)
-    --AddTimer(NPC, 6000, "ChooseMovement")
+    AddTimer(NPC, 6000, "ChooseMovement")
 end
 
 function ChooseMovement(NPC)
