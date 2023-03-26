@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 local MaidForTheMistPartI = 5793
 

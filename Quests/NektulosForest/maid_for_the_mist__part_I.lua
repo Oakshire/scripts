@@ -10,7 +10,7 @@
         Followed by: 
 --]]
 
-
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)

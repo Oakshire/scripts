@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill some crypt substances.", 6, 80, "I need to slay six crypt substances in the Down Below.", 329, 8340022)
@@ -55,8 +56,7 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Turnin(Quest, QuestGiver, Player)
-	end
-		if Step == 2 then
+    elseif Step == 2 then
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end

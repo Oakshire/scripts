@@ -10,6 +10,7 @@
         Followed by: 
 --]]
 
+
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Recover red rock shards", 1, 30, "I need to find the rock samples somewhere in the mines of Blackburrow.  There is a good chance that the miners and excavators might already have them.", 1121,  170010, 170029)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
