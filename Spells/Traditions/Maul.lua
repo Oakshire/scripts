@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Traditions/Maul.lua
     Script Author  : LordPazuzu
-    Script Date    : 3/8/2-23
+    Script Date    : 3/8/2023
     Script Purpose : 
                    : 
 --]]
@@ -27,7 +27,7 @@ end
 
 
 function tick(Caster, Target, DmgType, Minval, MaxVal)
-        Level = GetLevel(Caster)
+    Level = GetLevel(Caster)
     SpellLevel = 1
     Mastery = SpellLevel + 50
     StatBonus = GetStr(Caster) / 10

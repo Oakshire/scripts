@@ -83,9 +83,9 @@ function Work(NPC,Spawn)
     PlayFlavor(NPC, "voiceover/english/andrea_dovesong/qey_north/andreadovesong001.mp3", "", "orate", 3368204937, 3549759451, Spawn)
     local conversation = CreateConversation()
 
-    AddConversationOption(conversation, "The claymore must be quite powerful to do with such a storied history.", "Claymore1")
+    AddConversationOption(conversation, "The claymore must be quite powerful with such a storied history.", "Claymore1")
     AddConversationOption(conversation, "Fascinating. Thanks for sharing.","agree")
-	StartConversation(conversation, NPC, Spawn, "I sing songs about many things, but my favorite songs are about this monument right here.  The mighty Qeynos Claymore! I sing songs about ancient Valius Bayle who first brought the sword to our world from its planar home.  I sing songs of Antonius Bayle winning the sword in tournaments between the early human clans and how we used it to unite the human people within one kingdom!  Aye, the Qeynos Claymore has a long and storied history.")
+	StartConversation(conversation, NPC, Spawn, "I sing songs about many different things. But my favorite songs are the ones about this monument right here, the mighty Qeynos Claymore. I sing songs that tell of ancient Vallius Bayle who first brought the sword to our world from its planar home. I sing stories of Antonius Bayle winning the sword in tournaments that were held between the early human clans, and how he used it to unite the human people within one kingdom.  Aye, the Qeynos Claymore has a long and storied history.")
 end	
 
 
@@ -101,7 +101,7 @@ function Claymore1(NPC,Spawn)
     AddConversationOption(conversation, "Wait, I've forgotten.  You said there are more monuments like this one?", "Claymore2")
     end
     AddConversationOption(conversation, "Well, thankfully we can enjoy reflecting unpon our city's history with places like this.","agree")
-	StartConversation(conversation, NPC, Spawn, "Aye, it is!  Now, Antonia Bayle is the owner of the fine blade.  And fortunately it is hidden away in the castle for its protection.  Many agents of evil would like nothing better than to lay a hand upon it.  For now, though, we only have these monuments to remind us of the claymore.")
+	StartConversation(conversation, NPC, Spawn, "Aye, it is!  Now Antonia Bayle is the owner of the fine blade.  Unfortunately it is hidden away in the castle for its protection.  Many agents of evil would like nothing better than to lay their hands upon it.  For now though, we only have these monuments to remind us of the Claymore.")
 end	
  
  function agree(NPC,Spawn)
@@ -125,7 +125,7 @@ function Claymore2(NPC,Spawn)
     AddConversationOption(conversation, "You seem quite busy here.  Can I help you with anything while you perform?", "Work2")
     end
     AddConversationOption(conversation, "Well, thankfully we can enjoy reflecting unpon our city's history with places like this.","agree")
-	StartConversation(conversation, NPC, Spawn, "Aye, there are others.  In fact, another monument stands out in the Antonican hills.  A small contingent of guards look over this Claymore Monument, and people often visit there to pray and meditate. Good travels to you if you plan on venturing out to see it.")
+	StartConversation(conversation, NPC, Spawn, "Aye, there are others.  In fact, another monument stands out in the Antonican hills.  A small contingent of guards look over the Claymore monument.  People often visit there to pray and meditate. Good travels to you if you plan on venturing out to see it.")
 end	    
    
  function Claymore3(NPC, Spawn)
@@ -144,7 +144,7 @@ function Work2(NPC, Spawn)
     end
 	AddConversationOption(conversation, "Gladly.  I'll be back with the parchment", "StartPapers")
 	AddConversationOption(conversation, "Parchment?  Afraid I don't have the time.", "shrug")
-	StartConversation(conversation, NPC, Spawn, "Looking for work are you?  I could use some parchment to transcribe my sonata.  Scribe Duvo always has pleanty.  You'll find him at the Elddar Grove.  Bring me the parchment and I'll pay you for your troubles.")
+	StartConversation(conversation, NPC, Spawn, "Looking for work are you?  Well, I could use some new parchment to scribe my sonata.  Scribe Duvo always has plenty.  You'll  find him at the Elddar Grove. Bring me the parchment and I'll pay you for your troubles.")
 end	    
 
  function shrug(NPC,Spawn)
@@ -162,7 +162,7 @@ function Delivered(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/andrea_dovesong/qey_north/andreadovesong005.mp3", "", "thanks", 3610265582, 997287857, Spawn)
     local conversation = CreateConversation()
 	AddConversationOption(conversation, "Thank you.", "FinishPapers")
-	StartConversation(conversation, NPC, Spawn, "How sweet and swift you are!  Take these coins as a token of my appreciation.")
+	StartConversation(conversation, NPC, Spawn, "How sweet and swift you are! Take these coins as a token of my appreciation.")
 end	 
 
 function FinishPapers(NPC,Spawn)

@@ -69,10 +69,10 @@ function hailed(NPC, Spawn)
 	Dialog.AddDialog("Verily, 'tis fine to havest thou here in Castleview!  FroooOOOooaak!  Fevalin and I here hath set up a nice arrangement and canst offer thou the widest variety of Qeynosian goods! Come view our wares!")
 	Dialog.AddVoiceover("voiceover/english/merchant_kruuprum/qey_village04/merchantkruuprum.mp3",212021921, 86053123)
  	PlayFlavor(NPC, "", "", "hello", 0,0 , Spawn)
-    if not HasQuest(Spawn, Daggers) then       
+    if not HasQuest(Spawn, Daggers) and not HasCompletedQuest(Spawn,Daggers) then       
     Dialog.AddOption("Have any work for me?", "DaggerStart")
     end
-    if not HasQuest(Spawn, Bugs) then       
+    if not HasQuest(Spawn, Bugs) and not HasCompletedQuest(Spawn,Bugs) then       
     Dialog.AddOption("Wow, you must be busy!", "BugStart")
     end
     if GetQuestStep(Spawn, Bugs)==2 then
