@@ -10,8 +10,8 @@
 -- Increases DPS of caster by 19.0
 
 function cast(Caster, Target, Agi, Dps)
-    AddSpellBonus(Target, 2, Agi)
-    AddSpellBonus(Target, 629, Dps)
+    AddSpellBonus(Caster, 2, Agi)
+
 end
 
 function remove(Caster, Target)
