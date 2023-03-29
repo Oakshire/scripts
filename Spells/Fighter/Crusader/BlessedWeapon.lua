@@ -27,8 +27,8 @@ function proc(Caster, Target, Type, DmgType, MinVal, MaxVal, Chance)
     end
     
     DmgBonus = LvlBonus + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
 
 	if Type == 3 then
 		SetSpellDataIndex(Spell, 0, DmgType)

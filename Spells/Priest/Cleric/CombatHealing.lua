@@ -20,8 +20,8 @@ function cast(Caster, Target, MinVal, MaxVal, SpellLevel)
     end
 
     HealBonus = LvlBonus + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    MinHeal = math.floor(HealBonus) * 2 + MinVal
+    MaxHeal = math.floor(HealBonus) * 2 + MaxVal
     
     SpellHeal("Heal", MinHeal, MaxHeal)
         Say(Caster, "Offensive buff not implemented.")

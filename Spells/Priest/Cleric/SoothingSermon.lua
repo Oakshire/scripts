@@ -25,9 +25,9 @@ function proc(Caster, Target, Type, MinVal, MaxVal, Triggers)
         else LvlBonus = Mastery - SpellLevel
     end
 
-    HealBonus = LvlBonus * 2 + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    HealBonus = LvlBonus + StatBonus
+    MinHeal = math.floor(HealBonus) * 2 + MinVal
+    MaxHeal = math.floor(HealBonus) * 2 + MaxVal
     
     
 	if Type == 15 then

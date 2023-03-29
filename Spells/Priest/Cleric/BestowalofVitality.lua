@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Priest/Cleric/BestowalofVitality.lua
-    Script Author  : neatz09
-    Script Date    : 2020.10.27 12:10:43
+    Script Author  : LordPazuzu
+    Script Date    : 3/28/2023
     Script Purpose : 
                    : 
 --]]
@@ -23,9 +23,9 @@ function proc(Caster, Target, Type, MinVal, MaxVal, Triggers)
         else LvlBonus = Mastery - SpellLevel
     end
 
-    HealBonus = LvlBonus * 2 + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    HealBonus = LvlBonus + StatBonus
+    MinHeal = math.floor(HealBonus) * 2 + MinVal
+    MaxHeal = math.floor(HealBonus) * 2 + MaxVal
     
 	if Type == 15 then
 		Spell = GetSpell(5455, GetSpellTier())

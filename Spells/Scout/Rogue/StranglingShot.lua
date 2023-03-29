@@ -28,9 +28,9 @@ function cast(Caster, Target, MinVal, MaxVal, MinPow, MaxPow)
         else LvlBonus = Mastery - SpellLevel
     end
     
-    DmgBonus = LvlBonus *2 + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
     
     SpellDamage(Target, 2, MinDmg, MaxDmg)
     SpellHeal(Target, "Power", MinPow, MaxPow)

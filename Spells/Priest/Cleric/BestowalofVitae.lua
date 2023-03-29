@@ -27,14 +27,14 @@ function proc(Caster, Target, Type, MinVal, MaxVal, Triggers, SpellLevel)
         else LvlBonus = Mastery - SpellLevel
     end
 
-    HealBonus = LvlBonus * 2 + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    HealBonus = LvlBonus + StatBonus
+    MinHeal = math.floor(HealBonus) * 2 + MinVal
+    MaxHeal = math.floor(HealBonus) * 2 + MaxVal
     
     
     
 	if Type == 15 then
-		Spell = GetSpell(5455, GetSpellTier())
+		Spell = GetSpell(5503, GetSpellTier())
 		SetSpellDataIndex(Spell, 0, MinHeal)
 		SetSpellDataIndex(Spell, 1, MaxHeal)
 		CastCustomSpell(Spell, Caster, Target)

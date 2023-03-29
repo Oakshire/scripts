@@ -22,9 +22,9 @@ function proc(Caster, Target, Type, DmgType, MinVal, MaxVal, SpellLevel)
         else LvlBonus = Mastery - SpellLevel
     end
 
-    DmgBonus = LvlBonus * 1.5 + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
 
 	if Type == 3 then
 		SetSpellDataIndex(Spell, 0, DmgType)

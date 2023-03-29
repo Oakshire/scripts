@@ -18,7 +18,7 @@ function cast(Caster, Target, Ward)
     end
 
     WardBonus = LvlBonus + StatBonus
-    TotalWard = Ward + math.floor(WardBonus)
+    TotalWard = math.floor(WardBonus) * 2 + Ward
     
     AddWard(TotalWard, 1)
 end

@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Fighter/Warrior/Mangle.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 03:01:17
+    Script Author  : LordPazuzu
+    Script Date    : 3/28/2023
     Script Purpose : 
                    : 
 --]]
@@ -17,9 +17,9 @@ function cast(Caster, Target, MinVal, MaxVal, SkillAmt, SpellLevel)
         else LvlBonus = Mastery - SpellLevel
     end
     
-    DmgBonus = LvlBonus * 1.5 + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
     
     SpellDamage(Target, 0, MinDmg, MaxDmg)
 

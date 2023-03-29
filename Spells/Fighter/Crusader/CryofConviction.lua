@@ -9,7 +9,7 @@
 -- Inflicts 34 - 57 divine damage on targets in Area of Effect
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal)
-        Level = GetLevel(Caster)
+    Level = GetLevel(Caster)
     SpellLevel = 14
     Mastery = SpellLevel + 10
     StatBonus = GetInt(Caster) / 10
@@ -20,8 +20,8 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     end
     
     DmgBonus = LvlBonus + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
     
 	SpellDamage(Target, DmgType, MinDmg, MaxDmg)
 end

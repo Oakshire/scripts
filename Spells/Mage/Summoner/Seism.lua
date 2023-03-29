@@ -19,13 +19,14 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, Arcane)
         else LvlBonus = Mastery - SpellLevel
     end
     
-    DmgBonus = LvlBonus * 2 + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
-    TotalArcane = Arcane - math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
+
     
     SpellDamage(Target, DmgType, MinDmg, MaxDmg)
-    AddSpellBonus(Target, 203, TotalArcane)
+    --AddSpellBonus(Target, 203, Arcane)
+    Say(Caster, "Resist debuff not implemented.")
     
     if not IsEpic(Target) then 
 		CastSpell(Target, 5001, GetSpellTier())

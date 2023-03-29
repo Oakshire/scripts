@@ -17,9 +17,9 @@ function cast(Caster, Target, DoTType, MinVal, MaxVal, DotMin, DotMax, SpellLeve
         else LvlBonus = Mastery - SpellLevel
     end
 
-    DmgBonus = LvlBonus * 2 + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
     
     
     
@@ -38,9 +38,9 @@ function tick(Caster, Target, DoTType, MinVal, MaxVal, DotMin, DotMax, SpellLeve
         else LvlBonus = Mastery - SpellLevel
     end
 
-    DmgBonus = LvlBonus * 2 + StatBonus
-    MaxDmg = DotMax + math.floor(DmgBonus)
-    MinDmg = DotMin + math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + DotMax
+    MinDmg = math.floor(DmgBonus) * 2 + DotMax
     
     SpellDamage(Target, DoTType, MinDmg, MaxDmg)
 end

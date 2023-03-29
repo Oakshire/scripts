@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Fighter/Warrior/TauntingBlow.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 03:01:10
+    Script Author  : LordPazuzu
+    Script Date    : 3/28/2023
     Script Purpose : 
                    : 
 --]]
@@ -18,9 +18,9 @@ function cast(Caster, Target, DmgType, DmgLow, DmgHigh, MinTauntVal, MaxTauntVal
     end
     
     
-    DmgBonus = LvlBonus * 1.5 + StatBonus
-    MaxDmg = DmgHigh + math.floor(DmgBonus)
-    MinDmg = DmgLow + math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + DmgHigh
+    MinDmg = math.floor(DmgBonus) * 2 + DmgLow
     
     SpellDamage(Target, DmgType, MinDmg, MaxDmg)
 

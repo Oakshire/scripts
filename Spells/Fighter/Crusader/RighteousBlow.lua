@@ -23,10 +23,10 @@ function cast(Caster, Target, Dmg1, Dmg1Min, Dmg1Max, Dmg2, Dmg2Min, Dmg2Max)
     end
     
     DmgBonus = LvlBonus + StatBonus
-    MaxDmg1 = Dmg1Max + math.floor(DmgBonus)
-    MinDmg1 = Dmg1Min + math.floor(DmgBonus)
-    MaxDmg2 = Dmg2Max + math.floor(DmgBonus)
-    MinDmg2 = Dmg2Min + math.floor(DmgBonus)
+    MaxDmg1 = math.floor(DmgBonus) * 2 + Dmg1Max
+    MinDmg1 = math.floor(DmgBonus) * 2 + Dmg1Min
+    MaxDmg2 = math.floor(DmgBonus) * 2 + Dmg2Max
+    MinDmg2 = math.floor(DmgBonus) * 2 + Dmg2Min 
     
     SpellDamage(Target, Dmg2, MinDmg2, MaxDmg2)
     

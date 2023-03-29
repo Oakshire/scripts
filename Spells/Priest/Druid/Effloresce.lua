@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Priest/Druid/Effloresce.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 07:01:39
+    Script Author  : LordPazuzu
+    Script Date    : 3/28/2023
     Script Purpose : 
                    : 
 --]]
@@ -20,9 +20,9 @@ function cast(Caster, Target, MinVal, MaxVal, HoTMin, HoTMax)
         else LvlBonus = Mastery - SpellLevel
     end
 
-    HealBonus = LvlBonus *2 + StatBonus
-    MinHeal = MinVal + math.floor(HealBonus)
-    MaxHeal = MaxVal + math.floor(HealBonus)
+    HealBonus = LvlBonus  + StatBonus
+    MinHeal = math.floor(HealBonus) * 2 + MinVal
+    MaxHeal = math.floor(HealBonus) * 2 + MaxVal
     
     SpellHeal("Heal", MinHeal, MaxHeal)
 end
@@ -39,8 +39,8 @@ function tick(Caster, Target, MinVal, MaxVal, HoTMin, HoTMax)
     end
 
     HealBonus = LvlBonus + StatBonus
-    MinHoT = HoTMin + math.floor(HealBonus)
-    MaxHoT = HoTMax + math.floor(HealBonus)
+    MinHoT = math.floor(HealBonus) * 2 + HoTMin
+    MaxHoT = math.floor(HealBonus) * 2 + HoTMax
     
     SpellHeal("Heal", MinHoT, MaxHoT)
 end

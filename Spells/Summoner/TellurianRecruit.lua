@@ -7,7 +7,7 @@
 --]]
 
 function cast(Caster, Target, PetID, Dif, NotUsed, HPMod, PWMod, Sz, SList)
-   Pet = SummonPet(Caster, PetID)
+   Pet = SummonPet(Caster, PetID, 23)
    local Level = GetLevel(Pet)
    local HP = Level * HPMod
    local PW = Level * PWMod

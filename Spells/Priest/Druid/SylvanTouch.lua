@@ -8,7 +8,7 @@
 
 function cast(Caster, Target)
 	Level = GetLevel(Caster)
-    StatBonus = GetWis(Caster) / 10
+    StatBonus = GetWis(Caster) / 5
     BaseHeal = Level * 9.5
     TotalHeal = math.floor(BaseHeal + StatBonus)
     SpellHeal("Heal", TotalHeal, TotalHeal)
