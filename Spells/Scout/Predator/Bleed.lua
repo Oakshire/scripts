@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Scout/Predator/Bleed.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.04 12:11:57
+    Script Author  : LordPazuzu
+    Script Date    : 3/29/2023
     Script Purpose : 
                    : 
 --]]
@@ -22,9 +22,9 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, TickType, TickMin, TickMa
         else LvlBonus = Mastery - SpellLevel
     end
     
-    DmgBonus = LvlBonus * 2 + StatBonus
-    MaxDmg = MaxVal + math.floor(DmgBonus)
-    MinDmg = MinVal + math.floor(DmgBonus)
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MaxVal
     
     SpellDamage(Target, DmgType, MinDmg, MaxDmg)
 end
@@ -41,11 +41,10 @@ function tick(Caster, Target, DmgType, MinVal, MaxVal, TickType, TickMin, TickMa
     end
     
     DmgBonus = LvlBonus + StatBonus
-    MaxTick = TickMax + math.floor(DmgBonus)
-    MinTick = TickMin + math.floor(DmgBonus)
+    MaxTick = math.floor(DmgBonus) * 2 + TickMax
+    MinTick = math.floor(DmgBonus) * 2 + TickMin
     
-    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
-	SpellDamage(Target, TickType, MinTick, MaxTick)
+  	SpellDamage(Target, TickType, MinTick, MaxTick)
 end
 
 

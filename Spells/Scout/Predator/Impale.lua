@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Scout/Predator/Impale.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.04 12:11:36
+    Script Author  : LordPazuzu
+    Script Date    : 3/29/2023
     Script Purpose : 
                    : 
 --]]
@@ -12,9 +12,39 @@
 -- If facing target
 function cast(Caster, Target, DmgType, MinVal, MaxVal, TickType, TickMin, TickMax)
     Say(Caster, "Facing Target not implemented")
-	SpellDamage(Target, DmgType, MinVal, MaxVal)
+	Level = GetLevel(Caster)
+    SpellLevel = 13
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MaxVal
+    
+    SpellDamage(Target, DmgType, MinDmg, MaxDmg)
 end
 
 function tick(Caster, Target, DmgType, MinVal, MaxVal, TickType, TickMin, TickMax)
-	SpellDamage(Target, TickType, TickMin, TickMax)
+    Level = GetLevel(Caster)
+    SpellLevel = 13
+    Mastery = SpellLevel + 10
+    StatBonus = GetStr(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus + StatBonus
+    MaxTick = math.floor(DmgBonus) * 2 + TickMax
+    MinTick = math.floor(DmgBonus) * 2 + TickMin
+    
+  	SpellDamage(Target, TickType, MinTick, MaxTick)
 end
+
+
