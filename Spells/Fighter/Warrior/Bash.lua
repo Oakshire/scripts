@@ -1,11 +1,20 @@
 --[[
     Script Name    : Spells/Fighter/Warrior/Bash.lua
-    Script Author  : neatz09
-    Script Date    : 2020.01.02 03:01:28
+    Script Author  : LordPazuzu
+    Script Date    : 3/30/2023
     Script Purpose : 
                    : 
 --]]
 
+function precast(Caster, Target)
+    local item = GetEquippedItemBySlot(Caster, 1)
+    if not item or GetItemType(item) ~= 4 then
+        SendMessage(Caster, "Must have shield equipped", "yellow")
+        return false, 70
+    end
+
+    return true
+end
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal, SpellLevel)
     Level = GetLevel(Caster)

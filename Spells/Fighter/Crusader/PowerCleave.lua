@@ -6,6 +6,15 @@
                    : 
 --]]
 
+function precast(Caster, Target)
+    local wield_type = GetInfoStructUInt(Caster, "wield_type")
+    if wield_type ~= 4 then
+        SendMessage(Caster, "Must have a two-handed weapon equipped", "yellow")
+        return false, 70
+        end
+    return true
+end
+
 
 function cast(Caster, Target, DmgType, MinVal, MaxVal, Parry)
     Level = GetLevel(Caster)

@@ -6,6 +6,16 @@
                    : 
 --]]
 
+function precast(Caster, Target)
+    local item = GetEquippedItemBySlot(Caster, 1)
+    if not item or GetItemType(item) ~= 4 then
+        SendMessage(Caster, "Must have shield equipped", "yellow")
+        return false, 70
+    end
+
+    return true
+end
+
 function cast(Caster, Target, DmgType, MinVal, MaxVal, Hate)
     Level = GetLevel(Caster)
     SpellLevel = 13
