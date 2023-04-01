@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Scout/Predator/SurvivalInstincts.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.04 12:11:49
+    Script Author  : LordPazuzu
+    Script Date    : 3/31/2023
     Script Purpose : 
                    : 
 --]]
@@ -11,16 +11,14 @@
 -- Increases Parry of caster by 7.3
 -- Increases Defense of caster by 9.7
 
-function cast(Caster, Target, Agi, OffSkillz, Par, Def)
-    AddSpellBonus(Target, 2, Agi)
-    AddSkillBonus(Target, GetSkillIDByName("Slashing"), OffSkillz)
-    AddSkillBonus(Target, GetSkillIDByName("Piercing"), OffSkillz)
-    AddSkillBonus(Target, GetSkillIDByName("Crushing"), OffSkillz)
-    AddSkillBonus(Target, GetSkillIDByName("Parry"), Par)
-    AddSkillBonus(Target, GetSkillIDByName("Defense"), Def)
+function cast(Caster, Target,Parry, Defense, Haste)
+
+    AddSkillBonus(Caster, GetSkillIDByName("Parry"), Parry)
+    AddSkillBonus(Caster, GetSkillIDByName("Defense"), Defense)
+    AddSpellBonus(Caster, 617, Haste)
 end
 
 function remove(Caster, Target)
-    RemoveSpellBonus(Target)
-    RemoveSkillBonus(Target)
+    RemoveSkillBonus(Caster)
+    RemoveSpellBonus(Caster)
 end

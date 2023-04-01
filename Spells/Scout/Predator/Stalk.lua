@@ -10,7 +10,7 @@
 -- Grants stealth to caster
 -- Suspends caster's movement speed enhancements
 function cast(Caster, Target, HateLow, HateHigh)
-    AddHate(Caster, Target, math.random(HateLow, HateHigh), 0)
+    AddHate(Caster, Target, math.random(HateLow, HateHigh), 1)
     
     Stealth(1, Caster)
 end

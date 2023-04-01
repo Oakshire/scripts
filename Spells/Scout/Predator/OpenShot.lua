@@ -1,7 +1,7 @@
 --[[
     Script Name    : Spells/Scout/Predator/OpenShot.lua
-    Script Author  : neatz09
-    Script Date    : 2020.11.04 12:11:29
+    Script Author  : LordPazuzu
+    Script Date    : 3/31/2023
     Script Purpose : 
                    : 
 --]]
@@ -20,9 +20,25 @@ function precast(Caster, Target)
     return true
 end
 
-function cast(Caster, Target, DmgMin, DmgMax)
-	SpellDamage(Target, DmgMin, DmgMax)
+function cast(Caster, Target, MinVal, MaxVal)
+	Level = GetLevel(Caster)
+    SpellLevel = 16
+    Mastery = SpellLevel + 10
+    StatBonus = GetAgi(Caster) / 10
+        
+    if Level < Mastery then
+        LvlBonus = Level - SpellLevel
+        else LvlBonus = Mastery - SpellLevel
+    end
+    
+    DmgBonus = LvlBonus + StatBonus
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
+    
+    
+    
+    SpellDamage(Target, 2, MinDmg, MaxDmg)
 		if LastSpellAttackHit() then
-			SpellDamage(Target, DmgMin, DmgMax)
+			SpellDamage(Target,2, MinDmg, MaxDmg)
 				end
 end

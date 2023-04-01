@@ -29,8 +29,8 @@ function precast(Caster, Target)
 end
 
 function cast(Caster, Target, MinVal, MaxVal)
-        Level = GetLevel(Caster)
-    SpellLevel = 16
+    Level = GetLevel(Caster)
+    SpellLevel = 15
     Mastery = SpellLevel + 10
     StatBonus = GetAgi(Caster) / 10
         
