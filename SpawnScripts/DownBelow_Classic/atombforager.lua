@@ -44,7 +44,7 @@ function RouteTwo(NPC, Spawn)
     MovementLoopAddLocation(NPC, X - 3, Y, Z, 2, math.random(5,10))
 	MovementLoopAddLocation(NPC, X - 3, Y, Z - 3, 2, math.random(5,10))
 	MovementLoopAddLocation(NPC, X - 3, Y, Z, 2, math.random(5,10))
-	MovementLoopAddLocation(NPC, X - 3, Y, Z - 3, 2, mmath.random(5,10))
+	MovementLoopAddLocation(NPC, X - 3, Y, Z - 3, 2, math.random(5,10))
 	MovementLoopAddLocation(NPC, X, Y, Z, 2, math.random(5,10), "ChooseMovement")
 end
 
