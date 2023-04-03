@@ -1,10 +1,17 @@
 --[[
-	Script Name	: <script-name>
-	Script Purpose	: <purpose>
-	Script Author	: <author-name>
-	Script Date	: <date>
-	Script Notes	: <special-instructions>
+	Script Name	: SpawnScripts/TimorousDeep/aHaoaeranpoacher.lua
+	Script Purpose	: a Haoaeran poacher spawn script
+	Script Author	: premierio015
+	Script Date	: 03.04.2023
+	Script Notes	: 
 --]]
+
+local crablist = { 35182, 34566, 34575, 34752, 34873, 35006, 35182, 35355, 35470, 35506, 35527, 35535, 35544, 35550, 35551, 35554, 35555, 35581, 35635, 35698, 35768, 35818, 35848, 35867, 35889, 35918, 35943, 35948, 35951, 35960, 35971, 35981 }; -- array with crabs location ID's
+function prespawn(NPC)
+for k, v in ipairs(crablist) do
+AddSpawnProximity(NPC, v,  1, 5, "InRange")
+  end
+end
 
 function spawn(NPC)
 	choice = math.random(1, 4)
@@ -17,49 +24,43 @@ function spawn(NPC)
 	elseif choice == 4 then
 		counter_clockwise2(NPC)
 	end
-	
-	AddTimer(NPC, 10000, "InitialWait")
 end
 
 function respawn(NPC)
 	spawn(NPC)
 end
 
-function InitialWait(NPC)
-	AddTimer(NPC, 1000, "CheckForCrabs")
+
+function InRange(NPC)
+local crab = GetSpawn(NPC, 2630018)
+Attack(NPC, crab)
 end
 
-function CheckForCrabs(NPC)
-	Crab = GetSpawn(NPC, 2630015)
-	if GetDistance(NPC, Crab) <= 5 and IsAlive(Crab) then
-		KillSpawn(Crab, NPC, 1)
-	else
-		Crab2 = GetSpawn(NPC, 2630016)
-		if GetDistance(NPC, Crab2) <= 5 and IsAlive(Crab2) then
-			KillSpawn(Crab2, NPC, 1)
-		end
-	end
 
-	AddTimer(NPC, 10000, "SetUpCheck")
-end
 
-function SetUpCheck(NPC)
-	AddTimer(NPC, 1000, "CheckForCrabs")
-end
 
-function aggro(NPC, Spawn)
-	chance = math.random(1, 100)
-	if chance <= 30 then
+
+
+function killed(NPC, Spawn)
+	chance = MakeRandomInt(1, 100)
+	if chance <= 50 then
 		PlayFlavor(NPC, "voiceover/english/rok_combat_vo/a_spiroc/ft/_exp04/aviak/spiroc_victory_9f0466af.mp3", "Score one for the spiroc!", "", 2170775157, 841438160)
 	end
 end
 
-function killed(NPC, Spawn)
-	chance = math.random(1, 100)
-	if chance <= 30 then
+function aggro(NPC, Spawn)
+	chance = MakeRandomInt(1, 100)
+	if chance <= 50 then
+	    option = MakeRandomInt(1, 2)
+	    if option == 1 then 
 		PlayFlavor(NPC, "voiceover/english/rok_combat_vo/a_spiroc/ft/_exp04/aviak/spiroc_aggro_64bf7f6f.mp3", "I'm taking this one down!", "", 1322142455, 2874795880)
+		else
+		PlayFlavor(NPC, "voiceover/english/rok_combat_vo/a_spiroc/ft/_exp04/aviak/spiroc_aggro_ef272489.mp3", "Hostile at twelve o'clock!", "", 1038256671, 3948487543)
+	   end
 	end
 end
+
+
 
 function clockwise1(NPC)
 	x = GetX(NPC)

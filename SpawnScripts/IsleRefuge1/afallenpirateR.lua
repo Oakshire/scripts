@@ -32,7 +32,7 @@ function spawn(NPC)
     SetSpawnAnimation(NPC, 13016)
     SetInfoStructUInt(NPC, "hp_regen_override", 1)
     SetInfoStructSInt(NPC, "hp_regen", 0)
-ChooseMovement(NPC)
+    AddTimer(NPC, 6000, "ChooseMovement")
 end
 
 function ChooseMovement(NPC)
