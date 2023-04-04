@@ -6,16 +6,30 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local QUEST_3 = 107
-local QUEST_4 = 112
+local QUEST_3 = 5796
+local QUEST_4 = 5798
 local QUEST_5 = 113
 local QUEST_6 = 114
 
 function spawn(NPC)
-	ProvidesQuest(NPC, QUEST_4)
-	ProvidesQuest(NPC, QUEST_5)
-	ProvidesQuest(NPC, QUEST_6)
+	SetPlayerProximityFunction(NPC, 10, "InRange")
 end
+
+function InRange(NPC , Spawn)
+  if CanReceiveQuest(Spawn, QUEST_4) then
+  ProvidesQuest(NPC, QUEST_4)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, QUEST_4) then
+  ProvidesQuest(NPC, QUEST_5)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, QUEST_5) then
+  ProvidesQuest(NPC, QUEST_6)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+    end
 
 function respawn(NPC)
 	spawn(NPC)

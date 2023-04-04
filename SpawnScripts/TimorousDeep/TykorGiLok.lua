@@ -6,15 +6,30 @@
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-QUEST_1 = 105
-QUEST_2 = 106
-QUEST_3 = 107
+QUEST_1 = 5795 -- Poaching the Poachers QUEST ID
+QUEST_2 = 5796 -- Curious Ore QUEST ID
+QUEST_3 = 5797 -- Report to the Primary QUEST ID
 
 function spawn(NPC)
-	ProvidesQuest(NPC, QUEST_1)
-	ProvidesQuest(NPC, QUEST_2)
-	ProvidesQuest(NPC, QUEST_3)
+	SetPlayerProximityFunction(NPC, 10, "InRange")
 end
+
+function InRange(NPC , Spawn)
+  if CanReceiveQuest(Spawn, QUEST_1) then
+  ProvidesQuest(NPC, QUEST_1)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, QUEST_1) then
+  ProvidesQuest(NPC, QUEST_2)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+  elseif HasCompletedQuest(Spawn, QUEST_2) then
+  ProvidesQuest(NPC, QUEST_3)
+  SetInfoFlag(NPC)
+SetVisualFlag(NPC)
+end
+    end
+  
 
 function respawn(NPC)
 	spawn(NPC)
@@ -65,7 +80,6 @@ function dlg_0_1(NPC, Spawn)
 end
 
 function OfferQuest1(NPC, Spawn)
-	OfferQuest(NPC, Spawn)
 	OfferQuest(NPC, Spawn, QUEST_1)
 end
 

@@ -33,8 +33,10 @@ end
 
 function InRange(NPC)
 local crab = GetSpawn(NPC, 2630018)
+if crab ~= nil then
 Attack(NPC, crab)
 end
+   end
 
 
 

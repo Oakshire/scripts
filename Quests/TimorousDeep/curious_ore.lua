@@ -16,8 +16,7 @@ function Init(Quest)
 
 
 	-- curious ore
-	AddQuestStepObtainItem(Quest, 1,  "I need some samples of the ore the Haoaerans are mining to the west.", 3, 100,  ".", 1086,  4401)
-
+	AddQuestStepObtainItem(Quest, 1,  "I need some samples of the ore the Haoaerans are mining to the west.", 3, 100,  "Tykor Gi'Lok would like me to collect some of the ore that the Haoaerans have been mining", 1086,  6198)
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_gotOre")
 
 end
@@ -37,7 +36,7 @@ end
 function step1_complete_gotOre(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have the ore samples.")
 	
-	AddQuestStepChat(Quest, 2, "I need to bring these ore samples back to Tykor Gi'Lok.", 1, ".", 1086, 2630018)
+	AddQuestStepChat(Quest, 2, "I need to bring these ore samples back to Tykor Gi'Lok.", 1, "Tykor Gi'Lok would like me to collect some of the ore that the Haoaerans have been mining.", 1086, 2630021)
 	AddQuestStepCompleteAction(Quest, 2, "quest_complete")
 end
 

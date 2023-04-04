@@ -14,9 +14,9 @@
 function Init(Quest)
 
 
-	AddQuestStepKill(Quest, 1, "I need to kill the Haoaerans excavating the tunnel northwest across the sand.", 4, 100, "I need to travel to the cave to the west of Chrykori Village and kill the Haoaerans excavating the cave, and gather a sample of what they are digging up.", 611, 2630102, 2630103)
+	AddQuestStepKill(Quest, 1, "I need to kill the Haoaerans excavating the tunnel northwest across the sand.", 4, 100, "I need to travel to the cave to the west of Chrykori Village and kill the Haoaerans excavating the cave, and gather a sample of what they are digging up.", 611, 2630882, 2630881, 2630958)
 	-- inscribed pottery
-	AddQuestStepObtainItem(Quest, 2,  "I need a sample of whatever the Haoaerans are digging up.", 1, 100,  "I need to travel to the cave to the west of Chrykori Village and kill the Haoaerans excavating the cave and gather a sample of what they are digging up.", 1085,  5836)
+	AddQuestStepObtainItem(Quest, 2,  "I need a sample of whatever the Haoaerans are digging up.", 1, 100,  "I need to travel to the cave to the west of Chrykori Village and kill the Haoaerans excavating the cave and gather a sample of what they are digging up.", 1085,  8346)
 
 	AddQuestStepCompleteAction(Quest, 1, "step1_complete_killedBirds")
 	AddQuestStepCompleteAction(Quest, 2, "step2_complete_gotOre")
@@ -54,7 +54,7 @@ end
 function multiple_steps_complete(Quest, QuestGiver, Player)
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have killed the Haoaerans and obtained a sample of what they're digging up.")
 	
-	AddQuestStepChat(Quest, 3, "I must speak with Primary Conzuk Zum'Ha in Chrykori Village.", 1, "I must show Primary Conzuk Zum'Ha in Chrykori Village these ore samples.", 0, 2630042)
+	AddQuestStepChat(Quest, 3, "I must speak with Primary Conzuk Zum'Ha in Chrykori Village.", 1, "I must show Primary Conzuk Zum'Ha in Chrykori Village these ore samples.", 0, 2630460)
 	AddQuestStepCompleteAction(Quest, 3, "quest_complete")
 end
 

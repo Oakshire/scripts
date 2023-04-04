@@ -19,7 +19,7 @@ function Init(Quest)
 	-- Zum'Ha's Armwraps
 
 
-	AddQuestStepChat(Quest, 1, "I must speak with Primary Conzuk Zum'Ha in Chrykori Village, up the ramp to the north.", 1, ".", 0, 2630042)
+	AddQuestStepChat(Quest, 1, "I must speak with Primary Conzuk Zum'Ha in Chrykori Village, up the ramp to the north.", 1, "I must show Primary Conzuk Zum'Ha in Chrykori Village these ore samples.", 0, 2630460)
 	AddQuestStepCompleteAction(Quest, 1, "quest_complete")
 
 end
