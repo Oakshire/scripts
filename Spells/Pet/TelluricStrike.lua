@@ -6,7 +6,7 @@
                    : 
 --]]
 
-function cast(Caster, Target, MinVal, MaxVal, DmgType, DmgLow, DmgHigh)
+function cast(Caster, Target, MinVal, MaxVal, DmgType, DmgLow, DmgHigh, MinHate, MaxHate)
   local IntBonus = GetInt(Caster) / 10
   local MinDmg = DmgLow + IntBonus
   local MaxDmg = DmgHigh + IntBonus

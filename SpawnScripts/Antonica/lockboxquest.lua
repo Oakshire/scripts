@@ -31,7 +31,7 @@ end
 
 function con2(NPC, Spawn)
       local con = CreateConversation()
-      if not HasQuest(Spawn, PeckettsPatrol) and not HasCompletedQuest(Spawn, PeckettsPatrol) then
+      if CanReceiveQuest(Spawn, PeckettsPatrol) then
        AddConversationOption(con, "Put the logbook back and help the garrison.", "offer")
        end
         AddConversationOption(con, "Stop your inspection")
