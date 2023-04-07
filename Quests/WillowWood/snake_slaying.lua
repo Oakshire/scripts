@@ -33,7 +33,7 @@ function Step1_Complete_KilledSnakes(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have killed some rock adders.")
 	UpdateQuestZone(Quest, "Willow Wood")
 
-	AddQuestStepChat(Quest, 2, "I should return to Hunter Vannil.", 1, "I need to kill eight rock adders in the Forest Ruins.", 0, 2370032)
+	AddQuestStepChat(Quest, 2, "I should return to Hunter Vannil.", 1, "I should return to Hunter Vannil atop the cliff in The Willow Wood.", 0, 2370032)
 	AddQuestStepCompleteAction(Quest, 2, "Quest_Complete")
 end
 
@@ -47,5 +47,7 @@ end
 function Reload(Quest, QuestGiver, Player, Step)
 	if Step == 1 then
 		Step1_Complete_KilledSnakes(Quest, QuestGiver, Player)
+	elseif Step == 2 then
+		Quest_Complete(Quest, QuestGiver, Player)
 	end
 end

@@ -88,7 +88,7 @@ function AddersSlain(NPC, Spawn)
 	
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
-
+	PlayFlavor(NPC, "", "", "smile", 0, 0, Spawn)
 	AddConversationOption(conversation, "You're welcome.")
 	StartConversation(conversation, NPC, Spawn, "You killed the rock adders! On behalf of our village, I thank you for carrying out this dangerous quest.")
 end

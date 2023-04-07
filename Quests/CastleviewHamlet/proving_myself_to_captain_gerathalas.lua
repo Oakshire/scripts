@@ -17,11 +17,11 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
+	FaceTarget(NPC, Player)
+	Dialog.New(NPC, Player)
 	Dialog.AddDialog("Good, good! The vermin live in the catacombs. Bring me back some of those putrid rat's tails and I'll reward you with a piece of armor.")
 	Dialog.AddVoiceover("voiceover/english/knight-captain_gerathalas/qey_village04/captaingerathalas001.mp3",1809197225,35106101)
- 	PlayFlavor(NPC, "", "", "agree", 0,0 , Spawn)
+ 	PlayFlavor(NPC, "", "", "agree", 0,0 , Player)
    Dialog.AddOption("Great, I'll be right back to prove how well I can take care of myself.")
    Dialog.Start()
   end
