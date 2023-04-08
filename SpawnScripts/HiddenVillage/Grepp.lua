@@ -7,10 +7,21 @@
 --]]
 
 function spawn(NPC)
+waypoints(NPC)
 end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+function waypoints(NPC)
+	MovementLoopAddLocation(NPC, -69.93, 13.63, 154.28, 1, 0)
+	MovementLoopAddLocation(NPC, -70.07, 13.64, 155.49, 1, 0)
+	MovementLoopAddLocation(NPC, -69.17, 13.65, 156.1, 1, 0)
+	MovementLoopAddLocation(NPC, -67.52, 13.64, 153.7, 1, 10)
+	MovementLoopAddLocation(NPC, -69.17, 13.65, 156.1, 1, 0)
+	MovementLoopAddLocation(NPC, -70.07, 13.64, 155.49, 1, 0)
+	MovementLoopAddLocation(NPC, -69.93, 13.63, 154.28, 1, 0)
 end
 
 function hailed(NPC, Spawn)
