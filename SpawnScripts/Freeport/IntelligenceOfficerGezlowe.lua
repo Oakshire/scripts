@@ -61,6 +61,8 @@ function QuestChecks(NPC, Spawn)
 		Dialog3(NPC, Spawn)
 	elseif HasCompletedQuest(Spawn, SearchForTheMissing) then
 	    Dialog11(NPC, Spawn)
+	else
+	    PlayFlavor(NPC, "", "Move along, move along.", "", 0, 0, Spawn, 0)
 	end
 end
 
@@ -93,6 +95,7 @@ function Dialog3(NPC, Spawn)
 end
 
 function Dialog4(NPC, Spawn)
+    SetStepComplete(Spawn, SearchForTheMissing, 1)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("So what we're going to do is take care of this little incident before we find more of these things on our doorstep. Go find the one you're looking for. Kill it. Then tell the frog that it died of sunstroke or something.")
@@ -129,7 +132,7 @@ function Dialog8(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Frogloks. If the legends are to be believed, they've got some sort of religious relation to Lucan's old enemies. Can't have them wandering around, understand?")
 	Dialog.AddVoiceover("intelligence_officer_gezlowe/fprt_west/io_gezlowe002.mp3", 2574431215, 475612057)
-	Dialog.AddOption("Yeah, I understand.")
+	Dialog.AddOption("Yeah, I understand.", "Dialog4")
 	Dialog.Start()
 end
 

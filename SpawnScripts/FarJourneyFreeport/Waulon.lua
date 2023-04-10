@@ -55,6 +55,9 @@ function received_charm(NPC, player)
 	Dialog.Start()
 end
 
+function finished_step_three(NPC, player)
+	SetStepComplete(player, 524, 3) 
+end
 
 function startled_me(NPC, player)
 	Dialog.New(NPC, player)

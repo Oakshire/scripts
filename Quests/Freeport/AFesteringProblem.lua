@@ -11,26 +11,24 @@
 	Followed by		:	None
 --]]
 
-require "SpawnScripts/Generic/DialogModule"
-
 local AQeynosianScout = 330306
-local AQeynosianProtector = 330306
+local AQeynosianProtector = 330307
 local Kraofla = 330291
 local OfficerGezlowe = 5590146
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Find and destroy the Qeynosians and the rescued froglok.", 1, 100, "Search out the Qeynosians and put the froglok down once more.", 11, AQeynosianScout, AQeynosianProtector)
+	AddQuestStepKill(Quest, 1, "Find and destroy the Qeynosians and the rescued froglok.", 1, 100, "Search out the Qeynosians and put the froglok down once more.", 11, Kraofla)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Hey, I don't care about that.  What matters is that it's still alive. Go take care of it.")
-	Dialog.AddVoiceover("intelligence_officer_gezlowe/fprt_west/io_gezlowe009.mp3", 1341018136, 217983311)
-	Dialog.AddOption("Fine.")
-	Dialog.Start()
+    FaceTarget(QuestGiver, Player)
+    conversation = CreateConversation()
+    
+    PlayFlavor(QuestGiver, "intelligence_officer_gezlowe/fprt_west/io_gezlowe009.mp3", "", "", 1341018136, 217983311, Player)
+    AddConversationOption(conversation, "Fine.")
+    StartConversation(conversation, QuestGiver, Player, "Hey, I don't care about that.  What matters is that it's still alive. Go take care of it.")
 end
 
 function Declined(Quest, QuestGiver, Player)

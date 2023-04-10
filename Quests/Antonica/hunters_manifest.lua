@@ -28,11 +28,11 @@ require "SpawnScripts/Generic/PlayerHistory"
 function Init(Quest)
     local choice = MakeRandomInt(1, 3)
     if choice == 1 then
-	AddQuestStepKill(Quest, 1, "I need to hunt various hawks in Antonica", 11, 100, "I have decided to prove my worth as a hunter by bringing down game from all parts of Antonica.", 156, 15)
+	AddQuestStepKill(Quest, 1, "I need to hunt various hawks in Antonica", 11, 100, "I have decided to prove my worth as a hunter by bringing down game from all parts of Antonica.", 156, 120188, 120337, 120064, 120029)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 	SetPlayerHistory(Player, 8, 1)
 	elseif choice == 2 then
-	AddQuestStepKill(Quest, 1, "I need to hunt various wolves in Antonica", 12, 100, "I have decided to prove my worth as a hunter by bringing down game from all parts of Antonica.", 102, 15)
+	AddQuestStepKill(Quest, 1, "I need to hunt various wolves in Antonica", 12, 100, "I have decided to prove my worth as a hunter by bringing down game from all parts of Antonica.", 102, 120008, 120266, 120106)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 	SetPlayerHistory(Player, 8, 2)
 	elseif choice == 3 then

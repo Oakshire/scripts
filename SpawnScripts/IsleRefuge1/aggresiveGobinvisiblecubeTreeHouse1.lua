@@ -7,7 +7,8 @@
 --]]
 
 function spawn(NPC)
-Cage4(NPC, Spawn)end
+Cage4(NPC, Spawn)
+end
 
 function respawn(NPC)
     spawn(NPC)
