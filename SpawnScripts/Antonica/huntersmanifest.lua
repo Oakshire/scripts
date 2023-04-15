@@ -6,14 +6,18 @@
                    : 
 --]]
 
-local HuntersManifest = 5799
+require "SpawnScripts/Generic/PlayerHistory"
+
+local HuntersManifest1 = 5799
+local HuntersManifest2 = 5801
+local HuntersManifest3 = 5802
 
 function spawn(NPC)
 SetPlayerProximityFunction(NPC, 10, "InRange", Spawn) 
 end
 
 function InRange(NPC, Spawn)
-if not HasQuest(Spawn, HuntersManifest) and not HasCompletedQuest(Spawn, HuntersManifest) then
+if GetPlayerHistory(Spawn, 8) == 0 or GetPlayerHistory(Spawn, 8) == nil  then
     SpawnSet(NPC, "show_command_icon", 1)
     SpawnSet(NPC, "display_hand_icon", 1)
     SetAccessToEntityCommand(Spawn,NPC,"open manifest", 1)
@@ -38,7 +42,7 @@ end
 end
 
 function check(NPC, Spawn)
-     if not HasQuest(Spawn, HuntersManifest) and not HasCompletedQuest(Spawn,  HuntersManifest) then
+     if GetPlayerHistory(Spawn, 8) == 0 or GetPlayerHistory(Spawn, 8) == nil  then
     SpawnSet(NPC, "show_command_icon", 1)
     SpawnSet(NPC, "display_hand_icon", 1)
     SetAccessToEntityCommand(Spawn,NPC,"open manifest", 1)
@@ -47,9 +51,16 @@ end
 
 
 function con1(NPC, Spawn)
-      if CanReceiveQuest(Spawn, HuntersManifest) then
-      OfferQuest(NPC, Spawn, HuntersManifest)
-      end
+      if GetPlayerHistory(Spawn, 8) == 0 or GetPlayerHistory(Spawn, 8) == nil  then
+      local generate_random_quest_option = MakeRandomInt(1, 3)
+      if generate_random_quest_option == 1 then
+      OfferQuest(NPC, Spawn, HuntersManifest1)
+      elseif generate_random_quest_option == 2 then
+       OfferQuest(NPC, Spawn, HuntersManifest2)
+      elseif generate_random_quest_option == 3 then
+        OfferQuest(NPC, Spawn, HuntersManifest3)
+       end
+          end
       local con = CreateConversation()
        AddConversationOption(con, "I will hunt game in Antonica.")
         AddConversationOption(con, "exit")

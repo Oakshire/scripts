@@ -5,7 +5,7 @@
 	Script Date	: 2019.03.19
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
-
+require "SpawnScripts/Generic/PlayerHistory"
 local Gnoll = 471
 
 function spawn(NPC)
@@ -23,6 +23,12 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
+    SetPlayerHistory(Spawn, 8, 0)
+    if GetPlayerHistory(Spawn, 8) == nil then
+    Say(Spawn, "ur player history is nil")
+    elseif GetPlayerHistory(Spawn, 8) then
+    Say(Spawn, "ur player history is not nil")
+    end
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
