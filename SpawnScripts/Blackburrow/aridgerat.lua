@@ -8,25 +8,6 @@
 
 
 function spawn(NPC)
-    local Level = GetLevel(NPC)
-    local level1 = 11
-    local level2 = 12
-    local difficulty1 = 5
-    local hp1 = 290
-    local power1 = 105
-    local difficulty2 = 5
-    local hp2 = 250
-    local power2 = 125
-    if Level == level1 then
-    SpawnSet(NPC, "difficulty", difficulty1)
-    SpawnSet(NPC, "hp", hp1)
-    SpawnSet(NPC, "power", power1)
-    elseif Level == level2
-        then
-    SpawnSet(NPC, "difficulty", difficulty2)
-    SpawnSet(NPC, "hp", hp2)
-    SpawnSet(NPC, "power", power2)
-    end
 	waypoints(NPC)
 end
 
