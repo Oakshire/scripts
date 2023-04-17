@@ -21,6 +21,7 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
+    PlayFlavor(QuestGiver,"","","boggle",0,0,Player)
 
 	Dialog.AddDialog("Will you?! Oh! Thank you! Search them well, yes, search them very well. I know my scrolls are being clutched by those furry paws!")
 	Dialog.AddVoiceover("voiceover/english/quallium/antonica/quallium002.mp3", 497416154, 1226676289)

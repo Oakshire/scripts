@@ -33,7 +33,7 @@ function hailed(NPC, Spawn)
 	Dialog.AddOption("I have your scrolls.", "dlg_4")
 	Dialog.AddOptionRequirement(REQ_QUEST_ON_STEP, ONCE_UPON_AN_ISLE_DREARY, 2)
 	Dialog.AddOption("I don't speak to rathed people. Farewell.")
-
+    PlayFlavor(NPC,"","","sigh",0,0,Spawn)
 	Dialog.Start()
 
 end
@@ -41,6 +41,7 @@ end
 function dlg_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC,"","","frustrated",0,0,Spawn)
 
 	Dialog.AddDialog("They have my scrolls ... my poems! I was just sitting upon the isles, like I always do, searching for inspiration, when all of the sudden they appeared! I ran and now have lost my scrolls to the howling beasts.")
 	Dialog.AddVoiceover("voiceover/english/quallium/antonica/quallium001.mp3", 3573977822, 664973830)
@@ -57,7 +58,7 @@ end
 function dlg_4(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-
+    PlayFlavor(NPC,"","","heelclick",0,0,Spawn)
 	Dialog.AddDialog("You saved me! These scrolls will take me from being a simple wordsmith to a legendary poet. You have read my work, have you not?")
 	Dialog.AddVoiceover("voiceover/english/quallium/antonica/quallium003.mp3", 1726246143, 2173439902)
 	Dialog.AddOption("Uh...yeah. Good stuff. Best ever.", "dlg_5")
@@ -71,6 +72,7 @@ function dlg_5(NPC, Spawn)
     SetStepComplete(Spawn,ONCE_UPON_AN_ISLE_DREARY,2)	
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
+    PlayFlavor(NPC,"","","nod",0,0,Spawn)
 
 	Dialog.AddDialog("Well of course you did! You should really visit the sights I wrote about. All four poems were based on actual images I spied from the isle. I am such a genius! Here, read for yourself!")
 	Dialog.AddVoiceover("voiceover/english/quallium/antonica/quallium004.mp3", 2352960393, 543339399)
