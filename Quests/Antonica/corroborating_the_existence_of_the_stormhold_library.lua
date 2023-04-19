@@ -14,14 +14,16 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I need to find the Stormhold library.", 1, "I need to find the library inside Stormhold to verify Timothus Yelrow's information.", 11, 3, -26, -129, 12)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone("Stormhold")
 end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
-     Dialog.AddVoiceover("voiceover/english/timothus_yerlow/antonica/timothusyelrow003.mp3", 911702811, 1037330518)
+ 	Dialog.AddDialog("You?  Hmm ... you do look sufficiently clever in a peasant-like way.  Perhaps you could survive a minute or two inside Stormhold.  I will gladly pay you if you can penetrate Stormhold and return to me with information that verifies the existence of the library.")
+    Dialog.AddVoiceover("voiceover/english/timothus_yerlow/antonica/timothusyelrow003.mp3", 911702811, 1037330518)
+    PlayFlavor(QuestGiver,"","","ponder",0,0,Player)
 	Dialog.AddOption("I'll find it.  A library doesn't have too many places to hide.")
-	Dialog.AddDialog("You?  Hmm ... you do look sufficiently clever in a peasant-like way.  Perhaps you could survive a minute or two inside Stormhold.  I will gladly pay you if you can penetrate Stormhold and return to me with information that verifies the existence of the library.")
 	Dialog.Start()
 end
 
@@ -36,6 +38,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the library.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the library inside Stormhold.")
+    UpdateQuestZone("Antonica")
 
 	AddQuestStepChat(Quest, 2, "I need to return to Timothus Yelrow.", 1, "I need to return to Timothus Yelrow to tell him of my findings.", 11, 120299)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
