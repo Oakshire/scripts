@@ -98,5 +98,5 @@ end
 
 function JobDone(NPC, Spawn)
  	FaceTarget(NPC, Spawn)
-    SetStepComplete(Spawn,bait, 2)
+    SetStepComplete(Spawn,bait, 3)
     end

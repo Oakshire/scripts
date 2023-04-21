@@ -6,6 +6,7 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
+local TheseBootsWereMadeFor = 5805 -- These Boots Were Made For QUEST ID
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 15, "InRange", "", Spawn)
@@ -14,12 +15,20 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-Dialog23(NPC, Spawn)
+if CanReceiveQuest(Spawn, TheseBootsWereMadeFor) then
+Dialog1(NPC, Spawn)
+elseif GetQuestStep(Spawn, TheseBootsWereMadeFor) == 1 or  GetQuestStep(Spawn, TheseBootsWereMadeFor) == 2 then
+PlayFlavor(NPC, "voiceover/english/hwal_rucksif/antonica/quest/quest_hwal_rucksif_need_materials_60f2a69b.mp3", "Got my material?  Doesn't look like it.", "sigh", 1237617987, 3622122831, Spawn)
+elseif GetQuestStep(Spawn, TheseBootsWereMadeFor) == 4 then
+PlayFlavor(NPC, "voiceover/english/hwal_rucksif/antonica/quest/quest_hwal_rucksif_eitoa_components_6fc1205.mp3", "Come back when you've found the components for Captain Eitoa's sword.", "shrug", 438547110, 205957881, Spawn)
 end
+   end
 
 
 function InRange(NPC, Spawn)
+if CanReceiveQuest(Spawn, TheseBootsWereMadeFor) then
 PlayFlavor(NPC, "voiceover/english/hwal_rucksif/antonica/quest/quest_hwal_rucksif_callout_30d20c93.mp3", "Ho, there!  You wouldn't mind helping out a hard working dwarf, would ya?", "hello", 596769271, 2784563151, Spawn)
+ end
 end
 
 function respawn(NPC)
