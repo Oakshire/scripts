@@ -10,20 +10,29 @@
         Followed by: 
 --]]
 
+
+
 require "SpawnScripts/Generic/DialogModule"
+require "SpawnScripts/Generic/PlayerHistory"
 
 function Init(Quest)
 	AddQuestStepHarvest(Quest, 1, "Harvest 15 iron clusters in Antonica for Hwal, making sure to save them to give to him.", 15, 100, "Hwal needs me to gather the raw materials for the weapons he's planning to make for the sentries.", 1085,  8395)
 		AddQuestStepHarvest(Quest, 2, "Harvest 15 severed maple in Antonica for Hwal, making sure to save the wood to give to him.", 15, 100, "Hwal needs me to gather the raw materials for the weapons he's planning to make for the sentries.", 824,  12101)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+	SetQuestFeatherColor(Quest, 1) -- PURPLE FOR HERITAGE QUESTS
+	SetQuestRewardStatus(Quest, 29666)
 end
+
+
+
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
 	Dialog.AddDialog("Much thanks to ya, stranger!  I'm not sure I could finish the job without your help!  I need plenty of iron and wood for these weapons.  It's a lot of work, but I'm sure that together we can get it done in half the time that it'd take me to do it alone!")
 	Dialog.AddVoiceover("voiceover/english/hwal_rucksif/antonica/hwal_rucksif003.mp3", 584697893, 4066288386)
+		Dialog.AddEmote("nod")
 	Dialog.AddOption("It'd better be worth my time, dwarf.")
 	Dialog.Start()
 end
@@ -51,6 +60,10 @@ function CheckProgress(Quest, QuestGiver, Player)
         	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered the raw materials Hwal needs.")
       	AddQuestStepChat(Quest, 3, "Return to Hwal with at least 10 iron clusters and 10 maple branches.", 1, "I need to bring back at least 10 iron clusters and 10 severed maple branches.", 11, 120197)
   	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+  	elseif QuestStepIsComplete(Player, 5805, 12) and QuestStepIsComplete(Player, 5805, 13) then
+  	    	UpdateQuestTaskGroupDescription(Quest, 9, "I've gathered the steel and the leather Hwal's new boots will need.")
+  	 	AddQuestStepChat(Quest, 14, "Speak with Minty in the Thundermist Village about making the boots.", 1, "Now that I've got the steel and leather for the boots, I should speak with Minty Frostbeard.", 11, 2490173)
+	AddQuestStepCompleteAction(Quest, 14, "Step14Complete")
 end
   end
 
@@ -104,7 +117,7 @@ function Step9Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 9, "You've given Hwal the stout he asked for.")
 	UpdateQuestTaskGroupDescription(Quest, 6, "I've returned the stout to Hwal.")
 
-	AddQuestStepKill(Quest, 10, "Lay Hwal's grandfather's ghost to rest.  He resides beneath Vhalen's tower.", 1, 100, "Hwal's grandfather needs to be laid to rest.  His current incarnation; however, may be... unwilling...", 11, 1) -- i need to parse this guy, missing spawn
+	AddQuestStepKill(Quest, 10, "Lay Hwal's grandfather's ghost to rest.  He resides beneath Vhalen's tower.", 1, 100, "Hwal's grandfather needs to be laid to rest.  His current incarnation; however, may be... unwilling...", 11, 8380000)
 	AddQuestStepCompleteAction(Quest, 10, "Step10Complete")
 end
 
@@ -122,28 +135,27 @@ function Step11Complete(Quest, QuestGiver, Player)
 
 	AddQuestStepKill(Quest, 12, "Harvest the antelopes in the Steppes for a special leather for Hwal's boots.", 1, 100, "Hwal has given me a list of things I will need for his new pair of boots.", 123, 2490052)
 	AddQuestStepCompleteAction(Quest, 12, "Step12Complete")
+		AddQuestStepKill(Quest, 13, "Search the Firerock giants in the Steppes for a special steel for Hwal's boots.", 1, 100, "Hwal has given me a list of things I will need for his new pair of boots.", 775, 2490071)
+	AddQuestStepCompleteAction(Quest, 13, "Step13Complete")
 end
 
 function Step12Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 12, "You've found the leather for Hwal's boots.")
-
-	AddQuestStepKill(Quest, 13, "Search the Firerock giants in the Steppes for a special steel for Hwal's boots.", 1, 100, "Hwal has given me a list of things I will need for his new pair of boots.", 775, 2490071)
-	AddQuestStepCompleteAction(Quest, 13, "Step13Complete")
+    CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step13Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 13, "You've found the steel for Hwal's boots.")
-	UpdateQuestTaskGroupDescription(Quest, 9, "I've gathered the steel and the leather Hwal's new boots will need.")
-
-	AddQuestStepChat(Quest, 14, "Speak with Minty in the Thundermist Village about making the boots.", 1, "Now that I've got the steel and leather for the boots, I should speak with Minty Frostbeard.", 11, 2490173)
-	AddQuestStepCompleteAction(Quest, 14, "Step14Complete")
+   CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step14Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 14, "You've spoken with Minty Frostbeard about making Hwal's boots.")
-
+    
 	AddQuestStepChat(Quest, 15, "Speak with Minty again after she's had time to make the boots.", 1, "Now that I've got the steel and leather for the boots, I should speak with Minty Frostbeard.", 11, 2490173)
 	AddQuestStepCompleteAction(Quest, 15, "Step15Complete")
+	        local time = os.time()
+        SetPlayerHistory(Player, HISTORY.ANTONICA_BOOTS_HERITAGE_QUEST_WAIT, time)
 end
 
 function Step15Complete(Quest, QuestGiver, Player)
