@@ -16,8 +16,8 @@ require "SpawnScripts/Generic/DialogModule"
 require "SpawnScripts/Generic/PlayerHistory"
 
 function Init(Quest)
-	AddQuestStepHarvest(Quest, 1, "Harvest 15 iron clusters in Antonica for Hwal, making sure to save them to give to him.", 15, 100, "Hwal needs me to gather the raw materials for the weapons he's planning to make for the sentries.", 1085,  8395)
-		AddQuestStepHarvest(Quest, 2, "Harvest 15 severed maple in Antonica for Hwal, making sure to save the wood to give to him.", 15, 100, "Hwal needs me to gather the raw materials for the weapons he's planning to make for the sentries.", 824,  12101)
+	AddQuestStepHarvest(Quest, 1, "Harvest 100 iron clusters in Antonica for Hwal, making sure to save them to give to him.", 100, 100, "Hwal needs me to gather the raw materials for the weapons he's planning to make for the sentries.", 1085,  8395)
+		AddQuestStepHarvest(Quest, 2, "Harvest 100 severed maple in Antonica for Hwal, making sure to save the wood to give to him.", 100, 100, "Hwal needs me to gather the raw materials for the weapons he's planning to make for the sentries.", 824,  12101)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	SetQuestFeatherColor(Quest, 1) -- PURPLE FOR HERITAGE QUESTS
@@ -46,12 +46,12 @@ function Deleted(Quest, QuestGiver, Player)
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 1, "You've harvested 15 iron clusters in Antonica for Hwal.")
+	UpdateQuestStepDescription(Quest, 1, "You've harvested 100 iron clusters in Antonica for Hwal.")
    CheckProgress(Quest, QuestGiver, Player)
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 2, "You've harvested 15 severed maple in Antonica for Hwal.")
+	UpdateQuestStepDescription(Quest, 2, "You've harvested 100 severed maple in Antonica for Hwal.")
     CheckProgress(Quest, QuestGiver, Player)
 end
 
@@ -68,17 +68,22 @@ end
   end
 
 function Step3Complete(Quest, QuestGiver, Player)
+    if HasItem(Player,  8395) and GetItemCount(8395) >= 100  then
+            RemoveItem(Player, 8395, 100)
+    elseif HasItem(Player, 12101) and GetItemCount(12101) >=  100 then
+       RemoveItem(Player, 12101, 100)
+     end
 	UpdateQuestStepDescription(Quest, 3, "You've given Hwal the raw materials he needs.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've given Hwal all the components he needs.")
 
-	AddQuestStepKill(Quest, 4, "Search Blackburrow for the ore Hwal needs for the blade.", 1, 100, "Hwal has instructed me to find some rarer components for the guard captain's sword he is smithing.", 1124, 170010, 170029)
+	AddQuestStepKill(Quest, 4, "Search Blackburrow for the ore Hwal needs for the blade.", 1, 50, "Hwal has instructed me to find some rarer components for the guard captain's sword he is smithing.", 1124, 170010, 170029)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "You've found the ore Hwal needs for the captain's sword.")
 
-	AddQuestStepKill(Quest, 5, "Deep in Stormhold is a rare wood Hwal must have for the hilt.", 1, 100, "Hwal has instructed me to find some rarer components for the guard captain's sword he is smithing.", 826, 150024, 150239)
+	AddQuestStepKill(Quest, 5, "Deep in Stormhold is a rare wood Hwal must have for the hilt.", 1, 50, "Hwal has instructed me to find some rarer components for the guard captain's sword he is smithing.", 826, 150024, 150239)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
@@ -133,9 +138,9 @@ function Step11Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 11, "You've laid the spirit of Garanel Rucksif to rest.")
 	UpdateQuestTaskGroupDescription(Quest, 8, "I've informed Hwal that his grandfather has been laid to rest.")
 
-	AddQuestStepKill(Quest, 12, "Harvest the antelopes in the Steppes for a special leather for Hwal's boots.", 1, 100, "Hwal has given me a list of things I will need for his new pair of boots.", 123, 2490052)
+	AddQuestStepKill(Quest, 12, "Harvest the antelopes in the Steppes for a special leather for Hwal's boots.", 1, 50, "Hwal has given me a list of things I will need for his new pair of boots.", 123, 2490052)
 	AddQuestStepCompleteAction(Quest, 12, "Step12Complete")
-		AddQuestStepKill(Quest, 13, "Search the Firerock giants in the Steppes for a special steel for Hwal's boots.", 1, 100, "Hwal has given me a list of things I will need for his new pair of boots.", 775, 2490071)
+		AddQuestStepKill(Quest, 13, "Search the Firerock giants in the Steppes for a special steel for Hwal's boots.", 1, 50, "Hwal has given me a list of things I will need for his new pair of boots.", 775, 2490071)
 	AddQuestStepCompleteAction(Quest, 13, "Step13Complete")
 end
 

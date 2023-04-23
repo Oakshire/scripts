@@ -24,7 +24,7 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
- Dialog1(NPC, Spawn)
+ Dialog4(NPC, Spawn)
  end
 
 function Dialog1(NPC, Spawn)
@@ -41,6 +41,7 @@ function Dialog2(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("What! You never heard of Hasten Bootstrutter the gnome?  He is  one of the most famous explorers in history!  After the Cataclysms, he trekked all across the Shattered Lands, traveling here and there, writing extensively about points of interest.  This field guide was the fruit of his last great journey.")
 	Dialog.AddVoiceover("voiceover/english/librarian_dalmas/qey_south/librariandalmas002.mp3", 3595613712, 3187372712)
+    PlayFlavor(NPC,"","","boggle",0,0,Spawn)
 	Dialog.AddOption("Thank you for the information.")
 	Dialog.Start()
 end
@@ -50,8 +51,10 @@ function Dialog3(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Ahh, what is this?  A very famous explorer, Hasten Bootstrutter, wrote this book.  This is a rare and valuable treasure, indeed.  Thank you, good adventurer, for returning it to us.  Our library will cherish it.  Please accept this rare item as a token of our gratitude.")
 	Dialog.AddVoiceover("voiceover/english/librarian_dalmas/qey_south/librariandalmas001.mp3", 1552954276, 373652806)
+    PlayFlavor(NPC,"","","agree",0,0,Spawn)
 	Dialog.AddOption("Thank you for the reward. ")
 	Dialog.Start()
+	SetStepComplete(Spawn,5806,16)
 end
 
 function Dialog4(NPC, Spawn)
@@ -59,8 +62,15 @@ function Dialog4(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("You do not look like as if you spend much time in libraries, but please browse around as you like, and close the door firmly when you leave.")
 	Dialog.AddVoiceover("voiceover/english/librarian_dalmas/qey_south/librariandalmas000.mp3", 1605600996, 1906658132)
+    if GetQuestStep(Spawn, 5806)==16 then
 	Dialog.AddOption("I've brought you 'Bootstrutter's Field Guide to Antonica.'", "Dialog3")
+    end
+    if HasQuest(Spawn,5806) and not HasCompletedQuest(Spawn,5806) then
 	Dialog.AddOption("Who is Hasten Bootstrutter?", "Dialog2")
+	end
+    if HasCompletedQuest(Spawn,5806) then
+	Dialog.AddOption("Remind me, who is Hasten Bootstrutter?", "Dialog2")
+	end	
 	Dialog.AddOption("I shall be silent.")
 	Dialog.Start()
 end

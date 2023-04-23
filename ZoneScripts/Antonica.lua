@@ -39,3 +39,4 @@ end
 
 function Leave(zone, Spawn)
 end
+
