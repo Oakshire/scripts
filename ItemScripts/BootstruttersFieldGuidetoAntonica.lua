@@ -96,7 +96,7 @@ end
 
 function Page11(Item, Player)
 conversation = CreateConversation()
-AddConversationOption(conversation, "Entry Twelve","Page11")
+AddConversationOption(conversation, "Entry Twelve","Page12")
 AddConversationOption(conversation, "Turn back to previous entry.","Page10")
 AddConversationOption(conversation, "Close the book.","CloseItemConversation")
 StartDialogConversation(conversation, 2, Item, Player, "Fangbreaker Keep:\n\n As with most keeps in the region, this is nothing but ruins. The werewolf hunting Order of the Fangbreakers was once based here. They once rid the Plains of Karana of its werewolves in the Age of Turmoil. Tales tell of a horde of werewolves slaying the entire order on this spot. The merchant lords of Caltorsis were quick to purchase the deed. An odd act considering they were at odds with the order for quite some time.")
