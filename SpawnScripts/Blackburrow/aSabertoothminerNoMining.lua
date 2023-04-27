@@ -1,16 +1,17 @@
 --[[
-    Script Name    : SpawnScripts/Blackburrow/aSabertoothminer.lua
-    Script Author  : Dorbin
-    Script Date    : 2022.07.11 06:07:13
+    Script Name    : SpawnScripts/Blackburrow/aSabertoothminerNoMining.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2023.04.26 09:04:19
     Script Purpose : 
                    : 
 --]]
- 	dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll2.lua")
+
+dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll2.lua")
  	
  local TheChomper = 5696
 
 function spawn(NPC)
-        AddTimer(NPC,math.random(2500,6000),"AttackRocks")
+        --AddTimer(NPC,math.random(2500,6000),"AttackRocks")
 
 end
 

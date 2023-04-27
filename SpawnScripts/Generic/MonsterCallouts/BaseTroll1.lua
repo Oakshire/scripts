@@ -101,14 +101,18 @@ if IsInCombat(NPC)==true and IsAlive(NPC) == true and math.random(0,100)<=25 the
 		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_gm_885bb802.mp3", "Your skin will make a nice rug.", "", 1438966168, 4203435659)
         end  
     else
-		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_gf_ee1e1a8.mp3", "Blood bath!", "", 3988277815, 18269010)
-    end
+     	local choice = MakeRandomInt(1,2)
+ 	    if choice == 1 then
+ 		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_gf_ee1e1a8.mp3", "Blood bath!", "", 3988277815, 18269010)
+        elseif choice == 2 then
+		PlayFlavor(NPC, "voiceover/english/optional3/troll_base_1/ft/troll/troll_base_1_1_battle_mf_7ec83f83.mp3", "Meat better if you thwack it a few times.", "", 2708504622, 611837925)
+        end
     if IsAlive(NPC)then
     AddTimer(NPC,15000,"FifteenCall")
     end
 end  
 end
-
+end
 
 function healthchanged(NPC, Spawn)  
 --[[  if CalloutTimer == false then

@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/Dark_Coven.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)

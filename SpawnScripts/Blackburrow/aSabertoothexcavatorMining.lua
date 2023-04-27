@@ -1,14 +1,14 @@
 --[[
-    Script Name    : SpawnScripts/Blackburrow/aSabertoothminer.lua
-    Script Author  : Dorbin
-    Script Date    : 2022.07.11 06:07:13
+    Script Name    : SpawnScripts/Blackburrow/aSabertoothexcavatorMining.lua
+    Script Author  : LordPazuzu
+    Script Date    : 2023.04.26 09:04:36
     Script Purpose : 
                    : 
 --]]
- 	dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll2.lua")
- 	
- local TheChomper = 5696
 
+dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll2.lua")
+ 	
+ 
 function spawn(NPC)
         AddTimer(NPC,math.random(2500,6000),"AttackRocks")
 
@@ -22,11 +22,6 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-function death(NPC, Spawn)
-if QuestIsComplete(Spawn, TheChomper) or HasItem(Spawn, 1285) then
-RemoveLootItem(NPC, 1285) 
-  end
-end
 
 function AttackRocks(NPC)
     if not IsInCombat(NPC) then
