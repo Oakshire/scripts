@@ -39,7 +39,7 @@ function aggro(NPC,Spawn)
     CalloutTimer = true
     AddTimer(NPC,7000,"ResetTimer")
     if GetGender(NPC)==1 then       --GENDER CHECK.  1==Male
-    if GetClass(Spawn)>=21 and GetClass(Spawn)<=32 then 
+    if GetClass(Spawn)>=31 and GetClass(Spawn)<=42 then 
   	local choice = MakeRandomInt(1,4) --SCOUT CHECK
     else
     local choice = MakeRandomInt(1,3)
@@ -54,7 +54,7 @@ function aggro(NPC,Spawn)
         PlayFlavor(NPC, "voiceover/english/optional3/barbarian_base_1/ft/barbarian/barbarian_base_1_1_maoscout_gm_abf544b6.mp3", "Time to run, you sneaky coward!", "", 401121050, 1757713301)
         end  
     else
-        if GetClass(Spawn)>=21 and GetClass(Spawn)<=32 then 
+        if GetClass(Spawn)>=31 and GetClass(Spawn)<=42 then 
   	    local choice = MakeRandomInt(1,4) --SCOUT CHECK
         else
         local choice = MakeRandomInt(1,3)

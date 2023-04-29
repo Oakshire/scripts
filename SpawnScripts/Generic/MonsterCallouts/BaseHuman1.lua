@@ -39,7 +39,7 @@ function aggro(NPC,Spawn)
     CalloutTimer = true
     AddTimer(NPC,7000,"ResetTimer")
     if GetGender(NPC)==1 then       --GENDER CHECK.  1==Male
-    if GetClass(Spawn)>=21 and GetClass(Spawn)<=32 then 
+    if GetClass(Spawn)>=31 and GetClass(Spawn)<=42 then 
   	local choice = MakeRandomInt(1,4) --SCOUT CHECK
     else
     local choice = MakeRandomInt(1,3)
