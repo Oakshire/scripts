@@ -33,6 +33,7 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
+    --Say(NPC, "You are currently on step " .. GetQuestStep(Spawn, AFesteringProblem))
 	QuestChecks(NPC, Spawn)
 end
 
@@ -59,8 +60,12 @@ end
 function QuestChecks(NPC, Spawn)
 	if HasQuest(Spawn, SearchForTheMissing) and GetQuestStep(Spawn, SearchForTheMissing) == 1 then
 		Dialog3(NPC, Spawn)
-	elseif HasCompletedQuest(Spawn, SearchForTheMissing) then
+	elseif HasCompletedQuest(Spawn, SearchForTheMissing) and GetQuestStep(Spawn, AFesteringProblem) ~= 2 and not HasCompletedQuest(Spawn, AFesteringProblem) then
 	    Dialog11(NPC, Spawn)
+	elseif HasQuest(Spawn, AFesteringProblem) and GetQuestStep(Spawn, AFesteringProblem) == 2 then
+	    Dialog12(NPC, Spawn)
+	elseif HasCompletedQuest(Spawn, AFesteringProblem) then
+	    Dialog10(NPC, Spawn)
 	else
 	    PlayFlavor(NPC, "", "Move along, move along.", "", 0, 0, Spawn, 0)
 	end
@@ -150,9 +155,13 @@ function Dialog10(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Did you lose that scroll? It's a good thing that we keep good records...")
 	Dialog.AddVoiceover("intelligence_officer_gezlowe/fprt_west/io_gezlowe014.mp3", 1549689638, 2411406729)
-	Dialog.AddOption("Yes, I need another.")
+	Dialog.AddOption("Yes, I need another.", "SummonAnother")
 	Dialog.AddOption("No, I still have mine.")
 	Dialog.Start()
+end
+
+function SummonAnother(NPC, Spawn)
+    SummonItem(Spawn, 2611, 1)
 end
 
 function Dialog11(NPC, Spawn)
@@ -175,6 +184,7 @@ function Dialog12(NPC, Spawn)
 end
 
 function Dialog13(NPC, Spawn)
+    SetStepComplete(Spawn, AFesteringProblem, 2)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Good. You can handle it from here.")

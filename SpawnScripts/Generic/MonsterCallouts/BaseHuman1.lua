@@ -40,9 +40,9 @@ function aggro(NPC,Spawn)
     AddTimer(NPC,7000,"ResetTimer")
     if GetGender(NPC)==1 then       --GENDER CHECK.  1==Male
     if GetClass(Spawn)>=31 and GetClass(Spawn)<=42 then 
-  	local choice = MakeRandomInt(1,4) --SCOUT CHECK
+  	 choice = MakeRandomInt(1,4) --SCOUT CHECK
     else
-    local choice = MakeRandomInt(1,3)
+     choice = MakeRandomInt(1,3)
     end
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a203c9ec.mp3", "Prepare to face your doom, meddler.", "", 1496819882, 365167432)
@@ -54,7 +54,7 @@ function aggro(NPC,Spawn)
         PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_maoscout_gm_d55d2935.mp3", "Use caution, they may have scouts!", "", 2353461553, 1453902220)
         end  
     else
- 	local choice = MakeRandomInt(1,3)
+ 	 choice = MakeRandomInt(1,3)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_aggro_gf_583690dc.mp3", "Summon help!  We have invaders!", "", 1598905349, 2204481929)
         elseif choice == 2 then

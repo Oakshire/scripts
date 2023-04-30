@@ -25,6 +25,11 @@ end
 
 function death(NPC, Spawn)
 	PlayFlavor(NPC, "voiceover/english/froglok_base_1/ft/froglok/froglok_base_1_1_death_gf_f9da3030.mp3", "Withdraw, fine comrades. I shall remain.", "", 47103978, 1821153074, Spawn)
+    AddTimer(NPC,8000,"DespawnTime")
+end
+
+function DespawnTime(NPC)
+    Despawn(NPC)
 end
 
 function healthchanged(NPC, Spawn)
