@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/Generic/MonsterCallouts/BaseGoblin1.lua
     Script Author  : Dorbin
     Script Date    : 2022.09.28 07:09:37
-    Script Purpose : 
+    Script Purpose : Base Goblin calloutsvs
                    : 
 --]]
 local HealthCallout = false --REDUCES Half-Health Spam

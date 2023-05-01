@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/Windstalkers.lua")
 
 local LichaDancingQueen = 5342
 

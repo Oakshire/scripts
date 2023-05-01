@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/Windstalkers.lua")
 
 function spawn(NPC)
 	AddTimer(NPC, 6000, "waypoints")

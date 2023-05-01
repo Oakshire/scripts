@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseHuman1.lua")
 
 local LetterToRiason = 5350 -- Letter to Riason quest
 local ARediscoveredShrine = 5351 -- A Rediscovered Shrine? quest

@@ -23,6 +23,7 @@ function InRange(NPC, Spawn)
         if GetQuestStep(Spawn, QuellingTheRebellion) == 1 then
             if GetSpawnByLocationID(zone, 133784673) ==nil then
                 local JethTheSpy = SpawnMob(zone, 5590962, false, -124.97, -37.62, -19.76, 312.75)
+                Attack(JethTheSpy, Spawn)
             end
         end
     end

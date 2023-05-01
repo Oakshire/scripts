@@ -97,17 +97,20 @@ function HfE_aggro(NPC,Spawn)
      choice = MakeRandomInt(1,2)
     end
  	    if choice == 1 then
-		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gm_13a3055.mp3", "Summon help, intruders have arrived!", "", 262436067, 4127133618, Spawn)
+		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gm_13a3055.mp3", "Summon help, intruders have arrived!", "", 262436067, 4127133618)
         elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gm_12fbaefb.mp3", "Destroy the invader!", "", 489857902, 941763715, Spawn, 0)
+		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gm_12fbaefb.mp3", "Destroy the invader!", "", 489857902, 941763715)
         elseif choice == 3 then
-PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_maomage_gm_96692f88.mp3", "Distract the magician or we'll all die!", "", 3332270247, 2351356263, Spawn)        end  
+PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_maomage_gm_96692f88.mp3", "Distract the magician or we'll all die!", "", 3332270247, 2351356263)
+end  
     else
-        choice = MakeRandomInt(1,2)
+        choice = MakeRandomInt(1,3)
  	    if choice == 1 then
-        PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gf_12fbaefb.mp3", "Destroy the invader!", "", 1313233821, 723410897, Spawn)
+        PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gf_12fbaefb.mp3", "Destroy the invader!", "", 1313233821, 723410897)
         elseif choice == 2 then
-		PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gf_a68f64b6.mp3", "Alarm! Alarm!", "", 1220383018, 2962002142, Spawn)
+		PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gf_a68f64b6.mp3", "Alarm! Alarm!", "", 1220383018, 2962002142)
+        elseif choice == 3 then
+ 		PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gf_13a3055.mp3", "Summon help, intruders have arrived!", "", 3324527452, 2122161878)
         end
 end    
 end
