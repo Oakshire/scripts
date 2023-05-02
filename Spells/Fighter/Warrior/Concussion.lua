@@ -19,8 +19,8 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal, PwrMin, PwrMax)
     
     
     DmgBonus = LvlBonus + StatBonus
-    MaxDmg = math.floor(DmgBonus) * 2 + DmgHigh
-    MinDmg = math.floor(DmgBonus) * 2 + DmgLow
+    MaxDmg = math.floor(DmgBonus) * 2 + MaxVal
+    MinDmg = math.floor(DmgBonus) * 2 + MinVal
     
     SpellDamage(Target, DmgType, MinDmg, MaxDmg)
 -- Decreases power of target by 23 - 38
