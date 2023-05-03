@@ -8,7 +8,16 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/HighwaymanAntonica.lua")
 
 function spawn(NPC)
---[[    CastSpell(NPC,41)
+   CastSpell(NPC,41)
+    SpawnSet(NPC,"model_type",2306)
+    SpawnSet(NPC,"faction",0)
+    SpawnSet(NPC,"show_name",0)
+    SpawnSet(NPC,"show_level",0)
+    SpawnSet(NPC,"attackable",0)
+    SpawnSet(NPC,"targetable",0)
+    SpawnSet(NPC,"show_command_icon",0)
+    SpawnSet(NPC,"collision_radius",0)
+    SpawnSet(NPC,"initial_state",0)
     local Level = GetLevel(NPC)
     local level1 = 18
     local level2 = 19
@@ -28,7 +37,7 @@ function spawn(NPC)
     SpawnSet(NPC, "difficulty", difficulty2)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
-    end]]--
+    end
 end
 
 function Action(NPC)
