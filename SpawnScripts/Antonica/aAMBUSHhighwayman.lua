@@ -9,6 +9,17 @@ dofile("SpawnScripts/Generic/MonsterCallouts/HighwaymanAntonica.lua")
 
 function spawn(NPC)
    CastSpell(NPC,41)
+
+
+--[[    local RaceChoice = MakeRandomInt(1,5)
+    if RaceChoice ==1 then
+        SpawnSet(NPC,"race","0")
+    elseif RaceChoice == 2 or RaceChoice == 3 then
+        SpawnSet(NPC,"race","6")
+    elseif RaceChoice == 4 or RaceChoice == 5 then
+        SpawnSet(NPC,"race","9")
+    end]]--
+    
     SpawnSet(NPC,"model_type",2306)
     SpawnSet(NPC,"faction",0)
     SpawnSet(NPC,"show_name",0)
@@ -17,7 +28,7 @@ function spawn(NPC)
     SpawnSet(NPC,"targetable",0)
     SpawnSet(NPC,"show_command_icon",0)
     SpawnSet(NPC,"collision_radius",0)
-    SpawnSet(NPC,"initial_state",0)
+    
     local Level = GetLevel(NPC)
     local level1 = 18
     local level2 = 19

@@ -61,8 +61,8 @@ end
 if IsPlayer(Spawn)== true and IsAlive(Group3HWmanA) == true and IsAlive(Group3HWmanB) == true and IsAlive(Group3HWmanC) == true and IsAlive(Group3HWmanD) == true then
     AddTimer(NPC,2000,"Group3Pop",1, Spawn)
 end
---    AddTimer(NPC,900000,"AliveCheck")
-    AddTimer(NPC,10000,"AliveCheck")
+   AddTimer(NPC,MakeRandomInt(720000,900000),"AliveCheck") --12 to 15 min despawn
+
 end
 end    
     
@@ -127,28 +127,49 @@ end
 end 
 
 function  RaceSet(NPC) --RANDOMIZES RACE APPEARANCES BETWEEN BARBARIAN, HALFELF, & HUMAN
+--[[        RaceChoice = GetRace(NPC)
+   
+    if RaceChoice ==0 then
+        if GetGender(NPC)==1 then
+        SpawnSet(NPC,"model_type",MakeRandomInt(1467,1471))
+        else
+        SpawnSet(NPC,"model_type",MakeRandomInt(1462,1466))
+        end
+    elseif RaceChoice == 6 then
+        if GetGender(NPC)==1 then
+        SpawnSet(NPC,"model_type",78)
+        else
+        SpawnSet(NPC,"model_type",79)
+        end        
+    elseif RaceChoice == 9 then
+        if GetGender(NPC)==1 then
+        SpawnSet(NPC,"model_type",134)
+        else
+        SpawnSet(NPC,"model_type",132)
+        end       ]]--
+
     local RaceChoice = MakeRandomInt(1,5)
     if RaceChoice ==1 then
-        SpawnSet(NPC,"race_type",0)
+        SpawnSet(NPC,"race",0)
         if GetGender(NPC)==1 then
         SpawnSet(NPC,"model_type",MakeRandomInt(1467,1471))
         else
         SpawnSet(NPC,"model_type",MakeRandomInt(1462,1466))
         end
     elseif RaceChoice == 2 or RaceChoice == 3 then
-        SpawnSet(NPC,"race_type",6)
+        SpawnSet(NPC,"race",6)
         if GetGender(NPC)==1 then
         SpawnSet(NPC,"model_type",78)
         else
         SpawnSet(NPC,"model_type",79)
         end        
     elseif RaceChoice == 4 or RaceChoice == 5 then
-        SpawnSet(NPC,"race_type",9)
+        SpawnSet(NPC,"race",9)
         if GetGender(NPC)==1 then
         SpawnSet(NPC,"model_type",134)
         else
         SpawnSet(NPC,"model_type",132)
-        end      
+        end     
 
     end --HANDLES SPAWN ANIMATIONS & ATTACKABLE FLAGGING
     CastSpell(NPC,41)
@@ -208,7 +229,9 @@ if IsInCombat(Group3HWmanA) == false and Group3HWmanA ~= nil and IsAlive(Group3H
         if IsInCombat(Group3HWmanC) == false and Group3HWmanC ~= nil and IsAlive(Group3HWmanC) == true or IsAlive(Group3HWmanC) == false or Group3HWmanC == nil then
             if IsInCombat(Group3HWmanD) == false and Group3HWmanD ~= nil and IsAlive(Group3HWmanD) == true or IsAlive(Group3HWmanD) == false or Group3HWmanD == nil then
             
-            LeavingCrouch(NPC,Spawn) --STARTS DESPAWN
+
+                    LeavingCrouch(NPC)--STARTS DESPAWN
+            --LeavingCrouch(NPC,Spawn) 
             
             else
             AddTimer(NPC,300000,"AliveCheck")
@@ -249,7 +272,7 @@ end
 
 
 
-function LeavingCrouch(NPC,Spawn) --DESPAWNING ANIMATIONS OF HIGHWAYMEN
+function LeavingCrouch(NPC) --DESPAWNING ANIMATIONS OF HIGHWAYMEN
     local zone = GetZone(NPC)
     local Group1HWmanA = GetSpawnByLocationID(zone, 133784689)
     local Group1HWmanB = GetSpawnByLocationID(zone, 133784686)
@@ -268,62 +291,62 @@ function LeavingCrouch(NPC,Spawn) --DESPAWNING ANIMATIONS OF HIGHWAYMEN
     if Group1HWmanA ~=nil then
      CastSpell(Group1HWmanA,320022)
     PlayFlavor(Group1HWmanA,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group1HWmanB ~=nil then
     CastSpell(Group1HWmanB,320022)
     PlayFlavor(Group1HWmanB,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end    
      if Group1HWmanC ~=nil then
      CastSpell(Group1HWmanC,320022)
     PlayFlavor(Group1HWmanC,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end   
      if Group1HWmanD ~=nil then
      CastSpell(Group1HWmanD,320022)
     PlayFlavor(Group1HWmanD,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end   
     if Group2HWmanA ~=nil then
     CastSpell(Group2HWmanA,320022)
     PlayFlavor(Group2HWmanA,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group2HWmanB ~=nil then
     CastSpell(Group2HWmanB,320022)
     PlayFlavor(Group2HWmanB,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group2HWmanC ~=nil then
     CastSpell(Group2HWmanC,320022)
     PlayFlavor(Group2HWmanC,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group2HWmanD ~=nil then
      CastSpell(Group2HWmanD,320022)
     PlayFlavor(Group2HWmanD,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group3HWmanA ~=nil then
     CastSpell(Group3HWmanA,320022)
     PlayFlavor(Group3HWmanA,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group3HWmanB ~=nil then
     CastSpell(Group3HWmanB,320022)
     PlayFlavor(Group3HWmanB,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group3HWmanC ~=nil then
     CastSpell(Group3HWmanC,320022)
     PlayFlavor(Group3HWmanC,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end
     if Group3HWmanD ~=nil then
     CastSpell(Group3HWmanD,320022)
     PlayFlavor(Group3HWmanD,"","","duck",0,0)
-    AddTimer(NPC,2000,"Despawning")
+    AddTimer(NPC,2200,"Despawning")
     end    
 
 end

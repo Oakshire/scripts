@@ -8,8 +8,6 @@
 local HealthCallout = false --REDUCES Half-Health Spam
 local CalloutTimer = false --REDUCES Callout Spam
 
-
-
 local FIGHTER = 1
 local WARRIOR =2
 local GUARDIAN= 3 
@@ -43,7 +41,19 @@ if  GetTempVariable(NPC, "CalloutTimer")== "false"then
     SetTempVariable(NPC, "CalloutTimer", "true")
     AddTimer(NPC,7000,"ResetTimer")
     Race= GetRace(NPC)   
- if Race == 0 then
+    Model = GetModelType(NPC)
+if Model >= 1462 and Model <= 1471  then
+Barb_aggro(NPC,Spawn)
+elseif Model ==78 or Model == 79 then
+HfE_aggro(NPC,Spawn)
+elseif Model ==132 or Model == 134 then
+Hum_aggro(NPC,Spawn)
+else
+end
+end
+end 
+ 
+--[[if Race == 0 then
 Barb_aggro(NPC,Spawn)
 elseif Race ==6 then
 HfE_aggro(NPC,Spawn)
@@ -52,7 +62,7 @@ Hum_aggro(NPC,Spawn)
 else
 end
 end
-end     
+end   ]]--  
 
 function Barb_aggro(NPC,Spawn)
     if GetGender(NPC)==1 then       --GENDER CHECK.  1==Male
@@ -149,8 +159,22 @@ end
 -- DEATH CHECK --
 
 function death(NPC,Spawn) --RACE CHECK
+    Model = GetModelType(NPC)
 if  GetTempVariable(NPC, "CalloutTimer")== "false"then
- Race= GetRace(NPC)   
+if Model >= 1462 and Model <= 1471  then
+Barb_death(NPC,Spawn)
+elseif Model ==78 or Model == 79 then
+HfE_death(NPC,Spawn)
+elseif Model ==132 or Model == 134 then
+Hum_death(NPC,Spawn)
+else
+end
+end
+end
+
+
+
+--[[ Race= GetRace(NPC)   
  if Race == 0 then
 Barb_death(NPC,Spawn)
 elseif Race ==6 then
@@ -160,7 +184,7 @@ Hum_death(NPC,Spawn)
 else
 end
 end
-end
+end]]--
 
 function Barb_death(NPC,Spawn)
     if GetGender(NPC)==1 then
@@ -223,12 +247,24 @@ function Hum_death(NPC,Spawn)
 -- HealthChange CHECK --
 
 function healthchanged(NPC,Spawn) --RACE CHECK
+    Model = GetModelType(NPC)
 if GetHP(NPC) <= GetMaxHP(NPC) * 0.55 and GetHP(NPC) >= GetMaxHP(NPC) * 0.45 then
     if IsAlive(NPC) and IsInCombat(NPC)==true  and IsPlayer(Spawn)and  GetTempVariable(NPC, "CalloutTimer")== "false" and GetTempVariable(NPC, "HealthCallout")== "false" then
         SetTempVariable(NPC, "HealthCallout", "true")
         AddTimer(NPC,9000,"ResetTimer")
         AddTimer(NPC,9000,"HealthReset")
-        Race= GetRace(NPC)   
+            if Model >= 1462 and Model <= 1471  then
+            Barb_healthchanged(NPC,Spawn)
+            elseif Model ==78 or Model == 79 then
+            HfE_healthchanged(NPC,Spawn)
+            elseif Model ==132 or Model == 134 then
+            Hum_healthchanged(NPC,Spawn)
+            else
+            end
+    end
+end
+
+--[[        Race= GetRace(NPC)   
             if Race == 0 then
             Barb_healthchanged(NPC,Spawn)
             elseif Race ==6 then
@@ -238,7 +274,7 @@ if GetHP(NPC) <= GetMaxHP(NPC) * 0.55 and GetHP(NPC) >= GetMaxHP(NPC) * 0.45 the
             else
             end
     end
-end
+end]]--
 end
 
 function Barb_healthchanged(NPC, Spawn)  
@@ -305,7 +341,17 @@ end
 -- Victory CHECK --
 
 function victory(NPC,Spawn) --RACE CHECK
- Race= GetRace(NPC)   
+    Model = GetModelType(NPC)
+if Model >= 1462 and Model <= 1471  then
+Barb_victory(NPC,Spawn)
+elseif Model ==78 or Model == 79 then
+HfE_victory(NPC,Spawn)
+elseif Model ==132 or Model == 134 then
+Hum_victory(NPC,Spawn)
+else
+end
+
+--[[ Race= GetRace(NPC)   
  if Race == 0 then
 Barb_victory(NPC,Spawn)
 elseif Race ==6 then
@@ -313,8 +359,9 @@ HfE_victory(NPC,Spawn)
 elseif Race==9 then
 Hum_victory(NPC,Spawn)
 else
+end]]--
 end
-end
+
 
 function Barb_victory(NPC,Spawn)
     if GetGender(NPC)==1 then
