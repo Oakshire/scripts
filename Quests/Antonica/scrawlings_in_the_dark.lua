@@ -10,6 +10,8 @@
         Followed by: 
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
+
 function Init(Quest)
 	AddQuestStep(Quest, 1, "Search for the unholy tome 'Scrawlings of Chirannis.'", 1, 100, "I must venture into Blackburrow and search for the Ark of Chirannis. Inside will be the tome called Scrawlings of Chirannis.", 717)
 		AddQuestStepKill(Quest, 2, "Hunt down Sabertooth diviners for the first missing page.", 1, 100, "I must obtain the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.", 2180, 170019)
@@ -24,10 +26,10 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 		FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-    PlayFlavor(QuestGiver, "voiceover/english/optional1/rikantus/antonica/rikantus005.mp3", "", "", 1926201932, 488253869, Player)
-	AddConversationOption(conversation, "I will return the tome to you.")
-	StartConversation(conversation, QuestGiver, Player, "I desire a trinket for a trinket, a stolen vault of knowledge. Within the depths of the Sabertooth lair resides a tome bound of gnoll hide and scribed in the black blood of Norrath. Find and return this tome to me, and I shall grant you wonders of time long past. Find me the Scrawlings of Chirannis.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I desire a trinket for a trinket, a stolen vault of knowledge. Within the depths of the Sabertooth lair resides a tome bound of gnoll hide and scribed in the black blood of Norrath. Find and return this tome to me, and I shall grant you wonders of time long past. Find me the Scrawlings of Chirannis.")
+   Dialog.AddVoiceover("voiceover/english/optional1/rikantus/antonica/rikantus005.mp3", 1926201932, 488253869)
+Dialog.AddOption("I will return the tome to you.")
 
 end
 
