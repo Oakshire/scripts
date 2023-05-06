@@ -10,13 +10,18 @@
         Followed by: 
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
+
 function Init(Quest)
 	AddQuestStep(Quest, 1, "Find the secret vault of knowledge in the Ruins of Varsoon.", 1, 100, "I must discover a secret library or vault of secrets inside the Ruins of Varsoon. There I should find the puzzle box.", 11)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-
+Dialog.New(QuestGiver, Player)
+Dialog.AddDialog("Return to me the Riddle of Saryrn, and you will have your fortune. I promise this or may my soul be cursed to walk this land for eternity.")
+Dialog.AddVoiceover("voiceover/english/optional1/rikantus/antonica/rikantus015.mp3", 89864911, 2778083584)
+Dialog.AddOption("I will return with the puzzle box. ")
 end
 
 function Declined(Quest, QuestGiver, Player)
