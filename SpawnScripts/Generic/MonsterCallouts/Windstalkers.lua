@@ -42,7 +42,7 @@ function aggro(NPC,Spawn) --RACE CHECK
 if  GetTempVariable(NPC, "CalloutTimer")== "false"then
     SetTempVariable(NPC, "CalloutTimer", "true")
     AddTimer(NPC,7000,"ResetTimer")
-    Race= GetRace(NPC)   
+    local Race= GetRace(NPC)   
  if Race == 6 then
 HfE_aggro(NPC,Spawn)
 elseif Race==9 then
@@ -55,22 +55,21 @@ end
 
 
 function HfE_aggro(NPC,Spawn)
-    AddTimer(NPC,7000,"ResetTimer")
     if GetGender(NPC)==1 then       --GENDER CHECK.  1==Male
     if GetClass(Spawn)>=21 and GetClass(Spawn)<=30 then 
-  	 choice = MakeRandomInt(1,3) --MAGE CHECK
+  	 Pick = MakeRandomInt(1,3) --MAGE CHECK
     else
-     choice = MakeRandomInt(1,2)
+     Pick = MakeRandomInt(1,2)
     end
- 	    if choice == 1 then
+ 	    if Pick == 1 then
 		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gm_13a3055.mp3", "Summon help, intruders have arrived!", "", 262436067, 4127133618)
-        elseif choice == 2 then
+        elseif Pick == 2 then
 		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gm_12fbaefb.mp3", "Destroy the invader!", "", 489857902, 941763715)
-        elseif choice == 3 then
+        elseif Pick == 3 then
         PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_maomage_gm_96692f88.mp3", "Distract the magician or we'll all die!", "", 3332270247, 2351356263)
         end  
     else
-        choice = MakeRandomInt(1,3)
+        local choice = MakeRandomInt(1,3)
  	    if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_aggro_gf_12fbaefb.mp3", "Destroy the invader!", "", 1313233821, 723410897)
         elseif choice == 2 then
@@ -82,9 +81,8 @@ end
 end
 
 function Hum_aggro(NPC,Spawn)
-    AddTimer(NPC,7000,"ResetTimer")
     if GetGender(NPC)==1 then       --GENDER CHECK.  1==Male
-     choice = MakeRandomInt(1,3)
+     local choice = MakeRandomInt(1,3)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional5/human_windstalkers/ft/human/human_windstalkers_1_aggro_gm_a6d0b787.mp3", "The bears told me to kill you!", "", 536396117, 2147228574)
         elseif choice == 2 then
@@ -94,7 +92,7 @@ function Hum_aggro(NPC,Spawn)
         end  
     else
      AddTimer(NPC,math.random(15000,30000),"FifteenCall",1,Spawn)
-	local choice = MakeRandomInt(1,3)
+	 local choice = MakeRandomInt(1,3)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/human_windstalkers/ft/human/human_windstalkers_1_aggro_gf_a6d0b787.mp3", "The bears told me to kill you!", "", 2136224796, 3415208051)
         elseif choice == 2 then
@@ -124,14 +122,14 @@ end
 
 function HfE_death(NPC,Spawn)
     if GetGender(NPC)==1 then
- 	 choice = MakeRandomInt(1,2)
+ 	 local choice = MakeRandomInt(1,2)
         if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_death_gm_1a659852.mp3", "We must withdraw before we all die!", "", 3147364973, 1341536758)
         elseif choice == 2 then
         PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_death_gm_610c650e.mp3", "You must flee!  I'll try to hold them.", "", 3580386891, 3023137994)
         end
     else
- 	 choice = MakeRandomInt(1,2)
+ 	 local choice = MakeRandomInt(1,2)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_death_gf_610c650e.mp3", "You must flee!  I'll try to hold them.", "", 1612338229, 10301262)
         else
@@ -143,7 +141,7 @@ end
 
 function Hum_death(NPC,Spawn)
     if GetGender(NPC)==1 then
- 	 choice = MakeRandomInt(1,2)
+ 	 local choice = MakeRandomInt(1,2)
     
         if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional5/human_windstalkers/ft/human/human_windstalkers_1_death_gm_7fc8a992.mp3", "My companion will be reborn as an animal and hunt you down!", "", 4095950768, 2638720474)
@@ -151,7 +149,7 @@ function Hum_death(NPC,Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional5/human_windstalkers/ft/human/human_windstalkers_1_death_gm_15f1c518.mp3", "The wolves will howl in remembrance of the fallen.", "", 438946486, 1503863875)
         end
     else
- 	 choice = MakeRandomInt(1,3)
+ 	 local choice = MakeRandomInt(1,3)
  	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/human_windstalkers/ft/human/human_windstalkers_1_death_gf_7fc8a992.mp3", "My companion will be reborn as an animal and hunt you down!", "", 3241674347, 112875582)
         elseif choice == 2 then
@@ -191,7 +189,7 @@ if GetHP(NPC) <= GetMaxHP(NPC) * 0.55 and GetHP(NPC) >= GetMaxHP(NPC) * 0.45 the
     if IsAlive(NPC) and IsInCombat(NPC)==true  and IsPlayer(Spawn)and  GetTempVariable(NPC, "CalloutTimer")== "false" and GetTempVariable(NPC, "HealthCallout")== "false" then
         SetTempVariable(NPC, "HealthCallout", "true")
         AddTimer(NPC,9000,"HealthReset")
-        Race= GetRace(NPC)   
+        local Race= GetRace(NPC)   
             if Race == 6 then
             HfE_healthchanged(NPC,Spawn)
             elseif Race==9 then
@@ -205,14 +203,14 @@ end
 
 function HfE_healthchanged(NPC, Spawn)  
     if GetGender(NPC)==1 then
-	 choice = MakeRandomInt(1,2)
+	    local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_halfhealth_gm_e0686420.mp3", "Well, it seems you have some martial arts skills.", "", 1009191098, 3016339818, Spawn)
         elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/halfelf_base_1/ft/halfelf/halfelf_base_1_1_halfhealth_gm_e48659f9.mp3", "Now, that really hurt!", "", 241651222, 476491397, Spawn)
         end
         else
-	 choice = MakeRandomInt(1,2)
+	    local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/halfelf_base_1/ft/halfelf/halfelf_base_1_1_halfhealth_gf_e0686420.mp3", "Well, it seems you have some martial arts skills.", "", 743699854, 1906875496, Spawn)
         elseif choice == 2 then
@@ -225,14 +223,14 @@ end
 
 function Hum_healthchanged(NPC, Spawn)  
    if GetGender(NPC)==1 then
-	 choice = MakeRandomInt(1,2)
+	    local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional5/human_windstalkers/ft/human/human_windstalkers_1_death_gm_15f1c518.mp3", "The wolves will howl in remembrance of the fallen.", "", 438946486, 1503863875, Spawn, 0)
         elseif choice == 2 then
 		PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_halfhealth_gm_8529e507.mp3", "I can't hold them forever!", "", 644448824, 755050547)
         end
     else
-	 choice = MakeRandomInt(1,2)
+	    local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_halfhealth_gf_8529e507.mp3", "I can't hold them forever!", "", 3371581229, 792393228)
         elseif choice == 2 then
@@ -257,14 +255,14 @@ end
 
 function HfE_victory(NPC,Spawn)
     if GetGender(NPC)==1 then
-	 choice = MakeRandomInt(1,2)
+	 local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_victory_gm_f5088778.mp3", "Get up! Death isn't good enough for you!", "", 3381713633, 2145918189)
         elseif choice == 2 then
         PlayFlavor(NPC, "voiceover/english/darkelf_base_1/ft/darkelf/darkelf_base_1_1_victory_gm_f4fc7cf8.mp3", "Did you really think you had a chance?", "", 607143583, 3133144305)
         end
     else
-	 choice = MakeRandomInt(1,2)
+	 local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_victory_gf_6f459088.mp3", "Flee now or meet this one's fate.", "", 290765367, 473549337)
         elseif choice == 2 then
@@ -275,7 +273,7 @@ end
 
 function Hum_victory(NPC,Spawn)
     if GetGender(NPC)==1 then
-	 choice = MakeRandomInt(1,3)
+	 local choice = MakeRandomInt(1,3)
 	    if choice == 1 then
         PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_victory_gm_153f12ff.mp3", "One down!", "", 3009518664, 4140389760)
         elseif choice == 2 then
@@ -284,7 +282,7 @@ function Hum_victory(NPC,Spawn)
         PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_victory_gm_ec0cd85a.mp3", "I hope they're all this easy.", "", 2687289628, 2303639320)
         end
     else
-	 choice = MakeRandomInt(1,2)
+	 local choice = MakeRandomInt(1,2)
 	    if choice == 1 then
 		PlayFlavor(NPC, "voiceover/english/optional3/human_base_1/ft/human/human_base_1_1_victory_gf_6f459088.mp3", "Flee now or meet this one's fate.", "", 290765367, 473549337)
         elseif choice == 2 then

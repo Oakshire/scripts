@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStep(Quest, 1, "Visit a bridge in Nektulos Forest and follow the calling in the forest. ", 1, 100, "I must go to Nektulos Forest and inspect a bridge there for clues on how to follow the path of a former fortune hunter.", 11)
+	AddQuestStepObtainItem(Quest, 1, "Visit a bridge in Nektulos Forest and follow the calling in the forest. ", 1, 100, "I must go to Nektulos Forest and inspect a bridge there for clues on how to follow the path of a former fortune hunter.", 11, 7339)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -31,7 +31,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I was given the fleshbound tome.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I gained an awful looking fleshbound tome from a vagabond named Theeral. This tome details the path of a fortune hunter.")
 
-	AddQuestStep(Quest, 2, "Follow the path of the fortune hunter.", 1, 100, "I must follow the path of the fortune hunter detailed in the fleshbound tome.", 11)
+	AddQuestStepZoneLoc(Quest, 2, "Follow the path of the fortune hunter.", 1, "I must follow the path of the fortune hunter detailed in the fleshbound tome.", 11, 198, -16, 14, 178)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
@@ -39,7 +39,7 @@ function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I followed the path of the fortune hunter.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "After a terrifying journey into the depths of Nektropos Castle I have finally come to the end of the fortune hunter's path, but can I survive to escape the castle walls?")
 
-	AddQuestStep(Quest, 3, "Return to Rikantus in Evernight Cemetery.", 1, 100, "If I escape the evils of Nektropos Castle I must revisit Rikantus at Evernight Cemetery in Antonica.", 11)
+	AddQuestStepChat(Quest, 3, "Return to Rikantus in Evernight Cemetery.", 1, "If I escape the evils of Nektropos Castle I must revisit Rikantus at Evernight Cemetery in Antonica.", 11, 120403)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
@@ -71,4 +71,3 @@ function Reload(Quest, QuestGiver, Player, Step)
 		QuestComplete(Quest, QuestGiver, Player)
 	end
 end
-
