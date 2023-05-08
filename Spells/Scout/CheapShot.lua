@@ -17,10 +17,12 @@ function cast(Caster, Target)
     --     Does not affect Heroic or Epic targets.
     if not IsHeroic(Target) then
         AddControlEffect(Target, 4)
+        SpawnSet(Target,"visual_state",1684)
     end
 end
 
 function remove(Caster, Target)
     -- Remove Mez Effect
     RemoveControlEffect(Target, 4)
+    SpawnSet(Target,"visual_state",0)
 end
