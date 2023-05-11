@@ -14,11 +14,13 @@ require "SpawnScripts/Generic/DialogModule"
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I must find the chessboard floor in Stormhold.", 10, "I should venture into the Stormhold to see if this giant chessboard floor exists.", 0,  70, -5, -100, 15)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Stormhold")
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the chessboard floor in Stormhold.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I saw the remarkable chessboard in the Stormhold.")
+    UpdateQuestZone(Quest,"Antonica")
 	AddQuestStepChat(Quest, 2, "I must speak with Breeza Harmet.", 1, "I should return to Breeza Harmet at Windstalker Pond in Antonica and tell her of the giant chessboard.", 0, 120159)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end	

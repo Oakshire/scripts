@@ -7,20 +7,24 @@
         Zone       : Antonica
         Quest Giver: 
         Preceded by: None
-        Followed by: Nightbow's Deposit
+        Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
+
 
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I need to find the Underforge.", 10, "I should see if I could find the Underforge within Stormhold.", 11, -130, -1, -55, 15)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Stormhold")
 end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-    	PlayFlavor(QuestGiver, "voiceover/english/kinamer_galemaul/antonica/kinamergalemaul004.mp3", "", "", 2013410863, 3232485103, Player)
-	AddConversationOption(conversation, "Yes, that seems to be my experience.")
-	StartConversation(conversation, QuestGiver, Player, "Thank you much.  A rumor's not worth a heap of slag ... but sometimes you can find a grain of truth in a rumor.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Thank you much.  A rumor's not worth a heap of slag ... but sometimes you can find a grain of truth in a rumor.")
+	Dialog.AddVoiceover("voiceover/english/kinamer_galemaul/antonica/kinamergalemaul004.mp3", 2013410863, 3232485103)
+	Dialog.AddOption("Yes, that seems to be my experience.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -38,6 +42,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the Underforge.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found the location of the Underforge within Stormhold.")
+    UpdateQuestZone(Quest,"Antonica")
 
 	AddQuestStepChat(Quest, 2, "I need return to Kinamer Galemaul.", 1, "I should return to Kinamer Galemaul and tell him about the Underforge.", 11, 120278)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

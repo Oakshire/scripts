@@ -33,6 +33,7 @@ function offer(NPC, Spawn)
         PlaySound(Spawn,"sounds/widgets/alarms_clues_traps/alarm_bell_qeynos002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
         PlaySound(Spawn,"sounds/widgets/triggered_environmental/enviro_rockcrack001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
         PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_005.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+        AddTimer(NPC,2000,"Rocks2",1,Spawn)
     CloseConversation(NPC,Spawn)
 	PerformCameraShake(Spawn, 0.699999988079071)	
 	PerformCameraShake(Spawn, 0.5)	
@@ -42,6 +43,11 @@ function offer(NPC, Spawn)
 --    SpawnSet(NPC, "show_command_icon", 0)
 --    SpawnSet(NPC, "display_hand_icon", 0)
 --    AddTimer(NPC, 10000, "check", 1, Spawn)
+end
+
+function Rocks2(NPC,Spawn)
+    	PerformCameraShake(Spawn, 0.10000001192092896)
+        PlaySound(Spawn,"sounds/widgets/triggered_environmental/enviro_rockcrack001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
 end
 
 --[[function InRange(NPC, Spawn)

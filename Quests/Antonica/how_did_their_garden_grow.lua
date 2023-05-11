@@ -9,19 +9,23 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "I should go to Stormhold to find the atrium.", 10, "I should go to Stormhold and find out for Darmen how the Knights provided food for themselves.", 11,  -55, -25, -100, 15)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Stormhold")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-		FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-    	PlayFlavor(QuestGiver, "voiceover/english/darmen_sproutmore/antonica/darmensproutmore003.mp3", "", "", 1491369381, 2303497363, Player)
-	AddConversationOption(conversation, "Thank you for the concern.")
-	StartConversation(conversation, QuestGiver, Player, "That's very generous of you.  I'm curious to a fault, you know.  However ... if you do go into Stormhold, please use caution.")
-
+    PlayFlavor(QuestGiver, "", "", "", 0, 0, Player)
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("That's very generous of you.  I'm curious to a fault, you know.  However ... if you do go into Stormhold, please use caution.")
+	Dialog.AddVoiceover("voiceover/english/darmen_sproutmore/antonica/darmensproutmore003.mp3", 1491369381, 2303497363)
+    PlayFlavor(QuestGiver, "", "", "applaude", 0, 0, Player)
+	Dialog.AddOption("Thank you for the concern.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -35,7 +39,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I found the atrium.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I found an atrium in Stormhold where it looks like they grew plants even underground.")
-
+    UpdateQuestZone(Quest,"Antonica")
 	AddQuestStepChat(Quest, 2, "I need to return to Darmen.", 1, "I need to return to Darmen to let her know about the atrium.", 11, 120366)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
 end

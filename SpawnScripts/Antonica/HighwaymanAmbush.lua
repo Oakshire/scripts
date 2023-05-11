@@ -51,7 +51,6 @@ function InRange(NPC, Spawn) --PROXIMITY TRIGGER
         Group3HWmanD ~=nil 
  then
     Despawn(GetSpawnByLocationID(zone, 133784732))
-
 if IsPlayer(Spawn)== true and IsAlive(Group1HWmanA) == true and IsAlive(Group1HWmanB) == true and IsAlive(Group1HWmanC) == true and IsAlive(Group1HWmanD) == true then
     AddTimer(NPC,2000,"Group1Pop",1, Spawn)
 end

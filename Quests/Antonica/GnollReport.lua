@@ -10,6 +10,7 @@
 	Preceded by		:	The Keep of the Ardent Needle
 	Followed by		:	A Captain's Communique: Eitoa to Sturman
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
@@ -63,7 +64,12 @@ function Reload(Quest, QuestGiver, Player, Step)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("It's a fair distance, but not hard to find. Take the south path around the mountain range that splits Antonica.  Once you cross the bridge at the far side of the valley, follow the river a hundred cogs or so, then turn east until you see a small keep with a moat. Captain Beltho should be there. If he's not, I'll want to know why he's not at his post.")
+	Dialog.AddVoiceover("voiceover/english/captain_eitoa/antonica/captaineitoa005.mp3", 1672181328, 1405369900)
+	Dialog.AddOption("I'll return when I'm finished.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

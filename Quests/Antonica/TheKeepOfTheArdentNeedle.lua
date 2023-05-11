@@ -3,7 +3,7 @@
 	Script Purpose	:	Handles the quest, "The Keep of the Ardent Needle"
 	Script Author	:	geordie0511
 	Script Date		:	19.03.2019
-	Script Notes	:	
+	Script Notes	:	Updated Dialog (Dorbin 5/10/2023)
 
 	Zone			:	Antonica
 	Quest Giver		:	Captain Eitoa
@@ -11,6 +11,7 @@
 	Followed by		:	Gnoll Report
 --]]
 
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepLocation(Quest, 1, "Search the Keep of the Ardent Needle.", 30, "I must check the Keep of the Ardent Needle thoroughly.", 11, -555, -12, -327)
@@ -43,7 +44,13 @@ function Reload(Quest, QuestGiver, Player, Step)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Go then.  You'll find the Keep on the north side of the ridge, just this side of the Tower of the Oracles. It's one of the few keeps in pristine condition.")
+	Dialog.AddVoiceover("voiceover/english/captain_eitoa/antonica/captaineitoa002.mp3", 2766073172, 817198256)
+    PlayFlavor(QuestGiver,"","","agree",0,0,Player)
+	Dialog.AddOption("I'll return after I've performed the inspection.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
