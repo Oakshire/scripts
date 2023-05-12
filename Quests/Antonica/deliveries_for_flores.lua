@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "I need to deliver a crate to Merchant Novak.", 1, "I must deliver a crate of Flores' merchandise to Merchant Novak by the lighthouse.", 654, 120099)
@@ -17,10 +18,12 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-    PlayFlavor(QuestGiver, "voiceover/english/merchant_flores/antonica/merchantflores002.mp3", "", "", 2413854703, 2789428713, Player)
-	AddConversationOption(conversation, "Hey, wait that's my journal... err, all right I suppose it's too late.")
-	StartConversation(conversation, QuestGiver, Player, "I'll pay you a cut of my earnings.  You'll take the first crate of supplies to Novak over by the lighthouse. The second must go to Geddard at Gnollslayer Keep. I see you've a little book.  Here, let me write down where you need to go.   Make sure to bring back their delivery pouches when you're through.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I'll pay you a cut of my earnings.  You'll take the first crate of supplies to Novak over by the lighthouse. The second must go to Geddard at Gnollslayer Keep. I see you've a little book.  Here, let me write down where you need to go.   Make sure to bring back their delivery pouches when you're through.")
+	Dialog.AddVoiceover("voiceover/english/merchant_flores/antonica/merchantflores002.mp3", 2413854703, 2789428713)
+    PlayFlavor(QuestGiver, "", "", "point", 0, 0, Player)
+	Dialog.AddOption("Hey, wait that's my journal... err, all right I suppose it's too late.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
