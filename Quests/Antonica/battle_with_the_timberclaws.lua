@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "Slay gnolls in and around Archer Woods.", 12, 100, "I must slay gnolls in and around the Archer Woods until Dancer whistles her song for me to return to her.", 611, 120295, 120296, 121404, 121405)
@@ -16,11 +17,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-		FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-	PlayFlavor(QuestGiver, "voiceover/english/verona/antonica/verona009.mp3", "", "", 2472618059, 207846586, Player)
-		AddConversationOption(conversation, "I shall do my best.", "dlg_42_4")
-	StartConversation(conversation, QuestGiver, Player, "You think you can clear all of Archer Woods? I doubt that, but I would be glad to see you try, as would Trusaris.")
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("You think you can clear all of Archer Woods? I doubt that, but I would be glad to see you try, as would Trusaris.")
+	Dialog.AddVoiceover("voiceover/english/verona/antonica/verona009.mp3", 2472618059, 207846586)
+	Dialog.AddOption("I shall do my best.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

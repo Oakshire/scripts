@@ -22,6 +22,7 @@ function hailed(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Hail, adventurer. I must warn you that Coldwind Point is not the safest place. Most of the garrison is on the march and the gnolls have been sighted nearby. I cannot guarantee your safety.")
 	Dialog.AddVoiceover("voiceover/english/corporal_peckett/antonica/corporalpeckett000.mp3", 1322495237, 1823181494)
+    PlayFlavor(NPC,"","","attention",0,0,Spawn)
 	if GetQuestStep(Spawn, PeckettsPatrol) == 1 then
 	Dialog.AddOption("I hear you are in need of a militia. ", "Option1")
 	elseif GetQuestStep(Spawn, PeckettsPatrol) == 14 then
@@ -49,10 +50,20 @@ function Option2(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
  	Dialog.AddDialog("Then you must patrol this sector. Follow my notes to reach each patrol point. Once you have completed your rounds you may return to me for your pay. ")
    Dialog.AddVoiceover("voiceover/english/corporal_peckett/antonica/corporalpeckett002.mp3", 1614024059, 542530014)
-	Dialog.AddOption("For Qeynos!")
+	Dialog.AddOption("For Qeynos!","Salute")
 	Dialog.Start()
 end
 
+function Salute(NPC,Spawn)
+	FaceTarget(Spawn, NPC)
+    PlayFlavor(Spawn,"","","attention",0,0,NPC)
+    AddTimer(NPC,1500,"Salute2",1,Spawn)
+end
+
+function Salute(NPC,Spawn)
+	FaceTarget(NPC, Spawn)
+    PlayFlavor(NPC,"","","attention",0,0,Spawn)
+end
 
 function Option3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)

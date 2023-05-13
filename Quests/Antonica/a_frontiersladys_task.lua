@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "Speak to Sighard Sayer.", 1, "I must run to Sayer's Outfitters in Antonica and speak to Sighard Sayer.", 11, 120283)
@@ -16,11 +17,12 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-		FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-    	PlayFlavor(QuestGiver, "voiceover/english/verona/antonica/verona002.mp3", "", "", 4018838958, 826695955, Player)
-	AddConversationOption(conversation, "I will find Sighard and see that he gets the note.")
-	StartConversation(conversation, QuestGiver, Player, "I prefer the term frontierslady, but who am I to argue with a legendary adventurer. Please take this note to Sighard Sayer, proprietor of Sayer's Outfitters, the frontier trading post just to the north of here.")
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I prefer the term frontierslady, but who am I to argue with a legendary adventurer. Please take this note to Sighard Sayer, proprietor of Sayer's Outfitters, the frontier trading post just to the north of here.")
+	Dialog.AddVoiceover("voiceover/english/verona/antonica/verona002.mp3", 4018838958, 826695955)
+	Dialog.AddOption("I will find Sighard and see that he gets the note.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

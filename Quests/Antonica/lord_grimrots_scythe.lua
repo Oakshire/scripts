@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepChat(Quest, 1, "Grel Stoneshearer overlooks the Keep of the Ardent Needle from a nearby hilltop.", 1, "I need to speak with the dwarven knights in Antonica.", 11, 120204)
@@ -21,11 +22,13 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-		FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-    PlayFlavor(QuestGiver, "voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_006.mp3", "", "", 3647805338, 2173571937, Player)
-	AddConversationOption(conversation, "I can do that.")
-	StartConversation(conversation, QuestGiver, Player, "I need those darned dispatches brought back to me! You'd think that folks who get to run around looking for danger would realize how important it is to send word back to ... well, me.  Since they haven't, I need someone to knock them upside their heads and get the information, then bring it back to me.")
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("I need those darned dispatches brought back to me! You'd think that folks who get to run around looking for danger would realize how important it is to send word back to ... well, me.  Since they haven't, I need someone to knock them upside their heads and get the information, then bring it back to me.")
+	Dialog.AddVoiceover("voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_006.mp3", 3647805338, 2173571937)
+	PlayFlavor(QuestGiver, "", "", "grumble", 0, 0, Player)
+	Dialog.AddOption("I can do that.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

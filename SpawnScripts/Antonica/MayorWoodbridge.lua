@@ -20,3 +20,11 @@ end
 function respawn(NPC)
 	spawn(NPC)
 end
+
+function casted_on(NPC, Spawn, Message)
+	if Message == "listen" and IsInCombat(NPC) == false then
+	PlayFlavor(NPC,"","","glare",0,0,Spawn)
+	AddConversationOption(conversation, "All right, consider me gone.")
+	StartConversation(conversation, NPC, Spawn, "Well, since you're going to listen in you may as well join the conversation.  Ahhh, get out of here before it gets rough for ya!")
+end
+end

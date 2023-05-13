@@ -9,6 +9,7 @@
         Preceded by: None
         Followed by: 
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I need to hunt down a captain of the gnolls that may hold the battle plans. ", 1, 100, "I need to find the Sabertooth battle plans deep in the heart of Blackburrow where canine tacticians mingle.", 75, 170046)
@@ -16,19 +17,24 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-	PlayFlavor(QuestGiver, "voiceover/english/sir_jeager/antonica/sirjeager002.mp3", "", "", 48860008, 510466598, Player)
-	AddConversationOption(conversation, "What does this mean?", "dlg2")
-	StartConversation(conversation, QuestGiver, Player, "As of late, the gnolls have become more organized. They are marching in formations and scouting the surrounding areas for places to attack.")
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("As of late, the gnolls have become more organized. They are marching in formations and scouting the surrounding areas for places to attack.")
+	Dialog.AddVoiceover("voiceover/english/sir_jeager/antonica/sirjeager002.mp3", 48860008, 510466598)
+	Dialog.AddOption("What does this mean?", "Accept2")
+	Dialog.Start()
+
 end
 
-function dlg2(Quest, QuestGiver, Player)
+function Accept2(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	local conversation = CreateConversation()
-    PlayFlavor(QuestGiver, "voiceover/english/sir_jeager/antonica/sirjeager003.mp3", "", "", 3921562524, 1533728140, Player)
-	AddConversationOption(conversation, "I will do this immediately.", "Option20")
-	StartConversation(conversation, QuestGiver, Player, "It means that they have a lead tactician. Return to the cave you found and bring me back their battle plans.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("It means that they have a lead tactician. Return to the cave you found and bring me back their battle plans.")
+	Dialog.AddVoiceover("voiceover/english/sir_jeager/antonica/sirjeager003.mp3", 3921562524, 1533728140)
+	PlayFlavor(QuestGiver, "", "", "agree", 0, 0, Player)
+	Dialog.AddOption("I will do this immediately.")
+	Dialog.Start()
+
 end
 
 function Declined(Quest, QuestGiver, Player)

@@ -86,14 +86,6 @@ end
 
 
 
-
-function attacked(NPC, Spawn)
-PlayFlavor(NPC, "voiceover/english/human_base_1/ft/human/human_base_1_1_aggro_gm_a30c4f9d.mp3", "To Arms!", "", 1238020980, 748146443, Spawn)
-end
-
-
-
-
 function respawn(NPC)
 	spawn(NPC)
 end

@@ -5,18 +5,15 @@
     Script Purpose : 
                    : 
 --]]
-dofile("SpawnScripts/Generic/GenericGuardVoiceOvers.lua")
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseHuman1.lua")
 
 function spawn(NPC)
+
 end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    if GetFactionAmount(Spawn,11)<0 then
-        else
-    FaceTarget(NPC, Spawn)
-    GenericGuardHail(NPC,Spawn)
-end
+	PlayFlavor(NPC,"voiceover/english/voice_emotes/greetings/greetings_2_1034.mp3","","agree",0,0,Spawn)
 end
 
 function respawn(NPC)
