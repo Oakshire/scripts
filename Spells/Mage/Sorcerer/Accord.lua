@@ -23,7 +23,7 @@ function proc(Caster, Target, Type, PowerProc, SpellLevel)
     PowMod = LvlBonus * 2 + StatBonus
     PowBonus = PowerProc + math.floor(PowMod)  
     
-Spell = GetSpell(5499, GetSpellTier())
+Spell = GetSpell(5499, 1)
 	if Type == 15 then
 		SetSpellDataIndex(Spell, 0, PowBonus)
 

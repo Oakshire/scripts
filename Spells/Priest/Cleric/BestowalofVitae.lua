@@ -34,7 +34,7 @@ function proc(Caster, Target, Type, MinVal, MaxVal, Triggers, SpellLevel)
     
     
 	if Type == 15 then
-		Spell = GetSpell(5503, GetSpellTier())
+		Spell = GetSpell(5455, GetSpellTier())
 		SetSpellDataIndex(Spell, 0, MinHeal)
 		SetSpellDataIndex(Spell, 1, MaxHeal)
 		CastCustomSpell(Spell, Caster, Target)

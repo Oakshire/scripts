@@ -30,7 +30,7 @@ function proc(Caster, Target, Type, DmgType, MinVal)
     
   
 	  	if Type == 4 then
-		Spell = GetSpell(5503, GetSpellTier())
+		Spell = GetSpell(5503,1)
 		SetSpellDataIndex(Spell, 0, DmgType)
 		SetSpellDataIndex(Spell, 1, MinDmg)
 		CastCustomSpell(Spell, Caster, Target)

@@ -16,7 +16,10 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+if HasItem(Player,1468) then
+    RemoveItem(Player,1468,1)
+    SendMessage(Player,"You roll up the map and stuff it in your quest satchle.")
+end
 end
 
 function Declined(Quest, QuestGiver, Player)
