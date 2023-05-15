@@ -1,21 +1,21 @@
 --[[
 	Script Name	: SpawnScripts/Antonica/TaskmasterLynette.lua
 	Script Purpose	: Taskmaster Lynette 
-	Script Author	: geordie0511
+	Script Author	: geordie0511,Dorbin
 	Script Date	: 2019.03.19
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
 
-local A1 = 474
-local A2 = 475
-local A3 = 476
-local A4 = 477
-local A5 = 478
-local A6 = 479
-local A7 = 480
-local A8 = 481
-local A9 = 482
-local A10 = 483
+local A1 = 5818
+local A2 = 5819
+local A3 = 5820
+local A4 = 5821
+local A5 = 5822
+local A6 = 5823
+local A7 = 5824
+local A8 = 5825
+local A9 = 5826
+local A10 = 5827
 
 function spawn(NPC)
 	SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
