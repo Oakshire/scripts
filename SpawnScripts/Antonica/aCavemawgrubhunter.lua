@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/DarkpawGnoll1.lua")
 
 function spawn(NPC)
     ChooseMovement(NPC)

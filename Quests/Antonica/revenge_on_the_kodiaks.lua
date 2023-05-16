@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Quests/Antonica/the_cavemaws_sinister_map.lua
-    Script Author  : Premierio015
-    Script Date    : 2022.08.11 06:08:20
+    Script Name    : Quests/Antonica/revenge_on_the_kodiaks.lua
+    Script Author  : Dorbin
+    Script Date    : 2023.05.16 04:05:06
     Script Purpose : 
 
         Zone       : Antonica
@@ -10,9 +10,8 @@
         Followed by: 
 --]]
 
-
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to slay the Cavemaw tunnelers in the Antonican caves.", 30, 100, "The cavemaw gnolls are up to no good, planning to dig their way all the way to Qeynos for a staged attack.  I cannot stop them all, but I can certainly slow them down.", 104, 120290)
+	AddQuestStepKill(Quest, 1, "I need to kill young kodiaks in Antonica near the Archer's Wood.", 12, 100, "The young kodiak bears are a menace in this area, I should thin out their population.", 174, 120294,341009)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -30,10 +29,10 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have slain the Cavemaw tunnelers, I am sure my efforts helped to some degree.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain a large amount of Cavemaw tunnelers.")
+	UpdateQuestStepDescription(Quest, 1, "I have slain enough young kodiaks for now.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain the young kodiaks.")
 
-	UpdateQuestDescription(Quest, "I have slain a large amount of the seemingly limitless supply of Cavemaw tunnelers.  I hope my efforts slowed them down a bit.")
+	UpdateQuestDescription(Quest, "I have slain some of the young kodiaks in the area, I hope that culls the population enough to make the area safer.")
 	GiveQuestReward(Quest, Player)
 end
 

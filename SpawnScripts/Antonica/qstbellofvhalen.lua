@@ -39,10 +39,6 @@ function offer(NPC, Spawn)
 	PerformCameraShake(Spawn, 0.5)	
 	PerformCameraShake(Spawn, 0.30000001192092896)
 	PerformCameraShake(Spawn, 0.10000000149011612)                
-    SetAccessToEntityCommand(Spawn,NPC,"Touch", 0)
---    SpawnSet(NPC, "show_command_icon", 0)
---    SpawnSet(NPC, "display_hand_icon", 0)
---    AddTimer(NPC, 10000, "check", 1, Spawn)
 end
 
 function Rocks2(NPC,Spawn)
@@ -50,21 +46,6 @@ function Rocks2(NPC,Spawn)
         PlaySound(Spawn,"sounds/widgets/triggered_environmental/enviro_rockcrack001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
 end
 
---[[function InRange(NPC, Spawn)
- if HasQuest(Spawn, FallenBell) or HasCompletedQuest(Spawn, FallenBell) then
-    SetAccessToEntityCommand(Spawn,NPC,"Touch the bell", 0)
-    SpawnSet(NPC, "show_command_icon", 0)
-    SpawnSet(NPC, "display_hand_icon", 0)
-end
-end
-
-function check(NPC, Spawn)
-     if not HasQuest(Spawn, FallenBell) and not HasCompletedQuest(Spawn,  FallenBell) then
-    SpawnSet(NPC, "show_command_icon", 1)
-    SpawnSet(NPC, "display_hand_icon", 1)
-    SetAccessToEntityCommand(Spawn,NPC,"Touch the bell", 1)
-    end
-end]]--
 
 function respawn(NPC)
 	spawn(NPC)

@@ -35,7 +35,7 @@ end
  function aggro(NPC,Player)   
     AddTimer(NPC,math.random(14000,31000),"FifteenCall")
     SetTempVariable(NPC, "CalloutTimer", "false")
-if  GetTempVariable(NPC, "CalloutTimer")== "false" and math.random(0,100) <=33 and IsPlayer(Player) then
+if  GetTempVariable(NPC, "CalloutTimer")== "false" and math.random(0,100) <=75 and IsPlayer(Player) then
     SetTempVariable(NPC, "CalloutTimer", "true")
     AddTimer(NPC,10000,"ResetTimer")
     if not HasLanguage(Player,18 )then

@@ -31,7 +31,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found a larger patch of fur.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have found a larger patch of fur.")
 
-    AddQuestStep(Quest,2," I should check both this patch of fur and the small one together.",1, 100,"I have found a larger patch of fur. I should examine the patches to compare them.", 127)
+    AddQuestStep(Quest,2," I should check both this patch of fur and the small one together.",1, 100,"I need to work hard to create a nice pair of gloves.", 127)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
@@ -47,7 +47,7 @@ function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I have found some down griffon feathers I need for the gloves.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I have found some down griffon feathers I need for the gloves.")
 
-    AddQuestStep(Quest,4,"I should now sew shut the lining of the gloves.",1, 100,"I have found some down feathers for my glove project. I should examine the fur again.", 127)
+    AddQuestStep(Quest,4,"I should now sew shut the lining of the gloves.",1, 100,"I need to work hard to create a nice pair of gloves.", 127)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
@@ -65,7 +65,7 @@ function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I have collected the sinew to make these gloves.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I have collected the sinew needed to close the lining on these gloves.")
 	
-    AddQuestStep(Quest,6," I should examine the shard again",1, 100,"I have found a leather cord for the token. I should examine the shard again.", 127)
+    AddQuestStep(Quest,6," I should examine the fur again to sew them together.",1, 100,"I need to work hard to create a nice pair of gloves.", 127)
 	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
 end
 

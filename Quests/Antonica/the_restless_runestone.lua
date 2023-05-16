@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Quests/Antonica/the_cavemaws_sinister_map.lua
-    Script Author  : Premierio015
-    Script Date    : 2022.08.11 06:08:20
+    Script Name    : Quests/Antonica/the_restless_runestone.lua
+    Script Author  : Dorbin
+    Script Date    : 2023.05.15 06:05:35
     Script Purpose : 
 
         Zone       : Antonica
@@ -10,9 +10,8 @@
         Followed by: 
 --]]
 
-
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I need to slay the Cavemaw tunnelers in the Antonican caves.", 30, 100, "The cavemaw gnolls are up to no good, planning to dig their way all the way to Qeynos for a staged attack.  I cannot stop them all, but I can certainly slow them down.", 104, 120290)
+	AddQuestStepKill(Quest, 1, "I need to kill twenty restless Caltorsites in Antonica.", 20, 100, "Undead threaten to attack the watermill.  I must destroy the restless caltorsites before they make camp at that location.", 611, 120244,120131,120126,120127,120245,120246	)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
@@ -30,10 +29,10 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have slain the Cavemaw tunnelers, I am sure my efforts helped to some degree.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have slain a large amount of Cavemaw tunnelers.")
+	UpdateQuestStepDescription(Quest, 1, "I have dispatched many restless Caltorsites.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I've destroyed quite a few of the undead, I hope that keeps them at bay.")
 
-	UpdateQuestDescription(Quest, "I have slain a large amount of the seemingly limitless supply of Cavemaw tunnelers.  I hope my efforts slowed them down a bit.")
+	UpdateQuestDescription(Quest, "I found some restless Caltorsites nearby, so I dispatched them with hopes of staving off any attempt to attack the watermill.")
 	GiveQuestReward(Quest, Player)
 end
 
