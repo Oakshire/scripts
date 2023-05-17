@@ -5,7 +5,7 @@
     Script Purpose : 
                    : 
 --]]
-
+--You begin to place the scepter in the statue's hand, but meet some resistance.  A ring of filth and decay has built over the ages underneath the palm.  As you push the scepter into the open hand of the statue, a small golden object drops from the finger of the semi-closed palm.  You bend down to discover a tiny, dirty ring.
 local Scepter = 5369 -- An Ancient Scepter
 
 function spawn(NPC)

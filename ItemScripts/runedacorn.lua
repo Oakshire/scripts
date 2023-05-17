@@ -1,20 +1,46 @@
 --[[
 	Script Name	: ItemScripts/runedacorn.lua
 	Script Purpose	:
-	Script Author	: Ememjr
-	Script Date	    : 2017.05.09
+	Script Author	: Dorbin
+	Script Date	    : 05/17/2023
 	Script Notes	:
 --]]
 
-local quest = 233
+local Quest = 233
+
 
 function examined(Item, Player)
-	if not HasQuest(Player, quest) and not HasCompletedQuest(Player, quest) then
-		OfferQuest(nil, Player, quest)
-
-		--remove quest starter
-		if HasItem(Player, 11780) then
-			RemoveItem(Player, 11780)
-		end
+	if CanReceiveQuest(Player,Quest) then
+    Dialog1(Item,Player)
+    else
+    conversation = CreateConversation()
+    AddConversationOption(conversation, "[Keep the acorn.]")
+    AddConversationOption(conversation, "[Toss the acorn to the ground and hope it finds a future.]", "QuestFinish")
+    StartDialogConversation(conversation, 2, Item, Player, "This acorn is familiar to you. You helped cleanse some of the corruption from the Oakmyst Forest as the runes requested.")
 	end
+end
+
+function Dialog1(Item,Player)
+    conversation = CreateConversation()
+    if CanReceiveQuest(Player,Quest) then
+    AddConversationOption(conversation, "I must kill corrupted dryads to cleanse Oakmyst!", "Offer")
+    end
+    AddConversationOption(conversation, "[Put the acorn away.]", "CloseItemConversation")
+    StartDialogConversation(conversation, 2, Item, Player, "Deep runes on the acorn's surface read: \n\n\"Wounds of chaos encircle me. Invisible mouths murmur my curse. I curl to seed, fleeing the festering soil. Child of Elddar, free my corrupted shell... cleanse this thicket of the corruption.\"")
+end
+
+function Offer(Item,Player)
+    if CanReceiveQuest(Player,Quest) then
+    OfferQuest(nil,Player,Quest)
+    end
+    CloseItemConversation(Item,Player)
+end
+
+
+
+function QuestFinish(Item,Player)
+    CloseItemConversation(Item,Player)
+    if HasItem(Player,11780) then
+        RemoveItem(Player,11780,1)
+    end
 end

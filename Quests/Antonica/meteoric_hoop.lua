@@ -29,32 +29,32 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've been able to gather enough ink to use on the meteor chunk.")
-    AddQuestStep(Quest,2,"I should examine the meteor chunk again.",1, 100,"If I'm going to shape this meteor chunk, I'm going to have to put forth some extra effort.", 146)
+    AddQuestStep(Quest,2,"I should apply this ink to the meteor chunk now.",1, 100,"If I'm going to shape this meteor chunk, I'm going to have to put forth some extra effort.", 146)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end    
 
 function Step2Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 2, "I've inspected the meteor chunk again.")
+	UpdateQuestStepDescription(Quest, 2, "I've applied the ink and made the chunk a lot darker.")
 
-		AddQuestStepHarvest(Quest, 3, "I need to harvest some Sandwashed Rock to make a hoop.", 1, 90, "I need to harvest a lot of Sandwashed Rock to make a hoop.", 1186, 121172)
+		AddQuestStepHarvest(Quest, 3, "I need to harvest some Sandwashed Rock to make a hoop.", 1, 100, "I need to harvest a lot of Sandwashed Rock to make a hoop.", 1186, 121172)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I've been able to gather the rock I'll need.")
-    AddQuestStep(Quest,4,"I should examine the meteor chunk again.",1, 100,"If I'm going to shape this meteor chunk, I'm going to have to put forth some extra effort.", 146)
+    AddQuestStep(Quest,4,"Compare the harvested rock to the meteor chunk.",1, 100,"If I'm going to shape this meteor chunk, I'm going to have to put forth some extra effort.", 146)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
-
+--
 function Step4Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 4, "I've inspected the meteor chunk again.")
+	UpdateQuestStepDescription(Quest, 4, "I've compared the meteor chunk to the harvested stones.")
     AddQuestStepKill(Quest, 5, "I need to kill Cavemaw tunnelers.", 1, 100, "Now I need to find a small rock hammer from the Cavemaw tunnelers.", 2262, 120290)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
 end
 
 function Step5Complete(Quest, QuestGiver, Player)
 UpdateQuestStepDescription(Quest, 5, "I've found a small rock hammer.")
-    AddQuestStep(Quest,6,"I should inspect the meteor chunk one last time to make it into something useful.",1, 100,"Now I need to find a small rock hammer from the Cavemaw tunnelers.", 146)
+    AddQuestStep(Quest,6,"I should use the small rock hammer on the meteor chunk to craft it into something useful.",1, 100,"Now I need to find a small rock hammer from the Cavemaw tunnelers.", 146)
 	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
 end
 

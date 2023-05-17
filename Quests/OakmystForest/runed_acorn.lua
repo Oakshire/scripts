@@ -33,7 +33,10 @@ function Reload(Quest, QuestGiver, Player, Step)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+		if HasItem(Player, 11780) then
+			RemoveItem(Player, 11780)
+		end
+		SendMessage(Player,"You place the runed acorn in your quest satchle.")
 end
 
 function Declined(Quest, QuestGiver, Player)
