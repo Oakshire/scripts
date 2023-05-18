@@ -38,8 +38,6 @@ function hailed(NPC, Spawn)
             "", 4181806501, 3186272404)
     elseif step == 6 then
         SetTutorialStep(Spawn, 31)
-        AddCoin(Spawn, 10)
-        DisplayText(Spawn, 34, "You receive 10 Copper.")
         Dialog.New(NPC, Spawn)
         Dialog.AddDialog(
             "Ah! You got the shard. Great! Now I can stop doing this work and enjoy the rest of this trip. Here is some coin for your help.")
@@ -331,6 +329,8 @@ end
 function thanks_for_getting_shard(NPC, Spawn)
     SetStepComplete(Spawn, 524, 6)
     RemoveItem(Spawn, ShardOfLuclin)
+    AddCoin(Spawn, 10)
+    DisplayText(Spawn, 34, "You receive 10 Copper.")
 end
 
 function respawn(NPC)

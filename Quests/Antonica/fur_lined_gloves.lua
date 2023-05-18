@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I'm going to need a larger patch of fur. I should see if I can get some from the gnolls in Antonica.", 10, 80, "I need to work hard to create a nice pair of gloves.", 1094, 120013,120015	,120184, 120203	,120212	,120251	,	120252	,120290	,120291,120295	,	120296	,120300	,120304	,120310,120340	,120355,	120361	,120362,	120363	,	120364	,120376	,120378	,120379, 120380, 120395,120397	,120407,120420,	120424, 120425, 120426, 120427, 120429,120430, 120437, 120441, 120804,	120416, 120419, 120858,	121488, 121833, 121845	)
+	AddQuestStepKill(Quest, 1, "I'm going to need a larger patch of fur. I should see if I can get some from the gnolls in Antonica.", 10, 80, "I need to work hard to create a nice pair of gloves.", 1094, 120013,120015,120123,120184, 120203	,120212	,120251	,	120252	,120290	,120291,120295	,	120296	,120300	,120304	,120310,120340	,120355,	120361	,120362,	120363	,	120364	,120376	,120378	,120379, 120380, 120395,120397	,120407,120420,	120424, 120425, 120426, 120427, 120429,120430, 120437, 120441, 120804,	120416, 120419, 120858,	121488, 121833, 121845	)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -39,7 +39,7 @@ function Step2Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 2, "I have compared the furs.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I have compared the furs.")
 
-	AddQuestStep(Quest, 2, "I'm going to need some down feathers to stuff the gloves with. I should check the hay bales near the griffin towers.", 1, 100,"I need to work hard to create a nice pair of gloves.", 11)
+	AddQuestStep(Quest, 3, "I'm going to need some down feathers to stuff the gloves with. I should check the hay bales near the griffin towers.", 1, 100,"I need to work hard to create a nice pair of gloves.", 11)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 

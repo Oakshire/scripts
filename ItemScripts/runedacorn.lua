@@ -20,10 +20,20 @@ function examined(Item, Player)
 	end
 end
 
+
 function Dialog1(Item,Player)
     conversation = CreateConversation()
     if CanReceiveQuest(Player,Quest) then
-    AddConversationOption(conversation, "I must kill corrupted dryads to cleanse Oakmyst!", "Offer")
+    AddConversationOption(conversation, "[Clean away the grime]", "Dialog2")
+    end
+    AddConversationOption(conversation, "[Put the acorn away.]", "CloseItemConversation")
+    StartDialogConversation(conversation, 2, Item, Player, "This large acorn is covered in a foul grime.")
+end
+
+function Dialog2(Item,Player)
+    conversation = CreateConversation()
+    if CanReceiveQuest(Player,Quest) then
+    AddConversationOption(conversation, "I must free the souls of corrupted dryads!", "Offer")
     end
     AddConversationOption(conversation, "[Put the acorn away.]", "CloseItemConversation")
     StartDialogConversation(conversation, 2, Item, Player, "Deep runes on the acorn's surface read: \n\n\"Wounds of chaos encircle me. Invisible mouths murmur my curse. I curl to seed, fleeing the festering soil. Child of Elddar, free my corrupted shell... cleanse this thicket of the corruption.\"")

@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Quests/Antonica/strange_mutations.lua
+    Script Name    : Quests/Antonica/deadly_undead.lua
     Script Author  : Dorbin
-    Script Date    : 2023.05.16 04:05:43
+    Script Date    : 2023.05.17 11:05:15
     Script Purpose : 
 
         Zone       : Antonica
@@ -13,15 +13,12 @@
 function Init(Quest)
 	SetQuestFeatherColor(Quest, 3)
 	SetQuestRepeatable(Quest)
-	AddQuestStepKill(Quest, 1, "Kill the mutated rats", 13, 100, "Something has caused the rats in this region to change.", 611, 120176)
+	AddQuestStepKill(Quest, 1, "Slay the Caltorsis Clerics", 20, 100, "This journal must have been lost several years ago.", 611,120131)
 	AddQuestStepCompleteAction(Quest, 1, "QuestComplete")
 end
 
 function Accepted(Quest, QuestGiver, Player)
-    if HasItem(Player,1001093) then
-        RemoveItem(Player,1001093,1)
-    end
-    SendMessage(Player,"You roll up the drawing and stuff it in your quest satchle.")
+	-- Add dialog here for when the quest is accepted
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -34,10 +31,10 @@ end
 
 function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I've killed enough mutated rats")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I have eliminated some of the mutated rats.")
+	UpdateQuestStepDescription(Quest, 1, "I have slain enough Caltorsis Clerics")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I have been able to rid antonica of several Caltorsis Clerics")
 
-	UpdateQuestDescription(Quest, "I wonder what could have caused these strange mutations...")
+	UpdateQuestDescription(Quest, "The undead Caltorsis in this area seem to be unaffected by my efforts. However, I have learned a great deal about the undead of Antonica. In the future, perhaps this experience will be of some use to me. ")
 	GiveQuestReward(Quest, Player)
 end
 
