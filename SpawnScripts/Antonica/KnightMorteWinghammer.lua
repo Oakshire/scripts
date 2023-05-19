@@ -13,9 +13,9 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-		local conversation = CreateConversation()
+	local conversation = CreateConversation()
 	PlayFlavor(NPC, "voiceover/english/knight_morte_winghammer/antonica/quests/firemyst/morte_winghammer000.mp3", "", "", 427855541, 2221169308, Spawn)
-	 if GetQuestStep(Spawn, LordGrimrotsScythe) == 3 then
+    if GetQuestStep(Spawn, LordGrimrotsScythe) >= 1 and GetQuestStep(Spawn, LordGrimrotsScythe) <= 3 then
 	AddConversationOption(conversation, "You're...in the dwarven brigade?  But...you're a human!  I mean, Ignar sent me.", "Option1")
 	end
 		AddConversationOption(conversation, "Glad to brighten your day.  Just passing through.")

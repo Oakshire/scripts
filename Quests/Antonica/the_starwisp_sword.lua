@@ -30,7 +30,7 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've grabbed a handful of milled flour from the Millers' house.")
-	AddQuestStep(Quest, 2, "I should mix the flour into a paste and apply it to the sword.", 1, 100, "If I'm going to restore this sword back to its original condition, I'm going to need to give a little extra effort.", 25, 2155)
+	AddQuestStep(Quest, 2, "I should mix the flour into a paste and apply it to the sword.", 1, 100, "If I'm going to restore this sword back to its original condition, I'm going to need to give a little extra effort.", 2155)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 end
 
@@ -43,7 +43,7 @@ end
 
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I've been able to find an etching tool.")
-	AddQuestStep(Quest, 4, "I need to use the etching tool on the blade to repair the star pattern.", 1, 100, "If I'm going to restore this sword back to its original condition, I'm going to need to give a little extra effort.", 25, 2155)
+	AddQuestStep(Quest, 4, "I need to use the etching tool on the blade to repair the star pattern.", 1, 100, "If I'm going to restore this sword back to its original condition, I'm going to need to give a little extra effort.",2155)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
@@ -55,7 +55,7 @@ end
 
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I've killed enough kliknics and can feel the power in the blade!")
-	AddQuestStep(Quest, 6, "I need to examine the blade one last time to see if it is satisfied.", 1, 100, "If I'm going to restore this sword back to its original condition, I'm going to need to give a little extra effort.", 25, 2155)
+	AddQuestStep(Quest, 6, "I need to examine the blade one last time to see if it is satisfied.", 1, 100, "If I'm going to restore this sword back to its original condition, I'm going to need to give a little extra effort.", 2155)
 	AddQuestStepCompleteAction(Quest, 6, "QuestComplete")
 end
 

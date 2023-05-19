@@ -22,7 +22,7 @@ function hailed(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Hail to you, adventurer! Mind your feet, and don't step on my dear little flowers! Just coming into bloom, they are.")
 	Dialog.AddVoiceover("voiceover/english/darmen_sproutmore/antonica/darmensproutmore000.mp3", 2138797897, 3113209185)
-    PlayFlavor(NPC, "", "", "hello",  0, 0,Spawn)
+    PlayFlavor(NPC, "", "", "curtsey",  0, 0,Spawn)
     if CanReceiveQuest(Spawn, HowDidTheirGardenGrow) then
 	Dialog.AddOption("Your daisies look very nice.  You must be a fine gardener.", "Option1")
 	elseif GetQuestStep(Spawn, HowDidTheirGardenGrow)==2 then
