@@ -14,23 +14,16 @@ require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStep(Quest, 1, "Search for the unholy tome 'Scrawlings of Chirannis.'", 1, 100, "I must venture into Blackburrow and search for the Ark of Chirannis. Inside will be the tome called Scrawlings of Chirannis.", 717)
-		AddQuestStepKill(Quest, 2, "Hunt down Sabertooth diviners for the first missing page.", 1, 100, "I must obtain the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.", 2180, 170019)
-	AddQuestStepKill(Quest, 3, "Hunt down Sabertooth chanters for the next missing page.", 1, 100, "I must obtain the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.", 2180, 170026)
-	AddQuestStepKill(Quest, 4, "Hunt down Sabertooth oracles for the final missing pages.", 3, 100, "I must obtain the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.", 2180, 170042)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-		AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
-	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
-	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
-
 end
 
 function Accepted(Quest, QuestGiver, Player)
-		FaceTarget(QuestGiver, Player)
+	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
 	Dialog.AddDialog("I desire a trinket for a trinket, a stolen vault of knowledge. Within the depths of the Sabertooth lair resides a tome bound of gnoll hide and scribed in the black blood of Norrath. Find and return this tome to me, and I shall grant you wonders of time long past. Find me the Scrawlings of Chirannis.")
-   Dialog.AddVoiceover("voiceover/english/optional1/rikantus/antonica/rikantus005.mp3", 1926201932, 488253869)
-Dialog.AddOption("I will return the tome to you.")
-
+    Dialog.AddVoiceover("voiceover/english/optional1/rikantus/antonica/rikantus005.mp3", 1926201932, 488253869)
+    Dialog.AddOption("I will return the tome to you.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
@@ -43,9 +36,13 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "Found the unholy tome 'Scrawlings of Chirannis.'")
-	 UpdateQuestTaskGroupDescription(Quest, 1, "I found the tome called 'Scrawlings of Chirannis,' but five pages have been removed.")
-
-		CheckProgress(Quest, QuestGiver, Player)
+	UpdateQuestTaskGroupDescription(Quest, 1, "I found the tome called 'Scrawlings of Chirannis,' but five pages have been removed.")
+	AddQuestStepKill(Quest, 2, "Hunt down Sabertooth diviners for the first missing page.", 1, 100, "I must obtain the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.", 2180, 170019)
+	AddQuestStepKill(Quest, 3, "Hunt down Sabertooth chanters for the next missing page.", 1, 100, "I must obtain the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.", 2180, 170026)
+	AddQuestStepKill(Quest, 4, "Hunt down Sabertooth oracles for the final missing pages.", 3, 100, "I must obtain the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.", 2180, 170042)
+	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
+	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
+	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
 function Step2Complete(Quest, QuestGiver, Player)
@@ -67,8 +64,8 @@ end
 
 function CheckProgress(Quest, QuestGiver, Player)
  if QuestStepIsComplete(Player, 5329, 1) and QuestStepIsComplete(Player, 5329, 2) and QuestStepIsComplete(Player, 5329, 3) and QuestStepIsComplete(Player, 5329, 4) then
-     UpdateQuestTaskGroupDescription(Quest, 1, "I found the tome called 'Scrawlings of Chirannis,' but five pages have been removed.")
-    	UpdateQuestTaskGroupDescription(Quest, 2, "I obtained the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.")
+    UpdateQuestTaskGroupDescription(Quest, 1, "I found the tome called 'Scrawlings of Chirannis,' but five pages have been removed.")
+    UpdateQuestTaskGroupDescription(Quest, 2, "I obtained the five missing pages of the 'Scrawlings of Chirannis' from the paws of the gnoll priests in Blackburrow.")
 	AddQuestStepChat(Quest, 5, "Return to Rikantus at Evernight Cemetery in Antonica.", 1, "I must return the 'Scrawlings of Chirannis' to Rikantus at Evernight Cemetery in Antonica.", 11, 120403)
 	AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
 end

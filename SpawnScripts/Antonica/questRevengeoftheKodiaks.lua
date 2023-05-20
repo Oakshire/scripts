@@ -16,7 +16,7 @@ function casted_on(NPC, Spawn, SpellName)
       local con = CreateConversation()
         if CanReceiveQuest(Spawn,Quest) then
         Dialog1(NPC,Spawn)
-        elseif HasCompletedQuest(Spawn, Rune) then
+        elseif HasCompletedQuest(Spawn, Quest) then
         AddConversationOption(con, "[Leave the banner alone]")
         StartDialogConversation(con, 1, NPC, Spawn, "The banner on the memorial still reads, \"The final resting place of Guyc Swampleg. A great friend, but not a great runner. The young kodiaks got him while he was fishing.\"")
         elseif HasQuest(Spawn, Quest) and not HasCompletedQuest(Spawn, Quest) then

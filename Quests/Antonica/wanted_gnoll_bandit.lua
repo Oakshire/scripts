@@ -18,7 +18,10 @@ function Init(Quest)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+if HasItem(Player,3213)then
+    DisplayText(Spawn, 34, "You roll up the wanted poster and stuff it in your quest satchle.")
+    RemoveItem(Player,3213,1)
+end
 end
 
 function Declined(Quest, QuestGiver, Player)
