@@ -8,7 +8,8 @@
 --]]
 
 dofile("SpawnScripts/Generic/UnknownLanguage.lua") --added 2022.03.13 Dorbin
-require "SpawnScripts/Generic/DialogModuleTest"
+--require "SpawnScripts/Generic/DialogModuleTest"
+require "SpawnScripts/Generic/DialogModule"
 
 
 local GATHERING_ROCK_SAMPLES_QUEST_ID = 504

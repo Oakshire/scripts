@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/DarkpawGnoll1.lua")
 
 function spawn(NPC)
      local Level = GetLevel(NPC)
@@ -36,9 +37,7 @@ function spawn(NPC)
 
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
-end
+
 
 function respawn(NPC)
 	spawn(NPC)

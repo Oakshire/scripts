@@ -15,9 +15,9 @@ require "SpawnScripts/Generic/DialogModule"
 local GEOLOGIST_QUARDIFLE_ID = 2380036
 
 function Init(Quest)
-	AddQuestStepZoneLoc(Quest, 1, "Find a mine in the Caves to obtain a windspirit crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1159, 58.11, 2.93, -119.94,826)
-	AddQuestStepZoneLoc(Quest, 2, "Find a mine in the Caves to obtain an elddar spark crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1168, 66.73, 12.41, -70.69,826)
-	AddQuestStepZoneLoc(Quest, 3, "Find a mine in the Caves to obtain a prexus tear crystal sample.", 20, "I need to visit three mines in the Caves to gather crystal samples.", 1177, -49.35, 16.59, -133.75,826)
+	AddQuestStepZoneLoc(Quest, 1, "Find a mine in the Caves to obtain a windspirit crystal sample.", 12, "I need to visit three mines in the Caves to gather crystal samples.", 1159, 58.11, 2.93, -119.94,826)
+	AddQuestStepZoneLoc(Quest, 2, "Find a mine in the Caves to obtain an elddar spark crystal sample.", 12, "I need to visit three mines in the Caves to gather crystal samples.", 1168, 66.73, 12.41, -70.69,826)
+	AddQuestStepZoneLoc(Quest, 3, "Find a mine in the Caves to obtain a prexus tear crystal sample.", 12, "I need to visit three mines in the Caves to gather crystal samples.", 1177, -49.35, 16.59, -133.75,826)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")

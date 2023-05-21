@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll1.lua")
 
 function spawn(NPC)
     local Level = GetLevel(NPC)

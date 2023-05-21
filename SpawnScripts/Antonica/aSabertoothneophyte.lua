@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/SabertoothGnoll1.lua")
 
 function spawn(NPC)
     AddTimer(NPC, 6000, "ChooseMovement")

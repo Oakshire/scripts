@@ -38,7 +38,7 @@ function Dialog2(Item,Player)
     AddConversationOption(conversation, "[Pursue the gnolls!]", "Offer")
     end
     AddConversationOption(conversation, "[Put the poster away.]", "CloseItemConversation")
-    StartDialogConversation(conversation, 2, Item, Player, "This is obviously an old wanted poster with images of gnoll faces across the top. You can make out some of the words.\n\n \"Wanted! Darkpaw gnolls have pillaged Antonica farmlands and must be dealt with!\"\n\n Unfortunately any mention of a reward has worn away.")
+    StartDialogConversation(conversation, 2, Item, Player, "This is obviously an old wanted poster with images of gnoll faces across the top. You can make out some of the words.\n\n\"WANTED!\"\n\n\"Darkpaw gnolls have pillaged Antonica farmlands and must be dealt with!\"\n\n Unfortunately any mention of a reward has worn away.")
 end
 
 function Offer(Item,Player)

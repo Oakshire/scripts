@@ -16,7 +16,7 @@ function casted_on(NPC, Spawn, SpellName)
       local con = CreateConversation()
         if CanReceiveQuest(Spawn,Quest) then
         Dialog1(NPC,Spawn)
-        elseif HasCompletedQuest(Spawn, Rune) then
+        elseif HasCompletedQuest(Spawn, Quest) then
         AddConversationOption(con, "[Leave the carcass.]")
         StartDialogConversation(con, 1, NPC, Spawn, "This is a dead klicnik that has historically plagued these lands. You've done what you could to thin their numbers.")
         elseif HasQuest(Spawn, Quest) and not HasCompletedQuest(Spawn, Quest) then

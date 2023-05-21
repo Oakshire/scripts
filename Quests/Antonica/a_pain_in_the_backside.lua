@@ -43,13 +43,13 @@ end
 function  QuestCheck1(Quest, QuestGiver, Player)
     if QuestStepIsComplete(Player,5841,1) and QuestStepIsComplete(Player,5841,2)  then
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have acquired a suitable replacement for the missing armor section.")
-	AddQuestStep(Quest, 3, "I need to inspect the armor again. I can try to use the gnoll armor to repair the back of it.", 1, 100, "I must replace the back section of this armor. I suspect I can find a Gnoll that would have something suitable.", 756)
+	AddQuestStep(Quest, 3, "I need to inspect the armor again. I can try to use the gnoll armor to repair the back of it.", 1, 100, "I must replace the back section of this armor. I suspect I can find a Gnoll that would have something suitable.", 11)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")
 end
 end
 
 function Step3Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest,3 , "I have found some sturdy sections of gnoll armor.")
+	UpdateQuestStepDescription(Quest,3 , "The armor resisted the gnoll armor fragments!")
 	AddQuestStepKill(Quest, 4, "Take the eye from The Klicnik Queen..", 1, 100, "I have examined the armor. It rejected the gnoll armor segments I tried to attach. It seems arcane forces are at work here. The eye of a Klicnik queen is said to have the ability to enchant some metals, perhaps it can help disenchant this armor so that I can repair it.", 83, 120452)
 	AddQuestStep(Quest, 5, "I need to find the arcane devices belonging to the Darkpaw Gnolls in their cave hideout.", 1, 100, "I have examined the armor. It rejected the gnoll armor segments I tried to attach. It seems arcane forces are at work here. The eye of a Klicnik queen is said to have the ability to enchant some metals, perhaps it can help disenchant this armor so that I can repair it.", 887)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
