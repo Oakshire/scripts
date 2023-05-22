@@ -130,10 +130,88 @@ function YesS(NPC, Spawn)
 	SetStepComplete(Spawn,IsleIntro,1)
 	SetAdventureClass(Spawn,31)
     SendMessage(Spawn, "Congratulations!  You have chosen the path of the Scout.","yellow")
+
+    HarvestSkills(NPC,Spawn) 
+    ScoutSkills(NPC,Spawn)
+    
     OfferQuest(NPC,Spawn,ScoutGI)
 	if GetLevel(Spawn)<3 then
 	SetPlayerLevel(Spawn,3)
 	end
+end
+
+
+function ScoutSkills(NPC,Spawn)
+    level = GetLevel(Spawn)*5
+
+ if not HasSkill(Spawn, 2897193374) then -- Light Armor
+    AddSkill(Spawn, 2897193374,1,level)
+end
+ if not HasSkill(Spawn, 1756482397) then -- Ranged
+    AddSkill(Spawn, 1756482397,1,level)
+end
+if not HasSkill(Spawn, 3048574950) then -- Piercing
+    AddSkill(Spawn, 3048574950,1,level)
+end
+if not HasSkill(Spawn, 418532101,1,level) then -- Slashing
+    AddSkill(Spawn, 418532101,1,level)
+end
+if not HasSkill(Spawn, 540022425) then -- Parry
+    AddSkill(Spawn, 540022425,1,level)
+end
+if not HasSkill(Spawn, 1852383242) then -- Dual Wield
+    AddSkill(Spawn, 1852383242,1,level)
+end
+if not HasSkill(Spawn, 1852383242) then -- Thrown Weapon
+    AddSkill(Spawn, 1852383242,1,level)
+end
+if not HasSkill(Spawn, 2638198038) then -- Focus
+    AddSkill(Spawn, 2638198038,1,level)
+end
+
+if not HasSkill(Spawn, 4037812502) then -- Buckler
+    AddSkill(Spawn, 4037812502,1,level)
+end
+if not HasSkill(Spawn, 3173504370) then -- Roundshield
+    AddSkill(Spawn, 3173504370,1,level)
+end
+if not HasSkill(Spawn, 1616998748) then -- Spear
+    AddSkill(Spawn, 1616998748,1,level)
+end
+if not HasSkill(Spawn, 887279616) then -- Dagger
+    AddSkill(Spawn, 887279616,1,level)
+end
+if not HasSkill(Spawn, 1743366740) then -- Bow
+    AddSkill(Spawn, 1743366740,1,level)
+end
+if not HasSkill(Spawn, 2476073427) then -- Axe
+    AddSkill(Spawn, 2476073427,1,level)
+end
+if not HasSkill(Spawn, 770311065) then -- Mace
+    AddSkill(Spawn, 770311065,1,level)
+end
+if not HasSkill(Spawn, 641561514) then -- Rapier
+    AddSkill(Spawn, 641561514,1,level)
+end
+end
+
+function HarvestSkills(NPC,Spawn)
+    level = GetLevel(Spawn)*5
+if not HasSkill(Spawn, 3659699625) then -- Mining
+    RemoveSkill(Spawn, 3659699625,1,level)
+end
+if not HasSkill(Spawn, 688591146) then -- Foresting
+    AddSkill(Spawn, 688591146,1,level)
+end
+if not HasSkill(Spawn, 1048513601) then -- Gathering
+    AddSkill(Spawn, 1048513601,1,level)
+end
+if not HasSkill(Spawn, 4158365743) then -- Trapping
+    AddSkill(Spawn, 4158365743,1,level)
+end
+if not HasSkill(Spawn, 2319450178) then -- Fishing
+    AddSkill(Spawn, 2319450178,1,level)
+end 
 end
 
 

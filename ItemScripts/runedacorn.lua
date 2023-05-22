@@ -15,7 +15,7 @@ function examined(Item, Player)
     else
     conversation = CreateConversation()
     AddConversationOption(conversation, "[Keep the acorn.]")
-    AddConversationOption(conversation, "[Toss the acorn to the ground and hope it finds a future.]", "QuestFinish")
+    AddConversationOption(conversation, "[Toss the acorn to the ground.]", "QuestFinish")
     StartDialogConversation(conversation, 2, Item, Player, "This acorn is familiar to you. You helped cleanse some of the corruption from the Oakmyst Forest as the runes requested.")
 	end
 end
@@ -50,7 +50,7 @@ end
 
 function QuestFinish(Item,Player)
     CloseItemConversation(Item,Player)
-    if HasItem(Player,11780) then
-        RemoveItem(Player,11780,1)
+    if HasItem(Player,1001093) then
+        RemoveItem(Player,1001093,1)
     end
 end

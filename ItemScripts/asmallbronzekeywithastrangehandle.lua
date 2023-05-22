@@ -2,7 +2,7 @@
     Script Name    : ItemScripts/asmallbronzekeywithastrangehandle.lua
     Script Author  : Dorbin
     Script Date    : 2023.05.14 11:05:29
- Script Purpose : for Buccaneer's Hideout access in Antonica
+ Script Purpose : for Buccaneer's Rest access in Antonica
                    : 
 --]]
 

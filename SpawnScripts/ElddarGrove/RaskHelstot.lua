@@ -20,11 +20,6 @@ function hailed(NPC, Spawn)
 		PlayFlavor(NPC, "voiceover/english/optional1/rask_helstot/qey_elddar/raskhelstot000.mp3", "", "", 2809197179, 4166706387, Spawn)
 	AddConversationOption(conversation, "Trees... bah. ", "dlg_19_1")
 	StartConversation(conversation, NPC, Spawn, "Though it's the only remaining tree of its kind, the Elddar grows ever larger.  Perhaps a symbol of Qeynos and her people even more fitting than the Claymore itself.")
-	if convo==20 then
-		PlayFlavor(NPC, "voiceover/english/optional1/rask_helstot/qey_elddar/raskhelstot000.mp3", "", "", 2809197179, 4166706387, Spawn)
-		AddConversationOption(conversation, "Trees... bah. ", "dlg_20_1")
-		StartConversation(conversation, NPC, Spawn, "Though it's the only remaining tree of its kind, the Elddar grows ever larger.  Perhaps a symbol of Qeynos and her people even more fitting than the Claymore itself.")
-	end
 
 end
 
