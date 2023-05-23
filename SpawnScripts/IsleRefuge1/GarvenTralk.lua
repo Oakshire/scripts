@@ -139,11 +139,182 @@ function YesS(NPC, Spawn)
 	SetPlayerLevel(Spawn,3)
 	end
 end
+-----------------------------------------------------------
+function FighterSkills(NPC,Spawn)
+   local level = GetLevel(Spawn)*5
+
+if not HasSkill(Spawn, 1408356869) then -- Martial
+    AddSkill(Spawn, 1408356869,1,level)
+end
+ if not HasSkill(Spawn, 2897193374) then -- Light Armor
+    AddSkill(Spawn, 2897193374,1,level)
+end
+if not HasSkill(Spawn, 3421494576) then -- Crushing
+    AddSkill(Spawn, 3421494576,1,level)
+end
+if not HasSkill(Spawn, 418532101) then -- Slashing
+    AddSkill(Spawn, 418532101,1,level)
+end
+if not HasSkill(Spawn, 540022425) then -- Parry
+    AddSkill(Spawn, 540022425,1,level)
+end
+if not HasSkill(Spawn, 1852383242) then -- Dual Wield
+    AddSkill(Spawn, 1852383242,1,level)
+end
+if not HasSkill(Spawn, 2638198038) then -- Focus
+    AddSkill(Spawn, 2638198038,1,level)
+end
+
+--WEAPON SKILLS
+if not HasSkill(Spawn, 4037812502) then -- Buckler
+    AddSkill(Spawn, 4037812502,1,level)
+end
+if not HasSkill(Spawn, 3173504370) then -- Roundshield
+    AddSkill(Spawn, 3173504370,1,level)
+end
+if not HasSkill(Spawn, 2476073427) then -- Axe
+    AddSkill(Spawn, 2476073427,1,level)
+end
+if not HasSkill(Spawn, 2954459351) then -- Great Axe
+    AddSkill(Spawn, 2954459351,1,level)
+end
+if not HasSkill(Spawn, 1696217328) then -- Sword
+    AddSkill(Spawn, 1696217328,1,level)
+end
+if not HasSkill(Spawn, 2292577688) then -- Great Sword
+    AddSkill(Spawn, 2292577688,1,level)
+end
+if not HasSkill(Spawn, 770311065) then -- Mace
+    AddSkill(Spawn, 770311065,1,level)
+end
+if not HasSkill(Spawn, 554333641) then -- Hammer
+    AddSkill(Spawn, 554333641,1,level)
+end
+if not HasSkill(Spawn, 1653482350) then -- Great Hammer
+    AddSkill(Spawn, 1653482350,1,level)
+end
+if not HasSkill(Spawn, 3180399725) then -- Staff(2h)
+    AddSkill(Spawn, 3180399725,1,level)
+end
+end
 
 
+------------------------------------------------------------
+function PriestSkills(NPC,Spawn)
+   local level = GetLevel(Spawn)*5
+
+if not HasSkill(Spawn, 2463145248) then -- Inspirations
+    AddSkill(Spawn, 2463145248,1,level)
+end
+ if not HasSkill(Spawn, 2897193374) then -- Light Armor
+    AddSkill(Spawn, 2897193374,1,level)
+end
+if not HasSkill(Spawn, 3421494576) then -- Crushing
+    AddSkill(Spawn, 3421494576,1,level)
+end
+
+--CASTING SKILLS
+if not HasSkill(Spawn, 613995491) then -- Disruption
+    AddSkill(Spawn, 613995491,1,level)
+end
+if not HasSkill(Spawn, 366253016) then -- Ministration
+    AddSkill(Spawn, 366253016,1,level)
+end
+if not HasSkill(Spawn, 3587918036) then -- Ordination
+    AddSkill(Spawn, 3587918036,1,level)
+end
+if not HasSkill(Spawn, 882983852) then -- Subjugation
+    AddSkill(Spawn, 882983852,1,level)
+end
+if not HasSkill(Spawn, 2638198038) then -- Focus
+    AddSkill(Spawn, 2638198038,1,level)
+end
+
+--WEAPON SKILLS
+if not HasSkill(Spawn, 4037812502) then -- Buckler
+    AddSkill(Spawn, 4037812502,1,level)
+end
+if not HasSkill(Spawn, 545043066) then -- Symbol
+    AddSkill(Spawn, 545043066,1,level)
+end
+if not HasSkill(Spawn, 770311065) then -- Mace
+    AddSkill(Spawn, 770311065,1,level)
+end
+if not HasSkill(Spawn, 554333641) then -- Hammer
+    AddSkill(Spawn, 554333641,1,level)
+end
+if not HasSkill(Spawn, 1653482350) then -- Great Hammer
+    AddSkill(Spawn, 1653482350,1,level)
+end
+if not HasSkill(Spawn, 3180399725) then -- Staff(2h)
+    AddSkill(Spawn, 3180399725,1,level)
+end
+end
+
+
+
+--------------------------------------------------------------
+function MageSkills(NPC,Spawn)
+   local level = GetLevel(Spawn)*5
+
+if not HasSkill(Spawn, 3820670534) then -- Evocations
+    AddSkill(Spawn, 3820670534,1,level)
+end
+if not HasSkill(Spawn, 3048574950) then -- Piercing
+    AddSkill(Spawn, 3048574950,31,level)
+end
+if not HasSkill(Spawn, 418532101) then -- Slashing
+    AddSkill(Spawn, 418532101,31,level)
+end
+if not HasSkill(Spawn, 3421494576) then -- Crushing
+    AddSkill(Spawn, 3421494576,31,level)
+end
+
+--CASTING SKILLS
+if not HasSkill(Spawn, 613995491) then -- Disruption
+    AddSkill(Spawn, 613995491,1,level)
+end
+if not HasSkill(Spawn, 366253016,1,level) then -- Ministration
+    AddSkill(Spawn, 366253016,1,level)
+end
+if not HasSkill(Spawn, 3587918036) then -- Ordination
+    AddSkill(Spawn, 3587918036,1,level)
+end
+if not HasSkill(Spawn, 882983852) then -- Subjugation
+    AddSkill(Spawn, 882983852,1,level)
+end
+if not HasSkill(Spawn, 2638198038) then -- Focus
+    AddSkill(Spawn, 2638198038,1,level)
+end
+
+--WEAPON SKILLS
+if not HasSkill(Spawn, 4037812502) then -- Buckler
+    AddSkill(Spawn, 4037812502,1,level)
+end
+if not HasSkill(Spawn, 545043066) then -- Symbol
+    AddSkill(Spawn, 545043066,1,level)
+end
+if not HasSkill(Spawn, 887279616) then -- Dagger
+    AddSkill(Spawn, 887279616,1,level)
+end
+if not HasSkill(Spawn, 3180399725) then -- Staff(2h)
+    AddSkill(Spawn, 3180399725,1,level)
+end
+end
+
+---------------------------------------------------------------
 function ScoutSkills(NPC,Spawn)
-    level = GetLevel(Spawn)*5
+   local level = GetLevel(Spawn)*5
 
+if not HasSkill(Spawn, 1921433074) then -- Reconnaissance
+    AddSkill(Spawn, 1921433074,1,level)
+end
+if not HasSkill(Spawn, 1468243427) then -- Tracking
+    AddSkill(Spawn, 1468243427,1,level)
+end
+if not HasSkill(Spawn, 2200201799) then -- Disarm Trap
+    AddSkill(Spawn, 2200201799,1,level)
+end
  if not HasSkill(Spawn, 2897193374) then -- Light Armor
     AddSkill(Spawn, 2897193374,1,level)
 end
@@ -162,13 +333,14 @@ end
 if not HasSkill(Spawn, 1852383242) then -- Dual Wield
     AddSkill(Spawn, 1852383242,1,level)
 end
-if not HasSkill(Spawn, 1852383242) then -- Thrown Weapon
-    AddSkill(Spawn, 1852383242,1,level)
+if not HasSkill(Spawn, 2650425026) then -- Thrown Weapon
+    AddSkill(Spawn, 2650425026,1,level)
 end
 if not HasSkill(Spawn, 2638198038) then -- Focus
     AddSkill(Spawn, 2638198038,1,level)
 end
 
+--WEAPON SKILLS
 if not HasSkill(Spawn, 4037812502) then -- Buckler
     AddSkill(Spawn, 4037812502,1,level)
 end
@@ -193,10 +365,13 @@ end
 if not HasSkill(Spawn, 641561514) then -- Rapier
     AddSkill(Spawn, 641561514,1,level)
 end
+if not HasSkill(Spawn, 1696217328) then -- Sword
+    AddSkill(Spawn, 1696217328,1,level)
+end
 end
 
 function HarvestSkills(NPC,Spawn)
-    level = GetLevel(Spawn)*5
+  local  level = GetLevel(Spawn)*5
 if not HasSkill(Spawn, 3659699625) then -- Mining
     RemoveSkill(Spawn, 3659699625,1,level)
 end
@@ -241,6 +416,9 @@ function YesP(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	SetAdventureClass(Spawn,11)
  	SetStepComplete(Spawn,IsleIntro,1)
+    HarvestSkills(NPC,Spawn)
+    PriestSkills(NPC,Spawn)
+    
     SendMessage(Player, "Congratulations!  You have chosen the path of the Priest.","yellow")
 	OfferQuest(NPC,Spawn,PriestGI)
 	if GetLevel(Spawn)<3 then
@@ -277,6 +455,9 @@ function YesM(NPC, Spawn)
 	SetStepComplete(Spawn,IsleIntro,1)
     SendMessage(Spawn, "Congratulations!  You have chosen the path of the Mage.","yellow")
 	SetAdventureClass(Spawn,21)
+    HarvestSkills(NPC,Spawn)
+    MageSkills(NPC,Spawn)
+
     OfferQuest(NPC,Spawn,MageGI)
 	if GetLevel(Spawn)<3 then
 	SetPlayerLevel(Spawn,3)
@@ -300,6 +481,10 @@ function YesF(NPC, Spawn)
 	SetStepComplete(Spawn,IsleIntro,1)
 	SetAdventureClass(Spawn,1)
     SendMessage(Spawn, "Congratulations!  You have chosen the path of the Fighter.","yellow")
+    
+    HarvestSkills(NPC,Spawn)
+    FighterSkills(NPC,Spawn)
+    
     OfferQuest(NPC,Spawn,FighterGI)
 	if GetLevel(Spawn)<3 then
 	SetPlayerLevel(Spawn,3)
@@ -418,3 +603,4 @@ function thanksS(NPC,Spawn)
 	    OfferQuest(NPC, Spawn,Scout2)
 	end
 end
+

@@ -146,15 +146,24 @@ end
 
 
 function Dialog5(NPC, Spawn)
+    if GetClientVersion(Spawn) <= 546 then
+       local con = CreateConversation()
+	    AddConversationOption(con, ""..GetName(Spawn).." the "..GetClassName(Spawn).."", "Dialog6")
+        AddConversationOption(con, "On second thought, I need to reconsider.","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "OFFICIAL QEYNOS DOCUMENTATION:\n-----------------------------------------\nI \""..GetName(Spawn).."\" pledge myself to \nthe City of Qeynos and to it's ruler,\nQueen Antnoica Bayle. \n\nI will strive to uphold it's ideals of honor and good will for all citizens of Qeynos.\n\nSigned,")
+	else
 	window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Pledge allegiance to Qeynos", "Dedicate yourself to the City of Qeynos and to its leader,           Queen Antonia Bayle.                                                                                [This decision is final!]", 2, 16, "Dialog6")
 	AddOptionWindowOption(window, " Reconsider", "Rescind your request.  Return to Ambassador Saera if you decide Qeynos is right for you.", 2, 13, "Sigh")
 	SendOptionWindow(window, Spawn, "Pledge allegiance to Qeynos?", "Cancel")
+
+end
 end
 
 function Dialog6(NPC, Spawn)
 OfferQuest(NPC,Spawn,5717)
 FaceTarget(NPC,Spawn)
+CloseConversation(NPC,Spawn)
 end
 
 function Sigh(NPC, Spawn)

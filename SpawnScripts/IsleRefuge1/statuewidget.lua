@@ -16,7 +16,7 @@ function casted_on(NPC, Spawn, Message)
 		end
 		AddConversationOption(con, "Leave the statue", "CloseConversation")
 		    if not HasQuest(Spawn, LasydiasCall) and not HasCompletedQuest(Spawn, LasydiasCall) then
-		    StartDialogConversation(con, 1, NPC, Spawn, "\"Lasydia - as divinely merciful as she is beautiful.  Deliverer of the drowned and caretaker of the castaway.\"  A feeling of purpose surrounds and penetrates you.  You have a sudden desire to touch the statue.")
+		    StartDialogConversation(con, 1, NPC, Spawn, "\"Lasydia - as divinely merciful as she is beautiful.  Deliverer of the drowned and caretaker of the castaway.\"\n\nA feeling of purpose surrounds and penetrates you.  You have a sudden desire to touch the statue.")
             else
 		    StartDialogConversation(con, 1, NPC, Spawn, "\"Lasydia - as divinely merciful as she is beautiful.  Deliverer of the drowned and caretaker of the castaway.\"")
             end

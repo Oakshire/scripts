@@ -478,7 +478,6 @@ end
 if HasSkill(player, 2638198038) then -- Focus
     RemoveSkill(player, 2638198038)
 end
-
 if HasSkill(player, 723762198) then -- Aggression
     RemoveSkill(player, 723762198)
 end
@@ -488,7 +487,6 @@ end
 if HasSkill(player, 1852383242) then -- Dual Wield
     RemoveSkill(player, 1852383242)
 end
-
 if HasSkill(player, 3421494576) then -- Crushing
     RemoveSkill(player, 3421494576)
 end
@@ -501,6 +499,179 @@ end
 if HasSkill(player, 418532101) then -- Slashing
     RemoveSkill(player, 418532101)
 end
+if HasSkill(player, 1553857724) then -- Investigation
+    RemoveSkill(player, 1553857724)
+end
+
+
+--Fighter
+if HasSkill(player, 1408356869) then -- Martial/Fighter
+    RemoveSkill(player, 1408356869)
+end
+if HasSkill(player, 1124719197) then -- Tactics/Warrior
+    RemoveSkill(player, 1124719197)
+end
+if HasSkill(player, 433335062) then -- Berserk/Berserker
+    RemoveSkill(player, 433335062)
+end
+if HasSkill(player, 1209716810) then -- Protection/Guardian
+    RemoveSkill(player, 1209716810)
+end
+if HasSkill(player, 3856706740) then -- Brawl/Brawling
+    RemoveSkill(player, 3856706740)
+end
+if HasSkill(player, 2011726342) then -- Tranquility/Monk
+    RemoveSkill(player, 2011726342)
+end
+if HasSkill(player, 3067436248) then -- Physicality/Bruiser
+    RemoveSkill(player, 3067436248)
+end
+if HasSkill(player, 3809066846) then -- Faith/Crusader
+    RemoveSkill(player, 3809066846)
+end
+if HasSkill(player, 90523872) then -- Determined Faith/Paladin
+    RemoveSkill(player, 90523872)
+end
+if HasSkill(player, 2741805322) then -- Determined Zeal/Shadowknight
+    RemoveSkill(player, 2741805322)
+end
+
+--Scout
+if HasSkill(player, 1921433074) then -- Reconnaissance/Scout
+    RemoveSkill(player, 1921433074)
+end
+if HasSkill(player, 1311635100) then -- Melodies/Bard
+    RemoveSkill(player, 1311635100)
+end
+if HasSkill(player, 296246391) then -- Ballads/Troubador
+    RemoveSkill(player, 296246391)
+end
+if HasSkill(player, 340921594) then -- Dirges/Dirge
+    RemoveSkill(player, 340921594)
+end
+if HasSkill(player, 1514256692) then -- Skulldugery/Rogue
+    RemoveSkill(player, 1514256692)
+end
+if HasSkill(player, 2663054519) then -- Swashbuckling/Swashbuckler
+    RemoveSkill(player, 2663054519)
+end
+if HasSkill(player, 1519965519) then -- Banditry/Brigand
+    RemoveSkill(player, 1519965519)
+end
+if HasSkill(player, 3167106577) then -- Stalking/Predator
+    RemoveSkill(player, 3167106577)
+end
+if HasSkill(player, 1400160844) then -- Archery/Ranger
+    RemoveSkill(player, 1400160844)
+end
+if HasSkill(player, 2711101135) then -- Assassination/Assassin
+    RemoveSkill(player, 2711101135)
+end
+
+--Priest
+if HasSkill(player, 2463145248) then -- Inspirations/Priest
+    RemoveSkill(player, 2463145248)
+end
+if HasSkill(player, 3341842907) then -- Theurgy/Cleric
+    RemoveSkill(player, 3341842907)
+end
+if HasSkill(player, 2581053277) then -- Regimens/Templar
+    RemoveSkill(player, 2581053277)
+end
+if HasSkill(player, 1829443087) then -- Inquisitions/Inquisitor
+    RemoveSkill(player, 1829443087)
+end
+if HasSkill(player, 3282420779) then -- Archegenesis/Druid
+    RemoveSkill(player, 3282420779)
+end
+if HasSkill(player, 1624274802) then -- Nature's Reckoning/Fury
+    RemoveSkill(player, 1624274802)
+end
+if HasSkill(player, 1040683335) then -- Nature's Refuge/Warden
+    RemoveSkill(player, 1040683335)
+end
+if HasSkill(player, 3343700951) then -- Talismans/Shaman
+    RemoveSkill(player, 3343700951)
+end
+if HasSkill(player, 3467160477) then -- Fetichisms/Mystic
+    RemoveSkill(player, 3467160477)
+end
+if HasSkill(player, 3191839982) then -- Vehemence/Defiler
+    RemoveSkill(player, 3191839982)
+end
+
+--Mage
+if HasSkill(player, 3820670534) then -- Evocations/Mage
+    RemoveSkill(player, 3820670534)
+end
+if HasSkill(player, 287643040) then -- Enchantments/Enchanter
+    RemoveSkill(player, 287643040)
+end
+if HasSkill(player, 2898101972) then -- Hallucinations/Illusionist
+    RemoveSkill(player, 2898101972)
+end
+if HasSkill(player, 2950599749) then -- Protean/Coecerer
+    RemoveSkill(player, 2950599749)
+end
+if HasSkill(player, 2533124061) then -- Sorcery/Sorcerer
+    RemoveSkill(player, 2533124061)
+end
+if HasSkill(player, 2662430630) then -- Elemental Mastery/Wizard
+    RemoveSkill(player, 2662430630)
+end
+if HasSkill(player, 193411854) then -- Noctivagance/Warlock
+    RemoveSkill(player, 193411854)
+end
+if HasSkill(player, 2120065377) then -- Legerdemain/Summoner
+    RemoveSkill(player, 2120065377)
+end
+if HasSkill(player, 2042842194) then -- Conjurations/Conjurer
+    RemoveSkill(player, 2042842194)
+end
+if HasSkill(player, 289471519) then -- Sepulchers/Necromancer
+    RemoveSkill(player, 289471519)
+end
+
+if HasSkill(player, 887279616) then -- Dagger
+    RemoveSkill(player, 887279616)
+end
+if HasSkill(player, 1696217328) then -- Sword
+    RemoveSkill(player, 1696217328)
+end
+if HasSkill(player, 2292577688) then -- Great Sword
+    RemoveSkill(player, 2292577688)
+end
+if HasSkill(player, 1653482350) then -- Great Hammer
+    RemoveSkill(player, 1653482350)
+end
+if HasSkill(player, 1653482350) then -- Great Spear
+    RemoveSkill(player, 1653482350)
+end
+if HasSkill(player, 1616998748) then -- Spear
+    RemoveSkill(player, 1616998748)
+end
+if HasSkill(player, 554333641) then -- Hammer
+    RemoveSkill(player, 554333641)
+end
+if HasSkill(player, 1743366740) then -- Bow
+    RemoveSkill(player, 1743366740)
+end
+if HasSkill(player, 2650425026) then -- Thrown Weapon
+    RemoveSkill(player, 2650425026)
+end
+if HasSkill(player, 4037812502) then -- Buckler
+    RemoveSkill(player, 4037812502)
+end
+if HasSkill(player, 3173504370) then -- Roundshield
+    RemoveSkill(player, 3173504370)
+end
+if HasSkill(player, 2608320658) then -- Kite Shield
+    RemoveSkill(player, 2608320658)
+end
+if HasSkill(player, 570458645) then -- Tower Shield
+    RemoveSkill(player, 570458645)
+end
+
 
 
 if HasSkill(player, 609880714) then -- Defense

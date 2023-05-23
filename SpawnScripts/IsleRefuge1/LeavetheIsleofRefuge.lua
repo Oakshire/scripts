@@ -50,18 +50,33 @@ function casted_on(NPC, Spawn, Message)
 	    
     elseif GetQuestStep(Spawn,5758)==2 or HasCompletedQuest(Spawn, 5758) then --FREEPORT LEAVING
     PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+
+    if GetClientVersion(Spawn) <= 546 then
+       local con = CreateConversation()
+	    AddConversationOption(con, "Leave for Freeport", "Dialog6")
+        AddConversationOption(con, "Stay","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "Are you sure you wish to leave the Isle of Refuge?/n/nLeave the Island - It is unlikely you will return, but you will continue to pursue greatness in Freeport./n/n[All active Isle of Refuge quests will be removed!]")
+    else
 	window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Leave for Freeport", "Leave the Island - It is unlikely you will return, but you will continue to pursue greatness in Freeport.                                           [All active Isle of Refuge quests will be removed!]", 0, 2297, "LeaveIslandFP")
 	AddOptionWindowOption(window, " Stay", "Stay on the Island -  Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
 	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
+    end	
+	
 	
     elseif GetQuestStep(Spawn,5717)==2 or HasCompletedQuest(Spawn, 5717)  then --QEYNOS LEAVING
     PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
-	window = CreateOptionWindow();
+    if GetClientVersion(Spawn) <= 546 then
+       local con = CreateConversation()
+	    AddConversationOption(con, "Leave for Qeynos", "Dialog6")
+        AddConversationOption(con, "Stay","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "Are you sure you wish to leave the Isle of Refuge?/n/nLeave the Island - It is unlikely you will return, but you will continue to pursue greatness in Qeynos./n/n[All active Isle of Refuge quests will be removed!]")
+    else
+    window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Leave for Qeynos", "Leave the Island - It is unlikely you will return, but you will continue to pursue greatness in Qeynos.                                           [All active Isle of Refuge quests will be removed!]", 0, 2297, "LeaveIslandQ")
 	AddOptionWindowOption(window, " Stay", "Stay on the Island - Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
 	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
-	
+	end
 	    else -- STILL NEED ALIGNMENT QUEST
         PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
 	    SendPopUpMessage(Spawn,"Speak with an Ambassador if you are ready to leave the island.",200,200,200)
@@ -100,12 +115,20 @@ function LeaveIslandQ(NPC, Spawn)
         Zone(ZoneRef,Spawn)
 
     elseif Race == 9 then --Human
-	window = CreateOptionWindow();
+    if GetClientVersion(Spawn) <= 546 then
+       local con = CreateConversation()
+	    AddConversationOption(con, "Nettleville Hovel", "HumanQNettleville")
+	    AddConversationOption(con, "Starcrest Commune", "HumanQStarcrest")
+	    AddConversationOption(con, "Tell me about these places", "Human2")
+        AddConversationOption(con, "Stay","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "Humans must select their next desitnation in Qeynos.")
+    else
+    window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Nettleville Hovel", "Depart for Nettleville - Home to the reserved Kerra and diverse Humans of Qeynos. It’s a busy district area with plenty of opportunties for adventure seekers and back-alley trade.", 2, 26, "HumanQNettleville")
 	AddOptionWindowOption(window, " Starcrest Commune", "Depart for Starcrest -  Starcrest is a grand political experiment implemented by the intellectual Erudites to serve as their home in Qeynos. Residents often frown on noise and distraction that might hinder their research, so be mindful of your activities. ", 2, 27, "HumanQStarcrest")
 	AddOptionWindowOption(window, " Stay", "Stay on the Island.  Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
 	SendOptionWindow(window, Spawn, "Humans Must Select Their Next Desitnation", "Cancel")
-	
+	end
 	
     -- Barbarian / Dwarf
     elseif Race == 0 or Race == 2 then
@@ -135,7 +158,13 @@ function LeaveIslandQ(NPC, Spawn)
     end
 end
 
-
+function Human2(NPC,Spawn)
+        local con = CreateConversation()
+	    AddConversationOption(con, "Nettleville Hovel", "HumanQNettleville")
+	    AddConversationOption(con, "Starcrest Commune", "HumanQStarcrest")
+        AddConversationOption(con, "Stay","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "Nettlevilel Hovel:\n\nHome to the reserved Kerra and diverse Humans of Qeynos. It’s a busy district area with plenty of opportunties for adventure seekers and back-alley trade.\n\nStarcrest Commune:\n\nStarcrest is a grand political experiment implemented by the intellectual Erudites to serve as their home in Qeynos. Residents often frown on noise and distraction that might hinder their research, so be mindful of your activities.")
+end
 
 function LeaveIslandFP(NPC, Spawn)
         PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_005.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
