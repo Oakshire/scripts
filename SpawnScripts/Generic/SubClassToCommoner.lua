@@ -638,6 +638,12 @@ end
 if HasSkill(player, 1696217328) then -- Sword
     RemoveSkill(player, 1696217328)
 end
+if HasSkill(player, 2476073427) then -- Axe
+    RemoveSkill(player, 2476073427)
+end
+if HasSkill(player, 2954459351) then -- Great Axe
+    RemoveSkill(player, 2954459351)
+end
 if HasSkill(player, 2292577688) then -- Great Sword
     RemoveSkill(player, 2292577688)
 end

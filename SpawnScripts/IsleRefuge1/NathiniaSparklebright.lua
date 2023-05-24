@@ -5,7 +5,7 @@
     Script Purpose : Nathinia Sparklebright on Isle of Refuge
                    : 
 --]]
-
+dofile("SpawnScripts/Generic/ClassSkillCheck.lua")
 require "SpawnScripts/Generic/DialogModule"
 local Priest2 = 5732
 local Priest3 = 5734
@@ -94,9 +94,20 @@ else
     Dialog.AddOption("Blessings to you, Nathinia.  Thank you again for your lessons.", "Thanks")
     end
     Dialog.AddOption("Thank you for that bit of wisdom.")
+    if GetClass(Spawn)==11 then
+    Dialog.AddOption("Can you make sure my skills are in order?","Skills")
+    end
 	Dialog.Start()
 
 end
+end
+
+function Skills(NPC,Spawn)
+    if GetClass(Spawn)==11 then
+    PriestSkills(NPC,Spawn)
+    HarvestSkills(NPC,Spawn)
+    PlayFlavor(NPC,"","","nod",0,0,Spawn)
+    end
 end
 
 function Thanks(NPC,Spawn)

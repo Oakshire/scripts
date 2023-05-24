@@ -5,7 +5,7 @@
     Script Purpose : 
                    : 
 --]]
-
+dofile("SpawnScripts/Generic/ClassSkillCheck.lua")
 require "SpawnScripts/Generic/DialogModule"
 local Fighter2 = 5731
 local Fighter3 = 5735
@@ -72,9 +72,19 @@ function hailed(NPC, Spawn)
     if HasCompletedQuest(Spawn,Fighter6) then
 	Dialog.AddOption("Greetings Braksan.  I hope your work has slowed down some.","Thanks")
 	end 	
-	Dialog.AddOption("I will leave you to your work.")
-	Dialog.Start()
+    Dialog.AddOption("I will leave you to your work.")
+    if GetClass(Spawn)==1 then
+    Dialog.AddOption("Can you make sure my skills are in order?","Skills")
+    end	Dialog.Start()
 end
+end
+
+function Skills(NPC,Spawn)
+    if GetClass(Spawn)==1 then
+    FighterSkills(NPC,Spawn)
+    HarvestSkills(NPC,Spawn)
+    PlayFlavor(NPC,"","","nod",0,0,Spawn)
+    end
 end
 
 function Thanks(NPC,Spawn)

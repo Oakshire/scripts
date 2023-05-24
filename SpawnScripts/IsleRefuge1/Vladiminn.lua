@@ -6,6 +6,8 @@
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
+dofile("SpawnScripts/Generic/ClassSkillCheck.lua")
+
 local Scout2 = 5730
 local Scout3 = 5737
 local Scout4 = 5741
@@ -70,10 +72,20 @@ else
     Dialog.AddOption("Fit as I can be thanks you.  I must prepare for my voyage off this island.  Farewell, Vladiminn.")
     end
 	Dialog.AddOption("Fit, but currently unwilling.")
-	Dialog.Start()
+    if GetClass(Spawn)==31 then
+    Dialog.AddOption("Can you make sure my skills are in order?","Skills")
+    end
+    Dialog.Start()
 end
 end
 
+function Skills(NPC,Spawn)
+    if GetClass(Spawn)==31 then
+    ScoutSkills(NPC,Spawn)
+    HarvestSkills(NPC,Spawn)
+    PlayFlavor(NPC,"","","nod",0,0,Spawn)
+    end
+end
 
 function respawn(NPC)
 	spawn(NPC)
