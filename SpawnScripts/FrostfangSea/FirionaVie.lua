@@ -16,7 +16,7 @@ function hailed(NPC, Spawn)
         AddConversationOption(conversation, "How do I get to the Discord?", "Choice1")
         AddConversationOption(conversation, "How do I use commands?", "Choice2")
         AddConversationOption(conversation, "I need gear!", "Choice3")
-        --AddConversationOption(conversation, "Can you take me to Memorial Island please?", "Choice4")
+--      AddConversationOption(conversation, "Can you take me to Memorial Island please?", "Choice4")
         AddConversationOption(conversation, "I do not require anything at this time.", "EndConvo")
         StartConversation(conversation, NPC, Spawn, "Hail, Adventurer. How may I assist you?")
 	--AddCharacterTitle(Spawn, "Lord")
@@ -25,8 +25,16 @@ end
 function Choice1(NPC, Spawn)
     FaceTarget(NPC, Spawn)
         conversation = CreateConversation()
+        AddConversationOption(conversation, "Tell me more.","Discord2")
         AddConversationOption(conversation, "Thank you!")
-        StartConversation(conversation, NPC, Spawn, "Visit the website to get a link to the Discord server. There you will find many useful resources.")
+        StartConversation(conversation, NPC, Spawn, "Visit the website to get a link to the Discord server. There you will find many useful resources. I have more information regarding Discord if you would like to know.")
+end
+
+function Discord2(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+        conversation = CreateConversation()
+        AddConversationOption(conversation, "Thank you!")
+        StartConversation(conversation, NPC, Spawn, "There are 2 public EQ2EMU Discord Channels. 'EQ2EMU & EQ2PVP' channel handels more backend code discussion. 'EQ2Emu' channel covers more content related updates (and Bug reporting). ")
 end
 
 function Choice2(NPC, Spawn)
