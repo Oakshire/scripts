@@ -5,6 +5,7 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/ForestersAntonica.lua")
 
 function spawn(NPC)
     ChooseMovement(NPC)
