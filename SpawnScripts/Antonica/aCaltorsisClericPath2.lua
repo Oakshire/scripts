@@ -5,8 +5,10 @@
     Script Purpose : 
                    : 
 --]]
+dofile("SpawnScripts/Generic/MonsterCallouts/BaseGhost1.lua")
 
 function spawn(NPC)
+    Appearace(NPC)
     local Level = GetLevel(NPC)
     local level1 = 18
     local level2 = 19
@@ -30,8 +32,13 @@ function spawn(NPC)
 waypoints(NPC)
 end
 
-function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+
+function Appearance(NPC)
+    if GetGender(NPC)==2 then
+    SpawnSet(NPC,"model_type",2851)    
+    else
+    SpawnSet(NPC,"model_type",2852)    
+    end
 end
 
 function respawn(NPC)
