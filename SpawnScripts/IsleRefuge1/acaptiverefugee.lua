@@ -47,17 +47,16 @@ function Speak(NPC,Spawn)
         else
  	    PlayFlavor(NPC, "", "You're timing is excellent stranger.  I thought I was going to have to find my own way out of this.", "thanks", 0, 0,Spawn)
         end
- 	PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/003_human_refugee_hail2_72457d89.mp3", "I've never seen a goblin before.  Are they always this...umm...excitable?", "confused", 3599089715, 3189955253,Spawn)
     elseif GetRace(NPC)==11 then --Kerra
- 	PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/004_kerran_refugee_hail2_a8d13011.mp3", "Thank goodness you found us.  These goblins may not be bright but they have us at an advantage in numbers.", "thanks", 1996349290, 3249018436,Spawn)
+    	PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/004_kerran_refugee_hail2_a8d13011.mp3", "Thank goodness you found us.  These goblins may not be bright but they have us at an advantage in numbers.", "thanks", 1996349290, 3249018436,Spawn)
     elseif GetRace(NPC)==13 then --Ratonga
- 	PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/003_ratonga_refugee_hail2_f6cdb005.mp3", "First a Drakota, and now this!  Why do the old gods hate me so?", "scream", 3567711464, 78154507,Spawn)
+ 	    PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/003_ratonga_refugee_hail2_f6cdb005.mp3", "First a Drakota, and now this!  Why do the old gods hate me so?", "scream", 3567711464, 78154507,Spawn)
     elseif GetRace(NPC)==15 then --Woodelf
         choice = MakeRandomInt(1,2)
         if choice==1 then
- 	    PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/003_woodelf_refugee_hail1_665582a4.mp3", "Please don't hurt them!  These poor goblins are only acting out of fear.", "beg", 4167828572, 1837602908,Spawn)
+ 	    PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/003_woodelf_refugee_hail1_665582a4.mp3", "Please don't hurt them!  These poor goblins are only acting out of fear.", "beg", 1038403057, 372639812,Spawn)
         else
- 	    PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/003_woodelf_refugee_hail2_19c22530.mp3", "Thanks for nothing you bully!  How would you like it if a bunch of scary men with swords invaded your island?", "shame", 4167828572, 1837602908,Spawn)
+ 	    PlayFlavor(NPC, "voiceover/english/a_captured_refugee/tutorial_island02/003_woodelf_refugee_hail2_19c22530.mp3", "Thanks for nothing you bully!  How would you like it if a bunch of scary men with swords invaded your island?", "shame", 3030530877, 3849447082,Spawn)
         end
     end
 end

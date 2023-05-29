@@ -18,7 +18,10 @@ end
 
 function Cage4(NPC, Spawn)
 local zone = GetZone(NPC)
-local Goblin1 = SpawnByLocationID(zone, 133775214) --Goblin1
+local Goblin1 = GetSpawnByLocationID(zone, 133775214) --Goblin1
+if IsAlive(Goblin1)== false or Goblin1 == nil then 
+SpawnByLocationID(zone, 133775214) --Goblin1
+end
 AddTimer(NPC,3500,"GobLiveCheck")
 end
 

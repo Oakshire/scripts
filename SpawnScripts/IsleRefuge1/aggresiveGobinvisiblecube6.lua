@@ -15,7 +15,10 @@ end
 
 function Cage6(NPC, Spawn)
 local zone = GetZone(NPC)
-local Goblin1 = SpawnByLocationID(zone, 133775216) --Goblin1
+local Goblin1 = GetSpawnByLocationID(zone, 133775216) --Goblin1
+if IsAlive(Goblin1)== false or Goblin1 == nil then 
+SpawnByLocationID(zone, 133775216) --Goblin1
+end
 AddTimer(NPC,3500,"GobLiveCheck")
 end
 
@@ -78,7 +81,6 @@ local z=GetZ(NPC)
 end
 
 function ThankYou(NPC,Spawn)
-    PlaySound(NPC, "sounds/widgets/doors/door_gate_close001.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
     local zone = GetZone(NPC)
     local Refugee = GetSpawnByLocationID(zone, 133775267) --Refugee
     FaceTarget(Refugee,Spawn)
