@@ -28,6 +28,7 @@ function spawn(NPC)
     end
     SetInfoStructUInt(NPC, "hp_regen_override", 1)
     SetInfoStructSInt(NPC, "hp_regen", 0)
+    SetSeeHide(NPC,1)
 
  ChooseMovement(NPC)
 end
@@ -97,6 +98,3 @@ function respawn(NPC, Spawn)
     spawn(NPC)
 end
 
-function hailed(NPC, Spawn)
-    FaceTarget(NPC, Spawn)
-end

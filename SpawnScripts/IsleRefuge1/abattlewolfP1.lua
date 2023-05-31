@@ -7,9 +7,10 @@
 --]]
 
 function spawn(NPC)
+    SetSeeHide(NPC,1)
     SetInfoStructUInt(NPC, "hp_regen_override", 1)
     SetInfoStructSInt(NPC, "hp_regen", 0)
-AddTimer(NPC, 1000, "followsentry")      
+    AddTimer(NPC, 1000, "followsentry")      
 end
 
 function hailed(NPC, Spawn)

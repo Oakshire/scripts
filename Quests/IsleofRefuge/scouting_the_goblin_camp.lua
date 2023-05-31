@@ -13,7 +13,7 @@ require "SpawnScripts/Generic/DialogModule"
 
 
 function Init(Quest)
-	AddQuestStepLocation(Quest, 1, "I need to scout the goblin camp.", 12, "I need to scout out the main goblin camp and gather information for the outpost.  If I can sneak past the brutes and manage to get close enough to their central camps in the north I should be able to get the information I need.", 11, 195.26, -0.68, -188.07)
+	AddQuestStepZoneLoc(Quest, 1, "I need to scout the goblin camp.", 12, "I need to scout out the main goblin camp and gather information for the outpost.  If I can sneak past the brutes and manage to get close enough to their central camps in the north I should be able to get the information I need.", 11, 195.26, -0.68, -188.07,325)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
 end
 
@@ -38,6 +38,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I scouted the goblin camp.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I gathered information about the goblins' camp.")
+    SendPopUpMessage(Player,"I have scouted the goblin camp.",255,255,255)
 
 	AddQuestStepChat(Quest, 2, "I need to give the information to Vladiminn.", 1, "I should report back to Vladiminn with the information I've gathered on the goblin camp.", 11, 3250016)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")
