@@ -381,7 +381,9 @@ end
 if not HasSkill(Spawn, 2638198038) then -- Focus
     AddSkill(Spawn, 2638198038,1,level)
 end
-
+if HasSkill(Spawn, 540022425) then -- Parry
+    RemoveSkill(Spawn, 540022425)
+end
 --WEAPON SKILLS
 if not HasSkill(Spawn, 4037812502) then -- Buckler
     AddSkill(Spawn, 4037812502,1,level)
@@ -428,6 +430,9 @@ end
 end
 if not HasSkill(Spawn, 3421494576) then -- Crushing
     AddSkill(Spawn, 3421494576,1,level)
+end
+if  HasSkill(Spawn, 540022425) then -- Parry
+    RemoveSkill(Spawn, 540022425)
 end
 
 --CASTING SKILLS
@@ -480,13 +485,12 @@ end
 if not HasSkill(Spawn, 3048574950) then -- Piercing
     AddSkill(Spawn, 3048574950,31,level)
 end
-if not HasSkill(Spawn, 418532101) then -- Slashing
-    AddSkill(Spawn, 418532101,31,level)
-end
 if not HasSkill(Spawn, 3421494576) then -- Crushing
     AddSkill(Spawn, 3421494576,31,level)
 end
-
+if HasSkill(Spawn, 540022425) then -- Parry
+    RemoveSkill(Spawn, 540022425)
+end
 --CASTING SKILLS
 if not HasSkill(Spawn, 613995491) then -- Disruption
     AddSkill(Spawn, 613995491,1,level)
@@ -541,9 +545,6 @@ end
 if not HasSkill(Spawn, 418532101,1,level) then -- Slashing
     AddSkill(Spawn, 418532101,1,level)
 end
-if not HasSkill(Spawn, 540022425) then -- Parry
-    AddSkill(Spawn, 540022425,1,level)
-end
 if not HasSkill(Spawn, 1852383242) then -- Dual Wield
     AddSkill(Spawn, 1852383242,1,level)
 end
@@ -552,6 +553,9 @@ if not HasSkill(Spawn, 2650425026) then -- Thrown Weapon
 end
 if not HasSkill(Spawn, 2638198038) then -- Focus
     AddSkill(Spawn, 2638198038,1,level)
+end
+if  HasSkill(Spawn, 540022425) then -- Parry
+    RemoveSkill(Spawn, 540022425)
 end
 
 --WEAPON SKILLS

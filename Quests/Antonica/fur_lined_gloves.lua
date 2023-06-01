@@ -47,15 +47,15 @@ function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I have found some down griffon feathers I need for the gloves.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I have found some down griffon feathers I need for the gloves.")
 
-    AddQuestStep(Quest,4,"I should now sew shut the lining of the gloves.",1, 100,"I need to work hard to create a nice pair of gloves.", 127)
+    AddQuestStep(Quest,4,"I should stuff the gloves with feathers.",1, 100,"I need to work hard to create a nice pair of gloves.", 127)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")
 end
 
 
 
 function Step4Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 4, "I have examined the down filled gloves.")
-	UpdateQuestTaskGroupDescription(Quest, 4, "I have examined the down filled gloves. I need something to close up the seams.")
+	UpdateQuestStepDescription(Quest, 4, "I have stuffed the down filled gloves.")
+	UpdateQuestTaskGroupDescription(Quest, 4, "I have stuffed the down filled gloves. I need something to close up the seams.")
 
 	AddQuestStepKill(Quest, 5, "I need to sew the lining shut. I should gather some tendons from a Caltorsis knight to use as string.", 2, 70, "I need to work hard to create a nice pair of gloves.", 382, 120126)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")
