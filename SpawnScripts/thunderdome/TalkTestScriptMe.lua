@@ -16,18 +16,6 @@ function respawn(NPC)
 end
 
 
-function hailed(NPC,Spawn)
---AddSkill(Spawn, "Slashing", 1)
-	FaceTarget(NPC, Spawn)
-	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("As you examine the coin, a magical voice fills your mind.")
-	Dialog.AddVoiceover("voiceover/english/overlord_lucan_d_lere/fprt_west/lucan_isle_speech.mp3", 2912329438, 4090300715)
-	Dialog.AddOption("Put coin away.")
-	Dialog.Start()
-
-end
-
---[[
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation() -- I think this could technically be whatever we want, but CreateConversation() needs to be called without variables. We could call this stringcheese if we wanted.
@@ -51,7 +39,7 @@ function keeptalking(NPC, Spawn)
 		AddConversationOption(conversation, "Yes","hailed") -- You can refer back to earlier functions.
 		StartConversation(conversation, NPC, Spawn, "Want to continue our conversation?") -- If we want the player to cick a button, this option must be present.
 end
-
+--[[
  Tips on PlayFlavor
 
  	PlayFlavor(NPC, "voiceover/english/gubbo_chaley/enchanted/gubbo_chaley/gubbo_chaley006.mp3","If you see Fritz, would you tell him I'm looking for him?","nod", 4082962413, 3474255449, Spawn,8)
