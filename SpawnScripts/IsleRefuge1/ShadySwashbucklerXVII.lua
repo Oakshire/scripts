@@ -70,10 +70,17 @@ end
 
 
 function Item_Buff1(NPC,Spawn)
+    if GetClientVersion(Spawn) <= 546 then
+       local con = CreateConversation()
+	    AddConversationOption(con, "EMU Buff and Leave Island", "Item_Buff2")
+        AddConversationOption(con, "Stay","Cancel")
+        StartDialogConversation(con, 1, NPC, Spawn, "Are you sure you wish to leave the Isle of Refuge?\n\nBuff Includes:\n\n- Adventure Level to 6\n- Solo Quested Gean\n- 6 silver\n- Port to Racial Hood\n\n[ Complete Citizenship once in the city ]")
+    else
 	window = CreateOptionWindow(); 
-	AddOptionWindowOption(window, " EMU Buff and Leave Island", "Buff Includes:                                                                                           Level to 6 // Solo Quested Gear  //  6 silver // Port to Racial Hood     [ Complete Citizenship once in the city ]", 0, 2297, "Item_Buff2")
+	AddOptionWindowOption(window, " EMU Buff and Leave Island", "Buff Includes:\n\nLevel to 6 // Solo Quested Gear  //  6 silver // Port to Racial Hood\n\n[ Complete Citizenship once in the city ]", 0, 2297, "Item_Buff2")
 	AddOptionWindowOption(window, "Refuse Buff", "Stay on the island and continue playing here.", 0, 2296, "Cancel")
 	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
+end
 end
 
 function Item_Buff2(NPC,Spawn)
@@ -219,12 +226,20 @@ function LeaveIslandQ(NPC, Spawn)
         Zone(ZoneRef,Spawn)
 
     elseif Race == 9 then --Human
-	window = CreateOptionWindow();
+    if GetClientVersion(Spawn) <= 546 then
+       local con = CreateConversation()
+	    AddConversationOption(con, "Nettleville Hovel", "HumanQNettleville")
+	    AddConversationOption(con, "Starcrest Commune", "HumanQStarcrest")
+	    AddConversationOption(con, "Tell me about these places", "Human2")
+        AddConversationOption(con, "Stay","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "Humans must select their next desitnation in Qeynos.")
+    else
+        window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Nettleville Hovel", "Depart for Nettleville - Home to the reserved Kerra and diverse Humans of Qeynos. It’s a busy district area with plenty of opportunties for adventure seekers and back-alley trade.", 2, 26, "HumanQNettleville")
 	AddOptionWindowOption(window, " Starcrest Commune", "Depart for Starcrest -  Starcrest is a grand political experiment implemented by the intellectual Erudites to serve as their home in Qeynos. Residents often frown on noise and distraction that might hinder their research, so be mindful of your activities. ", 2, 27, "HumanQStarcrest")
 	AddOptionWindowOption(window, " Stay", "Stay on the Island.  Continue your adventures here and return to this bell when you are ready to leave.", 0, 2296, "Cancel")
 	SendOptionWindow(window, Spawn, "Humans Must Select Their Next Desitnation", "Cancel")
-	
+    end	
 	
     -- Barbarian / Dwarf
     elseif Race == 0 or Race == 2 then
@@ -254,7 +269,13 @@ function LeaveIslandQ(NPC, Spawn)
     end
 end
 
-
+function Human2(NPC,Spawn)
+        local con = CreateConversation()
+	    AddConversationOption(con, "Nettleville Hovel", "HumanQNettleville")
+	    AddConversationOption(con, "Starcrest Commune", "HumanQStarcrest")
+        AddConversationOption(con, "Stay","CloseConversation")
+        StartDialogConversation(con, 1, NPC, Spawn, "Nettlevilel Hovel:\n\nHome to the reserved Kerra and diverse Humans of Qeynos. It’s a busy district area with plenty of opportunties for adventure seekers and back-alley trade.\n\nStarcrest Commune:\n\nStarcrest is a grand political experiment implemented by the intellectual Erudites to serve as their home in Qeynos. Residents often frown on noise and distraction that might hinder their research, so be mindful of your activities.")
+end
 
 function LeaveIslandFP(NPC, Spawn)
         PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_005.wav", GetX(NPC), GetY(NPC), GetZ(NPC))

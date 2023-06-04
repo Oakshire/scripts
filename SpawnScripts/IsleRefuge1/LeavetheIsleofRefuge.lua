@@ -53,9 +53,9 @@ function casted_on(NPC, Spawn, Message)
 
     if GetClientVersion(Spawn) <= 546 then
        local con = CreateConversation()
-	    AddConversationOption(con, "Leave for Freeport", "Dialog6")
+	    AddConversationOption(con, "Leave for Freeport", "LeaveIslandFP")
         AddConversationOption(con, "Stay","CloseConversation")
-        StartDialogConversation(con, 1, NPC, Spawn, "Are you sure you wish to leave the Isle of Refuge?/n/nLeave the Island - It is unlikely you will return, but you will continue to pursue greatness in Freeport./n/n[All active Isle of Refuge quests will be removed!]")
+        StartDialogConversation(con, 1, NPC, Spawn, "Are you sure you wish to leave the Isle of Refuge?\n\nLeave the Island - It is unlikely you will return, but you will continue to pursue greatness in Freeport.\n\n[All active Isle of Refuge quests will be removed!]")
     else
 	window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Leave for Freeport", "Leave the Island - It is unlikely you will return, but you will continue to pursue greatness in Freeport.                                           [All active Isle of Refuge quests will be removed!]", 0, 2297, "LeaveIslandFP")
@@ -68,9 +68,9 @@ function casted_on(NPC, Spawn, Message)
     PlaySound(Spawn,"sounds/objectsandparticlesounds/amb_marinersbell_002.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
     if GetClientVersion(Spawn) <= 546 then
        local con = CreateConversation()
-	    AddConversationOption(con, "Leave for Qeynos", "Dialog6")
+	    AddConversationOption(con, "Leave for Qeynos", "LeaveIslandQ")
         AddConversationOption(con, "Stay","CloseConversation")
-        StartDialogConversation(con, 1, NPC, Spawn, "Are you sure you wish to leave the Isle of Refuge?/n/nLeave the Island - It is unlikely you will return, but you will continue to pursue greatness in Qeynos./n/n[All active Isle of Refuge quests will be removed!]")
+        StartDialogConversation(con, 1, NPC, Spawn, "Are you sure you wish to leave the Isle of Refuge?\n\nLeave the Island - It is unlikely you will return, but you will continue to pursue greatness in Qeynos.\n\n[All active Isle of Refuge quests will be removed!]")
     else
     window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Leave for Qeynos", "Leave the Island - It is unlikely you will return, but you will continue to pursue greatness in Qeynos.                                           [All active Isle of Refuge quests will be removed!]", 0, 2297, "LeaveIslandQ")
