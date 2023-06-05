@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/IsleRefuge1/AmbassadorSaera.lua
     Script Author  : Dorbin
     Script Date    : 2022.08.30 03:08:04
-    Script Purpose : Just applying parsed dialog here.  Obvisouly needs more.
+    Script Purpose : 
                    : 
 --]]
 
@@ -148,7 +148,17 @@ end
 function Dialog5(NPC, Spawn)
     if GetClientVersion(Spawn) <= 546 then
        local con = CreateConversation()
-	    AddConversationOption(con, ""..GetName(Spawn).." the "..GetClassName(Spawn).."", "Dialog6")
+        if GetClass(Spawn)==1 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Fighter", "Dialog6")
+        elseif GetClass(Spawn)==11 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Priest", "Dialog6")
+        elseif GetClass(Spawn)==21 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Mage", "Dialog6")
+        elseif GetClass(Spawn)==31 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Scout", "Dialog6")
+        else
+	    AddConversationOption(con, ""..GetName(Spawn).."", "Dialog6")
+        end
         AddConversationOption(con, "On second thought, I need to reconsider.","CloseConversation")
         StartDialogConversation(con, 1, NPC, Spawn, "OFFICIAL QEYNOS DOCUMENTATION:\n-----------------------------------------\nI \""..GetName(Spawn).."\" pledge myself to \nthe City of Qeynos and to it's ruler,\nQueen Antnoica Bayle. \n\nI will strive to uphold it's ideals of honor and good will for all citizens of Qeynos.\n\nSigned,")
 	else

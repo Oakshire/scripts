@@ -2,7 +2,7 @@
     Script Name    : SpawnScripts/IsleRefuge1/AmbassadorTKirr.lua
     Script Author  : Dorbin
     Script Date    : 2022.08.30 03:08:00
-    Script Purpose : Just placing the parced dialog here.
+    Script Purpose : 
                    : 
 --]]
 
@@ -143,9 +143,19 @@ end
 function Dialog6(NPC, Spawn)
     if GetClientVersion(Spawn) <= 546 then
         local con = CreateConversation()
-	    AddConversationOption(con, ""..GetName(Spawn).." the "..GetClassName(Spawn).."", "Dialog6")
+        if GetClass(Spawn)==1 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Fighter", "Dialog6")
+        elseif GetClass(Spawn)==11 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Priest", "Dialog6")
+        elseif GetClass(Spawn)==21 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Mage", "Dialog6")
+        elseif GetClass(Spawn)==31 then
+	    AddConversationOption(con, ""..GetName(Spawn).." the Scout", "Dialog6")
+        else
+	    AddConversationOption(con, ""..GetName(Spawn).."", "Dialog6")
+        end
         AddConversationOption(con, "On second thought, I need to reconsider.","CloseConversation")
-        StartDialogConversation(con, 1, NPC, Spawn, "-----------------------------------------\n[ Declaration to The Overlord ]\n-----------------------------------------\nI \""..GetName(Spawn).."\" pledge myself to \nOverlord Lucan D'Lere\nThe Lord and Ruler over\nThe City of Freeport\n\nMy actions shall be judged as a testament of Freeport's might, determination, and opportunity.\n\nBy the Overlord's will.\n\nSigned,")
+        StartDialogConversation(con, 1, NPC, Spawn, "-----------------------------------------\n Declaration to The Overlord \n-----------------------------------------\nI \""..GetName(Spawn).."\" pledge myself to \nOverlord Lucan D'Lere\nThe Lord and Ruler over\nThe City of Freeport\n\nMy actions shall be judged as a testament of Freeport's might, determination, and opportunity.\n\nBy the Overlord's will.\n\nSigned,")
 	else	window = CreateOptionWindow();
 	AddOptionWindowOption(window, " Pledge allegiance to Freeport", "Dedicate yourself to the City of Freeport and to its leader,           Overlord Lucan D'lere.                                                                                [This decision is final!]", 2, 16, "Dialog7")
 	AddOptionWindowOption(window, " Reconsider", "Rescind your request.  Return to Ambassador T'Kirr if you decide Freeport is right for you.", 2, 13, "Sigh")
