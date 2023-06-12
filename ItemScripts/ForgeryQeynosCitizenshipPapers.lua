@@ -5,17 +5,17 @@
     Script Purpose : 
                    : 
 --]]
-local BB = 5718
-local BB_Q = 5760
-local CV = 5719
+local BB = 5718  --Welcome to Qeynos (Babbuelshrie)
+local BB_Q = 5760 --Baubbleshire Citizenship Task
+local CV = 5719     --Castleview
 local CV_Q = 5765
-local NV = 5721
+local NV = 5721     --Nettleville
 local NV_Q = 5763
-local GS = 5720
+local GS = 5720     --Graystone
 local GS_Q = 5764
-local SC = 5722
+local SC = 5722     --Starcrest
 local SC_Q = 5762
-local WW = 5723
+local WW = 5723     --Willow Wood
 local WW_Q = 5761
 
 
@@ -41,10 +41,41 @@ if not HasQuest(Player,BB)
   and not HasQuest(Player,WW) 
  and not HasQuest(Player,WW_Q) then
      
+    if CanReceiveQuest(Player,BB) or     
+    CanReceiveQuest(Player,CV) or 
+    CanReceiveQuest(Player,GS) or 
+    CanReceiveQuest(Player,NV) or 
+    CanReceiveQuest(Player,SC) or 
+    CanReceiveQuest(Player,WW) then
     AddConversationOption(conversation, "[Glance over the forms]","Intro")
+    end
     AddConversationOption(conversation, "[Put the papers away]","CloseItemConversation")
     StartDialogConversation(conversation, 2, Item, Player, "This stack of papers looks like Qeynos Citzenship forms. They could be useful for someone looking to quickly become a citizen...")
-else
+elseif
+ GetQuestStep(Player,BB_Q) <12 or   
+ GetQuestStep(Player,CV_Q) <12 or   
+ GetQuestStep(Player,GS_Q) <12 or   
+ GetQuestStep(Player,NV_Q) <12 or   
+ GetQuestStep(Player,SC_Q) <12 or   
+ GetQuestStep(Player,WW_Q) <12 then   
+ Welcome2(Item,Player)
+ elseif
+ GetQuestStep(Player,BB_Q) ==12 and CanReceiveQuest(Player,BB) or   
+ GetQuestStep(Player,CV_Q) ==12 and CanReceiveQuest(Player,CV) or   
+ GetQuestStep(Player,GS_Q) ==12 and CanReceiveQuest(Player,GS) or   
+ GetQuestStep(Player,NV_Q) ==12 and CanReceiveQuest(Player,NV) or   
+ GetQuestStep(Player,SC_Q) ==12 and CanReceiveQuest(Player,SC) or   
+ GetQuestStep(Player,WW_Q) ==12 and CanReceiveQuest(Player,WW) then
+ Task1(Item,Player)    
+ elseif
+ GetQuestStep(Player,BB_Q) ==12 and GetQuestStep(Player,BB)==1 or   
+ GetQuestStep(Player,CV_Q) ==12 and GetQuestStep(Player,CV)==1 or   
+ GetQuestStep(Player,GS_Q) ==12 and GetQuestStep(Player,GS)==1 or   
+ GetQuestStep(Player,NV_Q) ==12 and GetQuestStep(Player,NV)==1 or   
+ GetQuestStep(Player,SC_Q) ==12 and GetQuestStep(Player,SC)==1 or   
+ GetQuestStep(Player,WW_Q) ==12 and GetQuestStep(Player,WW)==1 then 
+ Task1(Item,Player)
+ else
     Intro(Item,Player)
 end
 end
@@ -53,42 +84,57 @@ function Intro(Item,Player)
     local Race = GetRace(Player)
     conversation = CreateConversation()
     AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
-
     if Race == 11 then --Kerra
+    if not HasQuest(Player,NV_Q) then
      OfferQuest(nil,Player,NV_Q)
-     
+    end 
+    
     -- Erudite
     elseif Race == 3 or Race == 20 then
+    if not HasQuest(Player,SC_Q) then
     OfferQuest(nil,Player,SC_Q)
+    end
     
     elseif Race == 9 then --Human
        local con = CreateConversation()
+    if not HasQuest(Player,NV_Q) then
     OfferQuest(nil,Player,NV_Q)
+    end
     
     -- Barbarian / Dwarf
     elseif Race == 0 or Race == 2 then
+    if not HasQuest(Player,GS_Q) then
     OfferQuest(nil,Player,GS_Q)
+    end
     
     -- Froglok / High Elf 
     elseif Race == 4 or Race == 8 then
+    if not HasQuest(Player,CV_Q) then
     OfferQuest(nil,Player,CV_Q)
-        
+    end
+    
     -- Half Elf / Wood Elf
-    elseif Race == 6 or Race == 15 then
+    elseif Race == 6 or Race == 15 or Race == 16 then
+    if not HasQuest(Player,WW_Q) then
      OfferQuest(nil,Player,WW_Q)
-       
+    end
+    
     -- Gnome / Halfling
     elseif Race == 5 or Race == 7 then
+    if not HasQuest(Player,BB_Q) then
     OfferQuest(nil,Player,BB_Q)
-
+    end
+    
     else
+    if not HasQuest(Player,NV_Q) then
     OfferQuest(nil,Player,NV_Q)
     end
+    end
     AddConversationOption(conversation, "[Put the pages away]","CloseItemConversation")
-    StartDialogConversation(conversation, 2, Item, Player, "It states a Steward is suppose to sign the document...")
+    StartDialogConversation(conversation, 2, Item, Player, "It states a Steward is suppose to sign the document...\n\n[ ACCEPT THE QUEST ]")
 end
 
-function Welcome1(Item,Player)
+function Welcome1(Item,Player)  --ALIGNMENT/FACTION CHANGE + CHECK FOR QUEST1
 local Race = GetRace(Player)
 if not HasQuest(Player,BB)
  and not HasQuest(Player,BB_Q)
@@ -113,8 +159,44 @@ else
     AddConversationOption(conversation, "[Forge an address and check the list]","Welcome2")
     AddConversationOption(conversation, "[Put the pages away]","CloseItemConversation")
     StartDialogConversation(conversation, 2, Item, Player, "The form states you need signitures from a landlord and to complete their checklist...")
+    Faction(Item,Player)
 end
 end
+
+function Faction(Item,Player)
+    Qeynos = GetFactionAmount(Player, 11)
+    Qeynos_Add = (10000-Qeynos)
+    Freeport = GetFactionAmount(Player, 12)
+    Freeport_Add = (-20000-Freeport)
+    Neriak = GetFactionAmount(Player, 13)
+    Kelethin = GetFactionAmount(Player, 14)
+    Halas = GetFactionAmount(Player, 16)
+    Gorowyn = GetFactionAmount(Player, 17)
+    alignment = GetAlignment(Player)
+ if Qeynos <10000 and Qeynos >=0 then ChangeFaction(Player, 11, Qeynos_Add)
+    elseif Qeynos <0 then ChangeFaction(Player, 11, (Qeynos*-1))
+    Faction(Item,Player)    
+end
+if Freeport <-20000 then ChangeFaction(Player, 12, Freeport_Add)
+    elseif Freeport >-20000 then ChangeFaction(Player, 12, (Freeport*-1))
+end
+if Neriak >0 then ChangeFaction(Player, 13, -Neriak)
+    elseif Neriak <0 then ChangeFaction(Player, 13, (Neriak*-1))
+end
+if Kelethin >0 then ChangeFaction(Player, 14, -Kelethin)
+    elseif Kelethin <0 then  ChangeFaction(Player, 14, (Kelethin*-1))
+end
+if Halas >0 then ChangeFaction(Player, 16, -Halas)
+    elseif Halas <0 then ChangeFaction(Player, 16, (Halas*-1))
+end
+if Gorowyn >0 then ChangeFaction(Player, 17, -Gorowyn)
+    elseif Gorowyn <0 then ChangeFaction(Player, 17, (Gorowyn*-1))
+end
+if GetRace(Player) == 0 or GetRace(Player) == 3 or GetRace(Player) == 5 or GetRace(Player) == 6 or GetRace(Player) == 9 or GetRace(Player) == 11 or GetRace(Player) == 20 then
+SetAlignment(Player, 2)
+end   
+end
+
 
 function Welcome2(Item,Player)
  local Race = GetRace(Player)
@@ -308,7 +390,7 @@ function Task1(Item,Player)
     end 
     end
     AddConversationOption(conversation, "[Put the pages away]","CloseItemConversation")
-    StartDialogConversation(conversation, 2, Item, Player, "The second form lists...yadda yadda yadda.\n\nA few marks here and there and this should wrap up everything.\n\nAre you ready to be a citizen of Qeynos?")
+    StartDialogConversation(conversation, 2, Item, Player, "The second form lists...yadda yadda yadda.\n\nA few marks here and there should finish up everything.\n\n[ ACCEPT THE QUEST ]")
 end
 
 function Task2(Item,Player)
@@ -316,7 +398,6 @@ local Race = GetRace(Player)
     if Race == 11 then --Kerra
     if HasQuest(Player,NV_Q) then
     SetStepComplete(Player,NV_Q,13)        
-    SetStepComplete(Player,NV_Q,14)
     end
     if HasQuest(Player,NV) then
     SetStepComplete(Player,NV,1)        
@@ -326,13 +407,11 @@ local Race = GetRace(Player)
     SetStepComplete(Player,NV,5)        
     SetStepComplete(Player,NV,6)        
     SetStepComplete(Player,NV,7)        
-    SetStepComplete(Player,NV,8)        
     end
     -- Erudite
     elseif Race == 3 or Race == 20 then
     if HasQuest(Player,SC_Q) then
     SetStepComplete(Player,SC_Q,13)        
-    SetStepComplete(Player,SC_Q,14)
     end
     if HasQuest(Player,SC) then
     SetStepComplete(Player,SC,1)        
@@ -342,13 +421,11 @@ local Race = GetRace(Player)
     SetStepComplete(Player,SC,5)        
     SetStepComplete(Player,SC,6)        
     SetStepComplete(Player,SC,7)        
-    SetStepComplete(Player,SC,8)        
     end
     elseif Race == 9 then --Human
        local con = CreateConversation()
     if HasQuest(Player,NV_Q) then
     SetStepComplete(Player,NV_Q,13)        
-    SetStepComplete(Player,NV_Q,14)
     end
     if HasQuest(Player,NV) then
     SetStepComplete(Player,NV,1)        
@@ -358,11 +435,9 @@ local Race = GetRace(Player)
     SetStepComplete(Player,NV,5)        
     SetStepComplete(Player,NV,6)        
     SetStepComplete(Player,NV,7)        
-    SetStepComplete(Player,NV,8)        
     end
     if HasQuest(Player,SC_Q) then
     SetStepComplete(Player,SC_Q,13)        
-    SetStepComplete(Player,SC_Q,14)
     end
     if HasQuest(Player,SC) then
     SetStepComplete(Player,SC,1)        
@@ -372,13 +447,11 @@ local Race = GetRace(Player)
     SetStepComplete(Player,SC,5)        
     SetStepComplete(Player,SC,6)        
     SetStepComplete(Player,SC,7)        
-    SetStepComplete(Player,SC,8)        
     end
     -- Barbarian / Dwarf
     elseif Race == 0 or Race == 2 then
     if HasQuest(Player,GS_Q) then
     SetStepComplete(Player,GS_Q,13)        
-    SetStepComplete(Player,GS_Q,14)
     end
     if HasQuest(Player,GS) then
     SetStepComplete(Player,GS,1)        
@@ -388,13 +461,11 @@ local Race = GetRace(Player)
     SetStepComplete(Player,GS,5)        
     SetStepComplete(Player,GS,6)        
     SetStepComplete(Player,GS,7)        
-    SetStepComplete(Player,GS,8)        
     end     
     -- Froglok / High Elf 
     elseif Race == 4 or Race == 8 then
     if HasQuest(Player,CV_Q) then
     SetStepComplete(Player,CV_Q,13)        
-    SetStepComplete(Player,CV_Q,14)
     end
     if HasQuest(Player,CV) then
     SetStepComplete(Player,CV,1)        
@@ -404,13 +475,11 @@ local Race = GetRace(Player)
     SetStepComplete(Player,CV,5)        
     SetStepComplete(Player,CV,6)        
     SetStepComplete(Player,CV,7)        
-    SetStepComplete(Player,CV,8)        
     end             
     -- Half Elf / Wood Elf
     elseif Race == 6 or Race == 15 then
     if HasQuest(Player,WW_Q) then
     SetStepComplete(Player,WW_Q,13)        
-    SetStepComplete(Player,WW_Q,14)
     end
     if HasQuest(Player,WW) then
     SetStepComplete(Player,WW,1)        
@@ -420,13 +489,11 @@ local Race = GetRace(Player)
     SetStepComplete(Player,WW,5)        
     SetStepComplete(Player,WW,6)        
     SetStepComplete(Player,WW,7)        
-    SetStepComplete(Player,WW,8)        
     end                  
     -- Gnome / Halfling
     elseif Race == 5 or Race == 7 then
     if HasQuest(Player,BB_Q) then
     SetStepComplete(Player,BB_Q,13)        
-    SetStepComplete(Player,BB_Q,14)
     end
     if HasQuest(Player,BB) then
     SetStepComplete(Player,BB,1)        
@@ -436,12 +503,10 @@ local Race = GetRace(Player)
     SetStepComplete(Player,BB,5)        
     SetStepComplete(Player,BB,6)        
     SetStepComplete(Player,BB,7)        
-    SetStepComplete(Player,BB,8)        
     end    
     else
     if HasQuest(Player,NV_Q) then
     SetStepComplete(Player,NV_Q,13)        
-    SetStepComplete(Player,NV_Q,14)
     end
     if HasQuest(Player,NV) then
     SetStepComplete(Player,NV,1)        
@@ -451,6 +516,94 @@ local Race = GetRace(Player)
     SetStepComplete(Player,NV,5)        
     SetStepComplete(Player,NV,6)        
     SetStepComplete(Player,NV,7)        
+    end
+end
+   conversation = CreateConversation()
+   
+        if GetClass(Player)==1 then
+	    AddConversationOption(conversation, ""..GetName(Player).." the Fighter", "Task3")
+        elseif GetClass(Player)==11 then
+	    AddConversationOption(conversation, ""..GetName(Player).." the Priest", "Task3")
+        elseif GetClass(Player)==21 then
+	    AddConversationOption(conversation, ""..GetName(Player).." the Mage", "Task3")
+        elseif GetClass(Player)==31 then
+	    AddConversationOption(conversation, ""..GetName(Player).." the Scout", "Task3")
+        else
+	    AddConversationOption(conversation, ""..GetName(Player).."", "Task3")
+        end   
+   
+    AddConversationOption(conversation, "[Put the pages away]","CloseItemConversation")
+    StartDialogConversation(conversation, 2, Item, Player, "All that is left to do is sign your name...\n\nAre you ready to be a citizen of Qeynos?")
+end
+
+function Task3(Item,Player)
+local Race = GetRace(Player)
+    if Race == 11 then --Kerra
+    if HasQuest(Player,NV_Q) then
+    SetStepComplete(Player,NV_Q,14)
+    end
+    if HasQuest(Player,NV) then
+    SetStepComplete(Player,NV,8)        
+    end
+    -- Erudite
+    elseif Race == 3 or Race == 20 then
+    if HasQuest(Player,SC_Q) then
+    SetStepComplete(Player,SC_Q,14)
+    end
+    if HasQuest(Player,SC) then
+    SetStepComplete(Player,SC,8)        
+    end
+    elseif Race == 9 then --Human
+       local con = CreateConversation()
+    if HasQuest(Player,NV_Q) then
+    SetStepComplete(Player,NV_Q,14)
+    end
+    if HasQuest(Player,NV) then
+    SetStepComplete(Player,NV,8)        
+    end
+    if HasQuest(Player,SC_Q) then
+    SetStepComplete(Player,SC_Q,14)
+    end
+    if HasQuest(Player,SC) then
+    SetStepComplete(Player,SC,8)        
+    end
+    -- Barbarian / Dwarf
+    elseif Race == 0 or Race == 2 then
+    if HasQuest(Player,GS_Q) then
+    SetStepComplete(Player,GS_Q,14)
+    end
+    if HasQuest(Player,GS) then
+    SetStepComplete(Player,GS,8)        
+    end     
+    -- Froglok / High Elf 
+    elseif Race == 4 or Race == 8 then
+    if HasQuest(Player,CV_Q) then
+    SetStepComplete(Player,CV_Q,14)
+    end
+    if HasQuest(Player,CV) then
+    SetStepComplete(Player,CV,8)        
+    end             
+    -- Half Elf / Wood Elf
+    elseif Race == 6 or Race == 15 then
+    if HasQuest(Player,WW_Q) then
+    SetStepComplete(Player,WW_Q,14)
+    end
+    if HasQuest(Player,WW) then
+    SetStepComplete(Player,WW,8)        
+    end                  
+    -- Gnome / Halfling
+    elseif Race == 5 or Race == 7 then
+    if HasQuest(Player,BB_Q) then
+    SetStepComplete(Player,BB_Q,14)
+    end
+    if HasQuest(Player,BB) then
+    SetStepComplete(Player,BB,8)        
+    end    
+    else
+    if HasQuest(Player,NV_Q) then
+    SetStepComplete(Player,NV_Q,14)
+    end
+    if HasQuest(Player,NV) then
     SetStepComplete(Player,NV,8)        
     end
 end
@@ -459,7 +612,7 @@ end
     PlaySound(Player, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)
     ApplySpellVisual(Player, 324)
     AddTimer(Player,1000,"TaskDone",1)
-   conversation = CreateConversation()
+    conversation = CreateConversation()
     AddConversationOption(conversation, "[Stuff the completed forms away]","TaskDone")
     StartDialogConversation(conversation, 2, Item, Player, "Well done, you've faked becoming a citizen of Qeynos!")
 end

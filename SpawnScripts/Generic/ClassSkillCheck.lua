@@ -792,6 +792,10 @@ if not HasSkill(Spawn, 2200201799) then -- Disarm Trap
     AddSkill(Spawn, 2200201799,1,level)
     SendMessage(Spawn, "You have learned the Disarm Trap skill")
 end
+if not HasSkill(Spawn, 3232294366) then -- Safe Fall
+    AddSkill(Spawn, 3232294366,1,level)
+    SendMessage(Spawn, "You have learned the Safe Fall skill")
+end
  if not HasSkill(Spawn, 1756482397) then -- Ranged
     AddSkill(Spawn, 1756482397,1,level)
     SendMessage(Spawn, "You have learned the Ranged skill")
