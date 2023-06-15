@@ -83,50 +83,57 @@ end
 function Intro(Item,Player)
     local Race = GetRace(Player)
     conversation = CreateConversation()
-    AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
     if Race == 11 then --Kerra
-    if not HasQuest(Player,NV_Q) then
+    if not HasQuest(Player,NV_Q) and not HasCompletedQuest(Player,NV_Q) then
+    AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
      OfferQuest(nil,Player,NV_Q)
     end 
     
     -- Erudite
     elseif Race == 3 or Race == 20 then
-    if not HasQuest(Player,SC_Q) then
-    OfferQuest(nil,Player,SC_Q)
+    if not HasQuest(Player,SC_Q)  and not HasCompletedQuest(Player,SC_Q) then
+     AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
+   OfferQuest(nil,Player,SC_Q)
     end
     
     elseif Race == 9 then --Human
        local con = CreateConversation()
-    if not HasQuest(Player,NV_Q) then
+    if not HasQuest(Player,NV_Q) and not HasCompletedQuest(Player,NV_Q)  then
+    AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
     OfferQuest(nil,Player,NV_Q)
     end
     
     -- Barbarian / Dwarf
     elseif Race == 0 or Race == 2 then
-    if not HasQuest(Player,GS_Q) then
+    if not HasQuest(Player,GS_Q) and not HasCompletedQuest(Player,GS_Q)  then
+    AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
     OfferQuest(nil,Player,GS_Q)
     end
     
     -- Froglok / High Elf 
     elseif Race == 4 or Race == 8 then
-    if not HasQuest(Player,CV_Q) then
+    if not HasQuest(Player,CV_Q)  and not HasCompletedQuest(Player,CV_Q) then
+    AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
     OfferQuest(nil,Player,CV_Q)
     end
     
     -- Half Elf / Wood Elf
     elseif Race == 6 or Race == 15 or Race == 16 then
-    if not HasQuest(Player,WW_Q) then
-     OfferQuest(nil,Player,WW_Q)
+    if not HasQuest(Player,WW_Q)  and not HasCompletedQuest(Player,WW_Q) then
+     AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
+    OfferQuest(nil,Player,WW_Q)
     end
     
     -- Gnome / Halfling
     elseif Race == 5 or Race == 7 then
-    if not HasQuest(Player,BB_Q) then
+    if not HasQuest(Player,BB_Q)  and not HasCompletedQuest(Player,BB_Q) then
+    AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
     OfferQuest(nil,Player,BB_Q)
     end
     
     else
-    if not HasQuest(Player,NV_Q) then
+    if not HasQuest(Player,NV_Q)  and not HasCompletedQuest(Player,NV_Q) then
+    AddConversationOption(conversation, "[Make up a Steward name]","Welcome1")
     OfferQuest(nil,Player,NV_Q)
     end
     end

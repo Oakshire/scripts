@@ -35,7 +35,7 @@ function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/taskmaster_lynette/qey_harbor/taskmasterlynette000.mp3", "", "", 2422547870, 3187249838, Spawn)
+	PlayFlavor(NPC, "voiceover/english/taskmaster_lynette/qey_harbor/taskmasterlynette000.mp3", "", "tapfoot", 2422547870, 3187249838, Spawn)
 	if GetQuestStep(Spawn, A1) == 4 then
 		AddConversationOption(conversation, "I won't bother you then.")
 		AddConversationOption(conversation, "What is a Far Seas Requisition?", "dlg_3_1")
@@ -137,7 +137,7 @@ function dlg_3_2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
-	PlayFlavor(NPC, "voiceover/english/taskmaster_lynette/qey_harbor/taskmasterlynette002.mp3", "", "", 3001837794, 1766542530, Spawn)
+	PlayFlavor(NPC, "voiceover/english/taskmaster_lynette/qey_harbor/taskmasterlynette002.mp3", "", "heckno", 3001837794, 1766542530, Spawn)
 	AddConversationOption(conversation, "Good day to you. ")
 	StartConversation(conversation, NPC, Spawn, "This is the office for processing requisition orders, not the office for employment. We have more than enough huntsmen on staff.  So, unless you happen to find an unclaimed Far Seas Requisition and fill its order... our business is done.  Good day. Next!")
 end

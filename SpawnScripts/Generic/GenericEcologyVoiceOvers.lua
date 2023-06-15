@@ -1880,6 +1880,8 @@ function GenericRaceCheckHail(NPC, Spawn, faction)
 	local zone = GetZone(NPC)
 	if GetZoneID(zone) >= 220 and GetZoneID(zone) <= 238 then
 	    GOOD = true
+	elseif GetZoneID(zone) == 12 then
+	    GOOD = true
 	elseif GetZoneID(zone) == 207 then
 	    GOOD = true
 	elseif GetZoneID(zone) >= 195 and GetZoneID(zone) <= 198 then
