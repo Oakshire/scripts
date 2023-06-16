@@ -8,6 +8,17 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/BaseGoblin1.lua")
 
 function spawn(NPC)
+    local ID = GetSpawnID(NPC)
+    if ID ==3250122 then
+    SetInfoStructString(NPC, "action_state", "cooking_idle")
+    elseif ID ==3250104 then
+    SetInfoStructString(NPC, "action_state", "mining_digging")
+    elseif ID ==3250105 then
+    SetInfoStructString(NPC, "action_state", "forestry_chopping")
+    elseif ID ==3250095 then
+    SetInfoStructString(NPC, "action_state", "woodworking_idle")
+    end
+    
     local Level = GetLevel(NPC)
     local level1 = 3
     local level2 = 4

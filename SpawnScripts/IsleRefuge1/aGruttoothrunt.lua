@@ -97,12 +97,12 @@ function InitialPause(NPC)
 end
 
 function Gather(NPC)
-    SpawnSet(NPC, "visual_state", "2809")	-- Start gathering
+    SpawnSet(NPC, "visual_state", "gathering_search")	-- Start gathering
     AddTimer(NPC, 8000, "Collect")	        -- for 5 seconds, then stop
 end
 
 function Collect(NPC)
-    SpawnSet(NPC, "visual_state", "2810")	-- Start gathering
+    SpawnSet(NPC, "visual_state", "gathering_success")	-- Start gathering
     AddTimer(NPC, 2000, "stop_gathering")	-- for 5 seconds, then stop
 end
 

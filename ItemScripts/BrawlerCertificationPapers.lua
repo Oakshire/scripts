@@ -40,11 +40,11 @@ function Class(Item, Player)
     SetAdventureClass(Player,5)   
    local level = GetLevel(Player)*5
 
-if HasSkill(Player, 1408356869) then -- Martial
+if not HasSkill(Player, 1408356869) then -- Martial
     AddSkill(Player, 1408356869,1,level)
     SendMessage(Player, "You have learned the Martial skill")
 end
-if HasSkill(Player, 3856706740) then -- Brawling
+if not HasSkill(Player, 3856706740) then -- Brawling
     AddSkill(Player, 3856706740,1,level)
     SendMessage(Player, "You have learned the Brawling skill")
 end

@@ -106,7 +106,7 @@ if not HasSkill(Player, 3180399725) then -- Staff(2h)
    SendMessage(Player, "You are now more proficient with a Staff")
 end
 --REMOVE SKILLS
--- Remove Fighter for Scout
+-- Remove Fighter
 if HasSkill(Player, 1408356869) then -- Martial/Fighter
     RemoveSkill(Player, 1408356869)
 end
@@ -138,7 +138,7 @@ if HasSkill(Player, 2741805322) then -- Determined Zeal/Shadowknight
     RemoveSkill(Player, 2741805322)
 end
 
---Removed Advance Scout
+--Remove Scout
 if HasSkill(Player, 1921433074) then -- Reconnaissance/Scout
     RemoveSkill(Player, 1921433074)
 end
@@ -196,7 +196,7 @@ if HasSkill(Player, 3191839982) then -- Vehemence/Defiler
     RemoveSkill(Player, 3191839982)
 end
 
---Removed Mage for Scout
+--Remove Mage
 if HasSkill(Player, 3820670534) then -- Evocations/Mage
     RemoveSkill(Player, 3820670534)
 end

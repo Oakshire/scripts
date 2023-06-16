@@ -75,13 +75,13 @@ function waypoints(NPC)
 	MovementLoopAddLocation(NPC, 10.74, -5.06, 180.22, 2, 0)
 	MovementLoopAddLocation(NPC, 20.08, -6.86, 183.67, 2, 0)
 	MovementLoopAddLocation(NPC, 23.74, -6.86, 187.07, 2, 15,"InitialPause")
-	MovementLoopAddLocation(NPC, 20.06, -6.88, 192.26, 2, 0)
+	MovementLoopAddLocation(NPC, 20.06, -6.88, 192.26, 2, 0,"stop_gathering")
 	MovementLoopAddLocation(NPC, 20.69, -6.86, 199.29, 2, 15,"InitialPause")
-	MovementLoopAddLocation(NPC, 24.24, -6.86, 192.73, 2, 0)
+	MovementLoopAddLocation(NPC, 24.24, -6.86, 192.73, 2, 0,"stop_gathering")
 	MovementLoopAddLocation(NPC, 28.21, -6.86, 190.32, 2, 15,"InitialPause")
-	MovementLoopAddLocation(NPC, 22.37, -6.86, 194.32, 2, 0)
+	MovementLoopAddLocation(NPC, 22.37, -6.86, 194.32, 2, 0,"stop_gathering")
 	MovementLoopAddLocation(NPC, 11.12, -6.9, 205.21, 2, 15,"InitialPause")
-	MovementLoopAddLocation(NPC, 12.8, -6.9, 200.16, 2, 0)
+	MovementLoopAddLocation(NPC, 12.8, -6.9, 200.16, 2, 0,"stop_gathering")
 	MovementLoopAddLocation(NPC, 5.85, -5.45, 189.64, 2, 0)
 	MovementLoopAddLocation(NPC, -0.07, -5.22, 183.06, 2, 0)
 	MovementLoopAddLocation(NPC, -7.59, -5.19, 186.27, 2, 0)
@@ -90,7 +90,7 @@ function waypoints(NPC)
 end
 
 function InitialPause(NPC)
-    local GatherSpawn = GetSpawn(NPC, 3250033)	-- Get Greenlock
+    local GatherSpawn = GetSpawn(NPC, 3250033)	-- Get Anikra
 
     math.randomseed(os.time())
     local pause = math.random (1, 4)
@@ -105,13 +105,13 @@ end
 
 function Gather(NPC)
     local GatherSpawn = GetSpawn(NPC, 3250033)	-- Get Anikra
-    SpawnSet(NPC, "visual_state", "2809")	-- Start gathering
+    SpawnSet(NPC, "visual_state", "gathering_search")	-- Start gathering
     AddTimer(NPC, 8000, "Collect")	        -- for 5 seconds, then stop
 end
 
 function Collect(NPC)
     local GatherSpawn = GetSpawn(NPC, 3250033)	-- Get Anikra
-    SpawnSet(NPC, "visual_state", "2810")	-- Start gathering
+    SpawnSet(NPC, "visual_state", "gathering_success")	-- Start gathering
     AddTimer(NPC, 2000, "stop_gathering")	-- for 5 seconds, then stop
 end
 

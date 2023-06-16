@@ -163,7 +163,7 @@ function Dialog9(NPC, Spawn)
 	Dialog.AddDialog("The requirements of the cities are stricter and they now require us to train the refugees before bringing them to the cities. It eats at our profits and doesn't even guarantee the refugee citizenship.")
 	Dialog.AddVoiceover("voiceover/english/duke_ferrin/tutorial_island02/dukeferrin018.mp3", 2405207983, 1515901840)
 		PlayFlavor(NPC, "", "", "agree", 0, 0, Spawn)
-	Dialog.AddOption("Citizenship?", "Dialog1")
+	Dialog.AddOption("Citizenship?", "Dialog10")
 	Dialog.AddOption("Thanks, I need to go now.")
 	Dialog.Start()
 end

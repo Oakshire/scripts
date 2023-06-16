@@ -25,7 +25,10 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    if HasQuest(Spawn,Bard) or
+    if HasQuest(Spawn,5858)then
+    SetStepComplete(Spawn,5858,2)
+	PlayFlavor(NPC, "voiceover/english/human_eco_good_1/ft/human/human_eco_good_1_hail_gm_d38d1fff.mp3", "Ah, what have we here?  Glad to see you endured the journey here adventurer.", "ponder", 2806352129, 3453714070, Spawn)
+    elseif HasQuest(Spawn,Bard) or
     HasQuest(Spawn,Brawler) or
     HasQuest(Spawn,Cleric) or
     HasQuest(Spawn,Crusader) or

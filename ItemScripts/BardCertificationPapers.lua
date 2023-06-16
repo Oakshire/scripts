@@ -44,7 +44,7 @@ if not HasSkill(Player, 1921433074) then -- Reconnaissance
     AddSkill(Player, 1921433074,1,level)
     SendMessage(Player, "You have learned the Reconnaissance skill")
 end
-if HasSkill(Player, 1311635100) then -- Melodies/Bard
+if not HasSkill(Player, 1311635100) then -- Melodies/Bard
     AddSkill(Player, 1311635100,1,level)
     SendMessage(Player, "You have learned the Melodies skill")
 end

@@ -19,6 +19,7 @@ function spawn(NPC)
     ProvidesQuest(NPC, Fighter4)
     ProvidesQuest(NPC, Fighter5)
     ProvidesQuest(NPC, Fighter6)
+    SetInfoStructString(NPC, "action_state", "metalworking_idle")
     end
 
 function InRange(NPC,Spawn)

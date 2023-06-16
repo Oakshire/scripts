@@ -614,6 +614,7 @@ local Race = GetRace(Player)
     SetStepComplete(Player,NV,8)        
     end
 end
+    AddSpellBookEntry(Player, 8057, 1) --CALL TO QEYNOS
     SendMessage(Player, "You are now a Citizen of Qeynos!","yellow")
     SendPopUpMessage(Player, "You are now a Citizen of Qeynos!",250,250,250)
     PlaySound(Player, "sounds/test/endquest.wav", GetX(Spawn), GetY(Spawn), GetZ(Spawn), Spawn)

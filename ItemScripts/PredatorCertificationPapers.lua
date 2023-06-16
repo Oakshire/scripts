@@ -45,7 +45,7 @@ if not HasSkill(Player, 1921433074) then -- Reconnaissance
     AddSkill(Player, 1921433074,1,level)
     SendMessage(Player, "You have learned the Reconnaissance skill")
 end
-if HasSkill(Player, 3167106577) then -- Stalking/Predator
+if not HasSkill(Player, 3167106577) then -- Stalking/Predator
     AddSkill(Player, 3167106577,1,level)
     SendMessage(Player, "You have learned the Stalking skill")
 end

@@ -28,6 +28,7 @@ local SARNAK = 18
 local VAMPIRE = 19
 local AERAKYN = 20
 
+local AntonicaQuest = 5858
 
 function spawn(NPC)
 
@@ -40,12 +41,13 @@ function hailed(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/scribe_duvo/qey_elddar/100_scribe_halfling_duvo_callout1_c6eaefe5.mp3", 3948051330, 1166584264)
     PlayFlavor(NPC, "", "", "hello", 0, 0, Spawn)
     if GetQuestStep(Spawn,5717)==2 or HasCompletedQuest(Spawn, 5717) then 
-    Dialog.AddOption("Get me out of here! [EMU Test Buff]","Item_Buff1")
+    Dialog.AddOption("Get me out of here!\n[EMU Test Buff]","Item_Buff1")
     elseif GetQuestStep(Spawn,5758)==2 or HasCompletedQuest(Spawn, 5758) then
-    Dialog.AddOption("Get me out of here! [EMU Test Buff]","Item_Buff1")
+    Dialog.AddOption("I've seen enough here.\n[EMU Test Buff]","Item_Buff1")
     else
-    Dialog.AddOption("Get me out of here! [EMU Test Buff]","Fail")
+    Dialog.AddOption("I've seen enough here. [EMU Test Buff]","Fail")
     end       
+    Dialog.AddOption("Can you sneak me off the island? \n[EMU Fast-Track]","FastTrack")	
     Dialog.AddOption("Good day to you!")	
 	Dialog.Start()
 end
@@ -57,8 +59,25 @@ function Fail(NPC,Spawn)
         StartDialogConversation(con, 1, NPC, Spawn, "Before you can EMU Test buff you must: \n\n 1) Pick an Archetype class from Garven Tralk at the beach. \n\n 2) Speak with an ambassador and select a city.\n\n 3) Secure a boat off the island with Duke Ferrin.")
 end
 
+function FastTrack(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+	Dialog.AddDialog("Excellent. Are you ready to start?")
+    PlayFlavor(NPC,"","","agree",0,0,Spawn)
+	Dialog.AddVoiceover("voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_005.mp3", 346565467, 222391193)
+    Dialog.AddOption("Take me to Antonica.","ToAntonica")	
+    Dialog.AddOption("Nevermind.")	
+	Dialog.Start()
+end
 
-
+function ToAntonica(NPC,Spawn)
+    FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)   
+	Dialog.AddDialog("Find me once you arrive. Alright, see this barrel here? Climb in.")
+    Dialog.AddOption("Umm...")	
+	Dialog.Start()
+	OfferQuest(NPC,Spawn,AntonicaQuest)
+end
 
 function CloseConvo(NPC,Spawn)
     CloseConversation(NPC,Spawn)
@@ -82,6 +101,7 @@ function Item_Buff1(NPC,Spawn)
 	SendOptionWindow(window, Spawn, "Are you sure you wish to leave the Isle of Refuge?", "Cancel")
 end
 end
+
 
 function Item_Buff2(NPC,Spawn)
     AddTimer(NPC,1500,"Trip",1,Spawn)
@@ -321,7 +341,7 @@ function LeaveIslandFP(NPC, Spawn)
 
     else 
 --        AddSpellBookEntry(Spawn, 8057, 1)
-        ZoneRef = GetZone("EastFreeport")
+        ZoneRef = GetZone("BeggarsCourt")
         Zone(ZoneRef,Spawn)
 
     end
