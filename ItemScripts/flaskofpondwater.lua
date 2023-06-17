@@ -1,15 +1,15 @@
 --[[
-    Script Name    : ItemScripts/canteenofpondwater.lua
+    Script Name    : ItemScripts/flaskofpondwater.lua
     Script Author  : LordPazuzu
-    Script Date    : 2022.12.27 07:12:46
+    Script Date    : 2023.06.16 04:06:24
     Script Purpose : 
                    : 
 --]]
 
 function cast(Item, Player)
-	Spell = GetSpell(5463)
+	Spell = GetSpell(5009)
 	Regenz = 11.4
-	newDuration = 1800
+	newDuration = 900
 	SetSpellData(Spell, "duration1", newDuration)
 	SetSpellData(Spell, "duration2", newDuration)
 	SetSpellDataIndex(Spell, 0, Regenz)
