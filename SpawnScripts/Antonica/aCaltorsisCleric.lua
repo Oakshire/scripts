@@ -8,7 +8,7 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/BaseGhost1.lua")
 
 function spawn(NPC)
-     Appearace(NPC)
+     Appearance(NPC)
    local Level = GetLevel(NPC)
     local level1 = 18
     local level2 = 19

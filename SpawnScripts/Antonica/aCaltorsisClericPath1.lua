@@ -27,7 +27,7 @@ function spawn(NPC)
     SpawnSet(NPC, "hp", hp2)
     SpawnSet(NPC, "power", power2)
     end
-
+Appearance(NPC)
 waypoints(NPC)
 end
 

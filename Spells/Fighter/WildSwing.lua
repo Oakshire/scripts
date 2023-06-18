@@ -22,5 +22,5 @@ function cast(Caster, Target, DmgType, MinVal, MaxVal)
     MinDmg = MinVal + math.floor(DmgBonus)
     
     SpellDamage(Target, DmgType, MinDmg, MaxDmg)
- 
+
 end
