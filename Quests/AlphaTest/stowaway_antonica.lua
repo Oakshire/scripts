@@ -17,7 +17,33 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	    PlayFlavor(QuestGiver, "", "", "wink", 0, 0, Player)
-            Antonica = GetZone("Antonica")
+
+
+Qeynos = GetFactionAmount(Player, 11)
+Freeport = GetFactionAmount(Player, 12)
+Neriak = GetFactionAmount(Player, 13)
+Kelethin = GetFactionAmount(Player, 14)
+Halas = GetFactionAmount(Player, 16)
+Gorowyn = GetFactionAmount(Player, 17)
+alignment = GetAlignment(Player)
+
+if GetRace(Player) == 0 or GetRace(Player) == 3 or GetRace(Player) == 5 or GetRace(Player) == 6 or GetRace(Player) == 9 or GetRace(Player) == 11 or GetRace(Player) == 20 then
+SetAlignment(Player, 1)
+end
+
+if Qeynos ==0 then ChangeFaction(Player, 11, 20000)
+end
+if Freeport ==0 then ChangeFaction(Player, 12, -40000)
+end
+--[[if Neriak ==0 then ChangeFaction(Player, 13, Neriak)
+end
+if Kelethin ==0 then ChangeFaction(Player, 14, Kelethin)
+end
+if Halas ==0 then ChangeFaction(Player, 16, Halas)
+end
+if Gorowyn ==0 then ChangeFaction(Player, 17, -Gorowyn)
+end--]]
+        Antonica = GetZone("Antonica")
        Zone(Antonica,Player,396.44,-38.47, 812.79, 13.82)	    
 end
 

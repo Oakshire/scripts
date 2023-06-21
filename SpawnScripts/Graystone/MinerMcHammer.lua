@@ -1,11 +1,10 @@
 --[[
-    Script Name    : SpawnScripts/Antonica/anoverlandminer.lua
+    Script Name    : SpawnScripts/Graystone/MinerMcHammer.lua
     Script Author  : Dorbin
-    Script Date    : 2023.05.26 11:05:24
+    Script Date    : 2023.06.20 03:06:48
     Script Purpose : 
                    : 
 --]]
-dofile("SpawnScripts/Generic/MonsterCallouts/BaseDwarf1.lua")
 
 function spawn(NPC)
     SetInfoStructString(NPC, "action_state", "mining_digging")

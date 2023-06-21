@@ -9,7 +9,7 @@
 local CalcifiedBoneOfTheTortured = 527
 
 function spawn (NPC)
-
+    SetInfoStructString(NPC, "action_state", "metalworking_idle")
 end
 
 function respawn(NPC)

@@ -8,6 +8,8 @@
         Quest Giver: 
         Preceded by: None
         Followed by: 
+        
+https://eq2.fanbyte.com/db/quest.html?eq2quest=49b43a2e30c2fe7f313bd0fd8b85b569#Dialogue        
 --]]
 
 function Init(Quest)

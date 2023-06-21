@@ -12,6 +12,7 @@ local DoesTheUnderforgeExist = 5518
 
 function spawn(NPC)
 ProvidesQuest(NPC, DoesTheUnderforgeExist)
+    SetInfoStructString(NPC, "action_state", "metalworking_idle")
 end
 
 function respawn(NPC)

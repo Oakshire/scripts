@@ -20,7 +20,7 @@ local Summoner = 5854
 local Warrior = 5847
 
 function spawn(NPC)
-
+    SetInfoStructString(NPC, "action_state", "ponder")
 end
 
 function hailed(NPC, Spawn)

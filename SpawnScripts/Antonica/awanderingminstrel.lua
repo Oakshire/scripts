@@ -8,7 +8,9 @@
 dofile("SpawnScripts/Generic/MonsterCallouts/Windstalkers.lua")
 
 function spawn(NPC)
-State(NPC)
+--State(NPC)
+--   SetInfoStructString(NPC, "action_state", "cast_bard_stringed_persist")
+   SpawnSet(NPC,"visual_state,","cast_bard_stringed_persist")
 end
 
 function hailed(NPC, Spawn)
@@ -26,7 +28,7 @@ end
 end
 
 function State(NPC)
-   SpawnSet(NPC,"visual_state,",15260)
+   SpawnSet(NPC,"visual_state,","cast_bard_stringed_persist")
 end
 
 
@@ -37,9 +39,9 @@ end
 --AGGRO CHECK --
 
 function aggro(NPC,Spawn) --RACE CHECK
+    SpawnSet(NPC,"visual_state,",0)
     SetTempVariable(NPC, "CalloutTimer", "false")
     SetTempVariable(NPC, "HealthCallout", "false")
-   SpawnSet(NPC,"visual_state,",0)
 if  GetTempVariable(NPC, "CalloutTimer")== "false"then
     SetTempVariable(NPC, "CalloutTimer", "true")
     AddTimer(NPC,7000,"ResetTimer")
@@ -146,7 +148,6 @@ end
 -- Victory CHECK --
 
 function victory(NPC,Spawn) --RACE CHECK
-    SpawnSet(NPC,"visual_state,",15260)
     if GetGender(NPC)==1 then
 	 local choice = MakeRandomInt(1,2)
 	    if choice == 1 then

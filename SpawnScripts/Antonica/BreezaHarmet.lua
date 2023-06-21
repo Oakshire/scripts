@@ -11,6 +11,7 @@ local ExploringTheChessboard = 5348
 
 function spawn(NPC)
 ProvidesQuest(NPC, ExploringTheChessboard)
+    SetInfoStructString(NPC, "action_state", "artificing_idle")
 end
 
 

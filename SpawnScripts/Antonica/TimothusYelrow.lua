@@ -10,6 +10,7 @@ local CorroboratingTheExistenceOfTheStormholdLibrary  = 5794 -- quest ID
 
 function spawn(NPC)
 ProvidesQuest(NPC, CorroboratingTheExistenceOfTheStormholdLibrary)
+    SetInfoStructString(NPC, "action_state", "ponder")
 end
 
 function hailed(NPC, Spawn)

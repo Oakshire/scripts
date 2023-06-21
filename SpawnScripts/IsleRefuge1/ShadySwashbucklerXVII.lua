@@ -31,7 +31,7 @@ local AERAKYN = 20
 local AntonicaQuest = 5858
 
 function spawn(NPC)
-
+   SetInfoStructString(NPC, "action_state", "ponder")
 end
 
 function hailed(NPC, Spawn)
@@ -62,9 +62,9 @@ end
 function FastTrack(NPC, Spawn)
     FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)   
-	Dialog.AddDialog("Excellent. Are you ready to start?")
+	Dialog.AddDialog("...")
     PlayFlavor(NPC,"","","agree",0,0,Spawn)
-	Dialog.AddVoiceover("voiceover/english/ignar_steadirt/antonica/quests/firemyst/ignar_steadirt_005.mp3", 346565467, 222391193)
+--	Dialog.AddVoiceover("voiceover/english/broker_algernon/qey_harbor/034_con_merchant_algernon_human_1_hail_55be2bc8.mp3", 99913618, 1474936299)
     Dialog.AddOption("Take me to Antonica.","ToAntonica")	
     Dialog.AddOption("Nevermind.")	
 	Dialog.Start()
