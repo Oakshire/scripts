@@ -3,7 +3,7 @@
 	Script Purpose	: Rala Eurocarry <Crafting Trainer>
 	Script Author	: Scatman
 	Script Date	: 2009.09.27
-	Script Notes	: 
+	Script Notes	: Updated 1/22/2023 Dorbin
 --]]
 require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")

@@ -15,6 +15,10 @@ end
 
 function hailed(NPC, Spawn)
 FaceTarget(NPC, Spawn) 
+if HasQuest(Spawn,5766) and not QuestStepIsComplete(Spawn,5766,6)then --WELCOME TO QEYNOS,CITIZEN
+    SetStepComplete(Spawn,5766,6)
+end
+
 if not HasQuest(Spawn, TheseBootsWereMadeFor) or GetQuestStep(Spawn, TheseBootsWereMadeFor, 8) or  GetQuestStep(Spawn, TheseBootsWereMadeFor, 10) or GetQuestStep(Spawn, TheseBootsWereMadeFor, 11) or GetQuestStep(Spawn, TheseBootsWereMadeFor, 12) or HasCompletedQuest(Spawn, TheseBootsWereMadeFor)  then
 Dialog1(NPC, Spawn)
 elseif GetQuestStep(Spawn, TheseBootsWereMadeFor) == 1 or  GetQuestStep(Spawn, TheseBootsWereMadeFor) == 2 then

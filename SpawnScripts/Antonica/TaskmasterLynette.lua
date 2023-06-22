@@ -33,6 +33,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
+
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/taskmaster_lynette/qey_harbor/taskmasterlynette000.mp3", "", "tapfoot", 2422547870, 3187249838, Spawn)
@@ -134,7 +135,10 @@ function dlg_3_1(NPC, Spawn)
 end
 
 function dlg_3_2(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+if HasQuest(Spawn,5766) and not QuestStepIsComplete(Spawn,5766,5)then --WELCOME TO QEYNOS,CITIZEN
+    SetStepComplete(Spawn,5766,5)
+end
+FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 
 	PlayFlavor(NPC, "voiceover/english/taskmaster_lynette/qey_harbor/taskmasterlynette002.mp3", "", "heckno", 3001837794, 1766542530, Spawn)

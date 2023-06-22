@@ -70,10 +70,11 @@ end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
-	conversation = CreateConversation()
-	PlayFlavor(QuestGiver, "voiceover/english/sir_alesso/qey_north/sir_alesso002.mp3", "", "", 2041064542, 2502837283, Player)
-	AddConversationOption(conversation, "I'll do it for Qeynos.")
-	StartConversation(conversation, QuestGiver, Player, "Rid Antonica of the rats, snakes and beetles that plague Qeynos.  Dispatch of no less than ten of each and we shall reward your service.")
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Rid Antonica of the rats, snakes and beetles that plague Qeynos.  Dispatch of no less than ten of each and we shall reward your service.")
+	Dialog.AddVoiceover("voiceover/english/sir_alesso/qey_north/sir_alesso002.mp3", 2041064542, 2502837283)
+	Dialog.AddOption("I'll do it for Qeynos.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)
