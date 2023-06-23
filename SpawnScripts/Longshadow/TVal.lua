@@ -19,13 +19,6 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-    if GetQuestStep(Spawn, ForThatSpecialSomeone) == 1 then
-        SetStepComplete(Spawn, ForThatSpecialSomeone, 1)
-    end
-    Dialog1(NPC, Spawn)
-end
-
-function hailed(NPC, Spawn)
 if GetFactionAmount(Spawn,12) <0 then
 	PlayFlavor(NPC, "", "", "shakefist", 0, 0, Spawn)
 elseif HasQuest(Spawn,Citizenship) and GetQuestStep(Spawn,Citizenship)==4 then
@@ -40,7 +33,21 @@ function Dialog1(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Hail to you.  Currency exchange, secure storage of goods, I offer a range of services tailored to the needs of Freeport guild members.")
 	Dialog.AddVoiceover("voiceover/english/banker_t_val/fprt_hood05/bnk_banker_tval.mp3", 90970771, 1252206294)
-	Dialog.AddOption("I'll keep that in mind.")
+    if GetQuestStep(Spawn, ForThatSpecialSomeone) == 1 then
+	Dialog.AddOption("Your wife asked me to bring you this bottle of wine.","Wine")
+    end
+    Dialog.AddOption("I'll keep that in mind.")
+	Dialog.Start()
+end
+
+function Wine(NPC, Spawn)
+	FaceTarget(NPC, Spawn)
+	Dialog.New(NPC, Spawn)
+	Dialog.AddDialog("She did? Why? Well... let me see that wine! Hmmm... my favorite. It smells normal. I guess it's all right, then.  Tell her that I will thank her when I next see her. I'll... um... be working late again tonight, so tell her not to wait up.")
+	Dialog.AddVoiceover("voiceover/english/banker_t_val/fprt_hood05/bnk_banker_tval006.mp3", 415080394, 1146938462)
+	PlayFlavor(NPC, "", "", "ponder", 0, 0, Spawn)
+	Dialog.AddOption("I will let her know...")
+    SetStepComplete(Spawn, ForThatSpecialSomeone, 1)
 	Dialog.Start()
 end
 
