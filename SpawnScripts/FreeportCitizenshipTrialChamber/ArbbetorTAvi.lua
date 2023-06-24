@@ -36,6 +36,7 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
+    PlaySound(NPC,"sounds/ui/freeport_citizenship.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
 if  GetQuestStep (Spawn,BBFCitizen )==3 or GetQuestStep (Spawn,Beg_FCitizen  )==3 or GetQuestStep (Spawn,LA_FCitizen)==3 or GetQuestStep (Spawn,Scale_FCitizen )==3 or GetQuestStep (Spawn,Stone_FCitizen )==3 or GetQuestStep (Spawn,Temp_FCitizen)==3  then
     Dialog1(NPC,Spawn)
 elseif  GetQuestStep (Spawn,BBFCitizen )==8 or GetQuestStep (Spawn,Beg_FCitizen  )==8 or GetQuestStep (Spawn,LA_FCitizen)==8 or GetQuestStep (Spawn,Scale_FCitizen )==8 or GetQuestStep (Spawn,Stone_FCitizen )==8 or GetQuestStep (Spawn,Temp_FCitizen)==8  then
@@ -53,7 +54,7 @@ elseif HasCompletedQuest(Spawn,BBFCitizen ) or HasCompletedQuest(Spawn,Beg_FCiti
      Dialog2(NPC,Spawn)
 else
 	FaceTarget(NPC, Spawn)
-    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_notcitizen_gf_48350e59.mp3","You're not allowed in here!  Off with you until you've proven yourself to complete this trial.", "shame", 3405287024, 2122169059, Spawn)
+    PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_notcitizen_gf_48350e59.mp3","You're not allowed in here!  Off with you until you've proven yourself to complete this trial.", "glare", 3405287024, 2122169059, Spawn)
 end    
 end
 
@@ -63,18 +64,18 @@ function Dialog1(NPC,Spawn)
 	Dialog.AddDialog("Well, well... I've been expecting you. You're not quite what I hoped, given T'Kirr's glowing recommendation, but you'll do.")
 	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi001.mp3", 1917752715, 2073406033)
     PlayFlavor(NPC,"","","nod",0,0,Spawn)
-    Dialog.AddOption("Excuse me?", "Option1A")
+    Dialog.AddOption("Do?  What do you mean?", "Option1A")
 	Dialog.Start()
 end	
  
 
-function Option1Aa (NPC,Spawn)
+function Option1A (NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Of course, they're allowed to leave.  Problem is, these folks have been plottin' the murder of one of our fine citizens, and we can't have that.")
-	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi003.mp3", 2786599552, 1370339276)
-    PlayFlavor(NPC,"","","boggle",0,0,Spawn)
-	Dialog.AddOption("[continue]", "Option1B")
+	Dialog.AddDialog("You're here to become a citizen, aren't you?")
+	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi002.mp3", 2786599552, 1370339276)
+    PlayFlavor(NPC,"","","",0,0,Spawn)
+	Dialog.AddOption("Of course.", "Option1B")
 	Dialog.Start()
 end	
 
@@ -84,8 +85,8 @@ function Option1B(NPC,Spawn)
 	Dialog.AddDialog("Then stop talking and start listening.  The Overlord has little time for those who don't know when to hold their tongue.")
 	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi003.mp3", 543002968, 1965375267)
     PlayFlavor(NPC,"","","scold",0,0,Spawn)
-	Dialog.AddOption("Speak to me again like that or I'll-", "Option1Fa")
-	Dialog.AddOption("[Listen carefully]", "Option1C")
+	Dialog.AddOption("Well, then make me a citizen already!", "Option1Fb")
+	Dialog.AddOption("...", "Option1C")
 	Dialog.Start()
 end	
 
@@ -94,7 +95,7 @@ function Option1C(NPC,Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("I see you learn quickly.  Now let's move on.")
 	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi005.mp3", 194269005, 133004706)
-	Dialog.AddOption("[Continue]", "Option1D")
+	Dialog.AddOption("[continue]", "Option1D")
 	Dialog.Start()
 end	
 
@@ -105,18 +106,18 @@ function Option1D(NPC,Spawn)
 	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi006.mp3", 476682468, 1543848106)
     PlayFlavor(NPC,"","","agree",0,0,Spawn)
 	Dialog.AddOption("I am to interrorgate them? Kill them, perhaps?", "Option1E")
-	Dialog.AddOption("Doing all this better be worth it.", "Option1Ea")
+	Dialog.AddOption("What do I get out of this?", "Option1Ea")
 	Dialog.Start()
 end	
 
 function Option1Ea(NPC,Spawn) --Evil
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Or you'll what? The Overlord brooks no insolence and neither do I.  You'll find little tolerance for back talk here.  Let's get on with this.")
-	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi004.mp3", 922126162, 3879014430)
+	Dialog.AddDialog("The honor of living among the elite, the citizens of Freeport. And, of course, you get to move out of this pit and away from the refugee trash, though with your attitude...")
+--	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi004.mp3", 922126162, 3879014430)
     PlayFlavor(NPC,"","","stare",0,0,Spawn)
 	Dialog.AddOption("I just don't understand why I should do YOUR job!", "Option1Fb")
-	Dialog.AddOption("[Listen patiently]", "Option1F")
+	Dialog.AddOption("[continue]", "Option1F")
 	Dialog.Start()
 end	
 
@@ -137,7 +138,7 @@ function Option1F(NPC,Spawn)
 	Dialog.AddDialog("As I was saying ... We ... err... I will determine your worth by how you take care of these misguided fools.")
 	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi006.mp3", 2699197105, 566046082)
     PlayFlavor(NPC,"","","agree",0,0,Spawn)
-	Dialog.AddOption("[Continue]", "Option1C")
+	Dialog.AddOption("I am ready to serve my Overlord.", "Option1C")
 	Dialog.Start()
 end	
 
@@ -161,6 +162,7 @@ function Option1Fb(NPC,Spawn) --Evil Fail
     PlayFlavor(NPC,"","","boggle",0,0,Spawn)
 	Dialog.AddOption("Ummm... I should be going.")
 	Dialog.Start()
+	SendPopUpMessage(Spawn,"The Overlord finds your obedience lacking.")
     AddTimer(NPC,4500,"FailureExit",1,Spawn)
 end	
 
@@ -172,7 +174,7 @@ function Option1F(NPC,Spawn)
 	Dialog.AddDialog("Go forth. Punish them as they deserve and as the Overlord commands. Your reward lies on the far side: entrance to the great city of Freeport.")
 	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi010.mp3", 3234477305, 2227612151)
     PlayFlavor(NPC,"","","nod",0,0,Spawn)
-	Dialog.AddOption("It will be done.")
+	Dialog.AddOption("Thank you Abbetor.")
 	Dialog.Start()
 	if HasQuest(Spawn,BBFCitizen ) then
 	SetStepComplete(Spawn,BBFCitizen ,3)
@@ -207,35 +209,36 @@ end
 function Dialog2(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Well done!  Ya proved yourself worthy of being a citizen!  You can enter the city through that other door if ya wish!  Course, all the other gates will be open too ya as well!")
-	Dialog.AddVoiceover("voiceover/english/marshal_glorfel/qey_catacomb_epic01/marshalglorfel013.mp3", 3736500157, 2254163136)
-    PlayFlavor(NPC,"","","thanks",0,0,Spawn)
-	Dialog.AddOption("I'm just glad I could serve Qeynos.")
+	Dialog.AddDialog("You surprised me... Your paperwork is signed, offically making you a citizen of Freeport. Let your actions continue to prove true to the Overlord, and we won't have to meet down here again under different circumstances...")
+	--Dialog.AddVoiceover("voiceover/english/marshal_glorfel/qey_catacomb_epic01/marshalglorfel013.mp3", 3736500157, 2254163136)
+    PlayFlavor(NPC,"","","nod",0,0,Spawn)
+	Dialog.AddOption("Those traitors got what they deserved.")
+	Dialog.AddOption("By The Overlord's will.")
 	Dialog.AddOption("As a citizen, what can I do now?", "Option2A")
 	Dialog.Start()
 	if HasQuest(Spawn,BBFCitizen ) then
 	SetStepComplete(Spawn,BBFCitizen ,8)
-        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO FREEPORT
         AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,Beg_FCitizen  ) then
  	SetStepComplete(Spawn,Beg_FCitizen  ,8)
-        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO FREEPORT
         AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,LA_FCitizen) then
  	SetStepComplete(Spawn,LA_FCitizen,8)
-        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO FREEPORT
         AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,Scale_FCitizen ) then
  	SetStepComplete(Spawn,Scale_FCitizen ,8)
-        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO FREEPORT
         AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,Stone_FCitizen ) then
  	SetStepComplete(Spawn,Stone_FCitizen ,8)
-        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO FREEPORT
        AddTimer(NPC,500,"Citizen",1,Spawn)
 	elseif HasQuest(Spawn,Temp_FCitizen) then
  	SetStepComplete(Spawn,Temp_FCitizen,8)
-        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
+        AddSpellBookEntry(Spawn, 8057, 1) --CALL TO FREEPORT
         AddTimer(NPC,500,"Citizen",1,Spawn)
 	end
 
@@ -264,11 +267,12 @@ end
 function Option2A(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("If yer lookin' for people to help, there are plenty of 'em within the city gates with things for ya to do!")
-	Dialog.AddVoiceover("voiceover/english/marshal_glorfel/qey_catacomb_epic01/marshalglorfel014.mp3", 3906614612, 3182552932)
-	Dialog.AddOption("Thanks, I'll see what I can find.","Done")
+	Dialog.AddDialog("I'll offer you one warning: Watch your step and your purse in Freeport. This city is full of questionable characters who would love to relieve you of your coin and your life. Now be on your way.")
+	Dialog.AddVoiceover("voiceover/english/julie_danerous/fprt_east/100_questjuliedanerou_multhail1_6195b062.mp3", 3623154907, 3385551552)
+	Dialog.AddOption("I'll keep that in mind.","Done")
 	Dialog.Start()
 end	
+
 
 function Dialog3(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
@@ -281,36 +285,38 @@ function Dialog3(NPC,Spawn)
 end	
 
 function Done(NPC,Spawn)
-    PlayFlavor(NPC,"","","salute",0,0,Spawn)
+    PlayFlavor(NPC,"","","salute_freeport",0,0,Spawn)
 end
 
 function FailureExit(NPC,Spawn)
-        if GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
-      BBShire = GetZone("Baubbleshire")
-       Zone(BBShire,Spawn,819.46, -20.60, -525.61, 200.47)
+       Race = GetRace(Spawn)
        
-    elseif GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
-        Gray = GetZone("graystone")
-        Zone(Gray,Spawn,865.03, -25.45, -97.91, 357.68)
+    if Race == 3 or Race == 11 then
+      StoneS = GetZone("Stonestair")
+       Zone(StoneS,Spawn,819.46, -20.60, -525.61, 200.47)
+       
+    elseif Race == 5 or Race == 13 then
+        TempS = GetZone("TempleSt")
+        Zone(TempS,Spawn,865.03, -25.45, -97.91, 357.68)
         
-    elseif GetRace(Spawn)== 4 or GetRace(Spawn)== 8 then
-        CV = GetZone("castleview")
-        Zone(CV,Spawn,729.01, -21.10, -124.36, 290.81)
+    elseif Race == 9 or Race == 6 then
+        Beg = GetZone("BeggarsCourt")
+        Zone(Beg,Spawn,729.01, -21.10, -124.36, 290.81)
         
-    elseif GetRace(Spawn)== 9 or GetRace(Spawn)== 11 then
-        Net = GetZone("nettleville")
-        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
+    elseif Race == 12 or Race == 14 then
+        Bend = GetZone("BigBend")
+        Zone(Bend,Spawn,670.07, -20.39, 273.85, 114.78)
         
-    elseif GetRace(Spawn)== 3 or GetRace(Spawn)== 8 then
-        SC = GetZone("starcrest")
-        Zone(SC,Spawn,704.07, -20.38, 264.40, 269.84)
+    elseif Race == 1  or Race == 19 or Race == 17 then
+        Long = GetZone("Longshadow")
+        Zone(Long,Spawn,704.07, -20.38, 264.40, 269.84)
         
-    elseif GetRace(Spawn)== 15 or GetRace(Spawn)== 16 or GetRace(Spawn)== 6 then
-        WW = GetZone("willowwood")
-        Zone(WW,Spawn,809.96, -21.30, -566.02, 323.13)
+    elseif Race == 0 or Race == 10 or Race == 18 then
+        Scale = GetZone("ScaleYard")
+        Zone(Scale,Spawn,809.96, -21.30, -566.02, 323.13)
         
     else
-        Net = GetZone("nettleville")
-        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
+        Net = GetZone("BeggarsCourt")
+        Zone(Beg,Spawn,670.07, -20.39, 273.85, 114.78)
     end
 end

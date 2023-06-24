@@ -206,27 +206,27 @@ function Dialog2(NPC,Spawn)
 	Dialog.AddOption("I'm just glad I could serve Qeynos.")
 	Dialog.AddOption("As a citizen, what can I do now?", "Option2A")
 	Dialog.Start()
-	if HasQuest(Spawn,BQCitizen) then
+	if HasQuest(Spawn,BQCitizen) and GetQuestStep(Spawn,BQCitizen)==8 then
 	SetStepComplete(Spawn,BQCitizen,8)
         AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
         AddTimer(NPC,500,"Citizen",1,Spawn)
-	elseif HasQuest(Spawn,CVQCitizen) then
+	elseif HasQuest(Spawn,CVQCitizen) and GetQuestStep(Spawn,CVCitizen)==8 then
  	SetStepComplete(Spawn,CVQCitizen,8)
         AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
         AddTimer(NPC,500,"Citizen",1,Spawn)
-	elseif HasQuest(Spawn,GQCitizen) then
+	elseif HasQuest(Spawn,GQCitizen) and GetQuestStep(Spawn,GQCitizen)==8 then
  	SetStepComplete(Spawn,GQCitizen,8)
         AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
         AddTimer(NPC,500,"Citizen",1,Spawn)
-	elseif HasQuest(Spawn,NQCitizen) then
+	elseif HasQuest(Spawn,NQCitizen) and GetQuestStep(Spawn,NQCitizen)==8 then
  	SetStepComplete(Spawn,NQCitizen,8)
         AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
         AddTimer(NPC,500,"Citizen",1,Spawn)
-	elseif HasQuest(Spawn,SCQCitizen) then
+	elseif HasQuest(Spawn,SCQCitizen) and GetQuestStep(Spawn,SCQCitizen)==8 then
  	SetStepComplete(Spawn,SCQCitizen,8)
         AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
        AddTimer(NPC,500,"Citizen",1,Spawn)
-	elseif HasQuest(Spawn,WWQCitizen) then
+	elseif HasQuest(Spawn,WWQCitizen) and GetQuestStep(Spawn,WWQCitizen)==8 then
  	SetStepComplete(Spawn,WWQCitizen,8)
         AddSpellBookEntry(Spawn, 8057, 1) --CALL TO QEYNOS
         AddTimer(NPC,500,"Citizen",1,Spawn)

@@ -197,7 +197,7 @@ function LeaveIslandFP(NPC, Spawn)
         Zone(ZoneRef,Spawn)
     
    -- Dark Elf 
-    elseif Race == 1  then
+    elseif Race == 1  or Race == 19 or Race == 17 then
 --        AddSpellBookEntry(Spawn, 8057, 1)	
         ZoneRef = GetZone("Longshadow")
         Zone(ZoneRef,Spawn)
@@ -210,7 +210,7 @@ function LeaveIslandFP(NPC, Spawn)
 
     else 
 --        AddSpellBookEntry(Spawn, 8057, 1)
-        ZoneRef = GetZone("EastFreeport")
+        ZoneRef = GetZone("BeggarsCourt")
         Zone(ZoneRef,Spawn)
 
     end
