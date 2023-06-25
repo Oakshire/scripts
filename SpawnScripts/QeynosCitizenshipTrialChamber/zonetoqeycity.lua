@@ -5,14 +5,14 @@
     Script Purpose : 
                    : 
 --]]
+local BQCitizen = 5718
+local CVQCitizen = 5719
+local GQCitizen = 5720
+local NQCitizen = 5721
+local SCQCitizen = 5722
+local WWQCitizen = 5723
 
 function spawn(NPC)
-SetRequiredQuest(NPC, 5718, 8, 0, 1)
-SetRequiredQuest(NPC, 5719, 8, 0, 1)
-SetRequiredQuest(NPC, 5720, 8, 0, 1)
-SetRequiredQuest(NPC, 5721, 8, 0, 1)
-SetRequiredQuest(NPC, 5722, 8, 0, 1)
-SetRequiredQuest(NPC, 5723, 8, 0, 1)
 end
 
 function respawn(NPC)
@@ -22,12 +22,22 @@ end
 function casted_on(NPC, Player,SpellName)
  if SpellName == 'Enter Qeynos' then  
     local con = CreateConversation()
+if not HasCompletedQuest(Player,BQCitizen) and
+not HasCompletedQuest(Player,CVQCitizen) and
+not HasCompletedQuest(Player,GQCitizen) and
+not HasCompletedQuest(Player,NQCitizen) and
+not HasCompletedQuest(Player,SCQCitizen) and
+not HasCompletedQuest(Player,WWQCitizen) then
+    SendMessage(Player,"You must be a citizen to enter the city.")
+    SendPopUpMessage(Player,"You must be a citizen to enter the city.",255,255,255)
+    PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+else    
     AddConversationOption(con, "Yes", "Leave")
     AddConversationOption(con, "No","CloseConversation")
     StartDialogConversation(con, 1, NPC, Player, "Do you wish to enter the city of Qeynos?")
 end
 end
-
+end
 function Leave(NPC,Player)
     CloseConversation(NPC,Player)
     if GetRace(Player)== 7 or GetRace(Player)== 5 then -- Gnomes/Halflings

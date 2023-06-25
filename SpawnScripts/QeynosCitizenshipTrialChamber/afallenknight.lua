@@ -19,7 +19,7 @@ end
 end
 
 function DoorCheck(NPC,Spawn)
-    Door = GetSpawn(NPC,22101355)
+    Door = GetSpawn(NPC,8250015)
     if Door ~= nil then
     Despawn(Door)
     end

@@ -36,7 +36,7 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
-    PlaySound(NPC,"sounds/ui/freeport_citizenship.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+    DoorCheck(NPC,Spawn)
 if  GetQuestStep (Spawn,BBFCitizen )==3 or GetQuestStep (Spawn,Beg_FCitizen  )==3 or GetQuestStep (Spawn,LA_FCitizen)==3 or GetQuestStep (Spawn,Scale_FCitizen )==3 or GetQuestStep (Spawn,Stone_FCitizen )==3 or GetQuestStep (Spawn,Temp_FCitizen)==3  then
     Dialog1(NPC,Spawn)
 elseif  GetQuestStep (Spawn,BBFCitizen )==8 or GetQuestStep (Spawn,Beg_FCitizen  )==8 or GetQuestStep (Spawn,LA_FCitizen)==8 or GetQuestStep (Spawn,Scale_FCitizen )==8 or GetQuestStep (Spawn,Stone_FCitizen )==8 or GetQuestStep (Spawn,Temp_FCitizen)==8  then
@@ -56,6 +56,18 @@ else
 	FaceTarget(NPC, Spawn)
     PlayFlavor(NPC, "voiceover/english/erudite_eco_good_1/ft/erudite/erudite_eco_good_1_notcitizen_gf_48350e59.mp3","You're not allowed in here!  Off with you until you've proven yourself to complete this trial.", "glare", 3405287024, 2122169059, Spawn)
 end    
+end
+
+
+function DoorCheck(NPC,Spawn)
+    Door = GetSpawn(NPC,1640023)
+    if Door ~= nil then
+    Despawn(Door)
+    end
+    local zone = GetZone(NPC)
+    if GetSpawnByLocationID(zone,133785371) ~=nil then
+    Despawn(GetSpawnByLocationID(zone,133785371))
+    end
 end
 
 function Dialog1(NPC,Spawn)

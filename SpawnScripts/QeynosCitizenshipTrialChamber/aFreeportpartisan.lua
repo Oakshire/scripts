@@ -59,7 +59,7 @@ function Dialog3(NPC, Spawn)
 	Dialog.AddDialog("I'm not asking you to trust my word ... trust my gold!")
 	Dialog.AddVoiceover("voiceover/english/a_freeport_partisan/qey_catacomb_epic01/bribingtraitor002.mp3", 298356076, 2184308899)
     PlayFlavor(NPC,"","","whome",0,0,Spawn)
-	Dialog.AddOption("Interesting.  I will return shortly once I've considered this.")
+	Dialog.AddOption("A bribe, eh?  I'm interested.","Fail")
 	Dialog.AddOption("Tempting, but I have a duty to Qeynos.  You must face judgement for your deeds.", "AttackTimer")
 	Dialog.AddOption("No way!", "AttackTimer")
 	Dialog.Start()
@@ -76,6 +76,45 @@ function Attacking(NPC,Spawn)
     Attack(NPC,Spawn)
 end
 
+function Fail(NPC,Spawn)
+    PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
+    SendPopUpMessage(Spawn,"One who represents the city of Qeynos does not accept bribes.",255,50,50)
+    SendMessage(Spawn,"One who represents the city of Qeynos does not accept bribes.","red")
+    AddTimer(NPC,4500,"FailureExit",1,Spawn)
+end
+
+
+function FailureExit(NPC,Spawn)
+        if GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
+      BBShire = GetZone("Baubbleshire")
+       Zone(BBShire,Spawn,819.46, -20.60, -525.61, 200.47)
+       
+    elseif GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
+        Gray = GetZone("graystone")
+        Zone(Gray,Spawn,865.03, -25.45, -97.91, 357.68)
+        
+    elseif GetRace(Spawn)== 4 or GetRace(Spawn)== 8 then
+        CV = GetZone("castleview")
+        Zone(CV,Spawn,729.01, -21.10, -124.36, 290.81)
+        
+    elseif GetRace(Spawn)== 9 or GetRace(Spawn)== 11 then
+        Net = GetZone("nettleville")
+        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
+        
+    elseif GetRace(Spawn)== 3 or GetRace(Spawn)== 8 then
+        SC = GetZone("starcrest")
+        Zone(SC,Spawn,704.07, -20.38, 264.40, 269.84)
+        
+    elseif GetRace(Spawn)== 15 or GetRace(Spawn)== 16 or GetRace(Spawn)== 6 then
+        WW = GetZone("willowwood")
+        Zone(WW,Spawn,809.96, -21.30, -566.02, 323.13)
+        
+    else
+        Net = GetZone("nettleville")
+        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
+    end
+end
+
 function aggro(NPC,Spawn)
      SpawnSet(NPC,"attackable",1)
     SpawnSet(NPC,"show_level",1)
@@ -84,17 +123,27 @@ function aggro(NPC,Spawn)
 end
 
 function death(NPC,Spawn)
-	if HasQuest(Spawn,BQCitizen) then
-	SetStepComplete(Spawn,BQCitizen,6)
+    if GetSpawn(NPC,8250011) == nil or not IsAlive(NPC,8250011) == false and
+    GetSpawn(NPC,8250012) == nil or not IsAlive(NPC,8250012) == false and
+    GetSpawn(NPC,8250013) == nil or not IsAlive(NPC,8250013) == false and
+    GetSpawn(NPC,8250014) == nil or not IsAlive(NPC,8250014) == false 
+    then
+        if HasQuest(Spawn,BQCitizen) then
+	SetStepComplete(Spawn,BQCitizen,4)
 	elseif HasQuest(Spawn,CVQCitizen) then
- 	SetStepComplete(Spawn,CVQCitizen,6)
+ 	SetStepComplete(Spawn,CVQCitizen,4)
 	elseif HasQuest(Spawn,GQCitizen) then
- 	SetStepComplete(Spawn,GQCitizen,6)
+ 	SetStepComplete(Spawn,GQCitizen,4)
 	elseif HasQuest(Spawn,NQCitizen) then
- 	SetStepComplete(Spawn,NQCitizen,6)
+ 	SetStepComplete(Spawn,NQCitizen,4)
 	elseif HasQuest(Spawn,SCQCitizen) then
- 	SetStepComplete(Spawn,SCQCitizen,6)
+ 	SetStepComplete(Spawn,SCQCitizen,4)
 	elseif HasQuest(Spawn,WWQCitizen) then
- 	SetStepComplete(Spawn,WWQCitizen,6)
+ 	SetStepComplete(Spawn,WWQCitizen,4)
  	end    
 end
+end
+
+function victory(NPC,Spawn)
+    AddTimer(NPC,2500,"FailureExit",1,Spawn)
+end    
