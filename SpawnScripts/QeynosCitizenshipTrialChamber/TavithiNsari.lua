@@ -19,7 +19,9 @@ SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 
 function InRange(NPC, Spawn)
+if not IsInCombat(NPC) then
 PlayFlavor(NPC, "","No!  Please don't hurt me!", "cringe", 0,0, Spawn)
+end
 end
 
 function hailed(NPC, Spawn)
@@ -75,20 +77,24 @@ function Dialog4(NPC, Spawn)
 end
 
 function AttackTimer(NPC,Spawn)
+    SpawnSet(NPC,"attackable",1)
+    SpawnSet(NPC,"show_level",1)
+    AddPrimaryEntityCommand(Spawn,NPC,"",0,"")
+    AddPrimaryEntityCommand(Spawn,NPC,"attack",10000,"attack")
+    SendUpdateDefaultCommand(NPC,10000,"attack")
     AddTimer(NPC,1200,"Attacking",1,Spawn)
 end
 
+
 function Attacking(NPC,Spawn)
-    SpawnSet(NPC,"attackable",1)
-    SpawnSet(NPC,"show_level",1)
-    SpawnSet(NPC,"command_primary",11)
     Attack(NPC,Spawn)
 end
 
 function aggro(NPC,Spawn)
     SpawnSet(NPC,"attackable",1)
     SpawnSet(NPC,"show_level",1)
-    SpawnSet(NPC,"command_primary",11)
+    SpawnSet(NPC,"command_primary","11")
+    
 end
 
 function death(NPC,Spawn)

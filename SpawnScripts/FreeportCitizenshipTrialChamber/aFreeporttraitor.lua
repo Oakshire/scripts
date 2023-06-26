@@ -1,27 +1,21 @@
 --[[
-    Script Name    : SpawnScripts/QeynosCitizenshipTrialChamber/aFreeportpartisan.lua
+    Script Name    : SpawnScripts/FreeportCitizenshipTrialChamber/aFreeporttraitor.lua
     Script Author  : Dorbin
-    Script Date    : 2022.08.31 05:08:02
+    Script Date    : 2023.06.25 01:06:51
     Script Purpose : 
                    : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
-local BQCitizen = 5718
-local CVQCitizen = 5719
-local GQCitizen = 5720
-local NQCitizen = 5721
-local SCQCitizen = 5722
-local WWQCitizen = 5723
+local BQCitizen = 5866 --Big Bend
+local CVQCitizen = 5867 --Beggar's Court
+local GQCitizen = 5868 --Longshadow Alley
+local NQCitizen = 5869 -- Scale Yard
+local SCQCitizen = 5870 --Stonestair Byway
+local WWQCitizen = 5871 --Temple St
 
 function spawn(NPC)
-	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 
-function InRange(NPC, Spawn)
-if not IsInCombat(NPC) then
-PlayFlavor(NPC, "","Hello, friend. You look like a sensible Qeynosian!", "", 0,0, Spawn)
-end
-end
 
 function hailed(NPC, Spawn)
 Dialog1(NPC, Spawn)
@@ -35,35 +29,33 @@ function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
     PlayAnimation(NPC,"539")
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("Qeynos has all our exits blocked, but perhaps you can find a way to get me through!")
-	Dialog.AddVoiceover("voiceover/english/a_freeport_partisan/qey_catacomb_epic01/bribingtraitor000.mp3", 3482178504, 3473502837)
-	Dialog.AddOption("How would I do that?", "Dialog2")
-	Dialog.AddOption("You must be punished for your crimes!", "AttackTimer")
+	Dialog.AddDialog("Please don't hurt me. I can make you wealthy!")
+	Dialog.AddVoiceover("voiceover/english/a_freeport_traitor/fprt_sewer_epic08/bribingtraitor000.mp3", 3714658197, 1541784827)
+	Dialog.AddOption("I'm listening.", "Dialog2")
 	Dialog.Start()
 end
 
 function Dialog2(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I made arrangements to transfer my wealth to the Freeport Reserve, but mayhaps I can spare some coins if you let me go.")
-	Dialog.AddVoiceover("voiceover/english/a_freeport_partisan/qey_catacomb_epic01/bribingtraitor001.mp3", 4211876752, 3637644957)
+	Dialog.AddDialog("My family already left for Qeynos. If you let me live, I'll send you exactly what you deserve for this!")
+	Dialog.AddVoiceover("voiceover/english/a_freeport_traitor/fprt_sewer_epic08/bribingtraitor001.mp3", 0, 0)
     PlayFlavor(NPC,"","","nod",0,0,Spawn)
-	Dialog.AddOption("Perhaps.  I need to think upon this further.")
-	Dialog.AddOption("I'm not sure I can trust you. You're here as a traitor.", "Dialog3")
+	Dialog.AddOption("Stay here. Let me consider this.")
+	Dialog.AddOption("How can I trust you?", "Dialog3")
 	Dialog.AddOption("Coin cannot cover what you've done!", "AttackTimer")
-	Dialog.AddOption("No, there can be no bribery.", "AttackTimer")
+	Dialog.AddOption("I don't think so.", "AttackTimer")
 	Dialog.Start()
 end
 
 function Dialog3(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	Dialog.AddDialog("I'm not asking you to trust my word ... trust my gold!")
-	Dialog.AddVoiceover("voiceover/english/a_freeport_partisan/qey_catacomb_epic01/bribingtraitor002.mp3", 298356076, 2184308899)
+	Dialog.AddDialog("I don't suppose you can ... so you have to trust me.")
+	Dialog.AddVoiceover("voiceover/english/a_freeport_traitor/fprt_sewer_epic08/bribingtraitor002.mp3", 0, 0)
     PlayFlavor(NPC,"","","whome",0,0,Spawn)
-	Dialog.AddOption("A bribe, eh?  I'm interested.","Fail")
-	Dialog.AddOption("Tempting, but I have a duty to Qeynos.  You must face judgement for your deeds.", "AttackTimer")
-	Dialog.AddOption("No way!", "AttackTimer")
+	Dialog.AddOption("Fine.","Fail")
+	Dialog.AddOption("A bribe? Pay with your life!", "AttackTimer")
 	Dialog.Start()
 end
 
@@ -82,8 +74,8 @@ end
 
 function Fail(NPC,Spawn)
     PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
-    SendPopUpMessage(Spawn,"One who represents the city of Qeynos does not accept bribes.",255,50,50)
-    SendMessage(Spawn,"One who represents the city of Qeynos does not accept bribes.","red")
+    SendPopUpMessage(Spawn,"To accept a bribe from a Qeynosian shows a disgusting lack of ethics.",255,50,50)
+    SendMessage(Spawn,"To accept a bribe from a Qeynosian shows a disgusting lack of ethics.","red")
     AddTimer(NPC,4500,"FailureExit",1,Spawn)
 end
 
@@ -127,10 +119,10 @@ function aggro(NPC,Spawn)
 end
 
 function death(NPC,Spawn)
-    if GetSpawn(NPC,8250011) == nil or not IsAlive(NPC,8250011) == false and
-    GetSpawn(NPC,8250012) == nil or not IsAlive(NPC,8250012) == false and
-    GetSpawn(NPC,8250013) == nil or not IsAlive(NPC,8250013) == false and
-    GetSpawn(NPC,8250014) == nil or not IsAlive(NPC,8250014) == false 
+    if GetSpawn(NPC,1640001) == nil or not IsAlive(NPC,1640001) == false and
+    GetSpawn(NPC,1640002) == nil or not IsAlive(NPC,1640002) == false and
+    GetSpawn(NPC,1640018) == nil or not IsAlive(NPC,1640018) == false and
+    GetSpawn(NPC,1640021) == nil or not IsAlive(NPC,1640021) == false 
     then
         if HasQuest(Spawn,BQCitizen) then
 	SetStepComplete(Spawn,BQCitizen,4)

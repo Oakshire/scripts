@@ -19,7 +19,9 @@ function spawn(NPC)
 end
 
 function InRange(NPC, Spawn)
+if not IsInCombat(NPC) then
 PlayFlavor(NPC, "","I'm so sorry... I didn't mean to do it!", "cry", 0,0, Spawn)
+end
 end
 
 
@@ -106,13 +108,15 @@ function Leave(NPC)
 end
 
 function AttackTimer(NPC,Spawn)
+    SpawnSet(NPC, "show_level", 1)
+    SpawnSet(NPC, "attackable", 1)
+    AddPrimaryEntityCommand(Spawn,NPC,"",0,"")
+    AddPrimaryEntityCommand(Spawn,NPC,"attack",10000,"attack")
+    SendUpdateDefaultCommand(NPC,10000,"attack")
     AddTimer(NPC,1200,"Attacking",1,Spawn)
 end
 
 function Attacking(NPC,Spawn)
-    SpawnSet(NPC,"attackable",1)
-    SpawnSet(NPC,"show_level",1)
-    SpawnSet(NPC,"command_primary",11)
     Attack(NPC,Spawn)
 end
 
