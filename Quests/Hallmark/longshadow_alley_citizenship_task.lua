@@ -31,7 +31,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the Ruins.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the tokens required to prove my worth as a citizen.")
-    UpdateQuestZone(Quest,"Baubbleshire")
+    UpdateQuestZone(Quest,"Longshadow Alley")
 	AddQuestStep(Quest, 2, "I need to enter the citizenship trial.", 1, 100, "I must perform the citizenship trial by returning to the Citizenship Sign and entering the trial chamber",1335)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")   
 end
@@ -40,8 +40,8 @@ function Step2Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 2, "I've entered the citizenship trial.")
 	UpdateQuestTaskGroupDescription(Quest, 2, "I've entered the citizenship trial.")
-    UpdateQuestZone(Quest,"Citizenship Trial Chamber")
-	AddQuestStepChat(Quest, 3, "I need to speak with Abbetor T'Avi regarding my Citizenship Trial.", 1, "I need to speak with Abbetor T'Avi regarding my Citizenship Trial", 1350, 22101350)
+    UpdateQuestZone(Quest,"Uncovered Traitors Hideout")
+	AddQuestStepChat(Quest, 3, "I need to speak with Abbetor T'Avi regarding my Citizenship Trial.", 1, "I need to speak with Abbetor T'Avi regarding my Citizenship Trial", 1350, 1640000)
 	AddQuestStepCompleteAction(Quest, 3, "Step3Complete")   
 end
 
@@ -57,7 +57,7 @@ end
 function Step4Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 4, "I've judged the traitors.")
 	UpdateQuestTaskGroupDescription(Quest, 4, "I have dealt with the traitors")
-	AddQuestStepChat(Quest, 5, "I need to return to Abbetor T'Avi.", 1, "I must return to Abbetor T'Avi to let her know the deed is done.",0, 22101350)
+	AddQuestStepChat(Quest, 5, "I need to return to Abbetor T'Avi.", 1, "I must return to Abbetor T'Avi to let her know the deed is done.",0, 1640000)
     AddQuestStepCompleteAction(Quest, 5, "QuestComplete")
 end
 

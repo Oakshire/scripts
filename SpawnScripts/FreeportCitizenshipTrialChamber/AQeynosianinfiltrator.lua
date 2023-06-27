@@ -63,3 +63,50 @@ end
 function respawn(NPC)
 	spawn(NPC)
 end
+
+function victory(NPC,Spawn)
+    AddTimer(NPC,2500,"FailureExit",1,Spawn)
+end   
+
+function FailureExit(NPC,Spawn)
+    CloseConversation(NPC,Spawn)
+      Race = GetRace(Spawn)
+
+    -- Erudite / Kerra
+    if Race == 3 or Race == 11 then
+        ZoneRef = GetZone("Stonestair")
+        Zone(ZoneRef,Spawn,3.24, -4.37, -98.46, 185.35)
+
+      -- Ratonga / Gnome
+    elseif Race == 5 or Race == 13 then
+        ZoneRef = GetZone("TempleSt")
+        Zone(ZoneRef,Spawn,21.81, 2.92, 21.37, 190.87)
+
+
+      -- Human / Half Elf
+    elseif Race == 9 or Race == 6 then
+        ZoneRef = GetZone("BeggarsCourt")
+        Zone(ZoneRef,Spawn,61.07, -7.08, 111.67, 339.27)
+
+
+   -- Orge / Troll
+    elseif Race == 12 or Race == 14 then
+        ZoneRef = GetZone("BigBend")
+        Zone(ZoneRef,Spawn,94.12, -2.00, 2.53, 98)
+    
+   -- Dark Elf 
+    elseif Race == 1  or Race == 19 or Race == 17 then
+        ZoneRef = GetZone("longshadow")
+        Zone(ZoneRef,Spawn,4.22, 3.00, 71.07, 353.87)
+
+    -- Barbarian / Iksar / Sarnak
+    elseif Race == 0 or Race == 10 or Race == 18 then
+        ZoneRef = GetZone("ScaleYard")
+        Zone(ZoneRef,Spawn,-6.78, -5.63, -12.96, 194.63)
+
+    else 
+        ZoneRef = GetZone("BeggarsCourt")
+        Zone(ZoneRef,Spawn,58.67, -7.08, 112.61, 352.60)
+
+    end
+end

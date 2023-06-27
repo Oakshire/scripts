@@ -12,13 +12,14 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "I must kill small scorpions until I find a large scent gland.", 1, 15, "I need to travel to the Sunken City and gather a large scent gland from a small scorpion.", 94, 1240016)
+	AddQuestStepKill(Quest, 1, "I must kill puny squalid vermin until I find a large scent gland.", 1, 15, "I need to travel to the Ruins and gather a large scent gland from a small rodent.", 94, 8420017)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+	UpdateQuestZone(Quest,"Ruins")
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I have found a large scent gland.")
-	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered a large scent gland from the scorpion.")
+	UpdateQuestTaskGroupDescription(Quest, 1, "I've gathered a large scent gland from the squalid vermin.")
     
     AddQuestStepChat(Quest, 2, "I should return to Zelina.", 1, "I should return to Zelina to deliver the gland.", 11, 1380033)
 	AddQuestStepCompleteAction(Quest, 2, "QuestComplete")

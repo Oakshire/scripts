@@ -6,7 +6,7 @@
 	Script Notes	: 
 --]]
 
-local Iksar = 14 --10
+local Iksar = 10 --10
 QUEST_1 = 340 --A Puppy for your potion--
 QUEST_2 = 341 --He said, he said--
 QUEST_3 = 342 --Paying homage to the past--

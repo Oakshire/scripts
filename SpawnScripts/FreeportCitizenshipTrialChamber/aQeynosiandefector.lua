@@ -90,33 +90,45 @@ end
 
 
 function FailureExit(NPC,Spawn)
-        if GetRace(Spawn)== 7 or GetRace(Spawn)== 5 then
-      BBShire = GetZone("Baubbleshire")
-       Zone(BBShire,Spawn,819.46, -20.60, -525.61, 200.47)
-       
-    elseif GetRace(Spawn)== 0 or GetRace(Spawn)== 2 then
-        Gray = GetZone("graystone")
-        Zone(Gray,Spawn,865.03, -25.45, -97.91, 357.68)
-        
-    elseif GetRace(Spawn)== 4 or GetRace(Spawn)== 8 then
-        CV = GetZone("castleview")
-        Zone(CV,Spawn,729.01, -21.10, -124.36, 290.81)
-        
-    elseif GetRace(Spawn)== 9 or GetRace(Spawn)== 11 then
-        Net = GetZone("nettleville")
-        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
-        
-    elseif GetRace(Spawn)== 3 or GetRace(Spawn)== 8 then
-        SC = GetZone("starcrest")
-        Zone(SC,Spawn,704.07, -20.38, 264.40, 269.84)
-        
-    elseif GetRace(Spawn)== 15 or GetRace(Spawn)== 16 or GetRace(Spawn)== 6 then
-        WW = GetZone("willowwood")
-        Zone(WW,Spawn,809.96, -21.30, -566.02, 323.13)
-        
-    else
-        Net = GetZone("nettleville")
-        Zone(Net,Spawn,670.07, -20.39, 273.85, 114.78)
+    CloseConversation(NPC,Spawn)
+      Race = GetRace(Spawn)
+
+    -- Erudite / Kerra
+    if Race == 3 or Race == 11 then
+        ZoneRef = GetZone("Stonestair")
+        Zone(ZoneRef,Spawn,3.24, -4.37, -98.46, 185.35)
+
+      -- Ratonga / Gnome
+    elseif Race == 5 or Race == 13 then
+        ZoneRef = GetZone("TempleSt")
+        Zone(ZoneRef,Spawn,21.81, 2.92, 21.37, 190.87)
+
+
+      -- Human / Half Elf
+    elseif Race == 9 or Race == 6 then
+        ZoneRef = GetZone("BeggarsCourt")
+        Zone(ZoneRef,Spawn,61.07, -7.08, 111.67, 339.27)
+
+
+   -- Orge / Troll
+    elseif Race == 12 or Race == 14 then
+        ZoneRef = GetZone("BigBend")
+        Zone(ZoneRef,Spawn,94.12, -2.00, 2.53, 98)
+    
+   -- Dark Elf 
+    elseif Race == 1  or Race == 19 or Race == 17 then
+        ZoneRef = GetZone("longshadow")
+        Zone(ZoneRef,Spawn,4.22, 3.00, 71.07, 353.87)
+
+    -- Barbarian / Iksar / Sarnak
+    elseif Race == 0 or Race == 10 or Race == 18 then
+        ZoneRef = GetZone("ScaleYard")
+        Zone(ZoneRef,Spawn,-6.78, -5.63, -12.96, 194.63)
+
+    else 
+        ZoneRef = GetZone("BeggarsCourt")
+        Zone(ZoneRef,Spawn,58.67, -7.08, 112.61, 352.60)
+
     end
 end
 

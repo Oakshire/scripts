@@ -26,8 +26,9 @@ local TaskQuest = 5868
 function casted_on(NPC, Spawn,SpellName)
  if SpellName == 'Use citizenship sign' then  
  if HasQuest(Spawn,WelcomeQuest) and not HasCompletedQuest(Spawn,TaskQuest) and not HasItem(Spawn, TaskSheet,1) then
+        Quest = GetQuest(Spawn,WelcomeQuest)
 	    SendMessage(Spawn, "You pull an application for citizenship from the wall.")
-        GiveQuestItem(WelcomeQuest, Spawn, "I must complete this task to become a Citizen of Qeynos.", TaskSheet)
+        GiveQuestItem(Quest, Spawn, "I must complete this task to become a Citizen of Qeynos.", TaskSheet)
         
     elseif not HasQuest(Spawn, TaskQuest) and HasItem(Spawn, TaskSheet,1) or  GetQuestStep(Spawn,TaskQuest)==1 and HasItem(Spawn, TaskSheet,1) then
 	    SendMessage(Spawn, "I must complete my citizenship task before performing the Citizenship Trial.")
