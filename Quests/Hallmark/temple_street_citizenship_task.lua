@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Quests/Hallmark/longshadow_alley_citizenship_task.lua
+    Script Name    : Quests/Hallmark/temple_street_citizenship_task.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.26 03:06:28
+    Script Date    : 2023.06.27 03:06:21
     Script Purpose : 
 
         Zone       : Hallmark
@@ -11,9 +11,9 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Ruins.", 5, 34, "The Ruins have been seeded with tokens for the citizens of Longshadow Alley to gather. These tokens may be found on any creatures in the Ruins.  I can reach the Ruins by using any of the bells in and around the City of Freeport.", 1335, 8420001,8420002,8420003,8420004,8420005,8420006,8420007,8420008,8420009,8420010,8420011,8420012,8420013,8420014,8420015,8420016,8420017,8420018,8420019,8420020,8420021,8420022,8420023,8420024,8420025,8420027,8420028,8420029,8420030,8420031,8420036,8420037,8420038,8420039)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Ruins.", 5, 34, "The Thieves' Way has been seeded with tokens for the residents of Temple Street to gather. These tokens may be found on any creatures in the Thieves' Way.", 1379, 1540000,154002,1540003,1540004,1540005,1540006,1540007,1540008,1540009,1540010,1540011,1540012,1540013,1540014,1540015,1540016,1540017,1540018,1540019,1540020,1540021,1540022,1540023,1540023,1540025,1540026,1540027,1540028,1540029,1540031,1540032,1540040,1540041,1540042,1540045,1540043,1540044,1540046,1540072,1540073)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-    UpdateQuestZone(Quest,"Ruins")
+    UpdateQuestZone(Quest,"Theives Way")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -31,7 +31,7 @@ function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the Ruins.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the tokens required to prove my worth as a citizen.")
-    UpdateQuestZone(Quest,"Longshadow Alley")
+    UpdateQuestZone(Quest,"Temple Street")
 	AddQuestStep(Quest, 2, "I need to enter the citizenship trial.", 1, 100, "I must perform the citizenship trial by returning to the Citizenship Sign and entering the trial chamber",1335)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")   
 end

@@ -19,7 +19,7 @@ function InRange(NPC, Spawn) --Quest Callout
 if GetFactionAmount(Spawn,12)<0 then
 PlayFlavor(NPC, "", "", "glare", 0, 0, Spawn)
 FaceTarget(NPC, Spawn)
-elseif GetRace(Spawn)== 1 then
+elseif GetRace(Spawn)== 1 or GetRace(Spawn) == 19 or GetRace(Spawn) == 17 then
     if CanReceiveQuest(Spawn, Welcome)then   
     PlayFlavor(NPC,"voiceover/english/overseer_daerla/fprt_hood05/qst_overseer_daerla_callout2_8e8f4739.mp3","All of you lowly refugees are to speak with me at once!","sniff",2064397815,2852618419,Spawn)
     elseif CalloutTimer == false then
@@ -44,7 +44,7 @@ function hailed(NPC, Spawn)
     if GetFactionAmount(Spawn,12)<0 then
         PlayFlavor(NPC,"","","shame",0,0,Spawn)
     else        
-if GetRace(Spawn)== 1 then
+if GetRace(Spawn)== 1 or GetRace(Spawn) == 19 or GetRace(Spawn) == 17 then
     if not HasQuest(Spawn, Welcome) and not HasCompletedQuest(Spawn,Welcome)then
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
