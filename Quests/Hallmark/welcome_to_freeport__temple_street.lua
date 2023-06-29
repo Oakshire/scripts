@@ -33,7 +33,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've been given my inn room")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've been given the key to my room and can now come and go as I please.")
-	AddQuestStepChat(Quest, 2, "I need to introduce myself to the caretaker.", 1, "I need to introduce myself to the caretaker",11,1450271)
+	AddQuestStepChat(Quest, 2, "I need to introduce myself to the landlord.", 1, "I need to introduce myself to the landlord",11,1450271)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")   
 end
 
@@ -62,7 +62,7 @@ end
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I've returned to my room and spoken with Slumlord Valthun.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I've returned to my room and spoken with slumlord Valthun, who seems to have had a change in attitude since I last spoke with him.")
-	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new mirror and then speak with the slumlord.", 1,100, "Slumlord Valthun has suggested that I place the mirror on my walls.  I don't know what came over him, but I don't trust it.  I should place the mirror and then get him to tell me everything he knows about Longshadow Alley",0)
+	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new mirror and then speak with the slumlord.", 1,100, "Slumlord Valthun has suggested that I place the mirror on my walls.  I don't know what came over him, but I don't trust it.  I should place the mirror and then get him to tell me everything he knows about Temple Street",0)
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")   
 end
 
@@ -83,7 +83,7 @@ function Step7Complete(Quest, QuestGiver, Player)
 end
 
 function Step8Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 8, "I've met with the village crafting trainer.")
+	UpdateQuestStepDescription(Quest, 8, "I've met with the district crafting trainer.")
 	UpdateQuestTaskGroupDescription(Quest, 8, "I've visisted two of four locations Valthun has told me about.")
 	AddQuestStepZoneLoc(Quest, 9, "I need to locate the grate to the Thieve's Way.",6,"\"Though most of the people who venture down into the sewers are nothing more than filthy, worthless, good-for-nothing vagabonds, I'm sure you have good reasons for traveling there yourself.  You can find the grate leading down to them if you take a close look.  After that, I'll show you one more place.\" - Valthun", 0,53.41, 3.84, 43.56, 302.78,136)
 	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")   

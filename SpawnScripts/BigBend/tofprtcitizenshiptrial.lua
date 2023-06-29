@@ -1,17 +1,17 @@
 --[[
-    Script Name    : SpawnScripts/Longshadow/tofprtcitizenshiptrialLongshadow.lua
+    Script Name    : SpawnScripts/BigBend/tofprtcitizenshiptrial.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.26 12:06:10
-    Script Purpose : Freeport Citzenship Sign - Longshadow
+    Script Date    : 2023.06.28 08:06:26
+    Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-SetRequiredQuest(NPC, 5862, 13)
-SetRequiredQuest(NPC, 5868, 2)
-SetRequiredQuest(NPC, 5868, 3)
-SetRequiredQuest(NPC, 5868, 4)
-SetRequiredQuest(NPC, 5868, 5)
+SetRequiredQuest(NPC, 5860, 13)
+SetRequiredQuest(NPC, 5866, 2)
+SetRequiredQuest(NPC, 5866, 3)
+SetRequiredQuest(NPC, 5866, 4)
+SetRequiredQuest(NPC, 5866, 5)
 end
 
 
@@ -19,16 +19,16 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-local TaskSheet = 9132
-local WelcomeQuest = 5862
-local TaskQuest = 5868
+local TaskSheet = 4248
+local WelcomeQuest = 5860
+local TaskQuest = 5866
 
 function casted_on(NPC, Spawn,SpellName)
  if SpellName == 'Use citizenship sign' then  
  if HasQuest(Spawn,WelcomeQuest) and not HasCompletedQuest(Spawn,TaskQuest) and not HasItem(Spawn, TaskSheet,1) then
         Quest = GetQuest(Spawn,WelcomeQuest)
 	    SendMessage(Spawn, "You pull an application for citizenship from the wall.")
-        GiveQuestItem(Quest, Spawn, "I must complete this task to become a Citizen of Freeport.", TaskSheet)
+        GiveQuestItem(Quest, Spawn, "I must complete this task to become a Citizen of Qeynos.", TaskSheet)
         
     elseif not HasQuest(Spawn, TaskQuest) and HasItem(Spawn, TaskSheet,1) or  GetQuestStep(Spawn,TaskQuest)==1 and HasItem(Spawn, TaskSheet,1) then
 	    SendMessage(Spawn, "I must complete my citizenship task before performing the Citizenship Trial.")

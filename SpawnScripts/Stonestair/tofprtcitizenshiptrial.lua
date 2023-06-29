@@ -1,17 +1,17 @@
 --[[
-    Script Name    : SpawnScripts/Longshadow/tofprtcitizenshiptrialLongshadow.lua
+    Script Name    : SpawnScripts/Stonestair/tofprtcitizenshiptrial.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.26 12:06:10
-    Script Purpose : Freeport Citzenship Sign - Longshadow
+    Script Date    : 2023.06.29 04:06:33
+    Script Purpose : 
                    : 
 --]]
 
 function spawn(NPC)
-SetRequiredQuest(NPC, 5862, 13)
-SetRequiredQuest(NPC, 5868, 2)
-SetRequiredQuest(NPC, 5868, 3)
-SetRequiredQuest(NPC, 5868, 4)
-SetRequiredQuest(NPC, 5868, 5)
+SetRequiredQuest(NPC, 5859, 13)
+SetRequiredQuest(NPC, 5870, 2)
+SetRequiredQuest(NPC, 5870, 3)
+SetRequiredQuest(NPC, 5870, 4)
+SetRequiredQuest(NPC, 5870, 5)
 end
 
 
@@ -19,9 +19,9 @@ function respawn(NPC)
 	spawn(NPC)
 end
 
-local TaskSheet = 9132
-local WelcomeQuest = 5862
-local TaskQuest = 5868
+local TaskSheet = 13398
+local WelcomeQuest = 5859
+local TaskQuest = 5870
 
 function casted_on(NPC, Spawn,SpellName)
  if SpellName == 'Use citizenship sign' then  

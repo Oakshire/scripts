@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Quests/Hallmark/welcome_to_freeport__longshadow_alley.lua
+    Script Name    : Quests/Hallmark/welcome_to_freeport__stonestair.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.21 06:06:05
+    Script Date    : 2023.06.29 03:06:06
     Script Purpose : 
 
         Zone       : Hallmark
@@ -14,16 +14,16 @@
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "Use the room door to be given your inn room.  Click on the \"Buy\" button to get your room.  Once you have purchased your room click on \"Enter\" to enter your room.", 10, "I've been instructed to sign in at the inn's guest registry in order to get the key to my room.", 11,-5.63, 0.75, -13.88 ,145)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-    UpdateQuestZone(Quest,"Longshadow Alley")
+    UpdateQuestZone(Quest,"Stonestair Byway")
 end
 
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
-	Dialog.AddDialog("Go to your house immediately and meet with the landlord.  He is expecting you at this very moment.  Do not be late. He can't waste his precious time waiting for a lowly refugee.  Now away with you! By the way ... Welcome to Freeport.")
-    PlayFlavor(QuestGiver,"","","point",0,0,Player)
-	Dialog.AddVoiceover("voiceover/english/overseer_daerla/fprt_hood05/overseer_daerla004.mp3", 2116614625, 2551669022) 
-	Dialog.AddOption("Grrrr... thank you, Overseer.")
+	Dialog.AddDialog("Good, good!  The Overlord arranged for you to meet the landlord of your new home.  I suggest you muster up any thoughts you can in your thick skull and meet him at once.  If you don't go quickly, I'm certain he'll give your house to a cockroach – it would be an understandable mistake.")
+    PlayFlavor(QuestGiver,"","","sarcasm",0,0,Player)
+	Dialog.AddVoiceover("voiceover/english/overseer_melkia/fprt_hood02/overseer_melkia004.mp3", 1464763024, 2963821560)
+	Dialog.AddOption("Ugh... Thank you, Overseer.")
 	Dialog.Start()
 	if HasQuest(Player,5758) and GetQuestStep(Player, 5758)==2 then
 	    SetStepComplete(Player, 5758,2)
@@ -48,13 +48,13 @@ end
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I've placed the table and spoken with the slumlord.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I've placed the table and spoken with the slumlord.")
-	AddQuestStepChat(Quest, 4, "Speak with the Banker T`Val in Longshadow Alley.", 1, "Slumlord Valthun has informed me that I have a bank account waiting for me.  I need to speak with the Banker in Longshadow Alley to open the account.",11,1380021)
+	AddQuestStepChat(Quest, 4, "Speak with the Banker Kaman in Stonestair Byway.", 1, "Slumlord Valthun has informed me that I have a bank account waiting for me.  I need to speak with the Banker in Stonestair Byway to open the account.",11,1350044)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")   
 end
 
 function Step4Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 4, "I've spoken with the Banker in Longshadow Alley.")
-	UpdateQuestTaskGroupDescription(Quest, 4, "I've spoken with the Banker in the Longshadow Alley.")
+	UpdateQuestStepDescription(Quest, 4, "I've spoken with the Banker in Stonestair Byway.")
+	UpdateQuestTaskGroupDescription(Quest, 4, "I've spoken with the Banker in the Stonestair Byway.")
 	AddQuestStepChat(Quest, 5, "Return to your room and speak with Slumlord Valthun.", 1, "Now that I have a bank account, I should return to my house and look around my brand new room.  When I get there maybe I can find out where that Slumlord went.",11,1450271)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")   
 end
@@ -62,37 +62,37 @@ end
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I've returned to my room and spoken with Slumlord Valthun.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I've returned to my room and spoken with slumlord Valthun, who seems to have had a change in attitude since I last spoke with him.")
-	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new mirror and then speak with the slumlord.", 1,100, "Slumlord Valthun has suggested that I place the mirror on my walls.  I don't know what came over him, but I don't trust it.  I should place the mirror and then get him to tell me everything he knows about Longshadow Alley",0)
+	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new mirror and then speak with the slumlord.", 1,100, "Slumlord Valthun has suggested that I place the mirror on my walls.  I don't know what came over him, but I don't trust it.  I should place the mirror and then get him to tell me everything he knows about Stonestair Byway",0)
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")   
 end
 
 function Step6Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 6, "I've placed the mirror and spoken with the slumlord.")
 	UpdateQuestTaskGroupDescription(Quest, 6, "I've placed the mirror and spoken with the slumlord.")
-    UpdateQuestZone(Quest,"Ruins")
-	AddQuestStepZoneLoc(Quest, 7, "I need to use the mariner's bells near the docks to get to the Ruins.",6,"\"The more daring of you bold, courageous adventurer types tend to make a living by killing things in the Ruins.  You have to take a ferry to reach the place.  Go to the mariner's bell near the docks and give it a ring to travel there.  I'll show you a few other places after you take a look at the gates.\" - Valthun", 2297,-132.74, -1.07, 80.37, 268.31,842)
+    UpdateQuestZone(Quest,"Graveyard")
+	AddQuestStepZoneLoc(Quest, 7, "I need to go through the gates to the Graveyard.",8,"\"The more daring of you bold, courageous adventurer types tend to make a living by killing things in the Graveyard.  If you venture there, try not to get hurt too much.  This is where you can find the gates to the Graveyard.  I'll show you a few other places after you take a look at the gates.\" - Valthun", 11,-69.95, -12.85, 119.34,125)
 	AddQuestStepCompleteAction(Quest, 7, "Step7Complete")   
 end
 
 function Step7Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "I've found the mariner's bells near the docks.")
 	UpdateQuestTaskGroupDescription(Quest, 7, "I've visisted one of four locations Valthun has told me about.")
-    UpdateQuestZone(Quest,"Longshadow Alley")
-	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Longshadow Alley crafting trainer, Alanaramal Z'Aste.",1,"\"Some commoners choose to waste their time twiddling, creating rubbish. If you have interest in such crafting nonsense, then speak with representative from The Dark Bargainers. While I doubt you can, there might be some coin to be made crafting. If I see your filth littering the streets though, remember, I know where you live.\" - Valthun", 11,2350050)
+    UpdateQuestZone(Quest,"Stonestair Byway")
+	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Stonestair Byway crafting trainer, Shatana Kamelia.",1,"\"Some commoners choose to waste their time twiddling, creating rubbish. If you have interest in such crafting nonsense, then speak with representative from The Brokerage of Nepeta Cataria. While I doubt you can, there might be some coin to be made crafting. If I see your filth littering the streets though, remember, I know where you live.\" - Valthun", 11,1350032)
 	AddQuestStepCompleteAction(Quest, 8, "Step8Complete")   
 end
 
 function Step8Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 8, "I've met with the district crafting trainer.")
 	UpdateQuestTaskGroupDescription(Quest, 8, "I've visisted two of four locations Valthun has told me about.")
-	AddQuestStepZoneLoc(Quest, 9, "I need to locate the grate to the Thieve's Way.",6,"\"Though most of the people who venture down into the sewers are nothing more than filthy, worthless, good-for-nothing vagabonds, I'm sure you have good reasons for traveling there yourself.  You can find the grate leading down to them if you take a close look.  After that, I'll show you one more place.\" - Valthun", 0,43.64, -0.87, -22.94,138)
+	AddQuestStepZoneLoc(Quest, 9, "I need to locate the grate to the Thieve's Way.",6,"\"Though most of the people who venture down into the sewers are nothing more than filthy, worthless, good-for-nothing vagabonds, I'm sure you have good reasons for traveling there yourself.  You can find the grate leading down to them if you take a close look.  After that, I'll show you one more place.\" - Valthun", 0,53.92, -3.51, -26.73,135)
 	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")   
 end
 
 function Step9Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 9, "I've found the enterence to the Thieve's Way.")
 	UpdateQuestTaskGroupDescription(Quest, 9, "I've visisted three of four locations Valthun has told me about.")
-	AddQuestStepZoneLoc(Quest, 10, "I need to locate the gates to North Freeport.",6, "\"Only citizens like myself can come and go as they please.  The rest of you refugees are corralled into the districts.  If you'd like to see what door you're not allowed to travel through, take a look for the city gates.  You'll be able to find it here.  By the time you look at it, I should be done wi----- waiting for you.\" - Valthun", 11,15.54, 3.00, 73.32,138)
+	AddQuestStep(Quest, 10, "I need to locate the gates to North Freeport.",1,100, "\"Only citizens like myself can come and go as they please.  The rest of you refugees are corralled into the districts.  If you'd like to see what door you're not allowed to travel through, take a look for the city gates.  You'll be able to find it here.  By the time you look at it, I should be done wi----- waiting for you.\" - Valthun", 11)
 	AddQuestStepCompleteAction(Quest, 10, "Step10Complete")   
 end
 
@@ -130,6 +130,7 @@ function QuestComplete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
 	UpdateQuestStepDescription(Quest, 14, "I have completed the Citizenship Trial and am now a citizen of Freeport.")
 	UpdateQuestTaskGroupDescription(Quest, 14, "I am now a citizen of Freeport!")
+
 	UpdateQuestDescription(Quest, "I've managed to keep from killing Vathun long enough for me to familiarize myself with Longshadow Alley.  That disgusting man has shown me what I need to know about my new home, along with pointing me at who I need to talk to in order to become a citizen.  The next time we meet, things will be much different.")
 	GiveQuestReward(Quest, Player)
 end

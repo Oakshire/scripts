@@ -12,10 +12,18 @@ local ForThatSpecialSomeone = 5673
 local Citizenship = 5862
 
 function spawn(NPC)
+    SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")		
 end
 
 function respawn(NPC)
 	spawn(NPC)
+end
+
+function InRange(NPC, Spawn)
+if HasQuest(Spawn,Citizenship) and GetQuestStep(Spawn,Citizenship)==4 then
+	FaceTarget(NPC, Spawn)
+	PlayFlavor(NPC, "voiceover/english/banker_quintius_calacicus/fprt_hood1/100_bankerquintiuscalacicus_housing_quest_1_22bf58bf.mp3", "Are you the one opening the new account?", "bye", 1249171681, 483955197, Spawn)
+end
 end
 
 function hailed(NPC, Spawn)

@@ -29,9 +29,9 @@ function MainMenu(NPC,Spawn)
     AddConversationOption(con, "[ Goal ]", "Goal")
     AddConversationOption(con, "[ Server Status ]", "CurrentStatus")
     AddConversationOption(con, "[ Content Status ]", "ContentStatus")
-    AddConversationOption(con, "[ Bugs! ]", "Bugs")
+    AddConversationOption(con, "[ Report a Bug? ]", "Bugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-    StartDialogConversation(con, 1, NPC, Spawn, "This board contains FAQ and Status information about the EQ2EMU Content Development                                                                                                                     (2022 Q4 Update)")
+    StartDialogConversation(con, 1, NPC, Spawn, "This board contains FAQ and Status information about the EQ2EMU Content Development")
 end
 
 function Discord(NPC,Spawn)
@@ -40,7 +40,7 @@ function Discord(NPC,Spawn)
     AddConversationOption(con, "[ Goal ]", "Goal")
     AddConversationOption(con, "[ Server Status ]", "CurrentStatus")
     AddConversationOption(con, "[ Content Status ]", "ContentStatus")
-    AddConversationOption(con, "[ Bugs! ]", "Bugs")
+    AddConversationOption(con, "[ Report a Bug? ]", "Bugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
     StartDialogConversation(con, 1, NPC, Spawn, "There are 2 EQ2EMU test servers in the production process, EQ2EMU (Discord Channel: EQ2Emu) and Zeklabs (Discord Channel: EQ2EQ2 & EQ2PVP).\n\n Both have distinct Discord channels that generally share information.  EQ2EMU handles most Content updates & related bug reports. Zeklabs handles hard coding / server stability.  Both servers exchange data frequently to coordinate the best testing server experiences.\n\nChoose your test server accordingly.")
  end   
@@ -48,10 +48,10 @@ function Discord(NPC,Spawn)
  function Goal(NPC,Spawn)
     local con = CreateConversation()
     AddConversationOption(con, "[ Main Menu ]", "MainMenu")
-    AddConversationOption(con, "[ Goal ]", "Goal")
+    AddConversationOption(con, "[ Discord ]", "Discord")
     AddConversationOption(con, "[ Server Status ]", "CurrentStatus")
     AddConversationOption(con, "[ Content Status ]", "ContentStatus")
-    AddConversationOption(con, "[ Bugs! ]", "Bugs")
+    AddConversationOption(con, "[ Report a Bug? ]", "Bugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
     StartDialogConversation(con, 1, NPC, Spawn, "Goal: The ability to take what is developed here and apply it to a custom server.  Content across the EMU is focused from Classic to Alter of Malice (AoM) in various states. A future server opporator can take the EQ2EMU tools and apply their own rulesets with the content foundation here.\n\n Currently, the AOM client has had the most stability work completed, but other clients, such as Desert of Flames (DoF) have some minor support until they recieve additional attention.")
  end   
@@ -62,7 +62,7 @@ function CurrentStatus(NPC,Spawn)
     AddConversationOption(con, "[ Goal ]", "Goal")
     AddConversationOption(con, "[ Server Status ]", "CurrentStatus")
     AddConversationOption(con, "[ Content Status ]", "ContentStatus")
-    AddConversationOption(con, "[ Bugs! ]", "Bugs")
+    AddConversationOption(con, "[ Report a Bug? ]", "Bugs")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
     StartDialogConversation(con, 1, NPC, Spawn, "Server Status: The EQ2EMU is in Pre-Alpha, meaning there are many areas with some work done but far from what is expected for the \'True Experience\'.\n\n NOTE: Character Stats are using the OLD system, where each stat is used by all characters (e.g. Scouts use Wisdom for resistance)\n\n Refer to the other portions on this board for Zone / Content specific information.")
     end  
@@ -76,7 +76,7 @@ function ContentStatus(NPC,Spawn)
     AddConversationOption(con, "[ Quests ]","Quests")
     AddConversationOption(con, "[ Player Housing ]","PlayerHouse")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-   StartDialogConversation(con, 1, NPC, Spawn, "Content Status: Content is broken into subcategories: Zones, Combat, Tadeskill, Quests, Player Housing.\n\n These are just basic content areas with general descriptions of their states.")
+   StartDialogConversation(con, 1, NPC, Spawn, "Content Status: Content is broken into subcategories:\nZones\nCombat\nTadeskill\nQuests\nPlayer Housing.\n\n These are just basic content areas with general descriptions of their states.")
 end  
 
 function Zones(NPC,Spawn)
@@ -88,7 +88,7 @@ function Zones(NPC,Spawn)
     AddConversationOption(con, "[ Quests ]","Quests")
     AddConversationOption(con, "[ Player Housing ]","PlayerHouse")
     AddConversationOption(con, "[ Exit ]","CloseConvo")
-   StartDialogConversation(con, 1, NPC, Spawn, "Zones: Classic Content zones have received the most attention.\n\n Isle of Refuge is nearly 90%,\n\n Queen's Colony is nearly 90%,\n\n Outpost of the Overlord is roughly 80%.\n\n  Classic Qeynos and all of its \'hoods\' are the most complete.\n\n Freeport is roughly 50% complete with an Ecology pass still needing completed.\n\n Frostfang Sea is mostly complete.\n\n Various other zones, such as Nek Castle, and Tier 5 raid zones have had unique attention.\n\n NOTE: EVERYTHING is a work in progress!")
+   StartDialogConversation(con, 1, NPC, Spawn, "Zones: Classic Content zones have received the most attention.\n\n Isle of Refuge is nearly 90%\n\n  Classic Qeynos and all of its \'hoods\' & dungeons are the most complete.\n\n Queen's Colony is nearly 90%,\n\n Outpost of the Overlord is roughly 80%.\n\n Freeport is roughly 30% complete with an Ecology pass still necessary.\n\n Frostfang Sea is mostly complete.\n\n Various other zones, such as Nek Castle, and Tier 5 raid zones have had unique attention.\n\n NOTE: EVERYTHING is a work in progress!")
 end  
  
 function Combat(NPC,Spawn)
@@ -139,7 +139,17 @@ function PlayerHouse(NPC,Spawn)
    StartDialogConversation(con, 1, NPC, Spawn, "Player Housing: A work in progress.  Currently, you can purchase a home in the major cities, but placing furniture does not work entirely.  Zoning out of a player home can be done with /zone ###.  Free Inn Rooms in Qeynos temporarily use the Bell system when leaving via the inn room door.")
 end  
  
- 
+  function Bugs(NPC,Spawn)
+    local con = CreateConversation()
+    AddConversationOption(con, "[ Main Menu ]", "MainMenu")
+    AddConversationOption(con, "[ Discord ]", "Discord")
+    AddConversationOption(con, "[ Goal ]", "Goal")
+    AddConversationOption(con, "[ Server Status ]", "CurrentStatus")
+    AddConversationOption(con, "[ Content Status ]", "ContentStatus")
+    AddConversationOption(con, "[ Exit ]","CloseConvo")
+    StartDialogConversation(con, 1, NPC, Spawn, "Report Bugs:\n\nBug reporting is handled exclusively on the Discord Channels.\n\nPlease refer to [ Discord ] for the two actively used.")
+ end   
+ --[[
 function Bugs(NPC,Spawn)
     local con = CreateConversation()
     AddConversationOption(con, "[ Main Menu ]", "MainMenu")
@@ -150,7 +160,7 @@ function Bugs(NPC,Spawn)
     AddConversationOption(con, "[ Exit ]","CloseConvo")
     StartDialogConversation(con, 1, NPC, Spawn, "Bugs: Post new Bugs on the EQ2EMU Discord channel! \n\n The following are some major bugs known to the EMU team. There are more, and please feel free to share them on Discord.")
  end  
- 
+ ]]--
 function CombatBugs(NPC,Spawn)
     local con = CreateConversation()
     AddConversationOption(con, "[ Main Menu ]", "MainMenu")

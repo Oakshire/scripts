@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Quests/Hallmark/welcome_to_freeport__longshadow_alley.lua
+    Script Name    : Quests/Hallmark/welcome_to_freeport__scale_yard.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.21 06:06:05
+    Script Date    : 2023.06.28 10:06:09
     Script Purpose : 
 
         Zone       : Hallmark
@@ -14,7 +14,7 @@
 function Init(Quest)
 	AddQuestStepZoneLoc(Quest, 1, "Use the room door to be given your inn room.  Click on the \"Buy\" button to get your room.  Once you have purchased your room click on \"Enter\" to enter your room.", 10, "I've been instructed to sign in at the inn's guest registry in order to get the key to my room.", 11,-5.63, 0.75, -13.88 ,145)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
-    UpdateQuestZone(Quest,"Longshadow Alley")
+    UpdateQuestZone(Quest,"Scale Yard")
 end
 
 function Accepted(Quest, QuestGiver, Player)
@@ -33,7 +33,7 @@ end
 function Step1Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 1, "I've been given my inn room")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I've been given the key to my room and can now come and go as I please.")
-	AddQuestStepChat(Quest, 2, "I need to introduce myself to the landlord.", 1, "I need to introduce myself to the landlord",11,1450271)
+	AddQuestStepChat(Quest, 2, "I need to introduce myself to the caretaker.", 1, "I need to introduce myself to the landlord",11,1390055)
 	AddQuestStepCompleteAction(Quest, 2, "Step2Complete")   
 end
 
@@ -48,13 +48,13 @@ end
 function Step3Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 3, "I've placed the table and spoken with the slumlord.")
 	UpdateQuestTaskGroupDescription(Quest, 3, "I've placed the table and spoken with the slumlord.")
-	AddQuestStepChat(Quest, 4, "Speak with the Banker T`Val in Longshadow Alley.", 1, "Slumlord Valthun has informed me that I have a bank account waiting for me.  I need to speak with the Banker in Longshadow Alley to open the account.",11,1380021)
+	AddQuestStepChat(Quest, 4, "Speak with the Banker Izark in Scale Yard.", 1, "Slumlord Valthun has informed me that I have a bank account waiting for me.  I need to speak with the Banker in Scale Yard to open the account.",11,1380021)
 	AddQuestStepCompleteAction(Quest, 4, "Step4Complete")   
 end
 
 function Step4Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 4, "I've spoken with the Banker in Longshadow Alley.")
-	UpdateQuestTaskGroupDescription(Quest, 4, "I've spoken with the Banker in the Longshadow Alley.")
+	UpdateQuestStepDescription(Quest, 4, "I've spoken with the Banker in Scale Yard.")
+	UpdateQuestTaskGroupDescription(Quest, 4, "I've spoken with the Banker in the Scale Yard.")
 	AddQuestStepChat(Quest, 5, "Return to your room and speak with Slumlord Valthun.", 1, "Now that I have a bank account, I should return to my house and look around my brand new room.  When I get there maybe I can find out where that Slumlord went.",11,1450271)
 	AddQuestStepCompleteAction(Quest, 5, "Step5Complete")   
 end
@@ -62,37 +62,37 @@ end
 function Step5Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 5, "I've returned to my room and spoken with Slumlord Valthun.")
 	UpdateQuestTaskGroupDescription(Quest, 5, "I've returned to my room and spoken with slumlord Valthun, who seems to have had a change in attitude since I last spoke with him.")
-	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new mirror and then speak with the slumlord.", 1,100, "Slumlord Valthun has suggested that I place the mirror on my walls.  I don't know what came over him, but I don't trust it.  I should place the mirror and then get him to tell me everything he knows about Longshadow Alley",0)
+	AddQuestStep(Quest, 6, "Open your inventory.  \"Place\" your new mirror and then speak with the slumlord.", 1,100, "Slumlord Valthun has suggested that I place the mirror on my walls.  I don't know what came over him, but I don't trust it.  I should place the mirror and then get him to tell me everything he knows about Scale Yard",0)
 	AddQuestStepCompleteAction(Quest, 6, "Step6Complete")   
 end
 
 function Step6Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 6, "I've placed the mirror and spoken with the slumlord.")
 	UpdateQuestTaskGroupDescription(Quest, 6, "I've placed the mirror and spoken with the slumlord.")
-    UpdateQuestZone(Quest,"Ruins")
-	AddQuestStepZoneLoc(Quest, 7, "I need to use the mariner's bells near the docks to get to the Ruins.",6,"\"The more daring of you bold, courageous adventurer types tend to make a living by killing things in the Ruins.  You have to take a ferry to reach the place.  Go to the mariner's bell near the docks and give it a ring to travel there.  I'll show you a few other places after you take a look at the gates.\" - Valthun", 2297,-132.74, -1.07, 80.37, 268.31,842)
+    UpdateQuestZone(Quest,"Sunken City")
+	AddQuestStepZoneLoc(Quest, 7, "I need to use the mariner's bells near the docks to get to the Sunken City.",6,"\"The more daring of you bold, courageous adventurer types tend to make a living by killing things in the Sunken City.  You have to take a ferry to reach the place.  Go to the mariner's bell near the docks and give it a ring to travel there.  I'll show you a few other places after you take a look at the gates.\" - Valthun", 2297,-132.74, -1.07, 80.37, 268.31,842)
 	AddQuestStepCompleteAction(Quest, 7, "Step7Complete")   
 end
 
 function Step7Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 7, "I've found the mariner's bells near the docks.")
 	UpdateQuestTaskGroupDescription(Quest, 7, "I've visisted one of four locations Valthun has told me about.")
-    UpdateQuestZone(Quest,"Longshadow Alley")
-	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Longshadow Alley crafting trainer, Alanaramal Z'Aste.",1,"\"Some commoners choose to waste their time twiddling, creating rubbish. If you have interest in such crafting nonsense, then speak with representative from The Dark Bargainers. While I doubt you can, there might be some coin to be made crafting. If I see your filth littering the streets though, remember, I know where you live.\" - Valthun", 11,2350050)
+    UpdateQuestZone(Quest,"Scale Yard")
+	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Scale Yard crafting trainer, Tegan Frostfist.",1,"\"Some commoners choose to waste their time twiddling, creating rubbish. If you have interest in such crafting nonsense, then speak with representative from The War Hagglers. While I doubt you can, there might be some coin to be made crafting. If I see your filth littering the streets though, remember, I know where you live.\" - Valthun", 11,1390014)
 	AddQuestStepCompleteAction(Quest, 8, "Step8Complete")   
 end
 
 function Step8Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 8, "I've met with the district crafting trainer.")
 	UpdateQuestTaskGroupDescription(Quest, 8, "I've visisted two of four locations Valthun has told me about.")
-	AddQuestStepZoneLoc(Quest, 9, "I need to locate the grate to the Thieve's Way.",6,"\"Though most of the people who venture down into the sewers are nothing more than filthy, worthless, good-for-nothing vagabonds, I'm sure you have good reasons for traveling there yourself.  You can find the grate leading down to them if you take a close look.  After that, I'll show you one more place.\" - Valthun", 0,43.64, -0.87, -22.94,138)
+	AddQuestStepZoneLoc(Quest, 9, "I need to locate the grate to the Thieve's Way.",6,"\"Though most of the people who venture down into the sewers are nothing more than filthy, worthless, good-for-nothing vagabonds, I'm sure you have good reasons for traveling there yourself.  You can find the grate leading down to them if you take a close look.  After that, I'll show you one more place.\" - Valthun", 0,43.64, -0.87, -22.94,139)
 	AddQuestStepCompleteAction(Quest, 9, "Step9Complete")   
 end
 
 function Step9Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 9, "I've found the enterence to the Thieve's Way.")
 	UpdateQuestTaskGroupDescription(Quest, 9, "I've visisted three of four locations Valthun has told me about.")
-	AddQuestStepZoneLoc(Quest, 10, "I need to locate the gates to North Freeport.",6, "\"Only citizens like myself can come and go as they please.  The rest of you refugees are corralled into the districts.  If you'd like to see what door you're not allowed to travel through, take a look for the city gates.  You'll be able to find it here.  By the time you look at it, I should be done wi----- waiting for you.\" - Valthun", 11,15.54, 3.00, 73.32,138)
+	AddQuestStepZoneLoc(Quest, 10, "I need to locate the gates to North Freeport.",6, "\"Only citizens like myself can come and go as they please.  The rest of you refugees are corralled into the districts.  If you'd like to see what door you're not allowed to travel through, take a look for the city gates.  You'll be able to find it here.  By the time you look at it, I should be done wi----- waiting for you.\" - Valthun", 11,15.54, 3.00, 73.32,139)
 	AddQuestStepCompleteAction(Quest, 10, "Step10Complete")   
 end
 

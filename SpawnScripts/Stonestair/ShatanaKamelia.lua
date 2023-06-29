@@ -1,9 +1,9 @@
 --[[
-	Script Name		: SpawnScripts/BigBend/KorkoofCrackstone.lua
-	Script Purpose	: Korkoof Crackstone
-	Script Author	: torsten
-	Script Date		: 2022.07.13
-	Script Notes	: Auto-Generated Conversation from PacketParser Data
+    Script Name    : SpawnScripts/Stonestair/ShatanaKamelia.lua
+    Script Author  : Dorbin
+    Script Date    : 2023.06.29 12:06:11
+    Script Purpose : 
+                   : 
 --]]
 require "SpawnScripts/Generic/DialogModule"
 dofile("SpawnScripts/Generic/GenericVoiceOvers.lua")
@@ -17,11 +17,11 @@ end
 function RandomGreeting(NPC,Spawn)
     local choice = MakeRandomInt(1,3)
     	if choice == 1 then
-		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1054.mp3", 0, 0, Spawn)
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_2_1047.mp3", "", "", 0, 0, Spawn, 0)
 	elseif choice == 2 then
-		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1054.mp3", 0, 0, Spawn)
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_1_1047.mp3", "", "", 0, 0, Spawn, 0)
 	elseif choice == 3 then
-		PlayVoice(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1054.mp3", 0, 0, Spawn)
+		PlayFlavor(NPC, "voiceover/english/voice_emotes/greetings/greetings_3_1047.mp3", "", "", 0, 0, Spawn, 0)
     end
 end
 
@@ -31,7 +31,7 @@ end
 
 function hailed(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
-    if HasQuest(Spawn,5860) and GetQuestStep(Spawn,5860) == 8 then
+    if HasQuest(Spawn,5859) and GetQuestStep(Spawn,5859) == 8 then
     Dialog1(NPC,Spawn)
     elseif GetTradeskillLevel(Spawn) <2 then
     RandomGreeting(NPC,Spawn)
@@ -54,7 +54,7 @@ function dlg_39_1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	conversation = CreateConversation()
 if GetTradeskillLevel(Spawn) <2  then
-        Quest = GetQuest(Spawn,5860)
+        Quest = GetQuest(Spawn,5859)
         SummonItem(Spawn,1030001,1)
         SetTradeskillLevel(Spawn,2)
         SetTradeskillClass(Spawn,1)
@@ -71,12 +71,12 @@ if GetTradeskillLevel(Spawn) <2  then
 end
 
 function Dialog1(NPC,Spawn)
-    SetStepComplete(Spawn,5860,8)
+    SetStepComplete(Spawn,5859,8)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
-	PlayFlavor(NPC, "", "", "no", 0, 0, Spawn)
-	Dialog.AddDialog("I've no need for the weak. If you can handle yourself, then you can join The Ransackers Annex. Are you qualifed to be one of us?")
-	Dialog.AddVoiceover("voiceover/english/korkoof_crackstone/fprt_hood1/100_trd_korkoof_crackstone_joining_649a7bb8.mp3", 1321833842, 3908486427)
+	PlayFlavor(NPC, "", "", "flirt", 0, 0, Spawn)
+	Dialog.AddDialog("If you find it irresistible to serve someone as beautiful and intelligent as I, I suppose I can use you as another one of my servants in The Brokerage of Nepeta Cataria. Of course you'll join, right?")
+	Dialog.AddVoiceover("voiceover/english/shatana_kamelia/fprt_hood02/100_trd_shatana_kamelia_joining_6430583e.mp3", 645497764, 909566710)
     Dialog.AddOption("Just looking around. As you were.")
  	Dialog.AddOption("What can I do here?", "CanDo")
    if GetTradeskillLevel(Spawn)<2 then
@@ -113,7 +113,7 @@ function HelpMe(NPC,Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	PlayFlavor(NPC, "", "", "nod", 0, 0, Spawn)
-	Dialog.AddDialog("In order to be competitive in today's marketplace, the Circle of Vaniki provides you with this basic guide to commerce.  You will learn many things on your own over time, so do not consider this book your only guide to success.  Rely on your own resources and skills and you will prosper.")
+	Dialog.AddDialog("In order to be competitive in today's marketplace, The Brokerage of Nepeta Cataria provides you with this basic guide to commerce.  You will learn many things on your own over time, so do not consider this book your only guide to success.  Rely on your own resources and skills and you will prosper.")
  	Dialog.AddOption("What can I do here?", "CanDo")
 	Dialog.AddOption("Thank you for all the information!")
     if GetTradeskillLevel(Spawn) <2  then
