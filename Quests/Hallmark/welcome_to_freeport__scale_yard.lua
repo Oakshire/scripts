@@ -20,10 +20,10 @@ end
 function Accepted(Quest, QuestGiver, Player)
 	FaceTarget(QuestGiver, Player)
 	Dialog.New(QuestGiver, Player)
-	Dialog.AddDialog("Go to your house immediately and meet with the landlord.  He is expecting you at this very moment.  Do not be late. He can't waste his precious time waiting for a lowly refugee.  Now away with you! By the way ... Welcome to Freeport.")
-    PlayFlavor(QuestGiver,"","","point",0,0,Player)
-	Dialog.AddVoiceover("voiceover/english/overseer_daerla/fprt_hood05/overseer_daerla004.mp3", 2116614625, 2551669022) 
-	Dialog.AddOption("Grrrr... thank you, Overseer.")
+	Dialog.AddDialog("Your house is within the Scale Yard, where we call home.  Go at once and find your landlord.  He is waiting to give you further commands. So ends my gracious welcome. Now, get out of here...")
+    PlayFlavor(QuestGiver,"","","agree",0,0,Player)
+--	Dialog.AddVoiceover("voiceover/english/overseer_daerla/fprt_hood05/overseer_daerla004.mp3", 2116614625, 2551669022) 
+	Dialog.AddOption("Okay, Overseer.")
 	Dialog.Start()
 	if HasQuest(Player,5758) and GetQuestStep(Player, 5758)==2 then
 	    SetStepComplete(Player, 5758,2)
@@ -75,7 +75,7 @@ function Step6Complete(Quest, QuestGiver, Player)
 end
 
 function Step7Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 7, "I've found the mariner's bells near the docks.")
+	UpdateQuestStepDescription(Quest, 7, "I've visited the Sunken City.")
 	UpdateQuestTaskGroupDescription(Quest, 7, "I've visisted one of four locations Valthun has told me about.")
     UpdateQuestZone(Quest,"Scale Yard")
 	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Scale Yard crafting trainer, Tegan Frostfist.",1,"\"Some commoners choose to waste their time twiddling, creating rubbish. If you have interest in such crafting nonsense, then speak with representative from The War Hagglers. While I doubt you can, there might be some coin to be made crafting. If I see your filth littering the streets though, remember, I know where you live.\" - Valthun", 11,1390014)

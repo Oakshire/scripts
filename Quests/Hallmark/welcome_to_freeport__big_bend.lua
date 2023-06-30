@@ -75,7 +75,7 @@ function Step6Complete(Quest, QuestGiver, Player)
 end
 
 function Step7Complete(Quest, QuestGiver, Player)
-	UpdateQuestStepDescription(Quest, 7, "I've found the gates to the Sprawl.")
+	UpdateQuestStepDescription(Quest, 7, "I've visited the Sprawl.")
 	UpdateQuestTaskGroupDescription(Quest, 7, "I've visisted one of four locations Valthun has told me about.")
     UpdateQuestZone(Quest,"Big Bend")
 	AddQuestStepChat(Quest, 8, "I need to introduce myself to the Big Bend crafting trainer, Korkoof Crackstone.",1,"\"Some commoners choose to waste their time twiddling, creating rubbish. If you have interest in such crafting nonsense, then speak with representative from The Ransackers Annex. While I doubt you can, there might be some coin to be made crafting. If I see your filth littering the streets though, remember, I know where you live.\" - Valthun", 11,1340013)
@@ -92,7 +92,7 @@ end
 function Step9Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 9, "I've found the enterence to the Thieve's Way.")
 	UpdateQuestTaskGroupDescription(Quest, 9, "I've visisted three of four locations Valthun has told me about.")
-	AddQuestStepZoneLoc(Quest, 10, "I need to locate the gates to South Freeport.",6, "\"Only citizens like myself can come and go as they please.  The rest of you refugees are corralled into the districts.  If you'd like to see what door you're not allowed to travel through, take a look for the city gates.  You'll be able to find it here.  By the time you look at it, I should be done wi----- waiting for you.\" - Valthun", 11,-4.23, 3.00, -74.51,134)
+	AddQuestStep(Quest, 10, "I need to locate the gates to South Freeport.",1,100, "\"Only citizens like myself can come and go as they please.  The rest of you refugees are corralled into the districts.  If you'd like to see what door you're not allowed to travel through, take a look for the city gates.  You'll be able to find it here.  By the time you look at it, I should be done wi----- waiting for you.\" - Valthun", 11)
 	AddQuestStepCompleteAction(Quest, 10, "Step10Complete")   
 end
 

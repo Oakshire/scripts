@@ -12,7 +12,7 @@ require "SpawnScripts/Generic/DialogModule"
 local CalloutTimer = false
 
 function spawn(NPC)
-ProvidesQuest(NPC,5862)
+ProvidesQuest(NPC,Welcome)
 SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 
@@ -66,7 +66,12 @@ end
 
 function Talk(NPC,Spawn)
         FaceTarget(NPC, Spawn)
+        local choice = MakeRandomInt(1,2)
+        if choice == 1 then
         PlayFlavor(NPC,"","Refugees will report to me at once!","sniff",850117394,1406850605,Spawn)
+        else
+        PlayFlavor(NPC,"","Disturb me again and you will suffer the consequences.","glare",850117394,1406850605,Spawn)
+        end
 end
 
 function respawn(NPC)

@@ -96,7 +96,7 @@ function Option1B(NPC,Spawn)
 	Dialog.AddDialog("Then stop talking and start listening.  The Overlord has little time for those who don't know when to hold their tongue.")
 	Dialog.AddVoiceover("voiceover/english/abbetor_t_avi/fprt_sewer_epic08/abbetortavi003.mp3", 543002968, 1965375267)
     PlayFlavor(NPC,"","","scold",0,0,Spawn)
-	Dialog.AddOption("Well, then make me a citizen already!", "Option1Fb")
+	Dialog.AddOption("Speak to me like that again...", "Option1Fb")
 	Dialog.AddOption("...", "Option1C")
 	Dialog.Start()
 end	
@@ -212,8 +212,8 @@ function Option1F(NPC,Spawn)
     SetStepComplete(Spawn,5863,13)
     elseif HasQuest(Spawn,5864) and GetQuestStep(Spawn,5864)==13 then
     SetStepComplete(Spawn,5864,13)
-    elseif HasQuest(Spawn,5865) and GetQuestStep(Spawn,5865)==13 then
-    SetStepComplete(Spawn,5865,13)
+    elseif HasQuest(Spawn,5859) and GetQuestStep(Spawn,5859)==13 then
+    SetStepComplete(Spawn,5859,13)
     end
 end	
 
@@ -239,8 +239,8 @@ function Dialog2(NPC,Spawn)
     SetStepComplete(Spawn,5863,14)
     elseif HasQuest(Spawn,5864) and GetQuestStep(Spawn,5864)==14 then
     SetStepComplete(Spawn,5864,14)
-    elseif HasQuest(Spawn,5865) and GetQuestStep(Spawn,5865)==14 then
-    SetStepComplete(Spawn,5865,14)
+    elseif HasQuest(Spawn,5859) and GetQuestStep(Spawn,5859)==14 then
+    SetStepComplete(Spawn,5859,14)
     end
 	if HasQuest(Spawn,BBFCitizen ) then
 	SetStepComplete(Spawn,BBFCitizen ,5)

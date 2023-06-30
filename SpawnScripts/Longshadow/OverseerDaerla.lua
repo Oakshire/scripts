@@ -11,7 +11,7 @@ require "SpawnScripts/Generic/DialogModule"
 local CalloutTimer = false
 
 function spawn(NPC)
-ProvidesQuest(NPC,5862)
+ProvidesQuest(NPC,Welcome)
 SetPlayerProximityFunction(NPC, 10, "InRange", "LeaveRange")
 end
 

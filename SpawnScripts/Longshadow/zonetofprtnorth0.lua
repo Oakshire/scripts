@@ -1,11 +1,11 @@
 --[[
-    Script Name    : SpawnScripts/Stonestair/zonetofprtnorth.lua
+    Script Name    : SpawnScripts/Longshadow/zonetofprtnorth0.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.29 04:06:06
+    Script Date    : 2023.06.29 12:06:51
     Script Purpose : 
                    : 
 --]]
-    local invul = IsInvulnerable(Spawn)
+   local invul = IsInvulnerable(Spawn)
 
 function casted_on(NPC, Spawn,SpellName)
  if SpellName == 'Enter South Freeport' then  
@@ -18,8 +18,8 @@ function casted_on(NPC, Spawn,SpellName)
      and GetFactionAmount(Spawn,12)<50000 or
      invul == true then
          
-    if HasQuest(Spawn,5859) and GetQuestStep(Spawn,5859)==10 then
-    SetStepComplete(Spawn,5859,10)
+    if HasQuest(Spawn,5862) and GetQuestStep(Spawn,5862)==10 then
+    SetStepComplete(Spawn,5862,10)
     end  
     
     PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
@@ -28,7 +28,7 @@ function casted_on(NPC, Spawn,SpellName)
     
     else
         ZoneRef = GetZone("NorthFreeport")
-        Zone(ZoneRef,Spawn,-4.56, -20.05, -308.55, 180.63)        
+        Zone(ZoneRef,Spawn,-81.61, -34.58, -3370.35, 181.78)        
     end    
 end     
 end    

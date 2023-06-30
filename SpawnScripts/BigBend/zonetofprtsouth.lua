@@ -1,11 +1,11 @@
 --[[
-    Script Name    : SpawnScripts/Stonestair/zonetofprtnorth.lua
+    Script Name    : SpawnScripts/BigBend/zonetofprtsouth.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.29 04:06:06
+    Script Date    : 2023.06.29 12:06:22
     Script Purpose : 
                    : 
 --]]
-    local invul = IsInvulnerable(Spawn)
+   local invul = IsInvulnerable(Spawn)
 
 function casted_on(NPC, Spawn,SpellName)
  if SpellName == 'Enter South Freeport' then  
@@ -18,8 +18,8 @@ function casted_on(NPC, Spawn,SpellName)
      and GetFactionAmount(Spawn,12)<50000 or
      invul == true then
          
-    if HasQuest(Spawn,5859) and GetQuestStep(Spawn,5859)==10 then
-    SetStepComplete(Spawn,5859,10)
+    if HasQuest(Spawn,5860) and GetQuestStep(Spawn,5860)==10 then
+    SetStepComplete(Spawn,5860,10)
     end  
     
     PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
@@ -27,8 +27,8 @@ function casted_on(NPC, Spawn,SpellName)
     SendMessage(Spawn,"Only Freeport citizens may enter the city.","red")
     
     else
-        ZoneRef = GetZone("NorthFreeport")
-        Zone(ZoneRef,Spawn,-4.56, -20.05, -308.55, 180.63)        
+        ZoneRef = GetZone("SouthFreeport")
+        Zone(ZoneRef,Spawn,61.86, -12.09, 248.41, 11)        
     end    
 end     
 end    

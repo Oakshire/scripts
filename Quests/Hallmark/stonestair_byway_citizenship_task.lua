@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Graveyard.", 5, 34, "The Graveyard has been seeded with tokens for the citizens of Stonestair Byway to gather. These tokens may be found on any creatures in the Graveyard.  I can reach the Graveyard by using any of the bells in and around the City of Freeport.", 1366, 8420001,8420002,8420003,8420004,8420005,8420006,8420007,8420008,8420009,8420010,8420011,8420012,8420013,8420014,8420015,8420016,8420017,8420018,8420019,8420020,8420021,8420022,8420023,8420024,8420025,8420027,8420028,8420029,8420030,8420031,8420036,8420037,8420038,8420039)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Graveyard.", 5, 34, "The Graveyard has been seeded with tokens for the citizens of Stonestair Byway to gather. These tokens may be found on any creatures in the Graveyard.  I can reach the Graveyard by using any of the bells in and around the City of Freeport.", 1366, 1250001,1250005,1250006,1250007,1250008,1250009,1250010,1250011,1250012,1250013,1250014,1250015,1250016,1250017,1250018,1250019,1250021,1250022,1250023,1250024,1250025,1250027,1250028,1250030,1250031,1250033,1250035,1250036,1250039,1250040,1250041,1250044,1250045,1250046,1250048,1250049,1250054,1250065,1250067)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Graveyard")
 end

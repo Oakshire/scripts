@@ -1,7 +1,7 @@
 --[[
-    Script Name    : SpawnScripts/Stonestair/zonetofprtnorth.lua
+    Script Name    : SpawnScripts/TempleSt/zonetofprtsouth.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.29 04:06:06
+    Script Date    : 2023.06.29 12:06:17
     Script Purpose : 
                    : 
 --]]
@@ -18,8 +18,8 @@ function casted_on(NPC, Spawn,SpellName)
      and GetFactionAmount(Spawn,12)<50000 or
      invul == true then
          
-    if HasQuest(Spawn,5859) and GetQuestStep(Spawn,5859)==10 then
-    SetStepComplete(Spawn,5859,10)
+    if HasQuest(Spawn,5864) and GetQuestStep(Spawn,5864)==10 then
+    SetStepComplete(Spawn,5864,10)
     end  
     
     PlaySound(Spawn,"sounds/ui/ui_warning.wav", GetX(NPC), GetY(NPC), GetZ(NPC))
@@ -27,8 +27,8 @@ function casted_on(NPC, Spawn,SpellName)
     SendMessage(Spawn,"Only Freeport citizens may enter the city.","red")
     
     else
-        ZoneRef = GetZone("NorthFreeport")
-        Zone(ZoneRef,Spawn,-4.56, -20.05, -308.55, 180.63)        
+        ZoneRef = GetZone("SouthFreeport")
+        Zone(ZoneRef,Spawn,-174.94, -36.63, 325.07, 37.31)        
     end    
 end     
 end    

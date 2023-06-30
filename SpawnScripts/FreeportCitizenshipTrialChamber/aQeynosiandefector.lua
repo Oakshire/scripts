@@ -14,6 +14,13 @@ local SCQCitizen = 5870 --Stonestair Byway
 local WWQCitizen = 5871 --Temple St
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
+end
+
+function InRange(NPC, Spawn)
+if not IsInCombat(NPC) then
+PlayFlavor(NPC, "","Please, leave me alone!", "cringe", 0,0, Spawn)
+end
 end
 
 

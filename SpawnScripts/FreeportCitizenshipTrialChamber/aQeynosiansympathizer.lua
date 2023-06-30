@@ -14,8 +14,14 @@ local SCQCitizen = 5870 --Stonestair Byway
 local WWQCitizen = 5871 --Temple St
 
 function spawn(NPC)
+	SetPlayerProximityFunction(NPC, 7, "InRange", "LeaveRange")
 end
 
+function InRange(NPC, Spawn)
+if not IsInCombat(NPC) then
+PlayFlavor(NPC, "","No!  Please don't hurt me!", "beg", 0,0, Spawn)
+end
+end
 
 function hailed(NPC, Spawn)
 Dialog1(NPC, Spawn)
@@ -32,7 +38,7 @@ function Dialog1(NPC, Spawn)
     PlayFlavor(NPC,"","","whome",0,0,Spawn)
 	Dialog.AddVoiceover("voiceover/english/a_qeynosian_sympathizer/fprt_sewer_epic08/falselyaccused000.mp3", 1319923328, 1248891325)
 	Dialog.AddOption("What invention? Does it explode?", "Dialog2")
-	Dialog.AddOption("Freeport's only mistake was accepting you as a refugee.", "AttackTimer")
+	Dialog.AddOption("Freeport's only mistake was accepting you as a refugee.", "Attacking")
 	Dialog.Start()
 end
 
@@ -54,7 +60,7 @@ function Dialog3(NPC, Spawn)
 	Dialog.AddVoiceover("voiceover/english/gnome_eco_evil_1/ft/gnome/gnome_eco_evil_1_hail_gm_87cefc8f.mp3", 3561903619, 1901803882)
     PlayFlavor(NPC,"","","heckno",0,0,Spawn)
 	Dialog.AddOption("You don't seem Qeynosian... You should get out of here.","Fail")
-	Dialog.AddOption("The Overlord has deemed you unworthy!", "AttackTimer")
+	Dialog.AddOption("The Overlord has deemed you unworthy!", "Attacking")
 	Dialog.AddOption("Enough. Tell me where your invention is!", "AttackTimer")
 	Dialog.Start()
 end
@@ -90,8 +96,9 @@ end
 function aggro(NPC,Spawn)
      SpawnSet(NPC,"attackable",1)
     SpawnSet(NPC,"show_level",1)
-    SpawnSet(NPC,"command_primary",11)
-    SpawnSet(NPC,"action_state",0)
+    AddPrimaryEntityCommand(Spawn,NPC,"",0,"")
+    AddPrimaryEntityCommand(Spawn,NPC,"attack",10000,"attack")
+    SendUpdateDefaultCommand(NPC,10000,"attack")zSpawnSet(NPC,"action_state",0)
 end
 
 function death(NPC,Spawn)

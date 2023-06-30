@@ -35,7 +35,7 @@ Dialog1(NPC, Spawn)
 end
 end
 
-function Dialog4(NPC, Spawn)
+function Dialog1(NPC, Spawn)
 	FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("Your money is safe with the Freeport Reserve. Trust us.  Just provide us your guild association.")
