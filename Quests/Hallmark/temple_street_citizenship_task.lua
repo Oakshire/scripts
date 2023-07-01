@@ -11,7 +11,7 @@
 --]]
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Ruins.", 5, 34, "The Thieves' Way has been seeded with tokens for the residents of Temple Street to gather. These tokens may be found on any creatures in the Thieves' Way.", 1379, 1540000,154002,1540003,1540004,1540005,1540006,1540007,1540008,1540009,1540010,1540011,1540012,1540013,1540014,1540015,1540016,1540017,1540018,1540019,1540020,1540021,1540022,1540023,1540023,1540025,1540026,1540027,1540028,1540029,1540031,1540032,1540040,1540041,1540042,1540045,1540043,1540044,1540046,1540072,1540073)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the The Thieves' Way.", 5, 34, "The Thieves' Way has been seeded with tokens for the residents of Temple Street to gather. These tokens may be found on any creatures in the Thieves' Way.", 1379, 1540000,154002,1540003,1540004,1540005,1540006,1540007,1540008,1540009,1540010,1540011,1540012,1540013,1540014,1540015,1540016,1540017,1540018,1540019,1540020,1540021,1540022,1540023,1540023,1540025,1540026,1540027,1540028,1540029,1540031,1540032,1540040,1540041,1540042,1540045,1540043,1540044,1540046,1540072,1540073)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Theives Way")
 end
@@ -29,7 +29,7 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the Ruins.")
+	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the The Thieves' Way.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the tokens required to prove my worth as a citizen.")
     UpdateQuestZone(Quest,"Temple Street")
 	AddQuestStep(Quest, 2, "I need to enter the citizenship trial.", 1, 100, "I must perform the citizenship trial by returning to the Citizenship Sign and entering the trial chamber",1335)

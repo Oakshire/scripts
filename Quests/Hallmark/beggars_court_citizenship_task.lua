@@ -1,7 +1,7 @@
 --[[
-    Script Name    : Quests/Hallmark/big_bend_citizenship_task.lua
+    Script Name    : Quests/Hallmark/beggars_court_citizenship_task.lua
     Script Author  : Dorbin
-    Script Date    : 2023.06.28 08:06:14
+    Script Date    : 2023.06.30 07:06:12
     Script Purpose : 
 
         Zone       : Hallmark
@@ -12,7 +12,7 @@
 
 
 function Init(Quest)
-	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Sprawl.", 5, 34, "The Sprawl has been seeded with tokens for the residents of Big Bend to gather. These tokens may be found on any creatures in the Sprawl.  I can reach the Sprawl by using any of the bells in and around the City of Freeport.", 1368, 1260000,1260005,1260006,1260007,1260008,1260009,1260010,1260011,1260012,1260013,1260014,1260015,1260018,1260022,1260025,1260026,1260027,1260029,1260030,1260031,1260032,1260036,1260064,1260065)
+	AddQuestStepKill(Quest, 1, "Gather five tokens from the creatures in the Sunken City.", 5, 34, "The Sunken City has been seeded with tokens for the residents of Beggar's Court to gather. These tokens may be found on any creatures in the Sunken City.  I can reach the Sunken City by using any of the bells in and around the City of Freeport.", 1338,1240000, 1240001,1240002,1240004,1240005,1240006,1240007,1240008,1240009,1240010,1240011,1240012,1240013,1240014,1240015,1240016,1240025,1240028,1240029,1240030,1240031,1240032,1240034,1240035,1240036,1240037,1240038,1240039,1240040,1240041,1240042,1240042,1240044,1240045,1240048)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
     UpdateQuestZone(Quest,"Sprawl")
 end
@@ -30,7 +30,7 @@ end
 
 function Step1Complete(Quest, QuestGiver, Player)
 	-- The following UpdateQuestStepDescription and UpdateTaskGroupDescription are not needed, parser adds them for completion in case stuff needs to be moved around
-	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the Sprawl.")
+	UpdateQuestStepDescription(Quest, 1, "I have gathered five tokens from the Sunken City.")
 	UpdateQuestTaskGroupDescription(Quest, 1, "I have gathered the tokens required to prove my worth as a citizen.")
     UpdateQuestZone(Quest,"Temple Street")
 	AddQuestStep(Quest, 2, "I need to enter the citizenship trial.", 1, 100, "I must perform the citizenship trial by returning to the Citizenship Sign and entering the trial chamber",1335)

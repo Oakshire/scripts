@@ -5,10 +5,10 @@
     Script Purpose : 
                    : 
 --]]
-   local invul = IsInvulnerable(Spawn)
 
 function casted_on(NPC, Spawn,SpellName)
- if SpellName == 'Enter South Freeport' then  
+local invul = IsInvulnerable(Spawn)
+     if SpellName == 'Enter South Freeport' then  
     if not HasCompletedQuest(Spawn,5866) and
      not HasCompletedQuest(Spawn,5867) and
      not HasCompletedQuest(Spawn,5868) and
