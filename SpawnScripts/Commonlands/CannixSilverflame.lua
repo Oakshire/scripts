@@ -19,6 +19,9 @@ end
    end
 
 function hailed(NPC, Spawn)
+ if HasQuest(Spawn,5865) and not QuestStepIsComplete(Spawn,5865,6)then --FREEPORT OPPORTUNITY
+    SetStepComplete(Spawn,5865,6)
+end
     if not  HasQuest(Spawn, TheReturnOfTheLight) then
 	FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()

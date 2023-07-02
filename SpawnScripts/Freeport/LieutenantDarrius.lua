@@ -17,7 +17,10 @@ function respawn(NPC)
 end
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+ if HasQuest(Spawn,5865) and not QuestStepIsComplete(Spawn,5865,7)then --FREEPORT OPPORTUNITY
+    SetStepComplete(Spawn,5865,7)
+end
+    FaceTarget(NPC, Spawn)
 	Dialog.New(NPC, Spawn)
 	Dialog.AddDialog("The militia has a task for you, citizen.  Will you accept the call to duty?")
 	Dialog.AddVoiceover("voiceover/english/lieutenant_darrius/fprt_west/lieutenant_darrius.mp3", 913608800, 3646524676)

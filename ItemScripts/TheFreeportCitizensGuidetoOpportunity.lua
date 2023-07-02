@@ -104,7 +104,7 @@ function Page12(Item, Player)
 if CanReceiveQuest(Player,5865) then
     OfferQuest(Item,Player,5865)
 elseif GetQuestStep(Player,5865) ==8 then    
-AddConversationOption(conversation, "Final Page [WORK IN PROGRESS]","Page13")
+AddConversationOption(conversation, "Final Page","Page13")
 end
 endconversation = CreateConversation()
 AddConversationOption(conversation, "Previous Page","Page10")

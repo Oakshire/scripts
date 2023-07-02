@@ -11,6 +11,9 @@ function spawn(NPC)
 end
 
 function hailed(NPC, Spawn)
+if HasQuest(Spawn,5865) and not QuestStepIsComplete(Spawn,5865,1)then --FREEPORT OPPORTUNITY
+    SetStepComplete(Spawn,5865,1)
+end
 Dialog2(NPC, Spawn)
 end
 

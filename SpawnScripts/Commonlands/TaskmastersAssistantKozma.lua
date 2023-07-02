@@ -28,7 +28,10 @@ end
 
 
 function hailed(NPC, Spawn)
-	FaceTarget(NPC, Spawn)
+ if HasQuest(Spawn,5865) and not QuestStepIsComplete(Spawn,5865,5)then --FREEPORT OPPORTUNITY
+    SetStepComplete(Spawn,5865,5)
+end
+    FaceTarget(NPC, Spawn)
 	local conversation = CreateConversation()
     PlayFlavor(NPC, "voiceover/english/taskmaster_s_assistant_koz_ma/commonlands/quests/taskmaster/assistant_kozma001.mp3", "", "", 1822760720, 2300113695, Spawn)
 	AddConversationOption(conversation, "What requisition?", "Option1")

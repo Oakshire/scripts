@@ -69,7 +69,7 @@ end
 function Step6Complete(Quest, QuestGiver, Player)
 	UpdateQuestStepDescription(Quest, 6, "I've placed the mirror and spoken with the slumlord.")
 	UpdateQuestTaskGroupDescription(Quest, 6, "I've placed the mirror and spoken with the slumlord.")
-    UpdateQuestZone(Quest,"Ruins")
+    UpdateQuestZone(Quest,"Sprawl")
 	AddQuestStepZoneLoc(Quest, 7, "I need to step through the gates to the Sprawl.",6,"\"The more daring of you bold, courageous adventurer types tend to make a living by killing things in the Sprawl.  If you venture there, try not to get hurt too much.  This is where you can find the gates to the Sprawl.  I'll show you a few other places after you take a look at the gates.\" - Valthun\"", 11,-82.27, -4.79, -41.69 ,126)
 	AddQuestStepCompleteAction(Quest, 7, "Step7Complete")   
 end
