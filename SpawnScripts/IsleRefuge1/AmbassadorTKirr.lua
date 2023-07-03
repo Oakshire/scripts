@@ -144,15 +144,15 @@ function Dialog6(NPC, Spawn)
     if GetClientVersion(Spawn) <= 546 then
         local con = CreateConversation()
         if GetClass(Spawn)==1 then
-	    AddConversationOption(con, ""..GetName(Spawn).." the Fighter", "Dialog6")
+	    AddConversationOption(con, ""..GetName(Spawn).." the Fighter", "Dialog7")
         elseif GetClass(Spawn)==11 then
-	    AddConversationOption(con, ""..GetName(Spawn).." the Priest", "Dialog6")
+	    AddConversationOption(con, ""..GetName(Spawn).." the Priest", "Dialog7")
         elseif GetClass(Spawn)==21 then
-	    AddConversationOption(con, ""..GetName(Spawn).." the Mage", "Dialog6")
+	    AddConversationOption(con, ""..GetName(Spawn).." the Mage", "Dialog7")
         elseif GetClass(Spawn)==31 then
-	    AddConversationOption(con, ""..GetName(Spawn).." the Scout", "Dialog6")
+	    AddConversationOption(con, ""..GetName(Spawn).." the Scout", "Dialog7")
         else
-	    AddConversationOption(con, ""..GetName(Spawn).."", "Dialog6")
+	    AddConversationOption(con, ""..GetName(Spawn).."", "Dialog7")
         end
         AddConversationOption(con, "On second thought, I need to reconsider.","CloseConversation")
         StartDialogConversation(con, 1, NPC, Spawn, "-----------------------------------------\n Declaration to The Overlord \n-----------------------------------------\nI \""..GetName(Spawn).."\" pledge myself to \nOverlord Lucan D'Lere\nThe Lord and Ruler over\nThe City of Freeport\n\nMy actions shall be judged as a testament of Freeport's might, determination, and opportunity.\n\nBy the Overlord's will.\n\nSigned,")

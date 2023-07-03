@@ -15,8 +15,8 @@ function casted_on(NPC, Spawn,SpellName)
      not HasCompletedQuest(Spawn,5869) and
      not HasCompletedQuest(Spawn,5870) and 
      not HasCompletedQuest(Spawn,5871) 
-     and GetFactionAmount(Spawn,12)<50000 or
-     invul == true then
+     and GetFactionAmount(Spawn,12)<50000 and
+     invul == false then
          
     if HasQuest(Spawn,5864) and GetQuestStep(Spawn,5864)==10 then
     SetStepComplete(Spawn,5864,10)

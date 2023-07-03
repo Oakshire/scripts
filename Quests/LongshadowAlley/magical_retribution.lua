@@ -11,10 +11,12 @@
 	Followed by		:	None
 --]]
 
+ require "SpawnScripts/Generic/DialogModule"
 
 function Init(Quest)
 	AddQuestStepKill(Quest, 1, "I must kill ten Black Magis insurgents", 10, 100, "I should travel to the Sprawl and kill those Black Magi. I won't be done until I've killed at least ten of them.", 611, 1260012)
 	AddQuestStepCompleteAction(Quest, 1, "Step1Complete")
+    UpdateQuestZone(Quest,"Sprawl")
 end
 
 function Step1Complete(Quest, QuestGiver, Player)
@@ -31,7 +33,13 @@ function QuestComplete(Quest, QuestGiver, Player)
 end
 
 function Accepted(Quest, QuestGiver, Player)
-	-- Add dialog here for when the quest is accepted
+	FaceTarget(QuestGiver, Player)
+	Dialog.New(QuestGiver, Player)
+	Dialog.AddDialog("Hmmm ... yes, at least you could prevent a few of those beasts from learning the secrets of the ancient book. It won't solve the problem, but it's a fitting lesson -- if they play with fire, then they should expect to be burned. Go to the sprawl and kill as many ratonga as you can find.")
+    PlayFlavor(QuestGiver,"","","ponder",0,0,Player)
+--	Dialog.AddVoiceover("voiceover/english/standard_dark_elf_female/fprt_hood05/quests/lotniklria/lotni_x2_accept.mp3", 1332546096, 2822860601)  Missing VO Keys
+	Dialog.AddOption("I'll see it done.")
+	Dialog.Start()
 end
 
 function Declined(Quest, QuestGiver, Player)

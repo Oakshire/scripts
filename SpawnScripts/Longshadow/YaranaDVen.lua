@@ -5,6 +5,7 @@
 	Script Date		: 2022.07.18
 	Script Notes	: Auto-Generated Conversation from PacketParser Data
 --]]
+require "SpawnScripts/Generic/DialogModule"
 
 local NoRivalsForYarana = 5675
 

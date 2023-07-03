@@ -15,8 +15,8 @@ local invul = IsInvulnerable(Spawn)
      not HasCompletedQuest(Spawn,5869) and
      not HasCompletedQuest(Spawn,5870) and 
      not HasCompletedQuest(Spawn,5871) 
-     and GetFactionAmount(Spawn,12)<50000 or
-     invul == true then
+     and GetFactionAmount(Spawn,12)<50000 and
+     invul == false then
          
     if HasQuest(Spawn,5863) and GetQuestStep(Spawn,5863)==10 then
     SetStepComplete(Spawn,5863,10)

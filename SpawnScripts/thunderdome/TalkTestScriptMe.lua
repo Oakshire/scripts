@@ -22,7 +22,7 @@ function hailed(NPC, Spawn)
  	AddConversationOption(conversation, "Flex.", "flex") -- First option, adds a clickable option in response to what we send out in StartConversation. Second var refers to the function that contains the rest of the conversation.
  	AddConversationOption(conversation, "Keep talking.", "keeptalking") -- second option
  	AddConversationOption(conversation, "Terminate.") -- third option
- 	StartConversation(conversation, NPC, Spawn, "If Dorbin sees this, he'll know Nev finally got around to looking at this NPC!")
+ 	StartConversation(conversation, NPC, Spawn, "Script me, please!")
 end
 
 -- OPTION 1 is a simple emote
@@ -39,11 +39,15 @@ function keeptalking(NPC, Spawn)
 		AddConversationOption(conversation, "Yes","hailed") -- You can refer back to earlier functions.
 		StartConversation(conversation, NPC, Spawn, "Want to continue our conversation?") -- If we want the player to cick a button, this option must be present.
 end
+
 --[[
  Tips on PlayFlavor
 
- 	PlayFlavor(NPC, "voiceover/english/gubbo_chaley/enchanted/gubbo_chaley/gubbo_chaley006.mp3","If you see Fritz, would you tell him I'm looking for him?","nod", 4082962413, 3474255449, Spawn,8)
-    
+     PlayFlavor(NPC, "voiceover/english/gubbo_chaley/enchanted/gubbo_chaley/gubbo_chaley006.mp3","If you see Fritz, would you tell him I'm looking for him?","nod", 4082962413, 3474255449, Spawn,8)
+
+
+Translates into the NPC with the voiceover saying "If you see Fritz, would you tell him I'm looking for him?" in Stout Language (8) while nodding. Enitre action is only visible to the Spawn/Player. 
+   
     --Each variable translated below--
     
     PlayFlavor(Source, "VoiceoverMP3", "TextAboveNPC'sHead", "Emote", MP3key1, MP3key2, Target, LanguageNPCuses)         
@@ -51,5 +55,8 @@ end
     
     --No talking example--
     PlayFlavor(NPC,"","","shakefist",0,0,Spawn)
+
+    Visible to everyone around: 
+    PlayFlavor(NPC,"","","shakefist",0,0)
     
     ]]--
